@@ -41,13 +41,19 @@
     NSDictionary *User_Data=[User_All objectForKey:@"data"];//All字典 -> Data字典
     
     NSString *Msg=[User_All objectForKey:@"msg"];
-    if (Msg==@"ok") {
+    if (Msg=@"ok") {
         NSLog(@"正确:%@",Msg);// 调出Data字典中TrueName
         NSString *Remember_code_app=[User_All objectForKey:@"remember_code_app"]; //令牌
         NSString *TrueName=[User_Data objectForKey:@"TrueName"]; //真实姓名
         NSString *studentKH=[User_Data objectForKey:@"studentKH"]; //学号
         
-
+        NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+        //保存数据(如果设置数据之后没有同步, 会在将来某一时间点自动将数据保存到Preferences文件夹下面)
+        [defaults setObject:Remember_code_app forKey:@"remember_code_app"];
+        [defaults setObject:TrueName forKey:@"TrueName"];
+        [defaults setObject:studentKH forKey:@"studentKH"];
+        //强制让数据立刻保存
+        [defaults synchronize];
     }
     else
     {
@@ -67,14 +73,6 @@
 //           //打印数据
 //          NSLog(@"name=%@,gender=%@,age=%d,height=%.1f",name,gender,age,height);
         
-        NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-        //2保存数据(如果设置数据之后没有同步, 会在将来某一时间点自动将数据保存到Preferences文件夹下面)
-        [defaults setObject:@"yangyong" forKey:@"name"];
-        [defaults setInteger:23 forKey:@"age"];
-        [defaults setDouble:1.73f forKey:@"height"];
-        [defaults setObject:@"man" forKey:@"gender"];
-        //3.强制让数据立刻保存
-        [defaults synchronize];
     }
 //
 //    NSString *Remember_code_app=[User_All objectForKey:@"remember_code_app"];
