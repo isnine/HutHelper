@@ -7,52 +7,58 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3A1DF90F1DAB9C590098EBCF /* HomeWorkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A1DF90D1DAB9C590098EBCF /* HomeWorkViewController.m */; };
-		3A1DF9101DAB9C590098EBCF /* HomeWorkViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A1DF90E1DAB9C590098EBCF /* HomeWorkViewController.xib */; };
+		3A6D7EDA1DABD9610081B70D /* HomeWorkViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A6D7ED91DABD9610081B70D /* HomeWorkViewController.xib */; };
+		3A6D7EDE1DABD9DA0081B70D /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A6D7EDD1DABD9DA0081B70D /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		3A6D7EE31DABD9F50081B70D /* LeftSlideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A6D7EE11DABD9F50081B70D /* LeftSlideViewController.m */; };
+		3A6D7EE41DABD9F50081B70D /* UIView_extra.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A6D7EE21DABD9F50081B70D /* UIView_extra.m */; };
+		3A6D7EEF1DABDB500081B70D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A6D7EE71DABDB500081B70D /* AppDelegate.m */; };
+		3A6D7EF01DABDB500081B70D /* HomeWorkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A6D7EE81DABDB500081B70D /* HomeWorkViewController.m */; };
+		3A6D7EF11DABDB500081B70D /* LeftSortsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A6D7EE91DABDB500081B70D /* LeftSortsViewController.m */; };
+		3A6D7EF21DABDB500081B70D /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A6D7EEA1DABDB500081B70D /* LoginViewController.m */; };
+		3A6D7EF31DABDB500081B70D /* MainPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A6D7EEB1DABDB500081B70D /* MainPageViewController.m */; };
+		3A6D7EF41DABDB500081B70D /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A6D7EEC1DABDB500081B70D /* MainViewController.m */; };
+		3A6D7EF51DABDB500081B70D /* otherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A6D7EED1DABDB500081B70D /* otherViewController.m */; };
+		3A6D7EF61DABDB500081B70D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A6D7EEE1DABDB500081B70D /* ViewController.m */; };
 		3A8567801DA908AA00EBD44A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A85677F1DA908AA00EBD44A /* main.m */; };
 		3A8567891DA908AA00EBD44A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A8567871DA908AA00EBD44A /* Main.storyboard */; };
 		3A85678B1DA908AA00EBD44A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A85678A1DA908AA00EBD44A /* Assets.xcassets */; };
 		3A85678E1DA908AA00EBD44A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A85678C1DA908AA00EBD44A /* LaunchScreen.storyboard */; };
-		3A85679D1DA90D2600EBD44A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8567961DA90D2600EBD44A /* AppDelegate.m */; };
-		3A85679E1DA90D2600EBD44A /* otherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8567981DA90D2600EBD44A /* otherViewController.m */; };
-		3A85679F1DA90D2600EBD44A /* LeftSortsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A85679A1DA90D2600EBD44A /* LeftSortsViewController.m */; };
-		3A8567A01DA90D2600EBD44A /* MainPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A85679C1DA90D2600EBD44A /* MainPageViewController.m */; };
-		3A8567A61DA90D4300EBD44A /* LeftSlideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8567A31DA90D4300EBD44A /* LeftSlideViewController.m */; };
-		3A8567A71DA90D4300EBD44A /* UIView_extra.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8567A51DA90D4300EBD44A /* UIView_extra.m */; };
-		3A8567AB1DA9140800EBD44A /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8567A91DA9140800EBD44A /* LoginViewController.m */; };
 		3A8567AC1DA9140800EBD44A /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A8567AA1DA9140800EBD44A /* LoginViewController.xib */; };
-		3A8567D81DA92B4F00EBD44A /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8567D71DA92B4F00EBD44A /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		3A8E0E251DAB442E00F458DB /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A8E0E231DAB442E00F458DB /* MainViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3A1DF90C1DAB9C590098EBCF /* HomeWorkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HomeWorkViewController.h; path = ../HomeWorkViewController.h; sourceTree = "<group>"; };
-		3A1DF90D1DAB9C590098EBCF /* HomeWorkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeWorkViewController.m; sourceTree = "<group>"; };
-		3A1DF90E1DAB9C590098EBCF /* HomeWorkViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeWorkViewController.xib; sourceTree = "<group>"; };
+		3A6D7ED91DABD9610081B70D /* HomeWorkViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HomeWorkViewController.xib; path = HutHelper/HomeWorkViewController.xib; sourceTree = "<group>"; };
+		3A6D7EDC1DABD9DA0081B70D /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSONKit.h; path = HutHelper/Lib/JSONKit.h; sourceTree = "<group>"; };
+		3A6D7EDD1DABD9DA0081B70D /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JSONKit.m; path = HutHelper/Lib/JSONKit.m; sourceTree = "<group>"; };
+		3A6D7EDF1DABD9F50081B70D /* LeftSlideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LeftSlideViewController.h; path = Lib/LeftSlideViewController/LeftSlideViewController.h; sourceTree = "<group>"; };
+		3A6D7EE01DABD9F50081B70D /* UIView_extra.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIView_extra.h; path = Lib/LeftSlideViewController/UIView_extra.h; sourceTree = "<group>"; };
+		3A6D7EE11DABD9F50081B70D /* LeftSlideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LeftSlideViewController.m; path = Lib/LeftSlideViewController/LeftSlideViewController.m; sourceTree = "<group>"; };
+		3A6D7EE21DABD9F50081B70D /* UIView_extra.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIView_extra.m; path = Lib/LeftSlideViewController/UIView_extra.m; sourceTree = "<group>"; };
+		3A6D7EE61DABDA810081B70D /* HutHelper-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "HutHelper-Bridging-Header.h"; path = "HutHelper/HutHelper-Bridging-Header.h"; sourceTree = "<group>"; };
+		3A6D7EE71DABDB500081B70D /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = HutHelper/AppDelegate.m; sourceTree = "<group>"; };
+		3A6D7EE81DABDB500081B70D /* HomeWorkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HomeWorkViewController.m; path = HutHelper/HomeWorkViewController.m; sourceTree = "<group>"; };
+		3A6D7EE91DABDB500081B70D /* LeftSortsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LeftSortsViewController.m; path = HutHelper/LeftSortsViewController.m; sourceTree = "<group>"; };
+		3A6D7EEA1DABDB500081B70D /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = HutHelper/LoginViewController.m; sourceTree = "<group>"; };
+		3A6D7EEB1DABDB500081B70D /* MainPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainPageViewController.m; path = HutHelper/MainPageViewController.m; sourceTree = "<group>"; };
+		3A6D7EEC1DABDB500081B70D /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainViewController.m; path = HutHelper/MainViewController.m; sourceTree = "<group>"; };
+		3A6D7EED1DABDB500081B70D /* otherViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = otherViewController.m; path = HutHelper/otherViewController.m; sourceTree = "<group>"; };
+		3A6D7EEE1DABDB500081B70D /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ViewController.m; path = HutHelper/ViewController.m; sourceTree = "<group>"; };
+		3A6D7EF71DABDB680081B70D /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		3A6D7EF81DABDB680081B70D /* HomeWorkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeWorkViewController.h; sourceTree = "<group>"; };
+		3A6D7EF91DABDB680081B70D /* LeftSortsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftSortsViewController.h; sourceTree = "<group>"; };
+		3A6D7EFA1DABDB680081B70D /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		3A6D7EFB1DABDB680081B70D /* MainPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainPageViewController.h; sourceTree = "<group>"; };
+		3A6D7EFC1DABDB680081B70D /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		3A6D7EFD1DABDB680081B70D /* otherViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = otherViewController.h; sourceTree = "<group>"; };
+		3A6D7EFE1DABDB680081B70D /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		3A85677B1DA908AA00EBD44A /* HutHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HutHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A85677F1DA908AA00EBD44A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		3A8567881DA908AA00EBD44A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3A85678A1DA908AA00EBD44A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = HutHelper/Assets.xcassets; sourceTree = "<group>"; };
 		3A85678D1DA908AA00EBD44A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3A85678F1DA908AA00EBD44A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3A8567951DA90D2600EBD44A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ../../Ioswork/Demo/drawer/qq/LeftSlide/AppDelegate.h; sourceTree = "<group>"; };
-		3A8567961DA90D2600EBD44A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = ../Ioswork/Demo/drawer/qq/LeftSlide/AppDelegate.m; sourceTree = "<group>"; };
-		3A8567971DA90D2600EBD44A /* otherViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = otherViewController.h; path = ../../Ioswork/Demo/drawer/qq/LeftSlide/otherViewController.h; sourceTree = "<group>"; };
-		3A8567981DA90D2600EBD44A /* otherViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = otherViewController.m; path = ../Ioswork/Demo/drawer/qq/LeftSlide/otherViewController.m; sourceTree = "<group>"; };
-		3A8567991DA90D2600EBD44A /* LeftSortsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LeftSortsViewController.h; path = ../../Ioswork/Demo/drawer/qq/LeftSlide/LeftSortsViewController.h; sourceTree = "<group>"; };
-		3A85679A1DA90D2600EBD44A /* LeftSortsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LeftSortsViewController.m; path = ../Ioswork/Demo/drawer/qq/LeftSlide/LeftSortsViewController.m; sourceTree = "<group>"; };
-		3A85679B1DA90D2600EBD44A /* MainPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainPageViewController.h; path = ../../Ioswork/Demo/drawer/qq/LeftSlide/MainPageViewController.h; sourceTree = "<group>"; };
-		3A85679C1DA90D2600EBD44A /* MainPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainPageViewController.m; path = ../Ioswork/Demo/drawer/qq/LeftSlide/MainPageViewController.m; sourceTree = "<group>"; };
-		3A8567A21DA90D4300EBD44A /* LeftSlideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LeftSlideViewController.h; path = ../../Ioswork/Demo/drawer/qq/LeftSlide/LeftSlideViewController/LeftSlideViewController.h; sourceTree = "<group>"; };
-		3A8567A31DA90D4300EBD44A /* LeftSlideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LeftSlideViewController.m; path = ../../Ioswork/Demo/drawer/qq/LeftSlide/LeftSlideViewController/LeftSlideViewController.m; sourceTree = "<group>"; };
-		3A8567A41DA90D4300EBD44A /* UIView_extra.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIView_extra.h; path = ../../Ioswork/Demo/drawer/qq/LeftSlide/LeftSlideViewController/UIView_extra.h; sourceTree = "<group>"; };
-		3A8567A51DA90D4300EBD44A /* UIView_extra.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIView_extra.m; path = ../../Ioswork/Demo/drawer/qq/LeftSlide/LeftSlideViewController/UIView_extra.m; sourceTree = "<group>"; };
-		3A8567A81DA9140800EBD44A /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
-		3A8567A91DA9140800EBD44A /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = HutHelper/LoginViewController.m; sourceTree = "<group>"; };
 		3A8567AA1DA9140800EBD44A /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LoginViewController.xib; path = HutHelper/LoginViewController.xib; sourceTree = "<group>"; };
-		3A8567D01DA926BB00EBD44A /* HutHelper-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HutHelper-Bridging-Header.h"; sourceTree = "<group>"; };
-		3A8567D61DA92B4E00EBD44A /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSONKit.h; path = ../jsonkit/JSONKit.h; sourceTree = "<group>"; };
-		3A8567D71DA92B4F00EBD44A /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JSONKit.m; path = jsonkit/JSONKit.m; sourceTree = "<group>"; };
 		3A8E0E231DAB442E00F458DB /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainViewController.xib; path = HutHelper/MainViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -73,7 +79,7 @@
 				3A85677D1DA908AA00EBD44A /* HutHelper */,
 				3A85678A1DA908AA00EBD44A /* Assets.xcassets */,
 				3A85677C1DA908AA00EBD44A /* Products */,
-				3A8567D01DA926BB00EBD44A /* HutHelper-Bridging-Header.h */,
+				3A6D7EE61DABDA810081B70D /* HutHelper-Bridging-Header.h */,
 			);
 			sourceTree = "<group>";
 		};
@@ -109,10 +115,10 @@
 		3A8567A11DA90D2D00EBD44A /* LeftSildeViewController */ = {
 			isa = PBXGroup;
 			children = (
-				3A8567A21DA90D4300EBD44A /* LeftSlideViewController.h */,
-				3A8567A31DA90D4300EBD44A /* LeftSlideViewController.m */,
-				3A8567A41DA90D4300EBD44A /* UIView_extra.h */,
-				3A8567A51DA90D4300EBD44A /* UIView_extra.m */,
+				3A6D7EDF1DABD9F50081B70D /* LeftSlideViewController.h */,
+				3A6D7EE01DABD9F50081B70D /* UIView_extra.h */,
+				3A6D7EE11DABD9F50081B70D /* LeftSlideViewController.m */,
+				3A6D7EE21DABD9F50081B70D /* UIView_extra.m */,
 			);
 			name = LeftSildeViewController;
 			path = HutHelper;
@@ -123,7 +129,7 @@
 			children = (
 				3A85678C1DA908AA00EBD44A /* LaunchScreen.storyboard */,
 				3A8567AA1DA9140800EBD44A /* LoginViewController.xib */,
-				3A1DF90E1DAB9C590098EBCF /* HomeWorkViewController.xib */,
+				3A6D7ED91DABD9610081B70D /* HomeWorkViewController.xib */,
 				3A8567871DA908AA00EBD44A /* Main.storyboard */,
 				3A8E0E231DAB442E00F458DB /* MainViewController.xib */,
 			);
@@ -134,11 +140,14 @@
 		3A8567DA1DAA3DDA00EBD44A /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				3A8567981DA90D2600EBD44A /* otherViewController.m */,
-				3A85679A1DA90D2600EBD44A /* LeftSortsViewController.m */,
-				3A1DF90D1DAB9C590098EBCF /* HomeWorkViewController.m */,
-				3A85679C1DA90D2600EBD44A /* MainPageViewController.m */,
-				3A8567A91DA9140800EBD44A /* LoginViewController.m */,
+				3A6D7EE71DABDB500081B70D /* AppDelegate.m */,
+				3A6D7EE81DABDB500081B70D /* HomeWorkViewController.m */,
+				3A6D7EE91DABDB500081B70D /* LeftSortsViewController.m */,
+				3A6D7EEA1DABDB500081B70D /* LoginViewController.m */,
+				3A6D7EEB1DABDB500081B70D /* MainPageViewController.m */,
+				3A6D7EEC1DABDB500081B70D /* MainViewController.m */,
+				3A6D7EED1DABDB500081B70D /* otherViewController.m */,
+				3A6D7EEE1DABDB500081B70D /* ViewController.m */,
 			);
 			name = Controller;
 			path = ..;
@@ -147,8 +156,8 @@
 		3A8567DB1DAA3DF800EBD44A /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				3A8567D71DA92B4F00EBD44A /* JSONKit.m */,
-				3A8567961DA90D2600EBD44A /* AppDelegate.m */,
+				3A6D7EDC1DABD9DA0081B70D /* JSONKit.h */,
+				3A6D7EDD1DABD9DA0081B70D /* JSONKit.m */,
 				3A8567A11DA90D2D00EBD44A /* LeftSildeViewController */,
 			);
 			name = Model;
@@ -158,13 +167,14 @@
 		3A8567DC1DAA3E4400EBD44A /* Header */ = {
 			isa = PBXGroup;
 			children = (
-				3A8567D61DA92B4E00EBD44A /* JSONKit.h */,
-				3A8567951DA90D2600EBD44A /* AppDelegate.h */,
-				3A8567971DA90D2600EBD44A /* otherViewController.h */,
-				3A1DF90C1DAB9C590098EBCF /* HomeWorkViewController.h */,
-				3A8567A81DA9140800EBD44A /* LoginViewController.h */,
-				3A8567991DA90D2600EBD44A /* LeftSortsViewController.h */,
-				3A85679B1DA90D2600EBD44A /* MainPageViewController.h */,
+				3A6D7EF71DABDB680081B70D /* AppDelegate.h */,
+				3A6D7EF81DABDB680081B70D /* HomeWorkViewController.h */,
+				3A6D7EF91DABDB680081B70D /* LeftSortsViewController.h */,
+				3A6D7EFA1DABDB680081B70D /* LoginViewController.h */,
+				3A6D7EFB1DABDB680081B70D /* MainPageViewController.h */,
+				3A6D7EFC1DABDB680081B70D /* MainViewController.h */,
+				3A6D7EFD1DABDB680081B70D /* otherViewController.h */,
+				3A6D7EFE1DABDB680081B70D /* ViewController.h */,
 			);
 			name = Header;
 			sourceTree = "<group>";
@@ -233,7 +243,7 @@
 				3A85678E1DA908AA00EBD44A /* LaunchScreen.storyboard in Resources */,
 				3A8E0E251DAB442E00F458DB /* MainViewController.xib in Resources */,
 				3A85678B1DA908AA00EBD44A /* Assets.xcassets in Resources */,
-				3A1DF9101DAB9C590098EBCF /* HomeWorkViewController.xib in Resources */,
+				3A6D7EDA1DABD9610081B70D /* HomeWorkViewController.xib in Resources */,
 				3A8567891DA908AA00EBD44A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -245,16 +255,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3A8567AB1DA9140800EBD44A /* LoginViewController.m in Sources */,
-				3A8567A01DA90D2600EBD44A /* MainPageViewController.m in Sources */,
-				3A8567D81DA92B4F00EBD44A /* JSONKit.m in Sources */,
-				3A85679D1DA90D2600EBD44A /* AppDelegate.m in Sources */,
-				3A85679F1DA90D2600EBD44A /* LeftSortsViewController.m in Sources */,
-				3A8567A71DA90D4300EBD44A /* UIView_extra.m in Sources */,
-				3A1DF90F1DAB9C590098EBCF /* HomeWorkViewController.m in Sources */,
+				3A6D7EF21DABDB500081B70D /* LoginViewController.m in Sources */,
+				3A6D7EDE1DABD9DA0081B70D /* JSONKit.m in Sources */,
+				3A6D7EE41DABD9F50081B70D /* UIView_extra.m in Sources */,
+				3A6D7EF41DABDB500081B70D /* MainViewController.m in Sources */,
+				3A6D7EE31DABD9F50081B70D /* LeftSlideViewController.m in Sources */,
 				3A8567801DA908AA00EBD44A /* main.m in Sources */,
-				3A85679E1DA90D2600EBD44A /* otherViewController.m in Sources */,
-				3A8567A61DA90D4300EBD44A /* LeftSlideViewController.m in Sources */,
+				3A6D7EF61DABDB500081B70D /* ViewController.m in Sources */,
+				3A6D7EF31DABDB500081B70D /* MainPageViewController.m in Sources */,
+				3A6D7EF01DABDB500081B70D /* HomeWorkViewController.m in Sources */,
+				3A6D7EF51DABDB500081B70D /* otherViewController.m in Sources */,
+				3A6D7EEF1DABDB500081B70D /* AppDelegate.m in Sources */,
+				3A6D7EF11DABDB500081B70D /* LeftSortsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,7 +8,9 @@
 
 #import "LeftSortsViewController.h"
 #import "AppDelegate.h"
-#import "otherViewController.h"
+
+#import "LoginViewController.h"
+#import "HomeWorkViewController.h"
 
 @interface LeftSortsViewController () <UITableViewDelegate,UITableViewDataSource>
 
@@ -31,6 +33,7 @@
     tableview.delegate  = self;
     tableview.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:tableview];
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -50,43 +53,82 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:Identifier];
     }
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+   // cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     cell.textLabel.font = [UIFont systemFontOfSize:20.0f];
     cell.backgroundColor = [UIColor clearColor];
     cell.textLabel.textColor = [UIColor whiteColor];
-    
+
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults]; //得到用户数据
+    NSString *name=[defaults objectForKey:@"TrueName"];
+    NSString *gender=[defaults objectForKey:@"studentKH"];
     if (indexPath.row == 0) {
-        cell.textLabel.text = @"开通会员";
+        if(name==NULL){
+        cell.textLabel.text = @"登录";
+        }
+        else
+        cell.textLabel.text = name;
     } else if (indexPath.row == 1) {
-        cell.textLabel.text = @"QQ钱包";
+        cell.textLabel.text = @"";
     } else if (indexPath.row == 2) {
-        cell.textLabel.text = @"网上营业厅";
+        cell.textLabel.text = @"检查更新";
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     } else if (indexPath.row == 3) {
-        cell.textLabel.text = @"个性装扮";
+        cell.textLabel.text = @"分享应用";
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     } else if (indexPath.row == 4) {
-        cell.textLabel.text = @"我的收藏";
+        cell.textLabel.text = @"切换用户";
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     } else if (indexPath.row == 5) {
-        cell.textLabel.text = @"我的相册";
+        cell.textLabel.text = @"关于";
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     } else if (indexPath.row == 6) {
-        cell.textLabel.text = @"我的文件";
+        cell.textLabel.text = @"反馈";
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
+    
     return cell;
 }
+
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
     AppDelegate *tempAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    otherViewController *vc = [[otherViewController alloc] init];
+    
+    LoginViewController *vb = [[LoginViewController alloc] init];
+    HomeWorkViewController *vc = [[HomeWorkViewController alloc] init];
     [tempAppDelegate.LeftSlideVC closeLeftView];//关闭左侧抽屉
     
-    [tempAppDelegate.mainNavigationController pushViewController:vc animated:NO];
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];  //得到用户数据
+    NSString *name=[defaults objectForKey:@"TrueName"];
+    NSString *gender=[defaults objectForKey:@"studentKH"];
+    
+    static NSString *Identifier = @"Identifier";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:Identifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:Identifier];
+    }
+
+    
+    if (indexPath.row == 0) {
+        if(name==NULL){
+          [tempAppDelegate.mainNavigationController pushViewController:vb animated:NO];
+                      }
+    }
+    
+    if (indexPath.row == 4) {
+        [tempAppDelegate.mainNavigationController pushViewController:vb animated:NO];
+        
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
     return 180;
+    
 }
+
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableview.bounds.size.width, 180)];

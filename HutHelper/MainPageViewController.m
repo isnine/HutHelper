@@ -8,8 +8,13 @@
 
 #import "MainPageViewController.h"
 #import "AppDelegate.h"
+#import "JSONKit.h"
+#import "HomeWorkViewController.h"
 #define vBackBarButtonItemName  @"backArrow.png"    //导航条返回默认图片名
 @interface MainPageViewController ()
+@property (weak, nonatomic) IBOutlet UITextField *UserName;
+@property (weak, nonatomic) IBOutlet UITextField *PassWord;
+
 
 @end
 
@@ -17,14 +22,22 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"主界面";
+     self.navigationItem.title = @"主界面";
     self.view.backgroundColor = [UIColor whiteColor];
-
+    [self.navigationController.navigationBar setTitleTextAttributes:
+  @{NSFontAttributeName:[UIFont systemFontOfSize:19],
+    NSForegroundColorAttributeName:[UIColor whiteColor]}];   //标题字体颜色
+//    LoginViewController *vc = [[LoginViewController alloc] init];
+//    [self.navigationController pushViewController:vc animated:YES];
+    
     UIButton *menuBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     menuBtn.frame = CGRectMake(0, 0, 20, 18);
     [menuBtn setBackgroundImage:[UIImage imageNamed:@"menu"] forState:UIControlStateNormal];
     [menuBtn addTarget:self action:@selector(openOrCloseLeftList) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:menuBtn];
+    
+    
+    
 }
 
 - (void) openOrCloseLeftList
@@ -34,6 +47,7 @@
     if (tempAppDelegate.LeftSlideVC.closed)
     {
         [tempAppDelegate.LeftSlideVC openLeftView];
+        
     }
     else
     {
@@ -55,6 +69,59 @@
     NSLog(@"viewWillAppear");
     AppDelegate *tempAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [tempAppDelegate.LeftSlideVC setPanEnabled:YES];
+    
+    //    LoginViewController *vb = [[LoginViewController alloc] init];
+    //    [tempAppDelegate.mainNavigationController pushViewController:vb animated:NO];
+    
 }
+
+- (IBAction)Test:(id)sender {
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    NSString *name=[defaults objectForKey:@"TrueName"];
+    NSString *gender=[defaults objectForKey:@"studentKH"];
+
+    if(gender==@"(null)"){
+          NSLog(@"no");
+    }
+    //打印数据
+    NSLog(@"name=%@,gender=%@,",name,gender);
+
+}
+
+- (IBAction)HomeWork:(id)sender {
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    NSString *remember_code_app=[defaults objectForKey:@"remember_code_app"];
+    
+  
+    HomeWorkViewController *vc = [[HomeWorkViewController alloc] init];
+    AppDelegate *tempAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+ 
+    //[tempAppDelegate.mainNavigationController pushViewController:vc animated:NO];
+
+    if(remember_code_app!=NULL){
+//       [self.navigationController pushViewController:vc animated:YES];
+       
+         [tempAppDelegate.mainNavigationController pushViewController:vc animated:NO];
+    }
+    else{
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"温馨提示"
+                                                            message:@"请先登录"
+                                                           delegate:self
+                                                  cancelButtonTitle:@"取消"
+                                                  otherButtonTitles:@"确定", nil];
+        [alertView show];
+    }
+    
+    
+    
+}
+
+
+
+
+
+
+
+
 
 @end
