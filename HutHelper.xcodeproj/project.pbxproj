@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A1DF90F1DAB9C590098EBCF /* HomeWorkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A1DF90D1DAB9C590098EBCF /* HomeWorkViewController.m */; };
+		3A1DF9101DAB9C590098EBCF /* HomeWorkViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A1DF90E1DAB9C590098EBCF /* HomeWorkViewController.xib */; };
 		3A8567801DA908AA00EBD44A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A85677F1DA908AA00EBD44A /* main.m */; };
 		3A8567891DA908AA00EBD44A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A8567871DA908AA00EBD44A /* Main.storyboard */; };
 		3A85678B1DA908AA00EBD44A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A85678A1DA908AA00EBD44A /* Assets.xcassets */; };
@@ -24,6 +26,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3A1DF90C1DAB9C590098EBCF /* HomeWorkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HomeWorkViewController.h; path = ../HomeWorkViewController.h; sourceTree = "<group>"; };
+		3A1DF90D1DAB9C590098EBCF /* HomeWorkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeWorkViewController.m; sourceTree = "<group>"; };
+		3A1DF90E1DAB9C590098EBCF /* HomeWorkViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeWorkViewController.xib; sourceTree = "<group>"; };
 		3A85677B1DA908AA00EBD44A /* HutHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HutHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A85677F1DA908AA00EBD44A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		3A8567881DA908AA00EBD44A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -42,7 +47,7 @@
 		3A8567A31DA90D4300EBD44A /* LeftSlideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LeftSlideViewController.m; path = ../../Ioswork/Demo/drawer/qq/LeftSlide/LeftSlideViewController/LeftSlideViewController.m; sourceTree = "<group>"; };
 		3A8567A41DA90D4300EBD44A /* UIView_extra.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIView_extra.h; path = ../../Ioswork/Demo/drawer/qq/LeftSlide/LeftSlideViewController/UIView_extra.h; sourceTree = "<group>"; };
 		3A8567A51DA90D4300EBD44A /* UIView_extra.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIView_extra.m; path = ../../Ioswork/Demo/drawer/qq/LeftSlide/LeftSlideViewController/UIView_extra.m; sourceTree = "<group>"; };
-		3A8567A81DA9140800EBD44A /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = HutHelper/LoginViewController.h; sourceTree = "<group>"; };
+		3A8567A81DA9140800EBD44A /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		3A8567A91DA9140800EBD44A /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = HutHelper/LoginViewController.m; sourceTree = "<group>"; };
 		3A8567AA1DA9140800EBD44A /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LoginViewController.xib; path = HutHelper/LoginViewController.xib; sourceTree = "<group>"; };
 		3A8567D01DA926BB00EBD44A /* HutHelper-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HutHelper-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -65,7 +70,6 @@
 		3A8567721DA908AA00EBD44A = {
 			isa = PBXGroup;
 			children = (
-				3A8567A81DA9140800EBD44A /* LoginViewController.h */,
 				3A85677D1DA908AA00EBD44A /* HutHelper */,
 				3A85678A1DA908AA00EBD44A /* Assets.xcassets */,
 				3A85677C1DA908AA00EBD44A /* Products */,
@@ -119,6 +123,7 @@
 			children = (
 				3A85678C1DA908AA00EBD44A /* LaunchScreen.storyboard */,
 				3A8567AA1DA9140800EBD44A /* LoginViewController.xib */,
+				3A1DF90E1DAB9C590098EBCF /* HomeWorkViewController.xib */,
 				3A8567871DA908AA00EBD44A /* Main.storyboard */,
 				3A8E0E231DAB442E00F458DB /* MainViewController.xib */,
 			);
@@ -131,6 +136,7 @@
 			children = (
 				3A8567981DA90D2600EBD44A /* otherViewController.m */,
 				3A85679A1DA90D2600EBD44A /* LeftSortsViewController.m */,
+				3A1DF90D1DAB9C590098EBCF /* HomeWorkViewController.m */,
 				3A85679C1DA90D2600EBD44A /* MainPageViewController.m */,
 				3A8567A91DA9140800EBD44A /* LoginViewController.m */,
 			);
@@ -155,6 +161,8 @@
 				3A8567D61DA92B4E00EBD44A /* JSONKit.h */,
 				3A8567951DA90D2600EBD44A /* AppDelegate.h */,
 				3A8567971DA90D2600EBD44A /* otherViewController.h */,
+				3A1DF90C1DAB9C590098EBCF /* HomeWorkViewController.h */,
+				3A8567A81DA9140800EBD44A /* LoginViewController.h */,
 				3A8567991DA90D2600EBD44A /* LeftSortsViewController.h */,
 				3A85679B1DA90D2600EBD44A /* MainPageViewController.h */,
 			);
@@ -225,6 +233,7 @@
 				3A85678E1DA908AA00EBD44A /* LaunchScreen.storyboard in Resources */,
 				3A8E0E251DAB442E00F458DB /* MainViewController.xib in Resources */,
 				3A85678B1DA908AA00EBD44A /* Assets.xcassets in Resources */,
+				3A1DF9101DAB9C590098EBCF /* HomeWorkViewController.xib in Resources */,
 				3A8567891DA908AA00EBD44A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -242,6 +251,7 @@
 				3A85679D1DA90D2600EBD44A /* AppDelegate.m in Sources */,
 				3A85679F1DA90D2600EBD44A /* LeftSortsViewController.m in Sources */,
 				3A8567A71DA90D4300EBD44A /* UIView_extra.m in Sources */,
+				3A1DF90F1DAB9C590098EBCF /* HomeWorkViewController.m in Sources */,
 				3A8567801DA908AA00EBD44A /* main.m in Sources */,
 				3A85679E1DA90D2600EBD44A /* otherViewController.m in Sources */,
 				3A8567A61DA90D4300EBD44A /* LeftSlideViewController.m in Sources */,
@@ -369,6 +379,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = JW2LR94V6G;
 				INFOPLIST_FILE = HutHelper/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = name.wxz.HutHelper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -385,6 +396,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = JW2LR94V6G;
 				INFOPLIST_FILE = HutHelper/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = name.wxz.HutHelper;
 				PRODUCT_NAME = "$(TARGET_NAME)";

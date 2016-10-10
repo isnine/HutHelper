@@ -41,7 +41,9 @@
     NSDictionary *User_Data=[User_All objectForKey:@"data"];//All字典 -> Data字典
 
     NSString *Msg=[User_All objectForKey:@"msg"];
-    if (Msg=@"ok") {
+    NSString *Msg2=@"ok";
+    if ([Msg isEqualToString: Msg2])
+    {
         NSLog(@"正确:%@",Msg);// 调出Data字典中TrueName
         NSString *Remember_code_app=[User_All objectForKey:@"remember_code_app"]; //令牌
         NSString *TrueName=[User_Data objectForKey:@"TrueName"]; //真实姓名
@@ -55,6 +57,10 @@
         //强制让数据立刻保存
         [defaults synchronize];
         NSLog(@"用户：%@，学号：%@,令牌:%@",TrueName,studentKH,Remember_code_app);
+        
+        [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:([self.navigationController.viewControllers count] -2)] animated:YES];  //返回上一个View
+        
+        
     }
     else
     {
@@ -91,25 +97,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
      self.title = @"登录";
-    // Do any additional setup after loading the view from its nib.
+
     
 
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    
 }
 
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
