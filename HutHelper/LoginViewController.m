@@ -39,7 +39,7 @@
     NSData* jsonData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];//地址 -> 数据
     NSDictionary *User_All = [jsonData objectFromJSONData];//数据 -> 字典
     NSDictionary *User_Data=[User_All objectForKey:@"data"];//All字典 -> Data字典
-    
+
     NSString *Msg=[User_All objectForKey:@"msg"];
     if (Msg=@"ok") {
         NSLog(@"正确:%@",Msg);// 调出Data字典中TrueName
@@ -54,6 +54,7 @@
         [defaults setObject:studentKH forKey:@"studentKH"];
         //强制让数据立刻保存
         [defaults synchronize];
+        NSLog(@"用户：%@，学号：%@,令牌:%@",TrueName,studentKH,Remember_code_app);
     }
     else
     {
@@ -79,6 +80,7 @@
 //    NSLog(@"Msg:%@",Msg);// 调出Data字典中TrueName
 //    NSLog(@"TrueName:%@",[User_Data objectForKey:@"TrueName"]);// 调出Data字典中TrueName
 }
+
 - (IBAction)DidEnd:(id)sender {
   [sender resignFirstResponder];
 }
@@ -88,7 +90,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-     self.title = @"切换账号";
+     self.title = @"登录";
     // Do any additional setup after loading the view from its nib.
     
 

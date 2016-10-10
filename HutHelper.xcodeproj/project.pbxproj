@@ -20,7 +20,6 @@
 		3A8567AB1DA9140800EBD44A /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8567A91DA9140800EBD44A /* LoginViewController.m */; };
 		3A8567AC1DA9140800EBD44A /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A8567AA1DA9140800EBD44A /* LoginViewController.xib */; };
 		3A8567D81DA92B4F00EBD44A /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8567D71DA92B4F00EBD44A /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		3A8E0E241DAB442E00F458DB /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8E0E221DAB442E00F458DB /* MainViewController.m */; };
 		3A8E0E251DAB442E00F458DB /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A8E0E231DAB442E00F458DB /* MainViewController.xib */; };
 /* End PBXBuildFile section */
 
@@ -49,8 +48,6 @@
 		3A8567D01DA926BB00EBD44A /* HutHelper-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HutHelper-Bridging-Header.h"; sourceTree = "<group>"; };
 		3A8567D61DA92B4E00EBD44A /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSONKit.h; path = ../jsonkit/JSONKit.h; sourceTree = "<group>"; };
 		3A8567D71DA92B4F00EBD44A /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JSONKit.m; path = jsonkit/JSONKit.m; sourceTree = "<group>"; };
-		3A8E0E211DAB442E00F458DB /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
-		3A8E0E221DAB442E00F458DB /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainViewController.m; path = HutHelper/MainViewController.m; sourceTree = "<group>"; };
 		3A8E0E231DAB442E00F458DB /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainViewController.xib; path = HutHelper/MainViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -133,7 +130,6 @@
 			isa = PBXGroup;
 			children = (
 				3A8567981DA90D2600EBD44A /* otherViewController.m */,
-				3A8E0E221DAB442E00F458DB /* MainViewController.m */,
 				3A85679A1DA90D2600EBD44A /* LeftSortsViewController.m */,
 				3A85679C1DA90D2600EBD44A /* MainPageViewController.m */,
 				3A8567A91DA9140800EBD44A /* LoginViewController.m */,
@@ -159,7 +155,6 @@
 				3A8567D61DA92B4E00EBD44A /* JSONKit.h */,
 				3A8567951DA90D2600EBD44A /* AppDelegate.h */,
 				3A8567971DA90D2600EBD44A /* otherViewController.h */,
-				3A8E0E211DAB442E00F458DB /* MainViewController.h */,
 				3A8567991DA90D2600EBD44A /* LeftSortsViewController.h */,
 				3A85679B1DA90D2600EBD44A /* MainPageViewController.h */,
 			);
@@ -244,7 +239,6 @@
 				3A8567AB1DA9140800EBD44A /* LoginViewController.m in Sources */,
 				3A8567A01DA90D2600EBD44A /* MainPageViewController.m in Sources */,
 				3A8567D81DA92B4F00EBD44A /* JSONKit.m in Sources */,
-				3A8E0E241DAB442E00F458DB /* MainViewController.m in Sources */,
 				3A85679D1DA90D2600EBD44A /* AppDelegate.m in Sources */,
 				3A85679F1DA90D2600EBD44A /* LeftSortsViewController.m in Sources */,
 				3A8567A71DA90D4300EBD44A /* UIView_extra.m in Sources */,
