@@ -1,0 +1,12 @@
+登录接口:
+hugongda.com:8888/api/v1/get/login/学号/password/1
+作业接口:
+http://218.75.197.121:8888/api/v1/get/myhomework/学号/remember_code_app
+课表接口:
+http://218.75.197.121:8888/api/v1/get/lessons/学号/remember_code_app
+成绩接口
+http://218.75.197.121:8888/api/v1/get/scores/学号/remember_code_app/sha1(remember_code_app+"f$Z@%")
+
+
+http://218.75.197.121:8888/api/v1/get/lessons/15408500245/c59cd3bcfb143331dd5e31e3bc4a818fa7d5d96f
+http://218.75.197.121:8888/api/v1/get/scores/15408500245/b043631187256bd7700db35247ccbc4f68e64616/afb793f44c9b21f7c351f5473452c14b540edb6e
