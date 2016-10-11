@@ -13,6 +13,9 @@
 #import "HomeWorkViewController.h"
 
 #import "ClassViewController.h"
+#import "TestViewController.h"
+
+#import "AboutViewController.h"
 @interface LeftSortsViewController () <UITableViewDelegate,UITableViewDataSource>
 
 @end
@@ -124,10 +127,12 @@
     }
     
     if (indexPath.row == 5) {
-        UIStoryboard *mainStoryBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        ClassViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Class"];
-        [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:NO];
-
+       AboutViewController *about = [[AboutViewController alloc] init];
+       [tempAppDelegate.mainNavigationController pushViewController:about animated:NO];
+      }
+    if (indexPath.row == 6) {
+     TestViewController *test = [[TestViewController alloc] init];
+     [tempAppDelegate.mainNavigationController pushViewController:test animated:NO];
     }
 }
 

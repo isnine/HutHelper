@@ -142,7 +142,7 @@
     _itemHeight = 50;
     _timeTableWidth = 50;
     _courseListWidth = 0;
-    _maxCourseCount = 12;
+    _maxCourseCount = 10;
     _selectedIndex = 1;
     _topBarBgColor = [UIColor whiteColor];
     self.backgroundColor = RGB(245, 245, 245, 1);

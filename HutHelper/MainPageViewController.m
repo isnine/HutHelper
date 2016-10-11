@@ -41,7 +41,7 @@
     
 }
 
-- (void) openOrCloseLeftList
+- (void) openOrCloseLeftList 
 {
     AppDelegate *tempAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
@@ -89,14 +89,27 @@
 
 }
 
-- (IBAction)ClassFind:(id)sender {
-    UIStoryboard *mainStoryBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    ClassViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Class"];
-    AppDelegate *tempAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:NO];
+- (IBAction)ClassFind:(id)sender {  //课表界面
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    NSString *remember_code_app=[defaults objectForKey:@"remember_code_app"];
+    
+    if(remember_code_app!=NULL){    //判断是否已登录
+        UIStoryboard *mainStoryBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        ClassViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Class"];
+        AppDelegate *tempAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:NO];
+    }
+    else{
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"温馨提示"
+                                                            message:@"请先登录"
+                                                           delegate:self
+                                                  cancelButtonTitle:@"取消"
+                                                  otherButtonTitles:@"确定", nil];
+        [alertView show];
+    }
 }
 
-- (IBAction)HomeWork:(id)sender {
+- (IBAction)HomeWork:(id)sender { //作业界面
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     NSString *remember_code_app=[defaults objectForKey:@"remember_code_app"];
     
@@ -104,11 +117,7 @@
     HomeWorkViewController *vc = [[HomeWorkViewController alloc] init];
     AppDelegate *tempAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
  
-    //[tempAppDelegate.mainNavigationController pushViewController:vc animated:NO];
-
-    if(remember_code_app!=NULL){
-//       [self.navigationController pushViewController:vc animated:YES];
-       
+    if(remember_code_app!=NULL){    //判断是否已登录
          [tempAppDelegate.mainNavigationController pushViewController:vc animated:NO];
     }
     else{

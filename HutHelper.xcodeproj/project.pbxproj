@@ -28,6 +28,10 @@
 		3AD87B101DACD02E00357212 /* GWPCourseListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD87B0F1DACD02E00357212 /* GWPCourseListView.m */; };
 		3AD87B131DACD05B00357212 /* CourseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD87B121DACD05B00357212 /* CourseModel.m */; };
 		3AD87B181DACD08E00357212 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AD87B171DACD08E00357212 /* Main.storyboard */; };
+		3AFB7BA01DACDA290040B55F /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AFB7B9E1DACDA290040B55F /* TestViewController.m */; };
+		3AFB7BA11DACDA290040B55F /* TestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AFB7B9F1DACDA290040B55F /* TestViewController.xib */; };
+		3AFB7BA51DAD19530040B55F /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AFB7BA31DAD19530040B55F /* AboutViewController.m */; };
+		3AFB7BA61DAD19530040B55F /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AFB7BA41DAD19530040B55F /* AboutViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,6 +73,12 @@
 		3AD87B111DACD05B00357212 /* CourseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CourseModel.h; path = HutHelper/Lib/CourseModel.h; sourceTree = "<group>"; };
 		3AD87B121DACD05B00357212 /* CourseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CourseModel.m; path = HutHelper/Lib/CourseModel.m; sourceTree = "<group>"; };
 		3AD87B171DACD08E00357212 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = HutHelper/Main.storyboard; sourceTree = "<group>"; };
+		3AFB7B9D1DACDA290040B55F /* TestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TestViewController.h; path = HutHelper/TestViewController.h; sourceTree = "<group>"; };
+		3AFB7B9E1DACDA290040B55F /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TestViewController.m; path = HutHelper/TestViewController.m; sourceTree = "<group>"; };
+		3AFB7B9F1DACDA290040B55F /* TestViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TestViewController.xib; path = HutHelper/TestViewController.xib; sourceTree = "<group>"; };
+		3AFB7BA21DAD19530040B55F /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
+		3AFB7BA31DAD19530040B55F /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AboutViewController.m; path = HutHelper/AboutViewController.m; sourceTree = "<group>"; };
+		3AFB7BA41DAD19530040B55F /* AboutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AboutViewController.xib; path = HutHelper/AboutViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +95,9 @@
 		3A8567721DA908AA00EBD44A = {
 			isa = PBXGroup;
 			children = (
+				3AFB7B9D1DACDA290040B55F /* TestViewController.h */,
+				3AFB7B9E1DACDA290040B55F /* TestViewController.m */,
+				3AFB7B9F1DACDA290040B55F /* TestViewController.xib */,
 				3A85677D1DA908AA00EBD44A /* HutHelper */,
 				3A85678A1DA908AA00EBD44A /* Assets.xcassets */,
 				3A85677C1DA908AA00EBD44A /* Products */,
@@ -104,8 +117,8 @@
 			isa = PBXGroup;
 			children = (
 				3A8567DB1DAA3DF800EBD44A /* Model */,
-				3A8567DC1DAA3E4400EBD44A /* Header */,
 				3A8567DA1DAA3DDA00EBD44A /* Controller */,
+				3A8567DC1DAA3E4400EBD44A /* Header */,
 				3A8567D91DAA3D8F00EBD44A /* View */,
 				3A85677E1DA908AA00EBD44A /* Supporting Files */,
 			);
@@ -141,6 +154,7 @@
 				3A6D7ED91DABD9610081B70D /* HomeWorkViewController.xib */,
 				3A8E0E231DAB442E00F458DB /* MainViewController.xib */,
 				3AD87B171DACD08E00357212 /* Main.storyboard */,
+				3AFB7BA41DAD19530040B55F /* AboutViewController.xib */,
 			);
 			name = View;
 			path = ..;
@@ -149,11 +163,12 @@
 		3A8567DA1DAA3DDA00EBD44A /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				3A6D7EE91DABDB500081B70D /* LeftSortsViewController.m */,
 				3A6D7EE71DABDB500081B70D /* AppDelegate.m */,
 				3A6D7EE81DABDB500081B70D /* HomeWorkViewController.m */,
-				3A6D7EE91DABDB500081B70D /* LeftSortsViewController.m */,
 				3AD87B071DACCE7600357212 /* ClassViewController.m */,
 				3A6D7EEA1DABDB500081B70D /* LoginViewController.m */,
+				3AFB7BA31DAD19530040B55F /* AboutViewController.m */,
 				3A6D7EEB1DABDB500081B70D /* MainPageViewController.m */,
 				3A6D7EEC1DABDB500081B70D /* MainViewController.m */,
 				3A6D7EED1DABDB500081B70D /* otherViewController.m */,
@@ -169,9 +184,9 @@
 				3A8567A11DA90D2D00EBD44A /* LeftSildeViewController */,
 				3AD87B0D1DACD01C00357212 /* GWPCourseListView */,
 				3A6D7EDC1DABD9DA0081B70D /* JSONKit.h */,
+				3A6D7EDD1DABD9DA0081B70D /* JSONKit.m */,
 				3AD87B111DACD05B00357212 /* CourseModel.h */,
 				3AD87B121DACD05B00357212 /* CourseModel.m */,
-				3A6D7EDD1DABD9DA0081B70D /* JSONKit.m */,
 			);
 			name = Model;
 			path = ..;
@@ -187,6 +202,7 @@
 				3A6D7EFA1DABDB680081B70D /* LoginViewController.h */,
 				3A6D7EFB1DABDB680081B70D /* MainPageViewController.h */,
 				3A6D7EFC1DABDB680081B70D /* MainViewController.h */,
+				3AFB7BA21DAD19530040B55F /* AboutViewController.h */,
 				3A6D7EFD1DABDB680081B70D /* otherViewController.h */,
 				3A6D7EFE1DABDB680081B70D /* ViewController.h */,
 			);
@@ -264,9 +280,11 @@
 			files = (
 				3A8567AC1DA9140800EBD44A /* LoginViewController.xib in Resources */,
 				3A85678E1DA908AA00EBD44A /* LaunchScreen.storyboard in Resources */,
+				3AFB7BA61DAD19530040B55F /* AboutViewController.xib in Resources */,
 				3A8E0E251DAB442E00F458DB /* MainViewController.xib in Resources */,
 				3AD87B181DACD08E00357212 /* Main.storyboard in Resources */,
 				3A85678B1DA908AA00EBD44A /* Assets.xcassets in Resources */,
+				3AFB7BA11DACDA290040B55F /* TestViewController.xib in Resources */,
 				3A6D7EDA1DABD9610081B70D /* HomeWorkViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -287,11 +305,13 @@
 				3A8567801DA908AA00EBD44A /* main.m in Sources */,
 				3A6D7EF61DABDB500081B70D /* ViewController.m in Sources */,
 				3A6D7EF31DABDB500081B70D /* MainPageViewController.m in Sources */,
+				3AFB7BA51DAD19530040B55F /* AboutViewController.m in Sources */,
 				3AD87B081DACCE7600357212 /* ClassViewController.m in Sources */,
 				3A6D7EF01DABDB500081B70D /* HomeWorkViewController.m in Sources */,
 				3A6D7EF51DABDB500081B70D /* otherViewController.m in Sources */,
 				3A6D7EEF1DABDB500081B70D /* AppDelegate.m in Sources */,
 				3AD87B101DACD02E00357212 /* GWPCourseListView.m in Sources */,
+				3AFB7BA01DACDA290040B55F /* TestViewController.m in Sources */,
 				3A6D7EF11DABDB500081B70D /* LeftSortsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

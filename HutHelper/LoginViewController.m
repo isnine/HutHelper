@@ -57,7 +57,7 @@
         //强制让数据立刻保存
         [defaults synchronize];
         NSLog(@"用户：%@，学号：%@,令牌:%@",TrueName,studentKH,Remember_code_app);
-        
+      
         [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:([self.navigationController.viewControllers count] -2)] animated:YES];  //返回上一个View
         
         
