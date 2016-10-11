@@ -20,11 +20,14 @@
 		3A6D7EF51DABDB500081B70D /* otherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A6D7EED1DABDB500081B70D /* otherViewController.m */; };
 		3A6D7EF61DABDB500081B70D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A6D7EEE1DABDB500081B70D /* ViewController.m */; };
 		3A8567801DA908AA00EBD44A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A85677F1DA908AA00EBD44A /* main.m */; };
-		3A8567891DA908AA00EBD44A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A8567871DA908AA00EBD44A /* Main.storyboard */; };
 		3A85678B1DA908AA00EBD44A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A85678A1DA908AA00EBD44A /* Assets.xcassets */; };
 		3A85678E1DA908AA00EBD44A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A85678C1DA908AA00EBD44A /* LaunchScreen.storyboard */; };
 		3A8567AC1DA9140800EBD44A /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A8567AA1DA9140800EBD44A /* LoginViewController.xib */; };
 		3A8E0E251DAB442E00F458DB /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A8E0E231DAB442E00F458DB /* MainViewController.xib */; };
+		3AD87B081DACCE7600357212 /* ClassViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD87B071DACCE7600357212 /* ClassViewController.m */; };
+		3AD87B101DACD02E00357212 /* GWPCourseListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD87B0F1DACD02E00357212 /* GWPCourseListView.m */; };
+		3AD87B131DACD05B00357212 /* CourseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD87B121DACD05B00357212 /* CourseModel.m */; };
+		3AD87B181DACD08E00357212 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AD87B171DACD08E00357212 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,12 +57,18 @@
 		3A6D7EFE1DABDB680081B70D /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		3A85677B1DA908AA00EBD44A /* HutHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HutHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A85677F1DA908AA00EBD44A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		3A8567881DA908AA00EBD44A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3A85678A1DA908AA00EBD44A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = HutHelper/Assets.xcassets; sourceTree = "<group>"; };
 		3A85678D1DA908AA00EBD44A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3A85678F1DA908AA00EBD44A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3A8567AA1DA9140800EBD44A /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LoginViewController.xib; path = HutHelper/LoginViewController.xib; sourceTree = "<group>"; };
 		3A8E0E231DAB442E00F458DB /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainViewController.xib; path = HutHelper/MainViewController.xib; sourceTree = "<group>"; };
+		3AD87B061DACCE7600357212 /* ClassViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassViewController.h; sourceTree = "<group>"; };
+		3AD87B071DACCE7600357212 /* ClassViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ClassViewController.m; path = HutHelper/ClassViewController.m; sourceTree = "<group>"; };
+		3AD87B0E1DACD02E00357212 /* GWPCourseListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GWPCourseListView.h; path = HutHelper/Lib/GWPCourseListView/GWPCourseListView.h; sourceTree = "<group>"; };
+		3AD87B0F1DACD02E00357212 /* GWPCourseListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GWPCourseListView.m; path = HutHelper/Lib/GWPCourseListView/GWPCourseListView.m; sourceTree = "<group>"; };
+		3AD87B111DACD05B00357212 /* CourseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CourseModel.h; path = HutHelper/Lib/CourseModel.h; sourceTree = "<group>"; };
+		3AD87B121DACD05B00357212 /* CourseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CourseModel.m; path = HutHelper/Lib/CourseModel.m; sourceTree = "<group>"; };
+		3AD87B171DACD08E00357212 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = HutHelper/Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,8 +139,8 @@
 				3A85678C1DA908AA00EBD44A /* LaunchScreen.storyboard */,
 				3A8567AA1DA9140800EBD44A /* LoginViewController.xib */,
 				3A6D7ED91DABD9610081B70D /* HomeWorkViewController.xib */,
-				3A8567871DA908AA00EBD44A /* Main.storyboard */,
 				3A8E0E231DAB442E00F458DB /* MainViewController.xib */,
+				3AD87B171DACD08E00357212 /* Main.storyboard */,
 			);
 			name = View;
 			path = ..;
@@ -143,6 +152,7 @@
 				3A6D7EE71DABDB500081B70D /* AppDelegate.m */,
 				3A6D7EE81DABDB500081B70D /* HomeWorkViewController.m */,
 				3A6D7EE91DABDB500081B70D /* LeftSortsViewController.m */,
+				3AD87B071DACCE7600357212 /* ClassViewController.m */,
 				3A6D7EEA1DABDB500081B70D /* LoginViewController.m */,
 				3A6D7EEB1DABDB500081B70D /* MainPageViewController.m */,
 				3A6D7EEC1DABDB500081B70D /* MainViewController.m */,
@@ -156,9 +166,12 @@
 		3A8567DB1DAA3DF800EBD44A /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				3A6D7EDC1DABD9DA0081B70D /* JSONKit.h */,
-				3A6D7EDD1DABD9DA0081B70D /* JSONKit.m */,
 				3A8567A11DA90D2D00EBD44A /* LeftSildeViewController */,
+				3AD87B0D1DACD01C00357212 /* GWPCourseListView */,
+				3A6D7EDC1DABD9DA0081B70D /* JSONKit.h */,
+				3AD87B111DACD05B00357212 /* CourseModel.h */,
+				3AD87B121DACD05B00357212 /* CourseModel.m */,
+				3A6D7EDD1DABD9DA0081B70D /* JSONKit.m */,
 			);
 			name = Model;
 			path = ..;
@@ -168,6 +181,7 @@
 			isa = PBXGroup;
 			children = (
 				3A6D7EF71DABDB680081B70D /* AppDelegate.h */,
+				3AD87B061DACCE7600357212 /* ClassViewController.h */,
 				3A6D7EF81DABDB680081B70D /* HomeWorkViewController.h */,
 				3A6D7EF91DABDB680081B70D /* LeftSortsViewController.h */,
 				3A6D7EFA1DABDB680081B70D /* LoginViewController.h */,
@@ -177,6 +191,15 @@
 				3A6D7EFE1DABDB680081B70D /* ViewController.h */,
 			);
 			name = Header;
+			sourceTree = "<group>";
+		};
+		3AD87B0D1DACD01C00357212 /* GWPCourseListView */ = {
+			isa = PBXGroup;
+			children = (
+				3AD87B0E1DACD02E00357212 /* GWPCourseListView.h */,
+				3AD87B0F1DACD02E00357212 /* GWPCourseListView.m */,
+			);
+			name = GWPCourseListView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -242,9 +265,9 @@
 				3A8567AC1DA9140800EBD44A /* LoginViewController.xib in Resources */,
 				3A85678E1DA908AA00EBD44A /* LaunchScreen.storyboard in Resources */,
 				3A8E0E251DAB442E00F458DB /* MainViewController.xib in Resources */,
+				3AD87B181DACD08E00357212 /* Main.storyboard in Resources */,
 				3A85678B1DA908AA00EBD44A /* Assets.xcassets in Resources */,
 				3A6D7EDA1DABD9610081B70D /* HomeWorkViewController.xib in Resources */,
-				3A8567891DA908AA00EBD44A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,15 +280,18 @@
 			files = (
 				3A6D7EF21DABDB500081B70D /* LoginViewController.m in Sources */,
 				3A6D7EDE1DABD9DA0081B70D /* JSONKit.m in Sources */,
+				3AD87B131DACD05B00357212 /* CourseModel.m in Sources */,
 				3A6D7EE41DABD9F50081B70D /* UIView_extra.m in Sources */,
 				3A6D7EF41DABDB500081B70D /* MainViewController.m in Sources */,
 				3A6D7EE31DABD9F50081B70D /* LeftSlideViewController.m in Sources */,
 				3A8567801DA908AA00EBD44A /* main.m in Sources */,
 				3A6D7EF61DABDB500081B70D /* ViewController.m in Sources */,
 				3A6D7EF31DABDB500081B70D /* MainPageViewController.m in Sources */,
+				3AD87B081DACCE7600357212 /* ClassViewController.m in Sources */,
 				3A6D7EF01DABDB500081B70D /* HomeWorkViewController.m in Sources */,
 				3A6D7EF51DABDB500081B70D /* otherViewController.m in Sources */,
 				3A6D7EEF1DABDB500081B70D /* AppDelegate.m in Sources */,
+				3AD87B101DACD02E00357212 /* GWPCourseListView.m in Sources */,
 				3A6D7EF11DABDB500081B70D /* LeftSortsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -273,15 +299,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		3A8567871DA908AA00EBD44A /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				3A8567881DA908AA00EBD44A /* Base */,
-			);
-			name = Main.storyboard;
-			path = HutHelper;
-			sourceTree = "<group>";
-		};
 		3A85678C1DA908AA00EBD44A /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

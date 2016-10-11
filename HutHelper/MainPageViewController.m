@@ -10,6 +10,7 @@
 #import "AppDelegate.h"
 #import "JSONKit.h"
 #import "HomeWorkViewController.h"
+#import "ClassViewController.h"
 #define vBackBarButtonItemName  @"backArrow.png"    //导航条返回默认图片名
 @interface MainPageViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *UserName;
@@ -86,6 +87,13 @@
     //打印数据
     NSLog(@"name=%@,gender=%@,",name,gender);
 
+}
+
+- (IBAction)ClassFind:(id)sender {
+    UIStoryboard *mainStoryBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    ClassViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Class"];
+    AppDelegate *tempAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:NO];
 }
 
 - (IBAction)HomeWork:(id)sender {

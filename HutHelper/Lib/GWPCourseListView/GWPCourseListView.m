@@ -1,0 +1,417 @@
+//
+//  GWPCourseListView.m
+//  CourseList
+//
+//  Created by GanWenPeng on 15/12/3.
+//  Copyright © 2015年 GanWenPeng. All rights reserved.
+//
+
+#import "GWPCourseListView.h"
+
+#define MaxDay 7
+/** 通过三色值获取到颜色 */
+#define RGB(r,g,b,a) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:(a)]
+
+@protocol CourseSort <Course>
+@property (nonatomic, assign) NSUInteger sortIndex;
+@end
+
+@interface CourseCell : UITableViewCell
+@property (nonatomic, strong) id<Course> course;
+/** 分割线 */
+@property (nonatomic, weak)   UIView *sepLine;
+@end
+
+@implementation CourseCell
+- (id)initWithCoder:(NSCoder *)aDecoder{
+    if (self = [super initWithCoder:aDecoder]) {
+        [self setup];
+    }
+    return self;
+}
+
+- (instancetype)initWithFrame:(CGRect)frame{
+    if (self = [super initWithFrame:frame]) {
+        [self setup];
+    }
+    return self;
+}
+
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
+    if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
+        [self setup];
+    }
+    return self;
+}
+
+- (void)setup{
+    UIView *sep = [[UIView alloc] init];
+    [self addSubview:sep];
+    sep.backgroundColor = RGB(0, 0, 0, 0.07);
+    self.sepLine = sep;
+    
+    self.backgroundColor = [UIColor clearColor];
+    self.textLabel.textAlignment = NSTextAlignmentCenter;
+    self.textLabel.font = [UIFont systemFontOfSize:12];
+    self.textLabel.numberOfLines = 0;
+    self.backgroundColor = [UIColor clearColor];
+    
+}
+
+- (void)setCourse:(id<Course>)course{
+    _course = course;
+    
+    self.textLabel.text = course.courseName;
+}
+
+- (void)layoutSubviews{
+    [super layoutSubviews];
+    self.sepLine.frame = CGRectMake(0, self.frame.size.height-1, self.frame.size.width, 1);
+}
+@end
+
+
+
+@interface GWPCourseListView ()<UITableViewDataSource, UITableViewDelegate>
+/** 顶部选项卡 */
+@property (nonatomic, weak)   UIView *topBar;
+/** 顶部选项卡的ContentView */
+@property (nonatomic, weak)   UIView *topBarContentView;
+/** 顶部选项卡中的按钮 */
+@property (nonatomic, strong) NSArray *topBarBtnArr;
+
+/** 时间TableView */
+@property (nonatomic, weak)   UITableView *timeTableView;
+
+/** 上下滚动的ScrollView */
+@property (nonatomic, weak)   UIScrollView *upDownScrollView;
+
+/** 左右滚动的ScrollView */
+@property (nonatomic, weak)   UIScrollView *leftRightScrollView;
+
+/** 课程Table列表 */
+@property (nonatomic, strong) NSArray *courseTableArr;
+
+/** 亮色集合 */
+@property (nonatomic, strong) NSArray *lightColorArr;
+
+/** 课程数据 */
+@property (nonatomic, strong) NSArray<id<Course>> *courseDataArr;
+@end
+
+@implementation GWPCourseListView
+#pragma mark - lazy
+- (NSArray *)lightColorArr{
+    if (!_lightColorArr) {
+        _lightColorArr = @[
+                           RGB(0, 204, 204, 1),
+                           RGB(255, 153, 0, 1),
+                           RGB(172, 172, 57, 1),
+                           RGB(255, 102, 255, 1),
+                           RGB(255, 102, 102, 1),
+                           RGB(255, 102, 0, 1),
+                           RGB(36, 167, 255, 1),
+                           RGB(255, 0, 255, 1),
+                           RGB(255, 0, 128, 1),
+                           RGB(255, 61, 61, 1),
+                           RGB(61, 255, 255, 1),
+                           RGB(0, 230, 0, 1),
+                           RGB(0, 115, 230, 1)
+                           ];
+    }
+    return _lightColorArr;
+}
+
+#pragma mark - init system
+- (id)initWithCoder:(NSCoder *)aDecoder{
+    if (self = [super initWithCoder:aDecoder]) {
+        [self setup];
+    }
+    return self;
+}
+
+- (instancetype)initWithFrame:(CGRect)frame{
+    if (self = [super initWithFrame:frame]) {
+        [self setup];
+    }
+    return self;
+}
+
+- (void)setup{
+/*=============================== 初始化变量 ==============================*/
+    _itemHeight = 50;
+    _timeTableWidth = 50;
+    _courseListWidth = 0;
+    _maxCourseCount = 12;
+    _selectedIndex = 1;
+    _topBarBgColor = [UIColor whiteColor];
+    self.backgroundColor = RGB(245, 245, 245, 1);
+    
+/*=============================== 添加控件 ==============================*/
+    NSMutableArray *temp;
+    
+    /** topBar */
+    UIView *topBar = [[UIView alloc] init];
+    topBar.backgroundColor = _topBarBgColor;
+    [self addSubview:topBar];
+    self.topBar = topBar;
+    
+    /** topBarContentView */
+    UIView *topBarContentView = [[UIView alloc] init];
+    topBarContentView.backgroundColor = [UIColor clearColor];
+    topBarContentView.clipsToBounds = YES;
+    [topBar addSubview:topBarContentView];
+    self.topBarContentView = topBarContentView;
+    
+    /** tabBarBtnArr */
+    temp = [NSMutableArray array];
+    for (int i=0; i<MaxDay; i++) {
+        UIButton *btn = [[UIButton alloc] init];
+        [btn addTarget:self action:@selector(topBarItemClick:) forControlEvents:UIControlEventTouchUpInside];
+        [btn setTitleColor:[UIColor darkTextColor] forState:UIControlStateNormal];
+        btn.titleLabel.font = [UIFont systemFontOfSize:14];
+        btn.tag = i+1;
+        [topBarContentView addSubview:btn];
+        [temp addObject:btn];
+    }
+    _topBarBtnArr = temp;
+    
+    /** upDownScrollView */
+    UIScrollView *upDownScrollView = [[UIScrollView alloc] init];
+    upDownScrollView.showsVerticalScrollIndicator = NO;
+    upDownScrollView.bounces = NO;
+    [self addSubview:upDownScrollView];
+    self.upDownScrollView = upDownScrollView;
+    
+    /** timeTableView */
+    UITableView *timeTableView = [[UITableView alloc] init];
+    timeTableView.backgroundColor = [UIColor clearColor];
+    [timeTableView registerClass:[CourseCell class] forCellReuseIdentifier:NSStringFromClass([CourseCell class])];
+    timeTableView.scrollEnabled = NO;
+    timeTableView.delegate = self;
+    timeTableView.dataSource = self;
+    [upDownScrollView addSubview:timeTableView];
+    self.timeTableView = timeTableView;
+    
+    /** leftRightScrollView */
+    UIScrollView *leftRightScrollView = [[UIScrollView alloc] init];
+    leftRightScrollView.bounces = NO;
+    leftRightScrollView.showsHorizontalScrollIndicator = NO;
+    leftRightScrollView.delegate = self;
+    [upDownScrollView addSubview:leftRightScrollView];
+    self.leftRightScrollView = leftRightScrollView;
+    
+    /** courseTableArr */
+    temp = [NSMutableArray array];
+    for (int i=0; i<MaxDay; i++) {
+        UITableView *table = [[UITableView alloc] init];
+        table.backgroundColor = [UIColor clearColor];
+        [table registerClass:[CourseCell class] forCellReuseIdentifier:NSStringFromClass([CourseCell class])];
+        table.delegate = self;
+        table.dataSource = self;
+        table.scrollEnabled = NO;
+        table.tag = i+1;
+        [leftRightScrollView addSubview:table];
+        [temp addObject:table];
+    }
+    _courseTableArr = [NSArray arrayWithArray:temp];
+}
+
+- (void)layoutSubviews{
+    [super layoutSubviews];
+    
+    CGFloat width = self.frame.size.width;
+    CGFloat height = self.frame.size.height;
+    CGFloat courseW = _courseListWidth ? _courseListWidth : (width-_timeTableWidth)/(MaxDay+0.5-2);
+    CGFloat x,y,w,h;
+    
+    _topBar.frame = CGRectMake(0, 0, courseW*(MaxDay+0.5)+_timeTableWidth, 30);
+    _topBarContentView.frame = CGRectMake(_timeTableWidth, 0, courseW*(MaxDay+0.5), 30);
+    
+    for (int i=0; i<self.topBarBtnArr.count; i++) {
+        UIButton *btn = self.topBarBtnArr[i];
+        if (i>0) {
+            UIButton *preBtn = self.topBarBtnArr[i-1];
+            x = CGRectGetMaxX(preBtn.frame);
+        } else {
+            x = -_leftRightScrollView.contentOffset.x;
+        }
+        y=0;
+        if (btn.tag==_selectedIndex) {
+            w = 1.5*courseW;
+        } else {
+            w = courseW;
+        }
+        h = _topBarContentView.frame.size.height;
+        btn.frame = CGRectMake(x, y, w, h);
+    }
+    
+    _upDownScrollView.frame = CGRectMake(0, CGRectGetMaxY(_topBar.frame), width, height-_topBar.frame.size.height);
+    _upDownScrollView.contentSize = CGSizeMake(0, _maxCourseCount*_itemHeight);
+    
+    _timeTableView.frame = CGRectMake(0, 0, _timeTableWidth, _itemHeight*_maxCourseCount);
+    
+    _leftRightScrollView.frame = CGRectMake(_timeTableWidth, 0, width-_timeTableWidth, _timeTableView.frame.size.height);
+    _leftRightScrollView.contentSize = CGSizeMake(courseW*(MaxDay+0.5), 0);
+    
+    for (int i=0; i<self.courseTableArr.count; i++) {
+        UITableView *table = self.courseTableArr[i];
+        if (i>0) {
+            UITableView *preTable = self.courseTableArr[i-1];
+            x = CGRectGetMaxX(preTable.frame);
+        } else {
+            x = 0;
+        }
+        y=0;
+        if (table.tag==_selectedIndex) {
+            w = 1.5*courseW;
+        } else {
+            w = courseW;
+        }
+        h = _timeTableWidth*_itemHeight;
+        table.frame = CGRectMake(x, y, w, h);
+        
+    }
+    
+}
+
+#pragma mark - setter
+- (void)setCourseDataArr:(NSArray<id<Course>> *)courseDataArr{
+    __block NSUInteger cha = 0;
+    
+    for (int i=0; i<MaxDay; i++) {
+        NSPredicate *pre = [NSPredicate predicateWithBlock:^BOOL(id<Course>  _Nonnull evaluatedObject, NSDictionary<NSString *,id> * _Nullable bindings) {
+            return evaluatedObject.dayIndex==i;
+        }];
+        NSArray<id<Course>> *enumCourses = [courseDataArr filteredArrayUsingPredicate:pre];
+        [enumCourses enumerateObjectsUsingBlock:^(id<Course>  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            obj.sortIndex = obj.startCourseIndex-cha;
+            cha = cha + obj.endCourseIndex - obj.startCourseIndex;
+        }];
+        cha = 0;
+    }
+    
+    _courseDataArr = courseDataArr;
+}
+- (void)setDataSource:(id<GWPCourseListViewDataSource>)dataSource{
+    _dataSource = dataSource;
+    
+    [self loadData];
+    
+    
+}
+
+- (void)setTopBarBgColor:(UIColor *)topBarBgColor{
+    _topBarBgColor = topBarBgColor;
+    
+    self.topBar.backgroundColor = topBarBgColor;
+    
+}
+
+#pragma mark - private
+
+- (void)topBarItemClick:(UIButton *)btn{
+    _selectedIndex = btn.tag;
+    
+    [self layoutSubviews];
+}
+
+- (void)loadData{
+/*=============================== topBar ==============================*/
+    if ([_dataSource respondsToSelector:@selector(courseListView:titleInTopbarAtIndex:)]) {
+        for (int i=0; i<self.topBarBtnArr.count; i++) {
+            UIButton *btn = self.topBarBtnArr[i];
+            [btn setTitle:[_dataSource courseListView:self titleInTopbarAtIndex:i] forState:UIControlStateNormal];
+        }
+    } else {
+        NSArray *temp = @[
+                          @"周一",
+                          @"周二",
+                          @"周三",
+                          @"周四",
+                          @"周五",
+                          @"周六",
+                          @"周日"
+                          ];
+        for (int i=0; i<self.topBarBtnArr.count; i++) {
+            UIButton *btn = self.topBarBtnArr[i];
+            [btn setTitle:temp[i] forState:UIControlStateNormal];
+        }
+    }
+    
+    
+/*=============================== course ==============================*/
+//    for (UITableView *table in self.courseTableArr) {
+//        [table reloadData];
+//    }
+    NSString *msg = [NSString stringWithFormat:@"使用 %@ 必须实现“courseForCourseListView:”方法", self.class];
+    NSAssert([_dataSource respondsToSelector:@selector(courseForCourseListView:)], msg);
+    self.courseDataArr = [_dataSource courseForCourseListView:self];
+    [self.courseTableArr makeObjectsPerformSelector:@selector(reloadData)];
+}
+
+
+#pragma mark - UITableViewDataSource、Delegate
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    tableView.backgroundColor = [UIColor clearColor];
+    return [tableView isEqual:self.timeTableView] ? _maxCourseCount :20;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    CourseCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([CourseCell class])];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    if ([tableView isEqual:self.timeTableView]) {
+        cell.textLabel.text = [NSString stringWithFormat:@"%zd", indexPath.row+1];
+        cell.backgroundColor = [UIColor clearColor];
+        cell.textLabel.textColor = [UIColor darkGrayColor];
+        return cell;
+    }
+    
+    NSPredicate *pre = [NSPredicate predicateWithBlock:^BOOL(id<Course>  _Nonnull evaluatedObject, NSDictionary<NSString *,id> * _Nullable bindings) {
+        return (tableView.tag==evaluatedObject.dayIndex) && (indexPath.row+1==evaluatedObject.sortIndex);
+    }];
+    id<Course> course = [[self.courseDataArr filteredArrayUsingPredicate:pre] firstObject];
+    
+//    cell.textLabel.text = @"高等数学";
+//    cell.textLabel.text = course.courseName;
+    cell.course = course;
+//    UIColor *color = ;
+    cell.backgroundColor = course ? self.lightColorArr[arc4random_uniform((u_int32_t)self.lightColorArr.count)] : [UIColor clearColor];
+    cell.textLabel.textColor = [UIColor whiteColor];
+    
+    return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    if ([tableView isEqual:self.timeTableView]) return _itemHeight;
+    
+    NSPredicate *pre = [NSPredicate predicateWithBlock:^BOOL(id<Course>  _Nonnull evaluatedObject, NSDictionary<NSString *,id> * _Nullable bindings) {
+        return (tableView.tag==evaluatedObject.dayIndex) && (indexPath.row+1==evaluatedObject.sortIndex);
+    }];
+    id<Course> course = [[self.courseDataArr filteredArrayUsingPredicate:pre] firstObject];
+    
+    if (course) {
+        return (course.endCourseIndex-course.startCourseIndex+1)*_itemHeight;
+    } else {
+        return _itemHeight;
+    }
+//    return _itemHeight*2;
+//    return course ? (course.endCourseIndex-course.startCourseIndex)*_itemHeight : _itemHeight;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if ([tableView isEqual:self.timeTableView]) return;
+    _selectedIndex = tableView.tag;
+    [self layoutSubviews];
+    
+    if ([_delegate respondsToSelector:@selector(courseListView:didSelectedCourse:)]) {
+        CourseCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+        [_delegate courseListView:self didSelectedCourse:cell.course];
+    }
+}
+#pragma mark - UIScrollViewDelegate
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    [self layoutSubviews];
+}
+@end

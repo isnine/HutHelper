@@ -12,6 +12,7 @@
 #import "LoginViewController.h"
 #import "HomeWorkViewController.h"
 
+#import "ClassViewController.h"
 @interface LeftSortsViewController () <UITableViewDelegate,UITableViewDataSource>
 
 @end
@@ -120,6 +121,13 @@
     if (indexPath.row == 4) {
         [tempAppDelegate.mainNavigationController pushViewController:vb animated:NO];
         
+    }
+    
+    if (indexPath.row == 5) {
+        UIStoryboard *mainStoryBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        ClassViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Class"];
+        [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:NO];
+
     }
 }
 
