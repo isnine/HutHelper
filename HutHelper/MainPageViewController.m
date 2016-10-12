@@ -11,6 +11,8 @@
 #import "JSONKit.h"
 #import "HomeWorkViewController.h"
 #import "ClassViewController.h"
+#import "PowerViewController.h"
+
 #define vBackBarButtonItemName  @"backArrow.png"    //导航条返回默认图片名
 @interface MainPageViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *UserName;
@@ -131,6 +133,11 @@
     
     
     
+}
+- (IBAction)Power:(id)sender {
+    PowerViewController *Power = [[PowerViewController alloc] init];
+    AppDelegate *tempAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+             [tempAppDelegate.mainNavigationController pushViewController:Power animated:NO];
 }
 
 
