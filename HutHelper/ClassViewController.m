@@ -32,6 +32,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+     self.navigationItem.title = @"课程表";
     
 }
 

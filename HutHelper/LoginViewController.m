@@ -13,7 +13,9 @@
 @property (weak, nonatomic) IBOutlet UITextField *UserName;
 @property (weak, nonatomic) IBOutlet UITextField *Password;
 
+@property (weak, nonatomic) IBOutlet UILabel *label;
 
+@property (weak, nonatomic) IBOutlet UILabel *PassLabel;
 
 @end
 
@@ -91,14 +93,37 @@
   [sender resignFirstResponder];
 }
 
+- (IBAction)Userchange:(id)sender {
+    if ([_UserName.text length] == 0) {
+        [_label setHidden:NO];
+    }else{
+        
+        [_label setHidden:YES];
+    }
+
+}
+
+
+
+
+- (IBAction)PassChange:(id)sender {
+    if ([_Password.text length] == 0) {
+        [_PassLabel setHidden:NO];
+    }else{
+        
+        [_PassLabel setHidden:YES];
+    }
+}
 
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    UIColor *greyColor= [UIColor colorWithRed:239/255.0 green:239/255.0 blue:239/255.0 alpha:1];
+    self.view.backgroundColor = greyColor;
      self.title = @"登录";
 
-    
+
 
 }
 

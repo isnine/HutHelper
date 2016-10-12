@@ -9,7 +9,10 @@ http://218.75.197.121:8888/api/v1/get/scores/学号/remember_code_app/sha1(remem
 
 
 http://218.75.197.121:8888/api/v1/get/lessons/15408500245/c59cd3bcfb143331dd5e31e3bc4a818fa7d5d96f
-http://218.75.197.121:8888/api/v1/get/scores/15408500245/b043631187256bd7700db35247ccbc4f68e64616/afb793f44c9b21f7c351f5473452c14b540edb6e
+http://218.75.197.121:8888/api/v1/get/scores/15408500245/e1b0fcf5f8a962d2dd8cd01d691e82441dfb7ed3/52e604baac4d9f1725a46b76bab927c012fadd13
+
+
+http://218.75.197.121:8888/api/v1/get/scores/15408500245/18837d7a849dec3df43ab05332308de65e3becdb/776571d40dd7878ff1385bd4433908c49e5ded4f
 
 {
 "djj":  第几节
@@ -42,3 +45,6 @@ Bool ifWeeks(int nowyear,int nowmouth,int nowday,int dsz,int qsz,int jsz){
 
     return  ;   //若该课程为本周返回True，若不为本周返回False
 }
+
+反馈，电费，校历
+通知，二手市场，借书

@@ -17,7 +17,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+     self.navigationItem.title = @"网上作业";
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     NSString *studentKH=[defaults objectForKey:@"studentKH"];
     NSString *remember_code_app=[defaults objectForKey:@"remember_code_app"];

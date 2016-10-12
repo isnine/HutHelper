@@ -8,8 +8,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController">
             <connections>
+                <outlet property="PassLabel" destination="cNe-SY-AlC" id="FIK-V2-tXT"/>
                 <outlet property="Password" destination="oih-D9-ohY" id="4Me-Pl-7TI"/>
                 <outlet property="UserName" destination="YS6-LQ-stk" id="DCH-re-naH"/>
+                <outlet property="label" destination="98v-HC-uPk" id="tIF-ge-bON"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -18,50 +20,51 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" image="Login" translatesAutoresizingMaskIntoConstraints="NO" id="u07-vL-jOk">
-                    <frame key="frameInset"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" image="white" translatesAutoresizingMaskIntoConstraints="NO" id="n0r-8u-Lkn">
+                    <frame key="frameInset" minY="11.24%" height="37.63%"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                 </imageView>
-                <textField opaque="NO" clipsSubviews="YES" alpha="0.5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" background="Login" translatesAutoresizingMaskIntoConstraints="NO" id="YS6-LQ-stk">
-                    <frame key="frameInset" minX="14.67%" minY="38.31%" width="70.13%" height="30"/>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" background="PassWord" translatesAutoresizingMaskIntoConstraints="NO" id="YS6-LQ-stk">
+                    <frame key="frameInset" minX="18.13%" minY="15.70%" width="64.27%" height="62"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     <accessibility key="accessibilityConfiguration" hint="学号"/>
                     <nil key="textColor"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="25"/>
                     <textInputTraits key="textInputTraits" keyboardType="phonePad" returnKeyType="go"/>
+                    <connections>
+                        <action selector="Userchange:" destination="-1" eventType="editingChanged" id="vFh-sl-Tc3"/>
+                    </connections>
                 </textField>
-                <textField opaque="NO" clipsSubviews="YES" alpha="0.5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" background="Launch" translatesAutoresizingMaskIntoConstraints="NO" id="oih-D9-ohY" colorLabel="IBBuiltInLabel-Green">
-                    <frame key="frameInset" minX="14.67%" minY="48.67%" width="70.13%" height="30"/>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" background="PassWord" translatesAutoresizingMaskIntoConstraints="NO" id="oih-D9-ohY" colorLabel="IBBuiltInLabel-Green">
+                    <frame key="frameInset" minX="18.40%" minY="28.76%" width="63.73%" height="62"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="25"/>
                     <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" keyboardAppearance="alert" returnKeyType="done" secureTextEntry="YES"/>
                     <connections>
                         <action selector="DidEnd:" destination="-1" eventType="editingDidEndOnExit" id="OEi-fl-a48"/>
+                        <action selector="PassChange:" destination="-1" eventType="editingChanged" id="bYa-fH-U0G"/>
                     </connections>
                 </textField>
-                <button opaque="NO" alpha="0.5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uhO-72-YzP">
-                    <frame key="frameInset" minX="20.00%" minY="67.77%" width="60.00%" height="6.75%"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="学号" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="98v-HC-uPk">
+                    <frame key="frameInset" minX="40.27%" minY="16.04%" width="19.47%" height="5.10%"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="0.32234158969999999" green="0.99921065409999998" blue="0.97932885479999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="登录" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ti-Kb-CUm">
-                    <frame key="frameInset" minX="41.07%" minY="68.67%" width="17.33%" height="4.80%"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                    <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                    <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" alpha="0.5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0hZ-co-42J">
-                    <frame key="frameInset" minX="19.73%" minY="67.77%" width="60.00%" height="6.75%"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="密码" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cNe-SY-AlC">
+                    <frame key="frameInset" minX="40.27%" minY="28.19%" width="19.47%" height="5.10%"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="0.32234158969999999" green="0.99921065409999998" blue="0.97932885479999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jga-sy-EZS">
+                    <frame key="frameInset" minX="52.53%" minY="37.63%" width="29.60%" height="7.80%"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                    <state key="normal" backgroundImage="Login-1"/>
                     <connections>
-                        <action selector="Login:" destination="-1" eventType="touchUpInside" id="Bcl-zi-bcz"/>
+                        <action selector="Login:" destination="-1" eventType="touchUpInside" id="d1D-aJ-eXO"/>
                     </connections>
                 </button>
             </subviews>
@@ -70,7 +73,8 @@
         </view>
     </objects>
     <resources>
-        <image name="Launch" width="720" height="1280"/>
-        <image name="Login" width="360" height="640"/>
+        <image name="Login-1" width="144" height="67"/>
+        <image name="PassWord" width="294" height="76"/>
+        <image name="white" width="612" height="816"/>
     </resources>
 </document>

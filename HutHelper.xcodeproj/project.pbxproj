@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A33D7BE1DADE3A40012EFDE /* FeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A33D7BC1DADE3A40012EFDE /* FeedbackViewController.m */; };
+		3A33D7BF1DADE3A40012EFDE /* FeedbackViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A33D7BD1DADE3A40012EFDE /* FeedbackViewController.xib */; };
 		3A6D7EDA1DABD9610081B70D /* HomeWorkViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A6D7ED91DABD9610081B70D /* HomeWorkViewController.xib */; };
 		3A6D7EDE1DABD9DA0081B70D /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A6D7EDD1DABD9DA0081B70D /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		3A6D7EE31DABD9F50081B70D /* LeftSlideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A6D7EE11DABD9F50081B70D /* LeftSlideViewController.m */; };
@@ -35,6 +37,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3A33D7BB1DADE3A40012EFDE /* FeedbackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedbackViewController.h; sourceTree = "<group>"; };
+		3A33D7BC1DADE3A40012EFDE /* FeedbackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FeedbackViewController.m; path = HutHelper/FeedbackViewController.m; sourceTree = "<group>"; };
+		3A33D7BD1DADE3A40012EFDE /* FeedbackViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FeedbackViewController.xib; path = HutHelper/FeedbackViewController.xib; sourceTree = "<group>"; };
 		3A6D7ED91DABD9610081B70D /* HomeWorkViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HomeWorkViewController.xib; path = HutHelper/HomeWorkViewController.xib; sourceTree = "<group>"; };
 		3A6D7EDC1DABD9DA0081B70D /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSONKit.h; path = HutHelper/Lib/JSONKit.h; sourceTree = "<group>"; };
 		3A6D7EDD1DABD9DA0081B70D /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JSONKit.m; path = HutHelper/Lib/JSONKit.m; sourceTree = "<group>"; };
@@ -155,6 +160,7 @@
 				3A8E0E231DAB442E00F458DB /* MainViewController.xib */,
 				3AD87B171DACD08E00357212 /* Main.storyboard */,
 				3AFB7BA41DAD19530040B55F /* AboutViewController.xib */,
+				3A33D7BD1DADE3A40012EFDE /* FeedbackViewController.xib */,
 			);
 			name = View;
 			path = ..;
@@ -171,6 +177,7 @@
 				3AFB7BA31DAD19530040B55F /* AboutViewController.m */,
 				3A6D7EEB1DABDB500081B70D /* MainPageViewController.m */,
 				3A6D7EEC1DABDB500081B70D /* MainViewController.m */,
+				3A33D7BC1DADE3A40012EFDE /* FeedbackViewController.m */,
 				3A6D7EED1DABDB500081B70D /* otherViewController.m */,
 				3A6D7EEE1DABDB500081B70D /* ViewController.m */,
 			);
@@ -201,6 +208,7 @@
 				3A6D7EF91DABDB680081B70D /* LeftSortsViewController.h */,
 				3A6D7EFA1DABDB680081B70D /* LoginViewController.h */,
 				3A6D7EFB1DABDB680081B70D /* MainPageViewController.h */,
+				3A33D7BB1DADE3A40012EFDE /* FeedbackViewController.h */,
 				3A6D7EFC1DABDB680081B70D /* MainViewController.h */,
 				3AFB7BA21DAD19530040B55F /* AboutViewController.h */,
 				3A6D7EFD1DABDB680081B70D /* otherViewController.h */,
@@ -279,6 +287,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A8567AC1DA9140800EBD44A /* LoginViewController.xib in Resources */,
+				3A33D7BF1DADE3A40012EFDE /* FeedbackViewController.xib in Resources */,
 				3A85678E1DA908AA00EBD44A /* LaunchScreen.storyboard in Resources */,
 				3AFB7BA61DAD19530040B55F /* AboutViewController.xib in Resources */,
 				3A8E0E251DAB442E00F458DB /* MainViewController.xib in Resources */,
@@ -313,6 +322,7 @@
 				3AD87B101DACD02E00357212 /* GWPCourseListView.m in Sources */,
 				3AFB7BA01DACDA290040B55F /* TestViewController.m in Sources */,
 				3A6D7EF11DABDB500081B70D /* LeftSortsViewController.m in Sources */,
+				3A33D7BE1DADE3A40012EFDE /* FeedbackViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

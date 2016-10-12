@@ -1,25 +1,25 @@
 //
-//  AboutViewController.m
+//  FeedbackViewController.m
 //  HutHelper
 //
-//  Created by nine on 2016/10/11.
+//  Created by nine on 2016/10/12.
 //  Copyright © 2016年 nine. All rights reserved.
 //
 
-#import "AboutViewController.h"
+#import "FeedbackViewController.h"
 
-@interface AboutViewController ()
+@interface FeedbackViewController ()
 
 @end
 
-@implementation AboutViewController
+@implementation FeedbackViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-     self.navigationItem.title = @"关于";
+    
+    self.navigationItem.title = @"反馈";
     UIColor *greyColor= [UIColor colorWithRed:239/255.0 green:239/255.0 blue:239/255.0 alpha:1];
     self.view.backgroundColor = greyColor;
-    // Do any additional setup after loading the view from its nib.
 }
 
 - (void)didReceiveMemoryWarning {
