@@ -48,3 +48,6 @@ Bool ifWeeks(int nowyear,int nowmouth,int nowday,int dsz,int qsz,int jsz){
 
 反馈，电费，校历
 通知，二手市场，借书
+
+
+http://218.75.197.121:8888/home/msg/0

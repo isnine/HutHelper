@@ -16,6 +16,7 @@
 #import "TestViewController.h"
 
 #import "AboutViewController.h"
+#import "FeedbackViewController.h"
 @interface LeftSortsViewController () <UITableViewDelegate,UITableViewDataSource>
 
 @end
@@ -115,25 +116,30 @@
     }
 
     
-    if (indexPath.row == 0) {
+    if (indexPath.row == 0) { //登录
         if(name==NULL){
           [tempAppDelegate.mainNavigationController pushViewController:vb animated:NO];
                       }
     }
+    if (indexPath.row == 3) {  //检查更新 - 课程表测试
+        TestViewController *test = [[TestViewController alloc] init];
+        [tempAppDelegate.mainNavigationController pushViewController:test animated:NO];
+    }
     
-    if (indexPath.row == 4) {
+    if (indexPath.row == 4) {  //切换用户
         [tempAppDelegate.mainNavigationController pushViewController:vb animated:NO];
         
     }
     
-    if (indexPath.row == 5) {
+    if (indexPath.row == 5) {  //关于
        AboutViewController *about = [[AboutViewController alloc] init];
        [tempAppDelegate.mainNavigationController pushViewController:about animated:NO];
       }
-    if (indexPath.row == 6) {
-     TestViewController *test = [[TestViewController alloc] init];
-     [tempAppDelegate.mainNavigationController pushViewController:test animated:NO];
+    if (indexPath.row == 6) {  //关于
+        FeedbackViewController *feedback = [[FeedbackViewController alloc] init];
+        [tempAppDelegate.mainNavigationController pushViewController:feedback animated:NO];
     }
+
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section

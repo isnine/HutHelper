@@ -8,10 +8,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController">
             <connections>
-                <outlet property="PassLabel" destination="cNe-SY-AlC" id="FIK-V2-tXT"/>
                 <outlet property="Password" destination="oih-D9-ohY" id="4Me-Pl-7TI"/>
                 <outlet property="UserName" destination="YS6-LQ-stk" id="DCH-re-naH"/>
-                <outlet property="label" destination="98v-HC-uPk" id="tIF-ge-bON"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -31,9 +29,6 @@
                     <nil key="textColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="25"/>
                     <textInputTraits key="textInputTraits" keyboardType="phonePad" returnKeyType="go"/>
-                    <connections>
-                        <action selector="Userchange:" destination="-1" eventType="editingChanged" id="vFh-sl-Tc3"/>
-                    </connections>
                 </textField>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" background="PassWord" translatesAutoresizingMaskIntoConstraints="NO" id="oih-D9-ohY" colorLabel="IBBuiltInLabel-Green">
                     <frame key="frameInset" minX="18.40%" minY="28.76%" width="63.73%" height="62"/>
@@ -42,23 +37,8 @@
                     <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" keyboardAppearance="alert" returnKeyType="done" secureTextEntry="YES"/>
                     <connections>
                         <action selector="DidEnd:" destination="-1" eventType="editingDidEndOnExit" id="OEi-fl-a48"/>
-                        <action selector="PassChange:" destination="-1" eventType="editingChanged" id="bYa-fH-U0G"/>
                     </connections>
                 </textField>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="学号" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="98v-HC-uPk">
-                    <frame key="frameInset" minX="40.27%" minY="16.04%" width="19.47%" height="5.10%"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="密码" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cNe-SY-AlC">
-                    <frame key="frameInset" minX="40.27%" minY="28.19%" width="19.47%" height="5.10%"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jga-sy-EZS">
                     <frame key="frameInset" minX="52.53%" minY="37.63%" width="29.60%" height="7.80%"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
