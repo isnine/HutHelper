@@ -13,6 +13,8 @@
 #import "ClassViewController.h"
 #import "PowerViewController.h"
 
+#import "SchoolsayViewController.h"
+#import "SchoolHandViewController.h"
 #define vBackBarButtonItemName  @"backArrow.png"    //导航条返回默认图片名
 @interface MainPageViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *UserName;
@@ -139,12 +141,17 @@
     AppDelegate *tempAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
              [tempAppDelegate.mainNavigationController pushViewController:Power animated:NO];
 }
+- (IBAction)SchoolSay:(id)sender {
+    SchoolsayViewController *Schoolsay = [[SchoolsayViewController alloc] init];
+    AppDelegate *tempAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [tempAppDelegate.mainNavigationController pushViewController:Schoolsay animated:NO];
+}
 
-
-
-
-
-
+- (IBAction)SchoolHand:(id)sender {
+    SchoolHandViewController *SchoolHand = [[SchoolHandViewController alloc] init];
+    AppDelegate *tempAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [tempAppDelegate.mainNavigationController pushViewController:SchoolHand animated:NO];
+}
 
 
 

@@ -75,13 +75,13 @@
     } else if (indexPath.row == 1) {
         cell.textLabel.text = @"";
     } else if (indexPath.row == 2) {
-        cell.textLabel.text = @"检查更新";
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    } else if (indexPath.row == 3) {
         cell.textLabel.text = @"分享应用";
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    } else if (indexPath.row == 4) {
+    } else if (indexPath.row == 3) {
         cell.textLabel.text = @"切换用户";
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    } else if (indexPath.row == 4) {
+        cell.textLabel.text = @"设置";
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     } else if (indexPath.row == 5) {
         cell.textLabel.text = @"关于";
@@ -121,12 +121,12 @@
           [tempAppDelegate.mainNavigationController pushViewController:vb animated:NO];
                       }
     }
-    if (indexPath.row == 3) {  //检查更新 - 课程表测试
+    if (indexPath.row == 2) {  //分析应用 - 课程表测试
         TestViewController *test = [[TestViewController alloc] init];
         [tempAppDelegate.mainNavigationController pushViewController:test animated:NO];
     }
     
-    if (indexPath.row == 4) {  //切换用户
+    if (indexPath.row == 3) {  //切换用户
         [tempAppDelegate.mainNavigationController pushViewController:vb animated:NO];
         
     }
@@ -135,7 +135,7 @@
        AboutViewController *about = [[AboutViewController alloc] init];
        [tempAppDelegate.mainNavigationController pushViewController:about animated:NO];
       }
-    if (indexPath.row == 6) {  //关于
+    if (indexPath.row == 6) {  //反馈
         FeedbackViewController *feedback = [[FeedbackViewController alloc] init];
         [tempAppDelegate.mainNavigationController pushViewController:feedback animated:NO];
     }

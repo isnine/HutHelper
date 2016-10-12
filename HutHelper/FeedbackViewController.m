@@ -25,7 +25,7 @@
     UIColor *greyColor= [UIColor colorWithRed:239/255.0 green:239/255.0 blue:239/255.0 alpha:1];
     self.view.backgroundColor = greyColor;
     
-    _Mail.placeholder=@"邮箱";
+    _Mail.placeholder=@"联系方式";
    
 }
 
