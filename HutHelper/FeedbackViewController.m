@@ -7,7 +7,8 @@
 //
 
 #import "FeedbackViewController.h"
-
+#import "Feedback2ViewController.h"
+#import "AppDelegate.h"
 @interface FeedbackViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *Mail;
 @property (weak, nonatomic) IBOutlet UITextView *Content;
@@ -39,7 +40,16 @@
     NSString *str2=@"&content=";
     NSString *Content_String=_Content.text;
     
-    
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    NSString *studentKH=[defaults objectForKey:@"studentKH"];
+    if(studentKH==NULL){
+        str2=@"&content=";
+    }
+    else
+    {
+        str2=[str2 stringByAppendingString:studentKH];
+        str2=[str2 stringByAppendingString:@" "];
+    }
     NSString *str1_Mail_String=[str1 stringByAppendingString:Mail_String];
     NSString *str1_Mail_String_str2=[str1_Mail_String stringByAppendingString:str2];
     NSString *str=[str1_Mail_String_str2 stringByAppendingString:Content_String];
@@ -55,12 +65,11 @@
     
         NSLog(@"%@", [NSThread currentThread]);
 
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提交成功"
-                                                        message:@"我们将在一个工作日内联系你"
-                                                       delegate:self
-                                              cancelButtonTitle:@"取消"
-                                              otherButtonTitles:@"确定", nil];
-    [alertView show];
+
+    
+    Feedback2ViewController *Feedback2 = [[Feedback2ViewController alloc] init];
+    AppDelegate *tempAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [tempAppDelegate.mainNavigationController pushViewController:Feedback2 animated:NO];
 
 }
 

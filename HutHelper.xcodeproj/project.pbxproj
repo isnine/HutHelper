@@ -42,7 +42,7 @@
 		3A33D7BB1DADE3A40012EFDE /* FeedbackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedbackViewController.h; sourceTree = "<group>"; };
 		3A33D7BC1DADE3A40012EFDE /* FeedbackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FeedbackViewController.m; path = HutHelper/FeedbackViewController.m; sourceTree = "<group>"; };
 		3A33D7BD1DADE3A40012EFDE /* FeedbackViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FeedbackViewController.xib; path = HutHelper/FeedbackViewController.xib; sourceTree = "<group>"; };
-		3A33D7C31DAE00300012EFDE /* Feedback2ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Feedback2ViewController.h; path = HutHelper/Feedback2ViewController.h; sourceTree = "<group>"; };
+		3A33D7C31DAE00300012EFDE /* Feedback2ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Feedback2ViewController.h; sourceTree = "<group>"; };
 		3A33D7C41DAE00300012EFDE /* Feedback2ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Feedback2ViewController.m; path = HutHelper/Feedback2ViewController.m; sourceTree = "<group>"; };
 		3A33D7C51DAE00300012EFDE /* Feedback2ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = Feedback2ViewController.xib; path = HutHelper/Feedback2ViewController.xib; sourceTree = "<group>"; };
 		3A6D7ED91DABD9610081B70D /* HomeWorkViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HomeWorkViewController.xib; path = HutHelper/HomeWorkViewController.xib; sourceTree = "<group>"; };
@@ -166,8 +166,6 @@
 				3AD87B171DACD08E00357212 /* Main.storyboard */,
 				3AFB7BA41DAD19530040B55F /* AboutViewController.xib */,
 				3A33D7BD1DADE3A40012EFDE /* FeedbackViewController.xib */,
-				3A33D7C31DAE00300012EFDE /* Feedback2ViewController.h */,
-				3A33D7C41DAE00300012EFDE /* Feedback2ViewController.m */,
 				3A33D7C51DAE00300012EFDE /* Feedback2ViewController.xib */,
 			);
 			name = View;
@@ -186,6 +184,7 @@
 				3A6D7EEB1DABDB500081B70D /* MainPageViewController.m */,
 				3A6D7EEC1DABDB500081B70D /* MainViewController.m */,
 				3A33D7BC1DADE3A40012EFDE /* FeedbackViewController.m */,
+				3A33D7C41DAE00300012EFDE /* Feedback2ViewController.m */,
 				3A6D7EED1DABDB500081B70D /* otherViewController.m */,
 				3A6D7EEE1DABDB500081B70D /* ViewController.m */,
 			);
@@ -219,6 +218,7 @@
 				3A33D7BB1DADE3A40012EFDE /* FeedbackViewController.h */,
 				3A6D7EFC1DABDB680081B70D /* MainViewController.h */,
 				3AFB7BA21DAD19530040B55F /* AboutViewController.h */,
+				3A33D7C31DAE00300012EFDE /* Feedback2ViewController.h */,
 				3A6D7EFD1DABDB680081B70D /* otherViewController.h */,
 				3A6D7EFE1DABDB680081B70D /* ViewController.h */,
 			);
