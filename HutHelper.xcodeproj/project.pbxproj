@@ -17,6 +17,7 @@
 		3A33D7D11DAE31AB0012EFDE /* SchoolsayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A33D7CF1DAE31AB0012EFDE /* SchoolsayViewController.xib */; };
 		3A33D7D51DAE36420012EFDE /* SchoolHandViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A33D7D31DAE36420012EFDE /* SchoolHandViewController.m */; };
 		3A33D7D61DAE36420012EFDE /* SchoolHandViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A33D7D41DAE36420012EFDE /* SchoolHandViewController.xib */; };
+		3A33D7DB1DAE50EF0012EFDE /* libUMessage_Sdk_1.4.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A33D7D91DAE50EF0012EFDE /* libUMessage_Sdk_1.4.0.a */; };
 		3A6D7EDA1DABD9610081B70D /* HomeWorkViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A6D7ED91DABD9610081B70D /* HomeWorkViewController.xib */; };
 		3A6D7EDE1DABD9DA0081B70D /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A6D7EDD1DABD9DA0081B70D /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		3A6D7EE31DABD9F50081B70D /* LeftSlideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A6D7EE11DABD9F50081B70D /* LeftSlideViewController.m */; };
@@ -60,6 +61,9 @@
 		3A33D7D21DAE36420012EFDE /* SchoolHandViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchoolHandViewController.h; sourceTree = "<group>"; };
 		3A33D7D31DAE36420012EFDE /* SchoolHandViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SchoolHandViewController.m; path = HutHelper/SchoolHandViewController.m; sourceTree = "<group>"; };
 		3A33D7D41DAE36420012EFDE /* SchoolHandViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SchoolHandViewController.xib; path = HutHelper/SchoolHandViewController.xib; sourceTree = "<group>"; };
+		3A33D7D71DAE4F8D0012EFDE /* HutHelper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HutHelper.entitlements; sourceTree = "<group>"; };
+		3A33D7D91DAE50EF0012EFDE /* libUMessage_Sdk_1.4.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUMessage_Sdk_1.4.0.a; sourceTree = "<group>"; };
+		3A33D7DA1DAE50EF0012EFDE /* UMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMessage.h; sourceTree = "<group>"; };
 		3A6D7ED91DABD9610081B70D /* HomeWorkViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HomeWorkViewController.xib; path = HutHelper/HomeWorkViewController.xib; sourceTree = "<group>"; };
 		3A6D7EDC1DABD9DA0081B70D /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSONKit.h; path = HutHelper/Lib/JSONKit.h; sourceTree = "<group>"; };
 		3A6D7EDD1DABD9DA0081B70D /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JSONKit.m; path = HutHelper/Lib/JSONKit.m; sourceTree = "<group>"; };
@@ -111,12 +115,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A33D7DB1DAE50EF0012EFDE /* libUMessage_Sdk_1.4.0.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3A33D7D81DAE50EF0012EFDE /* UMessage_Sdk_1.4.0 */ = {
+			isa = PBXGroup;
+			children = (
+				3A33D7D91DAE50EF0012EFDE /* libUMessage_Sdk_1.4.0.a */,
+				3A33D7DA1DAE50EF0012EFDE /* UMessage.h */,
+			);
+			name = UMessage_Sdk_1.4.0;
+			path = HutHelper/Lib/UMessage_Sdk_1.4.0;
+			sourceTree = "<group>";
+		};
 		3A8567721DA908AA00EBD44A = {
 			isa = PBXGroup;
 			children = (
@@ -141,6 +156,7 @@
 		3A85677D1DA908AA00EBD44A /* HutHelper */ = {
 			isa = PBXGroup;
 			children = (
+				3A33D7D71DAE4F8D0012EFDE /* HutHelper.entitlements */,
 				3A8567DB1DAA3DF800EBD44A /* Model */,
 				3A8567DA1DAA3DDA00EBD44A /* Controller */,
 				3A8567DC1DAA3E4400EBD44A /* Header */,
@@ -216,6 +232,7 @@
 		3A8567DB1DAA3DF800EBD44A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				3A33D7D81DAE50EF0012EFDE /* UMessage_Sdk_1.4.0 */,
 				3A8567A11DA90D2D00EBD44A /* LeftSildeViewController */,
 				3AD87B0D1DACD01C00357212 /* GWPCourseListView */,
 				3A6D7EDC1DABD9DA0081B70D /* JSONKit.h */,
@@ -292,6 +309,11 @@
 						DevelopmentTeam = JW2LR94V6G;
 						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -476,12 +498,20 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = HutHelper/HutHelper.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = JW2LR94V6G;
 				INFOPLIST_FILE = HutHelper/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/HutHelper/Lib/UMessage_Sdk_1.4.0",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = name.wxz.HutHelper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "HutHelper-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -493,12 +523,20 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = HutHelper/HutHelper.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = JW2LR94V6G;
 				INFOPLIST_FILE = HutHelper/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/HutHelper/Lib/UMessage_Sdk_1.4.0",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = name.wxz.HutHelper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "HutHelper-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};

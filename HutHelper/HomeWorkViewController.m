@@ -15,6 +15,8 @@
 
 @implementation HomeWorkViewController
 
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
      self.navigationItem.title = @"网上作业";
@@ -30,7 +32,10 @@
     
     NSURL *url = [[NSURL alloc]initWithString:Url_String];
     [_views loadRequest:[NSURLRequest requestWithURL:url]];
+    
+    
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -34,9 +34,7 @@
     NSString *Url_String_1_U=[Url_String_1 stringByAppendingString:studentKH];
     NSString *Url_String_1_U_2=[Url_String_1_U stringByAppendingString:Url_String_2];
     NSString *Url_String=[Url_String_1_U_2 stringByAppendingString:remember_code_app];
-    
     /*地址完毕*/
-    
     NSURL *url = [NSURL URLWithString: Url_String]; //接口地址
     NSError *error = nil;
     NSString *jsonString = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:&error];//Url -> String
@@ -44,20 +42,18 @@
     NSDictionary *Class_All = [jsonData objectFromJSONData];//数据 -> 字典
     NSDictionary *Class_Data=[Class_All objectForKey:@"data"];
     NSString *name=[Class_All objectForKey:@"data"];
-//    NSString *strJson = @"[{\"Id\": 1,\"BrandName\": \"爱马仕\" },{\"Id\": 2,\"BrandName\": \"安娜苏\"}]";
-//    NSArray *arrlist=[strJson objectFromJSONString];
-//    NSLog(@"%d",[arrlist count]);
-//    NSLog(@"1%@",Class_Data);
-    
+
     NSArray *array = [Class_All objectForKey:@"data"];
-     NSDictionary *dict1 = array[9];
+    NSDictionary *dict1 = array[9];
     NSString *ClassName = [dict1 objectForKey:@"name"];  //课名
     NSString *dsz = [dict1 objectForKey:@"dsz"];  //单双周
     NSInteger *dsz_num=2;
     if ([dsz isEqualToString: @"单"])
         dsz_num=1;
-    else
+    else if([dsz isEqualToString: @"双"])
         dsz_num=2;
+    else
+        dsz_num=0;
     
     NSString *StartClass = [dict1 objectForKey:@"djj"]; //第几节
     NSInteger *StartClass_num= [StartClass intValue];
@@ -82,9 +78,7 @@
     NSLog(@"单双周:%d",dsz_num);
      NSLog(@"老师:%@",Teacher);
     
-    //    NSArray* dictArr = [NSJSONSerialization JSONObjectWithData:@"这段json的NSData形式" options:NSJSONReadingMutableContainers error:nil];
-    //   NSString* titleStrr = dictArr[0][@"item"][index][@"title"];  //其中index⋲[0,item数-1]
-    
+ 
     
     //当前时间
     NSDate *now = [NSDate date];
@@ -94,16 +88,10 @@
         int year = [dateComponent year]; //年
         int month = [dateComponent month]; //月
         int day = [dateComponent day];  //日
-    //
-
-    
+   
 }
 
-- (IBAction)Test:(id)sender {
-    NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:@"1",@"one",@"2",@"two",@"3",@"three",@"2015-4-23",@"today",@"xiaohong",@"name",@"2015-4-23",@"date", nil];
-    NSLog(@"dict:%@",dict);
-    
-}
+
 
 
 @end
