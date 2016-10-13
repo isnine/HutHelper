@@ -134,7 +134,7 @@
 
 - (void)setup{
 /*=============================== 初始化变量 ==============================*/
-    _itemHeight = 50;
+    _itemHeight = 57;
     _timeTableWidth = 50;
     _courseListWidth = 0;
     _maxCourseCount = 10;

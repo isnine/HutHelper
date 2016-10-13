@@ -126,9 +126,8 @@ _Bool IfWeeks(int nowweek, int dsz, int qsz, int jsz) {
     CourseModel *a25 = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
     CourseModel *a26 = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
     CourseModel *a27 = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
-    CourseModel *a28 = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
-    CourseModel *a29 = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
-    CourseModel *a30 = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
+
+    int day1=1,day2=1,day3=1,day4=1,day5=1,day6=1;
    for (i=0; i<=(array.count-1); i++) {
         NSDictionary *dict1 = array[i];
         NSString *ClassName = [dict1 objectForKey:@"name"];  //课名
@@ -157,112 +156,149 @@ _Bool IfWeeks(int nowweek, int dsz, int qsz, int jsz) {
         NSInteger *noweeks=CountWeeks(year,month,day);
         IfWeeks(CountWeeks(year,month,day),dsz_num,StartWeek_num,EndWeek_num);
         
-        NSLog(@"课程名:%@",ClassName);
-       ClassName=[ClassName stringByAppendingString:@"@"];
-       ClassName=[ClassName stringByAppendingString:Room];
-        NSLog(@"教室:%@",Room);
-        NSLog(@"第几天:%@",WeekDay);
-        NSLog(@"第几节:%d",StartClass_num);
-    NSLog(@"结束:%d",EndClass);
-        NSLog(@"起始周%@",StartWeek);
-        NSLog(@"结束周:%@",EndWeek);
-        NSLog(@"单双周:%d",dsz_num);
-        NSLog(@"老师:%@",Teacher);
-        NSLog(@"该课程，当前是否为本周:%d",IfWeeks(CountWeeks(year,month,day),dsz_num,StartWeek_num,EndWeek_num));
-       
 
-     if(IfWeeks(CountWeeks(year,month,day),dsz_num,StartWeek_num,EndWeek_num)&&i==0){
-         a1 = [CourseModel courseWithName:ClassName dayIndex:WeekDay_num startCourseIndex:StartClass_num endCourseIndex:EndClass];
-         }
-       if(IfWeeks(CountWeeks(year,month,day),dsz_num,StartWeek_num,EndWeek_num)&&i==1){
-           a2 = [CourseModel courseWithName:ClassName dayIndex:WeekDay_num startCourseIndex:StartClass_num endCourseIndex:EndClass];
-       }
-       if(IfWeeks(CountWeeks(year,month,day),dsz_num,StartWeek_num,EndWeek_num)&&i==2){
-           a3 = [CourseModel courseWithName:ClassName dayIndex:WeekDay_num startCourseIndex:StartClass_num endCourseIndex:EndClass];
-       }
-       if(IfWeeks(CountWeeks(year,month,day),dsz_num,StartWeek_num,EndWeek_num)&&i==3){
-           a4 = [CourseModel courseWithName:ClassName dayIndex:WeekDay_num startCourseIndex:StartClass_num endCourseIndex:EndClass];
-       }
-       if(IfWeeks(CountWeeks(year,month,day),dsz_num,StartWeek_num,EndWeek_num)&&i==4){
-           a5 = [CourseModel courseWithName:ClassName dayIndex:WeekDay_num startCourseIndex:StartClass_num endCourseIndex:EndClass];
-       }
-       if(IfWeeks(CountWeeks(year,month,day),dsz_num,StartWeek_num,EndWeek_num)&&i==5){
-           a6 = [CourseModel courseWithName:ClassName dayIndex:WeekDay_num startCourseIndex:StartClass_num endCourseIndex:EndClass];
-       }
-       if(IfWeeks(CountWeeks(year,month,day),dsz_num,StartWeek_num,EndWeek_num)&&i==6){
-           a7 = [CourseModel courseWithName:ClassName dayIndex:WeekDay_num startCourseIndex:StartClass_num endCourseIndex:EndClass];
-       }
-       if(IfWeeks(CountWeeks(year,month,day),dsz_num,StartWeek_num,EndWeek_num)&&i==7){
-           a8 = [CourseModel courseWithName:ClassName dayIndex:WeekDay_num startCourseIndex:StartClass_num endCourseIndex:EndClass];
-       }
-       if(IfWeeks(CountWeeks(year,month,day),dsz_num,StartWeek_num,EndWeek_num)&&i==8){
-           a9 = [CourseModel courseWithName:ClassName dayIndex:WeekDay_num startCourseIndex:StartClass_num endCourseIndex:EndClass];
-       }
-       if(IfWeeks(CountWeeks(year,month,day),dsz_num,StartWeek_num,EndWeek_num)&&i==9){
-           a10 = [CourseModel courseWithName:ClassName dayIndex:WeekDay_num startCourseIndex:StartClass_num endCourseIndex:EndClass];
-       }
-       if(IfWeeks(CountWeeks(year,month,day),dsz_num,StartWeek_num,EndWeek_num)&&i==10){
-           a11 = [CourseModel courseWithName:ClassName dayIndex:WeekDay_num startCourseIndex:StartClass_num endCourseIndex:EndClass];
-       }
-       if(IfWeeks(CountWeeks(year,month,day),dsz_num,StartWeek_num,EndWeek_num)&&i==11){
-           a12 = [CourseModel courseWithName:ClassName dayIndex:WeekDay_num startCourseIndex:StartClass_num endCourseIndex:EndClass];
-       }
-       if(IfWeeks(CountWeeks(year,month,day),dsz_num,StartWeek_num,EndWeek_num)&&i==12){
-           a13 = [CourseModel courseWithName:ClassName dayIndex:WeekDay_num startCourseIndex:StartClass_num endCourseIndex:EndClass];
-       }
-       if(IfWeeks(CountWeeks(year,month,day),dsz_num,StartWeek_num,EndWeek_num)&&i==13){
-           a14 = [CourseModel courseWithName:ClassName dayIndex:WeekDay_num startCourseIndex:StartClass_num endCourseIndex:EndClass];
-       }
-       if(IfWeeks(CountWeeks(year,month,day),dsz_num,StartWeek_num,EndWeek_num)&&i==14){
-           a15 = [CourseModel courseWithName:ClassName dayIndex:WeekDay_num startCourseIndex:StartClass_num endCourseIndex:EndClass];
-       }
-       if(IfWeeks(CountWeeks(year,month,day),dsz_num,StartWeek_num,EndWeek_num)&&i==15){
-           a16 = [CourseModel courseWithName:ClassName dayIndex:WeekDay_num startCourseIndex:StartClass_num endCourseIndex:EndClass];
-       }
-       if(IfWeeks(CountWeeks(year,month,day),dsz_num,StartWeek_num,EndWeek_num)&&i==16){
-           a17 = [CourseModel courseWithName:ClassName dayIndex:WeekDay_num startCourseIndex:StartClass_num endCourseIndex:EndClass];
-       }
-       if(IfWeeks(CountWeeks(year,month,day),dsz_num,StartWeek_num,EndWeek_num)&&i==17){
-           a18 = [CourseModel courseWithName:ClassName dayIndex:WeekDay_num startCourseIndex:StartClass_num endCourseIndex:EndClass];
-       }
-       if(IfWeeks(CountWeeks(year,month,day),dsz_num,StartWeek_num,EndWeek_num)&&i==18){
-           a19 = [CourseModel courseWithName:ClassName dayIndex:WeekDay_num startCourseIndex:StartClass_num endCourseIndex:EndClass];
-       }
-       if(IfWeeks(CountWeeks(year,month,day),dsz_num,StartWeek_num,EndWeek_num)&&i==19){
-           a20 = [CourseModel courseWithName:ClassName dayIndex:WeekDay_num startCourseIndex:StartClass_num endCourseIndex:EndClass];
-       }
-       if(IfWeeks(CountWeeks(year,month,day),dsz_num,StartWeek_num,EndWeek_num)&&i==20){
-           a21 = [CourseModel courseWithName:ClassName dayIndex:WeekDay_num startCourseIndex:StartClass_num endCourseIndex:EndClass];
-       }
-       if(IfWeeks(CountWeeks(year,month,day),dsz_num,StartWeek_num,EndWeek_num)&&i==21){
-           a22 = [CourseModel courseWithName:ClassName dayIndex:WeekDay_num startCourseIndex:StartClass_num endCourseIndex:EndClass];
-       }
-       if(IfWeeks(CountWeeks(year,month,day),dsz_num,StartWeek_num,EndWeek_num)&&i==22){
-           a23 = [CourseModel courseWithName:ClassName dayIndex:WeekDay_num startCourseIndex:StartClass_num endCourseIndex:EndClass];
-       }
-       if(IfWeeks(CountWeeks(year,month,day),dsz_num,StartWeek_num,EndWeek_num)&&i==23){
-           a24 = [CourseModel courseWithName:ClassName dayIndex:WeekDay_num startCourseIndex:StartClass_num endCourseIndex:EndClass];
-       }
-       if(IfWeeks(CountWeeks(year,month,day),dsz_num,StartWeek_num,EndWeek_num)&&i==24){
-           a25 = [CourseModel courseWithName:ClassName dayIndex:WeekDay_num startCourseIndex:StartClass_num endCourseIndex:EndClass];
-       }
-       if(IfWeeks(CountWeeks(year,month,day),dsz_num,StartWeek_num,EndWeek_num)&&i==25){
-           a26 = [CourseModel courseWithName:ClassName dayIndex:WeekDay_num startCourseIndex:StartClass_num endCourseIndex:EndClass];
-       }
-       if(IfWeeks(CountWeeks(year,month,day),dsz_num,StartWeek_num,EndWeek_num)&&i==26){
-           a27 = [CourseModel courseWithName:ClassName dayIndex:WeekDay_num startCourseIndex:StartClass_num endCourseIndex:EndClass];
-       }
-       if(IfWeeks(CountWeeks(year,month,day),dsz_num,StartWeek_num,EndWeek_num)&&i==27){
-           a28 = [CourseModel courseWithName:ClassName dayIndex:WeekDay_num startCourseIndex:StartClass_num endCourseIndex:EndClass];
-       }
-       if(IfWeeks(CountWeeks(year,month,day),dsz_num,StartWeek_num,EndWeek_num)&&i==28){
-           a29 = [CourseModel courseWithName:ClassName dayIndex:WeekDay_num startCourseIndex:StartClass_num endCourseIndex:EndClass];
-       }
-       if(IfWeeks(CountWeeks(year,month,day),dsz_num,StartWeek_num,EndWeek_num)&&i==29){
-           a30 = [CourseModel courseWithName:ClassName dayIndex:WeekDay_num startCourseIndex:StartClass_num endCourseIndex:EndClass];
+       ClassName=[ClassName stringByAppendingString:@"\n@"];
+       ClassName=[ClassName stringByAppendingString:Room];
+
+       if(IfWeeks(CountWeeks(year,month,day),dsz_num,StartWeek_num,EndWeek_num)){
+           if(StartClass_num==1){
+               switch (day1) {
+                   case 1:
+                      a1 = [CourseModel courseWithName:ClassName dayIndex:WeekDay_num startCourseIndex:StartClass_num endCourseIndex:EndClass];
+                       day1++;
+                    break;
+                   case 2:
+                       a2 = [CourseModel courseWithName:ClassName dayIndex:WeekDay_num startCourseIndex:StartClass_num endCourseIndex:EndClass];
+                       day1++;
+                       break;
+                   case 3:
+                       a3 = [CourseModel courseWithName:ClassName dayIndex:WeekDay_num startCourseIndex:StartClass_num endCourseIndex:EndClass];
+                       day1++;
+                       break;
+                   case 4:
+                       a4 = [CourseModel courseWithName:ClassName dayIndex:WeekDay_num startCourseIndex:StartClass_num endCourseIndex:EndClass];
+                       day1++;
+                       break;
+                   case 5:
+                       a5 = [CourseModel courseWithName:ClassName dayIndex:WeekDay_num startCourseIndex:StartClass_num endCourseIndex:EndClass];
+                       day1++;
+                       break;
+                   default:
+                       break;
+               }
+
+           }
+           if(StartClass_num==3){
+               switch (day2) {
+                   case 1:
+                       a6 = [CourseModel courseWithName:ClassName dayIndex:WeekDay_num startCourseIndex:StartClass_num endCourseIndex:EndClass];
+                       day2++;
+                       break;
+                   case 2:
+                       a7 = [CourseModel courseWithName:ClassName dayIndex:WeekDay_num startCourseIndex:StartClass_num endCourseIndex:EndClass];
+                       day2++;
+                       break;
+                   case 3:
+                       a8 = [CourseModel courseWithName:ClassName dayIndex:WeekDay_num startCourseIndex:StartClass_num endCourseIndex:EndClass];
+                       day2++;
+                       break;
+                   case 4:
+                       a9 = [CourseModel courseWithName:ClassName dayIndex:WeekDay_num startCourseIndex:StartClass_num endCourseIndex:EndClass];
+                       day2++;
+                       break;
+                   case 5:
+                       a10 = [CourseModel courseWithName:ClassName dayIndex:WeekDay_num startCourseIndex:StartClass_num endCourseIndex:EndClass];
+                       day2++;
+                       break;
+                   default:
+                       break;
+               }
+               
+           }
+           if(StartClass_num==5){
+               switch (day3) {
+                   case 1:
+                       a11 = [CourseModel courseWithName:ClassName dayIndex:WeekDay_num startCourseIndex:StartClass_num endCourseIndex:EndClass];
+                       day3++;
+                       break;
+                   case 2:
+                       a12 = [CourseModel courseWithName:ClassName dayIndex:WeekDay_num startCourseIndex:StartClass_num endCourseIndex:EndClass];
+                       day3++;
+                       break;
+                   case 3:
+                       a13 = [CourseModel courseWithName:ClassName dayIndex:WeekDay_num startCourseIndex:StartClass_num endCourseIndex:EndClass];
+                       day3++;
+                       break;
+                   case 4:
+                       a14 = [CourseModel courseWithName:ClassName dayIndex:WeekDay_num startCourseIndex:StartClass_num endCourseIndex:EndClass];
+                       day3++;
+                       break;
+                   case 5:
+                       a15 = [CourseModel courseWithName:ClassName dayIndex:WeekDay_num startCourseIndex:StartClass_num endCourseIndex:EndClass];
+                       day3++;
+                       break;
+                   default:
+                       break;
+               }
+               
+           }
+           if(StartClass_num==7){
+               switch (day4) {
+                   case 1:
+                       a16 = [CourseModel courseWithName:ClassName dayIndex:WeekDay_num startCourseIndex:StartClass_num endCourseIndex:EndClass];
+                       day4++;
+                       break;
+                   case 2:
+                       a17 = [CourseModel courseWithName:ClassName dayIndex:WeekDay_num startCourseIndex:StartClass_num endCourseIndex:EndClass];
+                       day4++;
+                       break;
+                   case 3:
+                       a18 = [CourseModel courseWithName:ClassName dayIndex:WeekDay_num startCourseIndex:StartClass_num endCourseIndex:EndClass];
+                       day4++;
+                       break;
+                   case 4:
+                       a19 = [CourseModel courseWithName:ClassName dayIndex:WeekDay_num startCourseIndex:StartClass_num endCourseIndex:EndClass];
+                       day4++;
+                       break;
+                   case 5:
+                       a20 = [CourseModel courseWithName:ClassName dayIndex:WeekDay_num startCourseIndex:StartClass_num endCourseIndex:EndClass];
+                       day4++;
+                       break;
+                   default:
+                       break;
+               }
+               
+           }
+           if(StartClass_num==9){
+               switch (day5) {
+                   case 1:
+                       a21 = [CourseModel courseWithName:ClassName dayIndex:WeekDay_num startCourseIndex:StartClass_num endCourseIndex:EndClass];
+                       day5++;
+                       break;
+                   case 2:
+                       a22 = [CourseModel courseWithName:ClassName dayIndex:WeekDay_num startCourseIndex:StartClass_num endCourseIndex:EndClass];
+                       day5++;
+                       break;
+                   case 3:
+                       a23 = [CourseModel courseWithName:ClassName dayIndex:WeekDay_num startCourseIndex:StartClass_num endCourseIndex:EndClass];
+                       day5++;
+                       break;
+                   case 4:
+                       a24 = [CourseModel courseWithName:ClassName dayIndex:WeekDay_num startCourseIndex:StartClass_num endCourseIndex:EndClass];
+                       day5++;
+                       break;
+                   case 5:
+                       a25 = [CourseModel courseWithName:ClassName dayIndex:WeekDay_num startCourseIndex:StartClass_num endCourseIndex:EndClass];
+                       day5++;
+                       break;
+                   default:
+                       break;
+               }
+               
+           }
        }
     }
-    _courseArr = @[a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,a15,a16,a17,a18,a19,a20,a21,a22,a23,a24,a25,a26,a27,a28,a29,a30];
+    _courseArr = @[a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,a15,a16,a17,a18,a19,a20,a21,a22,a23,a24,a25];
 
     return _courseArr;
 }

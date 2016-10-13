@@ -13,7 +13,7 @@
 #import "HomeWorkViewController.h"
 
 #import "ClassViewController.h"
-#import "TestViewController.h"
+
 
 #import "AboutViewController.h"
 #import "FeedbackViewController.h"
@@ -121,10 +121,7 @@
           [tempAppDelegate.mainNavigationController pushViewController:vb animated:NO];
                       }
     }
-    if (indexPath.row == 2) {  //分析应用 - 课程表测试
-        TestViewController *test = [[TestViewController alloc] init];
-        [tempAppDelegate.mainNavigationController pushViewController:test animated:NO];
-    }
+
     
     if (indexPath.row == 3) {  //切换用户
         [tempAppDelegate.mainNavigationController pushViewController:vb animated:NO];

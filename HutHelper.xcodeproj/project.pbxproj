@@ -39,8 +39,6 @@
 		3AD87B101DACD02E00357212 /* GWPCourseListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD87B0F1DACD02E00357212 /* GWPCourseListView.m */; };
 		3AD87B131DACD05B00357212 /* CourseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD87B121DACD05B00357212 /* CourseModel.m */; };
 		3AD87B181DACD08E00357212 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AD87B171DACD08E00357212 /* Main.storyboard */; };
-		3AFB7BA01DACDA290040B55F /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AFB7B9E1DACDA290040B55F /* TestViewController.m */; };
-		3AFB7BA11DACDA290040B55F /* TestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AFB7B9F1DACDA290040B55F /* TestViewController.xib */; };
 		3AFB7BA51DAD19530040B55F /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AFB7BA31DAD19530040B55F /* AboutViewController.m */; };
 		3AFB7BA61DAD19530040B55F /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AFB7BA41DAD19530040B55F /* AboutViewController.xib */; };
 /* End PBXBuildFile section */
@@ -102,9 +100,6 @@
 		3AD87B111DACD05B00357212 /* CourseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CourseModel.h; path = HutHelper/Lib/CourseModel.h; sourceTree = "<group>"; };
 		3AD87B121DACD05B00357212 /* CourseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CourseModel.m; path = HutHelper/Lib/CourseModel.m; sourceTree = "<group>"; };
 		3AD87B171DACD08E00357212 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = HutHelper/Main.storyboard; sourceTree = "<group>"; };
-		3AFB7B9D1DACDA290040B55F /* TestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TestViewController.h; path = HutHelper/TestViewController.h; sourceTree = "<group>"; };
-		3AFB7B9E1DACDA290040B55F /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TestViewController.m; path = HutHelper/TestViewController.m; sourceTree = "<group>"; };
-		3AFB7B9F1DACDA290040B55F /* TestViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TestViewController.xib; path = HutHelper/TestViewController.xib; sourceTree = "<group>"; };
 		3AFB7BA21DAD19530040B55F /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
 		3AFB7BA31DAD19530040B55F /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AboutViewController.m; path = HutHelper/AboutViewController.m; sourceTree = "<group>"; };
 		3AFB7BA41DAD19530040B55F /* AboutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AboutViewController.xib; path = HutHelper/AboutViewController.xib; sourceTree = "<group>"; };
@@ -135,9 +130,6 @@
 		3A8567721DA908AA00EBD44A = {
 			isa = PBXGroup;
 			children = (
-				3AFB7B9D1DACDA290040B55F /* TestViewController.h */,
-				3AFB7B9E1DACDA290040B55F /* TestViewController.m */,
-				3AFB7B9F1DACDA290040B55F /* TestViewController.xib */,
 				3A85677D1DA908AA00EBD44A /* HutHelper */,
 				3A85678A1DA908AA00EBD44A /* Assets.xcassets */,
 				3A85677C1DA908AA00EBD44A /* Products */,
@@ -351,7 +343,6 @@
 				3A33D7D61DAE36420012EFDE /* SchoolHandViewController.xib in Resources */,
 				3A33D7D11DAE31AB0012EFDE /* SchoolsayViewController.xib in Resources */,
 				3A85678B1DA908AA00EBD44A /* Assets.xcassets in Resources */,
-				3AFB7BA11DACDA290040B55F /* TestViewController.xib in Resources */,
 				3A6D7EDA1DABD9610081B70D /* HomeWorkViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -381,7 +372,6 @@
 				3A6D7EF51DABDB500081B70D /* otherViewController.m in Sources */,
 				3A6D7EEF1DABDB500081B70D /* AppDelegate.m in Sources */,
 				3AD87B101DACD02E00357212 /* GWPCourseListView.m in Sources */,
-				3AFB7BA01DACDA290040B55F /* TestViewController.m in Sources */,
 				3A6D7EF11DABDB500081B70D /* LeftSortsViewController.m in Sources */,
 				3A33D7BE1DADE3A40012EFDE /* FeedbackViewController.m in Sources */,
 				3A33D7D01DAE31AB0012EFDE /* SchoolsayViewController.m in Sources */,
