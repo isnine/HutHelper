@@ -7,8 +7,10 @@
 //
 
 #import "LoginViewController.h"
+#import "Login2ViewController.h"
+#import "LeftSortsViewController.h"
 #import "JSONKit.h"
-
+#import "AppDelegate.h"
 @interface LoginViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *UserName;
 @property (weak, nonatomic) IBOutlet UITextField *Password;
@@ -23,7 +25,7 @@
     //       拼接地址 RUN
     NSString *UserName_String =[NSString stringWithFormat:@"%@",_UserName.text];
     NSString *Password_String =[NSString stringWithFormat:@"%@",_Password.text];
-    NSString *Url_String_1=@"http://hugongda.com:8888/api/v1/get/login/";
+    NSString *Url_String_1=@"http://218.75.197.121:8888/api/v1/get/login/";
     NSString *Url_String_2=@"/";
     NSString *Url_String_3=@"/1";
     
@@ -58,6 +60,25 @@
         [defaults synchronize];
         NSLog(@"用户：%@，学号：%@,令牌:%@",TrueName,studentKH,Remember_code_app);
       
+      //----------------课表数据缓存---------------//
+        NSString *Url_String_1=@"http://218.75.197.121:8888/api/v1/get/lessons/";
+        NSString *Url_String_2=@"/";
+        
+        NSString *Url_String_1_U=[Url_String_1 stringByAppendingString:studentKH];
+        NSString *Url_String_1_U_2=[Url_String_1_U stringByAppendingString:Url_String_2];
+        NSString *Url_String=[Url_String_1_U_2 stringByAppendingString:Remember_code_app];
+        /*地址完毕*/
+        NSURL *url = [NSURL URLWithString: Url_String]; //接口地址
+        NSError *error = nil;
+        NSString *jsonString = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:&error];//Url -> String
+        NSData* jsonData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];//地址 -> 数据
+        NSDictionary *Class_All = [jsonData objectFromJSONData];//数据 -> 字典
+        NSArray *array = [Class_All objectForKey:@"data"];
+        [defaults setObject:array forKey:@"array"];
+        //强制让数据立刻保存
+        [defaults synchronize];
+        //----------------课表数据缓存---------------//
+        
         [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:([self.navigationController.viewControllers count] -2)] animated:YES];  //返回上一个View
         
         
@@ -71,31 +92,14 @@
                                                   otherButtonTitles:@"确定", nil];
         [alertView show];
         
-//        NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-//             //读取保存的数据
-//             NSString *name=[defaults objectForKey:@"name"];
-//             NSString *gender=[defaults objectForKey:@"gender"];
-//             NSInteger age=[defaults integerForKey:@"age"];
-//            double height=[defaults doubleForKey:@"height"];
-//           //打印数据
-//          NSLog(@"name=%@,gender=%@,age=%d,height=%.1f",name,gender,age,height);
-        
+
     }
-//
-//    NSString *Remember_code_app=[User_All objectForKey:@"remember_code_app"];
-//    NSLog(@"Msg:%@",Msg);// 调出Data字典中TrueName
-//    NSLog(@"TrueName:%@",[User_Data objectForKey:@"TrueName"]);// 调出Data字典中TrueName
+
 }
 
 - (IBAction)DidEnd:(id)sender {
   [sender resignFirstResponder];
 }
-
-
-
-
-
-
 
 
 
@@ -109,6 +113,12 @@
     
 
 }
+- (IBAction)resetpassword:(id)sender {
+    Login2ViewController *reset = [[Login2ViewController alloc] init];
+    AppDelegate *tempAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [tempAppDelegate.mainNavigationController pushViewController:reset animated:NO];
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

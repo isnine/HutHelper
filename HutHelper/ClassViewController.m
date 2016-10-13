@@ -79,24 +79,9 @@ _Bool IfWeeks(int nowweek, int dsz, int qsz, int jsz) {
     int day = [dateComponent day];  //日
     //判断完毕//
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    NSString *studentKH=[defaults objectForKey:@"studentKH"];
-    NSString *remember_code_app=[defaults objectForKey:@"remember_code_app"];
-    NSString *Url_String_1=@"http://218.75.197.121:8888/api/v1/get/lessons/";
-    NSString *Url_String_2=@"/";
+    NSArray *array = [defaults objectForKey:@"array"];
     
-    NSString *Url_String_1_U=[Url_String_1 stringByAppendingString:studentKH];
-    NSString *Url_String_1_U_2=[Url_String_1_U stringByAppendingString:Url_String_2];
-    NSString *Url_String=[Url_String_1_U_2 stringByAppendingString:remember_code_app];
-    /*地址完毕*/
-    NSURL *url = [NSURL URLWithString: Url_String]; //接口地址
-    NSError *error = nil;
-    NSString *jsonString = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:&error];//Url -> String
-    NSData* jsonData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];//地址 -> 数据
-    NSDictionary *Class_All = [jsonData objectFromJSONData];//数据 -> 字典
-    NSDictionary *Class_Data=[Class_All objectForKey:@"data"];
-    NSString *name=[Class_All objectForKey:@"data"];
-    
-    NSArray *array = [Class_All objectForKey:@"data"];
+ 
     int i;
     
     CourseModel *a1 = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];

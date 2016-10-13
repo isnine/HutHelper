@@ -28,20 +28,30 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
      self.navigationItem.title = @"主界面";
-    self.view.backgroundColor = [UIColor whiteColor];
+    UIColor *greyColor= [UIColor colorWithRed:239/255.0 green:239/255.0 blue:239/255.0 alpha:1];
+    self.view.backgroundColor = greyColor;
     [self.navigationController.navigationBar setTitleTextAttributes:
   @{NSFontAttributeName:[UIFont systemFontOfSize:19],
     NSForegroundColorAttributeName:[UIColor whiteColor]}];   //标题字体颜色
-//    LoginViewController *vc = [[LoginViewController alloc] init];
-//    [self.navigationController pushViewController:vc animated:YES];
+
     
+
     UIButton *menuBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     menuBtn.frame = CGRectMake(0, 0, 20, 18);
     [menuBtn setBackgroundImage:[UIImage imageNamed:@"menu"] forState:UIControlStateNormal];
     [menuBtn addTarget:self action:@selector(openOrCloseLeftList) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:menuBtn];
-    
-    
+    //-----是否打开课程表----//
+   NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+   NSArray *array = [defaults objectForKey:@"array"];
+    NSString *autoclass=[defaults objectForKey:@"autoclass"];
+    if(array!=NULL&&[autoclass isEqualToString:@"打开"]){
+        UIStoryboard *mainStoryBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        ClassViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Class"];
+        AppDelegate *tempAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:NO];
+    }
+    //-----是否打开课程表----//
     
 }
 
@@ -95,9 +105,8 @@
 
 - (IBAction)ClassFind:(id)sender {  //课表界面
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    NSString *remember_code_app=[defaults objectForKey:@"remember_code_app"];
-    
-    if(remember_code_app!=NULL){    //判断是否已登录
+    NSArray *array = [defaults objectForKey:@"array"];
+    if(array!=NULL){
         UIStoryboard *mainStoryBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         ClassViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Class"];
         AppDelegate *tempAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -111,6 +120,7 @@
                                                   otherButtonTitles:@"确定", nil];
         [alertView show];
     }
+
 }
 
 - (IBAction)HomeWork:(id)sender { //作业界面

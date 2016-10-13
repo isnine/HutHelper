@@ -13,9 +13,10 @@
 #import "HomeWorkViewController.h"
 
 #import "ClassViewController.h"
-
+#import "SetViewController.h"
 
 #import "AboutViewController.h"
+#import "ShareViewController.h"
 #import "FeedbackViewController.h"
 @interface LeftSortsViewController () <UITableViewDelegate,UITableViewDataSource>
 
@@ -37,6 +38,9 @@
     tableview.dataSource = self;
     tableview.delegate  = self;
     tableview.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
+
+    
     [self.view addSubview:tableview];
 
 }
@@ -58,7 +62,7 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:Identifier];
     }
-   // cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+ 
     cell.textLabel.font = [UIFont systemFontOfSize:20.0f];
     cell.backgroundColor = [UIColor clearColor];
     cell.textLabel.textColor = [UIColor whiteColor];
@@ -107,7 +111,6 @@
     
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];  //得到用户数据
     NSString *name=[defaults objectForKey:@"TrueName"];
-    NSString *gender=[defaults objectForKey:@"studentKH"];
     
     static NSString *Identifier = @"Identifier";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:Identifier];
@@ -120,14 +123,23 @@
         if(name==NULL){
           [tempAppDelegate.mainNavigationController pushViewController:vb animated:NO];
                       }
+    
+           [self.tableview reloadData];
+    
     }
 
+    if (indexPath.row == 2) {  //切换用户
+         ShareViewController *share = [[ShareViewController alloc] init];
+        [tempAppDelegate.mainNavigationController pushViewController:share animated:NO];
+    }
     
     if (indexPath.row == 3) {  //切换用户
         [tempAppDelegate.mainNavigationController pushViewController:vb animated:NO];
-        
     }
-    
+    if (indexPath.row == 4) {  //设置
+        SetViewController *set = [[SetViewController alloc] init];
+        [tempAppDelegate.mainNavigationController pushViewController:set animated:NO];
+    }
     if (indexPath.row == 5) {  //关于
        AboutViewController *about = [[AboutViewController alloc] init];
        [tempAppDelegate.mainNavigationController pushViewController:about animated:NO];

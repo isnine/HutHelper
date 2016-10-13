@@ -18,6 +18,12 @@
 		3A33D7D51DAE36420012EFDE /* SchoolHandViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A33D7D31DAE36420012EFDE /* SchoolHandViewController.m */; };
 		3A33D7D61DAE36420012EFDE /* SchoolHandViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A33D7D41DAE36420012EFDE /* SchoolHandViewController.xib */; };
 		3A33D7DB1DAE50EF0012EFDE /* libUMessage_Sdk_1.4.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A33D7D91DAE50EF0012EFDE /* libUMessage_Sdk_1.4.0.a */; };
+		3A33D7F21DAF1B810012EFDE /* SetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A33D7F01DAF1B810012EFDE /* SetViewController.m */; };
+		3A33D7F31DAF1B810012EFDE /* SetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A33D7F11DAF1B810012EFDE /* SetViewController.xib */; };
+		3A33D7F71DAF646B0012EFDE /* Login2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A33D7F51DAF646B0012EFDE /* Login2ViewController.m */; };
+		3A33D7F81DAF646B0012EFDE /* Login2ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A33D7F61DAF646B0012EFDE /* Login2ViewController.xib */; };
+		3A33D7FC1DAF66450012EFDE /* ShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A33D7FA1DAF66450012EFDE /* ShareViewController.m */; };
+		3A33D7FD1DAF66450012EFDE /* ShareViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A33D7FB1DAF66450012EFDE /* ShareViewController.xib */; };
 		3A6D7EDA1DABD9610081B70D /* HomeWorkViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A6D7ED91DABD9610081B70D /* HomeWorkViewController.xib */; };
 		3A6D7EDE1DABD9DA0081B70D /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A6D7EDD1DABD9DA0081B70D /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		3A6D7EE31DABD9F50081B70D /* LeftSlideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A6D7EE11DABD9F50081B70D /* LeftSlideViewController.m */; };
@@ -62,6 +68,15 @@
 		3A33D7D71DAE4F8D0012EFDE /* HutHelper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HutHelper.entitlements; sourceTree = "<group>"; };
 		3A33D7D91DAE50EF0012EFDE /* libUMessage_Sdk_1.4.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUMessage_Sdk_1.4.0.a; sourceTree = "<group>"; };
 		3A33D7DA1DAE50EF0012EFDE /* UMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMessage.h; sourceTree = "<group>"; };
+		3A33D7EF1DAF1B810012EFDE /* SetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SetViewController.h; path = HutHelper/SetViewController.h; sourceTree = "<group>"; };
+		3A33D7F01DAF1B810012EFDE /* SetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SetViewController.m; path = HutHelper/SetViewController.m; sourceTree = "<group>"; };
+		3A33D7F11DAF1B810012EFDE /* SetViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SetViewController.xib; path = HutHelper/SetViewController.xib; sourceTree = "<group>"; };
+		3A33D7F41DAF646B0012EFDE /* Login2ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Login2ViewController.h; path = HutHelper/Login2ViewController.h; sourceTree = "<group>"; };
+		3A33D7F51DAF646B0012EFDE /* Login2ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Login2ViewController.m; path = HutHelper/Login2ViewController.m; sourceTree = "<group>"; };
+		3A33D7F61DAF646B0012EFDE /* Login2ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = Login2ViewController.xib; path = HutHelper/Login2ViewController.xib; sourceTree = "<group>"; };
+		3A33D7F91DAF66450012EFDE /* ShareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShareViewController.h; path = HutHelper/ShareViewController.h; sourceTree = "<group>"; };
+		3A33D7FA1DAF66450012EFDE /* ShareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShareViewController.m; path = HutHelper/ShareViewController.m; sourceTree = "<group>"; };
+		3A33D7FB1DAF66450012EFDE /* ShareViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ShareViewController.xib; path = HutHelper/ShareViewController.xib; sourceTree = "<group>"; };
 		3A6D7ED91DABD9610081B70D /* HomeWorkViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HomeWorkViewController.xib; path = HutHelper/HomeWorkViewController.xib; sourceTree = "<group>"; };
 		3A6D7EDC1DABD9DA0081B70D /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSONKit.h; path = HutHelper/Lib/JSONKit.h; sourceTree = "<group>"; };
 		3A6D7EDD1DABD9DA0081B70D /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JSONKit.m; path = HutHelper/Lib/JSONKit.m; sourceTree = "<group>"; };
@@ -184,6 +199,7 @@
 			children = (
 				3A85678C1DA908AA00EBD44A /* LaunchScreen.storyboard */,
 				3A8567AA1DA9140800EBD44A /* LoginViewController.xib */,
+				3A33D7F61DAF646B0012EFDE /* Login2ViewController.xib */,
 				3A6D7ED91DABD9610081B70D /* HomeWorkViewController.xib */,
 				3A8E0E231DAB442E00F458DB /* MainViewController.xib */,
 				3AD87B171DACD08E00357212 /* Main.storyboard */,
@@ -193,6 +209,8 @@
 				3A33D7CA1DAE28380012EFDE /* PowerViewController.xib */,
 				3A33D7CF1DAE31AB0012EFDE /* SchoolsayViewController.xib */,
 				3A33D7D41DAE36420012EFDE /* SchoolHandViewController.xib */,
+				3A33D7F11DAF1B810012EFDE /* SetViewController.xib */,
+				3A33D7FB1DAF66450012EFDE /* ShareViewController.xib */,
 			);
 			name = View;
 			path = ..;
@@ -216,6 +234,9 @@
 				3A33D7C91DAE28380012EFDE /* PowerViewController.m */,
 				3A33D7CE1DAE31AB0012EFDE /* SchoolsayViewController.m */,
 				3A33D7D31DAE36420012EFDE /* SchoolHandViewController.m */,
+				3A33D7F01DAF1B810012EFDE /* SetViewController.m */,
+				3A33D7F51DAF646B0012EFDE /* Login2ViewController.m */,
+				3A33D7FA1DAF66450012EFDE /* ShareViewController.m */,
 			);
 			name = Controller;
 			path = ..;
@@ -231,6 +252,9 @@
 				3A6D7EDD1DABD9DA0081B70D /* JSONKit.m */,
 				3AD87B111DACD05B00357212 /* CourseModel.h */,
 				3AD87B121DACD05B00357212 /* CourseModel.m */,
+				3A33D7EF1DAF1B810012EFDE /* SetViewController.h */,
+				3A33D7F41DAF646B0012EFDE /* Login2ViewController.h */,
+				3A33D7F91DAF66450012EFDE /* ShareViewController.h */,
 			);
 			name = Model;
 			path = ..;
@@ -338,10 +362,13 @@
 				3A85678E1DA908AA00EBD44A /* LaunchScreen.storyboard in Resources */,
 				3AFB7BA61DAD19530040B55F /* AboutViewController.xib in Resources */,
 				3A33D7CC1DAE28380012EFDE /* PowerViewController.xib in Resources */,
+				3A33D7F31DAF1B810012EFDE /* SetViewController.xib in Resources */,
 				3A8E0E251DAB442E00F458DB /* MainViewController.xib in Resources */,
 				3AD87B181DACD08E00357212 /* Main.storyboard in Resources */,
 				3A33D7D61DAE36420012EFDE /* SchoolHandViewController.xib in Resources */,
+				3A33D7FD1DAF66450012EFDE /* ShareViewController.xib in Resources */,
 				3A33D7D11DAE31AB0012EFDE /* SchoolsayViewController.xib in Resources */,
+				3A33D7F81DAF646B0012EFDE /* Login2ViewController.xib in Resources */,
 				3A85678B1DA908AA00EBD44A /* Assets.xcassets in Resources */,
 				3A6D7EDA1DABD9610081B70D /* HomeWorkViewController.xib in Resources */,
 			);
@@ -354,6 +381,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A33D7F71DAF646B0012EFDE /* Login2ViewController.m in Sources */,
 				3A6D7EF21DABDB500081B70D /* LoginViewController.m in Sources */,
 				3A6D7EDE1DABD9DA0081B70D /* JSONKit.m in Sources */,
 				3AD87B131DACD05B00357212 /* CourseModel.m in Sources */,
@@ -363,6 +391,7 @@
 				3A6D7EF41DABDB500081B70D /* MainViewController.m in Sources */,
 				3A6D7EE31DABD9F50081B70D /* LeftSlideViewController.m in Sources */,
 				3A8567801DA908AA00EBD44A /* main.m in Sources */,
+				3A33D7FC1DAF66450012EFDE /* ShareViewController.m in Sources */,
 				3A33D7D51DAE36420012EFDE /* SchoolHandViewController.m in Sources */,
 				3A6D7EF61DABDB500081B70D /* ViewController.m in Sources */,
 				3A6D7EF31DABDB500081B70D /* MainPageViewController.m in Sources */,
@@ -373,6 +402,7 @@
 				3A6D7EEF1DABDB500081B70D /* AppDelegate.m in Sources */,
 				3AD87B101DACD02E00357212 /* GWPCourseListView.m in Sources */,
 				3A6D7EF11DABDB500081B70D /* LeftSortsViewController.m in Sources */,
+				3A33D7F21DAF1B810012EFDE /* SetViewController.m in Sources */,
 				3A33D7BE1DADE3A40012EFDE /* FeedbackViewController.m in Sources */,
 				3A33D7D01DAE31AB0012EFDE /* SchoolsayViewController.m in Sources */,
 			);

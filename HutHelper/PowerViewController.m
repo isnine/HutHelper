@@ -43,26 +43,37 @@
     NSString *jsonString = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:&error];//Url -> String
     NSData* jsonData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];//地址 -> 数据
     NSDictionary *User_All = [jsonData objectFromJSONData];//数据 -> 字典
-    
-    NSString *power_du=[User_All objectForKey:@"oddl"];
-    NSString *power_money=[User_All objectForKey:@"prize"];
-    
-     NSLog(@"度数%@",power_du);
-     NSLog(@"电费%@",power_money);
-    
-    NSString *power_String=@"剩余:";
-    power_String=[power_String stringByAppendingString:power_du];
-    NSString *power2_String=@"度\n余额:";
-    NSString *power3_String=@"元";
-    power_String=[power_String stringByAppendingString:power2_String];
-    power_String=[power_String stringByAppendingString:power_money];
-    power_String=[power_String stringByAppendingString:power3_String];
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"查询成功"
-                                                        message:power_String
-                                                       delegate:self
-                                              cancelButtonTitle:@"取消"
-                                              otherButtonTitles:@"确定", nil];
-    [alertView show];
+    if(User_All!=NULL){
+        NSString *power_du=[User_All objectForKey:@"oddl"];
+        NSString *power_money=[User_All objectForKey:@"prize"];
+        
+        NSLog(@"度数%@",power_du);
+        NSLog(@"电费%@",power_money);
+        
+        NSString *power_String=@"剩余:";
+        power_String=[power_String stringByAppendingString:power_du];
+        NSString *power2_String=@"度\n余额:";
+        NSString *power3_String=@"元";
+        
+        power_String=[power_String stringByAppendingString:power2_String];
+        power_String=[power_String stringByAppendingString:power_money];
+        power_String=[power_String stringByAppendingString:power3_String];
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"查询成功"
+                                                            message:power_String
+                                                           delegate:self
+                                                  cancelButtonTitle:@"取消"
+                                                  otherButtonTitles:@"确定", nil];
+        [alertView show];
+    }
+    else
+    {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"查询失败"
+                                                            message:@"输入的信息错误"
+                                                           delegate:self
+                                                  cancelButtonTitle:@"取消"
+                                                  otherButtonTitles:@"确定", nil];
+        [alertView show];
+    }
     
 }
 

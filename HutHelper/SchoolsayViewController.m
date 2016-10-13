@@ -18,7 +18,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
    self.navigationItem.title = @"校园说说";
-        NSURL *url = [[NSURL alloc]initWithString:@"http://love.zengheng.top:8888/moments"];
+        NSURL *url = [[NSURL alloc]initWithString:@"http://218.75.197.121:8888/moments"];
     [_Show loadRequest:[NSURLRequest requestWithURL:url]];
 }
 

@@ -37,13 +37,13 @@
     NSURL * url = [NSURL URLWithString:@"http://218.75.197.121:8888/home/msg/0"];
     NSString *str1=@"email=";
     NSString *Mail_String=_Mail.text;
-    NSString *str2=@"&content=";
+    NSString *str2=@"&content=[IOS]";
     NSString *Content_String=_Content.text;
     
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     NSString *studentKH=[defaults objectForKey:@"studentKH"];
     if(studentKH==NULL){
-        str2=@"&content=";
+        str2=@"&content=[IOS]";
     }
     else
     {

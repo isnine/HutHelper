@@ -1,25 +1,23 @@
 //
-//  SchoolHandViewController.m
+//  ShareViewController.m
 //  HutHelper
 //
-//  Created by nine on 2016/10/12.
+//  Created by nine on 2016/10/13.
 //  Copyright © 2016年 nine. All rights reserved.
 //
 
-#import "SchoolHandViewController.h"
+#import "ShareViewController.h"
 
-@interface SchoolHandViewController ()
-@property (weak, nonatomic) IBOutlet UIWebView *Show;
+@interface ShareViewController ()
 
 @end
 
-@implementation SchoolHandViewController
+@implementation ShareViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.title = @"校园二手";
-    NSURL *url = [[NSURL alloc]initWithString:@"http://218.75.197.121:8888/trade/goods"];
-    [_Show loadRequest:[NSURLRequest requestWithURL:url]];
+     self.navigationItem.title = @"分享";
+    // Do any additional setup after loading the view from its nib.
 }
 
 - (void)didReceiveMemoryWarning {
