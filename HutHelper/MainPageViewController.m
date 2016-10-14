@@ -27,7 +27,43 @@
 @end
 
 @implementation MainPageViewController
+const int startyear = 2016;
+const int startmonth = 8;
+const int startday = 29;
 
+
+int CountDays(int year, int month, int day) {
+    //返回当前是本年的第几天，year,month,day 表示现在的年月日，整数。
+    int a[12] = {31,0,31,30,31,30,31,31,30,31,30,31};
+    int s = 0;
+    for(int i = 0; i < month-1; i++) {
+        s += a[i];
+    }
+    if(month > 2) {
+        if(year % (year % 100 ? 4 : 400 ) ? 0 : 1)
+            s += 29;
+        else
+            s += 28;
+    }
+    
+    return (s + day);
+}
+
+
+int CountWeeks(int nowyear, int nowmonth, int nowday) {
+    //返回当前是本学期第几周，nowyear,nowmonth,nowday 表示现在的年月日，整数。
+    int ans = 0;
+    if (nowyear == startyear) {
+        ans = CountDays(nowyear, nowmonth, nowday) - CountDays(startyear, startmonth, startday) + 1;
+        printf("%d\n", ans);
+    } else {
+        ans = CountDays(nowyear, nowmonth, nowday) - CountDays(nowyear, 1, 1) + 1;
+        printf("%d\n", ans);
+        ans += (CountDays(startyear, 12, 31) - CountDays(startyear, startmonth, startday) + 1);
+        printf("%d\n", ans);
+    }
+    return (ans + 6) / 7;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
      self.navigationItem.title = @"主界面";
@@ -44,8 +80,22 @@
     [menuBtn setBackgroundImage:[UIImage imageNamed:@"menu"] forState:UIControlStateNormal];
     [menuBtn addTarget:self action:@selector(openOrCloseLeftList) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:menuBtn];
+    
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    
+
+    //-------判断第几周---------//
+    NSDate *now = [NSDate date];
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSUInteger unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit |NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
+    NSDateComponents *dateComponent = [calendar components:unitFlags fromDate:now];
+    int year = [dateComponent year]; //年
+    int month = [dateComponent month]; //月
+    int day = [dateComponent day];  //日
+        [defaults setInteger:CountWeeks(year, month, day) forKey:@"NowWeek"];
+    //判断完毕//
     //-----是否打开课程表----//
-   NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+
    NSArray *array = [defaults objectForKey:@"array"];
     NSString *autoclass=[defaults objectForKey:@"autoclass"];
     if(array!=NULL&&[autoclass isEqualToString:@"打开"]){
@@ -102,7 +152,17 @@
     
     //    LoginViewController *vb = [[LoginViewController alloc] init];
     //    [tempAppDelegate.mainNavigationController pushViewController:vb animated:NO];
-    
+    //-------判断第几周---------//
+       NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    NSDate *now = [NSDate date];
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSUInteger unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit |NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
+    NSDateComponents *dateComponent = [calendar components:unitFlags fromDate:now];
+    int year = [dateComponent year]; //年
+    int month = [dateComponent month]; //月
+    int day = [dateComponent day];  //日
+    [defaults setInteger:CountWeeks(year, month, day) forKey:@"NowWeek"];
+    //判断完毕//
 }
 
 

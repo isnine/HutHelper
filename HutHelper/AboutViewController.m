@@ -26,6 +26,16 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+- (IBAction)a:(id)sender {
+     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    [defaults setInteger:2 forKey:@"tes"];
+    
+}
+- (IBAction)b:(id)sender {
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    NSInteger *as = [defaults integerForKey:@"tes"];
+    NSLog(@"%d",(short)as+1);
+}
 
 
 @end
