@@ -32,8 +32,8 @@
     //iOS10必须加下面这段代码。
     UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
     center.delegate=self;
-    UNAuthorizationOptions types10=UNAuthorizationOptionBadge|  UNAuthorizationOptionAlert|UNAuthorizationOptionSound;
-    [center requestAuthorizationWithOptions:types10     completionHandler:^(BOOL granted, NSError * _Nullable error) {
+    UNAuthorizationOptions types10=UNAuthorizationOptionBadge|UNAuthorizationOptionAlert|UNAuthorizationOptionSound;
+    [center requestAuthorizationWithOptions:types10 completionHandler:^(BOOL granted, NSError * _Nullable error) {
         if (granted) {
             //点击允许
             //这里可以添加一些自己的逻辑
@@ -42,16 +42,9 @@
             //这里可以添加一些自己的逻辑
         }
     }];
-    
     //打开日志，方便调试
     [UMessage setLogEnabled:YES];
-    //------------推送--------------------//
-    [UMessage addTag:@"男"
-            response:^(id responseObject, NSInteger remain, NSError *error) {
-                //add your codes
-            }];
-//------------推送--------------------//
-    //
+
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];   //设置通用背景颜色
     [self.window makeKeyAndVisible];
@@ -63,6 +56,8 @@
     LeftSortsViewController *leftVC = [[LeftSortsViewController alloc] init];
     self.LeftSlideVC = [[LeftSlideViewController alloc] initWithLeftView:leftVC andMainView:self.mainNavigationController];
     self.window.rootViewController = self.LeftSlideVC;
+    
+
     
     UIColor *ownColor= [UIColor colorWithRed:0/255.0 green:219/255.0 blue:204/255.0 alpha:1];
     [[UINavigationBar appearance] setBarTintColor: ownColor];  //颜色
@@ -102,13 +97,17 @@
     NSDictionary * userInfo = notification.request.content.userInfo;
     if([notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
         //应用处于前台时的远程推送接受
+        //关闭友盟自带的弹出框
+        NSLog(@"Q前台介绍通知");
+        [UMessage setAutoAlert:NO];
         //必须加这句代码
         [UMessage didReceiveRemoteNotification:userInfo];
         
     }else{
         //应用处于前台时的本地推送接受
     }
-    
+    //当应用处于前台时提示设置，需要哪个可以设置哪一个
+    completionHandler(UNNotificationPresentationOptionSound|UNNotificationPresentationOptionBadge|UNNotificationPresentationOptionAlert);
 }
 
 //iOS10新增：处理后台点击通知的代理方法
@@ -117,6 +116,7 @@
     if([response.notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
         //应用处于后台时的远程推送接受
         //必须加这句代码
+        NSLog(@"后台介绍通知");
         [UMessage didReceiveRemoteNotification:userInfo];
         
     }else{

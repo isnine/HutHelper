@@ -11,6 +11,8 @@
 #import "LeftSortsViewController.h"
 #import "JSONKit.h"
 #import "AppDelegate.h"
+#import "UMessage.h"
+
 @interface LoginViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *UserName;
 @property (weak, nonatomic) IBOutlet UITextField *Password;
@@ -23,6 +25,14 @@
 
 - (IBAction)Login:(id)sender {
     //       拼接地址 RUN
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    NSString *name_tag = [defaults objectForKey:@"TrueName"];
+    if(name_tag!=NULL){
+        [UMessage removeTag:name_tag
+                   response:^(id responseObject, NSInteger remain, NSError *error) {
+                       //add your codes
+                   }];
+    }
     NSString *UserName_String =[NSString stringWithFormat:@"%@",_UserName.text];
     NSString *Password_String =[NSString stringWithFormat:@"%@",_Password.text];
     NSString *Url_String_1=@"http://218.75.197.121:8888/api/v1/get/login/";
@@ -51,7 +61,7 @@
         NSString *TrueName=[User_Data objectForKey:@"TrueName"]; //真实姓名
         NSString *studentKH=[User_Data objectForKey:@"studentKH"]; //学号
         
-        NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+
         //保存数据(如果设置数据之后没有同步, 会在将来某一时间点自动将数据保存到Preferences文件夹下面)
         [defaults setObject:Remember_code_app forKey:@"remember_code_app"];
         [defaults setObject:TrueName forKey:@"TrueName"];
@@ -78,6 +88,13 @@
         //强制让数据立刻保存
         [defaults synchronize];
         //----------------课表数据缓存---------------//
+        
+        ////推送标签
+        [UMessage addTag:TrueName
+                response:^(id responseObject, NSInteger remain, NSError *error) {
+                    //add your codes
+                }];
+        //推送标签
         
         [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:([self.navigationController.viewControllers count] -2)] animated:YES];  //返回上一个View
         

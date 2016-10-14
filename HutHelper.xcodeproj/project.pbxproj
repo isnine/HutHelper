@@ -55,6 +55,19 @@
 		3AFB7BA61DAD19530040B55F /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AFB7BA41DAD19530040B55F /* AboutViewController.xib */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		3A7D3CB71DB0A7ED00355E7A /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		3A33D7BB1DADE3A40012EFDE /* FeedbackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedbackViewController.h; sourceTree = "<group>"; };
 		3A33D7BC1DADE3A40012EFDE /* FeedbackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FeedbackViewController.m; path = HutHelper/FeedbackViewController.m; sourceTree = "<group>"; };
@@ -107,6 +120,7 @@
 		3A6D7EFC1DABDB680081B70D /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		3A6D7EFD1DABDB680081B70D /* otherViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = otherViewController.h; sourceTree = "<group>"; };
 		3A6D7EFE1DABDB680081B70D /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		3A7D3CA91DB0A6CB00355E7A /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		3A85677B1DA908AA00EBD44A /* HutHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HutHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A85677F1DA908AA00EBD44A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		3A85678A1DA908AA00EBD44A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = HutHelper/Assets.xcassets; sourceTree = "<group>"; };
@@ -157,6 +171,14 @@
 			path = HutHelper/Lib/UMessage_Sdk_1.4.0;
 			sourceTree = "<group>";
 		};
+		3A7D3CA81DB0A6CB00355E7A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3A7D3CA91DB0A6CB00355E7A /* UserNotifications.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		3A8567721DA908AA00EBD44A = {
 			isa = PBXGroup;
 			children = (
@@ -164,6 +186,7 @@
 				3A85678A1DA908AA00EBD44A /* Assets.xcassets */,
 				3A85677C1DA908AA00EBD44A /* Products */,
 				3A6D7EE61DABDA810081B70D /* HutHelper-Bridging-Header.h */,
+				3A7D3CA81DB0A6CB00355E7A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -325,6 +348,7 @@
 				3A8567771DA908AA00EBD44A /* Sources */,
 				3A8567781DA908AA00EBD44A /* Frameworks */,
 				3A8567791DA908AA00EBD44A /* Resources */,
+				3A7D3CB71DB0A7ED00355E7A /* Embed App Extensions */,
 			);
 			buildRules = (
 			);

@@ -54,7 +54,7 @@
         [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:NO];
     }
     //-----是否打开课程表----//
-    
+  
     
 }
 
