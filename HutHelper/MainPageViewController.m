@@ -12,13 +12,15 @@
 #import "HomeWorkViewController.h"
 #import "ClassViewController.h"
 #import "PowerViewController.h"
-
+#import "LibraryViewController.h"
+#import "NoticeViewController.h"
 #import "SchoolsayViewController.h"
 #import "SchoolHandViewController.h"
+#import "DayViewController.h"
 #define vBackBarButtonItemName  @"backArrow.png"    //导航条返回默认图片名
 @interface MainPageViewController ()
-@property (weak, nonatomic) IBOutlet UITextField *UserName;
-@property (weak, nonatomic) IBOutlet UITextField *PassWord;
+
+@property (weak, nonatomic) IBOutlet UILabel *Scontent;
 
 
 @end
@@ -52,6 +54,7 @@
         [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:NO];
     }
     //-----是否打开课程表----//
+    
     
 }
 
@@ -130,7 +133,6 @@
   
     HomeWorkViewController *vc = [[HomeWorkViewController alloc] init];
     AppDelegate *tempAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
- 
     if(remember_code_app!=NULL){    //判断是否已登录
          [tempAppDelegate.mainNavigationController pushViewController:vc animated:NO];
     }
@@ -162,7 +164,38 @@
     AppDelegate *tempAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [tempAppDelegate.mainNavigationController pushViewController:SchoolHand animated:NO];
 }
+- (IBAction)Score:(id)sender {
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"无法查询"
+                                                        message:@"请等待新版本"
+                                                       delegate:self
+                                              cancelButtonTitle:@"取消"
+                                              otherButtonTitles:@"确定", nil];
+    [alertView show];
+}
 
+
+- (IBAction)Day:(id)sender {
+    DayViewController *day = [[DayViewController alloc] init];
+    AppDelegate *tempAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [tempAppDelegate.mainNavigationController pushViewController:day animated:NO];
+    
+}
+- (IBAction)Notice:(id)sender {
+    NoticeViewController *notice = [[NoticeViewController alloc] init];
+    AppDelegate *tempAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [tempAppDelegate.mainNavigationController pushViewController:notice animated:NO];
+}
+- (IBAction)Library:(id)sender {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"温馨提示"
+                                                            message:@"图书馆需要内网环境，连接工大的Wifi后才能使用"
+                                                           delegate:self
+                                                  cancelButtonTitle:@"取消"
+                                                  otherButtonTitles:@"确定", nil];
+        [alertView show];
+        LibraryViewController *library = [[LibraryViewController alloc] init];
+        AppDelegate *tempAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+         [tempAppDelegate.mainNavigationController pushViewController:library animated:NO];
+}
 
 
 @end

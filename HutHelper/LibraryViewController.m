@@ -9,6 +9,7 @@
 #import "LibraryViewController.h"
 
 @interface LibraryViewController ()
+@property (weak, nonatomic) IBOutlet UIWebView *views;
 
 @end
 
@@ -16,7 +17,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    self.navigationItem.title = @"图书馆";
+    NSString *Url_String=@"http://172.16.64.7:8080/opac/index";
+    
+    NSURL *url = [[NSURL alloc]initWithString:Url_String];
+    [_views loadRequest:[NSURLRequest requestWithURL:url]];
 }
 
 - (void)didReceiveMemoryWarning {

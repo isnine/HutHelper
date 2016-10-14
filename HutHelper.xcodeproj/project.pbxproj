@@ -41,6 +41,12 @@
 		3A85678E1DA908AA00EBD44A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A85678C1DA908AA00EBD44A /* LaunchScreen.storyboard */; };
 		3A8567AC1DA9140800EBD44A /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A8567AA1DA9140800EBD44A /* LoginViewController.xib */; };
 		3A8E0E251DAB442E00F458DB /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A8E0E231DAB442E00F458DB /* MainViewController.xib */; };
+		3ABE7F1E1DAF75FB003E4085 /* LibraryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ABE7F1C1DAF75FB003E4085 /* LibraryViewController.m */; };
+		3ABE7F1F1DAF75FB003E4085 /* LibraryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3ABE7F1D1DAF75FB003E4085 /* LibraryViewController.xib */; };
+		3ABE7F231DAF78B9003E4085 /* DayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ABE7F211DAF78B9003E4085 /* DayViewController.m */; };
+		3ABE7F241DAF78B9003E4085 /* DayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3ABE7F221DAF78B9003E4085 /* DayViewController.xib */; };
+		3ABE7F281DAF7BBE003E4085 /* NoticeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ABE7F261DAF7BBE003E4085 /* NoticeViewController.m */; };
+		3ABE7F291DAF7BBE003E4085 /* NoticeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3ABE7F271DAF7BBE003E4085 /* NoticeViewController.xib */; };
 		3AD87B081DACCE7600357212 /* ClassViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD87B071DACCE7600357212 /* ClassViewController.m */; };
 		3AD87B101DACD02E00357212 /* GWPCourseListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD87B0F1DACD02E00357212 /* GWPCourseListView.m */; };
 		3AD87B131DACD05B00357212 /* CourseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD87B121DACD05B00357212 /* CourseModel.m */; };
@@ -108,6 +114,15 @@
 		3A85678F1DA908AA00EBD44A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3A8567AA1DA9140800EBD44A /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LoginViewController.xib; path = HutHelper/LoginViewController.xib; sourceTree = "<group>"; };
 		3A8E0E231DAB442E00F458DB /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainViewController.xib; path = HutHelper/MainViewController.xib; sourceTree = "<group>"; };
+		3ABE7F1B1DAF75FB003E4085 /* LibraryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LibraryViewController.h; sourceTree = "<group>"; };
+		3ABE7F1C1DAF75FB003E4085 /* LibraryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LibraryViewController.m; path = HutHelper/LibraryViewController.m; sourceTree = "<group>"; };
+		3ABE7F1D1DAF75FB003E4085 /* LibraryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LibraryViewController.xib; path = HutHelper/LibraryViewController.xib; sourceTree = "<group>"; };
+		3ABE7F201DAF78B9003E4085 /* DayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DayViewController.h; sourceTree = "<group>"; };
+		3ABE7F211DAF78B9003E4085 /* DayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DayViewController.m; path = HutHelper/DayViewController.m; sourceTree = "<group>"; };
+		3ABE7F221DAF78B9003E4085 /* DayViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DayViewController.xib; path = HutHelper/DayViewController.xib; sourceTree = "<group>"; };
+		3ABE7F251DAF7BBE003E4085 /* NoticeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoticeViewController.h; sourceTree = "<group>"; };
+		3ABE7F261DAF7BBE003E4085 /* NoticeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NoticeViewController.m; path = HutHelper/NoticeViewController.m; sourceTree = "<group>"; };
+		3ABE7F271DAF7BBE003E4085 /* NoticeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NoticeViewController.xib; path = HutHelper/NoticeViewController.xib; sourceTree = "<group>"; };
 		3AD87B061DACCE7600357212 /* ClassViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassViewController.h; sourceTree = "<group>"; };
 		3AD87B071DACCE7600357212 /* ClassViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ClassViewController.m; path = HutHelper/ClassViewController.m; sourceTree = "<group>"; };
 		3AD87B0E1DACD02E00357212 /* GWPCourseListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GWPCourseListView.h; path = HutHelper/Lib/GWPCourseListView/GWPCourseListView.h; sourceTree = "<group>"; };
@@ -163,7 +178,6 @@
 		3A85677D1DA908AA00EBD44A /* HutHelper */ = {
 			isa = PBXGroup;
 			children = (
-				3A33D7D71DAE4F8D0012EFDE /* HutHelper.entitlements */,
 				3A8567DB1DAA3DF800EBD44A /* Model */,
 				3A8567DA1DAA3DDA00EBD44A /* Controller */,
 				3A8567DC1DAA3E4400EBD44A /* Header */,
@@ -176,6 +190,7 @@
 		3A85677E1DA908AA00EBD44A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				3A33D7D71DAE4F8D0012EFDE /* HutHelper.entitlements */,
 				3A85678F1DA908AA00EBD44A /* Info.plist */,
 				3A85677F1DA908AA00EBD44A /* main.m */,
 			);
@@ -211,6 +226,9 @@
 				3A33D7D41DAE36420012EFDE /* SchoolHandViewController.xib */,
 				3A33D7F11DAF1B810012EFDE /* SetViewController.xib */,
 				3A33D7FB1DAF66450012EFDE /* ShareViewController.xib */,
+				3ABE7F1D1DAF75FB003E4085 /* LibraryViewController.xib */,
+				3ABE7F221DAF78B9003E4085 /* DayViewController.xib */,
+				3ABE7F271DAF7BBE003E4085 /* NoticeViewController.xib */,
 			);
 			name = View;
 			path = ..;
@@ -237,6 +255,9 @@
 				3A33D7F01DAF1B810012EFDE /* SetViewController.m */,
 				3A33D7F51DAF646B0012EFDE /* Login2ViewController.m */,
 				3A33D7FA1DAF66450012EFDE /* ShareViewController.m */,
+				3ABE7F211DAF78B9003E4085 /* DayViewController.m */,
+				3ABE7F1C1DAF75FB003E4085 /* LibraryViewController.m */,
+				3ABE7F261DAF7BBE003E4085 /* NoticeViewController.m */,
 			);
 			name = Controller;
 			path = ..;
@@ -263,6 +284,7 @@
 		3A8567DC1DAA3E4400EBD44A /* Header */ = {
 			isa = PBXGroup;
 			children = (
+				3ABE7F251DAF7BBE003E4085 /* NoticeViewController.h */,
 				3A33D7D21DAE36420012EFDE /* SchoolHandViewController.h */,
 				3A33D7CD1DAE31AB0012EFDE /* SchoolsayViewController.h */,
 				3A6D7EF71DABDB680081B70D /* AppDelegate.h */,
@@ -278,6 +300,8 @@
 				3A6D7EFD1DABDB680081B70D /* otherViewController.h */,
 				3A6D7EFE1DABDB680081B70D /* ViewController.h */,
 				3A33D7C81DAE28380012EFDE /* PowerViewController.h */,
+				3ABE7F1B1DAF75FB003E4085 /* LibraryViewController.h */,
+				3ABE7F201DAF78B9003E4085 /* DayViewController.h */,
 			);
 			name = Header;
 			sourceTree = "<group>";
@@ -356,6 +380,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3ABE7F291DAF7BBE003E4085 /* NoticeViewController.xib in Resources */,
 				3A8567AC1DA9140800EBD44A /* LoginViewController.xib in Resources */,
 				3A33D7BF1DADE3A40012EFDE /* FeedbackViewController.xib in Resources */,
 				3A33D7C71DAE00300012EFDE /* Feedback2ViewController.xib in Resources */,
@@ -368,8 +393,10 @@
 				3A33D7D61DAE36420012EFDE /* SchoolHandViewController.xib in Resources */,
 				3A33D7FD1DAF66450012EFDE /* ShareViewController.xib in Resources */,
 				3A33D7D11DAE31AB0012EFDE /* SchoolsayViewController.xib in Resources */,
+				3ABE7F241DAF78B9003E4085 /* DayViewController.xib in Resources */,
 				3A33D7F81DAF646B0012EFDE /* Login2ViewController.xib in Resources */,
 				3A85678B1DA908AA00EBD44A /* Assets.xcassets in Resources */,
+				3ABE7F1F1DAF75FB003E4085 /* LibraryViewController.xib in Resources */,
 				3A6D7EDA1DABD9610081B70D /* HomeWorkViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -386,6 +413,7 @@
 				3A6D7EDE1DABD9DA0081B70D /* JSONKit.m in Sources */,
 				3AD87B131DACD05B00357212 /* CourseModel.m in Sources */,
 				3A33D7C61DAE00300012EFDE /* Feedback2ViewController.m in Sources */,
+				3ABE7F1E1DAF75FB003E4085 /* LibraryViewController.m in Sources */,
 				3A33D7CB1DAE28380012EFDE /* PowerViewController.m in Sources */,
 				3A6D7EE41DABD9F50081B70D /* UIView_extra.m in Sources */,
 				3A6D7EF41DABDB500081B70D /* MainViewController.m in Sources */,
@@ -399,12 +427,14 @@
 				3AD87B081DACCE7600357212 /* ClassViewController.m in Sources */,
 				3A6D7EF01DABDB500081B70D /* HomeWorkViewController.m in Sources */,
 				3A6D7EF51DABDB500081B70D /* otherViewController.m in Sources */,
+				3ABE7F281DAF7BBE003E4085 /* NoticeViewController.m in Sources */,
 				3A6D7EEF1DABDB500081B70D /* AppDelegate.m in Sources */,
 				3AD87B101DACD02E00357212 /* GWPCourseListView.m in Sources */,
 				3A6D7EF11DABDB500081B70D /* LeftSortsViewController.m in Sources */,
 				3A33D7F21DAF1B810012EFDE /* SetViewController.m in Sources */,
 				3A33D7BE1DADE3A40012EFDE /* FeedbackViewController.m in Sources */,
 				3A33D7D01DAE31AB0012EFDE /* SchoolsayViewController.m in Sources */,
+				3ABE7F231DAF78B9003E4085 /* DayViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -535,6 +565,7 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "HutHelper-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -559,6 +590,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "HutHelper-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

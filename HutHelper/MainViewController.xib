@@ -8,6 +8,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainPageViewController">
             <connections>
+                <outlet property="Scontent" destination="72Q-bm-Qn2" id="y7F-6b-Umz"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -21,32 +22,36 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="white" translatesAutoresizingMaskIntoConstraints="NO" id="53E-Iv-pz3">
-                    <frame key="frameInset" height="50.23%"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
+                    <frame key="frameInset" minY="49.18%" height="50.83%"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                 </imageView>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yNT-hu-4zn">
-                    <frame key="frameInset" minX="11.47%" minY="51.12%" width="18.40%" height="10.64%"/>
+                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" image="main4" translatesAutoresizingMaskIntoConstraints="NO" id="p0y-hw-8hs">
+                    <frame key="frameInset" minY="28.04%" height="13.79%" maxX="-3"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                </imageView>
+                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" image="main3" translatesAutoresizingMaskIntoConstraints="NO" id="oqB-31-UcG">
+                    <frame key="frameInset" minY="45.13%" height="5.40%"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qe3-JR-Ze4">
+                    <frame key="frameInset" minX="2.93%" minY="34.78%" width="10.67%" height="6.00%"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                    <state key="normal" backgroundImage="chengji"/>
+                    <state key="normal" backgroundImage="tongzhi"/>
                     <connections>
-                        <action selector="Test:" destination="-1" eventType="touchUpInside" id="lE5-7a-NjC"/>
+                        <action selector="Notice:" destination="-1" eventType="touchUpInside" id="O6p-lw-S9K"/>
+                        <action selector="Test:" destination="-1" eventType="touchUpInside" id="itX-om-sZ5"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rVC-ab-mg8">
-                    <frame key="frameInset" minX="11.47%" minY="67.92%" width="18.40%" height="10.95%"/>
+                    <frame key="frameInset" minX="11.47%" minY="67.92%" width="18.40%" height="10.35%"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <state key="normal" backgroundImage="tushuguan"/>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tOD-9h-L2q">
-                    <frame key="frameInset" minX="11.47%" minY="84.86%" width="18.40%" height="10.20%"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                    <state key="normal" backgroundImage="wangshangzuoye"/>
                     <connections>
-                        <action selector="HomeWork:" destination="-1" eventType="touchUpInside" id="A36-Va-KEz"/>
+                        <action selector="Library:" destination="-1" eventType="touchUpInside" id="hbW-tm-uLI"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aqC-WV-5eK">
-                    <frame key="frameInset" minX="40.27%" minY="67.92%" width="18.40%" height="10.95%"/>
+                    <frame key="frameInset" minX="40.27%" minY="67.92%" width="18.40%" height="10.35%"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <state key="normal" backgroundImage="shuoshuo"/>
                     <connections>
@@ -54,7 +59,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dU6-LM-Y0w">
-                    <frame key="frameInset" minX="40.27%" minY="51.12%" width="18.40%" height="10.64%"/>
+                    <frame key="frameInset" minX="40.80%" minY="50.98%" width="18.40%" height="10.35%"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <state key="normal" backgroundImage="kebiao"/>
                     <connections>
@@ -62,7 +67,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b0D-iY-O4X">
-                    <frame key="frameInset" minX="69.07%" minY="67.92%" width="18.40%" height="10.95%"/>
+                    <frame key="frameInset" minX="69.07%" minY="67.92%" width="18.40%" height="10.35%"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <state key="normal" backgroundImage="ershou"/>
                     <connections>
@@ -70,7 +75,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JP6-q9-cMU">
-                    <frame key="frameInset" minX="40.27%" minY="84.86%" width="18.40%" height="10.20%"/>
+                    <frame key="frameInset" minX="40.27%" minY="84.86%" width="18.40%" height="10.35%"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <state key="normal" backgroundImage="dainfei"/>
                     <connections>
@@ -78,14 +83,10 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ysJ-nj-Trr">
-                    <frame key="frameInset" minX="69.07%" minY="84.86%" width="18.40%" height="10.20%"/>
+                    <frame key="frameInset" minX="69.07%" minY="84.86%" width="18.40%" height="10.35%"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <state key="normal" backgroundImage="gengduo"/>
                 </button>
-                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="TopLeft" fixedFrame="YES" image="main3" translatesAutoresizingMaskIntoConstraints="NO" id="oqB-31-UcG">
-                    <frame key="frameInset" minY="41.98%" height="8.85%" maxX="-3"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="成绩查询" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TN3-0f-HMt">
                     <frame key="frameInset" minX="11.47%" minY="62.22%" width="18.40%" height="4.80%"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
@@ -100,7 +101,7 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="考试查询" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1yp-ft-3Lr">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="校历" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1yp-ft-3Lr">
                     <frame key="frameInset" minX="69.07%" minY="62.22%" width="18.40%" height="4.80%"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -108,59 +109,96 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="图书馆" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4kp-4w-MDB">
-                    <frame key="frameInset" minX="11.47%" minY="78.86%" width="19.20%" height="4.50%"/>
+                    <frame key="frameInset" minX="11.47%" minY="78.71%" width="19.20%" height="4.65%"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="网上作业" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y65-qX-ofP">
-                    <frame key="frameInset" minX="11.47%" minY="94.45%" width="18.40%" height="5.10%"/>
+                    <frame key="frameInset" minX="11.47%" minY="94.30%" width="18.40%" height="5.25%"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="电费查询" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JAX-Gx-MX3">
-                    <frame key="frameInset" minX="40.80%" minY="94.45%" width="18.40%" height="5.10%"/>
+                    <frame key="frameInset" minX="40.80%" minY="94.30%" width="18.40%" height="5.25%"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="更多" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f8Z-5w-qi4">
-                    <frame key="frameInset" minX="69.07%" minY="94.45%" width="18.40%" height="5.10%"/>
+                    <frame key="frameInset" minX="69.07%" minY="94.30%" width="18.40%" height="5.25%"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="二手市场" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bmG-U5-nsF">
-                    <frame key="frameInset" minX="69.07%" minY="78.86%" width="18.40%" height="4.50%"/>
+                    <frame key="frameInset" minX="69.07%" minY="78.71%" width="18.40%" height="4.65%"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="校园说说" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="svF-Bs-lht">
-                    <frame key="frameInset" minX="40.27%" minY="78.86%" width="19.47%" height="4.50%"/>
+                    <frame key="frameInset" minX="39.73%" minY="78.71%" width="19.47%" height="4.65%"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" image="main4" translatesAutoresizingMaskIntoConstraints="NO" id="p0y-hw-8hs">
-                    <frame key="frameInset" minY="28.04%" height="13.79%" maxX="-3"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                </imageView>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EXV-Sv-7jO">
-                    <frame key="frameInset" minX="69.07%" minY="51.12%" width="18.40%" height="10.64%"/>
+                    <frame key="frameInset" minX="69.07%" minY="50.98%" width="18.40%" height="10.35%"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <state key="normal" backgroundImage="kaoshi"/>
+                    <connections>
+                        <action selector="Day:" destination="-1" eventType="touchUpInside" id="RXl-j4-zUr"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="通知" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5mi-m9-btC">
+                    <frame key="frameInset" minX="18.13%" minY="34.18%" width="45.33%" height="3.15%"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="欢迎使用工大导航" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="72Q-bm-Qn2">
+                    <frame key="frameInset" minX="18.13%" minY="37.63%" width="58.67%" height="3.15%"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="10-13 15:45" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jmr-C0-tfl">
+                    <frame key="frameInset" minX="73.07%" minY="37.63%" width="26.93%" height="3.60%"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tOD-9h-L2q">
+                    <frame key="frameInset" minX="11.47%" minY="84.86%" width="18.40%" height="10.35%"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                    <state key="normal" backgroundImage="wangshangzuoye"/>
+                    <connections>
+                        <action selector="HomeWork:" destination="-1" eventType="touchUpInside" id="A36-Va-KEz"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yNT-hu-4zn">
+                    <frame key="frameInset" minX="11.47%" minY="50.98%" width="18.40%" height="10.35%"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                    <state key="normal" backgroundImage="chengji"/>
+                    <connections>
+                        <action selector="Score:" destination="-1" eventType="touchUpInside" id="DVr-Hx-hdB"/>
+                        <action selector="Test:" destination="-1" eventType="touchUpInside" id="lE5-7a-NjC"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-            <point key="canvasLocation" x="25.5" y="50.5"/>
+            <point key="canvasLocation" x="25" y="50"/>
         </view>
     </objects>
     <resources>
@@ -171,9 +209,10 @@
         <image name="kaoshi" width="102" height="102"/>
         <image name="kebiao" width="102" height="102"/>
         <image name="main2" width="720" height="200"/>
-        <image name="main3" width="542" height="90"/>
-        <image name="main4" width="542" height="132"/>
+        <image name="main3" width="720" height="60"/>
+        <image name="main4" width="720" height="173"/>
         <image name="shuoshuo" width="102" height="102"/>
+        <image name="tongzhi" width="72" height="72"/>
         <image name="tushuguan" width="102" height="102"/>
         <image name="wangshangzuoye" width="102" height="102"/>
         <image name="white" width="612" height="816"/>
