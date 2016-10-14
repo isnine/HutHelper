@@ -45,6 +45,7 @@
     //打开日志，方便调试
     [UMessage setLogEnabled:YES];
 
+
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];   //设置通用背景颜色
     [self.window makeKeyAndVisible];

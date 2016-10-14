@@ -17,6 +17,7 @@
 #import "SchoolsayViewController.h"
 #import "SchoolHandViewController.h"
 #import "DayViewController.h"
+#import "UMessage.h"
 #define vBackBarButtonItemName  @"backArrow.png"    //导航条返回默认图片名
 @interface MainPageViewController ()
 
@@ -55,7 +56,18 @@
     }
     //-----是否打开课程表----//
   
-    
+    NSString *name_tag = [defaults objectForKey:@"TrueName"];
+    if(name_tag!=NULL){
+        [UMessage addTag:name_tag
+                response:^(id responseObject, NSInteger remain, NSError *error) {
+                    //add your codes
+                }];
+        [UMessage addTag:@"版本1.1"
+                response:^(id responseObject, NSInteger remain, NSError *error) {
+                    //add your codes
+                }];
+        
+    }
 }
 
 - (void) openOrCloseLeftList 

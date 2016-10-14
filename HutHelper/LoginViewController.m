@@ -94,6 +94,8 @@
                 response:^(id responseObject, NSInteger remain, NSError *error) {
                     //add your codes
                 }];
+        
+        
         //推送标签
         
         [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:([self.navigationController.viewControllers count] -2)] animated:YES];  //返回上一个View
