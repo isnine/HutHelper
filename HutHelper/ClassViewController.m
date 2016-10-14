@@ -108,8 +108,12 @@ _Bool IfWeeks(int nowweek, int dsz, int qsz, int jsz) {
 
        ClassName=[ClassName stringByAppendingString:@"\n@"];
        ClassName=[ClassName stringByAppendingString:Room];
-
-       if(IfWeeks((short)nowweek,dsz_num,StartWeek_num,EndWeek_num)){
+       NSInteger *weeek=[defaults integerForKey:@"TrueWeek"];
+       if([self.navigationController.viewControllers count]>=3){
+           weeek=nowweek;
+       }
+       
+       if(IfWeeks(weeek,dsz_num,StartWeek_num,EndWeek_num)){
            if(StartClass_num==1){
                switch (day1) {
                    case 1:
@@ -341,7 +345,7 @@ _Bool IfWeeks(int nowweek, int dsz, int qsz, int jsz) {
                                 NSInteger *nowweek = [defaults integerForKey:@"NowWeek"];
                                 nowweek=(short)nowweek+1;
                                 [defaults setInteger:nowweek forKey:@"NowWeek"];
-                                
+                               
                                 NSLog(@"函数外，现在周次%d",nowweek);
                                     
 
@@ -350,16 +354,16 @@ _Bool IfWeeks(int nowweek, int dsz, int qsz, int jsz) {
                                 AppDelegate *tempAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
                                 [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:NO];
                                 }
-                                if (index == 3){ //上一周{
+            if (index == 3){ //上一周{
                      
-                        NSInteger *nowweek = [defaults integerForKey:@"NowWeek"];
+     NSInteger *nowweek = [defaults integerForKey:@"NowWeek"];
                                     
                                 if(nowweek!=1)
                                 {
                                     nowweek=(short)nowweek-1;
                                 }
                                     [defaults setInteger:nowweek forKey:@"NowWeek"];
-                                    
+                                 
                                     NSLog(@"函数外，现在周次%d",nowweek);
                   
                                     UIStoryboard *mainStoryBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
@@ -427,8 +431,10 @@ _Bool IfWeeks(int nowweek, int dsz, int qsz, int jsz) {
     [self.navigationController.view addSubview:_plusButtonsViewMain];
     
     
-    
-    // -----
+
+    if([self.navigationController.viewControllers count]>=3){
+        [_plusButtonsViewMain removeFromSuperview];
+    }
     
 }
 
@@ -474,6 +480,8 @@ _Bool IfWeeks(int nowweek, int dsz, int qsz, int jsz) {
 - (void)viewWillDisappear:(BOOL)animated
 {
      [_plusButtonsViewMain removeFromSuperview];
+       NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+        [defaults setInteger:[defaults integerForKey:@"TrueWeek"] forKey:@"NowWeek"];
 
 }
 

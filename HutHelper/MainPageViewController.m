@@ -162,6 +162,7 @@ int CountWeeks(int nowyear, int nowmonth, int nowday) {
     int month = [dateComponent month]; //月
     int day = [dateComponent day];  //日
     [defaults setInteger:CountWeeks(year, month, day) forKey:@"NowWeek"];
+    [defaults setInteger:CountWeeks(year, month, day) forKey:@"TrueWeek"];
     //判断完毕//
 }
 
