@@ -105,18 +105,7 @@
     
 }
 
-- (IBAction)Test:(id)sender {
-    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    NSString *name=[defaults objectForKey:@"TrueName"];
-    NSString *gender=[defaults objectForKey:@"studentKH"];
 
-    if(gender==@"(null)"){
-          NSLog(@"no");
-    }
-    //打印数据
-    NSLog(@"name=%@,gender=%@,",name,gender);
-
-}
 
 - (IBAction)ClassFind:(id)sender {  //课表界面
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
@@ -192,11 +181,7 @@
     [tempAppDelegate.mainNavigationController pushViewController:day animated:NO];
     
 }
-- (IBAction)Notice:(id)sender {
-    NoticeViewController *notice = [[NoticeViewController alloc] init];
-    AppDelegate *tempAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    [tempAppDelegate.mainNavigationController pushViewController:notice animated:NO];
-}
+
 - (IBAction)Library:(id)sender {
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"温馨提示"
                                                             message:@"图书馆需要内网环境，连接工大的Wifi后才能使用"
