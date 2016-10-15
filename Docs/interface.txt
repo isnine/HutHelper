@@ -4,10 +4,17 @@ hugongda.com:8888/api/v1/get/login/学号/password/1
 http://218.75.197.121:8888/api/v1/get/myhomework/学号/remember_code_app
 课表接口:
 http://218.75.197.121:8888/api/v1/get/lessons/学号/remember_code_app
+实验课表:
+http://218.75.197.121:8888//api/v1/get/lessonsexp/学号/remember_code_app
 成绩接口
 http://218.75.197.121:8888/api/v1/get/scores/学号/remember_code_app/sha1(remember_code_app+"f$Z@%")
 
+课程计划:http://218.75.197.124:84/api/exam/学号/key/md5(学号+apiforapp!)
 
+
+http://218.75.197.121:8888//api/v1/get/lessonsexp/15408500245/bde2af86e35c9d7ca9dbe42fbad850b4f0362050
+
+http://218.75.197.124:84/api/exam/15408500245/key/ade02120703fa6ce7acf73856eca75e8
 http://218.75.197.121:8888/api/v1/get/lessons/15408500245/c59cd3bcfb143331dd5e31e3bc4a818fa7d5d96f
 http://218.75.197.121:8888/api/v1/get/scores/15408500245/e1b0fcf5f8a962d2dd8cd01d691e82441dfb7ed3/52e604baac4d9f1725a46b76bab927c012fadd13
 

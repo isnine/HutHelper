@@ -17,6 +17,7 @@
 #import "SchoolsayViewController.h"
 #import "SchoolHandViewController.h"
 #import "DayViewController.h"
+#import "ExamViewController.h"
 #import "UMessage.h"
 #define vBackBarButtonItemName  @"backArrow.png"    //导航条返回默认图片名
 @interface MainPageViewController ()
@@ -253,6 +254,12 @@ int CountWeeks(int nowyear, int nowmonth, int nowday) {
         LibraryViewController *library = [[LibraryViewController alloc] init];
         AppDelegate *tempAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
          [tempAppDelegate.mainNavigationController pushViewController:library animated:NO];
+}
+- (IBAction)Exam:(id)sender {
+    ExamViewController *exam = [[ExamViewController alloc] init];
+    AppDelegate *tempAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [tempAppDelegate.mainNavigationController pushViewController:exam animated:NO];
+    
 }
 
 

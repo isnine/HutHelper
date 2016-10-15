@@ -1,0 +1,39 @@
+//
+//  PrefixHeader.pch
+//  demo1
+//
+//  Created by apple on 16/4/1.
+//  Copyright © 2016年 apple. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#endif /* PrefixHeader_pch */
+
+
+#define WIDTH [UIScreen mainScreen].bounds.size.width
+#define HEIGHT [UIScreen mainScreen].bounds.size.height
+#define SP_W(width) WIDTH*(width/320.0)
+#define SP_H(height) HEIGHT*(height/480.0)
+#define NAVIGATIONBAR_HEIGHT 64
+// 各种宏
+
+//颜色的RGB
+#define RGBACOLOR(r,g,b,a) [UIColor colorWithRed:(float)r/255.0f green:(float)g/255.0f blue:(float)b/255.0f alpha:a]
+
+// 颜色
+#define LTColor(r, g, b, a)         ([UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:a])
+#define LTWhiteColor                (LTColor(255, 255, 255, 1))
+
+// 构造CGRect
+#define LTRect(x, y, w, h)          (CGRectMake(x, y, w, h))
+
+// 普通字体
+#define LTFont(size)                ([UIFont systemFontOfSize:size])
+
+// 粗体字
+#define LTBoldFont(size)            ([UIFont boldSystemFontOfSize:size])
