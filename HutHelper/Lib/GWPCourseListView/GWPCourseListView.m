@@ -274,7 +274,7 @@
 - (void)setCourseDataArr:(NSArray<id<Course>> *)courseDataArr{
     __block NSUInteger cha = 0;
     
-    for (int i=0; i<MaxDay; i++) {
+    for (int i=0; i<=MaxDay; i++) {
         NSPredicate *pre = [NSPredicate predicateWithBlock:^BOOL(id<Course>  _Nonnull evaluatedObject, NSDictionary<NSString *,id> * _Nullable bindings) {
             return evaluatedObject.dayIndex==i;
         }];

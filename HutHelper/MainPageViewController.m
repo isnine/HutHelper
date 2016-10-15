@@ -113,11 +113,47 @@ int CountWeeks(int nowyear, int nowmonth, int nowday) {
                 response:^(id responseObject, NSInteger remain, NSError *error) {
                     //add your codes
                 }];
-        [UMessage addTag:@"版本1.1"
+        [UMessage addTag:@"版本1.1.4"
                 response:^(id responseObject, NSInteger remain, NSError *error) {
                     //add your codes
                 }];
-        
+        //---标签添加---//
+ 
+        [defaults setInteger:0 forKey:@"xp_on"];
+        //课表数据归元//
+      NSString *studentKH = [defaults objectForKey:@"studentKH"];
+        NSString *ifarray_xp = [defaults objectForKey:@"array_xp"];
+        if(studentKH!=NULL&&ifarray_xp==NULL)
+        {
+         NSString *Remember_code_app=[defaults objectForKey:@"remember_code_app"];
+            NSString *Url_String_xp_1=@"http://218.75.197.121:8888/api/v1/get/lessonsexp/";
+            NSString *Url_String_xp_1_U=[Url_String_xp_1 stringByAppendingString:studentKH];
+            NSString *Url_String_xp_1_U_2=[Url_String_xp_1_U stringByAppendingString:@"/"];
+            NSString *Url_String_xp=[Url_String_xp_1_U_2 stringByAppendingString:Remember_code_app];
+            //地址//
+            NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:Url_String_xp]];       
+            NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+            NSError *error = nil;
+     NSDictionary *jsonDataxp = [NSJSONSerialization JSONObjectWithData:response options:NSJSONReadingMutableLeaves error:&error];
+            NSString *msg=[jsonDataxp objectForKey:@"msg"];
+            if([msg isEqualToString:@"ok"]){
+
+            NSArray *array_xp = [jsonDataxp objectForKey:@"data"];
+            
+            //----------------实验课表数据缓存---------------//
+            [defaults setObject:array_xp forKey:@"array_xp"];
+            //强制让数据立刻保存
+            [defaults synchronize];
+            }
+            else{
+                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"登录过期"
+                                                                    message:@"请重新登录"
+                                                                   delegate:self
+                                                          cancelButtonTitle:@"取消"
+                                                          otherButtonTitles:@"确定", nil];
+                [alertView show];
+            }
+        }
     }
 }
 
@@ -245,12 +281,6 @@ int CountWeeks(int nowyear, int nowmonth, int nowday) {
 }
 
 - (IBAction)Library:(id)sender {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"温馨提示"
-                                                            message:@"图书馆需要内网环境，连接工大的Wifi后才能使用"
-                                                           delegate:self
-                                                  cancelButtonTitle:@"取消"
-                                                  otherButtonTitles:@"确定", nil];
-        [alertView show];
         LibraryViewController *library = [[LibraryViewController alloc] init];
         AppDelegate *tempAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
          [tempAppDelegate.mainNavigationController pushViewController:library animated:NO];
@@ -258,10 +288,31 @@ int CountWeeks(int nowyear, int nowmonth, int nowday) {
 - (IBAction)Exam:(id)sender {
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     NSArray *studentKH = [defaults objectForKey:@"studentKH"];
+    
+    
     if(studentKH!=NULL){
+        NSInteger *exam_on = [defaults integerForKey:@"exam_on"];
+        if(exam_on!=1){
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"温馨提示"
+                                                                message:@"考试序号后的红灯代表考试正在计划中\n绿灯代表考试正在执行中,时间不再变动"
+                                                               delegate:self
+                                                      cancelButtonTitle:@"取消"
+                                                      otherButtonTitles:@"确定", nil];
+            [alertView show];
+                [defaults setInteger:1 forKey:@"exam_on"];
+        }
+        
     ExamViewController *exam = [[ExamViewController alloc] init];
     AppDelegate *tempAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [tempAppDelegate.mainNavigationController pushViewController:exam animated:NO];
+    }
+    else{
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"温馨提示"
+                                                            message:@"请先登录"
+                                                           delegate:self
+                                                  cancelButtonTitle:@"取消"
+                                                  otherButtonTitles:@"确定", nil];
+        [alertView show];
     }
 }
 

@@ -58,10 +58,11 @@
     {
         NSLog(@"正确:%@",Msg);// 调出Data字典中TrueName
         NSString *Remember_code_app=[User_All objectForKey:@"remember_code_app"]; //令牌
+        
         NSString *TrueName=[User_Data objectForKey:@"TrueName"]; //真实姓名
         NSString *studentKH=[User_Data objectForKey:@"studentKH"]; //学号
-        
-
+        NSString *dep_name=[User_Data objectForKey:@"dep_name"]; //学院
+      NSString *class_name=[User_Data objectForKey:@"class_name"];  //班级
         //保存数据(如果设置数据之后没有同步, 会在将来某一时间点自动将数据保存到Preferences文件夹下面)
         [defaults setObject:Remember_code_app forKey:@"remember_code_app"];
         [defaults setObject:TrueName forKey:@"TrueName"];
@@ -94,7 +95,14 @@
                 response:^(id responseObject, NSInteger remain, NSError *error) {
                     //add your codes
                 }];
-        
+        [UMessage addTag:dep_name
+                response:^(id responseObject, NSInteger remain, NSError *error) {
+                    //add your codes
+                }];
+        [UMessage addTag:class_name
+                response:^(id responseObject, NSInteger remain, NSError *error) {
+                    //add your codes
+                }];
         
         //推送标签
         
@@ -119,8 +127,6 @@
         [defaults synchronize];
         
         [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:([self.navigationController.viewControllers count] -2)] animated:YES];  //返回上一个View
-        
-        
         
     }
     else

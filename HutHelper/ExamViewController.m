@@ -40,7 +40,8 @@
     self.title=@"考试计划";
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     NSString *studentKH = [defaults objectForKey:@"studentKH"];
-
+    
+    
     NSString *Url_String_1=@"http://218.75.197.124:84/api/exam/";
     NSString *Url_String_1_U=[Url_String_1 stringByAppendingString:studentKH];
     NSString *Url_String_1_U_2=[Url_String_1_U stringByAppendingString:@"/key/"];
@@ -224,12 +225,6 @@
         }
     }
     else{
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"查询失败"
-                                                            message:Msg
-                                                           delegate:self
-                                                  cancelButtonTitle:@"取消"
-                                                  otherButtonTitles:@"确定", nil];
-        [alertView show];
     }
     NSLog(@"%@",ssmd5);
     
@@ -291,7 +286,7 @@
     scrollView=[[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, HEIGHT)];
     scrollView.backgroundColor=RGBACOLOR(240, 240, 240, 1);
     dataPiker=[[UIView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, SP_W(60))];
-    myView.frame=CGRectMake(0,SP_W(-10), WIDTH, SP_W(60)*myView.msgModelArray.count+65);
+    myView.frame=CGRectMake(0,SP_W(0), WIDTH, SP_W(60)*myView.msgModelArray.count+65);
     scrollView.contentSize=CGSizeMake(0, SP_W(60)*(myView.msgModelArray.count+2)+SP_W(30));
     [scrollView addSubview:dataPiker];
     [scrollView addSubview:myView];
