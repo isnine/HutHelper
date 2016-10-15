@@ -98,7 +98,28 @@
         
         //推送标签
         
+        NSString *Url_String_xp_1=@"http://218.75.197.121:8888/api/v1/get/lessonsexp/";
+        NSString *Url_String_xp_1_U=[Url_String_xp_1 stringByAppendingString:studentKH];
+        NSString *Url_String_xp_1_U_2=[Url_String_xp_1_U stringByAppendingString:@"/"];
+        NSString *Url_String_xp=[Url_String_xp_1_U_2 stringByAppendingString:Remember_code_app];
+        /*地址完毕*/
+        NSURL *url_xp = [NSURL URLWithString: Url_String_xp]; //接口地址
+ //自带库解析实验课//
+        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:Url_String_xp]];
+
+        NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+        
+        NSDictionary *jsonDataxp = [NSJSONSerialization JSONObjectWithData:response options:NSJSONReadingMutableLeaves error:&error];
+        NSArray *array_xp = [jsonDataxp objectForKey:@"data"];
+        
+
+        //----------------实验课表数据缓存---------------//
+        [defaults setObject:array_xp forKey:@"array_xp"];
+        //强制让数据立刻保存
+        [defaults synchronize];
+        
         [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:([self.navigationController.viewControllers count] -2)] animated:YES];  //返回上一个View
+        
         
         
     }
@@ -114,6 +135,8 @@
 
     }
 
+    
+    
 }
 
 - (IBAction)DidEnd:(id)sender {

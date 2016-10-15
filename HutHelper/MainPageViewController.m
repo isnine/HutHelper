@@ -256,11 +256,16 @@ int CountWeeks(int nowyear, int nowmonth, int nowday) {
          [tempAppDelegate.mainNavigationController pushViewController:library animated:NO];
 }
 - (IBAction)Exam:(id)sender {
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    NSArray *studentKH = [defaults objectForKey:@"studentKH"];
+    if(studentKH!=NULL){
     ExamViewController *exam = [[ExamViewController alloc] init];
     AppDelegate *tempAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [tempAppDelegate.mainNavigationController pushViewController:exam animated:NO];
-    
+    }
 }
+
+
 
 
 @end
