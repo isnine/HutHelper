@@ -18,7 +18,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"图书馆";
-    NSString *Url_String=@"http://172.16.64.7:8080/opac/index";
+    NSString *Url_String=@"http://218.75.197.121:8889/";
     
     NSURL *url = [[NSURL alloc]initWithString:Url_String];
     [_views loadRequest:[NSURLRequest requestWithURL:url]];
