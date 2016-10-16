@@ -10,7 +10,7 @@
 #import "MyView.h"
 #import "MsgModel.h"
 #import "JSONKit.h"
-
+#import "UMMobClick/MobClick.h"
 @interface ExamViewController (){
    UIScrollView * scrollView;
    MyView * myView;
@@ -283,6 +283,8 @@
    
 }
 -(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [MobClick beginLogPageView:@"考试计划"];//("PageOne"为页面名称，可自定义)
     scrollView=[[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, HEIGHT)];
     scrollView.backgroundColor=RGBACOLOR(240, 240, 240, 1);
     dataPiker=[[UIView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, SP_W(60))];
@@ -292,6 +294,12 @@
     [scrollView addSubview:myView];
     [self.view addSubview:scrollView];
 }
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [MobClick endLogPageView:@"考试计划"];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

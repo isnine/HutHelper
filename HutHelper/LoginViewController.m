@@ -67,6 +67,8 @@
         [defaults setObject:Remember_code_app forKey:@"remember_code_app"];
         [defaults setObject:TrueName forKey:@"TrueName"];
         [defaults setObject:studentKH forKey:@"studentKH"];
+        [defaults setObject:dep_name forKey:@"dep_name"];
+        [defaults setObject:class_name forKey:@"class_name"];
         //强制让数据立刻保存
         [defaults synchronize];
         NSLog(@"用户：%@，学号：%@,令牌:%@",TrueName,studentKH,Remember_code_app);

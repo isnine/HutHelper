@@ -11,7 +11,7 @@
 #import "LeftSortsViewController.h"
 #import "UMessage.h"
 
-
+#import "UMMobClick/MobClick.h"
 @interface AppDelegate ()
 
 @end
@@ -44,7 +44,13 @@
     }];
     //打开日志，方便调试
     [UMessage setLogEnabled:YES];
-
+//统计------//
+    UMConfigInstance.appKey = @"57fe13d867e58e0e59000ca1";
+    UMConfigInstance.ChannelId = @"App Store";
+    UMConfigInstance.eSType = E_UM_GAME; //仅适用于游戏场景，应用统计不用设置
+   
+    [MobClick startWithConfigure:UMConfigInstance];//配置以上参数后调用此方法初始化SDK！
+    ///
 
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];   //设置通用背景颜色

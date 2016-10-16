@@ -7,7 +7,7 @@
 //
 
 #import "SchoolsayViewController.h"
-
+#import "UMMobClick/MobClick.h"
 @interface SchoolsayViewController ()
 @property (weak, nonatomic) IBOutlet UIWebView *Show;
 
@@ -36,5 +36,14 @@
     // Pass the selected object to the new view controller.
 }
 */
-
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [MobClick beginLogPageView:@"校园说说"];//("PageOne"为页面名称，可自定义)
+}
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [MobClick endLogPageView:@"校园说说"];
+}
 @end

@@ -12,6 +12,7 @@
 #import "JSONKit.h"
 #import "LGPlusButtonsView.h"
 #import "AppDelegate.h"
+#import "UMMobClick/MobClick.h"
 @interface ClassViewController ()<GWPCourseListViewDataSource, GWPCourseListViewDelegate>
 @property (weak, nonatomic) IBOutlet GWPCourseListView *courseListView;
 @property (nonatomic, strong) NSArray<CourseModel*> *courseArr;
@@ -531,7 +532,8 @@ _Bool IfWeeks(int nowweek, int dsz, int qsz, int jsz) {
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
+
+    [MobClick beginLogPageView:@"课表查询"];//("PageOne"为页面名称，可自定义)
     _plusButtonsViewMain = [LGPlusButtonsView plusButtonsViewWithNumberOfButtons:4
                                                          firstButtonIsPlusButton:YES
                                                                    showAfterInit:YES
@@ -690,6 +692,8 @@ _Bool IfWeeks(int nowweek, int dsz, int qsz, int jsz) {
 
 - (void)viewWillDisappear:(BOOL)animated
 {
+    [super viewWillDisappear:animated];
+    [MobClick endLogPageView:@"课表查询"];
      [_plusButtonsViewMain removeFromSuperview];
        NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
         [defaults setInteger:[defaults integerForKey:@"TrueWeek"] forKey:@"NowWeek"];

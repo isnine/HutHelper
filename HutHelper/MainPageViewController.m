@@ -19,6 +19,7 @@
 #import "DayViewController.h"
 #import "ExamViewController.h"
 #import "UMessage.h"
+#import "UMMobClick/MobClick.h"
 #define vBackBarButtonItemName  @"backArrow.png"    //导航条返回默认图片名
 @interface MainPageViewController ()
 
@@ -73,7 +74,18 @@ int CountWeeks(int nowyear, int nowmonth, int nowday) {
     [self.navigationController.navigationBar setTitleTextAttributes:
   @{NSFontAttributeName:[UIFont systemFontOfSize:19],
     NSForegroundColorAttributeName:[UIColor whiteColor]}];   //标题字体颜色
-
+    Class cls = NSClassFromString(@"UMANUtil");
+    SEL deviceIDSelector = @selector(openUDIDString);
+    NSString *deviceID = nil;
+    if(cls && [cls respondsToSelector:deviceIDSelector]){
+        deviceID = [cls performSelector:deviceIDSelector];
+    }
+    NSData* jsonData = [NSJSONSerialization dataWithJSONObject:@{@"oid" : deviceID}
+                                                       options:NSJSONWritingPrettyPrinted
+                                                         error:nil];
+    
+    NSLog(@"%@", [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding]);
+    
     
 
     UIButton *menuBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -108,12 +120,27 @@ int CountWeeks(int nowyear, int nowmonth, int nowday) {
     //-----是否打开课程表----//
   
     NSString *name_tag = [defaults objectForKey:@"TrueName"];
+    NSString *class_name = [defaults objectForKey:@"class_name"];
+    NSString *dep_name = [defaults objectForKey:@"dep_name"];
     if(name_tag!=NULL){
         [UMessage addTag:name_tag
                 response:^(id responseObject, NSInteger remain, NSError *error) {
                     //add your codes
                 }];
-        [UMessage addTag:@"版本1.1.4"
+        [MobClick profileSignInWithPUID:@"name_tag"];
+    }
+    if(class_name!=NULL){
+            [UMessage addTag:class_name
+                    response:^(id responseObject, NSInteger remain, NSError *error) {
+                        //add your codes
+                    }];}
+    if(dep_name!=NULL){
+                [UMessage addTag:dep_name
+                        response:^(id responseObject, NSInteger remain, NSError *error) {
+                            //add your codes
+                        }];}
+        
+    [UMessage addTag:@"版本1.1.5"
                 response:^(id responseObject, NSInteger remain, NSError *error) {
                     //add your codes
                 }];
@@ -153,7 +180,7 @@ int CountWeeks(int nowyear, int nowmonth, int nowday) {
                                                           otherButtonTitles:@"确定", nil];
                 [alertView show];
             }
-        }
+        
     }
 }
 

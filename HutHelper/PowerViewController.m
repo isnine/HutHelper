@@ -8,6 +8,7 @@
 
 #import "PowerViewController.h"
 #import "JSONKit.h"
+#import "UMMobClick/MobClick.h"
 @interface PowerViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *Building;
 @property (weak, nonatomic) IBOutlet UITextField *Room;
@@ -76,6 +77,15 @@
     }
     
 }
-
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [MobClick beginLogPageView:@"电费查询"];//("PageOne"为页面名称，可自定义)
+}
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [MobClick endLogPageView:@"电费查询"];
+}
 
 @end
