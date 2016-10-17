@@ -16,14 +16,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-     self.navigationItem.title = @"关于";
-    UIColor *greyColor= [UIColor colorWithRed:239/255.0 green:239/255.0 blue:239/255.0 alpha:1];
+    self.navigationItem.title = @"关于";
+    UIColor *greyColor        = [UIColor colorWithRed:239/255.0 green:239/255.0 blue:239/255.0 alpha:1];
     self.view.backgroundColor = greyColor;
     // Do any additional setup after loading the view from its nib.
-    
-  
 
-    
+
+
+
 }
 
 - (void)didReceiveMemoryWarning {

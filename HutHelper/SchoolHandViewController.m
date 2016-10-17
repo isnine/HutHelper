@@ -18,7 +18,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"校园二手";
-    NSURL *url = [[NSURL alloc]initWithString:@"http://218.75.197.121:8888/trade/goods"];
+    NSURL *url                = [[NSURL alloc]initWithString:@"http://218.75.197.121:8888/trade/goods"];
     [_Show loadRequest:[NSURLRequest requestWithURL:url]];
 }
 

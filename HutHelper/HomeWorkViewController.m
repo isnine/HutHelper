@@ -19,21 +19,21 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-     self.navigationItem.title = @"网上作业";
+    self.navigationItem.title = @"网上作业";
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     NSString *studentKH=[defaults objectForKey:@"studentKH"];
     NSString *remember_code_app=[defaults objectForKey:@"remember_code_app"];
         NSString *Url_String_1=@"http://218.75.197.121:8888/api/v1/get/myhomework/";
     NSString *Url_String_2=@"/";
-    
+
     NSString *Url_String_1_U=[Url_String_1 stringByAppendingString:studentKH];
     NSString *Url_String_1_U_2=[Url_String_1_U stringByAppendingString:Url_String_2];
     NSString *Url_String=[Url_String_1_U_2 stringByAppendingString:remember_code_app];
-    
-    NSURL *url = [[NSURL alloc]initWithString:Url_String];
+
+    NSURL *url                = [[NSURL alloc]initWithString:Url_String];
     [_views loadRequest:[NSURLRequest requestWithURL:url]];
-    
-    
+
+
 }
 
 

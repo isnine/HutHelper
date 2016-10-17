@@ -20,16 +20,16 @@
 @implementation NSString (MD5)
  - (id)MD5
  {
-         const char *cStr = [self UTF8String];
+    const char *cStr           = [self UTF8String];
          unsigned char digest[16];
          unsigned int x=(int)strlen(cStr) ;
          CC_MD5( cStr, x, digest );
          // This is the md5 call
-         NSMutableString *output = [NSMutableString stringWithCapacity:CC_MD5_DIGEST_LENGTH * 2];
-    
-         for(int i = 0; i < CC_MD5_DIGEST_LENGTH; i++)
+    NSMutableString *output    = [NSMutableString stringWithCapacity:CC_MD5_DIGEST_LENGTH * 2];
+
+    for(int i                  = 0; i < CC_MD5_DIGEST_LENGTH; i++)
                  [output appendFormat:@"%02x", digest[i]];
-    
+
         return  output;
  }
  @end
@@ -39,21 +39,21 @@
     [super viewDidLoad];
     self.title=@"考试计划";
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    NSString *studentKH = [defaults objectForKey:@"studentKH"];
-    
-    
+    NSString *studentKH        = [defaults objectForKey:@"studentKH"];
+
+
     NSString *Url_String_1=@"http://218.75.197.124:84/api/exam/";
     NSString *Url_String_1_U=[Url_String_1 stringByAppendingString:studentKH];
     NSString *Url_String_1_U_2=[Url_String_1_U stringByAppendingString:@"/key/"];
     NSString *ss=[studentKH stringByAppendingString:@"apiforapp!"];
     NSString *ssmd5=[ss MD5];
     NSString *Url_String=[Url_String_1_U_2 stringByAppendingString:ssmd5];
-    
-    NSURL *url = [NSURL URLWithString: Url_String]; //接口地址
-    NSError *error = nil;
-    NSString *jsonString = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:&error];//Url -> String
-    NSData* jsonData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];//地址 -> 数据
-    NSDictionary *User_All = [jsonData objectFromJSONData];//数据 -> 字典
+
+    NSURL *url                 = [NSURL URLWithString: Url_String];//接口地址
+    NSError *error             = nil;
+    NSString *jsonString       = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:&error];//Url -> String
+    NSData* jsonData           = [jsonString dataUsingEncoding:NSUTF8StringEncoding];//地址 -> 数据
+    NSDictionary *User_All     = [jsonData objectFromJSONData];//数据 -> 字典
    //All字典 -> Data字典
 //
    NSString *Msg=[User_All objectForKey:@"msg"];
@@ -73,26 +73,26 @@
     MsgModel * mode11=[[MsgModel alloc]init];
     MsgModel * mode12=[[MsgModel alloc]init];
     NSDictionary *Class_Data=[User_All objectForKey:@"res"];
-    NSArray *array = [Class_Data objectForKey:@"exam"];
-    
+    NSArray *array             = [Class_Data objectForKey:@"exam"];
+
     if([status isEqualToString:@"success"]){
         int k;
-        for(k=0;k<array.count;k++){
-        NSDictionary *dict1 = array[k];
-        
-        NSString *CourseName = [dict1 objectForKey:@"CourseName"]; //第几节
-        NSString *EndTime = [dict1 objectForKey:@"EndTime"];  //结束周
-        NSString *RoomName = [dict1 objectForKey:@"RoomName"];  //起始周
-        NSString *Starttime = [dict1 objectForKey:@"Starttime"];  //起始周
-        NSString *Week_Num = [dict1 objectForKey:@"Week_Num"];  //起始周
-        NSString *isset = [dict1 objectForKey:@"isset"];  //起始周
+    for(k                      = 0;k<array.count;k++){
+    NSDictionary *dict1        = array[k];
 
-        
+    NSString *CourseName       = [dict1 objectForKey:@"CourseName"];//第几节
+    NSString *EndTime          = [dict1 objectForKey:@"EndTime"];//结束周
+    NSString *RoomName         = [dict1 objectForKey:@"RoomName"];//起始周
+    NSString *Starttime        = [dict1 objectForKey:@"Starttime"];//起始周
+    NSString *Week_Num         = [dict1 objectForKey:@"Week_Num"];//起始周
+    NSString *isset            = [dict1 objectForKey:@"isset"];//起始周
+
+
             switch (k) {
                 case 0:
-                    mode0.address=CourseName;
-                    mode0.motive=RoomName;
-                    mode0.date=Starttime;
+    mode0.address              = CourseName;
+    mode0.motive               = RoomName;
+    mode0.date                 = Starttime;
                     if ([isset isEqualToString:@"0"]) {
                         mode0.color=[UIColor redColor];
                     }
@@ -100,9 +100,9 @@
                         mode0.color=[UIColor greenColor];
                     break;
                 case 1:
-                    mode1.address=CourseName;
-                    mode1.motive=RoomName;
-                    mode1.date=Starttime;
+    mode1.address              = CourseName;
+    mode1.motive               = RoomName;
+    mode1.date                 = Starttime;
                     if ([isset isEqualToString:@"0"]) {
                         mode1.color=[UIColor redColor];
                     }
@@ -110,9 +110,9 @@
                         mode1.color=[UIColor greenColor];
                     break;
                 case 2:
-                    mode2.address=CourseName;
-                    mode2.motive=RoomName;
-                    mode2.date=Starttime;
+    mode2.address              = CourseName;
+    mode2.motive               = RoomName;
+    mode2.date                 = Starttime;
                     if ([isset isEqualToString:@"0"]) {
                         mode2.color=[UIColor redColor];
                     }
@@ -120,9 +120,9 @@
                         mode2.color=[UIColor greenColor];
                     break;
                 case 3:
-                    mode3.address=CourseName;
-                    mode3.motive=RoomName;
-                    mode3.date=Starttime;
+    mode3.address              = CourseName;
+    mode3.motive               = RoomName;
+    mode3.date                 = Starttime;
                     if ([isset isEqualToString:@"0"]) {
                         mode3.color=[UIColor redColor];
                     }
@@ -130,9 +130,9 @@
                         mode3.color=[UIColor greenColor];
                     break;
                 case 4:
-                    mode4.address=CourseName;
-                    mode4.motive=RoomName;
-                    mode4.date=Starttime;
+    mode4.address              = CourseName;
+    mode4.motive               = RoomName;
+    mode4.date                 = Starttime;
                     if ([isset isEqualToString:@"0"]) {
                         mode4.color=[UIColor redColor];
                     }
@@ -140,9 +140,9 @@
                         mode4.color=[UIColor greenColor];
                     break;
                 case 5:
-                    mode5.address=CourseName;
-                    mode5.motive=RoomName;
-                    mode5.date=Starttime;
+    mode5.address              = CourseName;
+    mode5.motive               = RoomName;
+    mode5.date                 = Starttime;
                     if ([isset isEqualToString:@"0"]) {
                         mode5.color=[UIColor redColor];
                     }
@@ -150,9 +150,9 @@
                         mode5.color=[UIColor greenColor];
                     break;
                 case 6:
-                    mode6.address=CourseName;
-                    mode6.motive=RoomName;
-                    mode6.date=Starttime;
+    mode6.address              = CourseName;
+    mode6.motive               = RoomName;
+    mode6.date                 = Starttime;
                     if ([isset isEqualToString:@"0"]) {
                         mode6.color=[UIColor redColor];
                     }
@@ -160,9 +160,9 @@
                         mode6.color=[UIColor greenColor];
                     break;
                 case 7:
-                    mode7.address=CourseName;
-                    mode7.motive=RoomName;
-                    mode7.date=Starttime;
+    mode7.address              = CourseName;
+    mode7.motive               = RoomName;
+    mode7.date                 = Starttime;
                     if ([isset isEqualToString:@"0"]) {
                         mode7.color=[UIColor redColor];
                     }
@@ -170,9 +170,9 @@
                         mode7.color=[UIColor greenColor];
                     break;
                 case 8:
-                    mode8.address=CourseName;
-                    mode8.motive=RoomName;
-                    mode8.date=Starttime;
+    mode8.address              = CourseName;
+    mode8.motive               = RoomName;
+    mode8.date                 = Starttime;
                     if ([isset isEqualToString:@"0"]) {
                         mode8.color=[UIColor redColor];
                     }
@@ -180,9 +180,9 @@
                         mode8.color=[UIColor greenColor];
                     break;
                 case 9:
-                    mode9.address=CourseName;
-                    mode9.motive=RoomName;
-                    mode9.date=Starttime;
+    mode9.address              = CourseName;
+    mode9.motive               = RoomName;
+    mode9.date                 = Starttime;
                     if ([isset isEqualToString:@"0"]) {
                         mode9.color=[UIColor redColor];
                     }
@@ -190,9 +190,9 @@
                         mode9.color=[UIColor greenColor];
                     break;
                 case 10:
-                    mode10.address=CourseName;
-                    mode10.motive=RoomName;
-                    mode10.date=Starttime;
+    mode10.address             = CourseName;
+    mode10.motive              = RoomName;
+    mode10.date                = Starttime;
                     if ([isset isEqualToString:@"0"]) {
                         mode10.color=[UIColor redColor];
                     }
@@ -200,9 +200,9 @@
                         mode10.color=[UIColor greenColor];
                     break;
                 case 11:
-                    mode11.address=CourseName;
-                    mode11.motive=RoomName;
-                    mode11.date=Starttime;
+    mode11.address             = CourseName;
+    mode11.motive              = RoomName;
+    mode11.date                = Starttime;
                     if ([isset isEqualToString:@"0"]) {
                         mode11.color=[UIColor redColor];
                     }
@@ -212,28 +212,28 @@
                 default:
                     break;
             }
-        mode1.address=CourseName;
-        mode1.motive=RoomName;
-        mode1.date=Starttime;
+    mode1.address              = CourseName;
+    mode1.motive               = RoomName;
+    mode1.date                 = Starttime;
         if ([isset isEqualToString:@"0"]) {
             mode1.color=[UIColor redColor];
         }
         else
             mode1.color=[UIColor greenColor];
-       
+
 
         }
     }
     else{
     }
     NSLog(@"%@",ssmd5);
-    
+
     myView=[[MyView alloc]init];
     MsgModel * model=[[MsgModel alloc]init];
 
     switch (array.count) {
         case 0:{
-            UIAlertView *alertView1 = [[UIAlertView alloc] initWithTitle:@"暂无考试"
+    UIAlertView *alertView1    = [[UIAlertView alloc] initWithTitle:@"暂无考试"
                                                                 message:@"计划表上暂时没有考试"
                                                                delegate:self
                                                       cancelButtonTitle:@"取消"
@@ -279,17 +279,17 @@
     }
 
     NSLog(@"%d",array.count);
-    
-   
+
+
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [MobClick beginLogPageView:@"考试计划"];//("PageOne"为页面名称，可自定义)
     scrollView=[[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, HEIGHT)];
-    scrollView.backgroundColor=RGBACOLOR(240, 240, 240, 1);
+    scrollView.backgroundColor = RGBACOLOR(240, 240, 240, 1);
     dataPiker=[[UIView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, SP_W(60))];
-    myView.frame=CGRectMake(0,SP_W(0), WIDTH, SP_W(60)*myView.msgModelArray.count+65);
-    scrollView.contentSize=CGSizeMake(0, SP_W(60)*(myView.msgModelArray.count+2)+SP_W(30));
+    myView.frame               = CGRectMake(0,SP_W(0), WIDTH, SP_W(60)*myView.msgModelArray.count+65);
+    scrollView.contentSize     = CGSizeMake(0, SP_W(60)*(myView.msgModelArray.count+2)+SP_W(30));
     [scrollView addSubview:dataPiker];
     [scrollView addSubview:myView];
     [self.view addSubview:scrollView];

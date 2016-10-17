@@ -19,20 +19,21 @@
 @implementation AppDelegate
 
 
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    
+
     //------------推送--------------------//
     //初始化方法,也可以使用(void)startWithAppkey:(NSString *)appKey launchOptions:(NSDictionary * )launchOptions httpsenable:(BOOL)value;这个方法，方便设置https请求。
     [UMessage startWithAppkey:@"57fe13d867e58e0e59000ca1" launchOptions:launchOptions];
-    
-    
+
+
     //注册通知，如果要使用category的自定义策略，可以参考demo中的代码。
     [UMessage registerForRemoteNotifications];
-    
+
     //iOS10必须加下面这段代码。
     UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
-    center.delegate=self;
-    UNAuthorizationOptions types10=UNAuthorizationOptionBadge|UNAuthorizationOptionAlert|UNAuthorizationOptionSound;
+    center.delegate                  = self;
+    UNAuthorizationOptions types10   = UNAuthorizationOptionBadge|UNAuthorizationOptionAlert|UNAuthorizationOptionSound;
     [center requestAuthorizationWithOptions:types10 completionHandler:^(BOOL granted, NSError * _Nullable error) {
         if (granted) {
             //点击允许
@@ -45,30 +46,30 @@
     //打开日志，方便调试
     [UMessage setLogEnabled:YES];
 //统计------//
-    UMConfigInstance.appKey = @"57fe13d867e58e0e59000ca1";
-    UMConfigInstance.ChannelId = @"App Store";
-    UMConfigInstance.eSType = E_UM_GAME; //仅适用于游戏场景，应用统计不用设置
-   
+    UMConfigInstance.appKey          = @"57fe13d867e58e0e59000ca1";
+    UMConfigInstance.ChannelId       = @"App Store";
+    UMConfigInstance.eSType          = E_UM_GAME;//仅适用于游戏场景，应用统计不用设置
+
     [MobClick startWithConfigure:UMConfigInstance];//配置以上参数后调用此方法初始化SDK！
     ///
 
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.window.backgroundColor = [UIColor whiteColor];   //设置通用背景颜色
+    self.window                      = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window.backgroundColor      = [UIColor whiteColor];//设置通用背景颜色
     [self.window makeKeyAndVisible];
-    
-    //    MainPageViewController *mainVC = [[MainPageViewController alloc] init]; //代码界面
-    MainPageViewController *mainVC = [[MainPageViewController alloc] initWithNibName:@"MainViewController" bundle:nil];
-    self.mainNavigationController = [[UINavigationController alloc] initWithRootViewController:mainVC];
-    
-    LeftSortsViewController *leftVC = [[LeftSortsViewController alloc] init];
-    self.LeftSlideVC = [[LeftSlideViewController alloc] initWithLeftView:leftVC andMainView:self.mainNavigationController];
-    self.window.rootViewController = self.LeftSlideVC;
-    
 
-    
-    UIColor *ownColor= [UIColor colorWithRed:0/255.0 green:219/255.0 blue:204/255.0 alpha:1];
+    //    MainPageViewController *mainVC = [[MainPageViewController alloc] init]; //代码界面
+    MainPageViewController *mainVC   = [[MainPageViewController alloc] initWithNibName:@"MainViewController" bundle:nil];
+    self.mainNavigationController    = [[UINavigationController alloc] initWithRootViewController:mainVC];
+
+    LeftSortsViewController *leftVC  = [[LeftSortsViewController alloc] init];
+    self.LeftSlideVC                 = [[LeftSlideViewController alloc] initWithLeftView:leftVC andMainView:self.mainNavigationController];
+    self.window.rootViewController   = self.LeftSlideVC;
+
+
+
+    UIColor *ownColor                = [UIColor colorWithRed:0/255.0 green:219/255.0 blue:204/255.0 alpha:1];
     [[UINavigationBar appearance] setBarTintColor: ownColor];  //颜色
-    
+
         return YES;
 }
 
@@ -101,7 +102,7 @@
 
 //iOS10新增：处理前台收到通知的代理方法
 -(void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions))completionHandler{
-    NSDictionary * userInfo = notification.request.content.userInfo;
+    NSDictionary * userInfo          = notification.request.content.userInfo;
     if([notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
         //应用处于前台时的远程推送接受
         //关闭友盟自带的弹出框
@@ -109,7 +110,7 @@
         [UMessage setAutoAlert:NO];
         //必须加这句代码
         [UMessage didReceiveRemoteNotification:userInfo];
-        
+
     }else{
         //应用处于前台时的本地推送接受
     }
@@ -119,17 +120,17 @@
 
 //iOS10新增：处理后台点击通知的代理方法
 -(void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)())completionHandler{
-    NSDictionary * userInfo = response.notification.request.content.userInfo;
+    NSDictionary * userInfo          = response.notification.request.content.userInfo;
     if([response.notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
         //应用处于后台时的远程推送接受
         //必须加这句代码
         NSLog(@"后台介绍通知");
         [UMessage didReceiveRemoteNotification:userInfo];
-        
+
     }else{
         //应用处于后台时的本地推送接受
     }
-    
+
 }
 
 @end

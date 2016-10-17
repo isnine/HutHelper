@@ -29,99 +29,99 @@
 @end
 
 @implementation MainPageViewController
-const int startyear = 2016;
-const int startmonth = 8;
-const int startday = 29;
+const int startyear                       = 2016;
+const int startmonth                      = 8;
+const int startday                        = 29;
 
 
 int CountDays(int year, int month, int day) {
     //返回当前是本年的第几天，year,month,day 表示现在的年月日，整数。
-    int a[12] = {31,0,31,30,31,30,31,31,30,31,30,31};
-    int s = 0;
-    for(int i = 0; i < month-1; i++) {
-        s += a[i];
+int a[12]                                 = {31,0,31,30,31,30,31,31,30,31,30,31};
+int s                                     = 0;
+for(int i                                 = 0; i < month-1; i++) {
+s                                         += a[i];
     }
     if(month > 2) {
         if(year % (year % 100 ? 4 : 400 ) ? 0 : 1)
-            s += 29;
+s                                         += 29;
         else
-            s += 28;
+s                                         += 28;
     }
-    
+
     return (s + day);
 }
 
 
 int CountWeeks(int nowyear, int nowmonth, int nowday) {
     //返回当前是本学期第几周，nowyear,nowmonth,nowday 表示现在的年月日，整数。
-    int ans = 0;
+int ans                                   = 0;
     if (nowyear == startyear) {
-        ans = CountDays(nowyear, nowmonth, nowday) - CountDays(startyear, startmonth, startday) + 1;
+ans                                       = CountDays(nowyear, nowmonth, nowday) - CountDays(startyear, startmonth, startday) + 1;
         printf("%d\n", ans);
     } else {
-        ans = CountDays(nowyear, nowmonth, nowday) - CountDays(nowyear, 1, 1) + 1;
+ans                                       = CountDays(nowyear, nowmonth, nowday) - CountDays(nowyear, 1, 1) + 1;
         printf("%d\n", ans);
-        ans += (CountDays(startyear, 12, 31) - CountDays(startyear, startmonth, startday) + 1);
+ans                                       += (CountDays(startyear, 12, 31) - CountDays(startyear, startmonth, startday) + 1);
         printf("%d\n", ans);
     }
     return (ans + 6) / 7;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-     self.navigationItem.title = @"主界面";
-    UIColor *greyColor= [UIColor colorWithRed:239/255.0 green:239/255.0 blue:239/255.0 alpha:1];
-    self.view.backgroundColor = greyColor;
+self.navigationItem.title                 = @"主界面";
+UIColor *greyColor                        = [UIColor colorWithRed:239/255.0 green:239/255.0 blue:239/255.0 alpha:1];
+self.view.backgroundColor                 = greyColor;
     [self.navigationController.navigationBar setTitleTextAttributes:
   @{NSFontAttributeName:[UIFont systemFontOfSize:19],
     NSForegroundColorAttributeName:[UIColor whiteColor]}];   //标题字体颜色
-    Class cls = NSClassFromString(@"UMANUtil");
-    SEL deviceIDSelector = @selector(openUDIDString);
-    NSString *deviceID = nil;
+Class cls                                 = NSClassFromString(@"UMANUtil");
+SEL deviceIDSelector                      = @selector(openUDIDString);
+NSString *deviceID                        = nil;
     if(cls && [cls respondsToSelector:deviceIDSelector]){
-        deviceID = [cls performSelector:deviceIDSelector];
+deviceID                                  = [cls performSelector:deviceIDSelector];
     }
-    NSData* jsonData = [NSJSONSerialization dataWithJSONObject:@{@"oid" : deviceID}
+NSData* jsonData                          = [NSJSONSerialization dataWithJSONObject:@{@"oid" : deviceID}
                                                        options:NSJSONWritingPrettyPrinted
                                                          error:nil];
-    
-    NSLog(@"%@", [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding]);
-    
-    
 
-    UIButton *menuBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    menuBtn.frame = CGRectMake(0, 0, 20, 18);
+    NSLog(@"%@", [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding]);
+
+
+
+UIButton *menuBtn                         = [UIButton buttonWithType:UIButtonTypeCustom];
+menuBtn.frame                             = CGRectMake(0, 0, 20, 18);
     [menuBtn setBackgroundImage:[UIImage imageNamed:@"menu"] forState:UIControlStateNormal];
     [menuBtn addTarget:self action:@selector(openOrCloseLeftList) forControlEvents:UIControlEventTouchUpInside];
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:menuBtn];
-    
+self.navigationItem.leftBarButtonItem     = [[UIBarButtonItem alloc] initWithCustomView:menuBtn];
+
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    
+
 
     //-------判断第几周---------//
-    NSDate *now = [NSDate date];
-    NSCalendar *calendar = [NSCalendar currentCalendar];
-    NSUInteger unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit |NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
-    NSDateComponents *dateComponent = [calendar components:unitFlags fromDate:now];
-    int year = [dateComponent year]; //年
-    int month = [dateComponent month]; //月
-    int day = [dateComponent day];  //日
+NSDate *now                               = [NSDate date];
+NSCalendar *calendar                      = [NSCalendar currentCalendar];
+NSUInteger unitFlags                      = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit |NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
+NSDateComponents *dateComponent           = [calendar components:unitFlags fromDate:now];
+int year                                  = [dateComponent year];//年
+int month                                 = [dateComponent month];//月
+int day                                   = [dateComponent day];//日
         [defaults setInteger:CountWeeks(year, month, day) forKey:@"NowWeek"];
     //判断完毕//
     //-----是否打开课程表----//
 
-   NSArray *array = [defaults objectForKey:@"array"];
+NSArray *array                            = [defaults objectForKey:@"array"];
     NSString *autoclass=[defaults objectForKey:@"autoclass"];
     if(array!=NULL&&[autoclass isEqualToString:@"打开"]){
-        UIStoryboard *mainStoryBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        ClassViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Class"];
-        AppDelegate *tempAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+ClassViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Class"];
+AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:NO];
     }
     //-----是否打开课程表----//
-  
-    NSString *name_tag = [defaults objectForKey:@"TrueName"];
-    NSString *class_name = [defaults objectForKey:@"class_name"];
-    NSString *dep_name = [defaults objectForKey:@"dep_name"];
+
+NSString *name_tag                        = [defaults objectForKey:@"TrueName"];
+NSString *class_name                      = [defaults objectForKey:@"class_name"];
+NSString *dep_name                        = [defaults objectForKey:@"dep_name"];
     if(name_tag!=NULL){
         [UMessage addTag:name_tag
                 response:^(id responseObject, NSInteger remain, NSError *error) {
@@ -139,17 +139,17 @@ int CountWeeks(int nowyear, int nowmonth, int nowday) {
                         response:^(id responseObject, NSInteger remain, NSError *error) {
                             //add your codes
                         }];}
-        
+
     [UMessage addTag:@"版本1.1.5"
                 response:^(id responseObject, NSInteger remain, NSError *error) {
                     //add your codes
                 }];
         //---标签添加---//
- 
+
         [defaults setInteger:0 forKey:@"xp_on"];
         //课表数据归元//
-      NSString *studentKH = [defaults objectForKey:@"studentKH"];
-        NSString *ifarray_xp = [defaults objectForKey:@"array_xp"];
+NSString *studentKH                       = [defaults objectForKey:@"studentKH"];
+NSString *ifarray_xp                      = [defaults objectForKey:@"array_xp"];
         if(studentKH!=NULL&&ifarray_xp==NULL)
         {
          NSString *Remember_code_app=[defaults objectForKey:@"remember_code_app"];
@@ -158,40 +158,40 @@ int CountWeeks(int nowyear, int nowmonth, int nowday) {
             NSString *Url_String_xp_1_U_2=[Url_String_xp_1_U stringByAppendingString:@"/"];
             NSString *Url_String_xp=[Url_String_xp_1_U_2 stringByAppendingString:Remember_code_app];
             //地址//
-            NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:Url_String_xp]];       
-            NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
-            NSError *error = nil;
-     NSDictionary *jsonDataxp = [NSJSONSerialization JSONObjectWithData:response options:NSJSONReadingMutableLeaves error:&error];
+NSURLRequest *request                     = [NSURLRequest requestWithURL:[NSURL URLWithString:Url_String_xp]];
+NSData *response                          = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+NSError *error                            = nil;
+NSDictionary *jsonDataxp                  = [NSJSONSerialization JSONObjectWithData:response options:NSJSONReadingMutableLeaves error:&error];
             NSString *msg=[jsonDataxp objectForKey:@"msg"];
             if([msg isEqualToString:@"ok"]){
 
-            NSArray *array_xp = [jsonDataxp objectForKey:@"data"];
-            
+NSArray *array_xp                         = [jsonDataxp objectForKey:@"data"];
+
             //----------------实验课表数据缓存---------------//
             [defaults setObject:array_xp forKey:@"array_xp"];
             //强制让数据立刻保存
             [defaults synchronize];
             }
             else{
-                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"登录过期"
+UIAlertView *alertView                    = [[UIAlertView alloc] initWithTitle:@"登录过期"
                                                                     message:@"请重新登录"
                                                                    delegate:self
                                                           cancelButtonTitle:@"取消"
                                                           otherButtonTitles:@"确定", nil];
                 [alertView show];
             }
-        
+
     }
 }
 
-- (void) openOrCloseLeftList 
+- (void) openOrCloseLeftList
 {
-    AppDelegate *tempAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    
+AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+
     if (tempAppDelegate.LeftSlideVC.closed)
     {
         [tempAppDelegate.LeftSlideVC openLeftView];
-        
+
     }
     else
     {
@@ -203,7 +203,7 @@ int CountWeeks(int nowyear, int nowmonth, int nowday) {
 {
     [super viewWillDisappear:animated];
     NSLog(@"viewWillDisappear");
-    AppDelegate *tempAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [tempAppDelegate.LeftSlideVC setPanEnabled:NO];
 }
 
@@ -211,20 +211,20 @@ int CountWeeks(int nowyear, int nowmonth, int nowday) {
 {
     [super viewWillAppear:animated];
     NSLog(@"viewWillAppear");
-    AppDelegate *tempAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [tempAppDelegate.LeftSlideVC setPanEnabled:YES];
-    
+
     //    LoginViewController *vb = [[LoginViewController alloc] init];
     //    [tempAppDelegate.mainNavigationController pushViewController:vb animated:NO];
     //-------判断第几周---------//
        NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    NSDate *now = [NSDate date];
-    NSCalendar *calendar = [NSCalendar currentCalendar];
-    NSUInteger unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit |NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
-    NSDateComponents *dateComponent = [calendar components:unitFlags fromDate:now];
-    int year = [dateComponent year]; //年
-    int month = [dateComponent month]; //月
-    int day = [dateComponent day];  //日
+NSDate *now                               = [NSDate date];
+NSCalendar *calendar                      = [NSCalendar currentCalendar];
+NSUInteger unitFlags                      = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit |NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
+NSDateComponents *dateComponent           = [calendar components:unitFlags fromDate:now];
+int year                                  = [dateComponent year];//年
+int month                                 = [dateComponent month];//月
+int day                                   = [dateComponent day];//日
     [defaults setInteger:CountWeeks(year, month, day) forKey:@"NowWeek"];
     [defaults setInteger:CountWeeks(year, month, day) forKey:@"TrueWeek"];
     //判断完毕//
@@ -234,15 +234,15 @@ int CountWeeks(int nowyear, int nowmonth, int nowday) {
 
 - (IBAction)ClassFind:(id)sender {  //课表界面
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    NSArray *array = [defaults objectForKey:@"array"];
+NSArray *array                            = [defaults objectForKey:@"array"];
     if(array!=NULL){
-        UIStoryboard *mainStoryBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        ClassViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Class"];
-        AppDelegate *tempAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+ClassViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Class"];
+AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:NO];
     }
     else{
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"温馨提示"
+UIAlertView *alertView                    = [[UIAlertView alloc] initWithTitle:@"温馨提示"
                                                             message:@"请先登录"
                                                            delegate:self
                                                   cancelButtonTitle:@"取消"
@@ -255,43 +255,43 @@ int CountWeeks(int nowyear, int nowmonth, int nowday) {
 - (IBAction)HomeWork:(id)sender { //作业界面
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     NSString *remember_code_app=[defaults objectForKey:@"remember_code_app"];
-    
-  
-    HomeWorkViewController *vc = [[HomeWorkViewController alloc] init];
-    AppDelegate *tempAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+
+
+HomeWorkViewController *vc                = [[HomeWorkViewController alloc] init];
+AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     if(remember_code_app!=NULL){    //判断是否已登录
          [tempAppDelegate.mainNavigationController pushViewController:vc animated:NO];
     }
     else{
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"温馨提示"
+UIAlertView *alertView                    = [[UIAlertView alloc] initWithTitle:@"温馨提示"
                                                             message:@"请先登录"
                                                            delegate:self
                                                   cancelButtonTitle:@"取消"
                                                   otherButtonTitles:@"确定", nil];
         [alertView show];
     }
-    
-    
-    
+
+
+
 }
 - (IBAction)Power:(id)sender {
-    PowerViewController *Power = [[PowerViewController alloc] init];
-    AppDelegate *tempAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+PowerViewController *Power                = [[PowerViewController alloc] init];
+AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
              [tempAppDelegate.mainNavigationController pushViewController:Power animated:NO];
 }
 - (IBAction)SchoolSay:(id)sender {
-    SchoolsayViewController *Schoolsay = [[SchoolsayViewController alloc] init];
-    AppDelegate *tempAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+SchoolsayViewController *Schoolsay        = [[SchoolsayViewController alloc] init];
+AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [tempAppDelegate.mainNavigationController pushViewController:Schoolsay animated:NO];
 }
 
 - (IBAction)SchoolHand:(id)sender {
-    SchoolHandViewController *SchoolHand = [[SchoolHandViewController alloc] init];
-    AppDelegate *tempAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+SchoolHandViewController *SchoolHand      = [[SchoolHandViewController alloc] init];
+AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [tempAppDelegate.mainNavigationController pushViewController:SchoolHand animated:NO];
 }
 - (IBAction)Score:(id)sender {
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"无法查询"
+UIAlertView *alertView                    = [[UIAlertView alloc] initWithTitle:@"无法查询"
                                                         message:@"请等待新版本"
                                                        delegate:self
                                               cancelButtonTitle:@"取消"
@@ -301,26 +301,26 @@ int CountWeeks(int nowyear, int nowmonth, int nowday) {
 
 
 - (IBAction)Day:(id)sender {
-    DayViewController *day = [[DayViewController alloc] init];
-    AppDelegate *tempAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+DayViewController *day                    = [[DayViewController alloc] init];
+AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [tempAppDelegate.mainNavigationController pushViewController:day animated:NO];
-    
+
 }
 
 - (IBAction)Library:(id)sender {
-        LibraryViewController *library = [[LibraryViewController alloc] init];
-        AppDelegate *tempAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+LibraryViewController *library            = [[LibraryViewController alloc] init];
+AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
          [tempAppDelegate.mainNavigationController pushViewController:library animated:NO];
 }
 - (IBAction)Exam:(id)sender {
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    NSArray *studentKH = [defaults objectForKey:@"studentKH"];
-    
-    
+NSArray *studentKH                        = [defaults objectForKey:@"studentKH"];
+
+
     if(studentKH!=NULL){
-        NSInteger *exam_on = [defaults integerForKey:@"exam_on"];
+NSInteger *exam_on                        = [defaults integerForKey:@"exam_on"];
         if(exam_on!=1){
-            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"温馨提示"
+UIAlertView *alertView                    = [[UIAlertView alloc] initWithTitle:@"温馨提示"
                                                                 message:@"考试序号后的红灯代表考试正在计划中\n绿灯代表考试正在执行中,时间不再变动"
                                                                delegate:self
                                                       cancelButtonTitle:@"取消"
@@ -328,13 +328,13 @@ int CountWeeks(int nowyear, int nowmonth, int nowday) {
             [alertView show];
                 [defaults setInteger:1 forKey:@"exam_on"];
         }
-        
-    ExamViewController *exam = [[ExamViewController alloc] init];
-    AppDelegate *tempAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+
+ExamViewController *exam                  = [[ExamViewController alloc] init];
+AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [tempAppDelegate.mainNavigationController pushViewController:exam animated:NO];
     }
     else{
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"温馨提示"
+UIAlertView *alertView                    = [[UIAlertView alloc] initWithTitle:@"温馨提示"
                                                             message:@"请先登录"
                                                            delegate:self
                                                   cancelButtonTitle:@"取消"
