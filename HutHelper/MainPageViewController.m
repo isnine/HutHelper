@@ -20,6 +20,7 @@
 #import "ExamViewController.h"
 #import "UMessage.h"
 #import "UMMobClick/MobClick.h"
+#import "FirstLoginViewController.h"
 #define vBackBarButtonItemName  @"backArrow.png"    //导航条返回默认图片名
 @interface MainPageViewController ()
 
@@ -107,7 +108,19 @@ int month                                 = [dateComponent month];//月
 int day                                   = [dateComponent day];//日
         [defaults setInteger:CountWeeks(year, month, day) forKey:@"NowWeek"];
     //判断完毕//
+    
+
     //-----是否打开课程表----//
+    
+
+    NSString *studentKH                       = [defaults objectForKey:@"studentKH"];
+    if(studentKH==NULL){
+        AppDelegate *tempAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        FirstLoginViewController *firstlogin                = [[FirstLoginViewController alloc] init];
+        [tempAppDelegate.mainNavigationController pushViewController:firstlogin animated:YES];
+    }
+    
+
 
 NSArray *array                            = [defaults objectForKey:@"array"];
     NSString *autoclass=[defaults objectForKey:@"autoclass"];
@@ -148,7 +161,7 @@ NSString *dep_name                        = [defaults objectForKey:@"dep_name"];
 
         [defaults setInteger:0 forKey:@"xp_on"];
         //课表数据归元//
-NSString *studentKH                       = [defaults objectForKey:@"studentKH"];
+
 NSString *ifarray_xp                      = [defaults objectForKey:@"array_xp"];
         if(studentKH!=NULL&&ifarray_xp==NULL)
         {
@@ -180,8 +193,10 @@ UIAlertView *alertView                    = [[UIAlertView alloc] initWithTitle:@
                                                           otherButtonTitles:@"确定", nil];
                 [alertView show];
             }
-
     }
+    
+
+    
 }
 
 - (void) openOrCloseLeftList
@@ -311,6 +326,7 @@ AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication share
 LibraryViewController *library            = [[LibraryViewController alloc] init];
 AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
          [tempAppDelegate.mainNavigationController pushViewController:library animated:NO];
+
 }
 - (IBAction)Exam:(id)sender {
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];

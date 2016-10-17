@@ -32,6 +32,8 @@
 		3A3E53081DB2276700A49067 /* MsgModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A3E53031DB2276700A49067 /* MsgModel.m */; };
 		3A3E53091DB2276700A49067 /* MyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A3E53051DB2276700A49067 /* MyView.m */; };
 		3A3E530A1DB2276700A49067 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A3E53071DB2276700A49067 /* Person.m */; };
+		3A45626C1DB4980800E5591A /* FirstLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A45626A1DB4980800E5591A /* FirstLoginViewController.m */; };
+		3A45626D1DB4980800E5591A /* FirstLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A45626B1DB4980800E5591A /* FirstLoginViewController.xib */; };
 		3A6D7EDA1DABD9610081B70D /* HomeWorkViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A6D7ED91DABD9610081B70D /* HomeWorkViewController.xib */; };
 		3A6D7EDE1DABD9DA0081B70D /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A6D7EDD1DABD9DA0081B70D /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		3A6D7EE31DABD9F50081B70D /* LeftSlideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A6D7EE11DABD9F50081B70D /* LeftSlideViewController.m */; };
@@ -125,6 +127,9 @@
 		3A3E53061DB2276700A49067 /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Person.h; path = HutHelper/Lib/Exam/Person.h; sourceTree = "<group>"; };
 		3A3E53071DB2276700A49067 /* Person.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Person.m; path = HutHelper/Lib/Exam/Person.m; sourceTree = "<group>"; };
 		3A3E530B1DB2286500A49067 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PrefixHeader.pch; path = HutHelper/Lib/Exam/PrefixHeader.pch; sourceTree = "<group>"; };
+		3A4562691DB4980800E5591A /* FirstLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstLoginViewController.h; sourceTree = "<group>"; };
+		3A45626A1DB4980800E5591A /* FirstLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FirstLoginViewController.m; path = HutHelper/FirstLoginViewController.m; sourceTree = "<group>"; };
+		3A45626B1DB4980800E5591A /* FirstLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FirstLoginViewController.xib; path = HutHelper/FirstLoginViewController.xib; sourceTree = "<group>"; };
 		3A6D7ED91DABD9610081B70D /* HomeWorkViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HomeWorkViewController.xib; path = HutHelper/HomeWorkViewController.xib; sourceTree = "<group>"; };
 		3A6D7EDC1DABD9DA0081B70D /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSONKit.h; path = HutHelper/Lib/JSONKit.h; sourceTree = "<group>"; };
 		3A6D7EDD1DABD9DA0081B70D /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JSONKit.m; path = HutHelper/Lib/JSONKit.m; sourceTree = "<group>"; };
@@ -322,6 +327,7 @@
 				3ABE7F1D1DAF75FB003E4085 /* LibraryViewController.xib */,
 				3ABE7F221DAF78B9003E4085 /* DayViewController.xib */,
 				3ABE7F271DAF7BBE003E4085 /* NoticeViewController.xib */,
+				3A45626B1DB4980800E5591A /* FirstLoginViewController.xib */,
 			);
 			name = View;
 			path = ..;
@@ -330,6 +336,7 @@
 		3A8567DA1DAA3DDA00EBD44A /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				3A45626A1DB4980800E5591A /* FirstLoginViewController.m */,
 				3A3E52FF1DB2267D00A49067 /* ExamViewController.m */,
 				3A6D7EE91DABDB500081B70D /* LeftSortsViewController.m */,
 				3A6D7EE71DABDB500081B70D /* AppDelegate.m */,
@@ -380,6 +387,7 @@
 		3A8567DC1DAA3E4400EBD44A /* Header */ = {
 			isa = PBXGroup;
 			children = (
+				3A4562691DB4980800E5591A /* FirstLoginViewController.h */,
 				3A3E52FE1DB2267D00A49067 /* ExamViewController.h */,
 				3ABE7F251DAF7BBE003E4085 /* NoticeViewController.h */,
 				3A33D7D21DAE36420012EFDE /* SchoolHandViewController.h */,
@@ -478,6 +486,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A45626D1DB4980800E5591A /* FirstLoginViewController.xib in Resources */,
 				3ABE7F291DAF7BBE003E4085 /* NoticeViewController.xib in Resources */,
 				3A8567AC1DA9140800EBD44A /* LoginViewController.xib in Resources */,
 				3A33D7BF1DADE3A40012EFDE /* FeedbackViewController.xib in Resources */,
@@ -511,6 +520,7 @@
 				3A3E530A1DB2276700A49067 /* Person.m in Sources */,
 				3A6D7EF21DABDB500081B70D /* LoginViewController.m in Sources */,
 				3A6D7EDE1DABD9DA0081B70D /* JSONKit.m in Sources */,
+				3A45626C1DB4980800E5591A /* FirstLoginViewController.m in Sources */,
 				3AD87B131DACD05B00357212 /* CourseModel.m in Sources */,
 				3A33D7C61DAE00300012EFDE /* Feedback2ViewController.m in Sources */,
 				3ABE7F1E1DAF75FB003E4085 /* LibraryViewController.m in Sources */,

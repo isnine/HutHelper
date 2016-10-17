@@ -22,6 +22,8 @@
 
     NSURL *url = [[NSURL alloc]initWithString:Url_String];
     [_views loadRequest:[NSURLRequest requestWithURL:url]];
+    
+
 }
 
 - (void)didReceiveMemoryWarning {

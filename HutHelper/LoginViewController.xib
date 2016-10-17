@@ -19,11 +19,11 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" image="white" translatesAutoresizingMaskIntoConstraints="NO" id="n0r-8u-Lkn">
-                    <frame key="frameInset" minX="2" minY="11.27%" height="37.85%" maxX="-1"/>
+                    <frame key="frameInset" minX="3" minY="11.27%" height="38.03%" maxX="-2"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" background="PassWord" translatesAutoresizingMaskIntoConstraints="NO" id="YS6-LQ-stk">
-                    <frame key="frameInset" minX="18.44%" minY="15.48%" width="64.38%" height="64"/>
+                    <frame key="frameInset" minX="18.75%" minY="15.34%" width="64.06%" height="66"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     <accessibility key="accessibilityConfiguration" hint="学号"/>
                     <nil key="textColor"/>
@@ -31,7 +31,7 @@
                     <textInputTraits key="textInputTraits" keyboardType="phonePad" returnKeyType="go"/>
                 </textField>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" background="PassWord" translatesAutoresizingMaskIntoConstraints="NO" id="oih-D9-ohY" colorLabel="IBBuiltInLabel-Green">
-                    <frame key="frameInset" minX="18.75%" minY="28.54%" width="63.75%" height="60"/>
+                    <frame key="frameInset" minX="18.75%" minY="28.43%" width="64.06%" height="58"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="25"/>
                     <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" keyboardAppearance="alert" returnKeyType="done" secureTextEntry="YES"/>
@@ -40,7 +40,7 @@
                     </connections>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jga-sy-EZS">
-                    <frame key="frameInset" minX="22.50%" minY="37.85%" width="29.06%" height="7.92%"/>
+                    <frame key="frameInset" minX="22.50%" minY="37.68%" width="28.75%" height="7.92%"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <state key="normal" backgroundImage="Login-1"/>
                     <connections>
@@ -48,7 +48,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZZa-de-gf6">
-                    <frame key="frameInset" minX="52.19%" minY="39.44%" width="34.06%" height="8.10%"/>
+                    <frame key="frameInset" minX="51.56%" minY="39.44%" width="35.00%" height="8.10%"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="19"/>
                     <state key="normal" title="忘记密码？"/>
