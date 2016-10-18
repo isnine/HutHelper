@@ -7,6 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A0898A41DB5EA5700D2CCE6 /* ScoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A0898A21DB5EA5700D2CCE6 /* ScoreViewController.m */; };
+		3A0898BB1DB5ED5800D2CCE6 /* SKSTableView-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3A0898B31DB5ED5800D2CCE6 /* SKSTableView-Info.plist */; };
+		3A0898BC1DB5ED5800D2CCE6 /* SKSTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A0898B61DB5ED5800D2CCE6 /* SKSTableView.m */; };
+		3A0898BD1DB5ED5800D2CCE6 /* SKSTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A0898B81DB5ED5800D2CCE6 /* SKSTableViewCell.m */; };
+		3A0898BE1DB5ED5800D2CCE6 /* SKSTableViewCellIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A0898BA1DB5ED5800D2CCE6 /* SKSTableViewCellIndicator.m */; };
+		3A0898C11DB5ED6000D2CCE6 /* expandableImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A0898BF1DB5ED6000D2CCE6 /* expandableImage.png */; };
+		3A0898C21DB5ED6000D2CCE6 /* expandableImage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A0898C01DB5ED6000D2CCE6 /* expandableImage@2x.png */; };
+		3A0898C61DB5EFD100D2CCE6 /* ScoreViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A0898C51DB5EFD100D2CCE6 /* ScoreViewController.xib */; };
+		3A2D10621DB66063009916D0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A2D105F1DB66063009916D0 /* Foundation.framework */; };
+		3A2D10631DB66063009916D0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A2D10601DB66063009916D0 /* CoreGraphics.framework */; };
+		3A2D10641DB66063009916D0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A2D10611DB66063009916D0 /* UIKit.framework */; };
 		3A33D7BE1DADE3A40012EFDE /* FeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A33D7BC1DADE3A40012EFDE /* FeedbackViewController.m */; };
 		3A33D7BF1DADE3A40012EFDE /* FeedbackViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A33D7BD1DADE3A40012EFDE /* FeedbackViewController.xib */; };
 		3A33D7C61DAE00300012EFDE /* Feedback2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A33D7C41DAE00300012EFDE /* Feedback2ViewController.m */; };
@@ -83,6 +94,22 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3A0898A11DB5EA5700D2CCE6 /* ScoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreViewController.h; sourceTree = "<group>"; };
+		3A0898A21DB5EA5700D2CCE6 /* ScoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ScoreViewController.m; path = HutHelper/ScoreViewController.m; sourceTree = "<group>"; };
+		3A0898B31DB5ED5800D2CCE6 /* SKSTableView-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "SKSTableView-Info.plist"; path = "HutHelper/Lib/SKTTable/SKSTableView-Info.plist"; sourceTree = "<group>"; };
+		3A0898B41DB5ED5800D2CCE6 /* SKSTableView-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SKSTableView-Prefix.pch"; path = "HutHelper/Lib/SKTTable/SKSTableView-Prefix.pch"; sourceTree = "<group>"; };
+		3A0898B51DB5ED5800D2CCE6 /* SKSTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SKSTableView.h; path = HutHelper/Lib/SKTTable/SKSTableView.h; sourceTree = "<group>"; };
+		3A0898B61DB5ED5800D2CCE6 /* SKSTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SKSTableView.m; path = HutHelper/Lib/SKTTable/SKSTableView.m; sourceTree = "<group>"; };
+		3A0898B71DB5ED5800D2CCE6 /* SKSTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SKSTableViewCell.h; path = HutHelper/Lib/SKTTable/SKSTableViewCell.h; sourceTree = "<group>"; };
+		3A0898B81DB5ED5800D2CCE6 /* SKSTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SKSTableViewCell.m; path = HutHelper/Lib/SKTTable/SKSTableViewCell.m; sourceTree = "<group>"; };
+		3A0898B91DB5ED5800D2CCE6 /* SKSTableViewCellIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SKSTableViewCellIndicator.h; path = HutHelper/Lib/SKTTable/SKSTableViewCellIndicator.h; sourceTree = "<group>"; };
+		3A0898BA1DB5ED5800D2CCE6 /* SKSTableViewCellIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SKSTableViewCellIndicator.m; path = HutHelper/Lib/SKTTable/SKSTableViewCellIndicator.m; sourceTree = "<group>"; };
+		3A0898BF1DB5ED6000D2CCE6 /* expandableImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = expandableImage.png; path = HutHelper/Lib/SKTTable/expandableImage.png; sourceTree = "<group>"; };
+		3A0898C01DB5ED6000D2CCE6 /* expandableImage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "expandableImage@2x.png"; path = "HutHelper/Lib/SKTTable/expandableImage@2x.png"; sourceTree = "<group>"; };
+		3A0898C51DB5EFD100D2CCE6 /* ScoreViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ScoreViewController.xib; path = HutHelper/ScoreViewController.xib; sourceTree = "<group>"; };
+		3A2D105F1DB66063009916D0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		3A2D10601DB66063009916D0 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		3A2D10611DB66063009916D0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		3A33D7BB1DADE3A40012EFDE /* FeedbackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedbackViewController.h; sourceTree = "<group>"; };
 		3A33D7BC1DADE3A40012EFDE /* FeedbackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FeedbackViewController.m; path = HutHelper/FeedbackViewController.m; sourceTree = "<group>"; };
 		3A33D7BD1DADE3A40012EFDE /* FeedbackViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FeedbackViewController.xib; path = HutHelper/FeedbackViewController.xib; sourceTree = "<group>"; };
@@ -193,7 +220,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A6FF7C91DB31544004CFBE8 /* libsqlite3.0.tbd in Frameworks */,
+				3A2D10641DB66063009916D0 /* UIKit.framework in Frameworks */,
+				3A2D10621DB66063009916D0 /* Foundation.framework in Frameworks */,
 				3A6FF7C71DB3152C004CFBE8 /* libz.tbd in Frameworks */,
+				3A2D10631DB66063009916D0 /* CoreGraphics.framework in Frameworks */,
 				3A6FF7C51DB3151E004CFBE8 /* CoreTelephony.framework in Frameworks */,
 				3A6FF7C31DB314C7004CFBE8 /* UMMobClick.framework in Frameworks */,
 				3A33D7DB1DAE50EF0012EFDE /* libUMessage_Sdk_1.4.0.a in Frameworks */,
@@ -203,6 +233,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3A0898B21DB5ED4300D2CCE6 /* SKTTable */ = {
+			isa = PBXGroup;
+			children = (
+				3A0898B31DB5ED5800D2CCE6 /* SKSTableView-Info.plist */,
+				3A0898B41DB5ED5800D2CCE6 /* SKSTableView-Prefix.pch */,
+				3A0898B51DB5ED5800D2CCE6 /* SKSTableView.h */,
+				3A0898B61DB5ED5800D2CCE6 /* SKSTableView.m */,
+				3A0898B71DB5ED5800D2CCE6 /* SKSTableViewCell.h */,
+				3A0898B81DB5ED5800D2CCE6 /* SKSTableViewCell.m */,
+				3A0898B91DB5ED5800D2CCE6 /* SKSTableViewCellIndicator.h */,
+				3A0898BA1DB5ED5800D2CCE6 /* SKSTableViewCellIndicator.m */,
+				3A0898BF1DB5ED6000D2CCE6 /* expandableImage.png */,
+				3A0898C01DB5ED6000D2CCE6 /* expandableImage@2x.png */,
+			);
+			name = SKTTable;
+			sourceTree = "<group>";
+		};
 		3A33D7D81DAE50EF0012EFDE /* UMessage_Sdk_1.4.0 */ = {
 			isa = PBXGroup;
 			children = (
@@ -328,6 +375,7 @@
 				3ABE7F221DAF78B9003E4085 /* DayViewController.xib */,
 				3ABE7F271DAF7BBE003E4085 /* NoticeViewController.xib */,
 				3A45626B1DB4980800E5591A /* FirstLoginViewController.xib */,
+				3A0898C51DB5EFD100D2CCE6 /* ScoreViewController.xib */,
 			);
 			name = View;
 			path = ..;
@@ -359,6 +407,7 @@
 				3ABE7F211DAF78B9003E4085 /* DayViewController.m */,
 				3ABE7F1C1DAF75FB003E4085 /* LibraryViewController.m */,
 				3ABE7F261DAF7BBE003E4085 /* NoticeViewController.m */,
+				3A0898A21DB5EA5700D2CCE6 /* ScoreViewController.m */,
 			);
 			name = Controller;
 			path = ..;
@@ -367,6 +416,7 @@
 		3A8567DB1DAA3DF800EBD44A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				3A0898B21DB5ED4300D2CCE6 /* SKTTable */,
 				3A3E53011DB2275800A49067 /* Exam */,
 				3A3C68861DB1150C0088CC17 /* LGPlusButtonsView */,
 				3A33D7D81DAE50EF0012EFDE /* UMessage_Sdk_1.4.0 */,
@@ -379,6 +429,9 @@
 				3A33D7EF1DAF1B810012EFDE /* SetViewController.h */,
 				3A33D7F41DAF646B0012EFDE /* Login2ViewController.h */,
 				3A33D7F91DAF66450012EFDE /* ShareViewController.h */,
+				3A2D105F1DB66063009916D0 /* Foundation.framework */,
+				3A2D10601DB66063009916D0 /* CoreGraphics.framework */,
+				3A2D10611DB66063009916D0 /* UIKit.framework */,
 			);
 			name = Model;
 			path = ..;
@@ -387,6 +440,7 @@
 		3A8567DC1DAA3E4400EBD44A /* Header */ = {
 			isa = PBXGroup;
 			children = (
+				3A0898A11DB5EA5700D2CCE6 /* ScoreViewController.h */,
 				3A4562691DB4980800E5591A /* FirstLoginViewController.h */,
 				3A3E52FE1DB2267D00A49067 /* ExamViewController.h */,
 				3ABE7F251DAF7BBE003E4085 /* NoticeViewController.h */,
@@ -486,9 +540,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A0898C21DB5ED6000D2CCE6 /* expandableImage@2x.png in Resources */,
 				3A45626D1DB4980800E5591A /* FirstLoginViewController.xib in Resources */,
+				3A0898C61DB5EFD100D2CCE6 /* ScoreViewController.xib in Resources */,
+				3A0898C11DB5ED6000D2CCE6 /* expandableImage.png in Resources */,
 				3ABE7F291DAF7BBE003E4085 /* NoticeViewController.xib in Resources */,
 				3A8567AC1DA9140800EBD44A /* LoginViewController.xib in Resources */,
+				3A0898BB1DB5ED5800D2CCE6 /* SKSTableView-Info.plist in Resources */,
 				3A33D7BF1DADE3A40012EFDE /* FeedbackViewController.xib in Resources */,
 				3A33D7C71DAE00300012EFDE /* Feedback2ViewController.xib in Resources */,
 				3A85678E1DA908AA00EBD44A /* LaunchScreen.storyboard in Resources */,
@@ -522,10 +580,12 @@
 				3A6D7EDE1DABD9DA0081B70D /* JSONKit.m in Sources */,
 				3A45626C1DB4980800E5591A /* FirstLoginViewController.m in Sources */,
 				3AD87B131DACD05B00357212 /* CourseModel.m in Sources */,
+				3A0898BE1DB5ED5800D2CCE6 /* SKSTableViewCellIndicator.m in Sources */,
 				3A33D7C61DAE00300012EFDE /* Feedback2ViewController.m in Sources */,
 				3ABE7F1E1DAF75FB003E4085 /* LibraryViewController.m in Sources */,
 				3A33D7CB1DAE28380012EFDE /* PowerViewController.m in Sources */,
 				3A6D7EE41DABD9F50081B70D /* UIView_extra.m in Sources */,
+				3A0898BC1DB5ED5800D2CCE6 /* SKSTableView.m in Sources */,
 				3A6D7EF41DABDB500081B70D /* MainViewController.m in Sources */,
 				3A6D7EE31DABD9F50081B70D /* LeftSlideViewController.m in Sources */,
 				3A8567801DA908AA00EBD44A /* main.m in Sources */,
@@ -540,6 +600,7 @@
 				3A6D7EF01DABDB500081B70D /* HomeWorkViewController.m in Sources */,
 				3A6D7EF51DABDB500081B70D /* otherViewController.m in Sources */,
 				3ABE7F281DAF7BBE003E4085 /* NoticeViewController.m in Sources */,
+				3A0898BD1DB5ED5800D2CCE6 /* SKSTableViewCell.m in Sources */,
 				3A3C68921DB115190088CC17 /* LGPlusButtonsViewShared.m in Sources */,
 				3A3E53091DB2276700A49067 /* MyView.m in Sources */,
 				3A6D7EEF1DABDB500081B70D /* AppDelegate.m in Sources */,
@@ -547,6 +608,7 @@
 				3AD87B101DACD02E00357212 /* GWPCourseListView.m in Sources */,
 				3A3E53081DB2276700A49067 /* MsgModel.m in Sources */,
 				3A6D7EF11DABDB500081B70D /* LeftSortsViewController.m in Sources */,
+				3A0898A41DB5EA5700D2CCE6 /* ScoreViewController.m in Sources */,
 				3A33D7F21DAF1B810012EFDE /* SetViewController.m in Sources */,
 				3A33D7BE1DADE3A40012EFDE /* FeedbackViewController.m in Sources */,
 				3A33D7D01DAE31AB0012EFDE /* SchoolsayViewController.m in Sources */,
@@ -669,6 +731,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/HutHelper/Lib",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PREFIX_HEADER = HutHelper/Lib/Exam/PrefixHeader.pch;
 				INFOPLIST_FILE = HutHelper/Info.plist;
@@ -700,6 +763,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/HutHelper/Lib",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PREFIX_HEADER = HutHelper/Lib/Exam/PrefixHeader.pch;
 				INFOPLIST_FILE = HutHelper/Info.plist;

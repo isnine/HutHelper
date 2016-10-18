@@ -39,26 +39,6 @@
     [super viewDidLoad];
     self.title=@"考试计划";
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    NSString *studentKH        = [defaults objectForKey:@"studentKH"];
-
-
-    NSString *Url_String_1=@"http://218.75.197.124:84/api/exam/";
-    NSString *Url_String_1_U=[Url_String_1 stringByAppendingString:studentKH];
-    NSString *Url_String_1_U_2=[Url_String_1_U stringByAppendingString:@"/key/"];
-    NSString *ss=[studentKH stringByAppendingString:@"apiforapp!"];
-    NSString *ssmd5=[ss MD5];
-    NSString *Url_String=[Url_String_1_U_2 stringByAppendingString:ssmd5];
-
-    NSURL *url                 = [NSURL URLWithString: Url_String];//接口地址
-    NSError *error             = nil;
-    NSString *jsonString       = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:&error];//Url -> String
-    NSData* jsonData           = [jsonString dataUsingEncoding:NSUTF8StringEncoding];//地址 -> 数据
-    NSDictionary *User_All     = [jsonData objectFromJSONData];//数据 -> 字典
-   //All字典 -> Data字典
-//
-   NSString *Msg=[User_All objectForKey:@"msg"];
-   NSString *status=[User_All objectForKey:@"status"];
-   NSLog(@"状态:%@",status);
     MsgModel * mode0=[[MsgModel alloc]init];
     MsgModel * mode1=[[MsgModel alloc]init];
     MsgModel * mode2=[[MsgModel alloc]init];
@@ -72,22 +52,36 @@
     MsgModel * mode10=[[MsgModel alloc]init];
     MsgModel * mode11=[[MsgModel alloc]init];
     MsgModel * mode12=[[MsgModel alloc]init];
-    NSDictionary *Class_Data=[User_All objectForKey:@"res"];
-    NSArray *array             = [Class_Data objectForKey:@"exam"];
 
-    if([status isEqualToString:@"success"]){
-        int k;
+    NSArray *array=[defaults objectForKey:@"array_exam"];
+     int k;
     for(k                      = 0;k<array.count;k++){
     NSDictionary *dict1        = array[k];
 
-    NSString *CourseName       = [dict1 objectForKey:@"CourseName"];//第几节
-      
-    NSString *EndTime          = [dict1 objectForKey:@"EndTime"];//结束周
-    NSString *RoomName         = [dict1 objectForKey:@"RoomName"];//起始周
-    NSString *Starttime        = [dict1 objectForKey:@"Starttime"];//起始周
-    NSString *Week_Num         = [dict1 objectForKey:@"Week_Num"];//起始周
-    NSString *isset            = [dict1 objectForKey:@"isset"];//起始周
+        NSString *CourseName       ;
+    
+        NSString *RoomName        ;//起始周
+        NSString *Starttime       ;
 
+        NSString *isset            ;
+        NSLog(@"1%@",[dict1 objectForKey:@"RoomName"]);
+
+
+
+
+        if (![[dict1 objectForKey:@"RoomName"] isEqual:[NSNull null]]) {
+RoomName         = [dict1 objectForKey:@"RoomName"];//起始周
+        }
+        if (![[dict1 objectForKey:@"CourseName"] isEqual:[NSNull null]]) {
+           CourseName       = [dict1 objectForKey:@"CourseName"];
+        }
+        if (![[dict1 objectForKey:@"Starttime"] isEqual:[NSNull null]]) {
+            Starttime        = [dict1 objectForKey:@"Starttime"];//起始周
+
+        }
+        if (![[dict1 objectForKey:@"isset"] isEqual:[NSNull null]]) {
+            isset            = [dict1 objectForKey:@"isset"];//起始周
+        }
 
             switch (k) {
                 case 0:
@@ -219,12 +213,10 @@
     
 
 
-        }
+        
     }
-    else{
-    }
-    NSLog(@"%@",ssmd5);
-
+   
+  
     myView=[[MyView alloc]init];
     MsgModel * model=[[MsgModel alloc]init];
 
