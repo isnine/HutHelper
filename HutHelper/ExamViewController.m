@@ -81,6 +81,7 @@
     NSDictionary *dict1        = array[k];
 
     NSString *CourseName       = [dict1 objectForKey:@"CourseName"];//第几节
+      
     NSString *EndTime          = [dict1 objectForKey:@"EndTime"];//结束周
     NSString *RoomName         = [dict1 objectForKey:@"RoomName"];//起始周
     NSString *Starttime        = [dict1 objectForKey:@"Starttime"];//起始周
@@ -100,6 +101,7 @@
                         mode0.color=[UIColor greenColor];
                     break;
                 case 1:
+                 
     mode1.address              = CourseName;
     mode1.motive               = RoomName;
     mode1.date                 = Starttime;
@@ -110,6 +112,7 @@
                         mode1.color=[UIColor greenColor];
                     break;
                 case 2:
+                    
     mode2.address              = CourseName;
     mode2.motive               = RoomName;
     mode2.date                 = Starttime;
@@ -212,14 +215,8 @@
                 default:
                     break;
             }
-    mode1.address              = CourseName;
-    mode1.motive               = RoomName;
-    mode1.date                 = Starttime;
-        if ([isset isEqualToString:@"0"]) {
-            mode1.color=[UIColor redColor];
-        }
-        else
-            mode1.color=[UIColor greenColor];
+
+    
 
 
         }

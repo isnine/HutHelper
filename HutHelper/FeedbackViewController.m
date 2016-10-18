@@ -43,7 +43,7 @@
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     NSString *studentKH=[defaults objectForKey:@"studentKH"];
     if(studentKH==NULL){
-        str2=@"&content=[IOS]";
+        str2=@"&content=[IOS] ";
     }
     else
     {

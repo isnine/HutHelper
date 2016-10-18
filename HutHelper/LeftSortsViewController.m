@@ -68,11 +68,10 @@
     cell.textLabel.textColor         = [UIColor whiteColor];
 
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults]; //得到用户数据
-    NSString *name=[defaults objectForKey:@"TrueName"];
-    NSString *gender=[defaults objectForKey:@"studentKH"];
+    NSString *name=[defaults objectForKey:@"TrueName"];    NSString *gender=[defaults objectForKey:@"studentKH"];
     if (indexPath.row == 0) {
         if(name==NULL){
-    cell.textLabel.text              = @"登录";
+    //cell.textLabel.text              = @"登录";
         }
         else
     cell.textLabel.text              = name;
