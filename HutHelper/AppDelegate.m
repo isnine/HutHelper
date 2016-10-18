@@ -10,7 +10,7 @@
 #import "MainPageViewController.h"
 #import "LeftSortsViewController.h"
 #import "UMessage.h"
-
+#import "ScoreViewController.h"
 #import "UMMobClick/MobClick.h"
 @interface AppDelegate ()
 

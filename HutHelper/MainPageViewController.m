@@ -21,6 +21,8 @@
 #import "UMessage.h"
 #import "UMMobClick/MobClick.h"
 #import "FirstLoginViewController.h"
+#import<CommonCrypto/CommonDigest.h>
+#import "ScoreViewController.h"
 #define vBackBarButtonItemName  @"backArrow.png"    //导航条返回默认图片名
 @interface MainPageViewController ()
 
@@ -67,8 +69,28 @@ ans                                       += (CountDays(startyear, 12, 31) - Cou
     }
     return (ans + 6) / 7;
 }
+
+- (NSString *) SHA:(NSString *)input
+{
+    const char *cstr = [input cStringUsingEncoding:NSUTF8StringEncoding];
+    NSData *data = [NSData dataWithBytes:cstr length:input.length];
+    
+    uint8_t digest[CC_SHA1_DIGEST_LENGTH];
+    CC_SHA1(data.bytes, (unsigned int)data.length, digest);
+    NSMutableString *output = [NSMutableString stringWithCapacity:CC_SHA1_DIGEST_LENGTH * 2];
+    
+    for(int i=0; i<CC_SHA1_DIGEST_LENGTH; i++) {
+        [output appendFormat:@"%02x", digest[i]];
+    }
+    return output;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    ScoreViewController *Score      = [[ScoreViewController alloc] init];
+    AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [tempAppDelegate.mainNavigationController pushViewController:Score animated:NO];
+    //测试
 self.navigationItem.title                 = @"主界面";
 UIColor *greyColor                        = [UIColor colorWithRed:239/255.0 green:239/255.0 blue:239/255.0 alpha:1];
 self.view.backgroundColor                 = greyColor;
@@ -306,12 +328,52 @@ AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication share
     [tempAppDelegate.mainNavigationController pushViewController:SchoolHand animated:NO];
 }
 - (IBAction)Score:(id)sender {
-UIAlertView *alertView                    = [[UIAlertView alloc] initWithTitle:@"无法查询"
-                                                        message:@"请等待新版本"
-                                                       delegate:self
-                                              cancelButtonTitle:@"取消"
-                                              otherButtonTitles:@"确定", nil];
-    [alertView show];
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    NSString *remember_code_app=[defaults objectForKey:@"remember_code_app"];
+    
+    if(remember_code_app!=NULL){    //判断是否已登录
+        //获得地址//
+        NSString *Url_String_score=@"http://218.75.197.121:8888/api/v1/get/scores/";
+        NSString *studentKH                       = [defaults objectForKey:@"studentKH"];
+        Url_String_score=[Url_String_score stringByAppendingString:studentKH];
+        Url_String_score=[Url_String_score stringByAppendingString:@"/"];
+        Url_String_score=[Url_String_score stringByAppendingString:remember_code_app];
+        Url_String_score=[Url_String_score stringByAppendingString:@"/"];
+        
+        NSString *sha_string=[studentKH stringByAppendingString:remember_code_app];
+        sha_string=[sha_string stringByAppendingString:@"f$Z@%"];
+        NSString *shaok=[self SHA:sha_string];
+        Url_String_score=[Url_String_score stringByAppendingString:shaok];
+       
+        //地址得到完毕//
+        //开始存入字典//
+        NSURL *url                 = [NSURL URLWithString: Url_String_score];//接口地址
+        NSError *error             = nil;
+        NSString *ScoreString       = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:&error];//Url -> String
+        NSData* ScoreData           = [ScoreString dataUsingEncoding:NSUTF8StringEncoding];//地址 -> 数据
+        NSDictionary *Score_All     = [ScoreData objectFromJSONData];//数据 -> 字典
+        //存入完毕
+        NSString *Msg=[Score_All objectForKey:@"msg"];
+        if ([Msg isEqualToString:@"ok"]) {
+            NSArray *array_score             = [Score_All objectForKey:@"data"];
+            [defaults setObject:Url_String_score forKey:@"string_score"];
+            [defaults synchronize];
+            ScoreViewController *Score      = [[ScoreViewController alloc] init];
+            AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+            [tempAppDelegate.mainNavigationController pushViewController:Score animated:NO];
+            
+        }
+        else{
+            UIAlertView *alertView                    = [[UIAlertView alloc] initWithTitle:@"登陆过期"
+                                                                                   message:@"请点击切换用户,重新登录"
+                                                                                  delegate:self
+                                                                         cancelButtonTitle:@"取消"
+                                                                         otherButtonTitles:@"确定", nil];
+            [alertView show];
+            NSLog(@"%@",Url_String_score);
+        }
+    }
+
 }
 
 
