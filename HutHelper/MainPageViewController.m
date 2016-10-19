@@ -30,6 +30,7 @@
 
 
 @end
+
 @implementation NSString (MD5)
 - (id)MD5
 {
@@ -46,6 +47,7 @@
     return  output;
 }
 @end
+
 @implementation MainPageViewController
 const int startyear                       = 2016;
 const int startmonth                      = 8;
@@ -143,7 +145,7 @@ int day                                   = [dateComponent day];//日
     //判断完毕//
     
 
-    //-----是否打开课程表----//
+    //-----首次登陆----//
     
 
     NSString *studentKH                       = [defaults objectForKey:@"studentKH"];
@@ -271,8 +273,6 @@ int day                                   = [dateComponent day];//日
     //判断完毕//
 }
 
-
-
 - (IBAction)ClassFind:(id)sender {  //课表界面
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
 NSArray *array                            = [defaults objectForKey:@"array"];
@@ -291,7 +291,7 @@ UIAlertView *alertView                    = [[UIAlertView alloc] initWithTitle:@
         [alertView show];
     }
 
-}
+} //课程表
 
 - (IBAction)HomeWork:(id)sender { //作业界面
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
@@ -314,23 +314,26 @@ UIAlertView *alertView                    = [[UIAlertView alloc] initWithTitle:@
 
 
 
-}
+} //网上作业
+
 - (IBAction)Power:(id)sender {
 PowerViewController *Power                = [[PowerViewController alloc] init];
 AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
              [tempAppDelegate.mainNavigationController pushViewController:Power animated:NO];
-}
+} //电费查询
+
 - (IBAction)SchoolSay:(id)sender {
 SchoolsayViewController *Schoolsay        = [[SchoolsayViewController alloc] init];
 AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [tempAppDelegate.mainNavigationController pushViewController:Schoolsay animated:NO];
-}
+} //校园说说
 
 - (IBAction)SchoolHand:(id)sender {
 SchoolHandViewController *SchoolHand      = [[SchoolHandViewController alloc] init];
 AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [tempAppDelegate.mainNavigationController pushViewController:SchoolHand animated:NO];
-}
+} //二手市场
+
 - (IBAction)Score:(id)sender {
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     NSString *remember_code_app=[defaults objectForKey:@"remember_code_app"];
@@ -369,7 +372,7 @@ AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication share
             
         }
         else{
-            UIAlertView *alertView                    = [[UIAlertView alloc] initWithTitle:@"登陆过期"
+            UIAlertView *alertView                    = [[UIAlertView alloc] initWithTitle:@"登陆过期或网络异常"
                                                                                    message:@"请点击切换用户,重新登录"
                                                                                   delegate:self
                                                                          cancelButtonTitle:@"取消"
@@ -379,22 +382,22 @@ AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication share
         }
     }
 
-}
-
+} //成绩查询
 
 - (IBAction)Day:(id)sender {
 DayViewController *day                    = [[DayViewController alloc] init];
 AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [tempAppDelegate.mainNavigationController pushViewController:day animated:NO];
 
-}
+} //校历
 
 - (IBAction)Library:(id)sender {
 LibraryViewController *library            = [[LibraryViewController alloc] init];
 AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
          [tempAppDelegate.mainNavigationController pushViewController:library animated:NO];
 
-}
+} //图书馆
+
 - (IBAction)Exam:(id)sender {
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     NSString *studentKH        = [defaults objectForKey:@"studentKH"];
@@ -420,7 +423,6 @@ AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication share
     if([status isEqualToString:@"success"]){
         NSDictionary *Class_Data=[User_All objectForKey:@"res"];
         NSArray *array             = [Class_Data objectForKey:@"exam"];
-        
         [defaults setObject:array forKey:@"array_exam"];
         [defaults synchronize];
         NSInteger *exam_on                        = [defaults integerForKey:@"exam_on"];
@@ -449,14 +451,14 @@ AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication share
 
             }
             else{
-        UIAlertView *alertView                    = [[UIAlertView alloc] initWithTitle:@"温馨提示"
+        UIAlertView *alertView                    = [[UIAlertView alloc] initWithTitle:@"查询失败"
                                                                     message:message
                                                                    delegate:self
                                                           cancelButtonTitle:@"取消"
                                                           otherButtonTitles:@"确定", nil];
                 [alertView show];
-    }
-}
+                 }
+} //考试计划
 
 
 

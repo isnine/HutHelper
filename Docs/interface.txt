@@ -11,6 +11,7 @@ http://218.75.197.121:8888/api/v1/get/scores/学号/remember_code_app/sha1(remem
 
 课程计划:http://218.75.197.124:84/api/exam/学号/key/md5(学号+apiforapp!)
 
+课程计划:http://218.75.197.124:84/api/exam/15408500245/key/ade02120703fa6ce7acf73856eca75e8
 http://218.75.197.121:8888/api/v1/get/scores/13394930247/ac89d05ac36de0020312fe63224bf15fc13f059b/dbf59e0ccdd9951dab672f190fc930d44e62a6a3
 
 http://218.75.197.121:8888/api/v1/get/scores/15408500245/729e554fcd553690aa0e34f3642e6b1adf3e8433/8c870a185b20d0d0f39c57455c1ad5b3071feec7
