@@ -190,36 +190,7 @@ NSString *dep_name                        = [defaults objectForKey:@"dep_name"];
         [defaults setInteger:0 forKey:@"xp_on"];
         //课表数据归元//
 
-NSString *ifarray_xp                      = [defaults objectForKey:@"array_xp"];
-        if(studentKH!=NULL&&ifarray_xp==NULL)
-        {
-         NSString *Remember_code_app=[defaults objectForKey:@"remember_code_app"];
-            NSString *Url_String_xp_1=@"http://218.75.197.121:8888/api/v1/get/lessonsexp/";
-            NSString *Url_String_xp_1_U=[Url_String_xp_1 stringByAppendingString:studentKH];
-            NSString *Url_String_xp_1_U_2=[Url_String_xp_1_U stringByAppendingString:@"/"];
-            NSString *Url_String_xp=[Url_String_xp_1_U_2 stringByAppendingString:Remember_code_app];
-            //地址//
-NSURLRequest *request                     = [NSURLRequest requestWithURL:[NSURL URLWithString:Url_String_xp]];
-NSData *response                          = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
-NSError *error                            = nil;
-NSDictionary *jsonDataxp                  = [NSJSONSerialization JSONObjectWithData:response options:NSJSONReadingMutableLeaves error:&error];
-            NSString *msg=[jsonDataxp objectForKey:@"msg"];
-            if([msg isEqualToString:@"ok"]){
-
-NSArray *array_xp                         = [jsonDataxp objectForKey:@"data"];
-
-            //----------------实验课表数据缓存---------------//
-            [defaults setObject:array_xp forKey:@"array_xp"];
-            //强制让数据立刻保存
-            [defaults synchronize];
-                
-           
-            }
-    
-    }
-    
-
-    
+   
 }
 
 - (void) openOrCloseLeftList
@@ -425,7 +396,7 @@ AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication share
 
 - (IBAction)Exam:(id)sender {
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.labelText = @"Loading";
+    hud.labelText = @"查询中";
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 0.01 * NSEC_PER_SEC);
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
         NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];

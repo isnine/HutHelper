@@ -10,12 +10,29 @@
 #import "SKSTableView.h"
 #import "SKSTableViewCell.h"
 #import "JSONKit.h"
+#import "MBProgressHUD.h"
+#import<CommonCrypto/CommonDigest.h>
 @interface ScoreViewController ()
 @property (nonatomic, strong) NSArray *contents;
 
 @end
 
 @implementation ScoreViewController
+
+- (NSString *) SHA:(NSString *)input
+{
+    const char *cstr = [input cStringUsingEncoding:NSUTF8StringEncoding];
+    NSData *data = [NSData dataWithBytes:cstr length:input.length];
+    
+    uint8_t digest[CC_SHA1_DIGEST_LENGTH];
+    CC_SHA1(data.bytes, (unsigned int)data.length, digest);
+    NSMutableString *output = [NSMutableString stringWithCapacity:CC_SHA1_DIGEST_LENGTH * 2];
+    
+    for(int i=0; i<CC_SHA1_DIGEST_LENGTH; i++) {
+        [output appendFormat:@"%02x", digest[i]];
+    }
+    return output;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -43,16 +60,76 @@
     return _contents;
 }
 
+- (void)reload{
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.labelText = @"查询中";
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 0.01 * NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        // 等待框中
+        NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+        NSString *remember_code_app=[defaults objectForKey:@"remember_code_app"];
+        NSString *Url_String_score=@"http://218.75.197.121:8888/api/v1/get/scores/";
+        NSString *studentKH                       = [defaults objectForKey:@"studentKH"];
+        Url_String_score=[Url_String_score stringByAppendingString:studentKH];
+        Url_String_score=[Url_String_score stringByAppendingString:@"/"];
+        Url_String_score=[Url_String_score stringByAppendingString:remember_code_app];
+        Url_String_score=[Url_String_score stringByAppendingString:@"/"];
+        NSString *sha_string=[studentKH stringByAppendingString:remember_code_app];
+        sha_string=[sha_string stringByAppendingString:@"f$Z@%"];
+        NSString *shaok=[self SHA:sha_string];
+        Url_String_score=[Url_String_score stringByAppendingString:shaok];
+        NSURL *url                 = [NSURL URLWithString: Url_String_score];//接口地址
+        NSError *error             = nil;
+        NSString *ScoreString       = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:&error];//Url -> String
+        NSData* ScoreData           = [ScoreString dataUsingEncoding:NSUTF8StringEncoding];//地址 -> 数据
+        NSDictionary *Score_All     = [ScoreData objectFromJSONData];//数据 -> 字典
+        //存入完毕
+        NSLog(@"成绩查询地址:%@",url);
+        NSString *Msg=[Score_All objectForKey:@"msg"];
+        if ([Msg isEqualToString:@"ok"]) {
+            NSArray *array_score             = [Score_All objectForKey:@"data"];
+            [defaults setObject:ScoreData forKey:@"data_score"];
+            [defaults synchronize];
+        }
+        else{
+            UIAlertView *alertView                    = [[UIAlertView alloc] initWithTitle:@"登陆过期或网络异常"
+                                                                                   message:@"请点击切换用户,重新登录"
+                                                                                  delegate:self
+                                                                         cancelButtonTitle:@"取消"
+                                                                         otherButtonTitles:@"确定", nil];
+            [alertView show];
+            NSLog(@"%@",Url_String_score);
+        }
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+    });
+
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
     self.tableView.SKSTableViewDelegate = self;
     self.navigationItem.title = @"成绩查询";
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"折叠"
-                                                                              style:UIBarButtonItemStylePlain
-                                                                              target:self
-                                                                             action:@selector(collapseSubrows)];
+    //右侧按钮
+    UIBarButtonItem *myButton = [[UIBarButtonItem alloc] initWithTitle:@"主页" style:UIBarButtonItemStyleBordered target:self action:@selector(clickEvent)];
+    self.navigationItem.rightBarButtonItem = myButton;
+    //两个按钮的父类view
+    UIView *rightButtonView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 50)];
+    //历史浏览按钮
+    UIButton *historyBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 50, 50)];
+    [rightButtonView addSubview:historyBtn];
+    [historyBtn setImage:[UIImage imageNamed:@"reload"] forState:UIControlStateNormal];
+    [historyBtn addTarget:self action:@selector(reload) forControlEvents:UIControlEventTouchUpInside];
+   #pragma mark >>>>>主页搜索按钮
+    //主页搜索按钮
+    UIButton *mainAndSearchBtn = [[UIButton alloc] initWithFrame:CGRectMake(50, 0, 50, 50)];
+    [rightButtonView addSubview:mainAndSearchBtn];
+    [mainAndSearchBtn setImage:[UIImage imageNamed:@"Fold"] forState:UIControlStateNormal];
+    [mainAndSearchBtn addTarget:self action:@selector(collapseSubrows) forControlEvents:UIControlEventTouchUpInside];
+    //把右侧的两个按钮添加到rightBarButtonItem
+    UIBarButtonItem *rightCunstomButtonView = [[UIBarButtonItem alloc] initWithCustomView:rightButtonView];
+    self.navigationItem.rightBarButtonItem = rightCunstomButtonView;
+    
+    //----添加按钮
     
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     NSData* ScoreData           = [defaults objectForKey:@"data_score"];//地址 -> 数据

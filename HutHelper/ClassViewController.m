@@ -12,7 +12,8 @@
 #import "LGPlusButtonsView.h"
 #import "AppDelegate.h"
 #import "UMMobClick/MobClick.h"
-
+#import "JSONKit.h"
+#import "MBProgressHUD.h"
 @interface ClassViewController ()<GWPCourseListViewDataSource, GWPCourseListViewDelegate>
 @property (weak, nonatomic) IBOutlet GWPCourseListView *courseListView;
 @property (nonatomic, strong) NSMutableArray<CourseModel*> *courseArr;
@@ -76,7 +77,21 @@ NSString *show_xp;
     nowweek_string=[nowweek_string stringByAppendingString:now2];
     nowweek_string=[nowweek_string stringByAppendingString:@"周"];
     //标题结束//
-    self.navigationItem.title                    = nowweek_string;
+        self.navigationItem.title                    = nowweek_string;
+    //------------按钮--------
+    UIBarButtonItem *myButton = [[UIBarButtonItem alloc] initWithTitle:@"刷新" style:UIBarButtonItemStyleBordered target:self action:@selector(clickEvent)];
+    self.navigationItem.rightBarButtonItem = myButton;
+    //两个按钮的父类view
+    UIView *rightButtonView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 50)];
+    //主页搜索按钮
+    UIButton *mainAndSearchBtn = [[UIButton alloc] initWithFrame:CGRectMake(70, 0, 50, 50)];
+    [rightButtonView addSubview:mainAndSearchBtn];
+    [mainAndSearchBtn setImage:[UIImage imageNamed:@"reload"] forState:UIControlStateNormal];
+    [mainAndSearchBtn addTarget:self action:@selector(reloadcourse) forControlEvents:UIControlEventTouchUpInside];
+    //把右侧的两个按钮添加到rightBarButtonItem
+    UIBarButtonItem *rightCunstomButtonView = [[UIBarButtonItem alloc] initWithCustomView:rightButtonView];
+    self.navigationItem.rightBarButtonItem = rightCunstomButtonView;
+     //------------按钮--------
     [self addCourse];
     NSLog(@"Show状态:%@",show_xp);
 }
@@ -283,7 +298,7 @@ NSString *show_xp;
     _courseArr = [NSMutableArray arrayWithArray:@[a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,a15,a16,a17,a18,a19,a20,a21,a22,a23,a24,a25]];
     [self.courseListView reloadData];
     if([show_xp isEqualToString:@"打开"]){
-        [self addXp];
+        [self xp];
     }
     
 }
@@ -488,7 +503,7 @@ int day1                                     = 1,day2=1,day3=1,day4=1,day5=1,day
     [self.courseListView reloadData];
 }
 
-- (void)addXp{
+- (void)xp{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     NSArray *array_xp                            = [defaults objectForKey:@"array_xp"];
     CourseModel *a1  = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
@@ -506,7 +521,7 @@ int day1                                     = 1,day2=1,day3=1,day4=1,day5=1,day
     CourseModel *a13 = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
     CourseModel *a14 = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
     CourseModel *a15 = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
-   
+    
     for (int ixp                                 = 0; ixp<array_xp.count; ixp++) {
         NSDictionary *dict1_xp                       = array_xp[ixp];
         NSString *ClassName_xp                       = [dict1_xp objectForKey:@"lesson"];//第几节
@@ -530,7 +545,7 @@ int day1                                     = 1,day2=1,day3=1,day4=1,day5=1,day
         NSInteger *WeekDay_num                       = WeekDay_xp_num;
         NSInteger *StartClass_num                    = StartClass_xp_num_now;
         NSInteger *EndClass                          = EndClass_xp;
-      int day1                                     = 1,day2=1,day3=1,day4=1,day5=1,day6=1;
+        int day1                                     = 1,day2=1,day3=1,day4=1,day5=1,day6=1;
         if(StartWeek_xp_num==now_week){
             if(StartClass_xp_num==1){
                 switch (day1) {
@@ -642,11 +657,12 @@ int day1                                     = 1,day2=1,day3=1,day4=1,day5=1,day
                 }
                 
             }}
-    
+        
     }
-// a3  = [CourseModel courseWithName:@"物联网移动应用开发*\n@计通楼213" nameAttribute:@{NSFontAttributeName : [UIFont boldSystemFontOfSize:12], NSForegroundColorAttributeName : [UIColor darkGrayColor]} dayIndex:3 startCourseIndex:7 endCourseIndex:8];
+    // a3  = [CourseModel courseWithName:@"物联网移动应用开发*\n@计通楼213" nameAttribute:@{NSFontAttributeName : [UIFont boldSystemFontOfSize:12], NSForegroundColorAttributeName : [UIColor darkGrayColor]} dayIndex:3 startCourseIndex:7 endCourseIndex:8];
     
     [self.courseListView reloadData];
+
 }
 
 
@@ -654,6 +670,61 @@ int day1                                     = 1,day2=1,day3=1,day4=1,day5=1,day
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (void)reloadcourse {
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    NSArray *array_class                            = [defaults objectForKey:@"array_class"];
+    NSArray *array_xp                            = [defaults objectForKey:@"array_xp"];
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        hud.labelText = @"刷新中";
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 0.01 * NSEC_PER_SEC);
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            // 等待框中
+            NSString *studentKH=[defaults objectForKey:@"studentKH"];
+            NSString *Remember_code_app=[defaults objectForKey:@"remember_code_app"];
+            //----------------课表数据缓存---------------//
+            NSString *Url_String_1=@"http://218.75.197.121:8888/api/v1/get/lessons/";
+            NSString *Url_String_2=@"/";
+            NSString *Url_String_1_U=[Url_String_1 stringByAppendingString:studentKH];
+            NSString *Url_String_1_U_2=[Url_String_1_U stringByAppendingString:Url_String_2];
+            NSString *Url_String=[Url_String_1_U_2 stringByAppendingString:Remember_code_app];
+            /*地址完毕*/
+            NSURL *url                   = [NSURL URLWithString: Url_String];//接口地址
+            NSError *error               = nil;
+            NSString *jsonString         = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:&error];//Url -> String
+            NSData* jsonData             = [jsonString dataUsingEncoding:NSUTF8StringEncoding];//地址 -> 数据
+            NSDictionary *Class_All      = [jsonData objectFromJSONData];//数据 -> 字典
+            NSArray *array               = [Class_All objectForKey:@"data"];
+            [defaults setObject:array forKey:@"array_class"];
+            [defaults synchronize];
+            NSLog(@"平时课表地址:%@",url);
+            //----------------课表数据缓存---------------//
+            //----------------实验课表数据缓存---------------//
+            NSString *Url_String_xp_1=@"http://218.75.197.121:8888/api/v1/get/lessonsexp/";
+            NSString *Url_String_xp_1_U=[Url_String_xp_1 stringByAppendingString:studentKH];
+            NSString *Url_String_xp_1_U_2=[Url_String_xp_1_U stringByAppendingString:@"/"];
+            NSString *Url_String_xp=[Url_String_xp_1_U_2 stringByAppendingString:Remember_code_app];
+            NSURL *url_xp                = [NSURL URLWithString: Url_String_xp];//接口地址
+            NSLog(@"实验课表地址:%@",Url_String_xp);
+            //自带库解析实验课//
+            NSURLRequest *request        = [NSURLRequest requestWithURL:[NSURL URLWithString:Url_String_xp]];
+            NSData *response             = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+            NSDictionary *jsonDataxp     = [NSJSONSerialization JSONObjectWithData:response options:NSJSONReadingMutableLeaves error:&error];
+            NSArray *array_xp            = [jsonDataxp objectForKey:@"data"];
+            [defaults setObject:array_xp forKey:@"array_xp"];
+            [defaults synchronize];
+            //----------------实验课表数据缓存---------------//
+            if(now_xp==0){
+            [self addCourse];
+            }
+            else{
+                [self addXpCourse];
+            }
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+        });
+    
+}
+
 
 
 #pragma mark - GWPCourseListViewDataSource
