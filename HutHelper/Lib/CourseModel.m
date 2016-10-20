@@ -9,7 +9,10 @@
 #import "CourseModel.h"
 
 @implementation CourseModel
-+ (instancetype)courseWithName:(NSString *)name dayIndex:(NSUInteger)dayIndex startCourseIndex:(NSUInteger)startCourseIndex endCourseIndex:(NSUInteger)endCourseIndex{
++ (instancetype)courseWithName:(NSString *)name
+                      dayIndex:(NSUInteger)dayIndex
+              startCourseIndex:(NSUInteger)startCourseIndex
+                endCourseIndex:(NSUInteger)endCourseIndex{
     CourseModel *model = [[self alloc] init];
     model.courseName = name;
     model.dayIndex = dayIndex;
@@ -19,4 +22,14 @@
     return model;
 }
 
++ (instancetype)courseWithName:(NSString *)name
+                 nameAttribute:(NSDictionary *)nameAttribute
+                      dayIndex:(NSUInteger)dayIndex
+              startCourseIndex:(NSUInteger)startCourseIndex
+                endCourseIndex:(NSUInteger)endCourseIndex{
+    CourseModel *model = [CourseModel courseWithName:name dayIndex:dayIndex startCourseIndex:startCourseIndex endCourseIndex:endCourseIndex];
+    model.nameAttribute = nameAttribute;
+    
+    return model;
+}
 @end

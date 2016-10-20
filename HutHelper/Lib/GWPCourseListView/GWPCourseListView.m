@@ -60,8 +60,11 @@
 
 - (void)setCourse:(id<Course>)course{
     _course = course;
-    
-    self.textLabel.text = course.courseName;
+    if ([course nameAttribute] && [course courseName].length) {
+        self.textLabel.attributedText = [[NSAttributedString alloc] initWithString:[course courseName] attributes:[course nameAttribute]];
+    } else {
+        self.textLabel.text = course.courseName;
+    }
 }
 
 - (void)layoutSubviews{
@@ -132,17 +135,32 @@
     return self;
 }
 
+int getweek(){
+    NSDate *now                                  = [NSDate date];
+    NSCalendar *calendar                         = [NSCalendar currentCalendar];
+    NSUInteger unitFlags                         = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit |NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
+    NSDateComponents *dateComponent              = [calendar components:unitFlags fromDate:now];
+    int y                                     = [dateComponent year];//年
+    int m                                    = [dateComponent month];//月
+    int d                                      = [dateComponent day];//日
+    if(m==1||m==2) {
+        m+=12;
+        y--;
+    }
+    int iWeek=(d+2*m+3*(m+1)/5+y+y/4-y/100+y/400)%7+1;
+    return iWeek;
+}
 - (void)setup{
-/*=============================== 初始化变量 ==============================*/
-    _itemHeight = 57;
+    /*=============================== 初始化变量 ==============================*/
+    _itemHeight = 50;
     _timeTableWidth = 50;
     _courseListWidth = 0;
-    _maxCourseCount = 10;
-    _selectedIndex = 1;
+    _maxCourseCount = 12;
+    _selectedIndex = getweek();
     _topBarBgColor = [UIColor whiteColor];
     self.backgroundColor = RGB(245, 245, 245, 1);
     
-/*=============================== 添加控件 ==============================*/
+    /*=============================== 添加控件 ==============================*/
     NSMutableArray *temp;
     
     /** topBar */
@@ -303,8 +321,12 @@
     
 }
 
-#pragma mark - private
+#pragma mark - public
+- (void)reloadData{
+    [self loadData];
+}
 
+#pragma mark - private
 - (void)topBarItemClick:(UIButton *)btn{
     _selectedIndex = btn.tag;
     
@@ -312,33 +334,53 @@
 }
 
 - (void)loadData{
-/*=============================== topBar ==============================*/
-    if ([_dataSource respondsToSelector:@selector(courseListView:titleInTopbarAtIndex:)]) {
-        for (int i=0; i<self.topBarBtnArr.count; i++) {
-            UIButton *btn = self.topBarBtnArr[i];
-            [btn setTitle:[_dataSource courseListView:self titleInTopbarAtIndex:i] forState:UIControlStateNormal];
+    /*=============================== topBar ==============================*/
+    NSArray *temp = @[
+                      @"周一",
+                      @"周二",
+                      @"周三",
+                      @"周四",
+                      @"周五",
+                      @"周六",
+                      @"周日"
+                      ];
+    for (int i=0; i<self.topBarBtnArr.count; i++) {
+        UIButton *btn = self.topBarBtnArr[i];
+        NSString *str = @"";
+        if ([_dataSource respondsToSelector:@selector(courseListView:titleInTopbarAtIndex:)]) {
+            
+            str = [_dataSource courseListView:self titleInTopbarAtIndex:i];
+        } else {
+            str = temp[i];
         }
-    } else {
-        NSArray *temp = @[
-                          @"周一",
-                          @"周二",
-                          @"周三",
-                          @"周四",
-                          @"周五",
-                          @"周六",
-                          @"周日"
-                          ];
-        for (int i=0; i<self.topBarBtnArr.count; i++) {
-            UIButton *btn = self.topBarBtnArr[i];
-            [btn setTitle:temp[i] forState:UIControlStateNormal];
+        
+        NSDictionary *attr;
+        if ([_dataSource respondsToSelector:@selector(courseListView:titleAttributesInTopbarAtIndex:)]) {
+            attr = [_dataSource courseListView:self titleAttributesInTopbarAtIndex:i];
+        }
+        if (attr) {
+            NSAttributedString *attrStr = [[NSAttributedString alloc] initWithString:str attributes:attr];
+            [btn setAttributedTitle:attrStr forState:UIControlStateNormal];
+        } else {
+            [btn setTitle:str forState:UIControlStateNormal];
+        }
+        
+        UIColor *bgColor;
+        if ([_dataSource respondsToSelector:@selector(courseListView:titleBackgroundColorInTopbarAtIndex:)]) {
+            bgColor = [_dataSource courseListView:self titleBackgroundColorInTopbarAtIndex:i];
+        }
+        if (bgColor) {
+            btn.backgroundColor = bgColor;
+        } else {
+            btn.backgroundColor = [UIColor whiteColor];
         }
     }
     
     
-/*=============================== course ==============================*/
-//    for (UITableView *table in self.courseTableArr) {
-//        [table reloadData];
-//    }
+    /*=============================== course ==============================*/
+    //    for (UITableView *table in self.courseTableArr) {
+    //        [table reloadData];
+    //    }
     NSString *msg = [NSString stringWithFormat:@"使用 %@ 必须实现“courseForCourseListView:”方法", self.class];
     NSAssert([_dataSource respondsToSelector:@selector(courseForCourseListView:)], msg);
     self.courseDataArr = [_dataSource courseForCourseListView:self];
@@ -368,12 +410,10 @@
     }];
     id<Course> course = [[self.courseDataArr filteredArrayUsingPredicate:pre] firstObject];
     
-//    cell.textLabel.text = @"高等数学";
-//    cell.textLabel.text = course.courseName;
-    cell.course = course;
-//    UIColor *color = ;
-    cell.backgroundColor = course ? self.lightColorArr[arc4random_uniform((u_int32_t)self.lightColorArr.count)] : [UIColor clearColor];
     cell.textLabel.textColor = [UIColor whiteColor];
+    cell.course = course;
+    UIColor *bgColor = [_dataSource courseListView:self courseTitleBackgroundColorForCourse:course];
+    cell.backgroundColor = course ? (bgColor ? bgColor : self.lightColorArr[arc4random_uniform((u_int32_t)self.lightColorArr.count)]) : [UIColor clearColor];
     
     return cell;
 }
@@ -391,15 +431,14 @@
     } else {
         return _itemHeight;
     }
-//    return _itemHeight*2;
-//    return course ? (course.endCourseIndex-course.startCourseIndex)*_itemHeight : _itemHeight;
+    //    return _itemHeight*2;
+    //    return course ? (course.endCourseIndex-course.startCourseIndex)*_itemHeight : _itemHeight;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if ([tableView isEqual:self.timeTableView]) return;
     _selectedIndex = tableView.tag;
     [self layoutSubviews];
-    
     if ([_delegate respondsToSelector:@selector(courseListView:didSelectedCourse:)]) {
         CourseCell *cell = [tableView cellForRowAtIndexPath:indexPath];
         [_delegate courseListView:self didSelectedCourse:cell.course];

@@ -13,6 +13,8 @@
 @protocol Course <NSObject>
 /** 课程名 */
 @property (nonatomic, copy)   NSString   *courseName;
+/** 课程显示时的文字属性，用来控制颜色、大小等 */
+@property (nonatomic, strong) NSDictionary *nameAttribute;
 /** 一周中的第几天？即周几 */
 @property (nonatomic, assign) NSUInteger dayIndex;
 /** 开始时间(第几节开始) */
@@ -35,8 +37,17 @@
 - (NSArray<id<Course>> *)courseForCourseListView:(GWPCourseListView *)courseListView;
 
 @optional
+#pragma mark 顶部选项卡相关
 /** 设置选项卡的title，默认依次为中文：周一、周二、...、周日 */
 - (NSString *)courseListView:(GWPCourseListView *)courseListView titleInTopbarAtIndex:(NSInteger)index;
+/** 设置选项卡的title的文字属性，如果实现该方法，该方法返回的attribute将会是attributeString的属性 */
+- (NSDictionary*)courseListView:(GWPCourseListView *)courseListView titleAttributesInTopbarAtIndex:(NSInteger)index;
+/** 设置选项卡的title的背景颜色，默认白色 */
+- (UIColor*)courseListView:(GWPCourseListView *)courseListView titleBackgroundColorInTopbarAtIndex:(NSInteger)index;
+
+#pragma mark 课程属性相关
+/** 设置每一个课程单元的title的背景颜色，默认白色 */
+- (UIColor*)courseListView:(GWPCourseListView *)courseListView courseTitleBackgroundColorForCourse:(id<Course>)course;
 
 @end
 
@@ -60,4 +71,6 @@
 @property (nonatomic, assign) NSUInteger selectedIndex;
 /** 顶部选项卡背景颜色 默认白色 */
 @property (nonatomic, strong) UIColor *topBarBgColor;
+/** 刷新 */
+- (void)reloadData;
 @end
