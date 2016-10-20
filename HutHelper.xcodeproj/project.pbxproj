@@ -43,6 +43,7 @@
 		3A3E53081DB2276700A49067 /* MsgModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A3E53031DB2276700A49067 /* MsgModel.m */; };
 		3A3E53091DB2276700A49067 /* MyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A3E53051DB2276700A49067 /* MyView.m */; };
 		3A3E530A1DB2276700A49067 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A3E53071DB2276700A49067 /* Person.m */; };
+		3A3F82FF1DB8AF22009EB7AC /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A3F82FE1DB8AF22009EB7AC /* MBProgressHUD.m */; };
 		3A45626C1DB4980800E5591A /* FirstLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A45626A1DB4980800E5591A /* FirstLoginViewController.m */; };
 		3A45626D1DB4980800E5591A /* FirstLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A45626B1DB4980800E5591A /* FirstLoginViewController.xib */; };
 		3A6D7EDA1DABD9610081B70D /* HomeWorkViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A6D7ED91DABD9610081B70D /* HomeWorkViewController.xib */; };
@@ -154,6 +155,8 @@
 		3A3E53061DB2276700A49067 /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Person.h; path = HutHelper/Lib/Exam/Person.h; sourceTree = "<group>"; };
 		3A3E53071DB2276700A49067 /* Person.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Person.m; path = HutHelper/Lib/Exam/Person.m; sourceTree = "<group>"; };
 		3A3E530B1DB2286500A49067 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PrefixHeader.pch; path = HutHelper/Lib/Exam/PrefixHeader.pch; sourceTree = "<group>"; };
+		3A3F82FD1DB8AF22009EB7AC /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBProgressHUD.h; path = HutHelper/Lib/Show/MBProgressHUD.h; sourceTree = "<group>"; };
+		3A3F82FE1DB8AF22009EB7AC /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBProgressHUD.m; path = HutHelper/Lib/Show/MBProgressHUD.m; sourceTree = "<group>"; };
 		3A4562691DB4980800E5591A /* FirstLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstLoginViewController.h; sourceTree = "<group>"; };
 		3A45626A1DB4980800E5591A /* FirstLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FirstLoginViewController.m; path = HutHelper/FirstLoginViewController.m; sourceTree = "<group>"; };
 		3A45626B1DB4980800E5591A /* FirstLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FirstLoginViewController.xib; path = HutHelper/FirstLoginViewController.xib; sourceTree = "<group>"; };
@@ -289,6 +292,15 @@
 			name = Exam;
 			sourceTree = "<group>";
 		};
+		3A3F82FC1DB8AF14009EB7AC /* Show */ = {
+			isa = PBXGroup;
+			children = (
+				3A3F82FD1DB8AF22009EB7AC /* MBProgressHUD.h */,
+				3A3F82FE1DB8AF22009EB7AC /* MBProgressHUD.m */,
+			);
+			name = Show;
+			sourceTree = "<group>";
+		};
 		3A7D3CA81DB0A6CB00355E7A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -416,6 +428,7 @@
 		3A8567DB1DAA3DF800EBD44A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				3A3F82FC1DB8AF14009EB7AC /* Show */,
 				3A0898B21DB5ED4300D2CCE6 /* SKTTable */,
 				3A3E53011DB2275800A49067 /* Exam */,
 				3A3C68861DB1150C0088CC17 /* LGPlusButtonsView */,
@@ -609,6 +622,7 @@
 				3A3E53081DB2276700A49067 /* MsgModel.m in Sources */,
 				3A6D7EF11DABDB500081B70D /* LeftSortsViewController.m in Sources */,
 				3A0898A41DB5EA5700D2CCE6 /* ScoreViewController.m in Sources */,
+				3A3F82FF1DB8AF22009EB7AC /* MBProgressHUD.m in Sources */,
 				3A33D7F21DAF1B810012EFDE /* SetViewController.m in Sources */,
 				3A33D7BE1DADE3A40012EFDE /* FeedbackViewController.m in Sources */,
 				3A33D7D01DAE31AB0012EFDE /* SchoolsayViewController.m in Sources */,

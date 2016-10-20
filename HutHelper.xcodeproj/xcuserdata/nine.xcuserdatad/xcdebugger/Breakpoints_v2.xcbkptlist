@@ -40,12 +40,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HutHelper/MainPageViewController.m"
-            timestampString = "498575305.868916"
+            timestampString = "498648843.032459"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "390"
-            endingLineNumber = "390"
-            landmarkName = "-Day:"
+            startingLineNumber = "421"
+            endingLineNumber = "421"
+            landmarkName = "-Library:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -71,15 +71,10 @@
                                                                              action:@selector(collapseSubrows)];
     
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    NSString *String_score=[defaults objectForKey:@"string_score"];
-    NSURL *url                 = [NSURL URLWithString: String_score];//接口地址
-    NSError *error             = nil;
-    NSString *ScoreString       = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:&error];//Url -> String
-    NSData* ScoreData           = [ScoreString dataUsingEncoding:NSUTF8StringEncoding];//地址 -> 数据
+    NSData* ScoreData           = [defaults objectForKey:@"data_score"];//地址 -> 数据
     NSDictionary *Score_All     = [ScoreData objectFromJSONData];//数据 -> 字典
     NSArray *array_score             = [Score_All objectForKey:@"data"];
-
-  
+    
     NSMutableArray *score_name=[NSMutableArray arrayWithCapacity:230];
     NSMutableArray *score_score=[NSMutableArray arrayWithCapacity:230];
     NSMutableArray *score_xf=[NSMutableArray arrayWithCapacity:230];

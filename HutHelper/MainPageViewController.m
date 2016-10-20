@@ -23,6 +23,7 @@
 #import "FirstLoginViewController.h"
 #import<CommonCrypto/CommonDigest.h>
 #import "ScoreViewController.h"
+#import "MBProgressHUD.h"
 #define vBackBarButtonItemName  @"backArrow.png"    //导航条返回默认图片名
 @interface MainPageViewController ()
 
@@ -167,16 +168,8 @@ AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication share
     }
     //-----是否打开课程表----//
 
-NSString *name_tag                        = [defaults objectForKey:@"TrueName"];
 NSString *class_name                      = [defaults objectForKey:@"class_name"];
 NSString *dep_name                        = [defaults objectForKey:@"dep_name"];
-    if(name_tag!=NULL){
-        [UMessage addTag:name_tag
-                response:^(id responseObject, NSInteger remain, NSError *error) {
-                    //add your codes
-                }];
-        [MobClick profileSignInWithPUID:@"name_tag"];
-    }
     if(class_name!=NULL){
             [UMessage addTag:class_name
                     response:^(id responseObject, NSInteger remain, NSError *error) {
@@ -188,7 +181,7 @@ NSString *dep_name                        = [defaults objectForKey:@"dep_name"];
                             //add your codes
                         }];}
 
-    [UMessage addTag:@"版本1.2.0"
+    [UMessage addTag:@"版本1.3.0"
                 response:^(id responseObject, NSInteger remain, NSError *error) {
                     //add your codes
                 }];
@@ -219,6 +212,8 @@ NSArray *array_xp                         = [jsonDataxp objectForKey:@"data"];
             [defaults setObject:array_xp forKey:@"array_xp"];
             //强制让数据立刻保存
             [defaults synchronize];
+                
+           
             }
     
     }
@@ -229,12 +224,12 @@ NSArray *array_xp                         = [jsonDataxp objectForKey:@"data"];
 
 - (void) openOrCloseLeftList
 {
-AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-
+    AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
     if (tempAppDelegate.LeftSlideVC.closed)
     {
         [tempAppDelegate.LeftSlideVC openLeftView];
-
+        
     }
     else
     {
@@ -275,45 +270,66 @@ int day                                   = [dateComponent day];//日
 
 - (IBAction)ClassFind:(id)sender {  //课表界面
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-NSArray *array                            = [defaults objectForKey:@"array"];
-    if(array!=NULL){
-UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-ClassViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Class"];
-AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+     NSArray *array_class                            = [defaults objectForKey:@"array_class"];
+     NSArray *array_xp                            = [defaults objectForKey:@"array_xp"];
+    if(array_class==NULL||array_xp==NULL){
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        hud.labelText = @"Loading";
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 0.01 * NSEC_PER_SEC);
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            // 等待框中
+        NSString *studentKH=[defaults objectForKey:@"studentKH"];
+        NSString *Remember_code_app=[defaults objectForKey:@"remember_code_app"];
+        //----------------课表数据缓存---------------//
+        NSString *Url_String_1=@"http://218.75.197.121:8888/api/v1/get/lessons/";
+        NSString *Url_String_2=@"/";
+        NSString *Url_String_1_U=[Url_String_1 stringByAppendingString:studentKH];
+        NSString *Url_String_1_U_2=[Url_String_1_U stringByAppendingString:Url_String_2];
+        NSString *Url_String=[Url_String_1_U_2 stringByAppendingString:Remember_code_app];
+        /*地址完毕*/
+        NSURL *url                   = [NSURL URLWithString: Url_String];//接口地址
+        NSError *error               = nil;
+        NSString *jsonString         = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:&error];//Url -> String
+        NSData* jsonData             = [jsonString dataUsingEncoding:NSUTF8StringEncoding];//地址 -> 数据
+        NSDictionary *Class_All      = [jsonData objectFromJSONData];//数据 -> 字典
+        NSArray *array               = [Class_All objectForKey:@"data"];
+        [defaults setObject:array forKey:@"array_class"];
+        [defaults synchronize];
+        //----------------课表数据缓存---------------//
+        //----------------实验课表数据缓存---------------//
+        NSString *Url_String_xp_1=@"http://218.75.197.121:8888/api/v1/get/lessonsexp/";
+        NSString *Url_String_xp_1_U=[Url_String_xp_1 stringByAppendingString:studentKH];
+        NSString *Url_String_xp_1_U_2=[Url_String_xp_1_U stringByAppendingString:@"/"];
+        NSString *Url_String_xp=[Url_String_xp_1_U_2 stringByAppendingString:Remember_code_app];
+        NSURL *url_xp                = [NSURL URLWithString: Url_String_xp];//接口地址
+        //自带库解析实验课//
+        NSURLRequest *request        = [NSURLRequest requestWithURL:[NSURL URLWithString:Url_String_xp]];
+        NSData *response             = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+        NSDictionary *jsonDataxp     = [NSJSONSerialization JSONObjectWithData:response options:NSJSONReadingMutableLeaves error:&error];
+        NSArray *array_xp            = [jsonDataxp objectForKey:@"data"];
+        [defaults setObject:array_xp forKey:@"array_xp"];
+        [defaults synchronize];
+        //----------------实验课表数据缓存---------------//
+        UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        ClassViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Class"];
+        AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:NO];
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+        });
     }
     else{
-UIAlertView *alertView                    = [[UIAlertView alloc] initWithTitle:@"温馨提示"
-                                                            message:@"没有查到你的课程数据"
-                                                           delegate:self
-                                                  cancelButtonTitle:@"取消"
-                                                  otherButtonTitles:@"确定", nil];
-        [alertView show];
+        UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        ClassViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Class"];
+        AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:NO];
     }
 
 } //课程表
 
 - (IBAction)HomeWork:(id)sender { //作业界面
-    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    NSString *remember_code_app=[defaults objectForKey:@"remember_code_app"];
-
-
 HomeWorkViewController *vc                = [[HomeWorkViewController alloc] init];
 AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    if(remember_code_app!=NULL){    //判断是否已登录
          [tempAppDelegate.mainNavigationController pushViewController:vc animated:NO];
-    }
-    else{
-UIAlertView *alertView                    = [[UIAlertView alloc] initWithTitle:@"温馨提示"
-                                                            message:@"请重新登录"
-                                                           delegate:self
-                                                  cancelButtonTitle:@"取消"
-                                                  otherButtonTitles:@"确定", nil];
-        [alertView show];
-    }
-
-
-
 } //网上作业
 
 - (IBAction)Power:(id)sender {
@@ -335,52 +351,59 @@ AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication share
 } //二手市场
 
 - (IBAction)Score:(id)sender {
-    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    NSString *remember_code_app=[defaults objectForKey:@"remember_code_app"];
-    
-    if(remember_code_app!=NULL){    //判断是否已登录
-        //获得地址//
-        NSString *Url_String_score=@"http://218.75.197.121:8888/api/v1/get/scores/";
-        NSString *studentKH                       = [defaults objectForKey:@"studentKH"];
-        Url_String_score=[Url_String_score stringByAppendingString:studentKH];
-        Url_String_score=[Url_String_score stringByAppendingString:@"/"];
-        Url_String_score=[Url_String_score stringByAppendingString:remember_code_app];
-        Url_String_score=[Url_String_score stringByAppendingString:@"/"];
-        
-        NSString *sha_string=[studentKH stringByAppendingString:remember_code_app];
-        sha_string=[sha_string stringByAppendingString:@"f$Z@%"];
-        NSString *shaok=[self SHA:sha_string];
-        Url_String_score=[Url_String_score stringByAppendingString:shaok];
-       
-        //地址得到完毕//
-        //开始存入字典//
-        NSURL *url                 = [NSURL URLWithString: Url_String_score];//接口地址
-        NSError *error             = nil;
-        NSString *ScoreString       = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:&error];//Url -> String
-        NSData* ScoreData           = [ScoreString dataUsingEncoding:NSUTF8StringEncoding];//地址 -> 数据
-        NSDictionary *Score_All     = [ScoreData objectFromJSONData];//数据 -> 字典
-        //存入完毕
-        NSLog(@"成绩查询地址:%@",url);
-        NSString *Msg=[Score_All objectForKey:@"msg"];
-        if ([Msg isEqualToString:@"ok"]) {
-            NSArray *array_score             = [Score_All objectForKey:@"data"];
-            [defaults setObject:Url_String_score forKey:@"string_score"];
-            [defaults synchronize];
+        NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+        NSData* ScoreData           = [defaults objectForKey:@"data_score"];
+        if(ScoreData==NULL){
+            MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+            hud.labelText = @"Loading";
+            dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 0.01 * NSEC_PER_SEC);
+            dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+                // 等待框中
+        NSString *remember_code_app=[defaults objectForKey:@"remember_code_app"];
+            NSString *Url_String_score=@"http://218.75.197.121:8888/api/v1/get/scores/";
+            NSString *studentKH                       = [defaults objectForKey:@"studentKH"];
+            Url_String_score=[Url_String_score stringByAppendingString:studentKH];
+            Url_String_score=[Url_String_score stringByAppendingString:@"/"];
+            Url_String_score=[Url_String_score stringByAppendingString:remember_code_app];
+            Url_String_score=[Url_String_score stringByAppendingString:@"/"];
+            NSString *sha_string=[studentKH stringByAppendingString:remember_code_app];
+            sha_string=[sha_string stringByAppendingString:@"f$Z@%"];
+            NSString *shaok=[self SHA:sha_string];
+            Url_String_score=[Url_String_score stringByAppendingString:shaok];
+            NSURL *url                 = [NSURL URLWithString: Url_String_score];//接口地址
+            NSError *error             = nil;
+            NSString *ScoreString       = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:&error];//Url -> String
+            NSData* ScoreData           = [ScoreString dataUsingEncoding:NSUTF8StringEncoding];//地址 -> 数据
+            NSDictionary *Score_All     = [ScoreData objectFromJSONData];//数据 -> 字典
+            //存入完毕
+            NSLog(@"成绩查询地址:%@",url);
+            NSString *Msg=[Score_All objectForKey:@"msg"];
+            if ([Msg isEqualToString:@"ok"]) {
+                NSArray *array_score             = [Score_All objectForKey:@"data"];
+                [defaults setObject:ScoreData forKey:@"data_score"];
+                [defaults synchronize];
+                ScoreViewController *Score      = [[ScoreViewController alloc] init];
+                AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+                [tempAppDelegate.mainNavigationController pushViewController:Score animated:NO];
+                
+            }
+            else{
+                UIAlertView *alertView                    = [[UIAlertView alloc] initWithTitle:@"登陆过期或网络异常"
+                                                                                       message:@"请点击切换用户,重新登录"
+                                                                                      delegate:self
+                                                                             cancelButtonTitle:@"取消"
+                                                                             otherButtonTitles:@"确定", nil];
+                [alertView show];
+                NSLog(@"%@",Url_String_score);
+            }
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+        });
+        }
+        else{
             ScoreViewController *Score      = [[ScoreViewController alloc] init];
             AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
             [tempAppDelegate.mainNavigationController pushViewController:Score animated:NO];
-            
         }
-        else{
-            UIAlertView *alertView                    = [[UIAlertView alloc] initWithTitle:@"登陆过期或网络异常"
-                                                                                   message:@"请点击切换用户,重新登录"
-                                                                                  delegate:self
-                                                                         cancelButtonTitle:@"取消"
-                                                                         otherButtonTitles:@"确定", nil];
-            [alertView show];
-            NSLog(@"%@",Url_String_score);
-        }
-    }
 
 } //成绩查询
 
@@ -399,65 +422,71 @@ AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication share
 } //图书馆
 
 - (IBAction)Exam:(id)sender {
-    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    NSString *studentKH        = [defaults objectForKey:@"studentKH"];
-    
-    NSString *Url_String_1=@"http://218.75.197.124:84/api/exam/";
-    NSString *Url_String_1_U=[Url_String_1 stringByAppendingString:studentKH];
-    NSString *Url_String_1_U_2=[Url_String_1_U stringByAppendingString:@"/key/"];
-    NSString *ss=[studentKH stringByAppendingString:@"apiforapp!"];
-    NSString *ssmd5=[ss MD5];
-    NSString *Url_String=[Url_String_1_U_2 stringByAppendingString:ssmd5];
-    
-    NSURL *url                 = [NSURL URLWithString: Url_String];//接口地址
-     NSLog(@"考试地址:%@",url);
-    NSError *error             = nil;
-    NSString *jsonString       = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:&error];//Url -> String
-    NSData* jsonData           = [jsonString dataUsingEncoding:NSUTF8StringEncoding];//地址 -> 数据
-    NSDictionary *User_All     = [jsonData objectFromJSONData];//数据 -> 字典
-    
-    NSString *message=[User_All objectForKey:@"message"];
-    NSString *status=[User_All objectForKey:@"status"];
-
-   
-    if([status isEqualToString:@"success"]){
-        NSDictionary *Class_Data=[User_All objectForKey:@"res"];
-        NSArray *array             = [Class_Data objectForKey:@"exam"];
-        [defaults setObject:array forKey:@"array_exam"];
-        [defaults synchronize];
-        NSInteger *exam_on                        = [defaults integerForKey:@"exam_on"];
-                if(exam_on!=1){
-        UIAlertView *alertView                    = [[UIAlertView alloc] initWithTitle:@"温馨提示"
-                                                                        message:@"考试序号后的红灯代表考试正在计划中\n绿灯代表考试正在执行中,时间不再变动"
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.labelText = @"Loading";
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 0.01 * NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+        NSString *studentKH        = [defaults objectForKey:@"studentKH"];
+        
+        NSString *Url_String_1=@"http://218.75.197.124:84/api/exam/";
+        NSString *Url_String_1_U=[Url_String_1 stringByAppendingString:studentKH];
+        NSString *Url_String_1_U_2=[Url_String_1_U stringByAppendingString:@"/key/"];
+        NSString *ss=[studentKH stringByAppendingString:@"apiforapp!"];
+        NSString *ssmd5=[ss MD5];
+        NSString *Url_String=[Url_String_1_U_2 stringByAppendingString:ssmd5];
+        
+        NSURL *url                 = [NSURL URLWithString: Url_String];//接口地址
+        NSLog(@"考试地址:%@",url);
+        NSError *error             = nil;
+        NSString *jsonString       = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:&error];//Url -> String
+        NSData* jsonData           = [jsonString dataUsingEncoding:NSUTF8StringEncoding];//地址 -> 数据
+        NSDictionary *User_All     = [jsonData objectFromJSONData];//数据 -> 字典
+        
+        NSString *message=[User_All objectForKey:@"message"];
+        NSString *status=[User_All objectForKey:@"status"];
+        
+        
+        if([status isEqualToString:@"success"]){
+            NSDictionary *Class_Data=[User_All objectForKey:@"res"];
+            NSArray *array             = [Class_Data objectForKey:@"exam"];
+            [defaults setObject:array forKey:@"array_exam"];
+            [defaults synchronize];
+            NSInteger *exam_on                        = [defaults integerForKey:@"exam_on"];
+            if(exam_on!=1){
+                UIAlertView *alertView                    = [[UIAlertView alloc] initWithTitle:@"温馨提示"
+                                                                                       message:@"考试序号后的红灯代表考试正在计划中\n绿灯代表考试正在执行中,时间不再变动"
+                                                                                      delegate:self
+                                                                             cancelButtonTitle:@"取消"
+                                                                             otherButtonTitles:@"确定", nil];
+                [alertView show];
+                [defaults setInteger:1 forKey:@"exam_on"];
+            }
+            if(array.count!=0){
+                ExamViewController *exam                  = [[ExamViewController alloc] init];
+                AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+                [tempAppDelegate.mainNavigationController pushViewController:exam animated:NO];
+            }
+            else{
+                UIAlertView *alertView1    = [[UIAlertView alloc] initWithTitle:@"暂无考试"
+                                                                        message:@"计划表上暂时没有考试"
                                                                        delegate:self
                                                               cancelButtonTitle:@"取消"
                                                               otherButtonTitles:@"确定", nil];
-                    [alertView show];
-                        [defaults setInteger:1 forKey:@"exam_on"];
-                }
-        if(array.count!=0){
-            ExamViewController *exam                  = [[ExamViewController alloc] init];
-            AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-            [tempAppDelegate.mainNavigationController pushViewController:exam animated:NO];
+                [alertView1 show];
+            }
+            
         }
         else{
-            UIAlertView *alertView1    = [[UIAlertView alloc] initWithTitle:@"暂无考试"
-                                                                    message:@"计划表上暂时没有考试"
-                                                                   delegate:self
-                                                          cancelButtonTitle:@"取消"
-                                                          otherButtonTitles:@"确定", nil];
-            [alertView1 show];
+            UIAlertView *alertView                    = [[UIAlertView alloc] initWithTitle:@"查询失败"
+                                                                                   message:message
+                                                                                  delegate:self
+                                                                         cancelButtonTitle:@"取消"
+                                                                         otherButtonTitles:@"确定", nil];
+            [alertView show];
         }
-
-            }
-            else{
-        UIAlertView *alertView                    = [[UIAlertView alloc] initWithTitle:@"查询失败"
-                                                                    message:message
-                                                                   delegate:self
-                                                          cancelButtonTitle:@"取消"
-                                                          otherButtonTitles:@"确定", nil];
-                [alertView show];
-                 }
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+    });
 } //考试计划
 
 

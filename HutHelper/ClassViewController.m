@@ -82,7 +82,7 @@ int now_xp=0;
 - (void)addCourse{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     NSInteger *nowweek                           = [defaults integerForKey:@"NowWeek"];
-    NSArray *array                               = [defaults objectForKey:@"array"];
+    NSArray *array                               = [defaults objectForKey:@"array_class"];
     
     CourseModel *a1  = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
     CourseModel *a2  = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
