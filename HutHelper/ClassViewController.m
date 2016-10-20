@@ -56,6 +56,7 @@ _Bool IfWeeks(int nowweek, int dsz, int qsz, int jsz) {
 }
 
 int now_week;
+int now_xp=0;
 - (NSMutableArray<CourseModel *> *)courseArr{
     
     if (!_courseArr) {
@@ -82,8 +83,6 @@ int now_week;
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     NSInteger *nowweek                           = [defaults integerForKey:@"NowWeek"];
     NSArray *array                               = [defaults objectForKey:@"array"];
-    NSArray *array_xp                            = [defaults objectForKey:@"array_xp"];
-    NSInteger *xp_on                             = [defaults integerForKey:@"xp_on"];
     
     CourseModel *a1  = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
     CourseModel *a2  = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
@@ -286,13 +285,204 @@ int now_week;
     [self.courseListView reloadData];
 }
 
-- (void)addCoursea{
-    CourseModel *a = [CourseModel courseWithName:@"Golang" dayIndex:1 startCourseIndex:1 endCourseIndex:2];
-    //    [self.courseArr addObject:a];
-    //    CourseModel *a = [CourseModel courseWithName:@"Java" dayIndex:1 startCourseIndex:1 endCourseIndex:2];
-    CourseModel *b = [CourseModel courseWithName:@"哈哈+" dayIndex:2 startCourseIndex:3 endCourseIndex:4];
-    CourseModel *c = [CourseModel courseWithName:@"C#" dayIndex:3 startCourseIndex:5 endCourseIndex:6];
-    _courseArr = [NSMutableArray arrayWithArray:@[a,c,b]];
+- (void)addXpCourse{
+NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+NSArray *array_xp                            = [defaults objectForKey:@"array_xp"];
+    CourseModel *a1  = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
+    CourseModel *a2  = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
+    CourseModel *a3  = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
+    CourseModel *a4  = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
+    CourseModel *a5  = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
+    CourseModel *a6  = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
+    CourseModel *a7  = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
+    CourseModel *a8  = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
+    CourseModel *a9  = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
+    CourseModel *a10 = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
+    CourseModel *a11 = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
+    CourseModel *a12 = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
+    CourseModel *a13 = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
+    CourseModel *a14 = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
+    CourseModel *a15 = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
+    CourseModel *a16 = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
+    CourseModel *a17 = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
+    CourseModel *a18 = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
+    CourseModel *a19 = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
+    CourseModel *a20 = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
+    CourseModel *a21 = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
+    CourseModel *a22 = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
+    CourseModel *a23 = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
+    CourseModel *a24 = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
+    CourseModel *a25 = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
+    CourseModel *a26 = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
+    CourseModel *a27 = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
+int day1                                     = 1,day2=1,day3=1,day4=1,day5=1,day6=1;
+  
+    for (int ixp                                 = 0; ixp<array_xp.count; ixp++) {
+        NSDictionary *dict1_xp                       = array_xp[ixp];
+        NSString *ClassName_xp                       = [dict1_xp objectForKey:@"lesson"];//第几节
+        NSString *StartClass_xp                      = [dict1_xp objectForKey:@"lesson_no"];//第几节
+        NSInteger *StartClass_xp_num                 = [StartClass_xp intValue];
+        NSInteger *StartClass_xp_num_now             = (short)StartClass_xp_num*2-1;
+        NSString *Time_xp                            = [dict1_xp objectForKey:@"period"];//用时
+        NSInteger *Time_xp_num                       = [Time_xp intValue];
+        NSInteger *EndClass_xp                       = (short)StartClass_xp_num_now+(short)Time_xp_num-1;
+        NSString *StartWeek_xp                       = [dict1_xp objectForKey:@"weeks_no"];//起始周
+        NSInteger *StartWeek_xp_num                  = [StartWeek_xp intValue];
+        NSString *Room_xp                            = [dict1_xp objectForKey:@"locate"];//教室
+        NSString *WeekDay_xp                         = [dict1_xp objectForKey:@"week"];//第几天
+        NSInteger *WeekDay_xp_num                    = [WeekDay_xp intValue];
+        
+ 
+        
+        ClassName_xp=[ClassName_xp stringByAppendingString:@"\n@"];
+        ClassName_xp=[ClassName_xp stringByAppendingString:Room_xp];
+        
+        
+        NSString *ClassName                          = ClassName_xp;
+        NSInteger *WeekDay_num                       = WeekDay_xp_num;
+        NSInteger *StartClass_num                    = StartClass_xp_num_now;
+        NSInteger *EndClass                          = EndClass_xp;
+        
+        if(StartWeek_xp_num==now_week){
+            if(StartClass_xp_num==1){
+                switch (day1) {
+                    case 1:
+                        
+                        a1  = [CourseModel courseWithName:ClassName dayIndex:WeekDay_num startCourseIndex:StartClass_num endCourseIndex:EndClass];
+                        
+                        day1++;
+                        break;
+                    case 2:
+                        a2  = [CourseModel courseWithName:ClassName dayIndex:WeekDay_num startCourseIndex:StartClass_num endCourseIndex:EndClass];
+                        day1++;
+                        break;
+                    case 3:
+                        a3  = [CourseModel courseWithName:ClassName dayIndex:WeekDay_num startCourseIndex:StartClass_num endCourseIndex:EndClass];
+                        day1++;
+                        break;
+                    case 4:
+                        a4  = [CourseModel courseWithName:ClassName dayIndex:WeekDay_num startCourseIndex:StartClass_num endCourseIndex:EndClass];
+                        day1++;
+                        break;
+                    case 5:
+                        a5  = [CourseModel courseWithName:ClassName dayIndex:WeekDay_num startCourseIndex:StartClass_num endCourseIndex:EndClass];
+                        day1++;
+                        break;
+                    default:
+                        break;
+                }
+                
+            }
+            if(StartClass_xp_num==2){
+                switch (day2) {
+                    case 1:
+                        a6  = [CourseModel courseWithName:ClassName dayIndex:WeekDay_num startCourseIndex:StartClass_num endCourseIndex:EndClass];
+                        day2++;
+                        break;
+                    case 2:
+                        a7  = [CourseModel courseWithName:ClassName dayIndex:WeekDay_num startCourseIndex:StartClass_num endCourseIndex:EndClass];
+                        day2++;
+                        break;
+                    case 3:
+                        a8  = [CourseModel courseWithName:ClassName dayIndex:WeekDay_num startCourseIndex:StartClass_num endCourseIndex:EndClass];
+                        day2++;
+                        break;
+                    case 4:
+                        a9  = [CourseModel courseWithName:ClassName dayIndex:WeekDay_num startCourseIndex:StartClass_num endCourseIndex:EndClass];
+                        day2++;
+                        break;
+                    case 5:
+                        a10 = [CourseModel courseWithName:ClassName dayIndex:WeekDay_num startCourseIndex:StartClass_num endCourseIndex:EndClass];
+                        day2++;
+                        break;
+                    default:
+                        break;
+                }
+                
+            }
+            if(StartClass_xp_num==3){
+                switch (day3) {
+                    case 1:
+                        a11 = [CourseModel courseWithName:ClassName dayIndex:WeekDay_num startCourseIndex:StartClass_num endCourseIndex:EndClass];
+                        day3++;
+                        break;
+                    case 2:
+                        a12 = [CourseModel courseWithName:ClassName dayIndex:WeekDay_num startCourseIndex:StartClass_num endCourseIndex:EndClass];
+                        day3++;
+                        break;
+                    case 3:
+                        a13 = [CourseModel courseWithName:ClassName dayIndex:WeekDay_num startCourseIndex:StartClass_num endCourseIndex:EndClass];
+                        day3++;
+                        break;
+                    case 4:
+                        a14 = [CourseModel courseWithName:ClassName dayIndex:WeekDay_num startCourseIndex:StartClass_num endCourseIndex:EndClass];
+                        day3++;
+                        break;
+                    case 5:
+                        a15 = [CourseModel courseWithName:ClassName dayIndex:WeekDay_num startCourseIndex:StartClass_num endCourseIndex:EndClass];
+                        day3++;
+                        break;
+                    default:
+                        break;
+                }
+                
+            }
+            if(StartClass_xp_num==4){
+                switch (day4) {
+                    case 1:
+                        a16 = [CourseModel courseWithName:ClassName dayIndex:WeekDay_num startCourseIndex:StartClass_num endCourseIndex:EndClass];
+                        day4++;
+                        break;
+                    case 2:
+                        a17 = [CourseModel courseWithName:ClassName dayIndex:WeekDay_num startCourseIndex:StartClass_num endCourseIndex:EndClass];
+                        day4++;
+                        break;
+                    case 3:
+                        a18 = [CourseModel courseWithName:ClassName dayIndex:WeekDay_num startCourseIndex:StartClass_num endCourseIndex:EndClass];
+                        day4++;
+                        break;
+                    case 4:
+                        a19 = [CourseModel courseWithName:ClassName dayIndex:WeekDay_num startCourseIndex:StartClass_num endCourseIndex:EndClass];
+                        day4++;
+                        break;
+                    case 5:
+                        a20 = [CourseModel courseWithName:ClassName dayIndex:WeekDay_num startCourseIndex:StartClass_num endCourseIndex:EndClass];
+                        day4++;
+                        break;
+                    default:
+                        break;
+                }
+                
+            }
+            if(StartClass_xp_num==5){
+                switch (day5) {
+                    case 1:
+                        a21 = [CourseModel courseWithName:ClassName dayIndex:WeekDay_num startCourseIndex:StartClass_num endCourseIndex:EndClass];
+                        day5++;
+                        break;
+                    case 2:
+                        a22 = [CourseModel courseWithName:ClassName dayIndex:WeekDay_num startCourseIndex:StartClass_num endCourseIndex:EndClass];
+                        day5++;
+                        break;
+                    case 3:
+                        a23 = [CourseModel courseWithName:ClassName dayIndex:WeekDay_num startCourseIndex:StartClass_num endCourseIndex:EndClass];
+                        day5++;
+                        break;
+                    case 4:
+                        a24 = [CourseModel courseWithName:ClassName dayIndex:WeekDay_num startCourseIndex:StartClass_num endCourseIndex:EndClass];
+                        day5++;
+                        break;
+                    case 5:
+                        a25 = [CourseModel courseWithName:ClassName dayIndex:WeekDay_num startCourseIndex:StartClass_num endCourseIndex:EndClass];
+                        day5++;
+                        break;
+                    default:
+                        break;
+                }
+                
+            }}}
+        
+    _courseArr = [NSMutableArray arrayWithArray:@[a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,a15,a16,a17,a18,a19,a20,a21,a22,a23,a24,a25]];
     
     [self.courseListView reloadData];
 }
@@ -321,7 +511,8 @@ int now_week;
 /** 设置选项卡的title的文字属性，如果实现该方法，该方法返回的attribute将会是attributeString的属性 */
 - (NSDictionary*)courseListView:(GWPCourseListView *)courseListView titleAttributesInTopbarAtIndex:(NSInteger)index{
     if (index==getweekday()-1) {
-        return @{NSForegroundColorAttributeName:[UIColor blueColor], NSFontAttributeName:[UIFont systemFontOfSize:18]};
+          UIColor *newblueColor                        = [UIColor colorWithRed:0/255.0 green:206/255.0 blue:216/255.0 alpha:1];
+        return @{NSForegroundColorAttributeName:newblueColor, NSFontAttributeName:[UIFont systemFontOfSize:18]};
     }
     
     return nil;
@@ -384,33 +575,83 @@ titleBackgroundColorInTopbarAtIndex:(NSInteger)index{
                                                             [_plusButtonsViewNavBar hideAnimated:YES completionHandler:nil];
                                                         
                                                         if (index == 1) {//实验课表
+                                                            if(now_xp==0){
+                                                                now_xp=1;
+                            [_plusButtonsViewMain setDescriptionsTexts:@[@"", @"平时课表", @"下一周", @"上一周"]];
+                                                                [_plusButtonsViewMain setButtonsImages:@[[NSNull new], [UIImage imageNamed:@"Books"], [UIImage imageNamed:@"Picture"], [UIImage imageNamed:@"Message"]]
+                                                                                              forState:UIControlStateNormal
+                                                                                        forOrientation:LGPlusButtonsViewOrientationAll];
+                                                                NSString *nowweek_string=@"第";
+                                                                NSString *now2=[NSString stringWithFormat:@"%d",now_week];
+                                                                nowweek_string=[nowweek_string stringByAppendingString:now2];
+                                                                nowweek_string=[nowweek_string stringByAppendingString:@"周实验课表"];
+                                                                //标题结束//
+                                                                self.navigationItem.title                    = nowweek_string;
+                                                                [self addXpCourse];
+                                                            }
+                                                            else   if(now_xp==1){
+                                                                now_xp=0;
+                                                                [_plusButtonsViewMain setDescriptionsTexts:@[@"", @"实验课表", @"下一周", @"上一周"]];
+                                                                NSString *nowweek_string=@"第";
+                                                                NSString *now2=[NSString stringWithFormat:@"%d",now_week];
+                                                                nowweek_string=[nowweek_string stringByAppendingString:now2];
+                                                                nowweek_string=[nowweek_string stringByAppendingString:@"周"];
+                                                                //标题结束//
+                                                                self.navigationItem.title                    = nowweek_string;
+                                                                [self addCourse];
+                                                            }
                                                             
-                                                            [self addCoursea];
                                                         }
                                                         if (index == 2) //下一周
                                                         {
                                                             if (now_week<=20) {
                                                                  now_week++;
                                                             }
-                                                            NSString *nowweek_string=@"第";
-                                                            NSString *now2=[NSString stringWithFormat:@"%d",now_week];
-                                                            nowweek_string=[nowweek_string stringByAppendingString:now2];
-                                                            nowweek_string=[nowweek_string stringByAppendingString:@"周"];
-                                                            //标题结束//
-                                                            self.navigationItem.title                    = nowweek_string;
-                                                            [self addCourse];
+                                                            if(now_xp==1){
+                                                                NSString *nowweek_string=@"第";
+                                                                NSString *now2=[NSString stringWithFormat:@"%d",now_week];
+                                                                nowweek_string=[nowweek_string stringByAppendingString:now2];
+                                                                nowweek_string=[nowweek_string stringByAppendingString:@"周实验课表"];
+                                                                //标题结束//
+                                                                self.navigationItem.title                    = nowweek_string;
+                                                                [self addXpCourse];
+                                                            }
+                                                            else{
+                                                                NSString *nowweek_string=@"第";
+                                                                NSString *now2=[NSString stringWithFormat:@"%d",now_week];
+                                                                nowweek_string=[nowweek_string stringByAppendingString:now2];
+                                                                nowweek_string=[nowweek_string stringByAppendingString:@"周"];
+                                                                //标题结束//
+                                                                self.navigationItem.title                    = nowweek_string;
+                                                                [self addCourse];
+                                                            }
                                                         }
                                                         if (index == 3){ //上一周{
                                                             if (now_week>1) {
                                                                 now_week--;
                                                             }
-                                                            NSString *nowweek_string=@"第";
-                                                            NSString *now2=[NSString stringWithFormat:@"%d",now_week];
-                                                            nowweek_string=[nowweek_string stringByAppendingString:now2];
-                                                            nowweek_string=[nowweek_string stringByAppendingString:@"周"];
-                                                            //标题结束//
-                                                            self.navigationItem.title                    = nowweek_string;
-                                                            [self addCourse];
+                                                            if(now_xp==1){
+                                                                NSString *nowweek_string=@"第";
+                                                                NSString *now2=[NSString stringWithFormat:@"%d",now_week];
+                                                                nowweek_string=[nowweek_string stringByAppendingString:now2];
+                                                                nowweek_string=[nowweek_string stringByAppendingString:@"周实验课表"];
+                                                                //标题结束//
+                                                                self.navigationItem.title                    = nowweek_string;
+                                                                [self addXpCourse];
+                                                              
+                                                            }
+                                                            else {
+                                                                NSString *nowweek_string=@"第";
+                                                                NSString *now2=[NSString stringWithFormat:@"%d",now_week];
+                                                                nowweek_string=[nowweek_string stringByAppendingString:now2];
+                                                                nowweek_string=[nowweek_string stringByAppendingString:@"周"];
+                                                                //标题结束//
+                                                                self.navigationItem.title                    = nowweek_string;
+                                                                [self addCourse];
+                                                            
+                                                            }
+                                                            
+                                                            
                                                         }
                                                     }];
     
