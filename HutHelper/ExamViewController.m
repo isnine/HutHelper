@@ -38,7 +38,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title=@"考试计划";
-
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     MsgModel * mode0=[[MsgModel alloc]init];
     MsgModel * mode1=[[MsgModel alloc]init];

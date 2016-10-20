@@ -11,6 +11,7 @@
 #import "AppDelegate.h"
 @interface SetViewController ()
 @property (weak, nonatomic) IBOutlet UISwitch *OpenClass;
+@property (weak, nonatomic) IBOutlet UISwitch *OpenXp;
 
 
 @end
@@ -32,7 +33,12 @@
     else
         [_OpenClass setOn:NO animated:NO];
 
-
+    NSString *OpenXp=[defaults objectForKey:@"show_xp"];
+    if ([OpenXp isEqualToString:@"打开"]) {
+        [_OpenXp setOn:YES animated:NO];
+    }
+    else
+        [_OpenXp setOn:NO animated:NO];
 
 }
 
@@ -45,7 +51,6 @@
 - (IBAction)Set:(id)sender {
 
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-
     if (_OpenClass.isOn==1) {
         [defaults setObject:@"打开" forKey:@"autoclass"];
         [defaults synchronize];
@@ -55,14 +60,22 @@
         [defaults setObject:@"关闭" forKey:@"autoclass"];
         [defaults synchronize];
     }
+}
 
-    NSString *autoclass=[defaults objectForKey:@"autoclass"];
-    if ([autoclass isEqualToString:@"打开"]) {
-        NSLog(@"Ture");
+- (IBAction)SetXP:(id)sender {
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    if (_OpenXp.isOn==1) {
+        [defaults setObject:@"打开" forKey:@"show_xp"];
+        [defaults synchronize];
     }
     else
-        NSLog(@"Flas");
+    {
+        [defaults setObject:@"关闭" forKey:@"show_xp"];
+        [defaults synchronize];
+    }
 }
+
+
 
 - (IBAction)Delete:(id)sender {
     NSString *appDomain       = [[NSBundle mainBundle] bundleIdentifier];

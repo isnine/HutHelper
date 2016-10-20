@@ -295,6 +295,7 @@ int day                                   = [dateComponent day];//日
         NSArray *array               = [Class_All objectForKey:@"data"];
         [defaults setObject:array forKey:@"array_class"];
         [defaults synchronize];
+            NSLog(@"平时课表地址:%@",url);
         //----------------课表数据缓存---------------//
         //----------------实验课表数据缓存---------------//
         NSString *Url_String_xp_1=@"http://218.75.197.121:8888/api/v1/get/lessonsexp/";
@@ -302,6 +303,7 @@ int day                                   = [dateComponent day];//日
         NSString *Url_String_xp_1_U_2=[Url_String_xp_1_U stringByAppendingString:@"/"];
         NSString *Url_String_xp=[Url_String_xp_1_U_2 stringByAppendingString:Remember_code_app];
         NSURL *url_xp                = [NSURL URLWithString: Url_String_xp];//接口地址
+            NSLog(@"实验课表地址:%@",Url_String_xp);
         //自带库解析实验课//
         NSURLRequest *request        = [NSURLRequest requestWithURL:[NSURL URLWithString:Url_String_xp]];
         NSData *response             = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
