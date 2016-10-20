@@ -25,7 +25,7 @@
 
 - (IBAction)Login:(id)sender {
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.labelText = @"Loading";
+    hud.labelText = @"登录中";
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 0.01 * NSEC_PER_SEC);
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
         //----------拼接地址 RUN
@@ -35,25 +35,24 @@
         NSString *Url_String_1=@"http://218.75.197.121:8888/api/v1/get/login/";
         NSString *Url_String_2=@"/";
         NSString *Url_String_3=@"/1";
-        
         NSString *Url_String_1_U=[Url_String_1 stringByAppendingString:UserName_String];
         NSString *Url_String_1_U_2=[Url_String_1_U stringByAppendingString:Url_String_2];
         NSString *Url_String_1_U_2_P=[Url_String_1_U_2 stringByAppendingString:Password_String];
         NSString *Url_String=[Url_String_1_U_2_P stringByAppendingString:Url_String_3];
         //----------拼接地址 END
-        
         NSURL *url                   = [NSURL URLWithString: Url_String];//接口地址
         NSError *error               = nil;
         NSString *jsonString         = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:&error];//Url -> String
         NSData* jsonData             = [jsonString dataUsingEncoding:NSUTF8StringEncoding];//地址 -> 数据
         NSDictionary *User_All       = [jsonData objectFromJSONData];//数据 -> 字典
         NSDictionary *User_Data=[User_All objectForKey:@"data"];//All字典 -> Data字典
-        
         NSString *Msg=[User_All objectForKey:@"msg"];
         NSString *Msg2=@"ok";
         //--------登录中
         if ([Msg isEqualToString: Msg2])
         {
+            NSString *appDomain       = [[NSBundle mainBundle] bundleIdentifier];
+            [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:appDomain];
             NSLog(@"正确:%@",Msg);// 调出Data字典中TrueName
             NSString *Remember_code_app=[User_All objectForKey:@"remember_code_app"]; //令牌
             
@@ -68,30 +67,9 @@
             [defaults setObject:dep_name forKey:@"dep_name"];
             [defaults setObject:class_name forKey:@"class_name"];
             [defaults synchronize];
-            
             NSLog(@"用户：%@，学号：%@,令牌:%@",TrueName,studentKH,Remember_code_app);
-            
-            //----------------课表数据缓存---------------//
-            NSString *Url_String_1=@"http://218.75.197.121:8888/api/v1/get/lessons/";
-            NSString *Url_String_2=@"/";
-            
-            NSString *Url_String_1_U=[Url_String_1 stringByAppendingString:studentKH];
-            NSString *Url_String_1_U_2=[Url_String_1_U stringByAppendingString:Url_String_2];
-            NSString *Url_String=[Url_String_1_U_2 stringByAppendingString:Remember_code_app];
-            /*地址完毕*/
-            NSURL *url                   = [NSURL URLWithString: Url_String];//接口地址
-            NSError *error               = nil;
-            NSString *jsonString         = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:&error];//Url -> String
-            NSData* jsonData             = [jsonString dataUsingEncoding:NSUTF8StringEncoding];//地址 -> 数据
-            NSDictionary *Class_All      = [jsonData objectFromJSONData];//数据 -> 字典
-            NSArray *array               = [Class_All objectForKey:@"data"];
-            [defaults setObject:array forKey:@"array_class"];
-            //强制让数据立刻保存
-            [defaults synchronize];
-            //----------------课表数据缓存完毕---------------//
-            
+           //--------保存用户信息
             //---------推送标签
-            
             [UMessage addTag:dep_name
                     response:^(id responseObject, NSInteger remain, NSError *error) {
                         //add your codes
@@ -100,26 +78,7 @@
                     response:^(id responseObject, NSInteger remain, NSError *error) {
                         //add your codes
                     }];
-            
             //--------推送标签完毕
-            //---------实验课数据缓存
-            NSString *Url_String_xp_1=@"http://218.75.197.121:8888/api/v1/get/lessonsexp/";
-            NSString *Url_String_xp_1_U=[Url_String_xp_1 stringByAppendingString:studentKH];
-            NSString *Url_String_xp_1_U_2=[Url_String_xp_1_U stringByAppendingString:@"/"];
-            NSString *Url_String_xp=[Url_String_xp_1_U_2 stringByAppendingString:Remember_code_app];
-            /*地址完毕*/
-            NSURL *url_xp                = [NSURL URLWithString: Url_String_xp];//接口地址
-            //自带库解析实验课//
-            NSURLRequest *request        = [NSURLRequest requestWithURL:[NSURL URLWithString:Url_String_xp]];
-            
-            NSData *response             = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
-            
-            NSDictionary *jsonDataxp     = [NSJSONSerialization JSONObjectWithData:response options:NSJSONReadingMutableLeaves error:&error];
-            NSArray *array_xp            = [jsonDataxp objectForKey:@"data"];
-            [defaults setObject:array_xp forKey:@"array_xp"];
-            [defaults synchronize];
-            //----------------实验课表数据缓存完毕
-            //---------------考试
             [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:([self.navigationController.viewControllers count] -2)] animated:YES];  //返回上一个View
             
         }
@@ -131,11 +90,7 @@
                                                             cancelButtonTitle:@"取消"
                                                             otherButtonTitles:@"确定", nil];
             [alertView show];
-            
-            
         }
-        
-
         [MBProgressHUD hideHUDForView:self.view animated:YES];
     });}
 

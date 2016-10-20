@@ -38,6 +38,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title=@"考试计划";
+
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     MsgModel * mode0=[[MsgModel alloc]init];
     MsgModel * mode1=[[MsgModel alloc]init];
@@ -53,7 +54,10 @@
     MsgModel * mode11=[[MsgModel alloc]init];
     MsgModel * mode12=[[MsgModel alloc]init];
 
-    NSArray *array=[defaults objectForKey:@"array_exam"];
+    NSData *jsonData=[defaults objectForKey:@"data_exam"];
+    NSDictionary *User_All     = [jsonData objectFromJSONData];//数据 -> 字典
+    NSDictionary *Class_Data=[User_All objectForKey:@"res"];
+    NSArray *array             = [Class_Data objectForKey:@"exam"];
      int k;
     for(k                      = 0;k<array.count;k++){
     NSDictionary *dict1        = array[k];
@@ -66,21 +70,22 @@
         NSString *isset            ;
         NSLog(@"1%@",[dict1 objectForKey:@"RoomName"]);
 
-
-
-
-        if (![[dict1 objectForKey:@"RoomName"] isEqual:[NSNull null]]) {
 RoomName         = [dict1 objectForKey:@"RoomName"];//起始周
+CourseName       = [dict1 objectForKey:@"CourseName"];
+Starttime        = [dict1 objectForKey:@"Starttime"];//起始周
+isset            = [dict1 objectForKey:@"isset"];//起始周
+        if ([RoomName isEqual:[NSNull null]]) {
+            RoomName  = @"-";//起始周
         }
-        if (![[dict1 objectForKey:@"CourseName"] isEqual:[NSNull null]]) {
-           CourseName       = [dict1 objectForKey:@"CourseName"];
+        if ([CourseName isEqual:[NSNull null]]) {
+           CourseName       = @"-";
         }
-        if (![[dict1 objectForKey:@"Starttime"] isEqual:[NSNull null]]) {
-            Starttime        = [dict1 objectForKey:@"Starttime"];//起始周
+        if ([Starttime isEqual:[NSNull null]]) {
+            Starttime        = @"";//起始周
 
         }
-        if (![[dict1 objectForKey:@"isset"] isEqual:[NSNull null]]) {
-            isset            = [dict1 objectForKey:@"isset"];//起始周
+        if ([isset isEqual:[NSNull null]]) {
+            isset            = 0;//起始周
         }
 
             switch (k) {

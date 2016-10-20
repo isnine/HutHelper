@@ -355,7 +355,7 @@ AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication share
         NSData* ScoreData           = [defaults objectForKey:@"data_score"];
         if(ScoreData==NULL){
             MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-            hud.labelText = @"Loading";
+            hud.labelText = @"查询中";
             dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 0.01 * NSEC_PER_SEC);
             dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
                 // 等待框中
@@ -428,29 +428,25 @@ AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication share
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
         NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
         NSString *studentKH        = [defaults objectForKey:@"studentKH"];
-        
         NSString *Url_String_1=@"http://218.75.197.124:84/api/exam/";
         NSString *Url_String_1_U=[Url_String_1 stringByAppendingString:studentKH];
         NSString *Url_String_1_U_2=[Url_String_1_U stringByAppendingString:@"/key/"];
         NSString *ss=[studentKH stringByAppendingString:@"apiforapp!"];
         NSString *ssmd5=[ss MD5];
         NSString *Url_String=[Url_String_1_U_2 stringByAppendingString:ssmd5];
-        
         NSURL *url                 = [NSURL URLWithString: Url_String];//接口地址
         NSLog(@"考试地址:%@",url);
         NSError *error             = nil;
         NSString *jsonString       = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:&error];//Url -> String
         NSData* jsonData           = [jsonString dataUsingEncoding:NSUTF8StringEncoding];//地址 -> 数据
         NSDictionary *User_All     = [jsonData objectFromJSONData];//数据 -> 字典
-        
         NSString *message=[User_All objectForKey:@"message"];
         NSString *status=[User_All objectForKey:@"status"];
-        
-        
         if([status isEqualToString:@"success"]){
+            NSLog(@"1");
             NSDictionary *Class_Data=[User_All objectForKey:@"res"];
             NSArray *array             = [Class_Data objectForKey:@"exam"];
-            [defaults setObject:array forKey:@"array_exam"];
+            [defaults setObject:jsonData forKey:@"data_exam"];
             [defaults synchronize];
             NSInteger *exam_on                        = [defaults integerForKey:@"exam_on"];
             if(exam_on!=1){
@@ -463,9 +459,11 @@ AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication share
                 [defaults setInteger:1 forKey:@"exam_on"];
             }
             if(array.count!=0){
+                NSLog(@"3");
                 ExamViewController *exam                  = [[ExamViewController alloc] init];
                 AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
                 [tempAppDelegate.mainNavigationController pushViewController:exam animated:NO];
+                NSLog(@"4");
             }
             else{
                 UIAlertView *alertView1    = [[UIAlertView alloc] initWithTitle:@"暂无考试"
