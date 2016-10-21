@@ -92,14 +92,16 @@ NSString *show_xp;
     UIBarButtonItem *rightCunstomButtonView = [[UIBarButtonItem alloc] initWithCustomView:rightButtonView];
     self.navigationItem.rightBarButtonItem = rightCunstomButtonView;
      //------------按钮--------
+    now_xp=0;
     [self addCourse];
     NSLog(@"Show状态:%@",show_xp);
+    NSLog(@"XP状态:%d",now_xp);
 }
 
 - (void)addCourse{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     NSInteger *nowweek                           = [defaults integerForKey:@"NowWeek"];
-    NSArray *array                               = [defaults objectForKey:@"array_class"];
+   
     CourseModel *a1  = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
     CourseModel *a2  = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
     CourseModel *a3  = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
@@ -127,6 +129,12 @@ NSString *show_xp;
     CourseModel *a25 = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
     CourseModel *a26 = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
     CourseModel *a27 = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
+    
+    if ([defaults objectForKey:@"array_class"]!=NULL) {
+        NSArray *array                               = [defaults objectForKey:@"array_class"];
+
+    
+
     
     int day1 = 1,day2=1,day3=1,day4=1,day5=1,day6=1;
     NSLog(@"加载课程");
@@ -295,6 +303,7 @@ NSString *show_xp;
                 } }
         }//swifth结束
     }
+        }
     _courseArr = [NSMutableArray arrayWithArray:@[a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,a15,a16,a17,a18,a19,a20,a21,a22,a23,a24,a25]];
     [self.courseListView reloadData];
     if([show_xp isEqualToString:@"打开"]){
@@ -305,7 +314,7 @@ NSString *show_xp;
 
 - (void)addXpCourse{
 NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-NSArray *array_xp                            = [defaults objectForKey:@"array_xp"];
+
     CourseModel *a1  = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
     CourseModel *a2  = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
     CourseModel *a3  = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
@@ -333,6 +342,10 @@ NSArray *array_xp                            = [defaults objectForKey:@"array_xp
     CourseModel *a25 = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
     CourseModel *a26 = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
     CourseModel *a27 = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
+    
+    if([defaults objectForKey:@"array_xp"]!=NULL){
+        NSArray *array_xp                            = [defaults objectForKey:@"array_xp"];
+    
 int day1                                     = 1,day2=1,day3=1,day4=1,day5=1,day6=1;
   
     for (int ixp                                 = 0; ixp<array_xp.count; ixp++) {
@@ -498,7 +511,7 @@ int day1                                     = 1,day2=1,day3=1,day4=1,day5=1,day
                         break;
                 }
                 
-            }}}
+            }}}  }
     _courseArr = [NSMutableArray arrayWithArray:@[a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,a15,a16,a17,a18,a19,a20,a21,a22,a23,a24,a25]];
     [self.courseListView reloadData];
 }
@@ -718,7 +731,7 @@ int day1                                     = 1,day2=1,day3=1,day4=1,day5=1,day
             [self addCourse];
             }
             else{
-                [self addXpCourse];
+              [self addXpCourse];
             }
             [MBProgressHUD hideHUDForView:self.view animated:YES];
         });
@@ -998,8 +1011,6 @@ titleBackgroundColorInTopbarAtIndex:(NSInteger)index{
     [super viewWillDisappear:animated];
     [MobClick endLogPageView:@"课表查询"];
     [_plusButtonsViewMain removeFromSuperview];
-    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    [defaults setInteger:[defaults integerForKey:@"TrueWeek"] forKey:@"NowWeek"];
     
 }
 
