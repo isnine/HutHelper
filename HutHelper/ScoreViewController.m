@@ -108,7 +108,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.tableView.SKSTableViewDelegate = self;
-    self.navigationItem.title = @"成绩查询";
+    self.navigationItem.title = @"所有成绩";
     //右侧按钮
     UIBarButtonItem *myButton = [[UIBarButtonItem alloc] initWithTitle:@"主页" style:UIBarButtonItemStyleBordered target:self action:@selector(clickEvent)];
     self.navigationItem.rightBarButtonItem = myButton;
@@ -128,22 +128,19 @@
     //把右侧的两个按钮添加到rightBarButtonItem
     UIBarButtonItem *rightCunstomButtonView = [[UIBarButtonItem alloc] initWithCustomView:rightButtonView];
     self.navigationItem.rightBarButtonItem = rightCunstomButtonView;
-    
     //----添加按钮
-    
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     NSData* ScoreData           = [defaults objectForKey:@"data_score"];//地址 -> 数据
     NSDictionary *Score_All     = [ScoreData objectFromJSONData];//数据 -> 字典
     NSArray *array_score             = [Score_All objectForKey:@"data"];
+    NSLog(@"%d",array_score.count);
+    NSLog(@"总共课程数目:%d",array_score.count);
     
     NSMutableArray *score_name=[NSMutableArray arrayWithCapacity:230];
     NSMutableArray *score_score=[NSMutableArray arrayWithCapacity:230];
     NSMutableArray *score_xf=[NSMutableArray arrayWithCapacity:230];
     NSMutableArray *score_time=[NSMutableArray arrayWithCapacity:230];
     int i=0;
-    NSLog(@"%d",array_score.count);
-    NSLog(@"总共课程数目:%d",array_score.count);
-
     for(i=0;i<array_score.count;i++){
         NSDictionary *dict1        = array_score[i];
         NSString *string_name= [dict1 objectForKey:@"KCMC"];//名字
