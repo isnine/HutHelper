@@ -12,6 +12,7 @@
 #import "UMessage.h"
 #import "ScoreViewController.h"
 #import "UMMobClick/MobClick.h"
+
 @interface AppDelegate ()
 
 @end

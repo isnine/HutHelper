@@ -24,6 +24,7 @@
 #import<CommonCrypto/CommonDigest.h>
 #import "ScoreViewController.h"
 #import "MBProgressHUD.h"
+#import "RootViewController.h"
 #define vBackBarButtonItemName  @"backArrow.png"    //导航条返回默认图片名
 @interface MainPageViewController ()
 
@@ -167,7 +168,10 @@ ans                                       += (CountDays(startyear, 12, 31) - Cou
                         response:^(id responseObject, NSInteger remain, NSError *error) {
                             //add your codes
                         }];}
-  
+  /** 标题栏样式 */
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+    self.navigationItem.backBarButtonItem = item;
+    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
 }
 
 - (void) openOrCloseLeftList  //侧栏滑动
@@ -296,59 +300,62 @@ AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication share
 } //二手市场
 
 - (IBAction)Score:(id)sender {
-        NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-        NSData* ScoreData           = [defaults objectForKey:@"data_score"];
-        if(ScoreData==NULL){
-            MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-            hud.labelText = @"查询中";
-            dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 0.01 * NSEC_PER_SEC);
-            dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-             /**拼接地址*/
-            NSString *remember_code_app=[defaults objectForKey:@"remember_code_app"];
-            NSString *Url_String_score=@"http://218.75.197.121:8888/api/v1/get/scores/";
-            NSString *studentKH                       = [defaults objectForKey:@"studentKH"];
-            Url_String_score=[Url_String_score stringByAppendingString:studentKH];
-            Url_String_score=[Url_String_score stringByAppendingString:@"/"];
-            Url_String_score=[Url_String_score stringByAppendingString:remember_code_app];
-            Url_String_score=[Url_String_score stringByAppendingString:@"/"];
-            NSString *sha_string=[studentKH stringByAppendingString:remember_code_app];
-            sha_string=[sha_string stringByAppendingString:@"f$Z@%"];
-            NSString *shaok=[self SHA:sha_string];
-            Url_String_score=[Url_String_score stringByAppendingString:shaok];
-            /**加载JSON数据*/
-            NSURL *url                 = [NSURL URLWithString: Url_String_score];//接口地址
-            NSError *error             = nil;
-            NSString *ScoreString       = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:&error];//Url -> String
-            NSData* ScoreData           = [ScoreString dataUsingEncoding:NSUTF8StringEncoding];//地址 -> 数据
-            NSDictionary *Score_All     = [ScoreData objectFromJSONData];//数据 -> 字典
-            NSLog(@"成绩查询地址:%@",url);
-            NSString *Msg=[Score_All objectForKey:@"msg"];
-            if ([Msg isEqualToString:@"ok"]) {
-                NSArray *array_score             = [Score_All objectForKey:@"data"];
-                [defaults setObject:ScoreData forKey:@"data_score"];
-                [defaults synchronize];
-                ScoreViewController *Score      = [[ScoreViewController alloc] init];
+//        NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+//        NSData* ScoreData           = [defaults objectForKey:@"data_score"];
+//        if(ScoreData==NULL){
+//            MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+//            hud.labelText = @"查询中";
+//            dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 0.01 * NSEC_PER_SEC);
+//            dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+//             /**拼接地址*/
+//            NSString *remember_code_app=[defaults objectForKey:@"remember_code_app"];
+//            NSString *Url_String_score=@"http://218.75.197.121:8888/api/v1/get/scores/";
+//            NSString *studentKH                       = [defaults objectForKey:@"studentKH"];
+//            Url_String_score=[Url_String_score stringByAppendingString:studentKH];
+//            Url_String_score=[Url_String_score stringByAppendingString:@"/"];
+//            Url_String_score=[Url_String_score stringByAppendingString:remember_code_app];
+//            Url_String_score=[Url_String_score stringByAppendingString:@"/"];
+//            NSString *sha_string=[studentKH stringByAppendingString:remember_code_app];
+//            sha_string=[sha_string stringByAppendingString:@"f$Z@%"];
+//            NSString *shaok=[self SHA:sha_string];
+//            Url_String_score=[Url_String_score stringByAppendingString:shaok];
+//            /**加载JSON数据*/
+//            NSURL *url                 = [NSURL URLWithString: Url_String_score];//接口地址
+//            NSError *error             = nil;
+//            NSString *ScoreString       = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:&error];//Url -> String
+//            NSData* ScoreData           = [ScoreString dataUsingEncoding:NSUTF8StringEncoding];//地址 -> 数据
+//            NSDictionary *Score_All     = [ScoreData objectFromJSONData];//数据 -> 字典
+//            NSLog(@"成绩查询地址:%@",url);
+//            NSString *Msg=[Score_All objectForKey:@"msg"];
+//            if ([Msg isEqualToString:@"ok"]) {
+//                NSArray *array_score             = [Score_All objectForKey:@"data"];
+//                [defaults setObject:ScoreData forKey:@"data_score"];
+//                [defaults synchronize];
+//                ScoreViewController *Score      = [[ScoreViewController alloc] init];
+//                AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+//                [tempAppDelegate.mainNavigationController pushViewController:Score animated:NO];
+//                
+//            }
+//            else{
+//                UIAlertView *alertView                    = [[UIAlertView alloc] initWithTitle:@"登陆过期或网络异常"
+//                                                                                       message:@"请点击切换用户,重新登录"
+//                                                                                      delegate:self
+//                                                                             cancelButtonTitle:@"取消"
+//                                                                             otherButtonTitles:@"确定", nil];
+//                [alertView show];
+//                NSLog(@"%@",Url_String_score);
+//            }
+//            [MBProgressHUD hideHUDForView:self.view animated:YES];
+//        });
+//        }
+//        else{
+//            ScoreViewController *Score      = [[ScoreViewController alloc] init];
+//            AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+//            [tempAppDelegate.mainNavigationController pushViewController:Score animated:NO];
+//        }
+                RootViewController *Score      = [[RootViewController alloc] init];
                 AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
                 [tempAppDelegate.mainNavigationController pushViewController:Score animated:NO];
-                
-            }
-            else{
-                UIAlertView *alertView                    = [[UIAlertView alloc] initWithTitle:@"登陆过期或网络异常"
-                                                                                       message:@"请点击切换用户,重新登录"
-                                                                                      delegate:self
-                                                                             cancelButtonTitle:@"取消"
-                                                                             otherButtonTitles:@"确定", nil];
-                [alertView show];
-                NSLog(@"%@",Url_String_score);
-            }
-            [MBProgressHUD hideHUDForView:self.view animated:YES];
-        });
-        }
-        else{
-            ScoreViewController *Score      = [[ScoreViewController alloc] init];
-            AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-            [tempAppDelegate.mainNavigationController pushViewController:Score animated:NO];
-        }
 
 } //成绩查询
 

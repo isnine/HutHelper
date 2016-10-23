@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A026D0F1DBC9B42000288AF /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A026CFE1DBC9B42000288AF /* RootViewController.m */; };
+		3A026D101DBC9B42000288AF /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A026CFF1DBC9B42000288AF /* RootViewController.xib */; };
+		3A026D111DBC9B42000288AF /* TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A026D011DBC9B42000288AF /* TableViewCell.m */; };
+		3A026D121DBC9B42000288AF /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A026D021DBC9B42000288AF /* TableViewCell.xib */; };
+		3A026D131DBC9B42000288AF /* UUBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A026D041DBC9B42000288AF /* UUBar.m */; };
+		3A026D141DBC9B42000288AF /* UUBarChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A026D061DBC9B42000288AF /* UUBarChart.m */; };
+		3A026D151DBC9B42000288AF /* UUChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A026D081DBC9B42000288AF /* UUChart.m */; };
+		3A026D161DBC9B42000288AF /* UUChartConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A026D0A1DBC9B42000288AF /* UUChartConst.m */; };
+		3A026D171DBC9B42000288AF /* UUChartLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A026D0C1DBC9B42000288AF /* UUChartLabel.m */; };
+		3A026D181DBC9B42000288AF /* UULineChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A026D0E1DBC9B42000288AF /* UULineChart.m */; };
 		3A0898A41DB5EA5700D2CCE6 /* ScoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A0898A21DB5EA5700D2CCE6 /* ScoreViewController.m */; };
 		3A0898BB1DB5ED5800D2CCE6 /* SKSTableView-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3A0898B31DB5ED5800D2CCE6 /* SKSTableView-Info.plist */; };
 		3A0898BC1DB5ED5800D2CCE6 /* SKSTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A0898B61DB5ED5800D2CCE6 /* SKSTableView.m */; };
@@ -95,6 +105,24 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3A026CFD1DBC9B42000288AF /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RootViewController.h; path = HutHelper/Lib/UUChart/RootViewController.h; sourceTree = "<group>"; };
+		3A026CFE1DBC9B42000288AF /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RootViewController.m; path = HutHelper/Lib/UUChart/RootViewController.m; sourceTree = "<group>"; };
+		3A026CFF1DBC9B42000288AF /* RootViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RootViewController.xib; path = HutHelper/Lib/UUChart/RootViewController.xib; sourceTree = "<group>"; };
+		3A026D001DBC9B42000288AF /* TableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TableViewCell.h; path = HutHelper/Lib/UUChart/TableViewCell.h; sourceTree = "<group>"; };
+		3A026D011DBC9B42000288AF /* TableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TableViewCell.m; path = HutHelper/Lib/UUChart/TableViewCell.m; sourceTree = "<group>"; };
+		3A026D021DBC9B42000288AF /* TableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TableViewCell.xib; path = HutHelper/Lib/UUChart/TableViewCell.xib; sourceTree = "<group>"; };
+		3A026D031DBC9B42000288AF /* UUBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UUBar.h; path = HutHelper/Lib/UUChart/UUBar.h; sourceTree = "<group>"; };
+		3A026D041DBC9B42000288AF /* UUBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UUBar.m; path = HutHelper/Lib/UUChart/UUBar.m; sourceTree = "<group>"; };
+		3A026D051DBC9B42000288AF /* UUBarChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UUBarChart.h; path = HutHelper/Lib/UUChart/UUBarChart.h; sourceTree = "<group>"; };
+		3A026D061DBC9B42000288AF /* UUBarChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UUBarChart.m; path = HutHelper/Lib/UUChart/UUBarChart.m; sourceTree = "<group>"; };
+		3A026D071DBC9B42000288AF /* UUChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UUChart.h; path = HutHelper/Lib/UUChart/UUChart.h; sourceTree = "<group>"; };
+		3A026D081DBC9B42000288AF /* UUChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UUChart.m; path = HutHelper/Lib/UUChart/UUChart.m; sourceTree = "<group>"; };
+		3A026D091DBC9B42000288AF /* UUChartConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UUChartConst.h; path = HutHelper/Lib/UUChart/UUChartConst.h; sourceTree = "<group>"; };
+		3A026D0A1DBC9B42000288AF /* UUChartConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UUChartConst.m; path = HutHelper/Lib/UUChart/UUChartConst.m; sourceTree = "<group>"; };
+		3A026D0B1DBC9B42000288AF /* UUChartLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UUChartLabel.h; path = HutHelper/Lib/UUChart/UUChartLabel.h; sourceTree = "<group>"; };
+		3A026D0C1DBC9B42000288AF /* UUChartLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UUChartLabel.m; path = HutHelper/Lib/UUChart/UUChartLabel.m; sourceTree = "<group>"; };
+		3A026D0D1DBC9B42000288AF /* UULineChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UULineChart.h; path = HutHelper/Lib/UUChart/UULineChart.h; sourceTree = "<group>"; };
+		3A026D0E1DBC9B42000288AF /* UULineChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UULineChart.m; path = HutHelper/Lib/UUChart/UULineChart.m; sourceTree = "<group>"; };
 		3A0898A11DB5EA5700D2CCE6 /* ScoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreViewController.h; sourceTree = "<group>"; };
 		3A0898A21DB5EA5700D2CCE6 /* ScoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ScoreViewController.m; path = HutHelper/ScoreViewController.m; sourceTree = "<group>"; };
 		3A0898B31DB5ED5800D2CCE6 /* SKSTableView-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "SKSTableView-Info.plist"; path = "HutHelper/Lib/SKTTable/SKSTableView-Info.plist"; sourceTree = "<group>"; };
@@ -236,6 +264,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3A026CFC1DBC9B35000288AF /* UUChart */ = {
+			isa = PBXGroup;
+			children = (
+				3A026CFD1DBC9B42000288AF /* RootViewController.h */,
+				3A026CFE1DBC9B42000288AF /* RootViewController.m */,
+				3A026CFF1DBC9B42000288AF /* RootViewController.xib */,
+				3A026D001DBC9B42000288AF /* TableViewCell.h */,
+				3A026D011DBC9B42000288AF /* TableViewCell.m */,
+				3A026D021DBC9B42000288AF /* TableViewCell.xib */,
+				3A026D031DBC9B42000288AF /* UUBar.h */,
+				3A026D041DBC9B42000288AF /* UUBar.m */,
+				3A026D051DBC9B42000288AF /* UUBarChart.h */,
+				3A026D061DBC9B42000288AF /* UUBarChart.m */,
+				3A026D071DBC9B42000288AF /* UUChart.h */,
+				3A026D081DBC9B42000288AF /* UUChart.m */,
+				3A026D091DBC9B42000288AF /* UUChartConst.h */,
+				3A026D0A1DBC9B42000288AF /* UUChartConst.m */,
+				3A026D0B1DBC9B42000288AF /* UUChartLabel.h */,
+				3A026D0C1DBC9B42000288AF /* UUChartLabel.m */,
+				3A026D0D1DBC9B42000288AF /* UULineChart.h */,
+				3A026D0E1DBC9B42000288AF /* UULineChart.m */,
+			);
+			name = UUChart;
+			sourceTree = "<group>";
+		};
 		3A0898B21DB5ED4300D2CCE6 /* SKTTable */ = {
 			isa = PBXGroup;
 			children = (
@@ -428,6 +481,7 @@
 		3A8567DB1DAA3DF800EBD44A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				3A026CFC1DBC9B35000288AF /* UUChart */,
 				3A3F82FC1DB8AF14009EB7AC /* Show */,
 				3A0898B21DB5ED4300D2CCE6 /* SKTTable */,
 				3A3E53011DB2275800A49067 /* Exam */,
@@ -555,6 +609,7 @@
 			files = (
 				3A0898C21DB5ED6000D2CCE6 /* expandableImage@2x.png in Resources */,
 				3A45626D1DB4980800E5591A /* FirstLoginViewController.xib in Resources */,
+				3A026D101DBC9B42000288AF /* RootViewController.xib in Resources */,
 				3A0898C61DB5EFD100D2CCE6 /* ScoreViewController.xib in Resources */,
 				3A0898C11DB5ED6000D2CCE6 /* expandableImage.png in Resources */,
 				3ABE7F291DAF7BBE003E4085 /* NoticeViewController.xib in Resources */,
@@ -563,6 +618,7 @@
 				3A33D7BF1DADE3A40012EFDE /* FeedbackViewController.xib in Resources */,
 				3A33D7C71DAE00300012EFDE /* Feedback2ViewController.xib in Resources */,
 				3A85678E1DA908AA00EBD44A /* LaunchScreen.storyboard in Resources */,
+				3A026D121DBC9B42000288AF /* TableViewCell.xib in Resources */,
 				3AFB7BA61DAD19530040B55F /* AboutViewController.xib in Resources */,
 				3A33D7CC1DAE28380012EFDE /* PowerViewController.xib in Resources */,
 				3A33D7F31DAF1B810012EFDE /* SetViewController.xib in Resources */,
@@ -594,6 +650,9 @@
 				3A45626C1DB4980800E5591A /* FirstLoginViewController.m in Sources */,
 				3AD87B131DACD05B00357212 /* CourseModel.m in Sources */,
 				3A0898BE1DB5ED5800D2CCE6 /* SKSTableViewCellIndicator.m in Sources */,
+				3A026D141DBC9B42000288AF /* UUBarChart.m in Sources */,
+				3A026D0F1DBC9B42000288AF /* RootViewController.m in Sources */,
+				3A026D131DBC9B42000288AF /* UUBar.m in Sources */,
 				3A33D7C61DAE00300012EFDE /* Feedback2ViewController.m in Sources */,
 				3ABE7F1E1DAF75FB003E4085 /* LibraryViewController.m in Sources */,
 				3A33D7CB1DAE28380012EFDE /* PowerViewController.m in Sources */,
@@ -601,8 +660,10 @@
 				3A0898BC1DB5ED5800D2CCE6 /* SKSTableView.m in Sources */,
 				3A6D7EF41DABDB500081B70D /* MainViewController.m in Sources */,
 				3A6D7EE31DABD9F50081B70D /* LeftSlideViewController.m in Sources */,
+				3A026D161DBC9B42000288AF /* UUChartConst.m in Sources */,
 				3A8567801DA908AA00EBD44A /* main.m in Sources */,
 				3A33D7FC1DAF66450012EFDE /* ShareViewController.m in Sources */,
+				3A026D171DBC9B42000288AF /* UUChartLabel.m in Sources */,
 				3A3C68901DB115190088CC17 /* LGPlusButtonDescription.m in Sources */,
 				3A33D7D51DAE36420012EFDE /* SchoolHandViewController.m in Sources */,
 				3A6D7EF61DABDB500081B70D /* ViewController.m in Sources */,
@@ -615,6 +676,7 @@
 				3ABE7F281DAF7BBE003E4085 /* NoticeViewController.m in Sources */,
 				3A0898BD1DB5ED5800D2CCE6 /* SKSTableViewCell.m in Sources */,
 				3A3C68921DB115190088CC17 /* LGPlusButtonsViewShared.m in Sources */,
+				3A026D111DBC9B42000288AF /* TableViewCell.m in Sources */,
 				3A3E53091DB2276700A49067 /* MyView.m in Sources */,
 				3A6D7EEF1DABDB500081B70D /* AppDelegate.m in Sources */,
 				3A3E53001DB2267D00A49067 /* ExamViewController.m in Sources */,
@@ -625,7 +687,9 @@
 				3A3F82FF1DB8AF22009EB7AC /* MBProgressHUD.m in Sources */,
 				3A33D7F21DAF1B810012EFDE /* SetViewController.m in Sources */,
 				3A33D7BE1DADE3A40012EFDE /* FeedbackViewController.m in Sources */,
+				3A026D181DBC9B42000288AF /* UULineChart.m in Sources */,
 				3A33D7D01DAE31AB0012EFDE /* SchoolsayViewController.m in Sources */,
+				3A026D151DBC9B42000288AF /* UUChart.m in Sources */,
 				3ABE7F231DAF78B9003E4085 /* DayViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
