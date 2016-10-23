@@ -46,8 +46,8 @@
     //历史浏览按钮
     UIButton *historyBtn = [[UIButton alloc] initWithFrame:CGRectMake(35, 0, 50, 50)];
     [rightButtonView addSubview:historyBtn];
-    [historyBtn setImage:[UIImage imageNamed:@"reload"] forState:UIControlStateNormal];
-    [historyBtn addTarget:self action:@selector(reload) forControlEvents:UIControlEventTouchUpInside];
+    [historyBtn setImage:[UIImage imageNamed:@"help"] forState:UIControlStateNormal];
+    [historyBtn addTarget:self action:@selector(help) forControlEvents:UIControlEventTouchUpInside];
 #pragma mark >>>>>主页搜索按钮
     //主页搜索按钮
     UIButton *mainAndSearchBtn = [[UIButton alloc] initWithFrame:CGRectMake(70, 0, 50, 50)];
@@ -66,48 +66,13 @@
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
 }
 
-- (void)reload{
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.labelText = @"查询中";
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 0.01 * NSEC_PER_SEC);
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        // 等待框中
-        NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-        NSString *remember_code_app=[defaults objectForKey:@"remember_code_app"];
-        NSString *Url_String_score=@"http://218.75.197.121:8888/api/v1/get/scores/";
-        NSString *studentKH                       = [defaults objectForKey:@"studentKH"];
-        Url_String_score=[Url_String_score stringByAppendingString:studentKH];
-        Url_String_score=[Url_String_score stringByAppendingString:@"/"];
-        Url_String_score=[Url_String_score stringByAppendingString:remember_code_app];
-        Url_String_score=[Url_String_score stringByAppendingString:@"/"];
-        NSString *sha_string=[studentKH stringByAppendingString:remember_code_app];
-        sha_string=[sha_string stringByAppendingString:@"f$Z@%"];
-        NSString *shaok=[self SHA:sha_string];
-        Url_String_score=[Url_String_score stringByAppendingString:shaok];
-        NSURL *url                 = [NSURL URLWithString: Url_String_score];//接口地址
-        NSError *error             = nil;
-        NSString *ScoreString       = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:&error];//Url -> String
-        NSData* ScoreData           = [ScoreString dataUsingEncoding:NSUTF8StringEncoding];//地址 -> 数据
-        NSDictionary *Score_All     = [ScoreData objectFromJSONData];//数据 -> 字典
-        //存入完毕
-        NSLog(@"成绩查询地址:%@",url);
-        NSString *Msg=[Score_All objectForKey:@"msg"];
-        if ([Msg isEqualToString:@"ok"]) {
-            NSArray *array_score             = [Score_All objectForKey:@"data"];
-            [defaults setObject:ScoreData forKey:@"data_score"];
-            [defaults synchronize];
-        }
-        else{
-            UIAlertView *alertView                    = [[UIAlertView alloc] initWithTitle:@"登陆过期或网络异常"
-                                                                                   message:@"请点击切换用户,重新登录"
-                                                                                  delegate:self
-                                                                         cancelButtonTitle:@"取消"
-                                                                         otherButtonTitles:@"确定", nil];
-            [alertView show];
-            NSLog(@"%@",Url_String_score);
-        }
-        [MBProgressHUD hideHUDForView:self.view animated:YES];
-    });
+- (void)help{
+    UIAlertView *alertView                    = [[UIAlertView alloc] initWithTitle:@"帮助"
+                                                                           message:@"【红线】为上学期成绩，【绿线】为下学期成绩，【整体】为各学期成绩曲线\n【绩点】等功能下版本添加"
+                                                                          delegate:self
+                                                                 cancelButtonTitle:@"取消"
+                                                                 otherButtonTitles:@"确定", nil];
+    [alertView show];
 }
 
 
@@ -120,11 +85,13 @@
 #pragma mark - UITableView Datasource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 2;
+    return 5;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return section?2:4;
+
+    
+    return 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -138,7 +105,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 30;
+    return 40;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
@@ -146,7 +113,24 @@
     UILabel *label = [[UILabel alloc]initWithFrame:frame];
     label.font = [UIFont systemFontOfSize:30];
     label.backgroundColor = [[UIColor lightGrayColor]colorWithAlphaComponent:0.3];
-    label.text = section ? @"总体成绩":@"学期成绩分布图";
+//    label.text = section ? @"总体成绩":@"学期成绩分布图";
+    if (section==0) {
+        label.text = @"大一";
+    }
+    else if(section==1){
+        label.text = @"大二";
+    }
+    else if(section==2){
+        label.text = @"大三";
+    }
+    else if(section==3){
+        label.text = @"大四";
+    }
+    else if(section==4){
+        label.text = @"整体";
+    }
+    
+    
     label.textColor = [UIColor colorWithRed:0.257 green:0.650 blue:0.478 alpha:1.000];
     label.textAlignment = NSTextAlignmentCenter;
     return label;

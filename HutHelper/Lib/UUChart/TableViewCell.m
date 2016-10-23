@@ -30,7 +30,8 @@
     
     chartView = [[UUChart alloc]initWithFrame:CGRectMake(10, 10, [UIScreen mainScreen].bounds.size.width-20, 150)
                                    dataSource:self
-                                        style:indexPath.section==1?UUChartStyleBar:UUChartStyleLine];
+                 style:indexPath.section==5?UUChartStyleBar:UUChartStyleLine];
+                                      //  style:indexPath.section==5?UUChartStyleBar:UUChartStyleLine];
     [chartView showInView:self.contentView];
 }
 
@@ -48,20 +49,22 @@
 //横坐标标题数组
 - (NSArray *)chartConfigAxisXLabel:(UUChart *)chart
 {
-
+int class=0;
     NSMutableArray *score_2013_1=[self get_select:@"2013-2014第1学期"];
     NSMutableArray *score_2013_2=[self get_select:@"2013-2014第2学期"];
     NSMutableArray *score_2014_1=[self get_select:@"2014-2015第1学期"];
     NSMutableArray *score_2014_2=[self get_select:@"2014-2015第2学期"];
     NSMutableArray *score_2015_1=[self get_select:@"2015-2016第1学期"];
     NSMutableArray *score_2015_2=[self get_select:@"2015-2016第2学期"];
-    
+    NSMutableArray *score_2016_1=[self get_select:@"2016-2017第1学期"];
+    NSMutableArray *score_2016_2=[self get_select:@"2016-2017第2学期"];
     NSMutableArray *score_11;
     NSMutableArray *score_12;
     NSMutableArray *score_21;
     NSMutableArray *score_22;
     NSMutableArray *score_31;
     NSMutableArray *score_32;
+    
     
     if(score_2013_1.count != 0){  //大四
 
@@ -79,56 +82,55 @@
         class=1;
     }
 
-    if (path.section==0) {
-        switch (path.row) {
+
+        switch (path.section) {
             case 0:
-                if (class==2) {
-                    return [self getXTitles:score_2015_1.count];
+          if (class==2) {
+               if (score_2015_1.count<score_2015_2.count)
+                  return [self getXTitles:score_2015_2.count];
+                else
+                     return [self getXTitles:score_2015_1 .count];
                 }
                 else if(class==3) {
-                    return [self getXTitles:score_2014_1.count];
+                    if (score_2014_1.count<score_2014_2.count)
+                        return [self getXTitles:score_2014_2.count];
+                    else
+                        return [self getXTitles:score_2014_1 .count];
                 }
                 else if(class==4) {
-                    return [self getXTitles:score_2013_1.count];
+                    if (score_2013_1.count<score_2013_2.count)
+                        return [self getXTitles:score_2013_2.count];
+                    else
+                        return [self getXTitles:score_2013_1 .count];
                 }
             case 1:
-                if (class==2) {
-                    return [self getXTitles:score_2015_2.count];
-                }
-                else if(class==3) {
-                    return [self getXTitles:score_2014_2.count];
+        if(class==3) {
+            if (score_2015_1.count<score_2015_2.count)
+                return [self getXTitles:score_2015_2.count];
+            else
+                return [self getXTitles:score_2015_1 .count];
                 }
                 else if(class==4) {
-                    return [self getXTitles:score_2013_2.count];
+                    if (score_2014_1.count<score_2014_2.count)
+                        return [self getXTitles:score_2014_2.count];
+                    else
+                        return [self getXTitles:score_2014_1 .count];
                 }
             case 2:
-                  if(class==3) {
-                    return [self getXTitles:score_2015_1.count];
-                }
-                  else if(class==4) {
-                      return [self getXTitles:score_2014_1.count];
+        if(class==4) {
+            if (score_2015_1.count<score_2015_2.count)
+                return [self getXTitles:score_2015_2.count];
+            else
+                return [self getXTitles:score_2015_1 .count];
                   }
-            case 3:
-                if(class==3) {
-                    return [self getXTitles:score_2015_2.count];
-                }
-                else if(class==4) {
-                    return [self getXTitles:score_2014_2.count];
-                }
+            case 4:
+             return [self getXTitles:16];
             default:
                 break;
         }
-    }else{
-        switch (path.row) {
-            case 0:
-                return [self getXTitles:11];
-            case 1:
-                return [self getXTitles:7];
-            default:
-                break;
-        }
-    }
-    return [self getXTitles:10];
+    
+    
+    return [self getXTitles:11];
 }
 -(NSArray *)getStudent{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
@@ -140,7 +142,8 @@
 
 -(NSArray *)get_select:(NSString*)name{
     NSArray *array_score             = [self getStudent];
-    NSMutableArray *score_select=[NSMutableArray arrayWithCapacity:230];
+    NSMutableArray *score_select=[NSMutableArray arrayWithCapacity:30];
+    NSMutableArray *score_select2=[NSMutableArray arrayWithCapacity:30];
     for(int i=0;i<array_score.count;i++){
         NSDictionary *dict1        = array_score[i];
         NSString *string_name= [dict1 objectForKey:@"KCMC"];//名字
@@ -164,23 +167,41 @@
         string_xn         = [string_xn stringByAppendingString:string_xq];
         string_xn         = [string_xn stringByAppendingString:@"学期"];
         
+        
         if ([string_xn isEqualToString:name]) {
             [score_select addObject:string_score];
         }
     }
+
+    for (int i=0; i<score_select.count; i++) {
+        for (int k=i; k<score_select.count; k++) {
+            NSInteger *a=[score_select[i] intValue];
+            NSInteger *b=[score_select[k] intValue];
+            if (a<=b) {
+                 [score_select exchangeObjectAtIndex:i withObjectAtIndex:k];
+            }
+           
+        }
+    }
+
+   
     return score_select;
 }
 //数值多重数组
-int class=0;
+
 - (NSArray *)chartConfigAxisYValue:(UUChart *)chart
 {
-
+int class=0;
     NSMutableArray *score_2013_1=[self get_select:@"2013-2014第1学期"];
     NSMutableArray *score_2013_2=[self get_select:@"2013-2014第2学期"];
     NSMutableArray *score_2014_1=[self get_select:@"2014-2015第1学期"];
     NSMutableArray *score_2014_2=[self get_select:@"2014-2015第2学期"];
     NSMutableArray *score_2015_1=[self get_select:@"2015-2016第1学期"];
     NSMutableArray *score_2015_2=[self get_select:@"2015-2016第2学期"];
+    NSMutableArray *score_2016_1=[self get_select:@"2016-2017第1学期"];
+    NSMutableArray *score_2016_2=[self get_select:@"2016-2017第2学期"];
+    
+ 
 
     
     if(score_2013_1.count != 0){  //大四
@@ -196,80 +217,100 @@ int class=0;
         class=1;
     }
 
-    
-    NSLog(@"%@",score_2013_1[2]);
-    NSLog(@"总共课程数目:%d",score_2013_1.count);
 
-    NSArray *ary1 = @[@"0"];
 
-    
-    if (path.section==0) {
-        switch (path.row) {
-            case 0:
-                if (class==2) {
-                    return @[score_2015_1];
+    NSArray *ary1 = @[];
+
+
+        switch (path.section) {
+           case 0:
+                if (class==1) {
+                    
+                    return @[score_2016_1,score_2016_2];
+                }
+                else if (class==2) {
+                    return @[score_2015_1,score_2015_2];
                 }
                 else if(class==3) {
-                    return @[score_2014_1];
+                    return @[score_2014_1,score_2014_2];
                 }
                 else if(class==4) {
-                    return @[score_2013_1];
+                    return @[score_2013_1,score_2013_2];
                 }
-            case 1:
+                else
+                    return @[ary1];
+                
+           case 1:
+                
                 if (class==2) {
-                    return @[score_2015_2];
+                    return @[score_2016_1,score_2016_2];
                 }
                 else if(class==3) {
-                    return @[score_2014_2];
+                   
+                    return @[score_2015_1,score_2015_2];
                 }
                 else if(class==4) {
-                    return @[score_2013_2];
+                    return @[score_2014_1,score_2014_2];
                 }
-            case 2:
-                if(class==3) {
-                    return @[score_2015_1];
-                }
-                else if(class==4) {
-                    return @[score_2014_1];
-                }
-            case 3:
-                if(class==3) {
-                    return @[score_2015_2];
+                else
+                    return @[ary1];
+                
+           case 2:
+                if (class==3) {
+                    return @[score_2016_1,score_2016_2];
                 }
                 else if(class==4) {
-                    return @[score_2014_2];
+                    return @[score_2015_1,score_2015_2];
                 }
-            default:
+                else
+                    return @[ary1];
+                
+           case 3:
+                if(class==4) {
+                    return @[score_2016_1,score_2016_2,score_2014_1,score_2014_2];
+                }
+                else
+                    return @[ary1];
+            case 4:
+                if (class==1) {
+                    return @[score_2016_1,score_2016_2];
+                }
+                else if (class==2) {
+                    return @[score_2015_1,score_2015_2];
+                }
+                else if(class==3) {
+                    return @[score_2014_1,score_2014_2,score_2015_1,score_2015_2];
+                }
+                else if(class==4) {
+                    return @[score_2013_1,score_2013_2,score_2014_1,score_2014_2,score_2015_1,score_2015_2];
+                }
+        
+        default:
                 return @[ary1];
         }
-    }else{
-        if (path.row) {
-            return @[ary1,ary1];
-        }else{
-            return @[ary1];
-        }
-    }
+    
+ 
+
+
 }
 
 #pragma mark - @optional
 //颜色数组
 - (NSArray *)chartConfigColors:(UUChart *)chart
 {
-    return @[[UUColor green],[UUColor red],[UUColor brown]];
+    return @[[UUColor red],[UUColor green],[UUColor randomColor],[UUColor randomColor],[UUColor randomColor],[UUColor randomColor],[UUColor randomColor],[UUColor randomColor]];
 }
 //显示数值范围
 - (CGRange)chartRange:(UUChart *)chart
 {
-    if (path.section==0 ) {
-        return CGRangeMake(100, 00);
-    }
-    if (path.section==1 && path.row==0) {
-        return CGRangeMake(60, 10);
-    }
-    if (path.row == 2) {
-        return CGRangeMake(100, 0);
-    }
-    return CGRangeZero;
+//    if (path.section==0 ) {
+//        return CGRangeMake(10, 0);
+//    }
+//    if (path.section==1 ) {
+//        return CGRangeMake(20, 0);
+//    }
+
+    return CGRangeMake(100, 0);
 }
 
 #pragma mark 折线图专享功能
@@ -280,7 +321,8 @@ int class=0;
 //    if (path.row == 2) {
 //        return CGRangeMake(25, 75);
 //    }
-    return CGRangeZero;
+
+   return CGRangeMake(0, 60);
 }
 
 //判断显示横线条

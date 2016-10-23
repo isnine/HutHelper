@@ -331,7 +331,7 @@ AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication share
                 NSArray *array_score             = [Score_All objectForKey:@"data"];
                 [defaults setObject:ScoreData forKey:@"data_score"];
                 [defaults synchronize];
-                ScoreViewController *Score      = [[ScoreViewController alloc] init];
+                RootViewController *Score      = [[RootViewController alloc] init];
                 AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
                 [tempAppDelegate.mainNavigationController pushViewController:Score animated:NO];
                 
