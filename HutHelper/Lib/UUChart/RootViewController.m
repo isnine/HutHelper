@@ -85,7 +85,7 @@
 #pragma mark - UITableView Datasource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 5;
+    return 6;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -128,6 +128,9 @@
     }
     else if(section==4){
         label.text = @"整体";
+    }
+    else if(section==5){
+        label.text = @"绩点";
     }
     
     
