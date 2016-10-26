@@ -254,6 +254,8 @@
     }
 }
 
+
+
 - (void)addPoint:(CGPoint)point index:(NSInteger)index isShow:(BOOL)isHollow value:(CGFloat)value
 {
     UIView *view = [[UIView alloc]initWithFrame:CGRectMake(5, 5, 8, 8)];

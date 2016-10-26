@@ -108,12 +108,129 @@
     return 40;
 }
 
+-(NSArray *)getStudent{
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    NSData* ScoreData           = [defaults objectForKey:@"data_score"];//地址 -> 数据
+    NSDictionary *Score_All     = [ScoreData objectFromJSONData];//数据 -> 字典
+    NSArray *array_score             = [Score_All objectForKey:@"data"];
+    return array_score;
+}
+
+-(int)get_wtg{
+    NSArray *array_score             = [self getStudent];
+    NSMutableArray *score_select=[NSMutableArray arrayWithCapacity:30];
+    NSMutableArray *xf_select=[NSMutableArray arrayWithCapacity:30];
+    NSMutableArray *score_select2=[NSMutableArray arrayWithCapacity:30];
+
+    int wtg=0;
+    for(int i=0;i<array_score.count;i++){
+        NSDictionary *dict1        = array_score[i];
+        NSString *string_name= [dict1 objectForKey:@"KCMC"];//名字
+        NSString *string_score= [dict1 objectForKey:@"ZSCJ"];//成绩
+        NSString *string_score2= [dict1 objectForKey:@"BKCJ"];//成绩
+        NSString *string_xf= [dict1 objectForKey:@"XF"];//学期
+        NSString *string_xn= [dict1 objectForKey:@"XN"];//学期
+        NSString *string_xq= [dict1 objectForKey:@"XQ"];//学期
+        if ([string_name isEqual:[NSNull null]]) {
+            string_name       = @"NULL";//名字
+        }
+        if ([string_score isEqual:[NSNull null]]) {
+            string_score          = @"0";//成绩
+        }
+        if ([string_xn isEqual:[NSNull null]]) {
+            string_xn         = @"NULL";//学期
+        }
+        if ([string_xq isEqual:[NSNull null]]) {
+            string_xq         = @"NULL";//学期
+        }
+        if ([string_score2 isEqual:[NSNull null]]) {
+            string_score2         = @"0";//学期
+        }
+        if ([string_xf isEqual:[NSNull null]]) {
+            string_xf         = @"0.1";//学期
+        }
+        
+        
+        int int_score          = [string_score intValue];
+        int int_score2          = [string_score2 intValue];
+        double double_xf          = string_xf.doubleValue;
+        
+        if (int_score<60&&int_score<int_score2) {
+            int_score=int_score2;
+        }
+        
+        if (int_score<60) {
+            wtg++;
+        }
+    }
+    
+ 
+    return wtg;
+}
+
+-(double)get_zxf{
+    NSArray *array_score             = [self getStudent];
+    NSMutableArray *score_select=[NSMutableArray arrayWithCapacity:30];
+    NSMutableArray *xf_select=[NSMutableArray arrayWithCapacity:30];
+    NSMutableArray *score_select2=[NSMutableArray arrayWithCapacity:30];
+    double zjd=0.0;
+    double zxf=0.0;
+    for(int i=0;i<array_score.count;i++){
+        NSDictionary *dict1        = array_score[i];
+        NSString *string_name= [dict1 objectForKey:@"KCMC"];//名字
+        NSString *string_score= [dict1 objectForKey:@"ZSCJ"];//成绩
+        NSString *string_score2= [dict1 objectForKey:@"BKCJ"];//成绩
+        NSString *string_xf= [dict1 objectForKey:@"XF"];//学期
+        NSString *string_xn= [dict1 objectForKey:@"XN"];//学期
+        NSString *string_xq= [dict1 objectForKey:@"XQ"];//学期
+        if ([string_name isEqual:[NSNull null]]) {
+            string_name       = @"NULL";//名字
+        }
+        if ([string_score isEqual:[NSNull null]]) {
+            string_score          = @"0";//成绩
+        }
+        if ([string_xn isEqual:[NSNull null]]) {
+            string_xn         = @"NULL";//学期
+        }
+        if ([string_xq isEqual:[NSNull null]]) {
+            string_xq         = @"NULL";//学期
+        }
+        if ([string_score2 isEqual:[NSNull null]]) {
+            string_score2         = @"0";//学期
+        }
+        if ([string_xf isEqual:[NSNull null]]) {
+            string_xf         = @"0.1";//学期
+        }
+
+        int int_score          = [string_score intValue];
+        int int_score2          = [string_score2 intValue];
+        double double_xf          = string_xf.doubleValue;
+        
+            if (int_score<60&&int_score<int_score2) {
+                int_score=int_score2;
+            }
+            zjd=zjd+(int_score*1.0-50.0)*double_xf/10.0;
+            zxf=zxf+double_xf*1.0;
+        
+    }
+    
+    double z=zjd/zxf;
+    return z;
+}
+
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     CGRect frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width , 30);
     UILabel *label = [[UILabel alloc]initWithFrame:frame];
     label.font = [UIFont systemFontOfSize:30];
     label.backgroundColor = [[UIColor lightGrayColor]colorWithAlphaComponent:0.3];
 //    label.text = section ? @"总体成绩":@"学期成绩分布图";
+    NSString *text= [NSString stringWithFormat:@"总绩点:%.2lf", [self get_zxf]];
+    NSString *wtgtext= @"整体";;
+    if ([self get_wtg]!=0) {
+        wtgtext= [NSString stringWithFormat:@"未通过:%d门", [self get_wtg]];
+    }
+
+    
     if (section==0) {
         label.text = @"大一";
     }
@@ -127,10 +244,10 @@
         label.text = @"大四";
     }
     else if(section==4){
-        label.text = @"整体";
+        label.text = wtgtext;
     }
     else if(section==5){
-        label.text = @"绩点";
+        label.text = text;
     }
     
     
@@ -138,6 +255,7 @@
     label.textAlignment = NSTextAlignmentCenter;
     return label;
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

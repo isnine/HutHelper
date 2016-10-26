@@ -109,6 +109,7 @@
 	}
 }
 
+
 - (void)showInView:(UIView *)view
 {
     [self setUpChart];

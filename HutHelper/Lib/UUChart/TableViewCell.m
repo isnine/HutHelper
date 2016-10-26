@@ -124,7 +124,7 @@ int class=0;
                 return [self getXTitles:score_2015_1 .count+1];
                   }
             case 4:
-             return [self getXTitles:16];
+             return [self getXTitles:17];
             case 5:
                 return [self getXTitles:5];
             default:
@@ -381,11 +381,9 @@ NSArray *ary2 = @[@"2.3",@"2.5",@"2.6"];
         default:
                 return @[ary1,];
         }
-    
- 
-
-
 }
+
+
 
 #pragma mark - @optional
 //颜色数组
@@ -396,17 +394,13 @@ NSArray *ary2 = @[@"2.3",@"2.5",@"2.6"];
 //显示数值范围
 - (CGRange)chartRange:(UUChart *)chart
 {
-//    if (path.section==0 ) {
-//        return CGRangeMake(10, 0);
-//    }
-//    if (path.section==1 ) {
-//        return CGRangeMake(20, 0);
-//    }
+
         if (path.section==5 ) {
-            return CGRangeMake(5, 1);
+            return CGRangeMake(5, 0);
         }
-    return CGRangeMake(100, 50);
+    return CGRangeMake(100, 0);
 }
+
 
 #pragma mark 折线图专享功能
 
@@ -417,7 +411,7 @@ NSArray *ary2 = @[@"2.3",@"2.5",@"2.6"];
 //        return CGRangeMake(25, 75);
 //    }
 
-   return CGRangeMake(50, 60);
+   return CGRangeMake(0,60);
 }
 
 //判断显示横线条

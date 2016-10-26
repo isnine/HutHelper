@@ -135,8 +135,73 @@
             bar.gradePercent = grade;
             [myScrollView addSubview:bar];
             
+            UIButton * button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+            [button addTarget:self action:@selector(btnOnBarClicked:)
+             forControlEvents:UIControlEventTouchUpInside];
+            button.frame = CGRectMake((j+(_yValues.count==1?0.1:0.05))*_xLabelWidth +i*_xLabelWidth * 0.47, UULabelHeight,_xLabelWidth * (_yValues.count==1?0.8:0.45) , chartCavanHeight);
+            button.tag = j;
+            [myScrollView addSubview:button];
         }
     }
+}
+
+- (void) btnOnBarClicked:(UIButton *) button{
+    NSLog(@"%@ button's tag: %lu", _yValues[1][1],(long)button.tag);
+   
+    switch ((long)button.tag) {
+        case 0:{
+            double number=[_yValues[0][0] doubleValue];
+            double number2=[_yValues[1][0] doubleValue];
+            NSString *a = [@"大一上学期:" stringByAppendingFormat:@"%.2lf\n大一下学期:%.2lf",number, number2];
+            UIAlertView *alertView                    = [[UIAlertView alloc] initWithTitle:@""
+                                                                                   message:a
+                                                                                  delegate:self
+                                                                         cancelButtonTitle:@"取消"
+                                                                         otherButtonTitles:@"确定", nil];
+            [alertView show];
+            break;
+        }
+        case 1:{
+            double number=[_yValues[0][1] doubleValue];
+            double number2=[_yValues[1][1] doubleValue];
+            NSString *a = [@"大二上学期:" stringByAppendingFormat:@"%.2lf\n大二下学期:%.2lf",number, number2];
+            UIAlertView *alertView                    = [[UIAlertView alloc] initWithTitle:@""
+                                                                                   message:a
+                                                                                  delegate:self
+                                                                         cancelButtonTitle:@"取消"
+                                                                         otherButtonTitles:@"确定", nil];
+            [alertView show];
+            break;
+        }
+        case 2:{
+            double number=[_yValues[0][2] doubleValue];
+            double number2=[_yValues[1][2] doubleValue];
+            NSString *a = [@"大三上学期:" stringByAppendingFormat:@"%.2lf\n大三下学期:%.2lf",number, number2];
+            UIAlertView *alertView                    = [[UIAlertView alloc] initWithTitle:@""
+                                                                                   message:a
+                                                                                  delegate:self
+                                                                         cancelButtonTitle:@"取消"
+                                                                         otherButtonTitles:@"确定", nil];
+            [alertView show];
+            break;
+        }
+        case 3:{
+            double number=[_yValues[0][3] doubleValue];
+            double number2=[_yValues[1][3] doubleValue];
+            NSString *a = [@"大四上学期:" stringByAppendingFormat:@"%.2lf\n大四下学期:%.2lf",number, number2];
+            UIAlertView *alertView                    = [[UIAlertView alloc] initWithTitle:@""
+                                                                                   message:a
+                                                                                  delegate:self
+                                                                         cancelButtonTitle:@"取消"
+                                                                         otherButtonTitles:@"确定", nil];
+            [alertView show];
+            break;
+        }
+        default:
+            break;
+            
+    }
+
 }
 
 - (NSArray *)chartLabelsForX
