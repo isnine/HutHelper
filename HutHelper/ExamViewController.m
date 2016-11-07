@@ -53,6 +53,21 @@
     MsgModel * mode11=[[MsgModel alloc]init];
     MsgModel * mode12=[[MsgModel alloc]init];
 
+    UIBarButtonItem *myButton = [[UIBarButtonItem alloc] initWithTitle:@"主页" style:UIBarButtonItemStyleBordered target:self action:@selector(clickEvent)];
+    self.navigationItem.rightBarButtonItem = myButton;
+    //两个按钮的父类view
+    UIView *rightButtonView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 50)];
+    //历史浏览按钮
+    UIButton *historyBtn = [[UIButton alloc] initWithFrame:CGRectMake(75, 0, 50, 50)];
+    [rightButtonView addSubview:historyBtn];
+    [historyBtn setImage:[UIImage imageNamed:@"help"] forState:UIControlStateNormal];
+    [historyBtn addTarget:self action:@selector(help) forControlEvents:UIControlEventTouchUpInside];
+#pragma mark >>>>>主页搜索按钮
+    //把右侧的两个按钮添加到rightBarButtonItem
+    UIBarButtonItem *rightCunstomButtonView = [[UIBarButtonItem alloc] initWithCustomView:rightButtonView];
+    self.navigationItem.rightBarButtonItem = rightCunstomButtonView;
+    //----添加按钮
+    
     NSData *jsonData=[defaults objectForKey:@"data_exam"];
     NSDictionary *User_All     = [jsonData objectFromJSONData];//数据 -> 字典
     NSDictionary *Class_Data=[User_All objectForKey:@"res"];
@@ -275,6 +290,15 @@ isset            = [dict1 objectForKey:@"isset"];//起始周
 
 
 }
+- (void)help{
+    UIAlertView *alertView                    = [[UIAlertView alloc] initWithTitle:@"温馨提示"
+                                                                           message:@"【红灯】代表考试正在计划中\n【绿灯】代表考试正在执行中,时间不再变动"
+                                                                          delegate:self
+                                                                 cancelButtonTitle:@"取消"
+                                                                 otherButtonTitles:@"确定", nil];
+    [alertView show];
+}
+
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [MobClick beginLogPageView:@"考试计划"];//("PageOne"为页面名称，可自定义)
@@ -287,6 +311,7 @@ isset            = [dict1 objectForKey:@"isset"];//起始周
     [scrollView addSubview:myView];
     [self.view addSubview:scrollView];
 }
+
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
