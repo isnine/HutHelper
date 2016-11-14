@@ -60,12 +60,10 @@ int CountDays(int year, int month, int day) {
     //返回当前是本年的第几天，year,month,day 表示现在的年月日，整数。
 int a[12]                                 = {31,0,31,30,31,30,31,31,30,31,30,31};
 int s                                     = 0;
-for(int i                                 = 0; i < month-1; i++) {
-s                                         += a[i];
+for(int i           = 0; i < month-1; i++) {s   += a[i];
     }
     if(month > 2) {
-        if(year % (year % 100 ? 4 : 400 ) ? 0 : 1)
-s                                         += 29;
+        if(year % (year % 100 ? 4 : 400 ) ? 0 : 1)s                                         += 29;
         else
 s                                         += 28;
     }
@@ -172,6 +170,8 @@ ans                                       += (CountDays(startyear, 12, 31) - Cou
     UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     self.navigationItem.backBarButtonItem = item;
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+    
+    NSLog(@"星期%d",CountDays(year, month, day));
 }
 
 - (void) openOrCloseLeftList  //侧栏滑动
