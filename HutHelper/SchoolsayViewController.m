@@ -21,7 +21,6 @@
    self.navigationItem.title = @"校园说说";
   NSURL *url                = [[NSURL alloc]initWithString:@"http://218.75.197.121:8888/moments"];
 
-
     [_Show loadRequest:[NSURLRequest requestWithURL:url]];
    
       _Show.delegate =self;
@@ -35,20 +34,6 @@
     });
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-/*‚‚
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -59,12 +44,6 @@
 {
     [super viewWillDisappear:animated];
     [MobClick endLogPageView:@"校园说说"];
-}
-
-- (void)webViewDidStartLoad:(UIWebView *)webView
-{
-    
-
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
@@ -101,8 +80,7 @@ if(([url rangeOfString:@"http://218.75.197.121:8888/moments"].location !=NSNotFo
         NSLog(@"IPAD");
     }
     }
-    
-    
+
      [MBProgressHUD hideHUDForView:self.view animated:YES];
 }
 

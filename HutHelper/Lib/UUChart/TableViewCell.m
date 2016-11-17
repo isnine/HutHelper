@@ -130,10 +130,7 @@ int class=0;
             default:
                 break;
         }
-    
-    
-    
-    
+
     return [self getXTitles:11];
 }
 -(NSArray *)getStudent{
@@ -156,6 +153,7 @@ int class=0;
         NSString *string_name= [dict1 objectForKey:@"KCMC"];//名字
         NSString *string_score= [dict1 objectForKey:@"ZSCJ"];//成绩
         NSString *string_score2= [dict1 objectForKey:@"BKCJ"];//成绩
+        NSString *string_cxbj= [dict1 objectForKey:@"CXBJ"];//重修标记
         NSString *string_xf= [dict1 objectForKey:@"XF"];//学期
         NSString *string_xn= [dict1 objectForKey:@"XN"];//学期
         NSString *string_xq= [dict1 objectForKey:@"XQ"];//学期
@@ -177,7 +175,9 @@ int class=0;
         if ([string_xf isEqual:[NSNull null]]) {
             string_xf         = @"0.1";//学期
         }
-        
+        if ([string_cxbj isEqual:[NSNull null]]) {
+            string_cxbj         = @"NULL";//学期
+        }
         string_xn         = [string_xn stringByAppendingString:@"第"];
         string_xn         = [string_xn stringByAppendingString:string_xq];
         string_xn         = [string_xn stringByAppendingString:@"学期"];
@@ -189,13 +189,17 @@ int class=0;
             if (int_score<60&&int_score<int_score2) {
                 int_score=int_score2;
             }
-            zjd=zjd+(int_score*1.0-50.0)*double_xf/10.0;
+            if(int_score>=60){
+                zjd=zjd+(int_score*1.0-50.0)*double_xf/10.0;
+            }
             zxf=zxf+double_xf*1.0;
+        
+            if([string_cxbj isEqualToString:@"1"]){
+                zxf=zxf-double_xf*1.0;
+            }
         }
     }
-    NSLog(@"总zjd:%lf",zjd);
-    NSLog(@"总zxf:%lf",zxf);
-   
+
     double z=zjd/zxf;
     return z;
 }

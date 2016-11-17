@@ -71,6 +71,9 @@
     UIColor *ownColor                = [UIColor colorWithRed:0/255.0 green:219/255.0 blue:204/255.0 alpha:1];
     [[UINavigationBar appearance] setBarTintColor: ownColor];  //颜色
 
+    [UMessage removeAllTags:^(id responseObject, NSInteger remain, NSError *error) {
+    }];
+    
         return YES;
 }
 

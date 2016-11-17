@@ -83,6 +83,10 @@
 		3ABE7F241DAF78B9003E4085 /* DayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3ABE7F221DAF78B9003E4085 /* DayViewController.xib */; };
 		3ABE7F281DAF7BBE003E4085 /* NoticeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ABE7F261DAF7BBE003E4085 /* NoticeViewController.m */; };
 		3ABE7F291DAF7BBE003E4085 /* NoticeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3ABE7F271DAF7BBE003E4085 /* NoticeViewController.xib */; };
+		3ABF727B1DDB2DD70062E757 /* MainPageViewController2.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ABF72791DDB2DD70062E757 /* MainPageViewController2.m */; };
+		3ABF727C1DDB2DD70062E757 /* MainPageViewController2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3ABF727A1DDB2DD70062E757 /* MainPageViewController2.xib */; };
+		3ABF72801DDB32F60062E757 /* LostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ABF727E1DDB32F60062E757 /* LostViewController.m */; };
+		3ABF72811DDB32F60062E757 /* LostViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3ABF727F1DDB32F60062E757 /* LostViewController.xib */; };
 		3AD87B081DACCE7600357212 /* ClassViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD87B071DACCE7600357212 /* ClassViewController.m */; };
 		3AD87B101DACD02E00357212 /* GWPCourseListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD87B0F1DACD02E00357212 /* GWPCourseListView.m */; };
 		3AD87B131DACD05B00357212 /* CourseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD87B121DACD05B00357212 /* CourseModel.m */; };
@@ -233,6 +237,12 @@
 		3ABE7F251DAF7BBE003E4085 /* NoticeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoticeViewController.h; sourceTree = "<group>"; };
 		3ABE7F261DAF7BBE003E4085 /* NoticeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NoticeViewController.m; path = HutHelper/NoticeViewController.m; sourceTree = "<group>"; };
 		3ABE7F271DAF7BBE003E4085 /* NoticeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NoticeViewController.xib; path = HutHelper/NoticeViewController.xib; sourceTree = "<group>"; };
+		3ABF72781DDB2DD70062E757 /* MainPageViewController2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainPageViewController2.h; sourceTree = "<group>"; };
+		3ABF72791DDB2DD70062E757 /* MainPageViewController2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainPageViewController2.m; path = HutHelper/MainPageViewController2.m; sourceTree = "<group>"; };
+		3ABF727A1DDB2DD70062E757 /* MainPageViewController2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainPageViewController2.xib; path = HutHelper/MainPageViewController2.xib; sourceTree = "<group>"; };
+		3ABF727D1DDB32F60062E757 /* LostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LostViewController.h; sourceTree = "<group>"; };
+		3ABF727E1DDB32F60062E757 /* LostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LostViewController.m; path = HutHelper/LostViewController.m; sourceTree = "<group>"; };
+		3ABF727F1DDB32F60062E757 /* LostViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LostViewController.xib; path = HutHelper/LostViewController.xib; sourceTree = "<group>"; };
 		3AD87B061DACCE7600357212 /* ClassViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassViewController.h; sourceTree = "<group>"; };
 		3AD87B071DACCE7600357212 /* ClassViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ClassViewController.m; path = HutHelper/ClassViewController.m; sourceTree = "<group>"; };
 		3AD87B0E1DACD02E00357212 /* GWPCourseListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GWPCourseListView.h; path = HutHelper/Lib/GWPCourseListView/GWPCourseListView.h; sourceTree = "<group>"; };
@@ -441,6 +451,8 @@
 				3ABE7F271DAF7BBE003E4085 /* NoticeViewController.xib */,
 				3A45626B1DB4980800E5591A /* FirstLoginViewController.xib */,
 				3A0898C51DB5EFD100D2CCE6 /* ScoreViewController.xib */,
+				3ABF727A1DDB2DD70062E757 /* MainPageViewController2.xib */,
+				3ABF727F1DDB32F60062E757 /* LostViewController.xib */,
 			);
 			name = View;
 			path = ..;
@@ -473,6 +485,8 @@
 				3ABE7F1C1DAF75FB003E4085 /* LibraryViewController.m */,
 				3ABE7F261DAF7BBE003E4085 /* NoticeViewController.m */,
 				3A0898A21DB5EA5700D2CCE6 /* ScoreViewController.m */,
+				3ABF72791DDB2DD70062E757 /* MainPageViewController2.m */,
+				3ABF727E1DDB32F60062E757 /* LostViewController.m */,
 			);
 			name = Controller;
 			path = ..;
@@ -507,6 +521,8 @@
 		3A8567DC1DAA3E4400EBD44A /* Header */ = {
 			isa = PBXGroup;
 			children = (
+				3ABF727D1DDB32F60062E757 /* LostViewController.h */,
+				3ABF72781DDB2DD70062E757 /* MainPageViewController2.h */,
 				3A0898A11DB5EA5700D2CCE6 /* ScoreViewController.h */,
 				3A4562691DB4980800E5591A /* FirstLoginViewController.h */,
 				3A3E52FE1DB2267D00A49067 /* ExamViewController.h */,
@@ -631,7 +647,9 @@
 				3A33D7F81DAF646B0012EFDE /* Login2ViewController.xib in Resources */,
 				3A85678B1DA908AA00EBD44A /* Assets.xcassets in Resources */,
 				3ABE7F1F1DAF75FB003E4085 /* LibraryViewController.xib in Resources */,
+				3ABF72811DDB32F60062E757 /* LostViewController.xib in Resources */,
 				3A6D7EDA1DABD9610081B70D /* HomeWorkViewController.xib in Resources */,
+				3ABF727C1DDB2DD70062E757 /* MainPageViewController2.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -643,6 +661,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A3C688F1DB115190088CC17 /* LGPlusButton.m in Sources */,
+				3ABF72801DDB32F60062E757 /* LostViewController.m in Sources */,
 				3A33D7F71DAF646B0012EFDE /* Login2ViewController.m in Sources */,
 				3A3E530A1DB2276700A49067 /* Person.m in Sources */,
 				3A6D7EF21DABDB500081B70D /* LoginViewController.m in Sources */,
@@ -655,6 +674,7 @@
 				3A026D131DBC9B42000288AF /* UUBar.m in Sources */,
 				3A33D7C61DAE00300012EFDE /* Feedback2ViewController.m in Sources */,
 				3ABE7F1E1DAF75FB003E4085 /* LibraryViewController.m in Sources */,
+				3ABF727B1DDB2DD70062E757 /* MainPageViewController2.m in Sources */,
 				3A33D7CB1DAE28380012EFDE /* PowerViewController.m in Sources */,
 				3A6D7EE41DABD9F50081B70D /* UIView_extra.m in Sources */,
 				3A0898BC1DB5ED5800D2CCE6 /* SKSTableView.m in Sources */,

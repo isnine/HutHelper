@@ -37,18 +37,18 @@
     NSURL * url                        = [NSURL URLWithString:@"http://218.75.197.121:8888/home/msg/0"];
     NSString *str1=@"email=";
     NSString *Mail_String              = _Mail.text;
-    NSString *str2=@"&content=[IOS]";
+    NSString *str2=@"&content=";
     NSString *Content_String           = _Content.text;
 
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     NSString *studentKH=[defaults objectForKey:@"studentKH"];
     if(studentKH==NULL){
-        str2=@"&content=[IOS] ";
+        str2=@"&content= ";
     }
     else
     {
         str2=[str2 stringByAppendingString:studentKH];
-        str2=[str2 stringByAppendingString:@" "];
+        str2=[str2 stringByAppendingString:@" iOS "];
     }
     NSString *str1_Mail_String=[str1 stringByAppendingString:Mail_String];
     NSString *str1_Mail_String_str2=[str1_Mail_String stringByAppendingString:str2];

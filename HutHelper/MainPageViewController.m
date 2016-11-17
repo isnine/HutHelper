@@ -7,6 +7,7 @@
 //
 
 #import "MainPageViewController.h"
+#import "MainPageViewController2.h"
 #import "AppDelegate.h"
 #import "JSONKit.h"
 #import "HomeWorkViewController.h"
@@ -156,16 +157,21 @@ ans                                       += (CountDays(startyear, 12, 31) - Cou
     /** 添加标签 */
     NSString *class_name                      = [defaults objectForKey:@"class_name"];
     NSString *dep_name                        = [defaults objectForKey:@"dep_name"];
-    if(class_name!=NULL){//班级
-            [UMessage addTag:class_name
+    
+
+    [UMessage addTag:class_name
                     response:^(id responseObject, NSInteger remain, NSError *error) {
-                        //add your codes
-                    }];}
-    if(dep_name!=NULL){//学院
-                [UMessage addTag:dep_name
+                        NSLog(@"%@",class_name);
+                    }];//班级
+    [UMessage addTag:dep_name
                         response:^(id responseObject, NSInteger remain, NSError *error) {
                             //add your codes
-                        }];}
+                        }];  //学院
+    /** 添加别名*/
+    [UMessage addAlias:studentKH type:kUMessageAliasTypeSina response:^(id responseObject, NSError *error) {
+        
+    }];
+
   /** 标题栏样式 */
     UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     self.navigationItem.backBarButtonItem = item;
@@ -357,11 +363,11 @@ AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication share
 } //成绩查询
 
 - (IBAction)Day:(id)sender {
-DayViewController *day                    = [[DayViewController alloc] init];
+MainPageViewController2 *other= [[MainPageViewController2 alloc] init];
 AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    [tempAppDelegate.mainNavigationController pushViewController:day animated:NO];
+    [tempAppDelegate.mainNavigationController pushViewController:other animated:NO];
 
-} //校历
+} //其他
 
 - (IBAction)Library:(id)sender {
 LibraryViewController *library            = [[LibraryViewController alloc] init];
