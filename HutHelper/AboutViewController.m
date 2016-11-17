@@ -20,6 +20,7 @@
 
 
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
        self.navigationItem.title = @"关于";
@@ -28,9 +29,9 @@
     // Do any additional setup after loading the view from its nib.
     NSString *app_Version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
    _version.text=app_Version;
-
-
 }
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
