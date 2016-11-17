@@ -136,10 +136,10 @@
 //        [tempAppDelegate.mainNavigationController pushViewController:share animated:NO];
 
       //  [self shareWebPageToPlatformType:UMSocialPlatformType_Sina];
-          [self shareTextToPlatformType:UMSocialPlatformType_QQ];
-      //  [self getAuthWithUserInfoFromSina];
-        
-       // [self shareTextToPlatformType:UMSocialPlatformType_Qzone];
+       //   [self shareWebPageToPlatformType:UMSocialPlatformType_Sina];
+    
+//        [self shareWithUI];
+       [self shareWebPageToPlatformType:UMSocialPlatformType_QQ];
     }
 
     if (indexPath.row == 3) {  //切换用户
@@ -194,12 +194,15 @@
     
     //显示分享面板
     [UMSocialUIManager showShareMenuViewInWindowWithPlatformSelectionBlock:^(UMShareMenuSelectionView *shareSelectionView, UMSocialPlatformType platformType) {
-        // 根据获取的platformType确定所选平台进行下一步操作
-        
         //创建分享消息对象
         UMSocialMessageObject *messageObject = [UMSocialMessageObject messageObject];
-        //设置文本
-        messageObject.text = @"社会化组件UShare将各大社交平台接入您的应用，快速武装App。";
+        
+        //创建网页内容对象
+        UMShareWebpageObject *shareObject = [UMShareWebpageObject shareObjectWithTitle:@"工大助手" descr:@"工大助手APP是由湖南工业大学计算机学院实验室移动组和网络组，为工大学生开发的产品，志于帮助同学们更加便捷的体验校园生活。" thumImage:[UIImage imageNamed:@"ico"]];
+        //设置网页地址
+        shareObject.webpageUrl =@"http://hugongda.com:8888/res/app/";
+        //分享消息对象设置分享内容对象
+        messageObject.shareObject = shareObject;
         
         //调用分享接口
         [[UMSocialManager defaultManager] shareToPlatform:platformType messageObject:messageObject currentViewController:self completion:^(id data, NSError *error) {
@@ -218,10 +221,9 @@
     UMSocialMessageObject *messageObject = [UMSocialMessageObject messageObject];
     
     //创建网页内容对象
-    UMShareWebpageObject *shareObject = [UMShareWebpageObject shareObjectWithTitle:@"分享标题" descr:@"分享内容描述" thumImage:[UIImage imageNamed:@"icon"]];
+    UMShareWebpageObject *shareObject = [UMShareWebpageObject shareObjectWithTitle:@"工大助手" descr:@"工大助手APP是由湖南工业大学计算机学院实验室移动组和网络组，为工大学生开发的产品，志于帮助同学们更加便捷的体验校园生活。" thumImage:[UIImage imageNamed:@"ico"]];
     //设置网页地址
     shareObject.webpageUrl =@"http://hugongda.com:8888/res/app/";
-    
     //分享消息对象设置分享内容对象
     messageObject.shareObject = shareObject;
     
@@ -233,55 +235,10 @@
             NSLog(@"response data is %@",data);
         }
     }];
-    
-}
-- (void)getAuthWithUserInfoFromQQ
-{
-    [[UMSocialManager defaultManager] getUserInfoWithPlatform:UMSocialPlatformType_QQ currentViewController:nil completion:^(id result, NSError *error) {
-        if (error) {
-            
-        } else {
-            UMSocialUserInfoResponse *resp = result;
-            
-            // 授权信息
-            NSLog(@"QQ uid: %@", resp.uid);
-            NSLog(@"QQ openid: %@", resp.openid);
-            NSLog(@"QQ accessToken: %@", resp.accessToken);
-            NSLog(@"QQ expiration: %@", resp.expiration);
-            
-            // 用户信息
-            NSLog(@"QQ name: %@", resp.name);
-            NSLog(@"QQ iconurl: %@", resp.iconurl);
-            NSLog(@"QQ gender: %@", resp.gender);
-            
-            // 第三方平台SDK源数据
-            NSLog(@"QQ originalResponse: %@", resp.originalResponse);
-        }
-    }];
 }
 
-- (void)getAuthWithUserInfoFromSina
-{
-    [[UMSocialManager defaultManager] getUserInfoWithPlatform:UMSocialPlatformType_Sina currentViewController:nil completion:^(id result, NSError *error) {
-        if (error) {
-            
-        } else {
-            UMSocialUserInfoResponse *resp = result;
-            
-            // 授权信息
-            NSLog(@"Sina uid: %@", resp.uid);
-            NSLog(@"Sina accessToken: %@", resp.accessToken);
-            NSLog(@"Sina refreshToken: %@", resp.refreshToken);
-            NSLog(@"Sina expiration: %@", resp.expiration);
-            
-            // 用户信息
-            NSLog(@"Sina name: %@", resp.name);
-            NSLog(@"Sina iconurl: %@", resp.iconurl);
-            NSLog(@"Sina gender: %@", resp.gender);
-            
-            // 第三方平台SDK源数据
-            NSLog(@"Sina originalResponse: %@", resp.originalResponse);
-        }
-    }];
-}
+
+
+
+
 @end
