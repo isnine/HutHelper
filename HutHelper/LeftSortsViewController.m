@@ -16,7 +16,7 @@
 #import "SetViewController.h"
 
 #import "AboutViewController.h"
-#import "ShareViewController.h"
+
 #import "FeedbackViewController.h"
 
 #import "UMSocialUIManager.h"

@@ -139,7 +139,7 @@ ans                                       += (CountDays(startyear, 12, 31) - Cou
     int day                                   = [dateComponent day];//日
     [defaults setInteger:CountWeeks(year, month, day) forKey:@"NowWeek"];
     /**  首次登陆 */
-    NSString *studentKH                       = [defaults objectForKey:@"studentKH"];
+    NSString *studentKH    = [defaults objectForKey:@"studentKH"];
     if(studentKH==NULL){
         AppDelegate *tempAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         FirstLoginViewController *firstlogin                = [[FirstLoginViewController alloc] init];
@@ -161,7 +161,7 @@ ans                                       += (CountDays(startyear, 12, 31) - Cou
 
     [UMessage addTag:class_name
                     response:^(id responseObject, NSInteger remain, NSError *error) {
-                        NSLog(@"%@",class_name);
+                      
                     }];//班级
     [UMessage addTag:dep_name
                         response:^(id responseObject, NSInteger remain, NSError *error) {
@@ -177,7 +177,7 @@ ans                                       += (CountDays(startyear, 12, 31) - Cou
     self.navigationItem.backBarButtonItem = item;
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
     
-    NSLog(@"星期%d",CountDays(year, month, day));
+   
 }
 
 - (void) openOrCloseLeftList  //侧栏滑动

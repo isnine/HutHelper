@@ -43,8 +43,6 @@
 		3A33D7F31DAF1B810012EFDE /* SetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A33D7F11DAF1B810012EFDE /* SetViewController.xib */; };
 		3A33D7F71DAF646B0012EFDE /* Login2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A33D7F51DAF646B0012EFDE /* Login2ViewController.m */; };
 		3A33D7F81DAF646B0012EFDE /* Login2ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A33D7F61DAF646B0012EFDE /* Login2ViewController.xib */; };
-		3A33D7FC1DAF66450012EFDE /* ShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A33D7FA1DAF66450012EFDE /* ShareViewController.m */; };
-		3A33D7FD1DAF66450012EFDE /* ShareViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A33D7FB1DAF66450012EFDE /* ShareViewController.xib */; };
 		3A3C688F1DB115190088CC17 /* LGPlusButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A3C68881DB115190088CC17 /* LGPlusButton.m */; };
 		3A3C68901DB115190088CC17 /* LGPlusButtonDescription.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A3C688A1DB115190088CC17 /* LGPlusButtonDescription.m */; };
 		3A3C68911DB115190088CC17 /* LGPlusButtonsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A3C688C1DB115190088CC17 /* LGPlusButtonsView.m */; };
@@ -188,9 +186,6 @@
 		3A33D7F41DAF646B0012EFDE /* Login2ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Login2ViewController.h; path = HutHelper/Login2ViewController.h; sourceTree = "<group>"; };
 		3A33D7F51DAF646B0012EFDE /* Login2ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Login2ViewController.m; path = HutHelper/Login2ViewController.m; sourceTree = "<group>"; };
 		3A33D7F61DAF646B0012EFDE /* Login2ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = Login2ViewController.xib; path = HutHelper/Login2ViewController.xib; sourceTree = "<group>"; };
-		3A33D7F91DAF66450012EFDE /* ShareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShareViewController.h; path = HutHelper/ShareViewController.h; sourceTree = "<group>"; };
-		3A33D7FA1DAF66450012EFDE /* ShareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShareViewController.m; path = HutHelper/ShareViewController.m; sourceTree = "<group>"; };
-		3A33D7FB1DAF66450012EFDE /* ShareViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ShareViewController.xib; path = HutHelper/ShareViewController.xib; sourceTree = "<group>"; };
 		3A3C68871DB115190088CC17 /* LGPlusButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LGPlusButton.h; path = HutHelper/Lib/LGPlusButtonsView/LGPlusButton.h; sourceTree = "<group>"; };
 		3A3C68881DB115190088CC17 /* LGPlusButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LGPlusButton.m; path = HutHelper/Lib/LGPlusButtonsView/LGPlusButton.m; sourceTree = "<group>"; };
 		3A3C68891DB115190088CC17 /* LGPlusButtonDescription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LGPlusButtonDescription.h; path = HutHelper/Lib/LGPlusButtonsView/LGPlusButtonDescription.h; sourceTree = "<group>"; };
@@ -524,7 +519,6 @@
 				3A33D7CF1DAE31AB0012EFDE /* SchoolsayViewController.xib */,
 				3A33D7D41DAE36420012EFDE /* SchoolHandViewController.xib */,
 				3A33D7F11DAF1B810012EFDE /* SetViewController.xib */,
-				3A33D7FB1DAF66450012EFDE /* ShareViewController.xib */,
 				3ABE7F1D1DAF75FB003E4085 /* LibraryViewController.xib */,
 				3ABE7F221DAF78B9003E4085 /* DayViewController.xib */,
 				3ABE7F271DAF7BBE003E4085 /* NoticeViewController.xib */,
@@ -559,7 +553,6 @@
 				3A33D7D31DAE36420012EFDE /* SchoolHandViewController.m */,
 				3A33D7F01DAF1B810012EFDE /* SetViewController.m */,
 				3A33D7F51DAF646B0012EFDE /* Login2ViewController.m */,
-				3A33D7FA1DAF66450012EFDE /* ShareViewController.m */,
 				3ABE7F211DAF78B9003E4085 /* DayViewController.m */,
 				3ABE7F1C1DAF75FB003E4085 /* LibraryViewController.m */,
 				3ABE7F261DAF7BBE003E4085 /* NoticeViewController.m */,
@@ -589,7 +582,6 @@
 				3AD87B121DACD05B00357212 /* CourseModel.m */,
 				3A33D7EF1DAF1B810012EFDE /* SetViewController.h */,
 				3A33D7F41DAF646B0012EFDE /* Login2ViewController.h */,
-				3A33D7F91DAF66450012EFDE /* ShareViewController.h */,
 				3A2D105F1DB66063009916D0 /* Foundation.framework */,
 				3A2D10601DB66063009916D0 /* CoreGraphics.framework */,
 				3A2D10611DB66063009916D0 /* UIKit.framework */,
@@ -827,7 +819,6 @@
 				3AD87B181DACD08E00357212 /* Main.storyboard in Resources */,
 				3A8BAD741DDDBE6A001C78B8 /* README.txt in Resources */,
 				3A33D7D61DAE36420012EFDE /* SchoolHandViewController.xib in Resources */,
-				3A33D7FD1DAF66450012EFDE /* ShareViewController.xib in Resources */,
 				3A33D7D11DAE31AB0012EFDE /* SchoolsayViewController.xib in Resources */,
 				3ABE7F241DAF78B9003E4085 /* DayViewController.xib in Resources */,
 				3A33D7F81DAF646B0012EFDE /* Login2ViewController.xib in Resources */,
@@ -870,7 +861,6 @@
 				3A6D7EE31DABD9F50081B70D /* LeftSlideViewController.m in Sources */,
 				3A026D161DBC9B42000288AF /* UUChartConst.m in Sources */,
 				3A8567801DA908AA00EBD44A /* main.m in Sources */,
-				3A33D7FC1DAF66450012EFDE /* ShareViewController.m in Sources */,
 				3A026D171DBC9B42000288AF /* UUChartLabel.m in Sources */,
 				3A3C68901DB115190088CC17 /* LGPlusButtonDescription.m in Sources */,
 				3A33D7D51DAE36420012EFDE /* SchoolHandViewController.m in Sources */,
