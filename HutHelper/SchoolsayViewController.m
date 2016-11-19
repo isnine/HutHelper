@@ -9,23 +9,35 @@
 #import "SchoolsayViewController.h"
 #import "UMMobClick/MobClick.h"
 #import "MBProgressHUD.h"
+#import "DJRefresh.h"
 @interface SchoolsayViewController ()
 @property (weak, nonatomic) IBOutlet UIWebView *Show;
-
+@property (nonatomic,strong)DJRefresh *refresh;
 @end
 
 @implementation SchoolsayViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-   self.navigationItem.title = @"校园说说";
-  NSURL *url                = [[NSURL alloc]initWithString:@"http://218.75.197.121:8888/moments"];
 
-    [_Show loadRequest:[NSURLRequest requestWithURL:url]];
-   
-      _Show.delegate =self;
+
     
-    [self webViewDidFinishLoad:_Show];
+   self.navigationItem.title = @"校园说说";
+
+    NSURLRequest *url=[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://218.75.197.121:8888/moments"]];
+    
+    [self.Show loadRequest:url];
+    
+    _refresh=[[DJRefresh alloc] initWithScrollView:self.Show.scrollView];
+    _refresh.topEnabled=YES;
+    [_refresh didRefreshCompletionBlock:^(DJRefresh *refresh, DJRefreshDirection direction, NSDictionary *info) {
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [_Show reload];
+            [_refresh finishRefreshingDirection:direction animation:YES];
+        });
+    }];
+          _Show.delegate =self;
     
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"加载中";
@@ -57,9 +69,10 @@
         [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:([self.navigationController.viewControllers count] -2)] animated:YES];  //返回上一个View
     }
 
-    CGSize screenSize = [UIScreen mainScreen].bounds.size;//获得屏幕大小
-if(([url rangeOfString:@"http://218.75.197.121:8888/moments"].location !=NSNotFound)){
 
+    CGSize screenSize = [UIScreen mainScreen].bounds.size;//获得屏幕大小
+    if(([url rangeOfString:@"http://218.75.197.121:8888/moments"].location !=NSNotFound)){
+_refresh.topEnabled=YES;
     if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPhone) {
         // 竖屏情况
         if (screenSize.height > screenSize.width) {
@@ -79,6 +92,10 @@ if(([url rangeOfString:@"http://218.75.197.121:8888/moments"].location !=NSNotFo
             [webView stringByEvaluatingJavaScriptFromString:@"document.body.style.zoom=0.92"];
         NSLog(@"IPAD");
     }
+    }
+    else
+    {
+        _refresh.topEnabled=NO;
     }
 
      [MBProgressHUD hideHUDForView:self.view animated:YES];

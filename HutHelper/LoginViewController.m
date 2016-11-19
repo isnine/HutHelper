@@ -94,8 +94,9 @@
         [MBProgressHUD hideHUDForView:self.view animated:YES];
     });}
 
-- (IBAction)DidEnd:(id)sender {
-  [sender resignFirstResponder];
+
+- (IBAction)Didend:(id)sender {
+    [sender resignFirstResponder];
 }
 
 
@@ -111,9 +112,10 @@
 
 }
 - (IBAction)resetpassword:(id)sender {
-    Login2ViewController *reset  = [[Login2ViewController alloc] init];
-    AppDelegate *tempAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    [tempAppDelegate.mainNavigationController pushViewController:reset animated:NO];
+    UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    LoginViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Login2"];
+    AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:NO];
 }
 
 

@@ -9,9 +9,11 @@
 #import "SchoolHandViewController.h"
 #import "UMMobClick/MobClick.h"
 #import "MBProgressHUD.h"
+#import "DJRefresh.h"
+
 @interface SchoolHandViewController ()
 @property (weak, nonatomic) IBOutlet UIWebView *Show;
-
+@property (nonatomic,strong)DJRefresh *refresh;
 @end
 
 @implementation SchoolHandViewController
@@ -19,9 +21,25 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"校园二手";
-    NSURL *url                = [[NSURL alloc]initWithString:@"http://218.75.197.121:8888/trade/goods"];
+
+    
+    NSURLRequest *url=[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://218.75.197.121:8888/trade/goods"]];
+    
+    [self.Show loadRequest:url];
+    
+    _refresh=[[DJRefresh alloc] initWithScrollView:self.Show.scrollView];
+
+    [_refresh didRefreshCompletionBlock:^(DJRefresh *refresh, DJRefreshDirection direction, NSDictionary *info) {
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [_Show reload];
+            [_refresh finishRefreshingDirection:direction animation:YES];
+        });
+    }];
+    
+    
     _Show.delegate =self;
-    [_Show loadRequest:[NSURLRequest requestWithURL:url]];
+
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"加载中";
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 0.01 * NSEC_PER_SEC);
@@ -65,7 +83,7 @@
     
     CGSize screenSize = [UIScreen mainScreen].bounds.size;
     if([url isEqualToString:@"http://218.75.197.121:8888/trade/goods"]){
-        
+        _refresh.topEnabled=YES;
     if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPhone) {
           [webView stringByEvaluatingJavaScriptFromString:@"document.body.style.zoom=0.3"];
           }
@@ -73,7 +91,11 @@
         [webView stringByEvaluatingJavaScriptFromString:@"document.body.style.zoom=0.5"];
         NSLog(@"IPAD");
     }
-                                                   }
+                            }
+    else
+    {
+        _refresh.topEnabled=NO;
+    }
     if(([url rangeOfString:@"http://218.75.197.121:8888/trade/detail/"].location !=NSNotFound)){
         if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPhone) {
             [webView stringByEvaluatingJavaScriptFromString:@"document.body.style.zoom=0.5"];
@@ -83,6 +105,7 @@
         
         }
     }
+
     [MBProgressHUD hideHUDForView:self.view animated:YES];
 }
 

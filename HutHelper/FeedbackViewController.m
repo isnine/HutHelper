@@ -8,6 +8,7 @@
 
 #import "FeedbackViewController.h"
 #import "Feedback2ViewController.h"
+#import "ClassViewController.h"
 #import "AppDelegate.h"
 @interface FeedbackViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *Mail;
@@ -65,11 +66,14 @@
 
         NSLog(@"%@", [NSThread currentThread]);
 
+    
+
+    UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    ClassViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Feedback2"];
+    AppDelegate *tempAppDelegate= (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:NO];
 
 
-    Feedback2ViewController *Feedback2 = [[Feedback2ViewController alloc] init];
-    AppDelegate *tempAppDelegate       = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    [tempAppDelegate.mainNavigationController pushViewController:Feedback2 animated:NO];
 
 }
 

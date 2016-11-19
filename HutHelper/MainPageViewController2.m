@@ -29,15 +29,17 @@
     // Dispose of any resources that can be recreated.
 }
 - (IBAction)Day:(id)sender {
-    DayViewController *day= [[DayViewController alloc] init];
-    AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    [tempAppDelegate.mainNavigationController pushViewController:day animated:NO];
+    UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    MainPageViewController2 *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Day"];
+    AppDelegate *tempAppDelegate= (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:NO];
 }
 
 - (IBAction)Lost:(id)sender {
-    LostViewController *lost= [[LostViewController alloc] init];
-    AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    [tempAppDelegate.mainNavigationController pushViewController:lost animated:NO];
+    UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    MainPageViewController2 *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Lost"];
+    AppDelegate *tempAppDelegate= (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:NO];
 }
 
 

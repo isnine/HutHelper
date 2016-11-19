@@ -143,19 +143,28 @@
     }
 
     if (indexPath.row == 3) {  //切换用户
-        [tempAppDelegate.mainNavigationController pushViewController:vb animated:NO];
+        UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        ClassViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Login"];
+        AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:NO];
     }
     if (indexPath.row == 4) {  //设置
-    SetViewController *set           = [[SetViewController alloc] init];
-        [tempAppDelegate.mainNavigationController pushViewController:set animated:NO];
+        UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        ClassViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Set"];
+        AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:NO];
     }
     if (indexPath.row == 5) {  //关于
-    AboutViewController *about       = [[AboutViewController alloc] init];
-       [tempAppDelegate.mainNavigationController pushViewController:about animated:NO];
+        UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        ClassViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"About"];
+        AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:NO];
       }
     if (indexPath.row == 6) {  //反馈
-    FeedbackViewController *feedback = [[FeedbackViewController alloc] init];
-        [tempAppDelegate.mainNavigationController pushViewController:feedback animated:NO];
+        UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        ClassViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Feedback"];
+        AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:NO];
     }
 
 }

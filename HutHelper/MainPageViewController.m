@@ -282,27 +282,31 @@ ans                                       += (CountDays(startyear, 12, 31) - Cou
 } //课程表
 
 - (IBAction)HomeWork:(id)sender { //作业界面
-HomeWorkViewController *vc                = [[HomeWorkViewController alloc] init];
-AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-         [tempAppDelegate.mainNavigationController pushViewController:vc animated:NO];
+    UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    ClassViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"HomeWork"];
+    AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:NO];
 } //网上作业
 
 - (IBAction)Power:(id)sender {
-PowerViewController *Power                = [[PowerViewController alloc] init];
-AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-             [tempAppDelegate.mainNavigationController pushViewController:Power animated:NO];
+    UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    ClassViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Power"];
+    AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:NO];
 } //电费查询
 
 - (IBAction)SchoolSay:(id)sender {
-SchoolsayViewController *Schoolsay        = [[SchoolsayViewController alloc] init];
-AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    [tempAppDelegate.mainNavigationController pushViewController:Schoolsay animated:NO];
+    UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    ClassViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Schoolsay"];
+    AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:NO];
 } //校园说说
 
 - (IBAction)SchoolHand:(id)sender {
-SchoolHandViewController *SchoolHand      = [[SchoolHandViewController alloc] init];
-AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    [tempAppDelegate.mainNavigationController pushViewController:SchoolHand animated:NO];
+    UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    ClassViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Schoolhand"];
+    AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:NO];
 } //二手市场
 
 - (IBAction)Score:(id)sender {
@@ -370,9 +374,10 @@ AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication share
 } //其他
 
 - (IBAction)Library:(id)sender {
-LibraryViewController *library            = [[LibraryViewController alloc] init];
-AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-         [tempAppDelegate.mainNavigationController pushViewController:library animated:NO];
+    UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    ClassViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Library"];
+    AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:NO];
 
 } //图书馆
 
