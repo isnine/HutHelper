@@ -169,9 +169,9 @@
 		3A33D7D71DAE4F8D0012EFDE /* HutHelper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HutHelper.entitlements; sourceTree = "<group>"; };
 		3A33D7D91DAE50EF0012EFDE /* libUMessage_Sdk_1.4.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUMessage_Sdk_1.4.0.a; sourceTree = "<group>"; };
 		3A33D7DA1DAE50EF0012EFDE /* UMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMessage.h; sourceTree = "<group>"; };
-		3A33D7EF1DAF1B810012EFDE /* SetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SetViewController.h; path = HutHelper/SetViewController.h; sourceTree = "<group>"; };
+		3A33D7EF1DAF1B810012EFDE /* SetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetViewController.h; sourceTree = "<group>"; };
 		3A33D7F01DAF1B810012EFDE /* SetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SetViewController.m; path = HutHelper/SetViewController.m; sourceTree = "<group>"; };
-		3A33D7F41DAF646B0012EFDE /* Login2ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Login2ViewController.h; path = HutHelper/Login2ViewController.h; sourceTree = "<group>"; };
+		3A33D7F41DAF646B0012EFDE /* Login2ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Login2ViewController.h; sourceTree = "<group>"; };
 		3A33D7F51DAF646B0012EFDE /* Login2ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Login2ViewController.m; path = HutHelper/Login2ViewController.m; sourceTree = "<group>"; };
 		3A3C68871DB115190088CC17 /* LGPlusButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LGPlusButton.h; path = HutHelper/Lib/LGPlusButtonsView/LGPlusButton.h; sourceTree = "<group>"; };
 		3A3C68881DB115190088CC17 /* LGPlusButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LGPlusButton.m; path = HutHelper/Lib/LGPlusButtonsView/LGPlusButton.m; sourceTree = "<group>"; };
@@ -565,8 +565,6 @@
 				3A6D7EDD1DABD9DA0081B70D /* JSONKit.m */,
 				3AD87B111DACD05B00357212 /* CourseModel.h */,
 				3AD87B121DACD05B00357212 /* CourseModel.m */,
-				3A33D7EF1DAF1B810012EFDE /* SetViewController.h */,
-				3A33D7F41DAF646B0012EFDE /* Login2ViewController.h */,
 				3A2D105F1DB66063009916D0 /* Foundation.framework */,
 				3A2D10601DB66063009916D0 /* CoreGraphics.framework */,
 				3A2D10611DB66063009916D0 /* UIKit.framework */,
@@ -587,9 +585,11 @@
 				3A33D7D21DAE36420012EFDE /* SchoolHandViewController.h */,
 				3A33D7CD1DAE31AB0012EFDE /* SchoolsayViewController.h */,
 				3A6D7EF71DABDB680081B70D /* AppDelegate.h */,
+				3A33D7F41DAF646B0012EFDE /* Login2ViewController.h */,
 				3AD87B061DACCE7600357212 /* ClassViewController.h */,
 				3A6D7EF81DABDB680081B70D /* HomeWorkViewController.h */,
 				3A6D7EF91DABDB680081B70D /* LeftSortsViewController.h */,
+				3A33D7EF1DAF1B810012EFDE /* SetViewController.h */,
 				3A6D7EFA1DABDB680081B70D /* LoginViewController.h */,
 				3A6D7EFB1DABDB680081B70D /* MainPageViewController.h */,
 				3A33D7BB1DADE3A40012EFDE /* FeedbackViewController.h */,

@@ -11,6 +11,8 @@
 #import "MsgModel.h"
 #import "JSONKit.h"
 #import "UMMobClick/MobClick.h"
+#include <stdio.h>
+#include <time.h>
 @interface ExamViewController (){
    UIScrollView * scrollView;
    MyView * myView;
@@ -35,6 +37,27 @@
  @end
 @implementation ExamViewController
 
+int datediff(int y1,int m1,int d1,int y2,int m2,int d2)
+{
+    struct tm ptr1;
+    ptr1.tm_sec=10;
+    ptr1.tm_min=10;
+    ptr1.tm_hour=10;
+    ptr1.tm_mday=d1;
+    ptr1.tm_mon=m1-1;
+    ptr1.tm_year=y1-1900;
+    time_t st1=mktime(&ptr1);
+    struct tm ptr2;
+    ptr2.tm_sec=10;
+    ptr2.tm_min=10;
+    ptr2.tm_hour=10;
+    ptr2.tm_mday=d2;
+    ptr2.tm_mon=m2-1;
+    ptr2.tm_year=y2-1900;
+    time_t st2=mktime(&ptr2);
+    return (int)((st2-st1)/3600/24);
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title=@"考试计划";
@@ -53,20 +76,27 @@
     MsgModel * mode11=[[MsgModel alloc]init];
     MsgModel * mode12=[[MsgModel alloc]init];
 
+    
     UIBarButtonItem *myButton = [[UIBarButtonItem alloc] initWithTitle:@"主页" style:UIBarButtonItemStyleBordered target:self action:@selector(clickEvent)];
     self.navigationItem.rightBarButtonItem = myButton;
     //两个按钮的父类view
     UIView *rightButtonView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 50)];
     //历史浏览按钮
-    UIButton *historyBtn = [[UIButton alloc] initWithFrame:CGRectMake(75, 0, 50, 50)];
+    UIButton *historyBtn = [[UIButton alloc] initWithFrame:CGRectMake(35, 0, 50, 50)];
     [rightButtonView addSubview:historyBtn];
-    [historyBtn setImage:[UIImage imageNamed:@"help"] forState:UIControlStateNormal];
-    [historyBtn addTarget:self action:@selector(help) forControlEvents:UIControlEventTouchUpInside];
+    [historyBtn setImage:[UIImage imageNamed:@"time"] forState:UIControlStateNormal];
+    [historyBtn addTarget:self action:@selector(times) forControlEvents:UIControlEventTouchUpInside];
 #pragma mark >>>>>主页搜索按钮
+    //主页搜索按钮
+    UIButton *mainAndSearchBtn = [[UIButton alloc] initWithFrame:CGRectMake(70, 0, 50, 50)];
+    [rightButtonView addSubview:mainAndSearchBtn];
+    [mainAndSearchBtn setImage:[UIImage imageNamed:@"help"] forState:UIControlStateNormal];
+    [mainAndSearchBtn addTarget:self action:@selector(help) forControlEvents:UIControlEventTouchUpInside];
     //把右侧的两个按钮添加到rightBarButtonItem
     UIBarButtonItem *rightCunstomButtonView = [[UIBarButtonItem alloc] initWithCustomView:rightButtonView];
     self.navigationItem.rightBarButtonItem = rightCunstomButtonView;
-    //----添加按钮
+    
+
     
     NSData *jsonData=[defaults objectForKey:@"data_exam"];
     NSDictionary *User_All     = [jsonData objectFromJSONData];//数据 -> 字典
@@ -82,7 +112,7 @@
         NSString *Starttime       ;
 
         NSString *isset            ;
-        NSLog(@"1%@",[dict1 objectForKey:@"RoomName"]);
+   
 
 RoomName         = [dict1 objectForKey:@"RoomName"];//起始周
 CourseName       = [dict1 objectForKey:@"CourseName"];
@@ -101,7 +131,40 @@ isset            = [dict1 objectForKey:@"isset"];//起始周
         if ([isset isEqual:[NSNull null]]) {
             isset            = 0;//起始周
         }
-
+        
+        
+        /**计算倒计时天数*/
+        int Year;
+        int Mouth;
+        int Day;
+        if (![Starttime isEqual:@""]) {
+        Starttime=[Starttime substringToIndex:16];
+        Year=[[Starttime substringWithRange:NSMakeRange(0,4)] intValue];
+       Mouth=[[Starttime substringWithRange:NSMakeRange(5,2)] intValue];
+         Day=[[Starttime substringWithRange:NSMakeRange(8,2)] intValue];
+             }
+        NSLog(@"%d年%d月%d日",Year,Mouth,Day);
+        NSDate *now                               = [NSDate date];
+        NSCalendar *calendar                      = [NSCalendar currentCalendar];
+        NSUInteger unitFlags                      = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit |NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
+        NSDateComponents *dateComponent           = [calendar components:unitFlags fromDate:now];
+        int year                                  = [dateComponent year];//年
+        int month                                 = [dateComponent month];//月
+        int day                                   = [dateComponent day];//日
+        
+        NSLog(@"还有%d天考%@",datediff(year,month,day,Year,Mouth,Day),CourseName);
+        
+        NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+        NSString *time=[defaults objectForKey:@"lasttime"];
+        if ([time isEqualToString:@"打开"]&&(datediff(year,month,day,Year,Mouth,Day)>0)) {
+            Starttime=[[NSString alloc]initWithFormat:@"倒计时%d天",datediff(year,month,day,Year,Mouth,Day)];
+        }
+        else if ([time isEqualToString:@"打开"]&&(datediff(year,month,day,Year,Mouth,Day)<0)){
+            Starttime=@"已结束";
+        }
+        else if ([time isEqualToString:@"打开"]&&(datediff(year,month,day,Year,Mouth,Day)==0)){
+            Starttime=@"今天考试";
+        }
             switch (k) {
                 case 0:
     mode0.address              = CourseName;
@@ -285,11 +348,33 @@ isset            = [dict1 objectForKey:@"isset"];//起始周
         default:
             break;
     }
-
-    NSLog(@"%d",array.count);
-
+   
+    NSLog(@"相差天%d",datediff(2016,12,30,2016,12,30));
 
 }
+
+-(void)times{
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    NSString *time=[defaults objectForKey:@"lasttime"];
+    if ([time isEqualToString:@"打开"]) {
+        [defaults setObject:@"关闭" forKey:@"lasttime"];
+        [defaults synchronize];
+    }
+    else
+    {
+        [defaults setObject:@"打开" forKey:@"lasttime"];
+        [defaults synchronize];
+    }
+    myView=[[MyView alloc]init];
+    MsgModel * model=[[MsgModel alloc]init];
+    MsgModel * mode0=[[MsgModel alloc]init];
+
+    mode0.address              = @"1";
+    mode0.motive               = @"2";
+    mode0.date                 = @"3";
+    myView.msgModelArray=@[mode0];
+}
+
 - (void)help{
     UIAlertView *alertView                    = [[UIAlertView alloc] initWithTitle:@"温馨提示"
                                                                            message:@"【红灯】代表考试正在计划中\n【绿灯】代表考试正在执行中,时间不再变动"
