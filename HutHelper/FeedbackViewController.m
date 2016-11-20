@@ -40,7 +40,6 @@
     NSString *Mail_String              = _Mail.text;
     NSString *str2=@"&content=";
     NSString *Content_String           = _Content.text;
-
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     NSString *studentKH=[defaults objectForKey:@"studentKH"];
     if(studentKH==NULL){
@@ -61,7 +60,7 @@
         //设置请求参数
     request.HTTPBody                   = [str dataUsingEncoding:NSUTF8StringEncoding];
         //创建NSURLConnection 对象用来连接服务器并且发送请求
-    NSURLConnection * conn             = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+    NSURLConnection * conn   = [[NSURLConnection alloc] initWithRequest:request delegate:self];
         [conn start];
 
         NSLog(@"%@", [NSThread currentThread]);

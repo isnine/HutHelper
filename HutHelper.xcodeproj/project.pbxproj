@@ -87,8 +87,11 @@
 		3A8BAD7A1DDDBE6A001C78B8 /* UMSocialShareScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8BAD681DDDBE6A001C78B8 /* UMSocialShareScrollView.m */; };
 		3A8BAD7B1DDDBE6A001C78B8 /* UMSocialUIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8BAD6A1DDDBE6A001C78B8 /* UMSocialUIManager.m */; };
 		3A8E0E251DAB442E00F458DB /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A8E0E231DAB442E00F458DB /* MainViewController.xib */; };
+		3AAC242B1DE1CB3C00546B11 /* JSHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AAC242A1DE1CB3C00546B11 /* JSHeaderView.m */; };
+		3AAC242E1DE1CB8C00546B11 /* UserInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AAC242D1DE1CB8C00546B11 /* UserInfoCell.m */; };
+		3AAC24301DE1D00E00546B11 /* header@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3AAC242F1DE1D00D00546B11 /* header@2x.jpg */; };
+		3AAC24331DE1F17400546B11 /* UsernameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AAC24321DE1F17400546B11 /* UsernameViewController.m */; };
 		3AB6BF9B1DDFF74300127C96 /* UserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AB6BF991DDFF74300127C96 /* UserViewController.m */; };
-		3AB6BF9C1DDFF74300127C96 /* UserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AB6BF9A1DDFF74300127C96 /* UserViewController.xib */; };
 		3AB6BFA91DDFFCE600127C96 /* DJRefresh.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3AB6BF9E1DDFFCE600127C96 /* DJRefresh.bundle */; };
 		3AB6BFAA1DDFFCE600127C96 /* DJRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AB6BFA01DDFFCE600127C96 /* DJRefresh.m */; };
 		3AB6BFAB1DDFFCE600127C96 /* DJRefreshBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AB6BFA31DDFFCE600127C96 /* DJRefreshBottomView.m */; };
@@ -271,9 +274,15 @@
 		3A8BAD691DDDBE6A001C78B8 /* UMSocialUIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSocialUIManager.h; sourceTree = "<group>"; };
 		3A8BAD6A1DDDBE6A001C78B8 /* UMSocialUIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMSocialUIManager.m; sourceTree = "<group>"; };
 		3A8E0E231DAB442E00F458DB /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainViewController.xib; path = HutHelper/MainViewController.xib; sourceTree = "<group>"; };
-		3AB6BF981DDFF74300127C96 /* UserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserViewController.h; path = HutHelper/UserViewController.h; sourceTree = "<group>"; };
+		3AAC24291DE1CB3C00546B11 /* JSHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSHeaderView.h; sourceTree = "<group>"; };
+		3AAC242A1DE1CB3C00546B11 /* JSHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSHeaderView.m; sourceTree = "<group>"; };
+		3AAC242C1DE1CB8C00546B11 /* UserInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoCell.h; sourceTree = "<group>"; };
+		3AAC242D1DE1CB8C00546B11 /* UserInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoCell.m; sourceTree = "<group>"; };
+		3AAC242F1DE1D00D00546B11 /* header@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "header@2x.jpg"; sourceTree = "<group>"; };
+		3AAC24311DE1F17400546B11 /* UsernameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UsernameViewController.h; sourceTree = "<group>"; };
+		3AAC24321DE1F17400546B11 /* UsernameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UsernameViewController.m; path = HutHelper/UsernameViewController.m; sourceTree = "<group>"; };
+		3AB6BF981DDFF74300127C96 /* UserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserViewController.h; sourceTree = "<group>"; };
 		3AB6BF991DDFF74300127C96 /* UserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserViewController.m; path = HutHelper/UserViewController.m; sourceTree = "<group>"; };
-		3AB6BF9A1DDFF74300127C96 /* UserViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = UserViewController.xib; path = HutHelper/UserViewController.xib; sourceTree = "<group>"; };
 		3AB6BF9E1DDFFCE600127C96 /* DJRefresh.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = DJRefresh.bundle; sourceTree = "<group>"; };
 		3AB6BF9F1DDFFCE600127C96 /* DJRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJRefresh.h; sourceTree = "<group>"; };
 		3AB6BFA01DDFFCE600127C96 /* DJRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJRefresh.m; sourceTree = "<group>"; };
@@ -507,9 +516,6 @@
 				3A45626B1DB4980800E5591A /* FirstLoginViewController.xib */,
 				3A0898C51DB5EFD100D2CCE6 /* ScoreViewController.xib */,
 				3ABF727A1DDB2DD70062E757 /* MainPageViewController2.xib */,
-				3AB6BF981DDFF74300127C96 /* UserViewController.h */,
-				3AB6BF991DDFF74300127C96 /* UserViewController.m */,
-				3AB6BF9A1DDFF74300127C96 /* UserViewController.xib */,
 			);
 			name = View;
 			path = ..;
@@ -543,6 +549,8 @@
 				3A0898A21DB5EA5700D2CCE6 /* ScoreViewController.m */,
 				3ABF72791DDB2DD70062E757 /* MainPageViewController2.m */,
 				3ABF727E1DDB32F60062E757 /* LostViewController.m */,
+				3AB6BF991DDFF74300127C96 /* UserViewController.m */,
+				3AAC24321DE1F17400546B11 /* UsernameViewController.m */,
 			);
 			name = Controller;
 			path = ..;
@@ -551,6 +559,7 @@
 		3A8567DB1DAA3DF800EBD44A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				3AAC24281DE1CB3C00546B11 /* JSHeaderView */,
 				3AB6BF9D1DDFFCE600127C96 /* DJRefresh */,
 				3A8BAD3D1DDDBE6A001C78B8 /* UMSocial */,
 				3A026CFC1DBC9B35000288AF /* UUChart */,
@@ -576,6 +585,8 @@
 		3A8567DC1DAA3E4400EBD44A /* Header */ = {
 			isa = PBXGroup;
 			children = (
+				3AAC24311DE1F17400546B11 /* UsernameViewController.h */,
+				3AB6BF981DDFF74300127C96 /* UserViewController.h */,
 				3ABF727D1DDB32F60062E757 /* LostViewController.h */,
 				3ABF72781DDB2DD70062E757 /* MainPageViewController2.h */,
 				3A0898A11DB5EA5700D2CCE6 /* ScoreViewController.h */,
@@ -707,6 +718,19 @@
 			path = Resource;
 			sourceTree = "<group>";
 		};
+		3AAC24281DE1CB3C00546B11 /* JSHeaderView */ = {
+			isa = PBXGroup;
+			children = (
+				3AAC242F1DE1D00D00546B11 /* header@2x.jpg */,
+				3AAC24291DE1CB3C00546B11 /* JSHeaderView.h */,
+				3AAC242A1DE1CB3C00546B11 /* JSHeaderView.m */,
+				3AAC242C1DE1CB8C00546B11 /* UserInfoCell.h */,
+				3AAC242D1DE1CB8C00546B11 /* UserInfoCell.m */,
+			);
+			name = JSHeaderView;
+			path = HutHelper/Lib/JSHeaderView;
+			sourceTree = "<group>";
+		};
 		3AB6BF9D1DDFFCE600127C96 /* DJRefresh */ = {
 			isa = PBXGroup;
 			children = (
@@ -813,9 +837,9 @@
 				3A026D101DBC9B42000288AF /* RootViewController.xib in Resources */,
 				3A0898C61DB5EFD100D2CCE6 /* ScoreViewController.xib in Resources */,
 				3A8BAD731DDDBE6A001C78B8 /* read_me.txt in Resources */,
-				3AB6BF9C1DDFF74300127C96 /* UserViewController.xib in Resources */,
 				3A8BAD701DDDBE6A001C78B8 /* WeiboSDK.bundle in Resources */,
 				3A8BAD6D1DDDBE6A001C78B8 /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
+				3AAC24301DE1D00E00546B11 /* header@2x.jpg in Resources */,
 				3A0898C11DB5ED6000D2CCE6 /* expandableImage.png in Resources */,
 				3ABE7F291DAF7BBE003E4085 /* NoticeViewController.xib in Resources */,
 				3A0898BB1DB5ED5800D2CCE6 /* SKSTableView-Info.plist in Resources */,
@@ -844,6 +868,7 @@
 				3A3E530A1DB2276700A49067 /* Person.m in Sources */,
 				3A6D7EF21DABDB500081B70D /* LoginViewController.m in Sources */,
 				3A6D7EDE1DABD9DA0081B70D /* JSONKit.m in Sources */,
+				3AAC242B1DE1CB3C00546B11 /* JSHeaderView.m in Sources */,
 				3A45626C1DB4980800E5591A /* FirstLoginViewController.m in Sources */,
 				3A8BAD791DDDBE6A001C78B8 /* UMShareMenuSelectionView.m in Sources */,
 				3AD87B131DACD05B00357212 /* CourseModel.m in Sources */,
@@ -861,6 +886,7 @@
 				3A0898BC1DB5ED5800D2CCE6 /* SKSTableView.m in Sources */,
 				3A6D7EF41DABDB500081B70D /* MainViewController.m in Sources */,
 				3A6D7EE31DABD9F50081B70D /* LeftSlideViewController.m in Sources */,
+				3AAC242E1DE1CB8C00546B11 /* UserInfoCell.m in Sources */,
 				3A026D161DBC9B42000288AF /* UUChartConst.m in Sources */,
 				3A8567801DA908AA00EBD44A /* main.m in Sources */,
 				3A026D171DBC9B42000288AF /* UUChartLabel.m in Sources */,
@@ -872,6 +898,7 @@
 				3AFB7BA51DAD19530040B55F /* AboutViewController.m in Sources */,
 				3A8BAD781DDDBE6A001C78B8 /* UMShareMenuItem.m in Sources */,
 				3AD87B081DACCE7600357212 /* ClassViewController.m in Sources */,
+				3AAC24331DE1F17400546B11 /* UsernameViewController.m in Sources */,
 				3A3C68911DB115190088CC17 /* LGPlusButtonsView.m in Sources */,
 				3A6D7EF01DABDB500081B70D /* HomeWorkViewController.m in Sources */,
 				3A6D7EF51DABDB500081B70D /* otherViewController.m in Sources */,

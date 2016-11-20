@@ -76,6 +76,7 @@ int datediff(int y1,int m1,int d1,int y2,int m2,int d2)
     MsgModel * mode11=[[MsgModel alloc]init];
     MsgModel * mode12=[[MsgModel alloc]init];
 
+
     
     UIBarButtonItem *myButton = [[UIBarButtonItem alloc] initWithTitle:@"主页" style:UIBarButtonItemStyleBordered target:self action:@selector(clickEvent)];
     self.navigationItem.rightBarButtonItem = myButton;
@@ -117,7 +118,9 @@ CourseName       = [dict1 objectForKey:@"CourseName"];
 Starttime        = [dict1 objectForKey:@"Starttime"];//起始周
 isset            = [dict1 objectForKey:@"isset"];//起始周
         if ([RoomName isEqual:[NSNull null]]) {
+           
             RoomName  = @"-";//起始周
+           
         }
         if ([CourseName isEqual:[NSNull null]]) {
            CourseName       = @"-";

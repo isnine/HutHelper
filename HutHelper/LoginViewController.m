@@ -60,12 +60,21 @@
             NSString *studentKH=[User_Data objectForKey:@"studentKH"]; //学号
             NSString *dep_name=[User_Data objectForKey:@"dep_name"]; //学院
             NSString *class_name=[User_Data objectForKey:@"class_name"];  //班级
+            NSString *sex=[User_Data objectForKey:@"sex"];  //班级
+            NSString *username=[User_Data objectForKey:@"username"];
+            if(username == NULL ){
+                username=@"(无名氏)";
+            }
+            NSString *last_login=[User_Data objectForKey:@"last_login"];  //班级
             //--------保存用户信息
             [defaults setObject:Remember_code_app forKey:@"remember_code_app"];
             [defaults setObject:TrueName forKey:@"TrueName"];
             [defaults setObject:studentKH forKey:@"studentKH"];
             [defaults setObject:dep_name forKey:@"dep_name"];
             [defaults setObject:class_name forKey:@"class_name"];
+            [defaults setObject:sex forKey:@"sex"];
+            [defaults setObject:username forKey:@"username"];
+            [defaults setObject:last_login forKey:@"last_login"];
             [defaults synchronize];
             NSLog(@"用户：%@，学号：%@,令牌:%@",TrueName,studentKH,Remember_code_app);
            //--------保存用户信息

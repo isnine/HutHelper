@@ -129,6 +129,16 @@ ans                                       += (CountDays(startyear, 12, 31) - Cou
     [menuBtn addTarget:self action:@selector(openOrCloseLeftList) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.leftBarButtonItem     = [[UIBarButtonItem alloc] initWithCustomView:menuBtn];
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    
+    [self isAppFirstRun];
+    /**  首次登陆 */
+    NSString *studentKH    = [defaults objectForKey:@"studentKH"];
+    if(studentKH==NULL){
+        AppDelegate *tempAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        FirstLoginViewController *firstlogin                = [[FirstLoginViewController alloc] init];
+        [tempAppDelegate.mainNavigationController pushViewController:firstlogin animated:YES];
+    }
+    
     /**   判断第几周 */
     NSDate *now                               = [NSDate date];
     NSCalendar *calendar                      = [NSCalendar currentCalendar];
@@ -138,13 +148,7 @@ ans                                       += (CountDays(startyear, 12, 31) - Cou
     int month                                 = [dateComponent month];//月
     int day                                   = [dateComponent day];//日
     [defaults setInteger:CountWeeks(year, month, day) forKey:@"NowWeek"];
-    /**  首次登陆 */
-    NSString *studentKH    = [defaults objectForKey:@"studentKH"];
-    if(studentKH==NULL){
-        AppDelegate *tempAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-        FirstLoginViewController *firstlogin                = [[FirstLoginViewController alloc] init];
-        [tempAppDelegate.mainNavigationController pushViewController:firstlogin animated:YES];
-    }
+    
     NSArray *array                            = [defaults objectForKey:@"array_class"];
     NSString *autoclass=[defaults objectForKey:@"autoclass"];
     /**  是否自动打开课程表  */
@@ -285,28 +289,28 @@ ans                                       += (CountDays(startyear, 12, 31) - Cou
     UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     ClassViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"HomeWork"];
     AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:NO];
+    [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:YES];
 } //网上作业
 
 - (IBAction)Power:(id)sender {
     UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     ClassViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Power"];
     AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:NO];
+    [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:YES];
 } //电费查询
 
 - (IBAction)SchoolSay:(id)sender {
     UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     ClassViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Schoolsay"];
     AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:NO];
+    [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:YES];
 } //校园说说
 
 - (IBAction)SchoolHand:(id)sender {
     UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     ClassViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Schoolhand"];
     AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:NO];
+    [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:YES];
 } //二手市场
 
 - (IBAction)Score:(id)sender {
@@ -343,7 +347,7 @@ ans                                       += (CountDays(startyear, 12, 31) - Cou
                 [defaults synchronize];
                 RootViewController *Score      = [[RootViewController alloc] init];
                 AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-                [tempAppDelegate.mainNavigationController pushViewController:Score animated:NO];
+                [tempAppDelegate.mainNavigationController pushViewController:Score animated:YES];
                 
             }
             else{
@@ -369,7 +373,7 @@ ans                                       += (CountDays(startyear, 12, 31) - Cou
 - (IBAction)Day:(id)sender {
 MainPageViewController2 *other= [[MainPageViewController2 alloc] init];
 AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    [tempAppDelegate.mainNavigationController pushViewController:other animated:NO];
+    [tempAppDelegate.mainNavigationController pushViewController:other animated:YES];
 
 } //其他
 
@@ -377,7 +381,7 @@ AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication share
     UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     ClassViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Library"];
     AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:NO];
+    [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:YES];
 
 } //图书馆
 
@@ -422,7 +426,7 @@ AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication share
             if(array.count!=0){
                 ExamViewController *exam                  = [[ExamViewController alloc] init];
                 AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-                [tempAppDelegate.mainNavigationController pushViewController:exam animated:NO];
+                [tempAppDelegate.mainNavigationController pushViewController:exam animated:YES];
             }
             else{
                 UIAlertView *alertView1    = [[UIAlertView alloc] initWithTitle:@"暂无考试"
@@ -445,6 +449,29 @@ AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication share
     });
 } //考试计划
 
+- (void) isAppFirstRun{
+    NSString *currentVersion = [[[NSBundle mainBundle] infoDictionary]
+                                objectForKey:@"CFBundleShortVersionString"];
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *lastRunKey = [defaults objectForKey:@"last_run_version_key"];
+    NSLog(@"当前版本%@",currentVersion);
+    NSLog(@"上个版本%@",lastRunKey);
+    if (lastRunKey==NULL) {
+        NSString *appDomain       = [[NSBundle mainBundle] bundleIdentifier];
+        [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:appDomain];
+        [defaults setObject:currentVersion forKey:@"last_run_version_key"];
+        NSLog(@"没有记录");
+        
+    }
+    else if (![lastRunKey isEqualToString:currentVersion]) {
+        NSString *appDomain       = [[NSBundle mainBundle] bundleIdentifier];
+        [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:appDomain];
+        [defaults setObject:currentVersion forKey:@"last_run_version_key"];
+        NSLog(@"记录不匹配");
+    }
+    
+}
 
 
 

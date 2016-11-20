@@ -64,7 +64,7 @@
     static NSString *Identifier      = @"Identifier";
     UITableViewCell *cell            = [tableView dequeueReusableCellWithIdentifier:Identifier];
     if (cell == nil) {
-    cell                             = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:Identifier];
+    cell  = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:Identifier];
     }
 
     cell.textLabel.font              = [UIFont systemFontOfSize:20.0f];
@@ -123,11 +123,12 @@
 
 
     if (indexPath.row == 0) { //登录
-        if(name==NULL){
-          [tempAppDelegate.mainNavigationController pushViewController:vb animated:NO];
-                      }
-
-           [self.tableview reloadData];
+[self.tableview reloadData];
+        UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        ClassViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"User"];
+        AppDelegate *tempAppDelegate     = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:NO];
+        
 
     }
 
@@ -146,25 +147,25 @@
         UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         ClassViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Login"];
         AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-        [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:NO];
+        [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:YES];
     }
     if (indexPath.row == 4) {  //设置
         UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         ClassViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Set"];
         AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-        [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:NO];
+        [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:YES];
     }
     if (indexPath.row == 5) {  //关于
         UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         ClassViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"About"];
         AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-        [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:NO];
+        [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:YES];
       }
     if (indexPath.row == 6) {  //反馈
         UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         ClassViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Feedback"];
         AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-        [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:NO];
+        [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:YES];
     }
 
 }
