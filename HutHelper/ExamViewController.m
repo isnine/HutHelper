@@ -123,7 +123,7 @@ isset            = [dict1 objectForKey:@"isset"];//起始周
            CourseName       = @"-";
         }
         if ([Starttime isEqual:[NSNull null]]) {
-            Starttime        = @"";//起始周
+            Starttime        = @"-";//起始周
 
         }
         if ([isset isEqual:[NSNull null]]) {
@@ -135,7 +135,7 @@ isset            = [dict1 objectForKey:@"isset"];//起始周
         int Year;
         int Mouth;
         int Day;
-        if (![Starttime isEqual:@""]) {
+        if (![Starttime isEqual:@"-"]) {
         Starttime=[Starttime substringToIndex:16];
         Year=[[Starttime substringWithRange:NSMakeRange(0,4)] intValue];
        Mouth=[[Starttime substringWithRange:NSMakeRange(5,2)] intValue];
@@ -172,6 +172,8 @@ isset            = [dict1 objectForKey:@"isset"];//起始周
                         mode0.color=[UIColor redColor];
                     }
                     else
+                        mode0.color=[UIColor yellowColor];
+                    if([lastime isEqualToString:@"已结束"])
                         mode0.color=[UIColor greenColor];
                     break;
                 case 1:
@@ -184,6 +186,8 @@ isset            = [dict1 objectForKey:@"isset"];//起始周
                         mode1.color=[UIColor redColor];
                     }
                     else
+                        mode1.color=[UIColor yellowColor];
+                    if([lastime isEqualToString:@"已结束"])
                         mode1.color=[UIColor greenColor];
                     break;
                 case 2:
@@ -196,6 +200,9 @@ isset            = [dict1 objectForKey:@"isset"];//起始周
                         mode2.color=[UIColor redColor];
                     }
                     else
+                        mode2.color=[UIColor yellowColor];
+                    
+                    if([lastime isEqualToString:@"已结束"])
                         mode2.color=[UIColor greenColor];
                     break;
                 case 3:
@@ -207,6 +214,8 @@ isset            = [dict1 objectForKey:@"isset"];//起始周
                         mode3.color=[UIColor redColor];
                     }
                     else
+                        mode3.color=[UIColor yellowColor];
+                    if([lastime isEqualToString:@"已结束"])
                         mode3.color=[UIColor greenColor];
                     break;
                 case 4:
@@ -218,6 +227,8 @@ isset            = [dict1 objectForKey:@"isset"];//起始周
                         mode4.color=[UIColor redColor];
                     }
                     else
+                        mode4.color=[UIColor yellowColor];
+                    if([lastime isEqualToString:@"已结束"])
                         mode4.color=[UIColor greenColor];
                     break;
                 case 5:
@@ -229,6 +240,8 @@ isset            = [dict1 objectForKey:@"isset"];//起始周
                         mode5.color=[UIColor redColor];
                     }
                     else
+                        mode5.color=[UIColor yellowColor];
+                    if([lastime isEqualToString:@"已结束"])
                         mode5.color=[UIColor greenColor];
                     break;
                 case 6:
@@ -240,6 +253,8 @@ isset            = [dict1 objectForKey:@"isset"];//起始周
                         mode6.color=[UIColor redColor];
                     }
                     else
+                        mode6.color=[UIColor yellowColor];
+                    if([lastime isEqualToString:@"已结束"])
                         mode6.color=[UIColor greenColor];
                     break;
                 case 7:
@@ -251,6 +266,8 @@ isset            = [dict1 objectForKey:@"isset"];//起始周
                         mode7.color=[UIColor redColor];
                     }
                     else
+                        mode7.color=[UIColor yellowColor];
+                    if([lastime isEqualToString:@"已结束"])
                         mode7.color=[UIColor greenColor];
                     break;
                 case 8:
@@ -262,6 +279,8 @@ isset            = [dict1 objectForKey:@"isset"];//起始周
                         mode8.color=[UIColor redColor];
                     }
                     else
+                        mode8.color=[UIColor yellowColor];
+                    if([lastime isEqualToString:@"已结束"])
                         mode8.color=[UIColor greenColor];
                     break;
                 case 9:
@@ -273,6 +292,8 @@ isset            = [dict1 objectForKey:@"isset"];//起始周
                         mode9.color=[UIColor redColor];
                     }
                     else
+                        mode9.color=[UIColor yellowColor];
+                    if([lastime isEqualToString:@"已结束"])
                         mode9.color=[UIColor greenColor];
                     break;
                 case 10:
@@ -284,6 +305,8 @@ isset            = [dict1 objectForKey:@"isset"];//起始周
                         mode10.color=[UIColor redColor];
                     }
                     else
+                        mode10.color=[UIColor yellowColor];
+                    if([lastime isEqualToString:@"已结束"])
                         mode10.color=[UIColor greenColor];
                     break;
                 case 11:
@@ -295,16 +318,13 @@ isset            = [dict1 objectForKey:@"isset"];//起始周
                         mode11.color=[UIColor redColor];
                     }
                     else
+                        mode11.color=[UIColor yellowColor];
+                    if([lastime isEqualToString:@"已结束"])
                         mode11.color=[UIColor greenColor];
                     break;
                 default:
                     break;
-            }
-
-    
-
-
-        
+            }     
     }
    
   
@@ -366,7 +386,7 @@ isset            = [dict1 objectForKey:@"isset"];//起始周
 
 - (void)help{
     UIAlertView *alertView                    = [[UIAlertView alloc] initWithTitle:@"温馨提示"
-                                                                           message:@"【红灯】代表考试正在计划中\n【绿灯】代表考试正在执行中,时间不再变动"
+                                                                           message:@"绿灯 - 已完成\n黄灯 - 执行中，时间地点不会变化\n红灯 - 计划中，时间地点可能变化"
                                                                           delegate:self
                                                                  cancelButtonTitle:@"取消"
                                                                  otherButtonTitles:@"确定", nil];

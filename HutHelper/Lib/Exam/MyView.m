@@ -16,7 +16,7 @@
     CGContextSetLineWidth(ctf, 1);
     CGContextSetRGBStrokeColor(ctf, 0, 0, 0, 1);
     CGPoint aPoints[2];
-    aPoints[0]=CGPointMake(WIDTH/2,SP_W(56));
+    aPoints[0]=CGPointMake(WIDTH/2,SP_W(58));
     aPoints[1]=CGPointMake(WIDTH/2, self.frame.size.height-SP_W(10));
     CGContextAddLines(ctf, aPoints, 2);
     CGContextDrawPath(ctf, kCGPathStroke);
@@ -213,14 +213,12 @@
         CGContextSetFillColorWithColor(ctf,model.color.CGColor);
         CGContextDrawPath(ctf, kCGPathFill);
         //绘制中线上的原点
-        CGContextAddArc(ctf, WIDTH/2, SP_W(60)+SP_W(60)*i, SP_W(4), 0, 2*M_PI, 0);
+        CGContextAddArc(ctf, WIDTH/2, SP_W(60)+SP_W(60)*i, SP_W(2), 0, 2*M_PI, 0);
         CGContextSetRGBFillColor(ctf, 1, 1, 1, 1);
         CGContextDrawPath(ctf, kCGPathFillStroke);
         
         //绘制中线上的原点内的小圆点
-        CGContextAddArc(ctf, WIDTH/2, SP_W(60)+SP_W(60)*i, SP_W(3), 0, 2*M_PI, 0);
-        UIColor * color=[_colorArray objectAtIndex:i];        CGContextSetFillColorWithColor(ctf,color.CGColor);
-        CGContextDrawPath(ctf, kCGPathFill);
+
     }
  
    
@@ -230,7 +228,7 @@
     self=[super initWithFrame:frame];
     if(self){
         self.backgroundColor=[UIColor clearColor];
-        _colorArray=[NSArray arrayWithObjects:[UIColor colorWithPatternImage:[UIImage imageNamed:@"圆线01"]], [UIColor colorWithPatternImage:[UIImage imageNamed:@"圆线02"]], [UIColor colorWithPatternImage:[UIImage imageNamed:@"圆线03"]], [UIColor colorWithPatternImage:[UIImage imageNamed:@"圆线04"]], [UIColor colorWithPatternImage:[UIImage imageNamed:@"圆线05"]], [UIColor colorWithPatternImage:[UIImage imageNamed:@"圆线01"]], [UIColor colorWithPatternImage:[UIImage imageNamed:@"圆线02"]], [UIColor colorWithPatternImage:[UIImage imageNamed:@"圆线03"]], [UIColor colorWithPatternImage:[UIImage imageNamed:@"圆线04"]], [UIColor colorWithPatternImage:[UIImage imageNamed:@"圆线05"]], [UIColor colorWithPatternImage:[UIImage imageNamed:@"圆线01"]], [UIColor colorWithPatternImage:[UIImage imageNamed:@"圆线02"]], nil];
+
     }
     return self;
 }

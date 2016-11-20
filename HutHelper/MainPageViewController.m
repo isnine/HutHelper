@@ -412,7 +412,7 @@ AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication share
             NSInteger *exam_on                        = [defaults integerForKey:@"exam_on"];
             if(exam_on!=1){
                 UIAlertView *alertView                    = [[UIAlertView alloc] initWithTitle:@"温馨提示"
-                                                                                       message:@"考试序号后的红灯代表考试正在计划中\n绿灯代表考试正在执行中,时间不再变动"
+                                                                                       message:@"绿灯 - 已完成\n黄灯 - 执行中，时间地点不会变化\n红灯 - 计划中，时间地点可能变化"
                                                                                       delegate:self
                                                                              cancelButtonTitle:@"取消"
                                                                              otherButtonTitles:@"确定", nil];
