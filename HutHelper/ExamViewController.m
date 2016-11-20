@@ -83,9 +83,7 @@ int datediff(int y1,int m1,int d1,int y2,int m2,int d2)
     UIView *rightButtonView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 50)];
     //历史浏览按钮
     UIButton *historyBtn = [[UIButton alloc] initWithFrame:CGRectMake(35, 0, 50, 50)];
-    [rightButtonView addSubview:historyBtn];
-    [historyBtn setImage:[UIImage imageNamed:@"time"] forState:UIControlStateNormal];
-    [historyBtn addTarget:self action:@selector(times) forControlEvents:UIControlEventTouchUpInside];
+
 #pragma mark >>>>>主页搜索按钮
     //主页搜索按钮
     UIButton *mainAndSearchBtn = [[UIButton alloc] initWithFrame:CGRectMake(70, 0, 50, 50)];
@@ -151,25 +149,25 @@ isset            = [dict1 objectForKey:@"isset"];//起始周
         int year                                  = [dateComponent year];//年
         int month                                 = [dateComponent month];//月
         int day                                   = [dateComponent day];//日
-        
+        NSString *lastime;
         NSLog(@"还有%d天考%@",datediff(year,month,day,Year,Mouth,Day),CourseName);
         
-        NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-        NSString *time=[defaults objectForKey:@"lasttime"];
-        if ([time isEqualToString:@"打开"]&&(datediff(year,month,day,Year,Mouth,Day)>0)) {
-            Starttime=[[NSString alloc]initWithFormat:@"倒计时%d天",datediff(year,month,day,Year,Mouth,Day)];
+        if (datediff(year,month,day,Year,Mouth,Day)>0) {
+                  lastime=[[NSString alloc]initWithFormat:@"倒计时%d天",datediff(year,month,day,Year,Mouth,Day)];
         }
-        else if ([time isEqualToString:@"打开"]&&(datediff(year,month,day,Year,Mouth,Day)<0)){
-            Starttime=@"已结束";
+        else if (datediff(year,month,day,Year,Mouth,Day)<0){
+            lastime=@"已结束";
         }
-        else if ([time isEqualToString:@"打开"]&&(datediff(year,month,day,Year,Mouth,Day)==0)){
-            Starttime=@"今天考试";
+        else if (datediff(year,month,day,Year,Mouth,Day)==0){
+            lastime=@"今天考试";
         }
+
             switch (k) {
                 case 0:
     mode0.address              = CourseName;
     mode0.motive               = RoomName;
     mode0.date                 = Starttime;
+    mode0.last                 =lastime;
                     if ([isset isEqualToString:@"0"]) {
                         mode0.color=[UIColor redColor];
                     }
@@ -181,6 +179,7 @@ isset            = [dict1 objectForKey:@"isset"];//起始周
     mode1.address              = CourseName;
     mode1.motive               = RoomName;
     mode1.date                 = Starttime;
+       mode1.last                 =lastime;
                     if ([isset isEqualToString:@"0"]) {
                         mode1.color=[UIColor redColor];
                     }
@@ -192,6 +191,7 @@ isset            = [dict1 objectForKey:@"isset"];//起始周
     mode2.address              = CourseName;
     mode2.motive               = RoomName;
     mode2.date                 = Starttime;
+                        mode2.last                 =lastime;
                     if ([isset isEqualToString:@"0"]) {
                         mode2.color=[UIColor redColor];
                     }
@@ -202,6 +202,7 @@ isset            = [dict1 objectForKey:@"isset"];//起始周
     mode3.address              = CourseName;
     mode3.motive               = RoomName;
     mode3.date                 = Starttime;
+                        mode3.last                 =lastime;
                     if ([isset isEqualToString:@"0"]) {
                         mode3.color=[UIColor redColor];
                     }
@@ -212,6 +213,7 @@ isset            = [dict1 objectForKey:@"isset"];//起始周
     mode4.address              = CourseName;
     mode4.motive               = RoomName;
     mode4.date                 = Starttime;
+                        mode4.last                 =lastime;
                     if ([isset isEqualToString:@"0"]) {
                         mode4.color=[UIColor redColor];
                     }
@@ -222,6 +224,7 @@ isset            = [dict1 objectForKey:@"isset"];//起始周
     mode5.address              = CourseName;
     mode5.motive               = RoomName;
     mode5.date                 = Starttime;
+                        mode5.last                 =lastime;
                     if ([isset isEqualToString:@"0"]) {
                         mode5.color=[UIColor redColor];
                     }
@@ -232,6 +235,7 @@ isset            = [dict1 objectForKey:@"isset"];//起始周
     mode6.address              = CourseName;
     mode6.motive               = RoomName;
     mode6.date                 = Starttime;
+                        mode6.last                 =lastime;
                     if ([isset isEqualToString:@"0"]) {
                         mode6.color=[UIColor redColor];
                     }
@@ -242,6 +246,7 @@ isset            = [dict1 objectForKey:@"isset"];//起始周
     mode7.address              = CourseName;
     mode7.motive               = RoomName;
     mode7.date                 = Starttime;
+                        mode7.last                 =lastime;
                     if ([isset isEqualToString:@"0"]) {
                         mode7.color=[UIColor redColor];
                     }
@@ -252,6 +257,7 @@ isset            = [dict1 objectForKey:@"isset"];//起始周
     mode8.address              = CourseName;
     mode8.motive               = RoomName;
     mode8.date                 = Starttime;
+                        mode8.last                 =lastime;
                     if ([isset isEqualToString:@"0"]) {
                         mode8.color=[UIColor redColor];
                     }
@@ -262,6 +268,7 @@ isset            = [dict1 objectForKey:@"isset"];//起始周
     mode9.address              = CourseName;
     mode9.motive               = RoomName;
     mode9.date                 = Starttime;
+                        mode9.last                 =lastime;
                     if ([isset isEqualToString:@"0"]) {
                         mode9.color=[UIColor redColor];
                     }
@@ -272,6 +279,7 @@ isset            = [dict1 objectForKey:@"isset"];//起始周
     mode10.address             = CourseName;
     mode10.motive              = RoomName;
     mode10.date                = Starttime;
+                        mode10.last                 =lastime;
                     if ([isset isEqualToString:@"0"]) {
                         mode10.color=[UIColor redColor];
                     }
@@ -282,6 +290,7 @@ isset            = [dict1 objectForKey:@"isset"];//起始周
     mode11.address             = CourseName;
     mode11.motive              = RoomName;
     mode11.date                = Starttime;
+                        mode11.last                 =lastime;
                     if ([isset isEqualToString:@"0"]) {
                         mode11.color=[UIColor redColor];
                     }
@@ -353,27 +362,7 @@ isset            = [dict1 objectForKey:@"isset"];//起始周
 
 }
 
--(void)times{
-    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    NSString *time=[defaults objectForKey:@"lasttime"];
-    if ([time isEqualToString:@"打开"]) {
-        [defaults setObject:@"关闭" forKey:@"lasttime"];
-        [defaults synchronize];
-    }
-    else
-    {
-        [defaults setObject:@"打开" forKey:@"lasttime"];
-        [defaults synchronize];
-    }
-    myView=[[MyView alloc]init];
-    MsgModel * model=[[MsgModel alloc]init];
-    MsgModel * mode0=[[MsgModel alloc]init];
 
-    mode0.address              = @"1";
-    mode0.motive               = @"2";
-    mode0.date                 = @"3";
-    myView.msgModelArray=@[mode0];
-}
 
 - (void)help{
     UIAlertView *alertView                    = [[UIAlertView alloc] initWithTitle:@"温馨提示"

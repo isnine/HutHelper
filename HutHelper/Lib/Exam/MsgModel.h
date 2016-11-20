@@ -12,6 +12,6 @@
 @property (strong,nonatomic) NSString * address;//地点
 @property (strong,nonatomic) NSString * motive;//目的
 @property (strong,nonatomic) NSString * date;//时间
-
+@property (strong,nonatomic) NSString * last;//时间
 @property (strong,nonatomic) UIColor * color;
 @end

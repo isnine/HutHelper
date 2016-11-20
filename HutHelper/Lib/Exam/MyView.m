@@ -60,6 +60,7 @@
                 UILabel * addLab=[[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(imageAdd.frame)+SP_W(5), endPoint.y+SP_W(20), WIDTH/2, SP_W(20))];
                 addLab.text=model.address;
                 [addLab sizeToFit];
+                addLab.font=[UIFont systemFontOfSize:15];
                 [self addSubview:addLab];
             }
             //目的
@@ -78,6 +79,7 @@
                 UILabel * motiveLab=[[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(imageMotive.frame)+SP_W(5), endPoint.y+SP_W(40), WIDTH/2, SP_W(20))];
                 motiveLab.text=model.motive;
                 [motiveLab sizeToFit];
+                motiveLab.font=[UIFont systemFontOfSize:15];
                 [self addSubview:motiveLab];
             }
                //时间
@@ -104,12 +106,20 @@
                 UILabel * dateLab=[[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(imageDate.frame)+SP_W(5), endPoint.y+SP_W(60), WIDTH/2, SP_W(20))];
                 dateLab.text=model.date;
                 [dateLab sizeToFit];
-                dateLab.textColor=[UIColor grayColor];
+            //    dateLab.textColor=[UIColor grayColor];
                 dateLab.font=[UIFont systemFontOfSize:14];
                 [self addSubview:dateLab];
             }
-         
-            
+            //*新绘制的//
+            UIImageView * imageDate=[[UIImageView alloc]initWithFrame:CGRectMake(endPoint.x-SP_W(20), endPoint.y+SP_W(80), SP_W(15), SP_W(15))];
+            imageDate.image=[UIImage imageNamed:@"time"];
+            [self addSubview:imageDate];
+            UILabel * dateLab=[[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(imageDate.frame)+SP_W(5), endPoint.y+SP_W(80), WIDTH/2, SP_W(20))];
+            dateLab.text=model.last;
+            [dateLab sizeToFit];
+           // dateLab.textColor=[UIColor grayColor];
+            dateLab.font=[UIFont systemFontOfSize:14];
+            [self addSubview:dateLab];
             
         }else{
             CGContextMoveToPoint(ctf, WIDTH/2, SP_W(60)+SP_W(60)*i);
@@ -137,6 +147,7 @@
                 UILabel * addLab=[[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(imageAdd.frame)+SP_W(5), endPoint.y+SP_W(20), WIDTH/2, SP_W(20))];
                 addLab.text=model.address;
                 [addLab sizeToFit];
+                addLab.font=[UIFont systemFontOfSize:15];
                 [self addSubview:addLab];
             }
             //目的
@@ -155,6 +166,7 @@
                 UILabel * motiveLab=[[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(imageMotive.frame)+SP_W(5), endPoint.y+SP_W(40), WIDTH/2, SP_W(20))];
                 motiveLab.text=model.motive;
                 [motiveLab sizeToFit];
+                motiveLab.font=[UIFont systemFontOfSize:15];
                 [self addSubview:motiveLab];
             }
             //时间
@@ -181,10 +193,19 @@
                 UILabel * dateLab=[[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(imageDate.frame)+SP_W(5), endPoint.y+SP_W(60), WIDTH/2, SP_W(20))];
                 dateLab.text=model.date;
                 [dateLab sizeToFit];
-                dateLab.textColor=[UIColor grayColor];
+             //   dateLab.textColor=[UIColor grayColor];
                 dateLab.font=[UIFont systemFontOfSize:14];
                 [self addSubview:dateLab];
             }
+            UIImageView * imageDate=[[UIImageView alloc]initWithFrame:CGRectMake(startPoint.x+SP_W(20), endPoint.y+SP_W(80), SP_W(15), SP_W(15))];
+            imageDate.image=[UIImage imageNamed:@"time"];
+            [self addSubview:imageDate];
+            UILabel * dateLab=[[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(imageDate.frame)+SP_W(5), endPoint.y+SP_W(80), WIDTH/2, SP_W(20))];
+            dateLab.text=model.last;
+            [dateLab sizeToFit];
+          //  dateLab.textColor=[UIColor grayColor];
+            dateLab.font=[UIFont systemFontOfSize:14];
+            [self addSubview:dateLab];
         }
         //绘制末尾的圆点
         CGContextAddArc(ctf, endPoint.x, endPoint.y, SP_W(4), 0, 2*M_PI, 0);
