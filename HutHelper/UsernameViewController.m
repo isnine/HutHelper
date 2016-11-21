@@ -48,6 +48,13 @@
     NSURLConnection * conn   = [[NSURLConnection alloc] initWithRequest:request delegate:self];
     [conn start];
     
+    UIAlertView *alertView    = [[UIAlertView alloc] initWithTitle:@"温馨提示"
+                                                           message:@"重新登录后即可查看昵称"
+                                                          delegate:self
+                                                 cancelButtonTitle:@"取消"
+                                                 otherButtonTitles:@"确定", nil];
+    [alertView show];
+    
 }
 
 - (void)didReceiveMemoryWarning {

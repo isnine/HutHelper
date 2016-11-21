@@ -9,7 +9,7 @@
 #import "UserViewController.h"
 #import "JSHeaderView.h"
 #import "UserInfoCell.h"
-
+#import "AppDelegate.h"
 static NSString *const kUserInfoCellId = @"kUserInfoCellId";
 
 @interface UserViewController () <UITableViewDelegate, UITableViewDataSource>
@@ -28,18 +28,13 @@ static NSString *const kUserInfoCellId = @"kUserInfoCellId";
     self.navigationItem.titleView = self.headerView;
     
     [self.headerView handleClickActionWithBlock:^{
-//        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"您点击了头像" message:@"" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
-//        [alertView show];
+//        UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//        UserViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Uploadimage"];
+//        AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+//        [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:YES];  
     }];
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     NSString *username=[defaults objectForKey:@"username"]; //昵称
-    if([username isEqual:[NSNull null]]){
-        username=@"1";
-    }
-    else{
-        username=@"2";
-    }
-    NSLog(@"%@",username);
     /** 标题栏样式 */
     UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     self.navigationItem.backBarButtonItem = item;

@@ -60,7 +60,7 @@
             NSString *sex=[User_Data objectForKey:@"sex"];  //班级
             NSString *username=[User_Data objectForKey:@"username"];
             NSString *last_login=[User_Data objectForKey:@"last_login"];  //班级
-            if(username == NULL ){
+            if(username == NULL ||[username isEqual:[NSNull null]]){
                 username=@"(无名氏)";
             }
             //保存数据(如果设置数据之后没有同步, 会在将来某一时间点自动将数据保存到Preferences文件夹下面)

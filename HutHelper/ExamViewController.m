@@ -75,9 +75,9 @@ int datediff(int y1,int m1,int d1,int y2,int m2,int d2)
     MsgModel * mode10=[[MsgModel alloc]init];
     MsgModel * mode11=[[MsgModel alloc]init];
     MsgModel * mode12=[[MsgModel alloc]init];
-
-
-    
+MsgModel * mode13=[[MsgModel alloc]init];
+MsgModel * mode14=[[MsgModel alloc]init];
+    MsgModel * mode15=[[MsgModel alloc]init];
     UIBarButtonItem *myButton = [[UIBarButtonItem alloc] initWithTitle:@"主页" style:UIBarButtonItemStyleBordered target:self action:@selector(clickEvent)];
     self.navigationItem.rightBarButtonItem = myButton;
     //两个按钮的父类view
@@ -100,11 +100,22 @@ int datediff(int y1,int m1,int d1,int y2,int m2,int d2)
     NSData *jsonData=[defaults objectForKey:@"data_exam"];
     NSDictionary *User_All     = [jsonData objectFromJSONData];//数据 -> 字典
     NSDictionary *Class_Data=[User_All objectForKey:@"res"];
-    NSArray *array             = [Class_Data objectForKey:@"exam"];
+    NSMutableArray *array  = [Class_Data objectForKey:@"exam"];
+  NSMutableArray *arraycx = [Class_Data objectForKey:@"cxexam"];
+   
+    
+    NSLog(@"考试%d",array.count+arraycx.count);
      int k;
-    for(k                      = 0;k<array.count;k++){
-    NSDictionary *dict1        = array[k];
-
+    for(k      = 0;k<array.count+arraycx.count;k++){
+        NSDictionary *dict1;
+        int kcx=0;
+        if(k<array.count){
+       dict1        = array[k];
+        }
+        else{
+            dict1        = arraycx[kcx];
+            kcx++;
+        }
         NSString *CourseName       ;
     
         NSString *RoomName        ;//起始周
@@ -133,6 +144,9 @@ isset            = [dict1 objectForKey:@"isset"];//起始周
             isset            = 0;//起始周
         }
         
+        if (k>=array.count) {
+            CourseName  = [@"*" stringByAppendingString:CourseName];
+        }
         
         /**计算倒计时天数*/
         int Year;
@@ -144,7 +158,7 @@ isset            = [dict1 objectForKey:@"isset"];//起始周
        Mouth=[[Starttime substringWithRange:NSMakeRange(5,2)] intValue];
          Day=[[Starttime substringWithRange:NSMakeRange(8,2)] intValue];
              }
-        NSLog(@"%d年%d月%d日",Year,Mouth,Day);
+     //   NSLog(@"%d年%d月%d日",Year,Mouth,Day);
         NSDate *now                               = [NSDate date];
         NSCalendar *calendar                      = [NSCalendar currentCalendar];
         NSUInteger unitFlags                      = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit |NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
@@ -153,7 +167,7 @@ isset            = [dict1 objectForKey:@"isset"];//起始周
         int month                                 = [dateComponent month];//月
         int day                                   = [dateComponent day];//日
         NSString *lastime;
-        NSLog(@"还有%d天考%@",datediff(year,month,day,Year,Mouth,Day),CourseName);
+        //NSLog(@"还有%d天考%@",datediff(year,month,day,Year,Mouth,Day),CourseName);
         
         if (datediff(year,month,day,Year,Mouth,Day)>0) {
                   lastime=[[NSString alloc]initWithFormat:@"倒计时%d天",datediff(year,month,day,Year,Mouth,Day)];
@@ -334,7 +348,7 @@ isset            = [dict1 objectForKey:@"isset"];//起始周
     myView=[[MyView alloc]init];
     MsgModel * model=[[MsgModel alloc]init];
 
-    switch (array.count) {
+    switch (array.count+arraycx.count) {
         case 0:{
     UIAlertView *alertView1    = [[UIAlertView alloc] initWithTitle:@"暂无考试"
                                                                 message:@"计划表上暂时没有考试"
@@ -377,11 +391,20 @@ isset            = [dict1 objectForKey:@"isset"];//起始周
         case 11:
             myView.msgModelArray=@[mode0,mode1,mode2,mode3,mode4,mode5,mode6,mode7,mode8,mode9,mode10];
             break;
+        case 12:
+            myView.msgModelArray=@[mode0,mode1,mode2,mode3,mode4,mode5,mode6,mode7,mode8,mode9,mode10,mode11];
+            break;
+        case 13:
+            myView.msgModelArray=@[mode0,mode1,mode2,mode3,mode4,mode5,mode6,mode7,mode8,mode9,mode10,mode11,mode12];
+            break;
+        case 14:
+            myView.msgModelArray=@[mode0,mode1,mode2,mode3,mode4,mode5,mode6,mode7,mode8,mode9,mode10,mode11,mode12,mode13];
+            break;
         default:
             break;
     }
    
-    NSLog(@"相差天%d",datediff(2016,12,30,2016,12,30));
+  
 
 }
 

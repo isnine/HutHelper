@@ -53,6 +53,7 @@
         {
             NSString *appDomain       = [[NSBundle mainBundle] bundleIdentifier];
             [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:appDomain];
+            
             NSLog(@"正确:%@",Msg);// 调出Data字典中TrueName
             NSString *Remember_code_app=[User_All objectForKey:@"remember_code_app"]; //令牌
             
@@ -62,7 +63,7 @@
             NSString *class_name=[User_Data objectForKey:@"class_name"];  //班级
             NSString *sex=[User_Data objectForKey:@"sex"];  //班级
             NSString *username=[User_Data objectForKey:@"username"];
-            if(username == NULL ){
+            if(username == NULL ||[username isEqual:[NSNull null]]){
                 username=@"(无名氏)";
             }
             NSString *last_login=[User_Data objectForKey:@"last_login"];  //班级
@@ -75,6 +76,9 @@
             [defaults setObject:sex forKey:@"sex"];
             [defaults setObject:username forKey:@"username"];
             [defaults setObject:last_login forKey:@"last_login"];
+            NSString *currentVersion = [[[NSBundle mainBundle] infoDictionary]
+                                        objectForKey:@"CFBundleShortVersionString"];
+            [defaults setObject:currentVersion forKey:@"last_run_version_key"]; //保存版本信息
             [defaults synchronize];
             NSLog(@"用户：%@，学号：%@,令牌:%@",TrueName,studentKH,Remember_code_app);
            //--------保存用户信息

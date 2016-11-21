@@ -410,7 +410,11 @@ AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication share
         NSString *status=[User_All objectForKey:@"status"];
         if([status isEqualToString:@"success"]){
             NSDictionary *Class_Data=[User_All objectForKey:@"res"];
-            NSArray *array             = [Class_Data objectForKey:@"exam"];
+            
+            NSMutableArray *array             = [Class_Data objectForKey:@"exam"];
+            NSMutableArray *arraycx             = [Class_Data objectForKey:@"cxexam"];
+            NSLog(@"重修:%d",arraycx.count);
+            
             [defaults setObject:jsonData forKey:@"data_exam"];
             [defaults synchronize];
             NSInteger *exam_on                        = [defaults integerForKey:@"exam_on"];
