@@ -130,7 +130,7 @@ ans                                       += (CountDays(startyear, 12, 31) - Cou
     self.navigationItem.leftBarButtonItem     = [[UIBarButtonItem alloc] initWithCustomView:menuBtn];
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     
-    [self isAppFirstRun];
+  //  [self isAppFirstRun];
     /**  首次登陆 */
     NSString *studentKH    = [defaults objectForKey:@"studentKH"];
     if(studentKH==NULL){
@@ -442,12 +442,11 @@ AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication share
             }
         }
         else{
-            UIAlertView *alertView                    = [[UIAlertView alloc] initWithTitle:@"查询失败"
-                                                                                   message:message
-                                                                                  delegate:self
-                                                                         cancelButtonTitle:@"取消"
-                                                                         otherButtonTitles:@"确定", nil];
-            [alertView show];
+            ExamViewController *exam                  = [[ExamViewController alloc] init];
+            AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+            [tempAppDelegate.mainNavigationController pushViewController:exam animated:YES];
+
+            NSLog(@"查询失败");
         }
         [MBProgressHUD hideHUDForView:self.view animated:YES];
     });

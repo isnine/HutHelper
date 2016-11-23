@@ -10,6 +10,7 @@
 #import "MyView.h"
 #import "MsgModel.h"
 #import "JSONKit.h"
+#import "AppDelegate.h"
 #import "UMMobClick/MobClick.h"
 #include <stdio.h>
 #include <time.h>
@@ -60,6 +61,11 @@ int datediff(int y1,int m1,int d1,int y2,int m2,int d2)
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    /** 标题栏样式 */
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+    self.navigationItem.backBarButtonItem = item;
+    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+    
     self.title=@"考试计划";
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     MsgModel * mode0=[[MsgModel alloc]init];
@@ -78,23 +84,29 @@ int datediff(int y1,int m1,int d1,int y2,int m2,int d2)
 MsgModel * mode13=[[MsgModel alloc]init];
 MsgModel * mode14=[[MsgModel alloc]init];
     MsgModel * mode15=[[MsgModel alloc]init];
+    
+    
+    //右侧按钮
     UIBarButtonItem *myButton = [[UIBarButtonItem alloc] initWithTitle:@"主页" style:UIBarButtonItemStyleBordered target:self action:@selector(clickEvent)];
     self.navigationItem.rightBarButtonItem = myButton;
     //两个按钮的父类view
     UIView *rightButtonView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 50)];
     //历史浏览按钮
     UIButton *historyBtn = [[UIButton alloc] initWithFrame:CGRectMake(35, 0, 50, 50)];
-
+    [rightButtonView addSubview:historyBtn];
+    [historyBtn setImage:[UIImage imageNamed:@"help"] forState:UIControlStateNormal];
+    [historyBtn addTarget:self action:@selector(help) forControlEvents:UIControlEventTouchUpInside];
 #pragma mark >>>>>主页搜索按钮
     //主页搜索按钮
     UIButton *mainAndSearchBtn = [[UIButton alloc] initWithFrame:CGRectMake(70, 0, 50, 50)];
     [rightButtonView addSubview:mainAndSearchBtn];
-    [mainAndSearchBtn setImage:[UIImage imageNamed:@"help"] forState:UIControlStateNormal];
-    [mainAndSearchBtn addTarget:self action:@selector(help) forControlEvents:UIControlEventTouchUpInside];
+    [mainAndSearchBtn setImage:[UIImage imageNamed:@"add"] forState:UIControlStateNormal];
+    [mainAndSearchBtn addTarget:self action:@selector(add) forControlEvents:UIControlEventTouchUpInside];
     //把右侧的两个按钮添加到rightBarButtonItem
     UIBarButtonItem *rightCunstomButtonView = [[UIBarButtonItem alloc] initWithCustomView:rightButtonView];
     self.navigationItem.rightBarButtonItem = rightCunstomButtonView;
-    
+    //----添加按钮
+
 
     
     NSData *jsonData=[defaults objectForKey:@"data_exam"];
@@ -103,35 +115,68 @@ MsgModel * mode14=[[MsgModel alloc]init];
     NSMutableArray *array  = [Class_Data objectForKey:@"exam"];
   NSMutableArray *arraycx = [Class_Data objectForKey:@"cxexam"];
    
+    int newexam=0;
+    NSString *examcet=[defaults objectForKey:@"examcet"];
+    if ([examcet isEqualToString:@"打开"]) {
+        newexam=1;
+    }
+    else{
+        newexam=0;
+    }
     
     NSLog(@"考试%d",array.count+arraycx.count);
      int k;
-    for(k      = 0;k<array.count+arraycx.count;k++){
+    for(k      = 0;k<array.count+arraycx.count+newexam;k++){
         NSDictionary *dict1;
         int kcx=0;
-        if(k<array.count){
-       dict1        = array[k];
-        }
-        else{
-            dict1        = arraycx[kcx];
-            kcx++;
-        }
+        
         NSString *CourseName       ;
-    
+        
         NSString *RoomName        ;//起始周
         NSString *Starttime       ;
-
+        
         NSString *isset            ;
-   
+        
+        
+        
+       if(k<array.count){
+            dict1        = array[k];
+            RoomName         = [dict1 objectForKey:@"RoomName"];//起始周
+            CourseName       = [dict1 objectForKey:@"CourseName"];
+            Starttime        = [dict1 objectForKey:@"Starttime"];//起始周
+            isset            = [dict1 objectForKey:@"isset"];//起始周
 
-RoomName         = [dict1 objectForKey:@"RoomName"];//起始周
-CourseName       = [dict1 objectForKey:@"CourseName"];
-Starttime        = [dict1 objectForKey:@"Starttime"];//起始周
-isset            = [dict1 objectForKey:@"isset"];//起始周
+
+        }
+        else if(k>=array.count&&k<array.count+arraycx.count){
+            dict1        = arraycx[kcx];
+            RoomName         = [dict1 objectForKey:@"RoomName"];//起始周
+            CourseName       = [dict1 objectForKey:@"CourseName"];
+            Starttime        = [dict1 objectForKey:@"Starttime"];//起始周
+            isset            = [dict1 objectForKey:@"isset"];//起始周
+            kcx++;
+            NSLog(@"【2】k的值为%d三个判断值为%d %d %d",k,array.count,array.count+arraycx.count,array.count+arraycx.count+newexam);
+        }
+        else if(k>=array.count+arraycx.count){
+            RoomName         = @"-";//起始周
+            CourseName       = @"英语四六级考试";
+            Starttime        = @"2016-12-17";//起始周
+            isset            = @"1";//起始周
+            NSLog(@"【3】k的值为%d三个判断值为%d %d %d",k,array.count,array.count+arraycx.count,array.count+arraycx.count+newexam);
+        }
+        else{
+            RoomName         = @"-";//起始周
+            CourseName       = @"-";
+            Starttime        = @"-";//起始周
+            isset            = @"0";//起始周
+        }
+    
+        
+        
+        
+        
         if ([RoomName isEqual:[NSNull null]]) {
-           
             RoomName  = @"-";//起始周
-           
         }
         if ([CourseName isEqual:[NSNull null]]) {
            CourseName       = @"-";
@@ -147,13 +192,14 @@ isset            = [dict1 objectForKey:@"isset"];//起始周
         if (k>=array.count) {
             CourseName  = [@"*" stringByAppendingString:CourseName];
         }
+
+      // NSLog(@"%@年%@月%@日",[Starttime substringWithRange:NSMakeRange(0,4)],[Starttime substringWithRange:NSMakeRange(5,2)],[Starttime substringWithRange:NSMakeRange(8,2)]);
         
         /**计算倒计时天数*/
         int Year;
         int Mouth;
         int Day;
         if (![Starttime isEqual:@"-"]) {
-        Starttime=[Starttime substringToIndex:16];
         Year=[[Starttime substringWithRange:NSMakeRange(0,4)] intValue];
        Mouth=[[Starttime substringWithRange:NSMakeRange(5,2)] intValue];
          Day=[[Starttime substringWithRange:NSMakeRange(8,2)] intValue];
@@ -348,7 +394,7 @@ isset            = [dict1 objectForKey:@"isset"];//起始周
     myView=[[MyView alloc]init];
     MsgModel * model=[[MsgModel alloc]init];
 
-    switch (array.count+arraycx.count) {
+    switch (array.count+arraycx.count+newexam) {
         case 0:{
     UIAlertView *alertView1    = [[UIAlertView alloc] initWithTitle:@"暂无考试"
                                                                 message:@"计划表上暂时没有考试"
@@ -408,7 +454,12 @@ isset            = [dict1 objectForKey:@"isset"];//起始周
 
 }
 
-
+-(void)add{
+            UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            ExamViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"examadd"];
+            AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+            [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:YES];
+}
 
 - (void)help{
     UIAlertView *alertView                    = [[UIAlertView alloc] initWithTitle:@"温馨提示"

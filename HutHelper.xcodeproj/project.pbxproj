@@ -63,6 +63,7 @@
 		3A6FF7C71DB3152C004CFBE8 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A6FF7C61DB3152C004CFBE8 /* libz.tbd */; };
 		3A6FF7C91DB31544004CFBE8 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A6FF7C81DB31544004CFBE8 /* libsqlite3.0.tbd */; };
 		3A7ED56D1DE30B1300389399 /* UploadimageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A7ED56C1DE30B1200389399 /* UploadimageViewController.m */; };
+		3A7ED5701DE3254A00389399 /* ExamaddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A7ED56F1DE3254A00389399 /* ExamaddViewController.m */; };
 		3A8567801DA908AA00EBD44A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A85677F1DA908AA00EBD44A /* main.m */; };
 		3A85678B1DA908AA00EBD44A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A85678A1DA908AA00EBD44A /* Assets.xcassets */; };
 		3A85678E1DA908AA00EBD44A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A85678C1DA908AA00EBD44A /* LaunchScreen.storyboard */; };
@@ -229,6 +230,8 @@
 		3A7D3CA91DB0A6CB00355E7A /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		3A7ED56B1DE30B1200389399 /* UploadimageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadimageViewController.h; sourceTree = "<group>"; };
 		3A7ED56C1DE30B1200389399 /* UploadimageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UploadimageViewController.m; path = HutHelper/UploadimageViewController.m; sourceTree = "<group>"; };
+		3A7ED56E1DE3254A00389399 /* ExamaddViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExamaddViewController.h; sourceTree = "<group>"; };
+		3A7ED56F1DE3254A00389399 /* ExamaddViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExamaddViewController.m; path = HutHelper/ExamaddViewController.m; sourceTree = "<group>"; };
 		3A85677B1DA908AA00EBD44A /* HutHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HutHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A85677F1DA908AA00EBD44A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		3A85678A1DA908AA00EBD44A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = HutHelper/Assets.xcassets; sourceTree = "<group>"; };
@@ -555,6 +558,7 @@
 				3ABF727E1DDB32F60062E757 /* LostViewController.m */,
 				3AB6BF991DDFF74300127C96 /* UserViewController.m */,
 				3AAC24321DE1F17400546B11 /* UsernameViewController.m */,
+				3A7ED56F1DE3254A00389399 /* ExamaddViewController.m */,
 			);
 			name = Controller;
 			path = ..;
@@ -589,6 +593,7 @@
 		3A8567DC1DAA3E4400EBD44A /* Header */ = {
 			isa = PBXGroup;
 			children = (
+				3A7ED56E1DE3254A00389399 /* ExamaddViewController.h */,
 				3A7ED56B1DE30B1200389399 /* UploadimageViewController.h */,
 				3AAC24311DE1F17400546B11 /* UsernameViewController.h */,
 				3AB6BF981DDFF74300127C96 /* UserViewController.h */,
@@ -904,6 +909,7 @@
 				3AFB7BA51DAD19530040B55F /* AboutViewController.m in Sources */,
 				3A8BAD781DDDBE6A001C78B8 /* UMShareMenuItem.m in Sources */,
 				3AD87B081DACCE7600357212 /* ClassViewController.m in Sources */,
+				3A7ED5701DE3254A00389399 /* ExamaddViewController.m in Sources */,
 				3AAC24331DE1F17400546B11 /* UsernameViewController.m in Sources */,
 				3A3C68911DB115190088CC17 /* LGPlusButtonsView.m in Sources */,
 				3A6D7EF01DABDB500081B70D /* HomeWorkViewController.m in Sources */,
