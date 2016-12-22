@@ -67,7 +67,6 @@ int class=0;
     
     
     if(score_2013_1.count != 0){  //大四
-
         class=4;
     }
     else if (score_2014_1.count != 0){ //大三
@@ -75,7 +74,6 @@ int class=0;
         class=3;
     }
     else if (score_2015_1.count != 0){ //大二
-
         class=2;
     }
     else{  //大一

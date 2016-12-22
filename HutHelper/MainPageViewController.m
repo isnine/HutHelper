@@ -460,19 +460,19 @@ AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication share
     NSString *lastRunKey = [defaults objectForKey:@"last_run_version_key"];
     NSLog(@"当前版本%@",currentVersion);
     NSLog(@"上个版本%@",lastRunKey);
-    if (lastRunKey==NULL) {
-        NSString *appDomain       = [[NSBundle mainBundle] bundleIdentifier];
-        [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:appDomain];
-        [defaults setObject:currentVersion forKey:@"last_run_version_key"];
-        NSLog(@"没有记录");
-        
-    }
-    else if (![lastRunKey isEqualToString:currentVersion]) {
-        NSString *appDomain       = [[NSBundle mainBundle] bundleIdentifier];
-        [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:appDomain];
-        [defaults setObject:currentVersion forKey:@"last_run_version_key"];
-        NSLog(@"记录不匹配");
-    }
+//    if (lastRunKey==NULL) {
+//        NSString *appDomain       = [[NSBundle mainBundle] bundleIdentifier];
+//        [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:appDomain];
+//        [defaults setObject:currentVersion forKey:@"last_run_version_key"];
+//        NSLog(@"没有记录");
+//        
+//    }
+//    else if (![lastRunKey isEqualToString:currentVersion]) {
+//        NSString *appDomain       = [[NSBundle mainBundle] bundleIdentifier];
+//        [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:appDomain];
+//        [defaults setObject:currentVersion forKey:@"last_run_version_key"];
+//        NSLog(@"记录不匹配");
+//    }
     
 }
 

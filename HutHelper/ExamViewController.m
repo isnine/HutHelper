@@ -81,11 +81,15 @@ int datediff(int y1,int m1,int d1,int y2,int m2,int d2)
     MsgModel * mode10=[[MsgModel alloc]init];
     MsgModel * mode11=[[MsgModel alloc]init];
     MsgModel * mode12=[[MsgModel alloc]init];
-MsgModel * mode13=[[MsgModel alloc]init];
-MsgModel * mode14=[[MsgModel alloc]init];
+    MsgModel * mode13=[[MsgModel alloc]init];
+    MsgModel * mode14=[[MsgModel alloc]init];
     MsgModel * mode15=[[MsgModel alloc]init];
-    
-    
+    MsgModel * mode16=[[MsgModel alloc]init];
+    MsgModel * mode17=[[MsgModel alloc]init];
+    MsgModel * mode18=[[MsgModel alloc]init];
+    MsgModel * mode19=[[MsgModel alloc]init];
+    MsgModel * mode20=[[MsgModel alloc]init];
+    MsgModel * mode21=[[MsgModel alloc]init];
     //右侧按钮
     UIBarButtonItem *myButton = [[UIBarButtonItem alloc] initWithTitle:@"主页" style:UIBarButtonItemStyleBordered target:self action:@selector(clickEvent)];
     self.navigationItem.rightBarButtonItem = myButton;
@@ -126,9 +130,10 @@ MsgModel * mode14=[[MsgModel alloc]init];
     
     NSLog(@"考试%d",array.count+arraycx.count);
      int k;
+    int kcx=0;
     for(k      = 0;k<array.count+arraycx.count+newexam;k++){
         NSDictionary *dict1;
-        int kcx=0;
+        
         
         NSString *CourseName       ;
         
@@ -137,15 +142,13 @@ MsgModel * mode14=[[MsgModel alloc]init];
         
         NSString *isset            ;
         
-        
-        
+       // NSLog(@"正常考试数目:%d,重修考试数目:%d",array.count,arraycx.count);
        if(k<array.count){
             dict1        = array[k];
             RoomName         = [dict1 objectForKey:@"RoomName"];//起始周
             CourseName       = [dict1 objectForKey:@"CourseName"];
             Starttime        = [dict1 objectForKey:@"Starttime"];//起始周
             isset            = [dict1 objectForKey:@"isset"];//起始周
-
 
         }
         else if(k>=array.count&&k<array.count+arraycx.count){
@@ -154,15 +157,18 @@ MsgModel * mode14=[[MsgModel alloc]init];
             CourseName       = [dict1 objectForKey:@"CourseName"];
             Starttime        = [dict1 objectForKey:@"Starttime"];//起始周
             isset            = [dict1 objectForKey:@"isset"];//起始周
-            kcx++;
-            NSLog(@"【2】k的值为%d三个判断值为%d %d %d",k,array.count,array.count+arraycx.count,array.count+arraycx.count+newexam);
+            NSLog(@"【】课程:%@，序列:%d",CourseName,kcx);
+            NSLog(@"%@",dict1);
+            kcx=kcx+1;
+            
+           // NSLog(@"【2】k的值为%d三个判断值为%d %d %d",k,array.count,array.count+arraycx.count,array.count+arraycx.count+newexam);
         }
         else if(k>=array.count+arraycx.count){
             RoomName         = @"-";//起始周
             CourseName       = @"英语四六级考试";
             Starttime        = @"2016-12-17";//起始周
             isset            = @"1";//起始周
-            NSLog(@"【3】k的值为%d三个判断值为%d %d %d",k,array.count,array.count+arraycx.count,array.count+arraycx.count+newexam);
+           // NSLog(@"【3】k的值为%d三个判断值为%d %d %d",k,array.count,array.count+arraycx.count,array.count+arraycx.count+newexam);
         }
         else{
             RoomName         = @"-";//起始周
@@ -385,6 +391,58 @@ MsgModel * mode14=[[MsgModel alloc]init];
                     if([lastime isEqualToString:@"已结束"])
                         mode11.color=[UIColor greenColor];
                     break;
+                case 12:
+                    mode12.address             = CourseName;
+                    mode12.motive              = RoomName;
+                    mode12.date                = Starttime;
+                    mode12.last                 =lastime;
+                    if ([isset isEqualToString:@"0"]) {
+                        mode12.color=[UIColor redColor];
+                    }
+                    else
+                        mode12.color=[UIColor yellowColor];
+                    if([lastime isEqualToString:@"已结束"])
+                        mode12.color=[UIColor greenColor];
+                    break;
+                case 13:
+                    mode13.address             = CourseName;
+                    mode13.motive              = RoomName;
+                    mode13.date                = Starttime;
+                    mode13.last                 =lastime;
+                    if ([isset isEqualToString:@"0"]) {
+                        mode13.color=[UIColor redColor];
+                    }
+                    else
+                        mode13.color=[UIColor yellowColor];
+                    if([lastime isEqualToString:@"已结束"])
+                        mode13.color=[UIColor greenColor];
+                    break;
+                case 14:
+                    mode14.address             = CourseName;
+                    mode14.motive              = RoomName;
+                    mode14.date                = Starttime;
+                    mode14.last                 =lastime;
+                    if ([isset isEqualToString:@"0"]) {
+                        mode14.color=[UIColor redColor];
+                    }
+                    else
+                        mode14.color=[UIColor yellowColor];
+                    if([lastime isEqualToString:@"已结束"])
+                        mode14.color=[UIColor greenColor];
+                    break;
+                case 15:
+                    mode15.address             = CourseName;
+                    mode15.motive              = RoomName;
+                    mode15.date                = Starttime;
+                    mode15.last                 =lastime;
+                    if ([isset isEqualToString:@"0"]) {
+                        mode15.color=[UIColor redColor];
+                    }
+                    else
+                        mode15.color=[UIColor yellowColor];
+                    if([lastime isEqualToString:@"已结束"])
+                        mode15.color=[UIColor greenColor];
+                    break;
                 default:
                     break;
             }     
@@ -445,6 +503,12 @@ MsgModel * mode14=[[MsgModel alloc]init];
             break;
         case 14:
             myView.msgModelArray=@[mode0,mode1,mode2,mode3,mode4,mode5,mode6,mode7,mode8,mode9,mode10,mode11,mode12,mode13];
+            break;
+        case 15:
+            myView.msgModelArray=@[mode0,mode1,mode2,mode3,mode4,mode5,mode6,mode7,mode8,mode9,mode10,mode11,mode12,mode13,mode14];
+            break;
+        case 16:
+            myView.msgModelArray=@[mode0,mode1,mode2,mode3,mode4,mode5,mode6,mode7,mode8,mode9,mode10,mode11,mode12,mode13,mode14,mode15];
             break;
         default:
             break;

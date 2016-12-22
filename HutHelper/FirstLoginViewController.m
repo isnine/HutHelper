@@ -124,9 +124,14 @@
     
 }
 - (IBAction)resetpassword:(id)sender {
-    Login2ViewController *reset  = [[Login2ViewController alloc] init];
-    AppDelegate *tempAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    [tempAppDelegate.mainNavigationController pushViewController:reset animated:NO];
+    [self sein];
+    }
+
+-(void)sein{
+    UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    LoginViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Login2"];
+    AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:NO];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -135,7 +140,7 @@
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
-      self.navigationController.navigationBarHidden = NO;
+     self.navigationController.navigationBarHidden = NO;
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

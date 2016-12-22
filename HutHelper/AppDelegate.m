@@ -13,7 +13,7 @@
 #import "ScoreViewController.h"
 #import "UMMobClick/MobClick.h"
 #import <UMSocialCore/UMSocialCore.h>
-
+#import <JSPatchPlatform/JSPatch.h>
 @interface AppDelegate ()
 
 @end
@@ -115,6 +115,7 @@
         //第三步，连接服务器
         NSURLConnection *connection = [[NSURLConnection alloc]initWithRequest:request delegate:self];
     }
+
         return YES;
 }
 
@@ -143,6 +144,10 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    /*热更新**/
+    [JSPatch startWithAppKey:@"bd9208bd34ab8197"];
+    [JSPatch setupDevelopment];
+    [JSPatch sync];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {

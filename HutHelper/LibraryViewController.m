@@ -16,11 +16,11 @@
 
 @implementation LibraryViewController
 
+NSString *Url_String;
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.title = @"图书馆";
-    NSString *Url_String=@"http://218.75.197.121:8889/opac/m/index";
-
+    [self SetTitle];
+    [self SetURL];
     NSURL *url                = [[NSURL alloc]initWithString:Url_String];
     _views.delegate=self;
     [_views loadRequest:[NSURLRequest requestWithURL:url]];
@@ -31,6 +31,15 @@
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
     });
 }
+
+-(void)SetURL{
+    Url_String=@"http://218.75.197.121:8889/opac/m/index";
+}
+
+-(void)SetTitle{
+    self.navigationItem.title = @"图书馆";
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
