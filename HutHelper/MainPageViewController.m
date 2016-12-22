@@ -130,7 +130,7 @@ ans                                       += (CountDays(startyear, 12, 31) - Cou
     self.navigationItem.leftBarButtonItem     = [[UIBarButtonItem alloc] initWithCustomView:menuBtn];
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     
-  //  [self isAppFirstRun];
+   [self isAppFirstRun];
     /**  首次登陆 */
     NSString *studentKH    = [defaults objectForKey:@"studentKH"];
     if(studentKH==NULL){

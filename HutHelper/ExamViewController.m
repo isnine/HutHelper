@@ -213,7 +213,7 @@ MsgModel * mode14=[[MsgModel alloc]init];
         int month                                 = [dateComponent month];//月
         int day                                   = [dateComponent day];//日
         NSString *lastime;
-        //NSLog(@"还有%d天考%@",datediff(year,month,day,Year,Mouth,Day),CourseName);
+        NSLog(@"还有%d天考%@",datediff(year,month,day,Year,Mouth,Day),CourseName);
         
         if (datediff(year,month,day,Year,Mouth,Day)>0) {
                   lastime=[[NSString alloc]initWithFormat:@"倒计时%d天",datediff(year,month,day,Year,Mouth,Day)];

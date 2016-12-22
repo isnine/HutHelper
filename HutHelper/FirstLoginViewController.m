@@ -47,8 +47,8 @@
         NSDictionary *User_Data=[User_All objectForKey:@"data"];//All字典 -> Data字典
         
         NSString *Msg=[User_All objectForKey:@"msg"];
-        NSString *Msg2=@"ok";
-        if ([Msg isEqualToString: Msg2])
+        NSString *Message=[Msg stringByAppendingString:@"，默认密码为身份证后六位"];
+        if ([Msg isEqualToString: @"ok"])
         {
             NSLog(@"正确:%@",Msg);// 调出Data字典中TrueName
             NSString *Remember_code_app=[User_All objectForKey:@"remember_code_app"]; //令牌
@@ -75,8 +75,6 @@
             //强制让数据立刻保存
             [defaults synchronize];
             NSLog(@"用户：%@，学号：%@,令牌:%@",TrueName,studentKH,Remember_code_app);
-            
-
    
             [UMessage addTag:dep_name
                     response:^(id responseObject, NSInteger remain, NSError *error) {
@@ -95,7 +93,7 @@
         else
         {
             UIAlertView *alertView       = [[UIAlertView alloc] initWithTitle:@"登录失败"
-                                                                      message:Msg
+                                                                      message:Message
                                                                      delegate:self
                                                             cancelButtonTitle:@"取消"
                                                             otherButtonTitles:@"确定", nil];
