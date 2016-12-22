@@ -111,6 +111,7 @@
 		3AD87B131DACD05B00357212 /* CourseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD87B121DACD05B00357212 /* CourseModel.m */; };
 		3AD87B181DACD08E00357212 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AD87B171DACD08E00357212 /* Main.storyboard */; };
 		3AFB7BA51DAD19530040B55F /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AFB7BA31DAD19530040B55F /* AboutViewController.m */; };
+		DF4C1EB183B351F157BF18CD /* libPods-HutHelper.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CAE9EAE0009084B77EC3CAD6 /* libPods-HutHelper.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -127,6 +128,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0BEA75F30B57DEF614969189 /* Pods-HutHelper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HutHelper.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HutHelper/Pods-HutHelper.debug.xcconfig"; sourceTree = "<group>"; };
 		3A026CFD1DBC9B42000288AF /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RootViewController.h; path = HutHelper/Lib/UUChart/RootViewController.h; sourceTree = "<group>"; };
 		3A026CFE1DBC9B42000288AF /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RootViewController.m; path = HutHelper/Lib/UUChart/RootViewController.m; sourceTree = "<group>"; };
 		3A026CFF1DBC9B42000288AF /* RootViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RootViewController.xib; path = HutHelper/Lib/UUChart/RootViewController.xib; sourceTree = "<group>"; };
@@ -320,6 +322,8 @@
 		3AD87B171DACD08E00357212 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = HutHelper/Main.storyboard; sourceTree = "<group>"; };
 		3AFB7BA21DAD19530040B55F /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
 		3AFB7BA31DAD19530040B55F /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AboutViewController.m; path = HutHelper/AboutViewController.m; sourceTree = "<group>"; };
+		A8DF4B266A6C75237AD1C11E /* Pods-HutHelper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HutHelper.release.xcconfig"; path = "Pods/Target Support Files/Pods-HutHelper/Pods-HutHelper.release.xcconfig"; sourceTree = "<group>"; };
+		CAE9EAE0009084B77EC3CAD6 /* libPods-HutHelper.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HutHelper.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -347,12 +351,22 @@
 				3A33D7DB1DAE50EF0012EFDE /* libUMessage_Sdk_1.4.0.a in Frameworks */,
 				3A8BAD6B1DDDBE6A001C78B8 /* libSocialQQ.a in Frameworks */,
 				3A8BAD711DDDBE6A001C78B8 /* libSocialWeChat.a in Frameworks */,
+				DF4C1EB183B351F157BF18CD /* libPods-HutHelper.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		12486D9D0B1F337F5979987B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0BEA75F30B57DEF614969189 /* Pods-HutHelper.debug.xcconfig */,
+				A8DF4B266A6C75237AD1C11E /* Pods-HutHelper.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		3A026CFC1DBC9B35000288AF /* UUChart */ = {
 			isa = PBXGroup;
 			children = (
@@ -455,6 +469,7 @@
 				3A6FF7C41DB3151E004CFBE8 /* CoreTelephony.framework */,
 				3A6FF7C21DB314C7004CFBE8 /* UMMobClick.framework */,
 				3A7D3CA91DB0A6CB00355E7A /* UserNotifications.framework */,
+				CAE9EAE0009084B77EC3CAD6 /* libPods-HutHelper.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -467,6 +482,7 @@
 				3A85677C1DA908AA00EBD44A /* Products */,
 				3A6D7EE61DABDA810081B70D /* HutHelper-Bridging-Header.h */,
 				3A7D3CA81DB0A6CB00355E7A /* Frameworks */,
+				12486D9D0B1F337F5979987B /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -783,10 +799,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3A8567921DA908AA00EBD44A /* Build configuration list for PBXNativeTarget "HutHelper" */;
 			buildPhases = (
+				C0F366FF131B7D647531FC04 /* [CP] Check Pods Manifest.lock */,
 				3A8567771DA908AA00EBD44A /* Sources */,
 				3A8567781DA908AA00EBD44A /* Frameworks */,
 				3A8567791DA908AA00EBD44A /* Resources */,
 				3A7D3CB71DB0A7ED00355E7A /* Embed App Extensions */,
+				DE2F0CB3A6D5BA5EE0A0DB3F /* [CP] Embed Pods Frameworks */,
+				59C2F2075DA79D116FBB9EAC /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -866,6 +885,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		59C2F2075DA79D116FBB9EAC /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HutHelper/Pods-HutHelper-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C0F366FF131B7D647531FC04 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		DE2F0CB3A6D5BA5EE0A0DB3F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HutHelper/Pods-HutHelper-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		3A8567771DA908AA00EBD44A /* Sources */ = {
@@ -1048,6 +1115,7 @@
 		};
 		3A8567931DA908AA00EBD44A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0BEA75F30B57DEF614969189 /* Pods-HutHelper.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = HutHelper/HutHelper.entitlements;
@@ -1090,6 +1158,7 @@
 		};
 		3A8567941DA908AA00EBD44A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A8DF4B266A6C75237AD1C11E /* Pods-HutHelper.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = HutHelper/HutHelper.entitlements;

@@ -1,0 +1,4 @@
+platform:ios,'8.0'
+target "HutHelper" do
+pod 'JSPatchPlatform'
+end
