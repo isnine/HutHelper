@@ -36,7 +36,6 @@
     str=[str stringByAppendingString:_Username.text];
 
     NSLog(@"地址%@",url_s);
-    
      NSLog(@"传值%@",str);
     
     NSMutableURLRequest * request      = [NSMutableURLRequest requestWithURL:url];

@@ -15,7 +15,7 @@ http://218.75.197.121:8888/api/v1/get/scores/学号/remember_code_app/sha1(remem
 http://218.75.197.121:8888/api/v1/set/profile/学号/校验码
 post参数 username
 
-
+http://hugongda.com:8888/api/v1/set/avatar/15408500245/c03a85370646b557e27c175ab4b4dc099516de2c
 
 
 

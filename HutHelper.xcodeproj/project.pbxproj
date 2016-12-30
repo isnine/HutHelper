@@ -45,6 +45,7 @@
 		3A3E53091DB2276700A49067 /* MyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A3E53051DB2276700A49067 /* MyView.m */; };
 		3A3E530A1DB2276700A49067 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A3E53071DB2276700A49067 /* Person.m */; };
 		3A3F82FF1DB8AF22009EB7AC /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A3F82FE1DB8AF22009EB7AC /* MBProgressHUD.m */; };
+		3A449C711E16C2E500D89CEA /* header@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3A449C701E16C2E500D89CEA /* header@2x.jpg */; };
 		3A45626C1DB4980800E5591A /* FirstLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A45626A1DB4980800E5591A /* FirstLoginViewController.m */; };
 		3A45626D1DB4980800E5591A /* FirstLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A45626B1DB4980800E5591A /* FirstLoginViewController.xib */; };
 		3A6D7EDE1DABD9DA0081B70D /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A6D7EDD1DABD9DA0081B70D /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -93,7 +94,6 @@
 		3AA1BC181E16179C00F75A7E /* MBProgressHUD+MJ.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA1BC151E16179C00F75A7E /* MBProgressHUD+MJ.m */; };
 		3AAC242B1DE1CB3C00546B11 /* JSHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AAC242A1DE1CB3C00546B11 /* JSHeaderView.m */; };
 		3AAC242E1DE1CB8C00546B11 /* UserInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AAC242D1DE1CB8C00546B11 /* UserInfoCell.m */; };
-		3AAC24301DE1D00E00546B11 /* header@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3AAC242F1DE1D00D00546B11 /* header@2x.jpg */; };
 		3AAC24331DE1F17400546B11 /* UsernameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AAC24321DE1F17400546B11 /* UsernameViewController.m */; };
 		3AB6BF9B1DDFF74300127C96 /* UserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AB6BF991DDFF74300127C96 /* UserViewController.m */; };
 		3AB6BFA91DDFFCE600127C96 /* DJRefresh.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3AB6BF9E1DDFFCE600127C96 /* DJRefresh.bundle */; };
@@ -201,6 +201,7 @@
 		3A3E530B1DB2286500A49067 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PrefixHeader.pch; path = HutHelper/Lib/Exam/PrefixHeader.pch; sourceTree = "<group>"; };
 		3A3F82FD1DB8AF22009EB7AC /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBProgressHUD.h; path = HutHelper/Lib/Show/MBProgressHUD.h; sourceTree = "<group>"; };
 		3A3F82FE1DB8AF22009EB7AC /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBProgressHUD.m; path = HutHelper/Lib/Show/MBProgressHUD.m; sourceTree = "<group>"; };
+		3A449C701E16C2E500D89CEA /* header@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "header@2x.jpg"; sourceTree = "<group>"; };
 		3A4562691DB4980800E5591A /* FirstLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstLoginViewController.h; sourceTree = "<group>"; };
 		3A45626A1DB4980800E5591A /* FirstLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FirstLoginViewController.m; path = HutHelper/FirstLoginViewController.m; sourceTree = "<group>"; };
 		3A45626B1DB4980800E5591A /* FirstLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FirstLoginViewController.xib; path = HutHelper/FirstLoginViewController.xib; sourceTree = "<group>"; };
@@ -291,7 +292,6 @@
 		3AAC242A1DE1CB3C00546B11 /* JSHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSHeaderView.m; sourceTree = "<group>"; };
 		3AAC242C1DE1CB8C00546B11 /* UserInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoCell.h; sourceTree = "<group>"; };
 		3AAC242D1DE1CB8C00546B11 /* UserInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoCell.m; sourceTree = "<group>"; };
-		3AAC242F1DE1D00D00546B11 /* header@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "header@2x.jpg"; sourceTree = "<group>"; };
 		3AAC24311DE1F17400546B11 /* UsernameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UsernameViewController.h; sourceTree = "<group>"; };
 		3AAC24321DE1F17400546B11 /* UsernameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UsernameViewController.m; path = HutHelper/UsernameViewController.m; sourceTree = "<group>"; };
 		3AB6BF981DDFF74300127C96 /* UserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserViewController.h; sourceTree = "<group>"; };
@@ -755,7 +755,7 @@
 		3AAC24281DE1CB3C00546B11 /* JSHeaderView */ = {
 			isa = PBXGroup;
 			children = (
-				3AAC242F1DE1D00D00546B11 /* header@2x.jpg */,
+				3A449C701E16C2E500D89CEA /* header@2x.jpg */,
 				3AAC24291DE1CB3C00546B11 /* JSHeaderView.h */,
 				3AAC242A1DE1CB3C00546B11 /* JSHeaderView.m */,
 				3AAC242C1DE1CB8C00546B11 /* UserInfoCell.h */,
@@ -876,7 +876,6 @@
 				3A8BAD731DDDBE6A001C78B8 /* read_me.txt in Resources */,
 				3A8BAD701DDDBE6A001C78B8 /* WeiboSDK.bundle in Resources */,
 				3A8BAD6D1DDDBE6A001C78B8 /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
-				3AAC24301DE1D00E00546B11 /* header@2x.jpg in Resources */,
 				3A0898C11DB5ED6000D2CCE6 /* expandableImage.png in Resources */,
 				3ABE7F291DAF7BBE003E4085 /* NoticeViewController.xib in Resources */,
 				3A0898BB1DB5ED5800D2CCE6 /* SKSTableView-Info.plist in Resources */,
@@ -888,6 +887,7 @@
 				3AB6BFA91DDFFCE600127C96 /* DJRefresh.bundle in Resources */,
 				3A85678B1DA908AA00EBD44A /* Assets.xcassets in Resources */,
 				3A8BAD771DDDBE6A001C78B8 /* UMSocialSDKResources.bundle in Resources */,
+				3A449C711E16C2E500D89CEA /* header@2x.jpg in Resources */,
 				3ABF727C1DDB2DD70062E757 /* MainPageViewController2.xib in Resources */,
 				3AA1BC161E16179C00F75A7E /* MBProgressHUD.bundle in Resources */,
 			);

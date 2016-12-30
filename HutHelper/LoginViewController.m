@@ -63,6 +63,7 @@
             NSString *class_name=[User_Data objectForKey:@"class_name"];  //班级
             NSString *sex=[User_Data objectForKey:@"sex"];  //班级
             NSString *username=[User_Data objectForKey:@"username"];
+            NSString *head_pic_thumb=[User_Data objectForKey:@"head_pic_thumb"];
             if(username == NULL ||[username isEqual:[NSNull null]]){
                 username=@"(无名氏)";
             }
@@ -76,6 +77,7 @@
             [defaults setObject:sex forKey:@"sex"];
             [defaults setObject:username forKey:@"username"];
             [defaults setObject:last_login forKey:@"last_login"];
+            [defaults setObject:head_pic_thumb forKey:@"head_pic_thumb"];
             NSString *currentVersion = [[[NSBundle mainBundle] infoDictionary]
                                         objectForKey:@"CFBundleShortVersionString"];
             [defaults setObject:currentVersion forKey:@"last_run_version_key"]; //保存版本信息

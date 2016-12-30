@@ -60,6 +60,7 @@
             NSString *sex=[User_Data objectForKey:@"sex"];  //班级
             NSString *username=[User_Data objectForKey:@"username"];
             NSString *last_login=[User_Data objectForKey:@"last_login"];  //班级
+            NSString *head_pic_thumb=[User_Data objectForKey:@"head_pic_thumb"]; //头像
             if(username == NULL ||[username isEqual:[NSNull null]]){
                 username=@"(无名氏)";
             }
@@ -72,6 +73,7 @@
             [defaults setObject:sex forKey:@"sex"];
             [defaults setObject:username forKey:@"username"];
             [defaults setObject:last_login forKey:@"last_login"];
+            [defaults setObject:head_pic_thumb forKey:@"head_pic_thumb"];
             //强制让数据立刻保存
             [defaults synchronize];
             NSLog(@"用户：%@，学号：%@,令牌:%@",TrueName,studentKH,Remember_code_app);

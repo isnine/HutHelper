@@ -1,14 +1,31 @@
 PODS:
+  - ASIHTTPRequest (1.8.2):
+    - ASIHTTPRequest/ASIWebPageRequest (= 1.8.2)
+    - ASIHTTPRequest/CloudFiles (= 1.8.2)
+    - ASIHTTPRequest/Core (= 1.8.2)
+    - ASIHTTPRequest/S3 (= 1.8.2)
+  - ASIHTTPRequest/ASIWebPageRequest (1.8.2):
+    - ASIHTTPRequest/Core
+  - ASIHTTPRequest/CloudFiles (1.8.2):
+    - ASIHTTPRequest/Core
+  - ASIHTTPRequest/Core (1.8.2):
+    - Reachability
+  - ASIHTTPRequest/S3 (1.8.2):
+    - ASIHTTPRequest/Core
   - JSPatchPlatform (1.6.3):
     - JSPatchPlatform/Core (= 1.6.3)
   - JSPatchPlatform/Core (1.6.3)
+  - Reachability (3.2)
 
 DEPENDENCIES:
+  - ASIHTTPRequest
   - JSPatchPlatform
 
 SPEC CHECKSUMS:
+  ASIHTTPRequest: ec013992946676b7978dcbde6396d57312d21db4
   JSPatchPlatform: a1e6f6e7903fd6e26ceddc6a2aeb0c051cc98100
+  Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
 
-PODFILE CHECKSUM: 8620af1fcec8f2f12651d54026696607e066f302
+PODFILE CHECKSUM: f1e01069518281d5ede5b474732b12ac2ae26f89
 
 COCOAPODS: 1.1.1
