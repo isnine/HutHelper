@@ -34,6 +34,7 @@
         });
     }];
           _Show.delegate =self;
+     [MBProgressHUD showMessage:@"加载中" toView:self.view];
 }
 
 
@@ -47,11 +48,7 @@
     [super viewWillDisappear:animated];
     [MobClick endLogPageView:@"校园说说"];
 }
-- (void)webViewDidStartLoad:(UIWebView *)webView
-{
-    //提示用户正在加载
-    [MBProgressHUD showMessage:@"加载中" toView:self.view];
-}
+
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
     NSString *url=webView.request.URL.absoluteString;

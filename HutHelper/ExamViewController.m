@@ -15,27 +15,27 @@
 #include <stdio.h>
 #include <time.h>
 @interface ExamViewController (){
-   UIScrollView * scrollView;
-   MyView * myView;
-   UIView * dataPiker;
+    UIScrollView * scrollView;
+    MyView * myView;
+    UIView * dataPiker;
 }
 @end
 @implementation NSString (MD5)
- - (id)MD5
- {
+- (id)MD5
+{
     const char *cStr           = [self UTF8String];
-         unsigned char digest[16];
-         unsigned int x=(int)strlen(cStr) ;
-         CC_MD5( cStr, x, digest );
-         // This is the md5 call
+    unsigned char digest[16];
+    unsigned int x=(int)strlen(cStr) ;
+    CC_MD5( cStr, x, digest );
+    // This is the md5 call
     NSMutableString *output    = [NSMutableString stringWithCapacity:CC_MD5_DIGEST_LENGTH * 2];
-
+    
     for(int i                  = 0; i < CC_MD5_DIGEST_LENGTH; i++)
-                 [output appendFormat:@"%02x", digest[i]];
-
-        return  output;
- }
- @end
+        [output appendFormat:@"%02x", digest[i]];
+    
+    return  output;
+}
+@end
 @implementation ExamViewController
 
 int datediff(int y1,int m1,int d1,int y2,int m2,int d2)
@@ -110,15 +110,15 @@ int datediff(int y1,int m1,int d1,int y2,int m2,int d2)
     UIBarButtonItem *rightCunstomButtonView = [[UIBarButtonItem alloc] initWithCustomView:rightButtonView];
     self.navigationItem.rightBarButtonItem = rightCunstomButtonView;
     //----添加按钮
-
-
+    
+    
     
     NSData *jsonData=[defaults objectForKey:@"data_exam"];
     NSDictionary *User_All     = [jsonData objectFromJSONData];//数据 -> 字典
     NSDictionary *Class_Data=[User_All objectForKey:@"res"];
     NSMutableArray *array  = [Class_Data objectForKey:@"exam"];
-  NSMutableArray *arraycx = [Class_Data objectForKey:@"cxexam"];
-   
+    NSMutableArray *arraycx = [Class_Data objectForKey:@"cxexam"];
+    
     int newexam=0;
     NSString *examcet=[defaults objectForKey:@"examcet"];
     if ([examcet isEqualToString:@"打开"]) {
@@ -129,9 +129,9 @@ int datediff(int y1,int m1,int d1,int y2,int m2,int d2)
     }
     
     NSLog(@"考试%d",array.count+arraycx.count);
-     int k;
+    int k;
     int kcx=0;
-    for(k      = 0;k<array.count+arraycx.count+newexam;k++){
+    for(k      = 0;k<array.count+arraycx.count+newexam+1;k++){
         NSDictionary *dict1;
         
         
@@ -142,14 +142,14 @@ int datediff(int y1,int m1,int d1,int y2,int m2,int d2)
         
         NSString *isset            ;
         
-       // NSLog(@"正常考试数目:%d,重修考试数目:%d",array.count,arraycx.count);
-       if(k<array.count){
+        // NSLog(@"正常考试数目:%d,重修考试数目:%d",array.count,arraycx.count);
+        if(k<array.count){
             dict1        = array[k];
             RoomName         = [dict1 objectForKey:@"RoomName"];//起始周
             CourseName       = [dict1 objectForKey:@"CourseName"];
             Starttime        = [dict1 objectForKey:@"Starttime"];//起始周
             isset            = [dict1 objectForKey:@"isset"];//起始周
-
+            
         }
         else if(k>=array.count&&k<array.count+arraycx.count){
             dict1        = arraycx[kcx];
@@ -161,14 +161,20 @@ int datediff(int y1,int m1,int d1,int y2,int m2,int d2)
             NSLog(@"%@",dict1);
             kcx=kcx+1;
             
-           // NSLog(@"【2】k的值为%d三个判断值为%d %d %d",k,array.count,array.count+arraycx.codunt,array.count+arraycx.count+newexam);
+            // NSLog(@"【2】k的值为%d三个判断值为%d %d %d",k,array.count,array.count+arraycx.codunt,array.count+arraycx.count+newexam);
         }
-        else if(k>=array.count+arraycx.count){
+        else if(k==array.count+arraycx.count){
+            RoomName         = @"-";//起始周
+            CourseName       = @"开学";
+            Starttime        = @"2017-02-17";//起始周
+            isset            = @"1";//起始周
+            // NSLog(@"【3】k的值为%d三个判断值为%d %d %d",k,array.count,array.count+arraycx.count,array.count+arraycx.count+newexam);
+        }
+        else if(k==array.count+arraycx.count+newexam){
             RoomName         = @"-";//起始周
             CourseName       = @"英语四六级考试";
             Starttime        = @"2017-06-17";//起始周
             isset            = @"1";//起始周
-           // NSLog(@"【3】k的值为%d三个判断值为%d %d %d",k,array.count,array.count+arraycx.count,array.count+arraycx.count+newexam);
         }
         else{
             RoomName         = @"-";//起始周
@@ -176,7 +182,7 @@ int datediff(int y1,int m1,int d1,int y2,int m2,int d2)
             Starttime        = @"-";//起始周
             isset            = @"0";//起始周
         }
-    
+        
         
         
         
@@ -185,11 +191,11 @@ int datediff(int y1,int m1,int d1,int y2,int m2,int d2)
             RoomName  = @"-";//起始周
         }
         if ([CourseName isEqual:[NSNull null]]) {
-           CourseName       = @"-";
+            CourseName       = @"-";
         }
         if ([Starttime isEqual:[NSNull null]]) {
             Starttime        = @"-";//起始周
-
+            
         }
         if ([isset isEqual:[NSNull null]]) {
             isset            = 0;//起始周
@@ -198,19 +204,19 @@ int datediff(int y1,int m1,int d1,int y2,int m2,int d2)
         if (k>=array.count) {
             CourseName  = [@"*" stringByAppendingString:CourseName];
         }
-
-      // NSLog(@"%@年%@月%@日",[Starttime substringWithRange:NSMakeRange(0,4)],[Starttime substringWithRange:NSMakeRange(5,2)],[Starttime substringWithRange:NSMakeRange(8,2)]);
+        
+        // NSLog(@"%@年%@月%@日",[Starttime substringWithRange:NSMakeRange(0,4)],[Starttime substringWithRange:NSMakeRange(5,2)],[Starttime substringWithRange:NSMakeRange(8,2)]);
         
         /**计算倒计时天数*/
         int Year;
         int Mouth;
         int Day;
         if (![Starttime isEqual:@"-"]) {
-        Year=[[Starttime substringWithRange:NSMakeRange(0,4)] intValue];
-       Mouth=[[Starttime substringWithRange:NSMakeRange(5,2)] intValue];
-         Day=[[Starttime substringWithRange:NSMakeRange(8,2)] intValue];
-             }
-     //   NSLog(@"%d年%d月%d日",Year,Mouth,Day);
+            Year=[[Starttime substringWithRange:NSMakeRange(0,4)] intValue];
+            Mouth=[[Starttime substringWithRange:NSMakeRange(5,2)] intValue];
+            Day=[[Starttime substringWithRange:NSMakeRange(8,2)] intValue];
+        }
+        //   NSLog(@"%d年%d月%d日",Year,Mouth,Day);
         NSDate *now                               = [NSDate date];
         NSCalendar *calendar                      = [NSCalendar currentCalendar];
         NSUInteger unitFlags                      = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit |NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
@@ -222,7 +228,7 @@ int datediff(int y1,int m1,int d1,int y2,int m2,int d2)
         NSLog(@"还有%d天考%@",datediff(year,month,day,Year,Mouth,Day),CourseName);
         
         if (datediff(year,month,day,Year,Mouth,Day)>0) {
-                  lastime=[[NSString alloc]initWithFormat:@"倒计时%d天",datediff(year,month,day,Year,Mouth,Day)];
+            lastime=[[NSString alloc]initWithFormat:@"倒计时%d天",datediff(year,month,day,Year,Mouth,Day)];
         }
         else if (datediff(year,month,day,Year,Mouth,Day)<0){
             lastime=@"已结束";
@@ -230,235 +236,237 @@ int datediff(int y1,int m1,int d1,int y2,int m2,int d2)
         else if (datediff(year,month,day,Year,Mouth,Day)==0){
             lastime=@"今天考试";
         }
-
-            switch (k) {
-                case 0:
-    mode0.address              = CourseName;
-    mode0.motive               = RoomName;
-    mode0.date                 = Starttime;
-    mode0.last                 =lastime;
-                    if ([isset isEqualToString:@"0"]) {
-                        mode0.color=[UIColor redColor];
-                    }
-                    else
-                        mode0.color=[UIColor yellowColor];
-                    if([lastime isEqualToString:@"已结束"])
-                        mode0.color=[UIColor greenColor];
-                    break;
-                case 1:
-                 
-    mode1.address              = CourseName;
-    mode1.motive               = RoomName;
-    mode1.date                 = Starttime;
-       mode1.last                 =lastime;
-                    if ([isset isEqualToString:@"0"]) {
-                        mode1.color=[UIColor redColor];
-                    }
-                    else
-                        mode1.color=[UIColor yellowColor];
-                    if([lastime isEqualToString:@"已结束"])
-                        mode1.color=[UIColor greenColor];
-                    break;
-                case 2:
-                    
-    mode2.address              = CourseName;
-    mode2.motive               = RoomName;
-    mode2.date                 = Starttime;
-                        mode2.last                 =lastime;
-                    if ([isset isEqualToString:@"0"]) {
-                        mode2.color=[UIColor redColor];
-                    }
-                    else
-                        mode2.color=[UIColor yellowColor];
-                    
-                    if([lastime isEqualToString:@"已结束"])
-                        mode2.color=[UIColor greenColor];
-                    break;
-                case 3:
-    mode3.address              = CourseName;
-    mode3.motive               = RoomName;
-    mode3.date                 = Starttime;
-                        mode3.last                 =lastime;
-                    if ([isset isEqualToString:@"0"]) {
-                        mode3.color=[UIColor redColor];
-                    }
-                    else
-                        mode3.color=[UIColor yellowColor];
-                    if([lastime isEqualToString:@"已结束"])
-                        mode3.color=[UIColor greenColor];
-                    break;
-                case 4:
-    mode4.address              = CourseName;
-    mode4.motive               = RoomName;
-    mode4.date                 = Starttime;
-                        mode4.last                 =lastime;
-                    if ([isset isEqualToString:@"0"]) {
-                        mode4.color=[UIColor redColor];
-                    }
-                    else
-                        mode4.color=[UIColor yellowColor];
-                    if([lastime isEqualToString:@"已结束"])
-                        mode4.color=[UIColor greenColor];
-                    break;
-                case 5:
-    mode5.address              = CourseName;
-    mode5.motive               = RoomName;
-    mode5.date                 = Starttime;
-                        mode5.last                 =lastime;
-                    if ([isset isEqualToString:@"0"]) {
-                        mode5.color=[UIColor redColor];
-                    }
-                    else
-                        mode5.color=[UIColor yellowColor];
-                    if([lastime isEqualToString:@"已结束"])
-                        mode5.color=[UIColor greenColor];
-                    break;
-                case 6:
-    mode6.address              = CourseName;
-    mode6.motive               = RoomName;
-    mode6.date                 = Starttime;
-                        mode6.last                 =lastime;
-                    if ([isset isEqualToString:@"0"]) {
-                        mode6.color=[UIColor redColor];
-                    }
-                    else
-                        mode6.color=[UIColor yellowColor];
-                    if([lastime isEqualToString:@"已结束"])
-                        mode6.color=[UIColor greenColor];
-                    break;
-                case 7:
-    mode7.address              = CourseName;
-    mode7.motive               = RoomName;
-    mode7.date                 = Starttime;
-                        mode7.last                 =lastime;
-                    if ([isset isEqualToString:@"0"]) {
-                        mode7.color=[UIColor redColor];
-                    }
-                    else
-                        mode7.color=[UIColor yellowColor];
-                    if([lastime isEqualToString:@"已结束"])
-                        mode7.color=[UIColor greenColor];
-                    break;
-                case 8:
-    mode8.address              = CourseName;
-    mode8.motive               = RoomName;
-    mode8.date                 = Starttime;
-                        mode8.last                 =lastime;
-                    if ([isset isEqualToString:@"0"]) {
-                        mode8.color=[UIColor redColor];
-                    }
-                    else
-                        mode8.color=[UIColor yellowColor];
-                    if([lastime isEqualToString:@"已结束"])
-                        mode8.color=[UIColor greenColor];
-                    break;
-                case 9:
-    mode9.address              = CourseName;
-    mode9.motive               = RoomName;
-    mode9.date                 = Starttime;
-                        mode9.last                 =lastime;
-                    if ([isset isEqualToString:@"0"]) {
-                        mode9.color=[UIColor redColor];
-                    }
-                    else
-                        mode9.color=[UIColor yellowColor];
-                    if([lastime isEqualToString:@"已结束"])
-                        mode9.color=[UIColor greenColor];
-                    break;
-                case 10:
-    mode10.address             = CourseName;
-    mode10.motive              = RoomName;
-    mode10.date                = Starttime;
-                        mode10.last                 =lastime;
-                    if ([isset isEqualToString:@"0"]) {
-                        mode10.color=[UIColor redColor];
-                    }
-                    else
-                        mode10.color=[UIColor yellowColor];
-                    if([lastime isEqualToString:@"已结束"])
-                        mode10.color=[UIColor greenColor];
-                    break;
-                case 11:
-    mode11.address             = CourseName;
-    mode11.motive              = RoomName;
-    mode11.date                = Starttime;
-                        mode11.last                 =lastime;
-                    if ([isset isEqualToString:@"0"]) {
-                        mode11.color=[UIColor redColor];
-                    }
-                    else
-                        mode11.color=[UIColor yellowColor];
-                    if([lastime isEqualToString:@"已结束"])
-                        mode11.color=[UIColor greenColor];
-                    break;
-                case 12:
-                    mode12.address             = CourseName;
-                    mode12.motive              = RoomName;
-                    mode12.date                = Starttime;
-                    mode12.last                 =lastime;
-                    if ([isset isEqualToString:@"0"]) {
-                        mode12.color=[UIColor redColor];
-                    }
-                    else
-                        mode12.color=[UIColor yellowColor];
-                    if([lastime isEqualToString:@"已结束"])
-                        mode12.color=[UIColor greenColor];
-                    break;
-                case 13:
-                    mode13.address             = CourseName;
-                    mode13.motive              = RoomName;
-                    mode13.date                = Starttime;
-                    mode13.last                 =lastime;
-                    if ([isset isEqualToString:@"0"]) {
-                        mode13.color=[UIColor redColor];
-                    }
-                    else
-                        mode13.color=[UIColor yellowColor];
-                    if([lastime isEqualToString:@"已结束"])
-                        mode13.color=[UIColor greenColor];
-                    break;
-                case 14:
-                    mode14.address             = CourseName;
-                    mode14.motive              = RoomName;
-                    mode14.date                = Starttime;
-                    mode14.last                 =lastime;
-                    if ([isset isEqualToString:@"0"]) {
-                        mode14.color=[UIColor redColor];
-                    }
-                    else
-                        mode14.color=[UIColor yellowColor];
-                    if([lastime isEqualToString:@"已结束"])
-                        mode14.color=[UIColor greenColor];
-                    break;
-                case 15:
-                    mode15.address             = CourseName;
-                    mode15.motive              = RoomName;
-                    mode15.date                = Starttime;
-                    mode15.last                 =lastime;
-                    if ([isset isEqualToString:@"0"]) {
-                        mode15.color=[UIColor redColor];
-                    }
-                    else
-                        mode15.color=[UIColor yellowColor];
-                    if([lastime isEqualToString:@"已结束"])
-                        mode15.color=[UIColor greenColor];
-                    break;
-                default:
-                    break;
-            }     
+        
+        
+        
+        switch (k) {
+            case 0:
+                mode0.address              = CourseName;
+                mode0.motive               = RoomName;
+                mode0.date                 = Starttime;
+                mode0.last                 =lastime;
+                if ([isset isEqualToString:@"0"]) {
+                    mode0.color=[UIColor redColor];
+                }
+                else
+                    mode0.color=[UIColor yellowColor];
+                if([lastime isEqualToString:@"已结束"])
+                    mode0.color=[UIColor greenColor];
+                break;
+            case 1:
+                
+                mode1.address              = CourseName;
+                mode1.motive               = RoomName;
+                mode1.date                 = Starttime;
+                mode1.last                 =lastime;
+                if ([isset isEqualToString:@"0"]) {
+                    mode1.color=[UIColor redColor];
+                }
+                else
+                    mode1.color=[UIColor yellowColor];
+                if([lastime isEqualToString:@"已结束"])
+                    mode1.color=[UIColor greenColor];
+                break;
+            case 2:
+                
+                mode2.address              = CourseName;
+                mode2.motive               = RoomName;
+                mode2.date                 = Starttime;
+                mode2.last                 =lastime;
+                if ([isset isEqualToString:@"0"]) {
+                    mode2.color=[UIColor redColor];
+                }
+                else
+                    mode2.color=[UIColor yellowColor];
+                
+                if([lastime isEqualToString:@"已结束"])
+                    mode2.color=[UIColor greenColor];
+                break;
+            case 3:
+                mode3.address              = CourseName;
+                mode3.motive               = RoomName;
+                mode3.date                 = Starttime;
+                mode3.last                 =lastime;
+                if ([isset isEqualToString:@"0"]) {
+                    mode3.color=[UIColor redColor];
+                }
+                else
+                    mode3.color=[UIColor yellowColor];
+                if([lastime isEqualToString:@"已结束"])
+                    mode3.color=[UIColor greenColor];
+                break;
+            case 4:
+                mode4.address              = CourseName;
+                mode4.motive               = RoomName;
+                mode4.date                 = Starttime;
+                mode4.last                 =lastime;
+                if ([isset isEqualToString:@"0"]) {
+                    mode4.color=[UIColor redColor];
+                }
+                else
+                    mode4.color=[UIColor yellowColor];
+                if([lastime isEqualToString:@"已结束"])
+                    mode4.color=[UIColor greenColor];
+                break;
+            case 5:
+                mode5.address              = CourseName;
+                mode5.motive               = RoomName;
+                mode5.date                 = Starttime;
+                mode5.last                 =lastime;
+                if ([isset isEqualToString:@"0"]) {
+                    mode5.color=[UIColor redColor];
+                }
+                else
+                    mode5.color=[UIColor yellowColor];
+                if([lastime isEqualToString:@"已结束"])
+                    mode5.color=[UIColor greenColor];
+                break;
+            case 6:
+                mode6.address              = CourseName;
+                mode6.motive               = RoomName;
+                mode6.date                 = Starttime;
+                mode6.last                 =lastime;
+                if ([isset isEqualToString:@"0"]) {
+                    mode6.color=[UIColor redColor];
+                }
+                else
+                    mode6.color=[UIColor yellowColor];
+                if([lastime isEqualToString:@"已结束"])
+                    mode6.color=[UIColor greenColor];
+                break;
+            case 7:
+                mode7.address              = CourseName;
+                mode7.motive               = RoomName;
+                mode7.date                 = Starttime;
+                mode7.last                 =lastime;
+                if ([isset isEqualToString:@"0"]) {
+                    mode7.color=[UIColor redColor];
+                }
+                else
+                    mode7.color=[UIColor yellowColor];
+                if([lastime isEqualToString:@"已结束"])
+                    mode7.color=[UIColor greenColor];
+                break;
+            case 8:
+                mode8.address              = CourseName;
+                mode8.motive               = RoomName;
+                mode8.date                 = Starttime;
+                mode8.last                 =lastime;
+                if ([isset isEqualToString:@"0"]) {
+                    mode8.color=[UIColor redColor];
+                }
+                else
+                    mode8.color=[UIColor yellowColor];
+                if([lastime isEqualToString:@"已结束"])
+                    mode8.color=[UIColor greenColor];
+                break;
+            case 9:
+                mode9.address              = CourseName;
+                mode9.motive               = RoomName;
+                mode9.date                 = Starttime;
+                mode9.last                 =lastime;
+                if ([isset isEqualToString:@"0"]) {
+                    mode9.color=[UIColor redColor];
+                }
+                else
+                    mode9.color=[UIColor yellowColor];
+                if([lastime isEqualToString:@"已结束"])
+                    mode9.color=[UIColor greenColor];
+                break;
+            case 10:
+                mode10.address             = CourseName;
+                mode10.motive              = RoomName;
+                mode10.date                = Starttime;
+                mode10.last                 =lastime;
+                if ([isset isEqualToString:@"0"]) {
+                    mode10.color=[UIColor redColor];
+                }
+                else
+                    mode10.color=[UIColor yellowColor];
+                if([lastime isEqualToString:@"已结束"])
+                    mode10.color=[UIColor greenColor];
+                break;
+            case 11:
+                mode11.address             = CourseName;
+                mode11.motive              = RoomName;
+                mode11.date                = Starttime;
+                mode11.last                 =lastime;
+                if ([isset isEqualToString:@"0"]) {
+                    mode11.color=[UIColor redColor];
+                }
+                else
+                    mode11.color=[UIColor yellowColor];
+                if([lastime isEqualToString:@"已结束"])
+                    mode11.color=[UIColor greenColor];
+                break;
+            case 12:
+                mode12.address             = CourseName;
+                mode12.motive              = RoomName;
+                mode12.date                = Starttime;
+                mode12.last                 =lastime;
+                if ([isset isEqualToString:@"0"]) {
+                    mode12.color=[UIColor redColor];
+                }
+                else
+                    mode12.color=[UIColor yellowColor];
+                if([lastime isEqualToString:@"已结束"])
+                    mode12.color=[UIColor greenColor];
+                break;
+            case 13:
+                mode13.address             = CourseName;
+                mode13.motive              = RoomName;
+                mode13.date                = Starttime;
+                mode13.last                 =lastime;
+                if ([isset isEqualToString:@"0"]) {
+                    mode13.color=[UIColor redColor];
+                }
+                else
+                    mode13.color=[UIColor yellowColor];
+                if([lastime isEqualToString:@"已结束"])
+                    mode13.color=[UIColor greenColor];
+                break;
+            case 14:
+                mode14.address             = CourseName;
+                mode14.motive              = RoomName;
+                mode14.date                = Starttime;
+                mode14.last                 =lastime;
+                if ([isset isEqualToString:@"0"]) {
+                    mode14.color=[UIColor redColor];
+                }
+                else
+                    mode14.color=[UIColor yellowColor];
+                if([lastime isEqualToString:@"已结束"])
+                    mode14.color=[UIColor greenColor];
+                break;
+            case 15:
+                mode15.address             = CourseName;
+                mode15.motive              = RoomName;
+                mode15.date                = Starttime;
+                mode15.last                 =lastime;
+                if ([isset isEqualToString:@"0"]) {
+                    mode15.color=[UIColor redColor];
+                }
+                else
+                    mode15.color=[UIColor yellowColor];
+                if([lastime isEqualToString:@"已结束"])
+                    mode15.color=[UIColor greenColor];
+                break;
+            default:
+                break;
+        }
     }
-   
-  
+    
+    
     myView=[[MyView alloc]init];
     MsgModel * model=[[MsgModel alloc]init];
-
-    switch (array.count+arraycx.count+newexam) {
+    
+    switch (array.count+arraycx.count+newexam+1) {
         case 0:{
-    UIAlertView *alertView1    = [[UIAlertView alloc] initWithTitle:@"暂无考试"
-                                                                message:@"计划表上暂时没有考试"
-                                                               delegate:self
-                                                      cancelButtonTitle:@"取消"
-                                                      otherButtonTitles:@"确定", nil];
+            UIAlertView *alertView1    = [[UIAlertView alloc] initWithTitle:@"暂无考试"
+                                                                    message:@"计划表上暂时没有考试"
+                                                                   delegate:self
+                                                          cancelButtonTitle:@"取消"
+                                                          otherButtonTitles:@"确定", nil];
             [alertView1 show];
             break;
         }
@@ -513,16 +521,16 @@ int datediff(int y1,int m1,int d1,int y2,int m2,int d2)
         default:
             break;
     }
-   
-  
-
+    
+    
+    
 }
 
 -(void)add{
-            UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-            ExamViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"examadd"];
-            AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-            [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:YES];
+    UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    ExamViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"examadd"];
+    AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:YES];
 }
 
 - (void)help{

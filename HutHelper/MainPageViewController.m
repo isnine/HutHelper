@@ -59,29 +59,29 @@ const int startday                        = 29;
 
 int CountDays(int year, int month, int day) {
     //返回当前是本年的第几天，year,month,day 表示现在的年月日，整数。
-int a[12]                                 = {31,0,31,30,31,30,31,31,30,31,30,31};
-int s                                     = 0;
-for(int i           = 0; i < month-1; i++) {s   += a[i];
+    int a[12]                                 = {31,0,31,30,31,30,31,31,30,31,30,31};
+    int s                                     = 0;
+    for(int i           = 0; i < month-1; i++) {s   += a[i];
     }
     if(month > 2) {
         if(year % (year % 100 ? 4 : 400 ) ? 0 : 1)s                                         += 29;
         else
-s                                         += 28;
+            s                                         += 28;
     }
-
+    
     return (s + day);
 }  //当前星期几
 
 int CountWeeks(int nowyear, int nowmonth, int nowday) {
     //返回当前是本学期第几周，nowyear,nowmonth,nowday 表示现在的年月日，整数。
-int ans                                   = 0;
+    int ans                                   = 0;
     if (nowyear == startyear) {
-ans                                       = CountDays(nowyear, nowmonth, nowday) - CountDays(startyear, startmonth, startday) + 1;
+        ans                                       = CountDays(nowyear, nowmonth, nowday) - CountDays(startyear, startmonth, startday) + 1;
         printf("%d\n", ans);
     } else {
-ans                                       = CountDays(nowyear, nowmonth, nowday) - CountDays(nowyear, 1, 1) + 1;
+        ans                                       = CountDays(nowyear, nowmonth, nowday) - CountDays(nowyear, 1, 1) + 1;
         printf("%d\n", ans);
-ans                                       += (CountDays(startyear, 12, 31) - CountDays(startyear, startmonth, startday) + 1);
+        ans                                       += (CountDays(startyear, 12, 31) - CountDays(startyear, startmonth, startday) + 1);
         printf("%d\n", ans);
     }
     return (ans + 6) / 7;
@@ -130,7 +130,7 @@ ans                                       += (CountDays(startyear, 12, 31) - Cou
     self.navigationItem.leftBarButtonItem     = [[UIBarButtonItem alloc] initWithCustomView:menuBtn];
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     
-   [self isAppFirstRun];
+    [self isAppFirstRun];
     /**  首次登陆 */
     NSString *studentKH    = [defaults objectForKey:@"studentKH"];
     if(studentKH==NULL){
@@ -161,27 +161,23 @@ ans                                       += (CountDays(startyear, 12, 31) - Cou
     /** 添加标签 */
     NSString *class_name                      = [defaults objectForKey:@"class_name"];
     NSString *dep_name                        = [defaults objectForKey:@"dep_name"];
-    
-
     [UMessage addTag:class_name
-                    response:^(id responseObject, NSInteger remain, NSError *error) {
-                      
-                    }];//班级
+            response:^(id responseObject, NSInteger remain, NSError *error) {
+                
+            }];//班级
     [UMessage addTag:dep_name
-                        response:^(id responseObject, NSInteger remain, NSError *error) {
-                            //add your codes
-                        }];  //学院
+            response:^(id responseObject, NSInteger remain, NSError *error) {
+                //add your codes
+            }];  //学院
     /** 添加别名*/
     [UMessage addAlias:studentKH type:kUMessageAliasTypeSina response:^(id responseObject, NSError *error) {
-        
     }];
-
-  /** 标题栏样式 */
+    
+    /** 标题栏样式 */
     UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     self.navigationItem.backBarButtonItem = item;
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
-    
-   /** 预留方法 */
+    /** 预留方法 */
     [self jspath];
     
 }
@@ -203,16 +199,16 @@ ans                                       += (CountDays(startyear, 12, 31) - Cou
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-     AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [tempAppDelegate.LeftSlideVC setPanEnabled:NO];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-   AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [tempAppDelegate.LeftSlideVC setPanEnabled:YES];
-       NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     NSDate *now                               = [NSDate date];
     NSCalendar *calendar                      = [NSCalendar currentCalendar];
     NSUInteger unitFlags                      = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit |NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
@@ -224,58 +220,115 @@ ans                                       += (CountDays(startyear, 12, 31) - Cou
     [defaults setInteger:CountWeeks(year, month, day) forKey:@"TrueWeek"];
     //判断完毕//
 }
-
+int class_error_;
 - (IBAction)ClassFind:(id)sender {  //课表界面
+    class_error_=0;
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-     NSArray *array_class                            = [defaults objectForKey:@"array_class"];
-     NSArray *array_xp                            = [defaults objectForKey:@"array_xp"];
+    NSArray *array_class                            = [defaults objectForKey:@"array_class"];
+    NSArray *array_xp                            = [defaults objectForKey:@"array_xp"];
     if(array_class==NULL&&array_xp==NULL){
         MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         hud.labelText = @"查询中";
         dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 0.01 * NSEC_PER_SEC);
         dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        NSString *studentKH=[defaults objectForKey:@"studentKH"];
-        NSString *Remember_code_app=[defaults objectForKey:@"remember_code_app"];
-        /**课表数据缓存*/
-        NSString *Url_String_1=@"http://218.75.197.121:8888/api/v1/get/lessons/";
-        NSString *Url_String_2=@"/";
-        NSString *Url_String_1_U=[Url_String_1 stringByAppendingString:studentKH];
-        NSString *Url_String_1_U_2=[Url_String_1_U stringByAppendingString:Url_String_2];
-        NSString *Url_String=[Url_String_1_U_2 stringByAppendingString:Remember_code_app];
-        NSURL *url                   = [NSURL URLWithString: Url_String];//接口地址
-        NSError *error               = nil;
-        NSString *jsonString         = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:&error];//Url -> String
-        NSData* jsonData             = [jsonString dataUsingEncoding:NSUTF8StringEncoding];//地址 -> 数据
-        NSDictionary *Class_All      = [jsonData objectFromJSONData];//数据 -> 字典
-        NSString *msg_class          = [Class_All objectForKey:@"msg"];//得到数据情况
+            NSString *studentKH=[defaults objectForKey:@"studentKH"];
+            NSString *Remember_code_app=[defaults objectForKey:@"remember_code_app"];
+            /**课表数据缓存*/
+            NSString *Url_String_1=@"http://218.75.197.121:8888/api/v1/get/lessons/";
+            NSString *Url_String_2=@"/";
+            NSString *Url_String_1_U=[Url_String_1 stringByAppendingString:studentKH];
+            NSString *Url_String_1_U_2=[Url_String_1_U stringByAppendingString:Url_String_2];
+            NSString *Url_String=[Url_String_1_U_2 stringByAppendingString:Remember_code_app];
+            NSURL *url                   = [NSURL URLWithString: Url_String];//接口地址
+            NSError *error               = nil;
+            NSString *jsonString         = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:&error];//Url -> String
+            NSData* jsonData             = [jsonString dataUsingEncoding:NSUTF8StringEncoding];//地址 -> 数据
+            NSDictionary *Class_All      = [jsonData objectFromJSONData];//数据 -> 字典
+            NSString *msg_class          = [Class_All objectForKey:@"msg"];//得到数据情况
             if ([msg_class isEqualToString:@"ok"]) {
                 NSArray *array               = [Class_All objectForKey:@"data"];
                 [defaults setObject:array forKey:@"array_class"];
                 [defaults synchronize];
             }
-            NSLog(@"平时课表地址:%@",url);
-        /**实验课表数据缓存*/
-        NSString *Url_String_xp_1=@"http://218.75.197.121:8888/api/v1/get/lessonsexp/";
-        NSString *Url_String_xp_1_U=[Url_String_xp_1 stringByAppendingString:studentKH];
-        NSString *Url_String_xp_1_U_2=[Url_String_xp_1_U stringByAppendingString:@"/"];
-        NSString *Url_String_xp=[Url_String_xp_1_U_2 stringByAppendingString:Remember_code_app];
-        NSURL *url_xp                = [NSURL URLWithString: Url_String_xp];//接口地址
-            NSLog(@"实验课表地址:%@",Url_String_xp);
-           //自带库解析实验课
-        NSURLRequest *request        = [NSURLRequest requestWithURL:[NSURL URLWithString:Url_String_xp]];
-        NSData *response             = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
-        NSDictionary *jsonDataxp     = [NSJSONSerialization JSONObjectWithData:response options:NSJSONReadingMutableLeaves error:&error];
-            NSString *msg_xp          = [jsonDataxp objectForKey:@"msg"];//得到数据情况
-            if ([msg_xp isEqualToString:@"ok"]) {
-                NSArray *array_xp            = [jsonDataxp objectForKey:@"data"];
-                [defaults setObject:array_xp forKey:@"array_xp"];
-                [defaults synchronize];
+            else{
+                class_error_=1;
             }
-        UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        ClassViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Class"];
-        AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-        [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:NO];
+            NSLog(@"平时课表地址:%@",url);
+            /**实验课表数据缓存*/
+            NSString *Url_String_xp_1=@"http://218.75.197.121:8888/api/v1/get/lessonsexp/";
+            NSString *Url_String_xp_1_U=[Url_String_xp_1 stringByAppendingString:studentKH];
+            NSString *Url_String_xp_1_U_2=[Url_String_xp_1_U stringByAppendingString:@"/"];
+            NSString *Url_String_xp=[Url_String_xp_1_U_2 stringByAppendingString:Remember_code_app];
+            NSURL *url_xp                = [NSURL URLWithString: Url_String_xp];//接口地址
+            NSLog(@"实验课表地址:%@",Url_String_xp);
+            //自带库解析实验课
+            NSURLRequest *request        = [NSURLRequest requestWithURL:[NSURL URLWithString:Url_String_xp]];
+            NSData *response             = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+            NSLog(@"%@",response);
+            if (!response==NULL) {
+                NSDictionary *jsonDataxp     = [NSJSONSerialization JSONObjectWithData:response options:NSJSONReadingMutableLeaves error:&error];
+                NSString *msg_xp          = [jsonDataxp objectForKey:@"msg"];//得到数据情况
+                if ([msg_xp isEqualToString:@"ok"]) {
+                    NSArray *array_xp            = [jsonDataxp objectForKey:@"data"];
+                    [defaults setObject:array_xp forKey:@"array_xp"];
+                    [defaults synchronize];
+                }
+                else{
+                    class_error_=class_error_+2;
+                }
+            }
+            else{
+                class_error_=class_error_+2;
+            }
             [MBProgressHUD hideHUDForView:self.view animated:YES];
+            
+            NSString *show_erro;
+            switch (class_error_) {
+                case 0:{
+                    UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                    ClassViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Class"];
+                    AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+                    [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:NO];
+                    break;
+                }
+                case 1:{
+                    UIAlertView *alertView                    = [[UIAlertView alloc] initWithTitle:@"无平时课表数据"
+                                                                                           message:@""
+                                                                                          delegate:self
+                                                                                 cancelButtonTitle:@"取消"
+                                                                                 otherButtonTitles:@"确定", nil];
+                    [alertView show];
+                    
+                    UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                    ClassViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Class"];
+                    AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+                    [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:NO];
+                    break;}
+                case 2:{
+                    UIAlertView *alertView                    = [[UIAlertView alloc] initWithTitle:@"无实验课表数据"
+                                                                                           message:@""
+                                                                                          delegate:self
+                                                                                 cancelButtonTitle:@"取消"
+                                                                                 otherButtonTitles:@"确定", nil];
+                    [alertView show];
+                    UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                    ClassViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Class"];
+                    AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+                    [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:NO];
+                    break;
+                }
+                case 3:{
+                    show_erro=@"课表查询错误,请检查网络";
+                    UIAlertView *alertView                    = [[UIAlertView alloc] initWithTitle:@"错误"
+                                                                                           message:show_erro
+                                                                                          delegate:self
+                                                                                 cancelButtonTitle:@"取消"
+                                                                                 otherButtonTitles:@"确定", nil];
+                    [alertView show];
+                    break;}
+                default:
+                    break;
+            }
         });
     }
     else{
@@ -284,7 +337,7 @@ ans                                       += (CountDays(startyear, 12, 31) - Cou
         AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:NO];
     }
-
+    
 } //课程表
 
 - (IBAction)HomeWork:(id)sender { //作业界面
@@ -316,14 +369,14 @@ ans                                       += (CountDays(startyear, 12, 31) - Cou
 } //二手市场
 
 - (IBAction)Score:(id)sender {
-        NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-        NSData* ScoreData           = [defaults objectForKey:@"data_score"];
-        if(ScoreData==NULL){
-            MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-            hud.labelText = @"查询中";
-            dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 0.01 * NSEC_PER_SEC);
-            dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-             /**拼接地址*/
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    NSData* ScoreData           = [defaults objectForKey:@"data_score"];
+    if(ScoreData==NULL){
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        hud.labelText = @"查询中";
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 0.01 * NSEC_PER_SEC);
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            /**拼接地址*/
             NSString *remember_code_app=[defaults objectForKey:@"remember_code_app"];
             NSString *Url_String_score=@"http://218.75.197.121:8888/api/v1/get/scores/";
             NSString *studentKH                       = [defaults objectForKey:@"studentKH"];
@@ -363,20 +416,20 @@ ans                                       += (CountDays(startyear, 12, 31) - Cou
             }
             [MBProgressHUD hideHUDForView:self.view animated:YES];
         });
-        }
-        else{
-            RootViewController *Score      = [[RootViewController alloc] init];
-            AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-            [tempAppDelegate.mainNavigationController pushViewController:Score animated:NO];
-        }
-
+    }
+    else{
+        RootViewController *Score      = [[RootViewController alloc] init];
+        AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        [tempAppDelegate.mainNavigationController pushViewController:Score animated:NO];
+    }
+    
 } //成绩查询
 
 - (IBAction)Day:(id)sender {
-MainPageViewController2 *other= [[MainPageViewController2 alloc] init];
-AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    MainPageViewController2 *other= [[MainPageViewController2 alloc] init];
+    AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [tempAppDelegate.mainNavigationController pushViewController:other animated:YES];
-
+    
 } //其他
 
 - (IBAction)Library:(id)sender {
@@ -384,7 +437,7 @@ AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication share
     ClassViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Library"];
     AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:YES];
-
+    
 } //图书馆
 
 - (IBAction)Exam:(id)sender {
@@ -447,7 +500,7 @@ AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication share
             ExamViewController *exam                  = [[ExamViewController alloc] init];
             AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
             [tempAppDelegate.mainNavigationController pushViewController:exam animated:YES];
-
+            
             NSLog(@"查询失败");
         }
         [MBProgressHUD hideHUDForView:self.view animated:YES];
@@ -462,19 +515,19 @@ AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication share
     NSString *lastRunKey = [defaults objectForKey:@"last_run_version_key"];
     NSLog(@"当前版本%@",currentVersion);
     NSLog(@"上个版本%@",lastRunKey);
-//    if (lastRunKey==NULL) {
-//        NSString *appDomain       = [[NSBundle mainBundle] bundleIdentifier];
-//        [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:appDomain];
-//        [defaults setObject:currentVersion forKey:@"last_run_version_key"];
-//        NSLog(@"没有记录");
-//        
-//    }
-//    else if (![lastRunKey isEqualToString:currentVersion]) {
-//        NSString *appDomain       = [[NSBundle mainBundle] bundleIdentifier];
-//        [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:appDomain];
-//        [defaults setObject:currentVersion forKey:@"last_run_version_key"];
-//        NSLog(@"记录不匹配");
-//    }
+    //    if (lastRunKey==NULL) {
+    //        NSString *appDomain       = [[NSBundle mainBundle] bundleIdentifier];
+    //        [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:appDomain];
+    //        [defaults setObject:currentVersion forKey:@"last_run_version_key"];
+    //        NSLog(@"没有记录");
+    //
+    //    }
+    //    else if (![lastRunKey isEqualToString:currentVersion]) {
+    //        NSString *appDomain       = [[NSBundle mainBundle] bundleIdentifier];
+    //        [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:appDomain];
+    //        [defaults setObject:currentVersion forKey:@"last_run_version_key"];
+    //        NSLog(@"记录不匹配");
+    //    }
     
 }
 

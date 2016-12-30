@@ -21,6 +21,8 @@
     self.navigationItem.title                 = @"更多";
     UIColor *greyColor                        = [UIColor colorWithRed:239/255.0 green:239/255.0 blue:239/255.0 alpha:1];
     self.view.backgroundColor                 = greyColor;
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+    self.navigationItem.backBarButtonItem = item;
     // Do any additional setup after loading the view from its nib.
 }
 

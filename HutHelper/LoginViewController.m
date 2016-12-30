@@ -111,9 +111,6 @@
 - (IBAction)Didend:(id)sender {
     [sender resignFirstResponder];
 }
-
-
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     UIColor *greyColor           = [UIColor colorWithRed:239/255.0 green:239/255.0 blue:239/255.0 alpha:1];
@@ -121,7 +118,8 @@
     self.title                   = @"切换用户";
     _UserName.placeholder=@"学号";
     _Password.placeholder=@"密码";
-
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+    self.navigationItem.backBarButtonItem = item;
 
 }
 - (IBAction)resetpassword:(id)sender {

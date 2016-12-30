@@ -75,7 +75,7 @@
             //强制让数据立刻保存
             [defaults synchronize];
             NSLog(@"用户：%@，学号：%@,令牌:%@",TrueName,studentKH,Remember_code_app);
-   
+            
             [UMessage addTag:dep_name
                     response:^(id responseObject, NSInteger remain, NSError *error) {
                         //add your codes
@@ -86,7 +86,7 @@
                     }];
             
             //推送标签
-
+            
             [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:([self.navigationController.viewControllers count] -2)] animated:YES];  //返回上一个View
             
         }
@@ -106,7 +106,7 @@
 
 
 - (IBAction)End:(id)sender {
-     [sender resignFirstResponder];
+    [sender resignFirstResponder];
 }
 
 
@@ -114,7 +114,7 @@
     [super viewDidLoad];
     UIColor *greyColor           = [UIColor colorWithRed:239/255.0 green:239/255.0 blue:239/255.0 alpha:1];
     self.view.backgroundColor    = greyColor;
-
+    
     self.title                   = @"登录";
     _UserName.placeholder=@"学号";
     [_UserName setValue:[UIColor whiteColor] forKeyPath:@"_placeholderLabel.textColor"];
@@ -128,7 +128,7 @@
     LoginViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Login2"];
     AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:NO];
-    }
+}
 
 -(void)sein{
     UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
@@ -138,11 +138,11 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-       self.navigationController.navigationBarHidden = YES;
+    self.navigationController.navigationBarHidden = YES;
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
-     self.navigationController.navigationBarHidden = NO;
+    self.navigationController.navigationBarHidden = NO;
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

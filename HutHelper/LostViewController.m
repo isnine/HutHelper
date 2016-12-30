@@ -8,7 +8,7 @@
 
 #import "LostViewController.h"
 #import "UMMobClick/MobClick.h"
-#import "MBProgressHUD.h"
+#import "MBProgressHUD+MJ.h"
 @interface LostViewController ()
 @property (weak, nonatomic) IBOutlet UIWebView *Show;
 
@@ -27,11 +27,7 @@
     
     [self webViewDidFinishLoad:_Show];
     
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.labelText = @"加载中";
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 0.01 * NSEC_PER_SEC);
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-    });
+ [MBProgressHUD showMessage:@"加载中" toView:self.view];
 }
 
 
@@ -80,8 +76,17 @@
         }
     }
     
-    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 }
 
+/** webView的代理方法*/
+
+
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
+{
+    //隐藏显示
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+    [MBProgressHUD showError:@"网络错误"];
+}
 @end
 
