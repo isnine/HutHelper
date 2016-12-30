@@ -21,7 +21,7 @@
     NSString *Url_String=@"http://218.75.197.121:8888/auth/resetPass";
 
     NSURL *url = [[NSURL alloc]initWithString:Url_String];
-    [_views loadRequest:[NSURLRequest requestWithURL:url]];
+[_views loadRequest:[NSURLRequest requestWithURL:url]];
     
 
 }

@@ -9,6 +9,7 @@
 #import "LibraryViewController.h"
 #import "UMMobClick/MobClick.h"
 #import "MBProgressHUD.h"
+#import "MBProgressHUD+MJ.h"
 @interface LibraryViewController ()
 @property (weak, nonatomic) IBOutlet UIWebView *views;
 
@@ -24,12 +25,7 @@ NSString *Url_String;
     NSURL *url                = [[NSURL alloc]initWithString:Url_String];
     _views.delegate=self;
     [_views loadRequest:[NSURLRequest requestWithURL:url]];
-    
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.labelText = @"加载中";
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 0.01 * NSEC_PER_SEC);
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-    });
+
 }
 
 -(void)SetURL{
@@ -56,16 +52,26 @@ NSString *Url_String;
     [super viewWillDisappear:animated];
     [MobClick endLogPageView:@"图书馆"];
 }
+/** webView的代理方法*/
 
 - (void)webViewDidStartLoad:(UIWebView *)webView
 {
-
-    
+    //提示用户正在加载
+    [MBProgressHUD showMessage:@"加载中" toView:self.view];
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
-    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+    
+}
+
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
+{
+    //隐藏显示
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+    [MBProgressHUD showError:@"网络错误"];
 }
 
 @end

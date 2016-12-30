@@ -124,7 +124,10 @@
     
 }
 - (IBAction)resetpassword:(id)sender {
-    [self sein];
+    UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    LoginViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Login2"];
+    AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:NO];
     }
 
 -(void)sein{
@@ -135,7 +138,6 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-
        self.navigationController.navigationBarHidden = YES;
 }
 

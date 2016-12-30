@@ -181,7 +181,9 @@ ans                                       += (CountDays(startyear, 12, 31) - Cou
     self.navigationItem.backBarButtonItem = item;
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
     
-   
+   /** 预留方法 */
+    [self jspath];
+    
 }
 
 - (void) openOrCloseLeftList  //侧栏滑动
@@ -476,6 +478,8 @@ AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication share
     
 }
 
-
+-(void)jspath{
+    
+}
 
 @end

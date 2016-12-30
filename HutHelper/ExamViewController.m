@@ -155,18 +155,18 @@ int datediff(int y1,int m1,int d1,int y2,int m2,int d2)
             dict1        = arraycx[kcx];
             RoomName         = [dict1 objectForKey:@"RoomName"];//起始周
             CourseName       = [dict1 objectForKey:@"CourseName"];
-            Starttime        = [dict1 objectForKey:@"Starttime"];//起始周
+            Starttime        = [dict1 objectForKey:@"Starttime"];//起始d周
             isset            = [dict1 objectForKey:@"isset"];//起始周
             NSLog(@"【】课程:%@，序列:%d",CourseName,kcx);
             NSLog(@"%@",dict1);
             kcx=kcx+1;
             
-           // NSLog(@"【2】k的值为%d三个判断值为%d %d %d",k,array.count,array.count+arraycx.count,array.count+arraycx.count+newexam);
+           // NSLog(@"【2】k的值为%d三个判断值为%d %d %d",k,array.count,array.count+arraycx.codunt,array.count+arraycx.count+newexam);
         }
         else if(k>=array.count+arraycx.count){
             RoomName         = @"-";//起始周
             CourseName       = @"英语四六级考试";
-            Starttime        = @"2016-12-17";//起始周
+            Starttime        = @"2017-06-17";//起始周
             isset            = @"1";//起始周
            // NSLog(@"【3】k的值为%d三个判断值为%d %d %d",k,array.count,array.count+arraycx.count,array.count+arraycx.count+newexam);
         }

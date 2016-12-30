@@ -89,6 +89,8 @@
 		3A8BAD7A1DDDBE6A001C78B8 /* UMSocialShareScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8BAD681DDDBE6A001C78B8 /* UMSocialShareScrollView.m */; };
 		3A8BAD7B1DDDBE6A001C78B8 /* UMSocialUIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8BAD6A1DDDBE6A001C78B8 /* UMSocialUIManager.m */; };
 		3A8E0E251DAB442E00F458DB /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A8E0E231DAB442E00F458DB /* MainViewController.xib */; };
+		3AA1BC161E16179C00F75A7E /* MBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3AA1BC111E16179C00F75A7E /* MBProgressHUD.bundle */; };
+		3AA1BC181E16179C00F75A7E /* MBProgressHUD+MJ.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA1BC151E16179C00F75A7E /* MBProgressHUD+MJ.m */; };
 		3AAC242B1DE1CB3C00546B11 /* JSHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AAC242A1DE1CB3C00546B11 /* JSHeaderView.m */; };
 		3AAC242E1DE1CB8C00546B11 /* UserInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AAC242D1DE1CB8C00546B11 /* UserInfoCell.m */; };
 		3AAC24301DE1D00E00546B11 /* header@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3AAC242F1DE1D00D00546B11 /* header@2x.jpg */; };
@@ -282,6 +284,9 @@
 		3A8BAD691DDDBE6A001C78B8 /* UMSocialUIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSocialUIManager.h; sourceTree = "<group>"; };
 		3A8BAD6A1DDDBE6A001C78B8 /* UMSocialUIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMSocialUIManager.m; sourceTree = "<group>"; };
 		3A8E0E231DAB442E00F458DB /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainViewController.xib; path = HutHelper/MainViewController.xib; sourceTree = "<group>"; };
+		3AA1BC111E16179C00F75A7E /* MBProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = MBProgressHUD.bundle; path = HutHelper/Lib/MBProgressHUD/MBProgressHUD.bundle; sourceTree = "<group>"; };
+		3AA1BC141E16179C00F75A7E /* MBProgressHUD+MJ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MBProgressHUD+MJ.h"; path = "HutHelper/Lib/MBProgressHUD/MBProgressHUD+MJ.h"; sourceTree = "<group>"; };
+		3AA1BC151E16179C00F75A7E /* MBProgressHUD+MJ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MBProgressHUD+MJ.m"; path = "HutHelper/Lib/MBProgressHUD/MBProgressHUD+MJ.m"; sourceTree = "<group>"; };
 		3AAC24291DE1CB3C00546B11 /* JSHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSHeaderView.h; sourceTree = "<group>"; };
 		3AAC242A1DE1CB3C00546B11 /* JSHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSHeaderView.m; sourceTree = "<group>"; };
 		3AAC242C1DE1CB8C00546B11 /* UserInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoCell.h; sourceTree = "<group>"; };
@@ -448,15 +453,6 @@
 			name = Exam;
 			sourceTree = "<group>";
 		};
-		3A3F82FC1DB8AF14009EB7AC /* Show */ = {
-			isa = PBXGroup;
-			children = (
-				3A3F82FD1DB8AF22009EB7AC /* MBProgressHUD.h */,
-				3A3F82FE1DB8AF22009EB7AC /* MBProgressHUD.m */,
-			);
-			name = Show;
-			sourceTree = "<group>";
-		};
 		3A7D3CA81DB0A6CB00355E7A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -583,11 +579,11 @@
 		3A8567DB1DAA3DF800EBD44A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				3AA1BC101E16178900F75A7E /* MBProgressHUD+MJ */,
 				3AAC24281DE1CB3C00546B11 /* JSHeaderView */,
 				3AB6BF9D1DDFFCE600127C96 /* DJRefresh */,
 				3A8BAD3D1DDDBE6A001C78B8 /* UMSocial */,
 				3A026CFC1DBC9B35000288AF /* UUChart */,
-				3A3F82FC1DB8AF14009EB7AC /* Show */,
 				3A0898B21DB5ED4300D2CCE6 /* SKTTable */,
 				3A3E53011DB2275800A49067 /* Exam */,
 				3A3C68861DB1150C0088CC17 /* LGPlusButtonsView */,
@@ -744,6 +740,18 @@
 			path = Resource;
 			sourceTree = "<group>";
 		};
+		3AA1BC101E16178900F75A7E /* MBProgressHUD+MJ */ = {
+			isa = PBXGroup;
+			children = (
+				3AA1BC111E16179C00F75A7E /* MBProgressHUD.bundle */,
+				3AA1BC141E16179C00F75A7E /* MBProgressHUD+MJ.h */,
+				3AA1BC151E16179C00F75A7E /* MBProgressHUD+MJ.m */,
+				3A3F82FD1DB8AF22009EB7AC /* MBProgressHUD.h */,
+				3A3F82FE1DB8AF22009EB7AC /* MBProgressHUD.m */,
+			);
+			name = "MBProgressHUD+MJ";
+			sourceTree = "<group>";
+		};
 		3AAC24281DE1CB3C00546B11 /* JSHeaderView */ = {
 			isa = PBXGroup;
 			children = (
@@ -881,6 +889,7 @@
 				3A85678B1DA908AA00EBD44A /* Assets.xcassets in Resources */,
 				3A8BAD771DDDBE6A001C78B8 /* UMSocialSDKResources.bundle in Resources */,
 				3ABF727C1DDB2DD70062E757 /* MainPageViewController2.xib in Resources */,
+				3AA1BC161E16179C00F75A7E /* MBProgressHUD.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -998,6 +1007,7 @@
 				3A33D7F21DAF1B810012EFDE /* SetViewController.m in Sources */,
 				3A33D7BE1DADE3A40012EFDE /* FeedbackViewController.m in Sources */,
 				3AB6BFAB1DDFFCE600127C96 /* DJRefreshBottomView.m in Sources */,
+				3AA1BC181E16179C00F75A7E /* MBProgressHUD+MJ.m in Sources */,
 				3A026D181DBC9B42000288AF /* UULineChart.m in Sources */,
 				3AB6BF9B1DDFF74300127C96 /* UserViewController.m in Sources */,
 				3A33D7D01DAE31AB0012EFDE /* SchoolsayViewController.m in Sources */,
