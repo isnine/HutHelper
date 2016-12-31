@@ -30,8 +30,6 @@
     _Title.text            = title;
     _Content.text          = content;
     }
-
-
 }
 
 - (void)didReceiveMemoryWarning {

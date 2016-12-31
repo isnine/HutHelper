@@ -63,7 +63,6 @@
 		3A6FF7C51DB3151E004CFBE8 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A6FF7C41DB3151E004CFBE8 /* CoreTelephony.framework */; };
 		3A6FF7C71DB3152C004CFBE8 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A6FF7C61DB3152C004CFBE8 /* libz.tbd */; };
 		3A6FF7C91DB31544004CFBE8 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A6FF7C81DB31544004CFBE8 /* libsqlite3.0.tbd */; };
-		3A7ED56D1DE30B1300389399 /* UploadimageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A7ED56C1DE30B1200389399 /* UploadimageViewController.m */; };
 		3A7ED5701DE3254A00389399 /* ExamaddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A7ED56F1DE3254A00389399 /* ExamaddViewController.m */; };
 		3A8567801DA908AA00EBD44A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A85677F1DA908AA00EBD44A /* main.m */; };
 		3A85678B1DA908AA00EBD44A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A85678A1DA908AA00EBD44A /* Assets.xcassets */; };
@@ -162,6 +161,7 @@
 		3A0898BF1DB5ED6000D2CCE6 /* expandableImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = expandableImage.png; path = HutHelper/Lib/SKTTable/expandableImage.png; sourceTree = "<group>"; };
 		3A0898C01DB5ED6000D2CCE6 /* expandableImage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "expandableImage@2x.png"; path = "HutHelper/Lib/SKTTable/expandableImage@2x.png"; sourceTree = "<group>"; };
 		3A0898C51DB5EFD100D2CCE6 /* ScoreViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ScoreViewController.xib; path = HutHelper/ScoreViewController.xib; sourceTree = "<group>"; };
+		3A09BF681E179B2900BC2313 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		3A2D105F1DB66063009916D0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		3A2D10601DB66063009916D0 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		3A2D10611DB66063009916D0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -233,8 +233,6 @@
 		3A6FF7C61DB3152C004CFBE8 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		3A6FF7C81DB31544004CFBE8 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		3A7D3CA91DB0A6CB00355E7A /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
-		3A7ED56B1DE30B1200389399 /* UploadimageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadimageViewController.h; sourceTree = "<group>"; };
-		3A7ED56C1DE30B1200389399 /* UploadimageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UploadimageViewController.m; path = HutHelper/UploadimageViewController.m; sourceTree = "<group>"; };
 		3A7ED56E1DE3254A00389399 /* ExamaddViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExamaddViewController.h; sourceTree = "<group>"; };
 		3A7ED56F1DE3254A00389399 /* ExamaddViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExamaddViewController.m; path = HutHelper/ExamaddViewController.m; sourceTree = "<group>"; };
 		3A85677B1DA908AA00EBD44A /* HutHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HutHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -542,7 +540,6 @@
 		3A8567DA1DAA3DDA00EBD44A /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				3A7ED56C1DE30B1200389399 /* UploadimageViewController.m */,
 				3A45626A1DB4980800E5591A /* FirstLoginViewController.m */,
 				3A3E52FF1DB2267D00A49067 /* ExamViewController.m */,
 				3A6D7EE91DABDB500081B70D /* LeftSortsViewController.m */,
@@ -606,7 +603,6 @@
 			isa = PBXGroup;
 			children = (
 				3A7ED56E1DE3254A00389399 /* ExamaddViewController.h */,
-				3A7ED56B1DE30B1200389399 /* UploadimageViewController.h */,
 				3AAC24311DE1F17400546B11 /* UsernameViewController.h */,
 				3AB6BF981DDFF74300127C96 /* UserViewController.h */,
 				3ABF727D1DDB32F60062E757 /* LostViewController.h */,
@@ -978,7 +974,6 @@
 				3A026D171DBC9B42000288AF /* UUChartLabel.m in Sources */,
 				3A3C68901DB115190088CC17 /* LGPlusButtonDescription.m in Sources */,
 				3A33D7D51DAE36420012EFDE /* SchoolHandViewController.m in Sources */,
-				3A7ED56D1DE30B1300389399 /* UploadimageViewController.m in Sources */,
 				3A6D7EF61DABDB500081B70D /* ViewController.m in Sources */,
 				3A6D7EF31DABDB500081B70D /* MainPageViewController.m in Sources */,
 				3A8BAD7B1DDDBE6A001C78B8 /* UMSocialUIManager.m in Sources */,
@@ -1023,6 +1018,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				3A85678D1DA908AA00EBD44A /* Base */,
+				3A09BF681E179B2900BC2313 /* zh-Hans */,
 			);
 			name = LaunchScreen.storyboard;
 			path = HutHelper;
@@ -1035,6 +1031,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -1084,6 +1081,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";

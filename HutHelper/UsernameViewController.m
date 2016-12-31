@@ -7,7 +7,7 @@
 //
 
 #import "UsernameViewController.h"
-
+#import "JSONKit.h"
 @interface UsernameViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *Username;
 
@@ -34,7 +34,7 @@
     
     NSString *str=@"username=";
     str=[str stringByAppendingString:_Username.text];
-
+    NSString *username_text=_Username.text;
     NSLog(@"地址%@",url_s);
      NSLog(@"传值%@",str);
     
@@ -47,12 +47,38 @@
     NSURLConnection * conn   = [[NSURLConnection alloc] initWithRequest:request delegate:self];
     [conn start];
     
-    UIAlertView *alertView    = [[UIAlertView alloc] initWithTitle:@"温馨提示"
-                                                           message:@"重新登录后即可查看昵称"
-                                                          delegate:self
-                                                 cancelButtonTitle:@"取消"
-                                                 otherButtonTitles:@"确定", nil];
-    [alertView show];
+    NSData *returnData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+    NSDictionary *returnData_Dic       = [returnData objectFromJSONData];//数据 -> 字典
+    NSString *Msg=[returnData_Dic objectForKey:@"msg"];
+    
+    if ([Msg isEqualToString:@"ok"]) {
+        [defaults setObject:username_text forKey:@"username"];
+        UIAlertView *alertView    = [[UIAlertView alloc] initWithTitle:@"修改成功"
+                                                               message:@""
+                                                              delegate:self
+                                                     cancelButtonTitle:@"取消"
+                                                     otherButtonTitles:@"确定", nil];
+        [alertView show];
+          [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:([self.navigationController.viewControllers count] -3)] animated:YES];  //返回用户
+    }
+    else if ([Msg isEqualToString:@"令牌错误"]){
+        UIAlertView *alertView    = [[UIAlertView alloc] initWithTitle:@"登录过期"
+                                                               message:@"请重新登录"
+                                                              delegate:self
+                                                     cancelButtonTitle:@"取消"
+                                                     otherButtonTitles:@"确定", nil];
+        [alertView show];
+                  [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:([self.navigationController.viewControllers count] -3)] animated:YES];  //返回Home
+    }
+    else{
+        UIAlertView *alertView    = [[UIAlertView alloc] initWithTitle:@"网络错误"
+                                                               message:@"请检查网络后重试"
+                                                              delegate:self
+                                                     cancelButtonTitle:@"取消"
+                                                     otherButtonTitles:@"确定", nil];
+        [alertView show];
+    }
+
     
 }
 

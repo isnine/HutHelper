@@ -844,34 +844,6 @@
             </objects>
             <point key="canvasLocation" x="1906.875" y="1842.2535211267607"/>
         </scene>
-        <!--Uploadimage View Controller-->
-        <scene sceneID="kcu-zW-jcj">
-            <objects>
-                <viewController storyboardIdentifier="Uploadimage" id="tqn-WE-qPB" customClass="UploadimageViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="sns-1n-n2H"/>
-                        <viewControllerLayoutGuide type="bottom" id="Wg5-XF-pTY"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="KSQ-U0-8mE">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sn7-Ft-toN">
-                                <rect key="frame" x="137" y="329" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="Upload:" destination="tqn-WE-qPB" eventType="touchUpInside" id="NtR-oQ-j5g"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="A5r-Lf-atI" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2987" y="1842"/>
-        </scene>
         <!--Examadd View Controller-->
         <scene sceneID="CA8-gr-jw5">
             <objects>
