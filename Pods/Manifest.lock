@@ -12,20 +12,39 @@ PODS:
     - Reachability
   - ASIHTTPRequest/S3 (1.8.2):
     - ASIHTTPRequest/Core
+  - DJRefresh (1.0.5)
   - JSPatchPlatform (1.6.3):
     - JSPatchPlatform/Core (= 1.6.3)
   - JSPatchPlatform/Core (1.6.3)
+  - MBProgressHUD (1.0.0)
   - Reachability (3.2)
+  - UMengAnalytics-NO-IDFA (4.1.5)
+  - UMengUShare/Core (6.0.3):
+    - UMengUShare/Network
+  - UMengUShare/Network (6.0.3)
+  - UMengUShare/Social/QQ (6.0.3):
+    - UMengUShare/Core
+  - UMengUShare/UI (6.0.3):
+    - UMengUShare/Core
 
 DEPENDENCIES:
   - ASIHTTPRequest
+  - DJRefresh (~> 1.0.5)
   - JSPatchPlatform
+  - MBProgressHUD (~> 1.0.0)
+  - UMengAnalytics-NO-IDFA
+  - UMengUShare/Social/QQ
+  - UMengUShare/UI
 
 SPEC CHECKSUMS:
   ASIHTTPRequest: ec013992946676b7978dcbde6396d57312d21db4
+  DJRefresh: 32b3776546004faddddc28035442ba15e07c5f1b
   JSPatchPlatform: a1e6f6e7903fd6e26ceddc6a2aeb0c051cc98100
+  MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
+  UMengAnalytics-NO-IDFA: f1b08b540eba6ebad044a574cae6d988cf40cfda
+  UMengUShare: f231fc086d789d4e560a5090dcc13a2db15c686d
 
-PODFILE CHECKSUM: f1e01069518281d5ede5b474732b12ac2ae26f89
+PODFILE CHECKSUM: a6927b2af1e5313ee4718f6d547df235257416a3
 
 COCOAPODS: 1.1.1

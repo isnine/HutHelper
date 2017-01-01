@@ -1,5 +1,10 @@
 platform:ios,'8.0'
 target "HutHelper" do
-pod 'JSPatchPlatform'
-pod 'ASIHTTPRequest'
+    pod 'JSPatchPlatform'
+    pod 'ASIHTTPRequest'
+    pod 'MBProgressHUD', '~> 1.0.0'
+    pod 'DJRefresh', '~> 1.0.5'
+    pod 'UMengAnalytics-NO-IDFA'
+    pod 'UMengUShare/Social/QQ'
+    pod 'UMengUShare/UI'
 end

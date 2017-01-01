@@ -9,6 +9,16 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>DJRefresh.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>MBProgressHUD.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-HutHelper.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -19,10 +29,30 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>UMengUShare.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>801E6E9BC310ADA14FD4C5D1FC59E71F</key>
+		<key>2B0BC9F7917E92651B29B7CC4C5AA12B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>586F2DFA9BDCC6675C2546793A69E5CC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>71045D231DDFBEAA6A91239FEA8D5BB7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8FEB3B577CD376BCECE2FC2479FAACF4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
