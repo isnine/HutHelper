@@ -114,10 +114,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    UIColor *greyColor           = [UIColor colorWithRed:239/255.0 green:239/255.0 blue:239/255.0 alpha:1];
-    self.view.backgroundColor    = greyColor;
-    
-    self.title                   = @"登录";
     _UserName.placeholder=@"学号";
     [_UserName setValue:[UIColor whiteColor] forKeyPath:@"_placeholderLabel.textColor"];
     _Password.placeholder=@"密码";

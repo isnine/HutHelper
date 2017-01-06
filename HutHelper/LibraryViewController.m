@@ -23,6 +23,7 @@ NSString *Url_String;
     [self SetTitle];
     [self SetURL];
     NSURL *url                = [[NSURL alloc]initWithString:Url_String];
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor]}];
     _views.delegate=self;
     [_views loadRequest:[NSURLRequest requestWithURL:url]];
 

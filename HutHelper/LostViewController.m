@@ -19,6 +19,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"失物招领";
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor]}];
     NSURL *url                = [[NSURL alloc]initWithString:@"http://218.75.197.121:8888/loses"];
     
     [_Show loadRequest:[NSURLRequest requestWithURL:url]];

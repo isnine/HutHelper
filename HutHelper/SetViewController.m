@@ -24,7 +24,7 @@
     self.navigationItem.title = @"设置";
     UIColor *greyColor        = [UIColor colorWithRed:239/255.0 green:239/255.0 blue:239/255.0 alpha:1];
     self.view.backgroundColor = greyColor;
-
+   [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor]}];
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     NSString *autoclass=[defaults objectForKey:@"autoclass"];
     if ([autoclass isEqualToString:@"打开"]) {

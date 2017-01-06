@@ -109,6 +109,7 @@
     [super viewDidLoad];
     self.tableView.SKSTableViewDelegate = self;
     self.navigationItem.title = @"所有成绩";
+        [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor]}];
     //右侧按钮
     UIBarButtonItem *myButton = [[UIBarButtonItem alloc] initWithTitle:@"主页" style:UIBarButtonItemStyleBordered target:self action:@selector(clickEvent)];
     self.navigationItem.rightBarButtonItem = myButton;

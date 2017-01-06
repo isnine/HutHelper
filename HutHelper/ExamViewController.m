@@ -67,6 +67,7 @@ int datediff(int y1,int m1,int d1,int y2,int m2,int d2)
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
     
     self.title=@"考试计划";
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor]}];
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     MsgModel * mode0=[[MsgModel alloc]init];
     MsgModel * mode1=[[MsgModel alloc]init];

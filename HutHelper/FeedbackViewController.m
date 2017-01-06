@@ -27,6 +27,7 @@
     self.view.backgroundColor          = greyColor;
 
     _Mail.placeholder=@"联系方式";
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor]}];
 
 }
 

@@ -78,6 +78,7 @@ NSString *show_xp;
     nowweek_string=[nowweek_string stringByAppendingString:@"周"];
     //标题结束//
     self.navigationItem.title                    = nowweek_string;
+        [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor]}];
     //------------按钮--------
     UIBarButtonItem *myButton = [[UIBarButtonItem alloc] initWithTitle:@"刷新" style:UIBarButtonItemStyleBordered target:self action:@selector(clickEvent)];
     self.navigationItem.rightBarButtonItem = myButton;

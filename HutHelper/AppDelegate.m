@@ -69,9 +69,9 @@
 
 
 
-    UIColor *ownColor                = [UIColor colorWithRed:0/255.0 green:219/255.0 blue:204/255.0 alpha:1];
+    UIColor *ownColor                = [UIColor colorWithRed:255/255.0 green:255/255.0 blue:255/255.0 alpha:1];
     [[UINavigationBar appearance] setBarTintColor: ownColor];  //颜色
-
+    
     [UMessage removeAllTags:^(id responseObject, NSInteger remain, NSError *error) {
     }];
     
@@ -115,7 +115,6 @@
         //第三步，连接服务器
         NSURLConnection *connection = [[NSURLConnection alloc]initWithRequest:request delegate:self];
     }
-
         return YES;
 }
 

@@ -49,6 +49,7 @@
 		3A45626D1DB4980800E5591A /* FirstLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A45626B1DB4980800E5591A /* FirstLoginViewController.xib */; };
 		3A4D04331E1963AC00595183 /* 工大助手API文档.docx in Resources */ = {isa = PBXBuildFile; fileRef = 3A4D04321E1963AC00595183 /* 工大助手API文档.docx */; };
 		3A4D04351E1963B900595183 /* interface.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3A4D04341E1963B900595183 /* interface.txt */; };
+		3A4D38B01E1FAF7C00639C18 /* UINavigationBar+Awesome.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A4D38AF1E1FAF7C00639C18 /* UINavigationBar+Awesome.m */; };
 		3A6D7EDE1DABD9DA0081B70D /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A6D7EDD1DABD9DA0081B70D /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		3A6D7EE31DABD9F50081B70D /* LeftSlideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A6D7EE11DABD9F50081B70D /* LeftSlideViewController.m */; };
 		3A6D7EE41DABD9F50081B70D /* UIView_extra.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A6D7EE21DABD9F50081B70D /* UIView_extra.m */; };
@@ -183,6 +184,8 @@
 		3A45626B1DB4980800E5591A /* FirstLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FirstLoginViewController.xib; path = HutHelper/FirstLoginViewController.xib; sourceTree = "<group>"; };
 		3A4D04321E1963AC00595183 /* 工大助手API文档.docx */ = {isa = PBXFileReference; lastKnownFileType = file; name = "工大助手API文档.docx"; path = "Docs/工大助手API文档.docx"; sourceTree = "<group>"; };
 		3A4D04341E1963B900595183 /* interface.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = interface.txt; path = Docs/interface.txt; sourceTree = "<group>"; };
+		3A4D38AE1E1FAF7C00639C18 /* UINavigationBar+Awesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+Awesome.h"; sourceTree = "<group>"; };
+		3A4D38AF1E1FAF7C00639C18 /* UINavigationBar+Awesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+Awesome.m"; sourceTree = "<group>"; };
 		3A6D7EDC1DABD9DA0081B70D /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSONKit.h; path = HutHelper/Lib/JSONKit.h; sourceTree = "<group>"; };
 		3A6D7EDD1DABD9DA0081B70D /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JSONKit.m; path = HutHelper/Lib/JSONKit.m; sourceTree = "<group>"; };
 		3A6D7EDF1DABD9F50081B70D /* LeftSlideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LeftSlideViewController.h; path = Lib/LeftSlideViewController/LeftSlideViewController.h; sourceTree = "<group>"; };
@@ -376,6 +379,7 @@
 		3A4D04181E19201B00595183 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				3A4D38AD1E1FAF6900639C18 /* LTNavigationBar */,
 				3A33D7D81DAE50EF0012EFDE /* UMessage_Sdk_1.4.0 */,
 				3AA1BC101E16178900F75A7E /* MBProgressHUD+MJ */,
 			);
@@ -606,6 +610,15 @@
 				3A4D04341E1963B900595183 /* interface.txt */,
 			);
 			name = Doc;
+			sourceTree = "<group>";
+		};
+		3A4D38AD1E1FAF6900639C18 /* LTNavigationBar */ = {
+			isa = PBXGroup;
+			children = (
+				3A4D38AE1E1FAF7C00639C18 /* UINavigationBar+Awesome.h */,
+				3A4D38AF1E1FAF7C00639C18 /* UINavigationBar+Awesome.m */,
+			);
+			name = LTNavigationBar;
 			sourceTree = "<group>";
 		};
 		3A7D3CA81DB0A6CB00355E7A /* Frameworks */ = {
@@ -909,6 +922,7 @@
 				3A33D7CB1DAE28380012EFDE /* PowerViewController.m in Sources */,
 				3A6D7EE41DABD9F50081B70D /* UIView_extra.m in Sources */,
 				3A0898BC1DB5ED5800D2CCE6 /* SKSTableView.m in Sources */,
+				3A4D38B01E1FAF7C00639C18 /* UINavigationBar+Awesome.m in Sources */,
 				3A6D7EF41DABDB500081B70D /* MainViewController.m in Sources */,
 				3A6D7EE31DABD9F50081B70D /* LeftSlideViewController.m in Sources */,
 				3AAC242E1DE1CB8C00546B11 /* UserInfoCell.m in Sources */,
