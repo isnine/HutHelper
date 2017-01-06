@@ -119,7 +119,6 @@
     _Password.placeholder=@"密码";
     [_Password setValue:[UIColor whiteColor] forKeyPath:@"_placeholderLabel.textColor"];
     
-    
 }
 - (IBAction)resetpassword:(id)sender {
     UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
