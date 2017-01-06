@@ -318,8 +318,8 @@ int class_error_;
                     break;
                 }
                 case 3:{
-                    show_erro=@"课表查询错误,请检查网络";
-                    UIAlertView *alertView                    = [[UIAlertView alloc] initWithTitle:@"错误"
+                    show_erro=@"登录过期或网络异常";
+                    UIAlertView *alertView                    = [[UIAlertView alloc] initWithTitle:@"请点击切换用户,重新登录"
                                                                                            message:show_erro
                                                                                           delegate:self
                                                                                  cancelButtonTitle:@"取消"

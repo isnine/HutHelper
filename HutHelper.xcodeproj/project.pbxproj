@@ -47,6 +47,8 @@
 		3A449C711E16C2E500D89CEA /* header@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3A449C701E16C2E500D89CEA /* header@2x.jpg */; };
 		3A45626C1DB4980800E5591A /* FirstLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A45626A1DB4980800E5591A /* FirstLoginViewController.m */; };
 		3A45626D1DB4980800E5591A /* FirstLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A45626B1DB4980800E5591A /* FirstLoginViewController.xib */; };
+		3A4D04331E1963AC00595183 /* 工大助手API文档.docx in Resources */ = {isa = PBXBuildFile; fileRef = 3A4D04321E1963AC00595183 /* 工大助手API文档.docx */; };
+		3A4D04351E1963B900595183 /* interface.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3A4D04341E1963B900595183 /* interface.txt */; };
 		3A6D7EDE1DABD9DA0081B70D /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A6D7EDD1DABD9DA0081B70D /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		3A6D7EE31DABD9F50081B70D /* LeftSlideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A6D7EE11DABD9F50081B70D /* LeftSlideViewController.m */; };
 		3A6D7EE41DABD9F50081B70D /* UIView_extra.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A6D7EE21DABD9F50081B70D /* UIView_extra.m */; };
@@ -179,6 +181,8 @@
 		3A4562691DB4980800E5591A /* FirstLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstLoginViewController.h; sourceTree = "<group>"; };
 		3A45626A1DB4980800E5591A /* FirstLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstLoginViewController.m; sourceTree = "<group>"; };
 		3A45626B1DB4980800E5591A /* FirstLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FirstLoginViewController.xib; path = HutHelper/FirstLoginViewController.xib; sourceTree = "<group>"; };
+		3A4D04321E1963AC00595183 /* 工大助手API文档.docx */ = {isa = PBXFileReference; lastKnownFileType = file; name = "工大助手API文档.docx"; path = "Docs/工大助手API文档.docx"; sourceTree = "<group>"; };
+		3A4D04341E1963B900595183 /* interface.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = interface.txt; path = Docs/interface.txt; sourceTree = "<group>"; };
 		3A6D7EDC1DABD9DA0081B70D /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSONKit.h; path = HutHelper/Lib/JSONKit.h; sourceTree = "<group>"; };
 		3A6D7EDD1DABD9DA0081B70D /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JSONKit.m; path = HutHelper/Lib/JSONKit.m; sourceTree = "<group>"; };
 		3A6D7EDF1DABD9F50081B70D /* LeftSlideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LeftSlideViewController.h; path = Lib/LeftSlideViewController/LeftSlideViewController.h; sourceTree = "<group>"; };
@@ -390,7 +394,7 @@
 			name = 3rd;
 			sourceTree = "<group>";
 		};
-		3A4D041A1E1924EA00595183 /* ViewControllers */ = {
+		3A4D041A1E1924EA00595183 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				3A4D041B1E19250300595183 /* Main */,
@@ -412,7 +416,7 @@
 				3A4D04251E1925D200595183 /* Library */,
 				3A4D04301E1934A600595183 /* Other */,
 			);
-			name = ViewControllers;
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 		3A4D041B1E19250300595183 /* Main */ = {
@@ -595,6 +599,15 @@
 			name = Other;
 			sourceTree = "<group>";
 		};
+		3A4D04311E19639700595183 /* Doc */ = {
+			isa = PBXGroup;
+			children = (
+				3A4D04321E1963AC00595183 /* 工大助手API文档.docx */,
+				3A4D04341E1963B900595183 /* interface.txt */,
+			);
+			name = Doc;
+			sourceTree = "<group>";
+		};
 		3A7D3CA81DB0A6CB00355E7A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -618,6 +631,7 @@
 				3A85677D1DA908AA00EBD44A /* HutHelper */,
 				3A85678A1DA908AA00EBD44A /* Assets.xcassets */,
 				3A85677C1DA908AA00EBD44A /* Products */,
+				3A4D04311E19639700595183 /* Doc */,
 				3A7D3CA81DB0A6CB00355E7A /* Frameworks */,
 				12486D9D0B1F337F5979987B /* Pods */,
 			);
@@ -634,7 +648,7 @@
 		3A85677D1DA908AA00EBD44A /* HutHelper */ = {
 			isa = PBXGroup;
 			children = (
-				3A4D041A1E1924EA00595183 /* ViewControllers */,
+				3A4D041A1E1924EA00595183 /* Controllers */,
 				3A4D04191E19204300595183 /* 3rd */,
 				3A4D04181E19201B00595183 /* Utils */,
 				3A8567DB1DAA3DF800EBD44A /* Model */,
@@ -803,6 +817,7 @@
 			files = (
 				3A0898C21DB5ED6000D2CCE6 /* expandableImage@2x.png in Resources */,
 				3A45626D1DB4980800E5591A /* FirstLoginViewController.xib in Resources */,
+				3A4D04351E1963B900595183 /* interface.txt in Resources */,
 				3A026D101DBC9B42000288AF /* RootViewController.xib in Resources */,
 				3A0898C61DB5EFD100D2CCE6 /* ScoreViewController.xib in Resources */,
 				3A0898C11DB5ED6000D2CCE6 /* expandableImage.png in Resources */,
@@ -815,6 +830,7 @@
 				3A85678B1DA908AA00EBD44A /* Assets.xcassets in Resources */,
 				3A449C711E16C2E500D89CEA /* header@2x.jpg in Resources */,
 				3ABF727C1DDB2DD70062E757 /* MainPageViewController2.xib in Resources */,
+				3A4D04331E1963AC00595183 /* 工大助手API文档.docx in Resources */,
 				3AA1BC161E16179C00F75A7E /* MBProgressHUD.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

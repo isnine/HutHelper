@@ -51,6 +51,7 @@
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
+   
     NSString *url=webView.request.URL.absoluteString;
     NSLog(@"%@",webView.request.URL.absoluteString);
     //获得地址
