@@ -289,7 +289,7 @@ int class=0;
 
     NSArray *jd ;
     NSArray *jd2 ;
-    NSLog(@"%@",xf_2015_1);
+  
     if(score_2013_1.count != 0){  //大四
        jd = @[xf_2013_1,xf_2014_1,xf_2015_1,xf_2016_1];
       jd2 = @[xf_2013_2,xf_2014_2,xf_2015_2,xf_2016_2];

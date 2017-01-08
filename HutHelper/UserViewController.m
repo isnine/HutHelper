@@ -2,7 +2,7 @@
 //  UserViewController.m
 //  HutHelper
 //
-//  Created by nine on 2016/11/19.
+//  Creatde by nine on 2016/11/19.
 //  Copyright © 2016年 nine. All rights reserved.
 //
 
@@ -250,13 +250,13 @@ NSData* data;
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    NSLog(@"viewDidAppear");
+
     self.navigationController.interactivePopGestureRecognizer.enabled = NO;
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    NSLog(@"viewWillDisappear");
+    
     self.navigationController.interactivePopGestureRecognizer.enabled = YES;
 }
 @end

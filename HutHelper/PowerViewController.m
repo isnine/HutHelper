@@ -25,6 +25,7 @@
     _Room.placeholder=@"寝室号";
     [_Room setValue:[UIColor whiteColor] forKeyPath:@"_placeholderLabel.textColor"];
     self.title=@"电费查询";
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     // Do any additional setup after loading the view from its nib.
 }

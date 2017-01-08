@@ -95,8 +95,7 @@ NSString *show_xp;
     //------------按钮--------
     now_xp=0;
     [self addCourse];
-    NSLog(@"Show状态:%@",show_xp);
-    NSLog(@"XP状态:%d",now_xp);
+
 }
 
 - (void)addCourse{
@@ -138,7 +137,7 @@ NSString *show_xp;
         
         
         int day1 = 1,day2=1,day3=1,day4=1,day5=1,day6=1;
-        NSLog(@"加载课程");
+        
         for (int i= 0; i<=(array.count-1); i++) {
             NSDictionary *dict1       = array[i];
             NSString *ClassName       = [dict1 objectForKey:@"name"];//课名
@@ -830,7 +829,7 @@ titleBackgroundColorInTopbarAtIndex:(NSInteger)index{
                                                                                            showAfterInit:YES
                                                                                            actionHandler:^(LGPlusButtonsView *plusButtonView, NSString *title, NSString *description, NSUInteger index)
                                                     {
-                                                        NSLog(@"actionHandler | title: %@, description: %@, index: %lu", title, description, (long unsigned)index);
+                                                   
                                                         NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
                                                         if (index == 0)
                                                             [_plusButtonsViewNavBar hideAnimated:YES completionHandler:nil];
@@ -985,7 +984,7 @@ titleBackgroundColorInTopbarAtIndex:(NSInteger)index{
 
 - (void)dealloc
 {
-    NSLog(@"%s [Line %d]", __PRETTY_FUNCTION__, __LINE__);
+   
 }
 
 #pragma mark - Appearing

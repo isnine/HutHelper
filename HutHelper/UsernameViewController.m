@@ -36,8 +36,8 @@
     NSString *str=@"username=";
     str=[str stringByAppendingString:_Username.text];
     NSString *username_text=_Username.text;
-    NSLog(@"地址%@",url_s);
-     NSLog(@"传值%@",str);
+//    NSLog(@"地址%@",url_s);
+//     NSLog(@"传值%@",str);
     
     NSMutableURLRequest * request      = [NSMutableURLRequest requestWithURL:url];
     //设置请求方式(默认的是get方式)

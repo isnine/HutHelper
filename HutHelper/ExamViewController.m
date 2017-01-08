@@ -129,7 +129,7 @@ int datediff(int y1,int m1,int d1,int y2,int m2,int d2)
         newexam=0;
     }
     
-    NSLog(@"考试%d",array.count+arraycx.count);
+   
     int k;
     int kcx=0;
     for(k      = 0;k<array.count+arraycx.count+newexam+1;k++){
@@ -158,8 +158,7 @@ int datediff(int y1,int m1,int d1,int y2,int m2,int d2)
             CourseName       = [dict1 objectForKey:@"CourseName"];
             Starttime        = [dict1 objectForKey:@"Starttime"];//起始d周
             isset            = [dict1 objectForKey:@"isset"];//起始周
-            NSLog(@"【】课程:%@，序列:%d",CourseName,kcx);
-            NSLog(@"%@",dict1);
+   
             kcx=kcx+1;
             
             // NSLog(@"【2】k的值为%d三个判断值为%d %d %d",k,array.count,array.count+arraycx.codunt,array.count+arraycx.count+newexam);
@@ -226,7 +225,7 @@ int datediff(int y1,int m1,int d1,int y2,int m2,int d2)
         int month                                 = [dateComponent month];//月
         int day                                   = [dateComponent day];//日
         NSString *lastime;
-        NSLog(@"还有%d天考%@",datediff(year,month,day,Year,Mouth,Day),CourseName);
+      
         
         if (datediff(year,month,day,Year,Mouth,Day)>0) {
             lastime=[[NSString alloc]initWithFormat:@"倒计时%d天",datediff(year,month,day,Year,Mouth,Day)];

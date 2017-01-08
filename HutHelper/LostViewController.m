@@ -46,11 +46,11 @@
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
     NSString *url=webView.request.URL.absoluteString;
-    NSLog(@"%@",webView.request.URL.absoluteString);
+  
     //获得地址
     //如果是首页则返回
     if([url isEqualToString:@"http://218.75.197.121:8888/"]){
-        NSLog(@"首页");
+        //NSLog(@"首页");
         [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:([self.navigationController.viewControllers count] -2)] animated:YES];  //返回上一个View
     }
     
@@ -73,7 +73,7 @@
         }
         else if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad){
             [webView stringByEvaluatingJavaScriptFromString:@"document.body.style.zoom=0.92"];
-            NSLog(@"IPAD");
+        //    NSLog(@"IPAD");
         }
     }
     

@@ -167,7 +167,7 @@
         }
         if([string_cxbj isEqualToString:@"1"]){
             wtg=wtg-1;
-            NSLog(@"减少呀");
+       
         }
         
     }

@@ -63,7 +63,7 @@
 
     
     last_login=[@"最后一次登录时间:" stringByAppendingString:last_login];
-    NSLog(@"%@",last_login);
+    
     if (!_infoLabel) {
         _infoLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 300, 40)];
         _infoLabel.center = CGPointMake(kScreenWidth / 2, 99);

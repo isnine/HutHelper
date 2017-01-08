@@ -54,7 +54,7 @@
             NSString *appDomain       = [[NSBundle mainBundle] bundleIdentifier];
             [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:appDomain];
             
-            NSLog(@"正确:%@",Msg);// 调出Data字典中TrueName
+         //   NSLog(@"正确:%@",Msg);// 调出Data字典中TrueName
             NSString *Remember_code_app=[User_All objectForKey:@"remember_code_app"]; //令牌
             
             NSString *TrueName=[User_Data objectForKey:@"TrueName"]; //真实姓名
@@ -82,7 +82,7 @@
                                         objectForKey:@"CFBundleShortVersionString"];
             [defaults setObject:currentVersion forKey:@"last_run_version_key"]; //保存版本信息
             [defaults synchronize];
-            NSLog(@"用户：%@，学号：%@,令牌:%@",TrueName,studentKH,Remember_code_app);
+          //  NSLog(@"用户：%@，学号：%@,令牌:%@",TrueName,studentKH,Remember_code_app);
            //--------保存用户信息
             //---------推送标签
             [UMessage addTag:dep_name

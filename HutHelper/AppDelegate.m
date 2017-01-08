@@ -164,7 +164,7 @@
     if([notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
         //应用处于前台时的远程推送接受
         //关闭友盟自带的弹出框
-        NSLog(@"Q前台介绍通知");
+        NSLog(@"前台介绍通知");
         [UMessage setAutoAlert:NO];
         //必须加这句代码
         [UMessage didReceiveRemoteNotification:userInfo];

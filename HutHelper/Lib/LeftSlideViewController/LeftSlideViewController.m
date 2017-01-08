@@ -121,7 +121,7 @@
         
         CGFloat leftTabCenterX = kLeftCenterX + ((kScreenWidth - kMainPageDistance) * 0.5 - kLeftCenterX) * (rec.view.frame.origin.x / (kScreenWidth - kMainPageDistance));
 
-        NSLog(@"%f",leftTabCenterX);
+      
         
         
         //leftScale kLeftScale~1.0

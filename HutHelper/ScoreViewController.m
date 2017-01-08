@@ -48,7 +48,7 @@
   
     if (!_contents)
     {
-         NSLog(@"加载");
+        
         _contents = @[
                       @[
                           @[@"Section0_Row0", @"Row0_Subrow1",@"Row0_Subrow2"],
@@ -134,7 +134,7 @@
     NSData* ScoreData           = [defaults objectForKey:@"data_score"];//地址 -> 数据
     NSDictionary *Score_All     = [ScoreData objectFromJSONData];//数据 -> 字典
     NSArray *array_score             = [Score_All objectForKey:@"data"];
-    NSLog(@"%d",array_score.count);
+   
     NSLog(@"总共课程数目:%d",array_score.count);
     
     NSMutableArray *score_name=[NSMutableArray arrayWithCapacity:230];
@@ -1907,7 +1907,7 @@ default:
     
     [self setDataManipulationButton:UIBarButtonSystemItemUndo];
     
-    NSLog(@"ViewDidLoadA");
+  
     [self setDataManipulationButton:UIBarButtonSystemItemRefresh];
     
 }
@@ -1994,12 +1994,12 @@ default:
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"Section: %d, Row:%d, Subrow:%d", indexPath.section, indexPath.row, indexPath.subRow);
+    //NSLog(@"Section: %d, Row:%d, Subrow:%d", indexPath.section, indexPath.row, indexPath.subRow);
 }
 
 - (void)tableView:(SKSTableView *)tableView didSelectSubRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"Section: %d, Row:%d, Subrow:%d", indexPath.section, indexPath.row, indexPath.subRow);
+   // NSLog(@"Section: %d, Row:%d, Subrow:%d", indexPath.section, indexPath.row, indexPath.subRow);
 }
 
 #pragma mark - Actions

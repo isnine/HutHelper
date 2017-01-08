@@ -146,7 +146,7 @@
 }
 
 - (void) btnOnBarClicked:(UIButton *) button{
-    NSLog(@"%@ button's tag: %lu", _yValues[1][1],(long)button.tag);
+ 
    
     switch ((long)button.tag) {
         case 0:{

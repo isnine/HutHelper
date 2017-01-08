@@ -50,7 +50,7 @@
         NSString *Message=[Msg stringByAppendingString:@"，默认密码为身份证后六位"];
         if ([Msg isEqualToString: @"ok"])
         {
-            NSLog(@"正确:%@",Msg);// 调出Data字典中TrueName
+
             NSString *Remember_code_app=[User_All objectForKey:@"remember_code_app"]; //令牌
             
             NSString *TrueName=[User_Data objectForKey:@"TrueName"]; //真实姓名
@@ -76,7 +76,7 @@
             [defaults setObject:head_pic_thumb forKey:@"head_pic_thumb"];
             //强制让数据立刻保存
             [defaults synchronize];
-            NSLog(@"用户：%@，学号：%@,令牌:%@",TrueName,studentKH,Remember_code_app);
+           // NSLog(@"用户：%@，学号：%@,令牌:%@",TrueName,studentKH,Remember_code_app);
             
             [UMessage addTag:dep_name
                     response:^(id responseObject, NSInteger remain, NSError *error) {
