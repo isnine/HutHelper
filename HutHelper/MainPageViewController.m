@@ -537,9 +537,13 @@ int class_error_;
                 [defaults setInteger:1 forKey:@"exam_on"];
             }
             if(array.count!=0){
-                ExamViewController *exam                  = [[ExamViewController alloc] init];
-                AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-                [tempAppDelegate.mainNavigationController pushViewController:exam animated:YES];
+//                ExamViewController *exam                  = [[ExamViewController alloc] init];
+//                AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+//                [tempAppDelegate.mainNavigationController pushViewController:exam animated:YES];
+                UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                MainPageViewController2 *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"ExamNew"];
+                AppDelegate *tempAppDelegate= (AppDelegate *)[[UIApplication sharedApplication] delegate];
+                [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:NO];
             }
             else{
                 UIAlertView *alertView1    = [[UIAlertView alloc] initWithTitle:@"暂无考试"
@@ -559,10 +563,7 @@ int class_error_;
         }
         [MBProgressHUD hideHUDForView:self.view animated:YES];
     });
-//    UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-//    MainPageViewController2 *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"ExamNew"];
-//    AppDelegate *tempAppDelegate= (AppDelegate *)[[UIApplication sharedApplication] delegate];
-//    [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:NO];
+
 } //考试计划
 
 - (IBAction)Day:(id)sender {  //校历

@@ -9,6 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface ExamCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *Label_ExamName;
+@property (weak, nonatomic) IBOutlet UILabel *Label_ExamRoom;
+@property (weak, nonatomic) IBOutlet UILabel *Label_ExamTime;
+@property (weak, nonatomic) IBOutlet UILabel *Label_ExamIsset;
+@property (weak, nonatomic) IBOutlet UILabel *Label_ExamLast;
 
 
 +(instancetype)tableViewCell;

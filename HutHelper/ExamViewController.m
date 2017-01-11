@@ -19,6 +19,12 @@
     MyView * myView;
     UIView * dataPiker;
 }
+@property (nonatomic, retain) NSData *jsonData;
+@property (nonatomic, retain) NSDictionary *User_All;
+@property (nonatomic, retain) NSDictionary *Class_Data;
+@property (nonatomic, retain) NSMutableArray *array;
+@property (nonatomic, retain) NSMutableArray *arraycx;
+
 @end
 @implementation NSString (MD5)
 - (id)MD5
@@ -58,10 +64,19 @@ int datediff(int y1,int m1,int d1,int y2,int m2,int d2)
     time_t st2=mktime(&ptr2);
     return (int)((st2-st1)/3600/24);
 }
-
+-(void)setexam{
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+   _jsonData=[defaults objectForKey:@"data_exam"];
+   _User_All     = [_jsonData objectFromJSONData];//数据 -> 字典
+    _Class_Data=[_User_All objectForKey:@"res"];
+    _array  = [_Class_Data objectForKey:@"exam"];
+    _arraycx = [_Class_Data objectForKey:@"cxexam"];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     /** 标题栏样式 */
+    [self setexam];
+    
     UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     self.navigationItem.backBarButtonItem = item;
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
@@ -114,11 +129,7 @@ int datediff(int y1,int m1,int d1,int y2,int m2,int d2)
     
     
     
-    NSData *jsonData=[defaults objectForKey:@"data_exam"];
-    NSDictionary *User_All     = [jsonData objectFromJSONData];//数据 -> 字典
-    NSDictionary *Class_Data=[User_All objectForKey:@"res"];
-    NSMutableArray *array  = [Class_Data objectForKey:@"exam"];
-    NSMutableArray *arraycx = [Class_Data objectForKey:@"cxexam"];
+
     
     int newexam=0;
     NSString *examcet=[defaults objectForKey:@"examcet"];
@@ -132,28 +143,24 @@ int datediff(int y1,int m1,int d1,int y2,int m2,int d2)
    
     int k;
     int kcx=0;
-    for(k      = 0;k<array.count+arraycx.count+newexam+1;k++){
+    for(k      = 0;k<_array.count+_arraycx.count+newexam+1;k++){
         NSDictionary *dict1;
-        
-        
         NSString *CourseName       ;
-        
         NSString *RoomName        ;//起始周
         NSString *Starttime       ;
-        
-        NSString *isset            ;
+        NSString *isset           ;
         
         // NSLog(@"正常考试数目:%d,重修考试数目:%d",array.count,arraycx.count);
-        if(k<array.count){
-            dict1        = array[k];
+        if(k<_array.count){
+            dict1        = _array[k];
             RoomName         = [dict1 objectForKey:@"RoomName"];//起始周
             CourseName       = [dict1 objectForKey:@"CourseName"];
             Starttime        = [dict1 objectForKey:@"Starttime"];//起始周
             isset            = [dict1 objectForKey:@"isset"];//起始周
             
         }
-        else if(k>=array.count&&k<array.count+arraycx.count){
-            dict1        = arraycx[kcx];
+        else if(k>=_array.count&&k<_array.count+_arraycx.count){
+            dict1        = _arraycx[kcx];
             RoomName         = [dict1 objectForKey:@"RoomName"];//起始周
             CourseName       = [dict1 objectForKey:@"CourseName"];
             Starttime        = [dict1 objectForKey:@"Starttime"];//起始d周
@@ -161,16 +168,16 @@ int datediff(int y1,int m1,int d1,int y2,int m2,int d2)
    
             kcx=kcx+1;
             
-            // NSLog(@"【2】k的值为%d三个判断值为%d %d %d",k,array.count,array.count+arraycx.codunt,array.count+arraycx.count+newexam);
+            // NSLog(@"【2】k的值为%d三个判断值为%d %d %d",k,array.count,array.count+_arraycx.codunt,array.count+_arraycx.count+newexam);
         }
-        else if(k==array.count+arraycx.count){
+        else if(k==_array.count+_arraycx.count){
             RoomName         = @"-";//起始周
             CourseName       = @"开学";
             Starttime        = @"2017-02-17";//起始周
             isset            = @"1";//起始周
-            // NSLog(@"【3】k的值为%d三个判断值为%d %d %d",k,array.count,array.count+arraycx.count,array.count+arraycx.count+newexam);
+            // NSLog(@"【3】k的值为%d三个判断值为%d %d %d",k,array.count,array.count+_arraycx.count,array.count+_arraycx.count+newexam);
         }
-        else if(k==array.count+arraycx.count+newexam){
+        else if(k==_array.count+_arraycx.count+newexam){
             RoomName         = @"-";//起始周
             CourseName       = @"英语四六级考试";
             Starttime        = @"2017-06-17";//起始周
@@ -201,7 +208,7 @@ int datediff(int y1,int m1,int d1,int y2,int m2,int d2)
             isset            = 0;//起始周
         }
         
-        if (k>=array.count) {
+        if (k>=_array.count) {
             CourseName  = [@"*" stringByAppendingString:CourseName];
         }
         
@@ -460,7 +467,7 @@ int datediff(int y1,int m1,int d1,int y2,int m2,int d2)
     myView=[[MyView alloc]init];
     MsgModel * model=[[MsgModel alloc]init];
     
-    switch (array.count+arraycx.count+newexam+1) {
+    switch (_array.count+_arraycx.count+newexam+1) {
         case 0:{
             UIAlertView *alertView1    = [[UIAlertView alloc] initWithTitle:@"暂无考试"
                                                                     message:@"计划表上暂时没有考试"
