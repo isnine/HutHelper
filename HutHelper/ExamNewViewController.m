@@ -7,9 +7,8 @@
 //
 
 #import "ExamNewViewController.h"
-
+#import "ExamCell.h"
 @interface ExamNewViewController ()
-
 @end
 
 @implementation ExamNewViewController
@@ -18,13 +17,19 @@
     [super viewDidLoad];
     self.navigationItem.title = @"考试计划";
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor]}];
-    // Do any additional setup after loading the view.
+
+    /**按钮*/
+    UIView *rightButtonView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 50)];
+    UIButton *mainAndSearchBtn = [[UIButton alloc] initWithFrame:CGRectMake(70, 0, 50, 50)];
+    [rightButtonView addSubview:mainAndSearchBtn];
+    [mainAndSearchBtn setImage:[UIImage imageNamed:@"reload"] forState:UIControlStateNormal];
+    [mainAndSearchBtn addTarget:self action:@selector(reloadcourse) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *rightCunstomButtonView = [[UIBarButtonItem alloc] initWithCustomView:rightButtonView];
+    self.navigationItem.rightBarButtonItem = rightCunstomButtonView;
+    /**考试数据*/
+
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 10;
 }
@@ -34,7 +39,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 150;
+    return 130;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
@@ -45,26 +50,10 @@
     return 0.00001;
 }
 
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-    UIView *headView = [[UIView alloc]init];
-    headView.backgroundColor = [UIColor colorWithRed:239/255.0 green:239/255.0 blue:239/255.0 alpha:1.0];
-    return headView;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    static NSString *TableSampleIdentifier = @"cellStr";
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    ExamCell *cell=[ExamCell tableViewCell];
     
-   // UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:TableSampleIdentifier];
-     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"kUserInfoCellId" ];
-    if(indexPath.row == 0){
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"kUserInfoCellId"];
-    }
-    }
-    if(indexPath.row == 1){
-        cell.textLabel.text = @"考试名称:机械设计";
-        return cell;
-    }
     return cell;
 }
 

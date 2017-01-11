@@ -11,5 +11,5 @@
 @interface APIManager : NSObject
 @property (nonatomic, copy)NSString *studentNam;
 -(NSString*)Login:(NSString*)UserName_String With:(NSString*)Password_String;
-
+-(NSString*)GetClass;
 @end

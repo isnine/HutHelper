@@ -70,8 +70,77 @@
                     //add your codes
                 }];
         //--------推送标签完毕
-       
+        
     }
-     return Msg;
+    return Msg;
+}
+
+-(NSString*)GetClass{
+    int class_error_=0;
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    NSString *studentKH=[defaults objectForKey:@"studentKH"];
+    NSString *Remember_code_app=[defaults objectForKey:@"remember_code_app"];
+    /**课表数据缓存*/
+    NSString *Url_String=[NSString stringWithFormat:@"http://218.75.197.121:8888/api/v1/get/lessons/%@/%@",studentKH,Remember_code_app];
+    NSURL *url                   = [NSURL URLWithString: Url_String];//接口地址
+    NSError *error               = nil;
+    NSString *jsonString         = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:&error];//Url -> String
+    NSData* jsonData             = [jsonString dataUsingEncoding:NSUTF8StringEncoding];//地址 -> 数据
+    NSDictionary *Class_All      = [jsonData objectFromJSONData];//数据 -> 字典
+    NSString *msg_class          = [Class_All objectForKey:@"msg"];//得到数据情况
+    if ([msg_class isEqualToString:@"ok"]) {
+        NSArray *array               = [Class_All objectForKey:@"data"];
+        [defaults setObject:array forKey:@"array_class"];
+        [defaults synchronize];
+    }
+    else{
+        class_error_=1;
+    }
+    NSLog(@"平时课表地址:%@",url);
+    /**实验课表数据缓存*/
+    NSString *Url_String_xp_1=@"http://218.75.197.121:8888/api/v1/get/lessonsexp/";
+    NSString *Url_String_xp_1_U=[Url_String_xp_1 stringByAppendingString:studentKH];
+    NSString *Url_String_xp_1_U_2=[Url_String_xp_1_U stringByAppendingString:@"/"];
+    NSString *Url_String_xp=[Url_String_xp_1_U_2 stringByAppendingString:Remember_code_app];
+    NSURL *url_xp                = [NSURL URLWithString: Url_String_xp];//接口地址
+    NSLog(@"实验课表地址:%@",Url_String_xp);
+    //自带库解析实验课
+    NSURLRequest *request        = [NSURLRequest requestWithURL:[NSURL URLWithString:Url_String_xp]];
+    NSData *response             = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+    if (!response==NULL) {
+        NSDictionary *jsonDataxp     = [NSJSONSerialization JSONObjectWithData:response options:NSJSONReadingMutableLeaves error:&error];
+        NSString *msg_xp          = [jsonDataxp objectForKey:@"msg"];//得到数据情况
+        if ([msg_xp isEqualToString:@"ok"]) {
+            NSArray *array_xp            = [jsonDataxp objectForKey:@"data"];
+            [defaults setObject:array_xp forKey:@"array_xp"];
+            [defaults synchronize];
+        }
+        else{
+            class_error_=class_error_+2;
+        }
+    }
+    else{
+        class_error_=class_error_+2;
+    }
+    NSString *show_erro;
+    switch (class_error_) {
+        case 0:{
+            return @"ok";
+            break;
+        }
+        case 1:{
+            return @"没有找到平时课表";
+            break;}
+        case 2:{
+            return @"没有找到实验课表";
+            break;
+        }
+        case 3:{
+            return @"请点击切换用户，重新登录";
+            break;}
+        default:
+            break;
+    }
+    return @"请点击切换用户，重新登录";
 }
 @end

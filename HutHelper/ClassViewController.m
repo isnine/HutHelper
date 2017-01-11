@@ -14,6 +14,7 @@
 #import "UMMobClick/MobClick.h"
 #import "JSONKit.h"
 #import "MBProgressHUD.h"
+#import "APIManager.h"
 @interface ClassViewController ()<GWPCourseListViewDataSource, GWPCourseListViewDelegate>
 @property (weak, nonatomic) IBOutlet GWPCourseListView *courseListView;
 @property (nonatomic, strong) NSMutableArray<CourseModel*> *courseArr;
@@ -685,67 +686,39 @@ NSString *show_xp;
 }
 
 - (void)reloadcourse {
-    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    NSArray *array_class                            = [defaults objectForKey:@"array_class"];
-    NSArray *array_xp                            = [defaults objectForKey:@"array_xp"];
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"刷新中";
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 0.01 * NSEC_PER_SEC);
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        // 等待框中
-        NSString *studentKH=[defaults objectForKey:@"studentKH"];
-        NSString *Remember_code_app=[defaults objectForKey:@"remember_code_app"];
-        //----------------课表数据缓存---------------//
-        NSString *Url_String_1=@"http://218.75.197.121:8888/api/v1/get/lessons/";
-        NSString *Url_String_2=@"/";
-        NSString *Url_String_1_U=[Url_String_1 stringByAppendingString:studentKH];
-        NSString *Url_String_1_U_2=[Url_String_1_U stringByAppendingString:Url_String_2];
-        NSString *Url_String=[Url_String_1_U_2 stringByAppendingString:Remember_code_app];
-        /*地址完毕*/
-        NSURL *url                   = [NSURL URLWithString: Url_String];//接口地址
-        NSError *error               = nil;
-        NSString *jsonString         = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:&error];//Url -> String
-        NSData* jsonData             = [jsonString dataUsingEncoding:NSUTF8StringEncoding];//地址 -> 数据
-        NSDictionary *Class_All      = [jsonData objectFromJSONData];//数据 -> 字典
-        NSArray *array               = [Class_All objectForKey:@"data"];
-        NSLog(@"平时课表地址:%@",url);
-        if (array!=NULL) {
-            [defaults setObject:array forKey:@"array_class"];
-            [defaults synchronize];
-        }else{
-            UIAlertView *alertView                    = [[UIAlertView alloc] initWithTitle:@"登录超时或者网络错误"
-                                                                                   message:@"请重新登录或者检查网络"
+        /**开始查询*/
+        APIManager *API_Request=[[APIManager alloc]init];
+        NSString *Msg=API_Request.GetClass;
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        if ([Msg isEqualToString:@"ok"]) {
+            if(now_xp==0){
+                [self addCourse];
+            }
+            else{
+                [self addXpCourse];
+            }
+        }
+        else if([Msg isEqualToString:@"没有找到平时课表"]||[Msg isEqualToString:@"没有找到实验课表"]){
+            UIAlertView *alertView                    = [[UIAlertView alloc] initWithTitle:Msg
+                                                                                   message:@""
                                                                                   delegate:self
                                                                          cancelButtonTitle:@"取消"
                                                                          otherButtonTitles:@"确定", nil];
             [alertView show];
         }
-        //----------------课表数据缓存---------------//
-        //----------------实验课表数据缓存---------------//
-        NSString *Url_String_xp_1=@"http://218.75.197.121:8888/api/v1/get/lessonsexp/";
-        NSString *Url_String_xp_1_U=[Url_String_xp_1 stringByAppendingString:studentKH];
-        NSString *Url_String_xp_1_U_2=[Url_String_xp_1_U stringByAppendingString:@"/"];
-        NSString *Url_String_xp=[Url_String_xp_1_U_2 stringByAppendingString:Remember_code_app];
-        NSURL *url_xp                = [NSURL URLWithString: Url_String_xp];//接口地址
-        NSLog(@"实验课表地址:%@",Url_String_xp);
-        //自带库解析实验课//
-        NSURLRequest *request        = [NSURLRequest requestWithURL:[NSURL URLWithString:Url_String_xp]];
-        NSData *response             = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
-        NSDictionary *jsonDataxp     = [NSJSONSerialization JSONObjectWithData:response options:NSJSONReadingMutableLeaves error:&error];
-        NSArray *array_xp            = [jsonDataxp objectForKey:@"data"];
-        if (array_xp!=NULL) {
-            [defaults setObject:array_xp forKey:@"array_xp"];
-            [defaults synchronize];
-        }
-        
-        
-        //----------------实验课表数据缓存---------------//
-        if(now_xp==0){
-            [self addCourse];
-        }
         else{
-            [self addXpCourse];
+            UIAlertView *alertView                    = [[UIAlertView alloc] initWithTitle:@"登录过期或网络错误"
+                                                                                   message:Msg
+                                                                                  delegate:self
+                                                                         cancelButtonTitle:@"取消"
+                                                                         otherButtonTitles:@"确定", nil];
+            [alertView show];
         }
+
         [MBProgressHUD hideHUDForView:self.view animated:YES];
     });
     

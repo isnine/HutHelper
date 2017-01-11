@@ -87,6 +87,8 @@
 		3ABF727B1DDB2DD70062E757 /* MainPageViewController2.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ABF72791DDB2DD70062E757 /* MainPageViewController2.m */; };
 		3ABF727C1DDB2DD70062E757 /* MainPageViewController2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3ABF727A1DDB2DD70062E757 /* MainPageViewController2.xib */; };
 		3ABF72801DDB32F60062E757 /* LostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ABF727E1DDB32F60062E757 /* LostViewController.m */; };
+		3ACE12411E2666D800F28314 /* ExamCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ACE123F1E2666D800F28314 /* ExamCell.m */; };
+		3ACE12421E2666D800F28314 /* ExamCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3ACE12401E2666D800F28314 /* ExamCell.xib */; };
 		3AD87B081DACCE7600357212 /* ClassViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD87B071DACCE7600357212 /* ClassViewController.m */; };
 		3AD87B101DACD02E00357212 /* GWPCourseListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD87B0F1DACD02E00357212 /* GWPCourseListView.m */; };
 		3AD87B131DACD05B00357212 /* CourseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD87B121DACD05B00357212 /* CourseModel.m */; };
@@ -249,6 +251,9 @@
 		3ABF727A1DDB2DD70062E757 /* MainPageViewController2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainPageViewController2.xib; path = HutHelper/MainPageViewController2.xib; sourceTree = "<group>"; };
 		3ABF727D1DDB32F60062E757 /* LostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LostViewController.h; sourceTree = "<group>"; };
 		3ABF727E1DDB32F60062E757 /* LostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LostViewController.m; sourceTree = "<group>"; };
+		3ACE123E1E2666D800F28314 /* ExamCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExamCell.h; sourceTree = "<group>"; };
+		3ACE123F1E2666D800F28314 /* ExamCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExamCell.m; sourceTree = "<group>"; };
+		3ACE12401E2666D800F28314 /* ExamCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExamCell.xib; sourceTree = "<group>"; };
 		3AD87B061DACCE7600357212 /* ClassViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassViewController.h; sourceTree = "<group>"; };
 		3AD87B071DACCE7600357212 /* ClassViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassViewController.m; sourceTree = "<group>"; };
 		3AD87B0E1DACD02E00357212 /* GWPCourseListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GWPCourseListView.h; path = HutHelper/Lib/GWPCourseListView/GWPCourseListView.h; sourceTree = "<group>"; };
@@ -537,6 +542,9 @@
 				3A3E52FF1DB2267D00A49067 /* ExamViewController.m */,
 				3A4D38D91E20DBC300639C18 /* ExamNewViewController.h */,
 				3A4D38DA1E20DBC300639C18 /* ExamNewViewController.m */,
+				3ACE123E1E2666D800F28314 /* ExamCell.h */,
+				3ACE123F1E2666D800F28314 /* ExamCell.m */,
+				3ACE12401E2666D800F28314 /* ExamCell.xib */,
 			);
 			name = Exam;
 			sourceTree = "<group>";
@@ -848,6 +856,7 @@
 				3A85678B1DA908AA00EBD44A /* Assets.xcassets in Resources */,
 				3A449C711E16C2E500D89CEA /* header@2x.jpg in Resources */,
 				3ABF727C1DDB2DD70062E757 /* MainPageViewController2.xib in Resources */,
+				3ACE12421E2666D800F28314 /* ExamCell.xib in Resources */,
 				3A4D04331E1963AC00595183 /* 工大助手API文档.docx in Resources */,
 				3AA1BC161E16179C00F75A7E /* MBProgressHUD.bundle in Resources */,
 			);
@@ -950,6 +959,7 @@
 				3A0898BD1DB5ED5800D2CCE6 /* SKSTableViewCell.m in Sources */,
 				3A3C68921DB115190088CC17 /* LGPlusButtonsViewShared.m in Sources */,
 				3A026D111DBC9B42000288AF /* TableViewCell.m in Sources */,
+				3ACE12411E2666D800F28314 /* ExamCell.m in Sources */,
 				3A3E53091DB2276700A49067 /* MyView.m in Sources */,
 				3A6D7EEF1DABDB500081B70D /* AppDelegate.m in Sources */,
 				3A3E53001DB2267D00A49067 /* ExamViewController.m in Sources */,
