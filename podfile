@@ -7,4 +7,6 @@ target "HutHelper" do
     pod 'UMengAnalytics-NO-IDFA'
     pod 'UMengUShare/Social/QQ'
     pod 'UMengUShare/UI'
+    pod 'AFNetworking', '~> 3.0'
+    pod 'YYModel'
 end

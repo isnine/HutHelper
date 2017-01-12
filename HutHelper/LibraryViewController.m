@@ -46,7 +46,7 @@ NSString *Url_String;
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [MobClick beginLogPageView:@"图书馆"];//("PageOne"为页面名称，可自定义)
+    [MobClick beginLogPageView:@"图书馆"];
 }
 - (void)viewWillDisappear:(BOOL)animated
 {
