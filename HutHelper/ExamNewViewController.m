@@ -11,7 +11,9 @@
 #import "JSONKit.h"
 #include <stdio.h>
 #include <time.h>
-@interface ExamNewViewController ()
+@interface ExamNewViewController ()<UITableViewDataSource, UITableViewDelegate>
+
+@property (strong, nonatomic) UITableView *tableView;
 @property (nonatomic, retain) NSMutableArray *array;
 @property (nonatomic, retain) NSMutableArray *arraycx;
 @end
@@ -32,6 +34,7 @@
     self.navigationItem.rightBarButtonItem = rightCunstomButtonView;
     //获得考试信息
     [self getexam];
+
 }
 #pragma mark - "设置表格代理"
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -148,14 +151,14 @@
 #pragma mark - "读取考试信息"
 -(void)getexam{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    NSData *jsonData=[defaults objectForKey:@"data_exam"];
+    NSData *jsonData=[defaults objectForKey:@"Exam"];
     NSDictionary *User_All     = [jsonData objectFromJSONData];//数据 -> 字典
     NSDictionary *Class_Data=[User_All objectForKey:@"res"];
     _array  = [Class_Data objectForKey:@"exam"];
     _arraycx = [Class_Data objectForKey:@"cxexam"];
 }
 -(void)reloadexam{
-    
+
 }
 /*
 #pragma mark - Navigation

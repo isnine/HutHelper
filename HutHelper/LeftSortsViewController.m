@@ -22,6 +22,8 @@
 #import "UMSocialUIManager.h"
 #import <UMSocialCore/UMSocialCore.h>
 
+#import "User.h"
+#import "YYModel.h"
 @interface LeftSortsViewController () <UITableViewDelegate,UITableViewDataSource>
 
 @end
@@ -72,13 +74,16 @@
     cell.textLabel.textColor         = [UIColor whiteColor];
 
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults]; //得到用户数据
-    NSString *name=[defaults objectForKey:@"TrueName"];    NSString *gender=[defaults objectForKey:@"studentKH"];
+    NSDictionary *User_Data=[defaults objectForKey:@"User"];
+    User *user=[User yy_modelWithJSON:User_Data];
+    NSString *name=user.data.TrueName;
+
     if (indexPath.row == 0) {
         if(name==NULL){
     //cell.textLabel.text              = @"登录";
         }
         else
-    cell.textLabel.text              = name;
+    cell.textLabel.text              = user.data.TrueName;
     } else if (indexPath.row == 1) {
     cell.textLabel.text              = @"";
     } else if (indexPath.row == 2) {

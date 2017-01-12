@@ -8,6 +8,8 @@
 
 #import "UserInfoCell.h"
 #import "AppDelegate.h"
+#import "YYModel.h"
+#import "User.h"
 @interface UserInfoCell ()
 
 @property (nonatomic, strong) UILabel *nameLabel;
@@ -32,8 +34,13 @@
 
 - (UILabel *)nameLabel {
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    NSString *username=[defaults objectForKey:@"username"]; //昵称
-    if(username == NULL ){
+    NSDictionary *User_Data=[defaults objectForKey:@"User"];
+    User *user=[User yy_modelWithJSON:User_Data];
+    NSString *username=user.data.username;
+    if ([defaults objectForKey:@"username"]!=NULL) {
+        username=[defaults objectForKey:@"username"];
+    }
+    else if(username == NULL ){
         username=@"(无名氏)";
     }
 
@@ -53,7 +60,9 @@
 - (UILabel *)infoLabel {
 
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    NSString *last_login=[defaults objectForKey:@"last_login"];
+    NSDictionary *User_Data=[defaults objectForKey:@"User"];
+    User *user=[User yy_modelWithJSON:User_Data];
+    NSString *last_login=user.data.last_login;
     if (last_login ==NULL) {
         last_login=@"无";
     }

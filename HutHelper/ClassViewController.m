@@ -15,6 +15,10 @@
 #import "JSONKit.h"
 #import "MBProgressHUD.h"
 #import "APIManager.h"
+#import "YYModel.h"
+#import "User.h"
+#import "AFNetworking.h"
+#import "MBProgressHUD+MJ.h"
 @interface ClassViewController ()<GWPCourseListViewDataSource, GWPCourseListViewDelegate>
 @property (weak, nonatomic) IBOutlet GWPCourseListView *courseListView;
 @property (nonatomic, strong) NSMutableArray<CourseModel*> *courseArr;
@@ -686,42 +690,62 @@ NSString *show_xp;
 }
 
 - (void)reloadcourse {
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.labelText = @"刷新中";
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 0.01 * NSEC_PER_SEC);
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        /**开始查询*/
-        APIManager *API_Request=[[APIManager alloc]init];
-        NSString *Msg=API_Request.GetClass;
-        [MBProgressHUD hideHUDForView:self.view animated:YES];
-        if ([Msg isEqualToString:@"ok"]) {
-            if(now_xp==0){
-                [self addCourse];
-            }
-            else{
-                [self addXpCourse];
-            }
-        }
-        else if([Msg isEqualToString:@"没有找到平时课表"]||[Msg isEqualToString:@"没有找到实验课表"]){
-            UIAlertView *alertView                    = [[UIAlertView alloc] initWithTitle:Msg
-                                                                                   message:@""
-                                                                                  delegate:self
-                                                                         cancelButtonTitle:@"取消"
-                                                                         otherButtonTitles:@"确定", nil];
-            [alertView show];
-        }
-        else{
-            UIAlertView *alertView                    = [[UIAlertView alloc] initWithTitle:@"登录过期或网络错误"
-                                                                                   message:Msg
-                                                                                  delegate:self
-                                                                         cancelButtonTitle:@"取消"
-                                                                         otherButtonTitles:@"确定", nil];
-            [alertView show];
-        }
+    /**拼接地址*/
+    [MBProgressHUD showMessage:@"刷新中" toView:self.view];
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    NSDictionary *User_Data=[defaults objectForKey:@"User"];
+    User *user=[User yy_modelWithJSON:User_Data];
+    NSString *Url_String=[NSString stringWithFormat:@"http://218.75.197.121:8888/api/v1/get/lessons/%@/%@",user.data.studentKH,user.remember_code_app];
+    NSLog(@"平时课表地址:%@",Url_String);
+    NSString *UrlXP_String=[NSString stringWithFormat:@"http://218.75.197.121:8888/api/v1/get/lessonsexp/%@/%@",user.data.studentKH,user.remember_code_app];
+    NSLog(@"实验课表地址:%@",UrlXP_String);
+    /**设置9秒超时*/
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
+    manager.requestSerializer.timeoutInterval = 9.f;
+    [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
+    /**请求平时课表*/
+    [manager GET:Url_String parameters:nil progress:nil
+         success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+             NSDictionary *Class_All = [NSDictionary dictionaryWithDictionary:responseObject];
+             NSString *Msg=[Class_All objectForKey:@"msg"];
+             if ([Msg isEqualToString:@"ok"]) {
+                 NSArray *array               = [Class_All objectForKey:@"data"];
+                 [defaults setObject:array forKey:@"array_class"];
+                 [defaults synchronize];
+                 [self addCourse];
+                 /**请求实验课表*/
+                 [manager GET:UrlXP_String parameters:nil progress:nil
+                      success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                          NSDictionary *ClassXP_All = [NSDictionary dictionaryWithDictionary:responseObject];
+                          NSString *Msg=[ClassXP_All objectForKey:@"msg"];
+                          if ([Msg isEqualToString:@"ok"]) {
+                              NSArray *array               = [ClassXP_All objectForKey:@"data"];
+                              [defaults setObject:array forKey:@"array_xp"];
+                              [defaults synchronize];
+                              [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                              [MBProgressHUD showSuccess:@"刷新成功"];
+                              [self addXpCourse];
+                          }
+                      } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                          [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                          [MBProgressHUD showError:@"网络错误，实验课表查询失败"];
+                      }];
+             }
+             else if([Msg isEqualToString:@"令牌错误"]){
+                 [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                 [MBProgressHUD showError:@"登录过期,请重新登录"];
+             }
+             else{
+                 [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                 [MBProgressHUD showError:@"查询失败"];
+             }
+         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+             [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+             [MBProgressHUD showError:@"网络错误，平时课表查询失败"];
+         }];
 
-        [MBProgressHUD hideHUDForView:self.view animated:YES];
-    });
-    
+        
 }
 
 

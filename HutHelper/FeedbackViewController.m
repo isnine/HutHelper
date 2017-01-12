@@ -10,6 +10,8 @@
 #import "Feedback2ViewController.h"
 #import "ClassViewController.h"
 #import "AppDelegate.h"
+#import "User.h"
+#import "YYModel.h"
 @interface FeedbackViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *Mail;
 @property (weak, nonatomic) IBOutlet UITextView *Content;
@@ -42,7 +44,9 @@
     NSString *str2=@"&content=";
     NSString *Content_String           = _Content.text;
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    NSString *studentKH=[defaults objectForKey:@"studentKH"];
+    NSDictionary *User_Data=[defaults objectForKey:@"User"];
+    User *user=[User yy_modelWithJSON:User_Data];
+    NSString *studentKH=user.data.studentKH;
     if(studentKH==NULL){
         str2=@"&content= ";
     }

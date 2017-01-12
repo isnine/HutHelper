@@ -12,6 +12,10 @@
 #import "JSONKit.h"
 #import "MBProgressHUD.h"
 #import<CommonCrypto/CommonDigest.h>
+#import "YYModel.h"
+#import "User.h"
+#import "AFNetworking.h"
+#import "MBProgressHUD+MJ.h"
 @interface ScoreViewController ()
 @property (nonatomic, strong) NSArray *contents;
 
@@ -61,48 +65,47 @@
 }
 
 - (void)reload{
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.labelText = @"查询中";
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 0.01 * NSEC_PER_SEC);
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        // 等待框中
-        NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-        NSString *remember_code_app=[defaults objectForKey:@"remember_code_app"];
-        NSString *Url_String_score=@"http://218.75.197.121:8888/api/v1/get/scores/";
-        NSString *studentKH                       = [defaults objectForKey:@"studentKH"];
-        Url_String_score=[Url_String_score stringByAppendingString:studentKH];
-        Url_String_score=[Url_String_score stringByAppendingString:@"/"];
-        Url_String_score=[Url_String_score stringByAppendingString:remember_code_app];
-        Url_String_score=[Url_String_score stringByAppendingString:@"/"];
-        NSString *sha_string=[studentKH stringByAppendingString:remember_code_app];
-        sha_string=[sha_string stringByAppendingString:@"f$Z@%"];
-        NSString *shaok=[self SHA:sha_string];
-        Url_String_score=[Url_String_score stringByAppendingString:shaok];
-        NSURL *url                 = [NSURL URLWithString: Url_String_score];//接口地址
-        NSError *error             = nil;
-        NSString *ScoreString       = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:&error];//Url -> String
-        NSData* ScoreData           = [ScoreString dataUsingEncoding:NSUTF8StringEncoding];//地址 -> 数据
-        NSDictionary *Score_All     = [ScoreData objectFromJSONData];//数据 -> 字典
-        //存入完毕
-        NSLog(@"成绩查询地址:%@",url);
-        NSString *Msg=[Score_All objectForKey:@"msg"];
-        if ([Msg isEqualToString:@"ok"]) {
-            NSArray *array_score             = [Score_All objectForKey:@"data"];
-            [defaults setObject:ScoreData forKey:@"data_score"];
-            [defaults synchronize];
-        }
-        else{
-            UIAlertView *alertView                    = [[UIAlertView alloc] initWithTitle:@"登陆过期或网络异常"
-                                                                                   message:@"请点击切换用户,重新登录"
-                                                                                  delegate:self
-                                                                         cancelButtonTitle:@"取消"
-                                                                         otherButtonTitles:@"确定", nil];
-            [alertView show];
-            NSLog(@"%@",Url_String_score);
-        }
-        [MBProgressHUD hideHUDForView:self.view animated:YES];
-    });
+    [MBProgressHUD showMessage:@"查询中" toView:self.view];
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    NSData* ScoreData           = [defaults objectForKey:@"Score"];
+    NSDictionary *User_Data=[defaults objectForKey:@"User"];
+    User *user=[User yy_modelWithJSON:User_Data];
+    NSString *SHA_String=[user.data.studentKH stringByAppendingString:user.remember_code_app];
+    SHA_String=[SHA_String stringByAppendingString:@"f$Z@%"];
+    SHA_String=[self SHA:SHA_String];
+    NSString *Url_String=[NSString stringWithFormat:@"http://218.75.197.121:8888/api/v1/get/scores/%@/%@/%@",user.data.studentKH,user.remember_code_app,SHA_String];
+    NSLog(@"成绩查询地址:%@",Url_String);
+    /**设置5秒超时*/
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
+    manager.requestSerializer.timeoutInterval = 5.f;
+    [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
+    /**请求*/
+    [manager GET:Url_String parameters:nil progress:nil
+         success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+             NSDictionary *Score_All = [NSDictionary dictionaryWithDictionary:responseObject];
+             NSData *Score_Data =    [NSJSONSerialization dataWithJSONObject:Score_All options:NSJSONWritingPrettyPrinted error:nil];
+             
+             NSString *Msg=[Score_All objectForKey:@"msg"];
+             if([Msg isEqualToString:@"ok"]){
+                 [defaults setObject:Score_Data forKey:@"data_score"];
+                 [defaults synchronize];
+                 [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                 [MBProgressHUD showSuccess:@"刷新成功"];
 
+             }
+             else if([Msg isEqualToString:@"令牌错误"]){
+                 [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                 [MBProgressHUD showError:@"登录过期,请重新登录"];
+             }
+             else{
+                 [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                 [MBProgressHUD showError:@"请检查网络或者重新登录"];
+             }
+         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+             [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+             [MBProgressHUD showError:@"网络错误"];
+         }];
 }
 
 - (void)viewDidLoad {

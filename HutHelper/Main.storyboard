@@ -737,7 +737,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="YBj-jE-mqk" id="CTg-oE-4CO"/>
-                                    <outlet property="delegate" destination="YBj-jE-mqk" id="Z5y-Ta-Jdh"/>
+                                    <outlet property="delegate" destination="YBj-jE-mqk" id="xQa-1c-eO3"/>
                                 </connections>
                             </tableView>
                         </subviews>

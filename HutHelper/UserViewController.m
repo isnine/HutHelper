@@ -14,6 +14,8 @@
 #import "ASIFormDataRequest.h"
 #import "JSONKit.h"
 #import "MBProgressHUD+MJ.h"
+#import "YYModel.h"
+#import "User.h"
 static NSString *const kUserInfoCellId = @"kUserInfoCellId";
 
 @interface UserViewController () <UITableViewDelegate, UITableViewDataSource,UIImagePickerControllerDelegate, UINavigationControllerDelegate>
@@ -31,12 +33,13 @@ UIImage* img ;
     //    NSString *imagePath = [path_document stringByAppendingString:@"/img/pic.jpg"];//把图片直接保存到指定的路径
     //    UIImage *getimage2 = [UIImage imageWithContentsOfFile:imagePath];
     //
-    
+    NSDictionary *User_Data=[defaults objectForKey:@"User"];
+    User *user=[User yy_modelWithJSON:User_Data];
     if ([defaults objectForKey:@"head_img"]!=NULL) {
         self.headerView = [[JSHeaderView alloc] initWithImage:[UIImage imageWithData:[defaults objectForKey:@"head_img"]]];
     }
-    else if([defaults objectForKey:@"head_pic_thumb"]!=NULL){
-        NSString *image_url=[defaults objectForKey:@"head_pic_thumb"];
+    else if(user.data.head_pic_thumb!=NULL){
+        NSString *image_url=user.data.head_pic_thumb;
         image_url=[@"http://218.75.197.121:8888/" stringByAppendingString:image_url];
         NSURL *url                   = [NSURL URLWithString: image_url];//接口地址
         NSData *data = [NSData dataWithContentsOfURL:url];
@@ -61,7 +64,7 @@ UIImage* img ;
         [self getImageFromIpc];
         
     }];
-    NSString *username=[defaults objectForKey:@"username"]; //昵称
+
     /** 标题栏样式 */
     UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     self.navigationItem.backBarButtonItem = item;
@@ -120,13 +123,14 @@ NSData* data;
 - (void)postimage:(UIImage *)img
 {
     
+
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    NSString *studentKH=[defaults objectForKey:@"studentKH"];
-    NSString *remember_code_app=[defaults objectForKey:@"remember_code_app"];
-    NSString *url_String=@"http://hugongda.com:8888/api/v1/set/avatar/";
-    url_String=[url_String stringByAppendingString:studentKH];
-    url_String=[url_String stringByAppendingString:@"/"];
-    url_String=[url_String stringByAppendingString:remember_code_app];
+    NSDictionary *User_Data=[defaults objectForKey:@"User"];
+    User *user=[User yy_modelWithJSON:User_Data];
+
+    
+    NSString *url_String=[NSString stringWithFormat:@"http://218.75.197.121:8888/api/v1/set/avatar/%@/%@",user.data.studentKH,user.remember_code_app];
+
     NSURL* url = [NSURL URLWithString:url_String];//请求url
     
     // UIImage* img = [UIImage imageNamed:@"header.jpg"];
@@ -153,14 +157,9 @@ NSData* data;
 }
 
 -(void)postsucces{
-    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    UIAlertView *alertView                    = [[UIAlertView alloc] initWithTitle:@"上传完毕"
-                                                                           message:@""
-                                                                          delegate:self
-                                                                 cancelButtonTitle:@"取消"
-                                                                 otherButtonTitles:@"确定", nil];
-    [alertView show];
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+    [MBProgressHUD showSuccess:@"上传成功"];
     [defaults setObject:data forKey:@"head_img"];
     [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:([self.navigationController.viewControllers count] -2)] animated:YES];  //返回Home
     
@@ -168,12 +167,7 @@ NSData* data;
 
 -(void)postfailure{
     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-    UIAlertView *alertView                    = [[UIAlertView alloc] initWithTitle:@"上传失败"
-                                                                           message:@"请检查网络"
-                                                                          delegate:self
-                                                                 cancelButtonTitle:@"取消"
-                                                                 otherButtonTitles:@"确定", nil];
-    [alertView show];
+    [MBProgressHUD showError:@"上传失败"];
 }
 
 #pragma mark -
@@ -190,14 +184,15 @@ NSData* data;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    NSString *TrueName=[defaults objectForKey:@"TrueName"]; //真实姓名
-    NSString *studentKH=[defaults objectForKey:@"studentKH"]; //学号
-    NSString *dep_name=[defaults objectForKey:@"dep_name"]; //学院
-    NSString *class_name=[defaults objectForKey:@"class_name"];  //班级
-    NSString *sex=[defaults objectForKey:@"sex"];  //性别
+    NSDictionary *User_Data=[defaults objectForKey:@"User"];
+    User *user=[User yy_modelWithJSON:User_Data];
+
+    NSString *TrueName=user.data.TrueName; //真实姓名
+    NSString *studentKH=user.data.studentKH; //学号
+    NSString *dep_name=user.data.dep_name; //学院
+    NSString *class_name=user.data.class_name;  //班级
+    NSString *sex=user.data.sex;  //性别
     if(sex ==NULL){
         sex=@"";
     }

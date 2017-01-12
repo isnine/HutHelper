@@ -93,28 +93,6 @@
     
     //设置新浪的appKey和appSecret
     [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_Sina appKey:@"1046968355"  appSecret:@"ba2997aaab6a1602406fc94247dc072d" redirectURL:@"http://sns.whalecloud.com/sina2/callback"];
-    
-    /**上传版本信息*/
-    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-     NSString *studentKH    = [defaults objectForKey:@"studentKH"];
-        NSString *app_Version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
-    float app_Version2=[app_Version floatValue];
-    app_Version2=app_Version2*100;
-    NSString *b = [app_Version substringFromIndex:app_Version.length-1];
-    int b_2=[b intValue];
-    app_Version2=app_Version2+b_2;
-    if(studentKH!=NULL){
-
-//     NSURLRequest *request=[NSURLRequest requestWithURL:url];
- //    NSLog(@"%@",urlStr);
-        //第一步，创建url
-        NSString *urlStr=[NSString stringWithFormat:@"http://218.75.197.121:8888/api/v1/get/versionios/%@/%.0lf",studentKH,app_Version2];
-        NSURL *url=[NSURL URLWithString:urlStr];
-        //第二步，创建请求
-        NSURLRequest *request = [[NSURLRequest alloc]initWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10];
-        //第三步，连接服务器
-        NSURLConnection *connection = [[NSURLConnection alloc]initWithRequest:request delegate:self];
-    }
         return YES;
 }
 

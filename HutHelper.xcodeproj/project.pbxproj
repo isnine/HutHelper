@@ -89,6 +89,7 @@
 		3ABF72801DDB32F60062E757 /* LostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ABF727E1DDB32F60062E757 /* LostViewController.m */; };
 		3ACE12411E2666D800F28314 /* ExamCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ACE123F1E2666D800F28314 /* ExamCell.m */; };
 		3ACE12421E2666D800F28314 /* ExamCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3ACE12401E2666D800F28314 /* ExamCell.xib */; };
+		3ACE12451E275D8300F28314 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ACE12441E275D8300F28314 /* User.m */; };
 		3AD87B081DACCE7600357212 /* ClassViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD87B071DACCE7600357212 /* ClassViewController.m */; };
 		3AD87B101DACD02E00357212 /* GWPCourseListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD87B0F1DACD02E00357212 /* GWPCourseListView.m */; };
 		3AD87B131DACD05B00357212 /* CourseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD87B121DACD05B00357212 /* CourseModel.m */; };
@@ -254,6 +255,8 @@
 		3ACE123E1E2666D800F28314 /* ExamCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExamCell.h; sourceTree = "<group>"; };
 		3ACE123F1E2666D800F28314 /* ExamCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExamCell.m; sourceTree = "<group>"; };
 		3ACE12401E2666D800F28314 /* ExamCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExamCell.xib; sourceTree = "<group>"; };
+		3ACE12431E275D8300F28314 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = User.h; path = HutHelper/User.h; sourceTree = "<group>"; };
+		3ACE12441E275D8300F28314 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = User.m; path = HutHelper/User.m; sourceTree = "<group>"; };
 		3AD87B061DACCE7600357212 /* ClassViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassViewController.h; sourceTree = "<group>"; };
 		3AD87B071DACCE7600357212 /* ClassViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassViewController.m; sourceTree = "<group>"; };
 		3AD87B0E1DACD02E00357212 /* GWPCourseListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GWPCourseListView.h; path = HutHelper/Lib/GWPCourseListView/GWPCourseListView.h; sourceTree = "<group>"; };
@@ -734,6 +737,8 @@
 				3A2D10611DB66063009916D0 /* UIKit.framework */,
 				3A8DE29A1E22800700E47945 /* APIManager.h */,
 				3A8DE29B1E22800700E47945 /* APIManager.m */,
+				3ACE12431E275D8300F28314 /* User.h */,
+				3ACE12441E275D8300F28314 /* User.m */,
 			);
 			name = Model;
 			path = ..;
@@ -932,6 +937,7 @@
 				3A026D131DBC9B42000288AF /* UUBar.m in Sources */,
 				3A33D7C61DAE00300012EFDE /* Feedback2ViewController.m in Sources */,
 				3A4D38DB1E20DBC300639C18 /* ExamNewViewController.m in Sources */,
+				3ACE12451E275D8300F28314 /* User.m in Sources */,
 				3ABE7F1E1DAF75FB003E4085 /* LibraryViewController.m in Sources */,
 				3ABF727B1DDB2DD70062E757 /* MainPageViewController2.m in Sources */,
 				3A33D7CB1DAE28380012EFDE /* PowerViewController.m in Sources */,
