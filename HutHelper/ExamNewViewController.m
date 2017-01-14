@@ -20,6 +20,27 @@
 
 @implementation ExamNewViewController
 
+int datediff(int y1,int m1,int d1,int y2,int m2,int d2)
+{
+    struct tm ptr1;
+    ptr1.tm_sec=10;
+    ptr1.tm_min=10;
+    ptr1.tm_hour=10;
+    ptr1.tm_mday=d1;
+    ptr1.tm_mon=m1-1;
+    ptr1.tm_year=y1-1900;
+    time_t st1=mktime(&ptr1);
+    struct tm ptr2;
+    ptr2.tm_sec=10;
+    ptr2.tm_min=10;
+    ptr2.tm_hour=10;
+    ptr2.tm_mday=d2;
+    ptr2.tm_mon=m2-1;
+    ptr2.tm_year=y2-1900;
+    time_t st2=mktime(&ptr2);
+    return (int)((st2-st1)/3600/24);
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"考试查询";
@@ -128,7 +149,17 @@
     int year                                  = [dateComponent year];//年
     int month                                 = [dateComponent month];//月
     int day                                   = [dateComponent day];//日
-    NSString *lastime=@"0天";
+    NSString *lastime;
+    if (datediff(year,month,day,Year,Mouth,Day)>0&&datediff(year,month,day,Year,Mouth,Day)<500) {
+        lastime=[[NSString alloc]initWithFormat:@"倒计时%d天",datediff(year,month,day,Year,Mouth,Day)];
+    }
+    else if (datediff(year,month,day,Year,Mouth,Day)<0){
+        lastime=@"已结束";
+    }
+    else if (datediff(year,month,day,Year,Mouth,Day)==0){
+        lastime=@"今天考试";
+    }
+    else lastime=@"-";
    /**考试状态*/
     if ([isset isEqualToString:@"1"]) {
         isset=@"已执行";
@@ -158,8 +189,10 @@
     _arraycx = [Class_Data objectForKey:@"cxexam"];
 }
 -(void)reloadexam{
-
+ NSIndexPath *index = [NSIndexPath indexPathForRow:1 inSection:0];
+    
 }
+
 /*
 #pragma mark - Navigation
 

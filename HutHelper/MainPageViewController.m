@@ -18,7 +18,6 @@
 #import "SchoolsayViewController.h"
 #import "SchoolHandViewController.h"
 #import "DayViewController.h"
-#import "ExamViewController.h"
 #import "UMessage.h"
 #import "UMMobClick/MobClick.h"
 #import "FirstLoginViewController.h"
@@ -32,6 +31,7 @@
 #import "User.h"
 #import "AFNetworking.h"
 #import "MBProgressHUD+MJ.h"
+#import "SayViewController.h"
 #define vBackBarButtonItemName  @"backArrow.png"    //导航条返回默认图片名
 @interface MainPageViewController ()
 
@@ -74,7 +74,6 @@ int CountDays(int year, int month, int day) {
         else
             s                                         += 28;
     }
-    
     return (s + day);
 }  //当前星期几
 
@@ -442,10 +441,48 @@ int class_error_;
 } //电费查询
 
 - (IBAction)SchoolSay:(id)sender {
-    UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    ClassViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Schoolsay"];
-    AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:YES];
+    //    UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    //    ClassViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Schoolsay"];
+    //    AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    //    [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:YES];
+    [MBProgressHUD showMessage:@"加载中" toView:self.view];
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    /**拼接地址*/
+    NSString *Url_String=@"http://218.75.197.121:8888/api/v1/moments/posts/2";
+    /**设置9秒超时*/
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
+    manager.requestSerializer.timeoutInterval = 5.f;
+    [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
+    /**请求平时课表*/
+    [manager GET:Url_String parameters:nil progress:nil
+         success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+             NSDictionary *Say_All = [NSDictionary dictionaryWithDictionary:responseObject];
+             if ([[Say_All objectForKey:@"msg"]isEqualToString:@"ok"]) {
+                 NSDictionary *Say_Data=[Say_All objectForKey:@"data"];
+                 NSArray *Say_content=[Say_Data objectForKey:@"posts"];//加载该页数据
+                 if (Say_content!=NULL) {
+                     [defaults setObject:Say_content forKey:@"Say"];
+                     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                     SayViewController *Say      = [[SayViewController alloc] init];
+                     AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+                     [tempAppDelegate.mainNavigationController pushViewController:Say animated:YES];
+                     
+                 }
+                 else{
+                     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                     [MBProgressHUD showError:@"网络错误"];
+                 }
+             }
+             else{
+                 [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                 [MBProgressHUD showError:[Say_All objectForKey:@"msg"]];
+             }             [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+             [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+             [MBProgressHUD showError:@"网络错误"];
+         }];
+    
 } //校园说说
 
 - (IBAction)SchoolHand:(id)sender {
@@ -498,7 +535,7 @@ int class_error_;
                  }
              } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                  [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-                 [MBProgressHUD showError:@"网络错误"];
+                 [MBProgressHUD showError:@"请检查网络或者重新登录"];
              }];
     }
     

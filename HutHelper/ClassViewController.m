@@ -713,7 +713,7 @@ NSString *show_xp;
                  NSArray *array               = [Class_All objectForKey:@"data"];
                  [defaults setObject:array forKey:@"array_class"];
                  [defaults synchronize];
-                 [self addCourse];
+                 
                  /**请求实验课表*/
                  [manager GET:UrlXP_String parameters:nil progress:nil
                       success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -725,7 +725,12 @@ NSString *show_xp;
                               [defaults synchronize];
                               [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
                               [MBProgressHUD showSuccess:@"刷新成功"];
-                              [self addXpCourse];
+                              if(now_xp==0){
+                                  [self addCourse];
+                              }
+                              else{
+                                  [self addXpCourse];
+                              }
                           }
                       } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                           [MBProgressHUD hideAllHUDsForView:self.view animated:YES];

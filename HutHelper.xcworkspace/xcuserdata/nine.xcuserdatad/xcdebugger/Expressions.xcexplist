@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "__26-[SayViewController load:]_block_invoke:SayViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "(NSDictionary *)Say_All">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>
