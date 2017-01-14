@@ -79,6 +79,10 @@
 		3A8E0E251DAB442E00F458DB /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A8E0E231DAB442E00F458DB /* MainViewController.xib */; };
 		3AA1BC161E16179C00F75A7E /* MBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3AA1BC111E16179C00F75A7E /* MBProgressHUD.bundle */; };
 		3AA1BC181E16179C00F75A7E /* MBProgressHUD+MJ.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA1BC151E16179C00F75A7E /* MBProgressHUD+MJ.m */; };
+		3AA8814B1E2A4644004F75B1 /* PhotoViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA881491E2A4644004F75B1 /* PhotoViewCell.m */; };
+		3AA8814C1E2A4644004F75B1 /* PhotoViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AA8814A1E2A4644004F75B1 /* PhotoViewCell.xib */; };
+		3AA881501E2A4654004F75B1 /* CommitViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA8814E1E2A4654004F75B1 /* CommitViewCell.m */; };
+		3AA881511E2A4654004F75B1 /* CommitViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AA8814F1E2A4654004F75B1 /* CommitViewCell.xib */; };
 		3AAC242B1DE1CB3C00546B11 /* JSHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AAC242A1DE1CB3C00546B11 /* JSHeaderView.m */; };
 		3AAC242E1DE1CB8C00546B11 /* UserInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AAC242D1DE1CB8C00546B11 /* UserInfoCell.m */; };
 		3AAC24331DE1F17400546B11 /* UsernameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AAC24321DE1F17400546B11 /* UsernameViewController.m */; };
@@ -237,6 +241,12 @@
 		3AA1BC111E16179C00F75A7E /* MBProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = MBProgressHUD.bundle; path = HutHelper/Lib/MBProgressHUD/MBProgressHUD.bundle; sourceTree = "<group>"; };
 		3AA1BC141E16179C00F75A7E /* MBProgressHUD+MJ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MBProgressHUD+MJ.h"; path = "HutHelper/Lib/MBProgressHUD/MBProgressHUD+MJ.h"; sourceTree = "<group>"; };
 		3AA1BC151E16179C00F75A7E /* MBProgressHUD+MJ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MBProgressHUD+MJ.m"; path = "HutHelper/Lib/MBProgressHUD/MBProgressHUD+MJ.m"; sourceTree = "<group>"; };
+		3AA881481E2A4644004F75B1 /* PhotoViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoViewCell.h; sourceTree = "<group>"; };
+		3AA881491E2A4644004F75B1 /* PhotoViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoViewCell.m; sourceTree = "<group>"; };
+		3AA8814A1E2A4644004F75B1 /* PhotoViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoViewCell.xib; sourceTree = "<group>"; };
+		3AA8814D1E2A4654004F75B1 /* CommitViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommitViewCell.h; sourceTree = "<group>"; };
+		3AA8814E1E2A4654004F75B1 /* CommitViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommitViewCell.m; sourceTree = "<group>"; };
+		3AA8814F1E2A4654004F75B1 /* CommitViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommitViewCell.xib; sourceTree = "<group>"; };
 		3AAC24291DE1CB3C00546B11 /* JSHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSHeaderView.h; sourceTree = "<group>"; };
 		3AAC242A1DE1CB3C00546B11 /* JSHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSHeaderView.m; sourceTree = "<group>"; };
 		3AAC242C1DE1CB8C00546B11 /* UserInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoCell.h; sourceTree = "<group>"; };
@@ -465,6 +475,12 @@
 				3A7DFCC81E29E7150082F379 /* SayCommitViewCell.h */,
 				3A7DFCC91E29E7150082F379 /* SayCommitViewCell.m */,
 				3A7DFCCA1E29E7150082F379 /* SayCommitViewCell.xib */,
+				3AA881481E2A4644004F75B1 /* PhotoViewCell.h */,
+				3AA881491E2A4644004F75B1 /* PhotoViewCell.m */,
+				3AA8814A1E2A4644004F75B1 /* PhotoViewCell.xib */,
+				3AA8814D1E2A4654004F75B1 /* CommitViewCell.h */,
+				3AA8814E1E2A4654004F75B1 /* CommitViewCell.m */,
+				3AA8814F1E2A4654004F75B1 /* CommitViewCell.xib */,
 			);
 			name = Say;
 			sourceTree = "<group>";
@@ -854,6 +870,7 @@
 				3A0898C11DB5ED6000D2CCE6 /* expandableImage.png in Resources */,
 				3A7DFCCC1E29E7150082F379 /* SayCommitViewCell.xib in Resources */,
 				3ABE7F291DAF7BBE003E4085 /* NoticeViewController.xib in Resources */,
+				3AA8814C1E2A4644004F75B1 /* PhotoViewCell.xib in Resources */,
 				3A0898BB1DB5ED5800D2CCE6 /* SKSTableView-Info.plist in Resources */,
 				3A026D121DBC9B42000288AF /* TableViewCell.xib in Resources */,
 				3A8E0E251DAB442E00F458DB /* MainViewController.xib in Resources */,
@@ -861,6 +878,7 @@
 				3AD87B181DACD08E00357212 /* Main.storyboard in Resources */,
 				3A85678B1DA908AA00EBD44A /* Assets.xcassets in Resources */,
 				3A449C711E16C2E500D89CEA /* header@2x.jpg in Resources */,
+				3AA881511E2A4654004F75B1 /* CommitViewCell.xib in Resources */,
 				3ABF727C1DDB2DD70062E757 /* MainPageViewController2.xib in Resources */,
 				3ACE12421E2666D800F28314 /* ExamCell.xib in Resources */,
 				3A4D04331E1963AC00595183 /* 工大助手API文档.docx in Resources */,
@@ -938,6 +956,7 @@
 				3A026D131DBC9B42000288AF /* UUBar.m in Sources */,
 				3A33D7C61DAE00300012EFDE /* Feedback2ViewController.m in Sources */,
 				3A7DFCC61E29D94A0082F379 /* SayViewController.m in Sources */,
+				3AA8814B1E2A4644004F75B1 /* PhotoViewCell.m in Sources */,
 				3A4D38DB1E20DBC300639C18 /* ExamNewViewController.m in Sources */,
 				3ACE12451E275D8300F28314 /* User.m in Sources */,
 				3ABE7F1E1DAF75FB003E4085 /* LibraryViewController.m in Sources */,
@@ -961,6 +980,7 @@
 				3AFB7BA51DAD19530040B55F /* AboutViewController.m in Sources */,
 				3AD87B081DACCE7600357212 /* ClassViewController.m in Sources */,
 				3A7ED5701DE3254A00389399 /* ExamaddViewController.m in Sources */,
+				3AA881501E2A4654004F75B1 /* CommitViewCell.m in Sources */,
 				3AAC24331DE1F17400546B11 /* UsernameViewController.m in Sources */,
 				3A3C68911DB115190088CC17 /* LGPlusButtonsView.m in Sources */,
 				3A6D7EF01DABDB500081B70D /* HomeWorkViewController.m in Sources */,

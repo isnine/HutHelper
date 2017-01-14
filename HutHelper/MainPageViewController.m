@@ -445,10 +445,15 @@ int class_error_;
     //    ClassViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Schoolsay"];
     //    AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     //    [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:YES];
+    /**设置不缓存*/
+    NSURLCache *sharedCache = [[NSURLCache alloc] initWithMemoryCapacity:0
+                                                            diskCapacity:0
+                                                                diskPath:nil];
+    [NSURLCache setSharedURLCache:sharedCache];
     [MBProgressHUD showMessage:@"加载中" toView:self.view];
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     /**拼接地址*/
-    NSString *Url_String=@"http://218.75.197.121:8888/api/v1/moments/posts/2";
+    NSString *Url_String=@"http://218.75.197.121:8888/api/v1/moments/posts/1";
     /**设置9秒超时*/
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
@@ -479,9 +484,14 @@ int class_error_;
                  [MBProgressHUD showError:[Say_All objectForKey:@"msg"]];
              }             [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
          } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-             [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
              [MBProgressHUD showError:@"网络错误"];
+             [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
          }];
+    
+    
+    
+    
+
     
 } //校园说说
 

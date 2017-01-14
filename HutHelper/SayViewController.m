@@ -11,12 +11,16 @@
 #import "SayCommitViewCell.h"
 #import "MBProgressHUD+MJ.h"
 #import "AFNetworking.h"
+#import "MJRefresh.h"
+#import "CommitViewCell.h"
+#import "PhotoViewCell.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 @interface SayViewController ()
 @property (nonatomic,copy) NSArray      *Say_content;
 @end
 
 @implementation SayViewController
-
+int num=1;
 - (void)viewDidLoad {
     [super viewDidLoad];
     [super viewDidLoad];
@@ -33,6 +37,12 @@
     /**加载数据*/
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     _Say_content=[defaults objectForKey:@"Say"];
+    /**下拉刷新*/
+    //    //默认【下拉刷新】
+    //    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(reload)];
+    //默认【上拉加载】
+    self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(load)];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -47,12 +57,27 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{//每块几部分
-    return [self getcommitcount:(short)section]+1;
+    NSArray *photo=[_Say_content[section] objectForKey:@"pics"];
+    if (photo.count==0)
+        return [self getcommitcount:(short)section]+2;
+    else
+        return [self getcommitcount:(short)section]+3;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{///每块的高度
-    if (indexPath.row==0)
-        return 130;
+    NSArray *photo=[_Say_content[indexPath.section] objectForKey:@"pics"];
+    if (indexPath.row==0){
+        return 100;
+    }
+    else if (indexPath.row==1){
+        if (photo.count==0)  return 45;//评论数
+        else if (photo.count==1)  return 130;//图片
+        else                  return 250;//图片
+    }
+    else if (indexPath.row==2){
+        if (photo.count==0)  return 55;//留言
+        else                 return 45;//评论数
+    }
     else
         return 55;
 }
@@ -77,20 +102,84 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     SayViewCell *cell = [SayViewCell tableViewCell];
     SayCommitViewCell *cellcommit = [SayCommitViewCell tableViewCell];
+    CommitViewCell *cellshowcommit=[CommitViewCell tableViewCell];
+    PhotoViewCell *cellphoto=[PhotoViewCell tableViewCell];
     tableView.separatorStyle = NO;
+    int exis=2;
+    NSArray *photo=[_Say_content[indexPath.section] objectForKey:@"pics"];
+    
     /**得到评论数组*/
     if (indexPath.row == 0)
     {
         cell.username.text=[self getName:(short)indexPath.section];
         cell.created_on.text=[self getTime:(short)indexPath.section];
-        cell.content.text=[self getContent:(short)indexPath.section]; 
+        cell.content.text=[self getContent:(short)indexPath.section];
         cell.img.image = [self getImg:(short)indexPath.section];
         return cell;
     }
+    else if (indexPath.row==1) {
+        if (photo.count==0) {
+            cellshowcommit.commitsize.text=[NSString stringWithFormat:@"%d",[self getcommitcount:(short)indexPath.section]];
+            return cellshowcommit;
+        }
+        else if(photo.count==1){
+            exis++;
+            [cellphoto.Img1 sd_setImageWithURL:[NSURL URLWithString:[self getPhoto:(short)indexPath.section with:0]]
+                              placeholderImage:[UIImage imageNamed:@"load_img"]];
+            return cellphoto;
+        }
+        else if(photo.count==2){
+            exis++;
+            [cellphoto.Img1 sd_setImageWithURL:[NSURL URLWithString:[self getPhoto:(short)indexPath.section with:0]]
+                              placeholderImage:[UIImage imageNamed:@"load_img"]];
+            [cellphoto.Img2 sd_setImageWithURL:[NSURL URLWithString:[self getPhoto:(short)indexPath.section with:1]]
+                              placeholderImage:[UIImage imageNamed:@"load_img"]];
+            return cellphoto;
+        }
+        else if(photo.count==3){
+            exis++;
+            [cellphoto.Img1 sd_setImageWithURL:[NSURL URLWithString:[self getPhoto:(short)indexPath.section with:0]]
+                              placeholderImage:[UIImage imageNamed:@"load_img"]];
+            [cellphoto.Img2 sd_setImageWithURL:[NSURL URLWithString:[self getPhoto:(short)indexPath.section with:1]]
+                              placeholderImage:[UIImage imageNamed:@"load_img"]];
+            [cellphoto.Img3 sd_setImageWithURL:[NSURL URLWithString:[self getPhoto:(short)indexPath.section with:2]]
+                              placeholderImage:[UIImage imageNamed:@"load_img"]];
+            return cellphoto;
+        }
+        else {
+            exis++;
+            [cellphoto.Img1 sd_setImageWithURL:[NSURL URLWithString:[self getPhoto:(short)indexPath.section with:0]]
+                              placeholderImage:[UIImage imageNamed:@"load_img"]];
+            [cellphoto.Img2 sd_setImageWithURL:[NSURL URLWithString:[self getPhoto:(short)indexPath.section with:1]]
+                              placeholderImage:[UIImage imageNamed:@"load_img"]];
+            [cellphoto.Img3 sd_setImageWithURL:[NSURL URLWithString:[self getPhoto:(short)indexPath.section with:2]]
+                              placeholderImage:[UIImage imageNamed:@"load_img"]];
+            [cellphoto.Img3 sd_setImageWithURL:[NSURL URLWithString:[self getPhoto:(short)indexPath.section with:3]]
+                              placeholderImage:[UIImage imageNamed:@"load_img"]];
+            return cellphoto;
+        }
+        
+        
+    }
+    else if (indexPath.row == 2) {
+        if (photo.count==0) {
+            cellcommit.CommitName.text=[self getcommitname:(short)indexPath.section with:(short)indexPath.row-exis];
+            cellcommit.CommitContent.text=[self getcommitcontent:(short)indexPath.section with:(short)indexPath.row-exis];
+            cellcommit.CommitTime.text=[self getcommittime:(short)indexPath.section with:(short)indexPath.row-exis];
+            return cellcommit;
+        }
+        else{
+            cellshowcommit.commitsize.text=[NSString stringWithFormat:@"%d",[self getcommitcount:(short)indexPath.section]];
+            return cellshowcommit;
+        }
+        
+    }
     else{
-        cellcommit.CommitName.text=[self getcommitname:(short)indexPath.section with:(short)indexPath.row-1];
-        cellcommit.CommitContent.text=[self getcommitcontent:(short)indexPath.section with:(short)indexPath.row-1];
-        cellcommit.CommitTime.text=[self getcommittime:(short)indexPath.section with:(short)indexPath.row-1];
+        if(photo.count==1){
+            exis=3;}
+        cellcommit.CommitName.text=[self getcommitname:(short)indexPath.section with:(short)indexPath.row-exis];
+        cellcommit.CommitContent.text=[self getcommitcontent:(short)indexPath.section with:(short)indexPath.row-exis];
+        cellcommit.CommitTime.text=[self getcommittime:(short)indexPath.section with:(short)indexPath.row-exis];
         return cellcommit;
     }
 }
@@ -129,6 +218,13 @@
          }];
 }
 
+-(NSString*)getPhoto:(int)i with:(int)j{
+    NSArray *photo=[_Say_content[i] objectForKey:@"pics"];
+    NSString *Url=[NSString stringWithFormat:@"http://218.75.197.121:8888/%@",photo[j]];
+    
+    return Url;
+    
+}
 -(NSString*)getContent:(int)i{
     return [_Say_content[i] objectForKey:@"content"];
 }
@@ -141,7 +237,6 @@
 -(UIImage*)getImg:(int)i{
     NSString *Url=[NSString stringWithFormat:@"http://218.75.197.121:8888/%@",[_Say_content[i] objectForKey:@"head_pic_thumb"]];
     if ([Url isEqualToString:@"http://218.75.197.121:8888/"]) {
-        Url=@"http://218.75.197.121:8888//public/pics/m_001.png";
         return [self circleImage:[UIImage imageNamed:@"img_defalut"]];
     }else{
         NSURL *imageUrl = [NSURL URLWithString:Url];
@@ -155,7 +250,7 @@
         Commit_String=[Commit[j] objectForKey:@"comment"];
     }
     else
-       Commit_String=@"";
+        Commit_String=@"";
     
     return Commit_String;
 }
@@ -202,6 +297,96 @@
     UIImage *newimg = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     return newimg;
+}
+
+-(void)refresh
+{
+    [self.tableView.header beginRefreshing];
+}
+-(void)loadMore
+{
+    [self.tableView.header beginRefreshing];
+}
+
+-(void)reload{
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    /**拼接地址*/
+    NSString *Url_String=[NSString stringWithFormat:@"http://218.75.197.121:8888/api/v1/moments/posts/%d",num];
+    /**设置9秒超时*/
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
+    manager.requestSerializer.timeoutInterval = 5.f;
+    [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
+    /**请求平时课表*/
+    [manager GET:Url_String parameters:nil progress:nil
+         success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+             NSDictionary *Say_All = [NSDictionary dictionaryWithDictionary:responseObject];
+             if ([[Say_All objectForKey:@"msg"]isEqualToString:@"ok"]) {
+                 NSDictionary *Say_Data=[Say_All objectForKey:@"data"];
+                 NSArray *Say_content=[Say_Data objectForKey:@"posts"];//加载该页数据
+                 if (Say_content!=NULL) {
+                     [defaults setObject:Say_content forKey:@"Say"];
+                     _Say_content=[defaults objectForKey:@"Say"];
+                     [MBProgressHUD showSuccess:@"刷新成功"];
+                     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                     [self.tableView.header endRefreshing];
+                     [self.tableView reloadData];
+                 }
+                 else{
+                     [self.tableView.header endRefreshing];
+                     [MBProgressHUD showError:@"网络错误"];
+                 }
+             }
+             else{
+                 [self.tableView.header endRefreshing];
+                 [MBProgressHUD showError:[Say_All objectForKey:@"msg"]];
+             }             [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+             [self.tableView.header endRefreshing];
+             [MBProgressHUD showError:@"网络错误"];
+         }];
+}
+-(void)load{
+    num++;
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    /**拼接地址*/
+    NSString *Url_String=[NSString stringWithFormat:@"http://218.75.197.121:8888/api/v1/moments/posts/%d",num];
+    /**设置9秒超时*/
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
+    manager.requestSerializer.timeoutInterval = 5.f;
+    [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
+    /**请求平时课表*/
+    [manager GET:Url_String parameters:nil progress:nil
+         success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+             NSDictionary *Say_All = [NSDictionary dictionaryWithDictionary:responseObject];
+             if ([[Say_All objectForKey:@"msg"]isEqualToString:@"ok"]) {
+                 NSDictionary *Say_Data=[Say_All objectForKey:@"data"];
+                 NSArray *Say_content=[Say_Data objectForKey:@"posts"];//加载该页数据
+                 if (Say_content!=NULL) {
+                     [defaults setObject:Say_content forKey:@"Say"];
+                     _Say_content=[defaults objectForKey:@"Say"];
+                     [MBProgressHUD showSuccess:@"刷新成功"];
+                     NSString *num_string=[NSString stringWithFormat:@"第%d页",num];
+                     self.navigationItem.title = num_string;
+                     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                     [self.tableView.mj_footer endRefreshing];
+                     [self.tableView setContentOffset:CGPointMake(0, 0) animated:YES];
+                     [self.tableView reloadData];
+                 }
+                 else{
+                     [self.tableView.header endRefreshing];
+                     [MBProgressHUD showError:@"网络错误"];
+                 }
+             }
+             else{
+                 [self.tableView.header endRefreshing];
+                 [MBProgressHUD showError:[Say_All objectForKey:@"msg"]];
+             }             [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+             [self.tableView.header endRefreshing];
+             [MBProgressHUD showError:@"网络错误"];
+         }];
 }
 
 /*

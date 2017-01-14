@@ -24,12 +24,22 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>MJRefresh.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-HutHelper.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
 		<key>Reachability.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SDWebImage.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -47,7 +57,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>2114370D85A2A6F088F9745DB4CA8655</key>
+		<key>0224070638C336AE3E705240F522F6A2</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>04CF549EBEEE7BC87AEAE35397184D94</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -62,7 +77,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>77656CD7639750218C4A1DB6BE10009A</key>
+		<key>78DFC67353FB61DB7B3B8761DA000569</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -82,7 +97,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F51F15C0E3EC2A329E632A60C1D13459</key>
+		<key>F1F2D26FC33B6EA816B6A7E677C4EE8C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FFA4DB2AEB6251F9D8712EAC259D361D</key>
 		<dict>
 			<key>primary</key>
 			<true/>

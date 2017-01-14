@@ -1,7 +1,7 @@
 CONFIGURATION_BUILD_DIR = $PODS_CONFIGURATION_BUILD_DIR/UMengUShare
 FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/UMengUShare/UShareSDK/UMSocialSDK" "${PODS_ROOT}/UMengUShare/UShareSDK/SocialLibraries/QQ"
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers/Private" "${PODS_ROOT}/Headers/Private/UMengUShare" "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/AFNetworking" "${PODS_ROOT}/Headers/Public/ASIHTTPRequest" "${PODS_ROOT}/Headers/Public/DJRefresh" "${PODS_ROOT}/Headers/Public/JSPatchPlatform" "${PODS_ROOT}/Headers/Public/MBProgressHUD" "${PODS_ROOT}/Headers/Public/Reachability" "${PODS_ROOT}/Headers/Public/UMengAnalytics-NO-IDFA" "${PODS_ROOT}/Headers/Public/UMengUShare" "${PODS_ROOT}/Headers/Public/YYModel"
+HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers/Private" "${PODS_ROOT}/Headers/Private/UMengUShare" "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/AFNetworking" "${PODS_ROOT}/Headers/Public/ASIHTTPRequest" "${PODS_ROOT}/Headers/Public/DJRefresh" "${PODS_ROOT}/Headers/Public/JSPatchPlatform" "${PODS_ROOT}/Headers/Public/MBProgressHUD" "${PODS_ROOT}/Headers/Public/MJRefresh" "${PODS_ROOT}/Headers/Public/Reachability" "${PODS_ROOT}/Headers/Public/SDWebImage" "${PODS_ROOT}/Headers/Public/UMengAnalytics-NO-IDFA" "${PODS_ROOT}/Headers/Public/UMengUShare" "${PODS_ROOT}/Headers/Public/YYModel"
 LIBRARY_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/UMengUShare/UShareSDK/SocialLibraries/QQ"
 OTHER_LDFLAGS = -l"SocialQQ" -l"c++" -l"sqlite3" -framework "SystemConfiguration" -framework "TencentOpenAPI" -framework "UMSocialCore" -framework "UMSocialNetwork"
 PODS_BUILD_DIR = $BUILD_DIR
