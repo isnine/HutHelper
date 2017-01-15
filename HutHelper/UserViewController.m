@@ -146,10 +146,7 @@ NSData* data;
     
     
     [request startAsynchronous];
-    
-    //    NSData *returnData = [ASIFormDataRequest sendSynchronousRequest:request returningResponse:nil error:nil];
-    //    NSDictionary *returnData_Dic       = [returnData objectFromJSONData];//数据 -> 字典
-    //    NSString *Msg=[returnData_Dic objectForKey:@"msg"];
+
     [request setDidFinishSelector:@selector(postsucces)];//当成功后会自动触发 headPortraitSuccess 方法
     [request setDidFailSelector:@selector(postfailure)];//如果失败会 自动触发 headPortraitFail 方法
     [MBProgressHUD showMessage:@"上传中" toView:self.view];

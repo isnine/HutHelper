@@ -748,12 +748,70 @@
             </objects>
             <point key="canvasLocation" x="-746.39999999999998" y="1813.9430284857572"/>
         </scene>
+        <!--Add Say View Controller-->
+        <scene sceneID="8Xu-we-U06">
+            <objects>
+                <viewController storyboardIdentifier="AddSay" id="2zT-aJ-lbx" customClass="AddSayViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="pLb-wO-Vky"/>
+                        <viewControllerLayoutGuide type="bottom" id="Wkm-8C-sHM"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="DqT-c9-6nL">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="g3p-ZM-bv6">
+                                <rect key="frame" x="12" y="20" width="354" height="220"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EAw-Bc-UfT">
+                                <rect key="frame" x="132" y="253" width="120" height="120"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6WR-t7-qXc">
+                                <rect key="frame" x="250" y="253" width="120" height="120"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XLV-61-Vks">
+                                <rect key="frame" x="12" y="253" width="120" height="120"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <state key="normal" backgroundImage="add-pic"/>
+                                <connections>
+                                    <action selector="Add:" destination="2zT-aJ-lbx" eventType="touchUpInside" id="7CE-XE-WnB"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SUs-2u-LaX">
+                                <rect key="frame" x="12" y="373" width="120" height="120"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aul-8T-cXF">
+                                <rect key="frame" x="132" y="373" width="120" height="120"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="Img1" destination="EAw-Bc-UfT" id="c3p-av-lLP"/>
+                        <outlet property="Img2" destination="6WR-t7-qXc" id="FEp-TT-UHQ"/>
+                        <outlet property="Img3" destination="SUs-2u-LaX" id="W7d-bT-mxM"/>
+                        <outlet property="Img4" destination="aul-8T-cXF" id="yeL-nP-EU7"/>
+                        <outlet property="Say_Text" destination="g3p-ZM-bv6" id="pXz-Qw-3W7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="igV-bi-p8b" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-706.39999999999998" y="1118.5907046476761"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="oYK-P5-bFv">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ZiG-Sz-8mq" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="8GJ-15-ls0">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="8GJ-15-ls0">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -906,6 +964,7 @@
         <image name="Login-1" width="144" height="67"/>
         <image name="PassWord" width="294" height="76"/>
         <image name="Submit" width="144" height="69"/>
+        <image name="add-pic" width="150" height="150"/>
         <image name="button" width="144" height="69"/>
         <image name="calendar1" width="689" height="1037"/>
         <image name="feedback_ok" width="399" height="102"/>

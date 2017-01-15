@@ -11,4 +11,6 @@ target "HutHelper" do
     pod 'YYModel'
     pod 'MJRefresh'
     pod 'SDWebImage', '~>3.8'
+    pod 'LGPlusButtonsView', '~> 1.1.0'
+    pod 'TZImagePickerController'
 end

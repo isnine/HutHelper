@@ -36,10 +36,6 @@
 		3A33D7DB1DAE50EF0012EFDE /* libUMessage_Sdk_1.4.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A33D7D91DAE50EF0012EFDE /* libUMessage_Sdk_1.4.0.a */; };
 		3A33D7F21DAF1B810012EFDE /* SetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A33D7F01DAF1B810012EFDE /* SetViewController.m */; };
 		3A33D7F71DAF646B0012EFDE /* Login2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A33D7F51DAF646B0012EFDE /* Login2ViewController.m */; };
-		3A3C688F1DB115190088CC17 /* LGPlusButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A3C68881DB115190088CC17 /* LGPlusButton.m */; };
-		3A3C68901DB115190088CC17 /* LGPlusButtonDescription.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A3C688A1DB115190088CC17 /* LGPlusButtonDescription.m */; };
-		3A3C68911DB115190088CC17 /* LGPlusButtonsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A3C688C1DB115190088CC17 /* LGPlusButtonsView.m */; };
-		3A3C68921DB115190088CC17 /* LGPlusButtonsViewShared.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A3C688E1DB115190088CC17 /* LGPlusButtonsViewShared.m */; };
 		3A449C711E16C2E500D89CEA /* header@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3A449C701E16C2E500D89CEA /* header@2x.jpg */; };
 		3A45626C1DB4980800E5591A /* FirstLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A45626A1DB4980800E5591A /* FirstLoginViewController.m */; };
 		3A45626D1DB4980800E5591A /* FirstLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A45626B1DB4980800E5591A /* FirstLoginViewController.xib */; };
@@ -65,6 +61,7 @@
 		3A776DED1E2B615100F600D6 /* FORGestureTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A776DEB1E2B615100F600D6 /* FORGestureTrack.m */; };
 		3A776DF11E2B616500F600D6 /* UUInputAccessoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A776DF01E2B616500F600D6 /* UUInputAccessoryView.m */; };
 		3A776DF31E2B725A00F600D6 /* CommitViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A776DF21E2B725A00F600D6 /* CommitViewCell.xib */; };
+		3A776DF61E2B83EB00F600D6 /* AddSayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A776DF51E2B83EB00F600D6 /* AddSayViewController.m */; };
 		3A7DFCC11E29D82E0082F379 /* SayViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A7DFCBF1E29D82E0082F379 /* SayViewCell.m */; };
 		3A7DFCC21E29D82E0082F379 /* SayViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A7DFCC01E29D82E0082F379 /* SayViewCell.xib */; };
 		3A7DFCC61E29D94A0082F379 /* SayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A7DFCC41E29D94A0082F379 /* SayViewController.m */; };
@@ -174,14 +171,6 @@
 		3A33D7F01DAF1B810012EFDE /* SetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetViewController.m; sourceTree = "<group>"; };
 		3A33D7F41DAF646B0012EFDE /* Login2ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Login2ViewController.h; sourceTree = "<group>"; };
 		3A33D7F51DAF646B0012EFDE /* Login2ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Login2ViewController.m; sourceTree = "<group>"; };
-		3A3C68871DB115190088CC17 /* LGPlusButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LGPlusButton.h; path = HutHelper/Lib/LGPlusButtonsView/LGPlusButton.h; sourceTree = "<group>"; };
-		3A3C68881DB115190088CC17 /* LGPlusButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LGPlusButton.m; path = HutHelper/Lib/LGPlusButtonsView/LGPlusButton.m; sourceTree = "<group>"; };
-		3A3C68891DB115190088CC17 /* LGPlusButtonDescription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LGPlusButtonDescription.h; path = HutHelper/Lib/LGPlusButtonsView/LGPlusButtonDescription.h; sourceTree = "<group>"; };
-		3A3C688A1DB115190088CC17 /* LGPlusButtonDescription.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LGPlusButtonDescription.m; path = HutHelper/Lib/LGPlusButtonsView/LGPlusButtonDescription.m; sourceTree = "<group>"; };
-		3A3C688B1DB115190088CC17 /* LGPlusButtonsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LGPlusButtonsView.h; path = HutHelper/Lib/LGPlusButtonsView/LGPlusButtonsView.h; sourceTree = "<group>"; };
-		3A3C688C1DB115190088CC17 /* LGPlusButtonsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LGPlusButtonsView.m; path = HutHelper/Lib/LGPlusButtonsView/LGPlusButtonsView.m; sourceTree = "<group>"; };
-		3A3C688D1DB115190088CC17 /* LGPlusButtonsViewShared.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LGPlusButtonsViewShared.h; path = HutHelper/Lib/LGPlusButtonsView/LGPlusButtonsViewShared.h; sourceTree = "<group>"; };
-		3A3C688E1DB115190088CC17 /* LGPlusButtonsViewShared.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LGPlusButtonsViewShared.m; path = HutHelper/Lib/LGPlusButtonsView/LGPlusButtonsViewShared.m; sourceTree = "<group>"; };
 		3A449C701E16C2E500D89CEA /* header@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "header@2x.jpg"; sourceTree = "<group>"; };
 		3A4562691DB4980800E5591A /* FirstLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstLoginViewController.h; sourceTree = "<group>"; };
 		3A45626A1DB4980800E5591A /* FirstLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstLoginViewController.m; sourceTree = "<group>"; };
@@ -223,6 +212,8 @@
 		3A776DEF1E2B616500F600D6 /* UUInputAccessoryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UUInputAccessoryView.h; path = Lib/Commit/UUInputAccessoryView/UUInputAccessoryView.h; sourceTree = "<group>"; };
 		3A776DF01E2B616500F600D6 /* UUInputAccessoryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UUInputAccessoryView.m; path = Lib/Commit/UUInputAccessoryView/UUInputAccessoryView.m; sourceTree = "<group>"; };
 		3A776DF21E2B725A00F600D6 /* CommitViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommitViewCell.xib; sourceTree = "<group>"; };
+		3A776DF41E2B83EB00F600D6 /* AddSayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddSayViewController.h; sourceTree = "<group>"; };
+		3A776DF51E2B83EB00F600D6 /* AddSayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddSayViewController.m; sourceTree = "<group>"; };
 		3A7D3CA91DB0A6CB00355E7A /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		3A7DFCBE1E29D82E0082F379 /* SayViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SayViewCell.h; sourceTree = "<group>"; };
 		3A7DFCBF1E29D82E0082F379 /* SayViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SayViewCell.m; sourceTree = "<group>"; };
@@ -380,22 +371,6 @@
 			path = Lib/UMessage_Sdk_1.4.0;
 			sourceTree = "<group>";
 		};
-		3A3C68861DB1150C0088CC17 /* LGPlusButtonsView */ = {
-			isa = PBXGroup;
-			children = (
-				3A3C68871DB115190088CC17 /* LGPlusButton.h */,
-				3A3C68881DB115190088CC17 /* LGPlusButton.m */,
-				3A3C68891DB115190088CC17 /* LGPlusButtonDescription.h */,
-				3A3C688A1DB115190088CC17 /* LGPlusButtonDescription.m */,
-				3A3C688B1DB115190088CC17 /* LGPlusButtonsView.h */,
-				3A3C688C1DB115190088CC17 /* LGPlusButtonsView.m */,
-				3A3C688D1DB115190088CC17 /* LGPlusButtonsViewShared.h */,
-				3A3C688E1DB115190088CC17 /* LGPlusButtonsViewShared.m */,
-			);
-			name = LGPlusButtonsView;
-			path = ..;
-			sourceTree = "<group>";
-		};
 		3A4D04181E19201B00595183 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -411,7 +386,6 @@
 			children = (
 				3A776DE61E2B614200F600D6 /* Commit */,
 				3AD87B0D1DACD01C00357212 /* GWPCourseListView */,
-				3A3C68861DB1150C0088CC17 /* LGPlusButtonsView */,
 				3A026CFC1DBC9B35000288AF /* UUChart */,
 				3AAC24281DE1CB3C00546B11 /* JSHeaderView */,
 			);
@@ -491,6 +465,8 @@
 				3AA8814D1E2A4654004F75B1 /* CommitViewCell.h */,
 				3AA8814E1E2A4654004F75B1 /* CommitViewCell.m */,
 				3A776DF21E2B725A00F600D6 /* CommitViewCell.xib */,
+				3A776DF41E2B83EB00F600D6 /* AddSayViewController.h */,
+				3A776DF51E2B83EB00F600D6 /* AddSayViewController.m */,
 			);
 			name = Say;
 			sourceTree = "<group>";
@@ -980,7 +956,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3A3C688F1DB115190088CC17 /* LGPlusButton.m in Sources */,
 				3ABF72801DDB32F60062E757 /* LostViewController.m in Sources */,
 				3A33D7F71DAF646B0012EFDE /* Login2ViewController.m in Sources */,
 				3A6D7EF21DABDB500081B70D /* LoginViewController.m in Sources */,
@@ -1013,7 +988,6 @@
 				3A026D161DBC9B42000288AF /* UUChartConst.m in Sources */,
 				3A8567801DA908AA00EBD44A /* main.m in Sources */,
 				3A026D171DBC9B42000288AF /* UUChartLabel.m in Sources */,
-				3A3C68901DB115190088CC17 /* LGPlusButtonDescription.m in Sources */,
 				3A33D7D51DAE36420012EFDE /* SchoolHandViewController.m in Sources */,
 				3A6D7EF61DABDB500081B70D /* ViewController.m in Sources */,
 				3A6D7EF31DABDB500081B70D /* MainPageViewController.m in Sources */,
@@ -1022,11 +996,9 @@
 				3A7ED5701DE3254A00389399 /* ExamaddViewController.m in Sources */,
 				3AA881501E2A4654004F75B1 /* CommitViewCell.m in Sources */,
 				3AAC24331DE1F17400546B11 /* UsernameViewController.m in Sources */,
-				3A3C68911DB115190088CC17 /* LGPlusButtonsView.m in Sources */,
 				3A6D7EF01DABDB500081B70D /* HomeWorkViewController.m in Sources */,
 				3ABE7F281DAF7BBE003E4085 /* NoticeViewController.m in Sources */,
 				3A0898BD1DB5ED5800D2CCE6 /* SKSTableViewCell.m in Sources */,
-				3A3C68921DB115190088CC17 /* LGPlusButtonsViewShared.m in Sources */,
 				3A026D111DBC9B42000288AF /* TableViewCell.m in Sources */,
 				3ACE12411E2666D800F28314 /* ExamCell.m in Sources */,
 				3A6D7EEF1DABDB500081B70D /* AppDelegate.m in Sources */,
@@ -1034,6 +1006,7 @@
 				3AD87B101DACD02E00357212 /* GWPCourseListView.m in Sources */,
 				3A7DFCCB1E29E7150082F379 /* SayCommitViewCell.m in Sources */,
 				3A6D7EF11DABDB500081B70D /* LeftSortsViewController.m in Sources */,
+				3A776DF61E2B83EB00F600D6 /* AddSayViewController.m in Sources */,
 				3A0898A41DB5EA5700D2CCE6 /* ScoreViewController.m in Sources */,
 				3A33D7F21DAF1B810012EFDE /* SetViewController.m in Sources */,
 				3A33D7BE1DADE3A40012EFDE /* FeedbackViewController.m in Sources */,

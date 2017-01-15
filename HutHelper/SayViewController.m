@@ -14,11 +14,13 @@
 #import "MJRefresh.h"
 #import "CommitViewCell.h"
 #import "PhotoViewCell.h"
+#import "AppDelegate.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "UUInputAccessoryView.h"
 #import "YYModel.h"
 #import "User.h"
 #import "AFNetworking.h"
+#import "AddSayViewController.h"
 @interface SayViewController ()
 @property (nonatomic,copy) NSArray      *Say_content;
 @end
@@ -42,11 +44,14 @@ int num=1;
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     _Say_content=[defaults objectForKey:@"Say"];
     /**下拉刷新*/
-    //    //默认【下拉刷新】
-    //    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(reload)];
+    //默认【下拉刷新】
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(reload)];
     //默认【上拉加载】
     self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(load)];
-    //评论框
+    /** 标题栏样式 */
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+    self.navigationItem.backBarButtonItem = item;
+    [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:0/255.0 green:224/255.0 blue:208/255.0 alpha:1]];
     
 }
 
@@ -73,10 +78,10 @@ int num=1;
     NSArray *photo=[_Say_content[indexPath.section] objectForKey:@"pics"];
     if (indexPath.row==0){
         int height=[self GetStringHeight:[self getContent:(short)indexPath.section]];
-      NSLog(@"宽度%lf，这是当前第%d条",[self GetStringHeight:[self getContent:(short)indexPath.section]],(short)indexPath.section);
+        NSLog(@"宽度%lf，这是当前第%d条",[self GetStringHeight:[self getContent:(short)indexPath.section]],(short)indexPath.section);
         if([[self getContent:(short)indexPath.section] rangeOfString:@"\n"].location !=NSNotFound)
             return 120;
-         if (height<120)  return 85;
+        if (height<120)  return 85;
         else if(height>=120&&height<300) return 90;
         else if(height>=300&&height<500) return 100;
         else  return 120;
@@ -238,7 +243,10 @@ int num=1;
 }
 #pragma mark - "其他"
 -(void)menu{
-    
+    UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    AddSayViewController *addsayViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"AddSay"];
+    AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [tempAppDelegate.mainNavigationController pushViewController:addsayViewController animated:NO];
 }
 
 -(void)load:(int)num{
@@ -427,21 +435,22 @@ int num=1;
                      NSString *num_string=[NSString stringWithFormat:@"第%d页",num];
                      self.navigationItem.title = num_string;
                      [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-                     [self.tableView.mj_footer endRefreshing];
-                     [self.tableView setContentOffset:CGPointMake(0, 0) animated:YES];
+                     [self.tableView.footer endRefreshing];
+                     self.tableView.mj_header.hidden = YES;
+                     [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
                      [self.tableView reloadData];
                  }
                  else{
-                     [self.tableView.header endRefreshing];
+                     [self.tableView.footer endRefreshing];
                      [MBProgressHUD showError:@"网络错误"];
                  }
              }
              else{
-                 [self.tableView.header endRefreshing];
+                 [self.tableView.footer endRefreshing];
                  [MBProgressHUD showError:[Say_All objectForKey:@"msg"]];
              }             [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
          } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-             [self.tableView.header endRefreshing];
+             [self.tableView.footer endRefreshing];
              [MBProgressHUD showError:@"网络错误"];
          }];
 }

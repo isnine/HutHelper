@@ -31,12 +31,14 @@ PODS:
   - JSPatchPlatform (1.6.3):
     - JSPatchPlatform/Core (= 1.6.3)
   - JSPatchPlatform/Core (1.6.3)
+  - LGPlusButtonsView (1.1.1)
   - MBProgressHUD (1.0.0)
   - MJRefresh (3.1.12)
   - Reachability (3.2)
   - SDWebImage (3.8.2):
     - SDWebImage/Core (= 3.8.2)
   - SDWebImage/Core (3.8.2)
+  - TZImagePickerController (1.7.1)
   - UMengAnalytics-NO-IDFA (4.1.5)
   - UMengUShare/Core (6.0.3):
     - UMengUShare/Network
@@ -52,9 +54,11 @@ DEPENDENCIES:
   - ASIHTTPRequest
   - DJRefresh (~> 1.0.5)
   - JSPatchPlatform
+  - LGPlusButtonsView (~> 1.1.0)
   - MBProgressHUD (~> 1.0.0)
   - MJRefresh
   - SDWebImage (~> 3.8)
+  - TZImagePickerController
   - UMengAnalytics-NO-IDFA
   - UMengUShare/Social/QQ
   - UMengUShare/UI
@@ -65,14 +69,16 @@ SPEC CHECKSUMS:
   ASIHTTPRequest: ec013992946676b7978dcbde6396d57312d21db4
   DJRefresh: 32b3776546004faddddc28035442ba15e07c5f1b
   JSPatchPlatform: a1e6f6e7903fd6e26ceddc6a2aeb0c051cc98100
+  LGPlusButtonsView: 57878cd3d461d0ee2042f5b7b25d1c017e22a084
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
+  TZImagePickerController: cbfd57ba947263759b860f74132dd1bc33125afc
   UMengAnalytics-NO-IDFA: f1b08b540eba6ebad044a574cae6d988cf40cfda
   UMengUShare: f231fc086d789d4e560a5090dcc13a2db15c686d
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: c6ccdac4e1b32391c30d9bf4d44254462e45a8e3
+PODFILE CHECKSUM: 096805c9aa619ae37d6c5229d1d5efed21555708
 
 COCOAPODS: 1.1.1
