@@ -308,114 +308,64 @@ int class_error_;
 } //课程表
 
 - (IBAction)ClassXPFind:(id)sender {  //课表界面
-    class_error_=0;
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     NSArray *array_class                            = [defaults objectForKey:@"array_class"];
     NSArray *array_xp                            = [defaults objectForKey:@"array_xp"];
+    NSDictionary *User_Data=[defaults objectForKey:@"User"];
+    User *user=[User yy_modelWithJSON:User_Data];
     if(array_class==NULL&&array_xp==NULL){
-        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        hud.labelText = @"查询中";
-        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 0.01 * NSEC_PER_SEC);
-        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-            NSString *studentKH=[defaults objectForKey:@"studentKH"];
-            NSString *Remember_code_app=[defaults objectForKey:@"remember_code_app"];
-            /**课表数据缓存*/
-            NSString *Url_String_1=@"http://218.75.197.121:8888/api/v1/get/lessons/";
-            NSString *Url_String_2=@"/";
-            NSString *Url_String_1_U=[Url_String_1 stringByAppendingString:studentKH];
-            NSString *Url_String_1_U_2=[Url_String_1_U stringByAppendingString:Url_String_2];
-            NSString *Url_String=[Url_String_1_U_2 stringByAppendingString:Remember_code_app];
-            NSURL *url                   = [NSURL URLWithString: Url_String];//接口地址
-            NSError *error               = nil;
-            NSString *jsonString         = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:&error];//Url -> String
-            NSData* jsonData             = [jsonString dataUsingEncoding:NSUTF8StringEncoding];//地址 -> 数据
-            NSDictionary *Class_All      = [jsonData objectFromJSONData];//数据 -> 字典
-            NSString *msg_class          = [Class_All objectForKey:@"msg"];//得到数据情况
-            if ([msg_class isEqualToString:@"ok"]) {
-                NSArray *array               = [Class_All objectForKey:@"data"];
-                [defaults setObject:array forKey:@"array_class"];
-                [defaults synchronize];
-            }
-            else{
-                class_error_=1;
-            }
-            NSLog(@"平时课表地址:%@",url);
-            /**实验课表数据缓存*/
-            NSString *Url_String_xp_1=@"http://218.75.197.121:8888/api/v1/get/lessonsexp/";
-            NSString *Url_String_xp_1_U=[Url_String_xp_1 stringByAppendingString:studentKH];
-            NSString *Url_String_xp_1_U_2=[Url_String_xp_1_U stringByAppendingString:@"/"];
-            NSString *Url_String_xp=[Url_String_xp_1_U_2 stringByAppendingString:Remember_code_app];
-            NSURL *url_xp                = [NSURL URLWithString: Url_String_xp];//接口地址
-            NSLog(@"实验课表地址:%@",Url_String_xp);
-            //自带库解析实验课
-            NSURLRequest *request        = [NSURLRequest requestWithURL:[NSURL URLWithString:Url_String_xp]];
-            NSData *response             = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
-            
-            if (!response==NULL) {
-                NSDictionary *jsonDataxp     = [NSJSONSerialization JSONObjectWithData:response options:NSJSONReadingMutableLeaves error:&error];
-                NSString *msg_xp          = [jsonDataxp objectForKey:@"msg"];//得到数据情况
-                if ([msg_xp isEqualToString:@"ok"]) {
-                    NSArray *array_xp            = [jsonDataxp objectForKey:@"data"];
-                    [defaults setObject:array_xp forKey:@"array_xp"];
-                    [defaults synchronize];
-                }
-                else{
-                    class_error_=class_error_+2;
-                }
-            }
-            else{
-                class_error_=class_error_+2;
-            }
-            [MBProgressHUD hideHUDForView:self.view animated:YES];
-            
-            NSString *show_erro;
-            switch (class_error_) {
-                case 0:{
-                    UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-                    ClassViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Class"];
-                    AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-                    [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:NO];
-                    break;
-                }
-                case 1:{
-                    UIAlertView *alertView                    = [[UIAlertView alloc] initWithTitle:@"无平时课表数据"
-                                                                                           message:@""
-                                                                                          delegate:self
-                                                                                 cancelButtonTitle:@"取消"
-                                                                                 otherButtonTitles:@"确定", nil];
-                    [alertView show];
-                    
-                    UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-                    ClassViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Class"];
-                    AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-                    [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:NO];
-                    break;}
-                case 2:{
-                    UIAlertView *alertView                    = [[UIAlertView alloc] initWithTitle:@"无实验课表数据"
-                                                                                           message:@""
-                                                                                          delegate:self
-                                                                                 cancelButtonTitle:@"取消"
-                                                                                 otherButtonTitles:@"确定", nil];
-                    [alertView show];
-                    UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-                    ClassViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Class"];
-                    AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-                    [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:NO];
-                    break;
-                }
-                case 3:{
-                    show_erro=@"登录过期或网络异常";
-                    UIAlertView *alertView                    = [[UIAlertView alloc] initWithTitle:@"请点击切换用户,重新登录"
-                                                                                           message:show_erro
-                                                                                          delegate:self
-                                                                                 cancelButtonTitle:@"取消"
-                                                                                 otherButtonTitles:@"确定", nil];
-                    [alertView show];
-                    break;}
-                default:
-                    break;
-            }
-        });
+        /**拼接地址*/
+        [MBProgressHUD showMessage:@"查询中" toView:self.view];
+        NSString *Url_String=[NSString stringWithFormat:@"http://218.75.197.121:8888/api/v1/get/lessons/%@/%@",user.data.studentKH,user.remember_code_app];
+        NSLog(@"平时课表地址:%@",Url_String);
+        NSString *UrlXP_String=[NSString stringWithFormat:@"http://218.75.197.121:8888/api/v1/get/lessonsexp/%@/%@",user.data.studentKH,user.remember_code_app];
+        NSLog(@"实验课表地址:%@",UrlXP_String);
+        /**设置9秒超时*/
+        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+        [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
+        manager.requestSerializer.timeoutInterval = 9.f;
+        [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
+        /**请求平时课表*/
+        [manager GET:Url_String parameters:nil progress:nil
+             success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                 NSDictionary *Class_All = [NSDictionary dictionaryWithDictionary:responseObject];
+                 NSString *Msg=[Class_All objectForKey:@"msg"];
+                 if ([Msg isEqualToString:@"ok"]) {
+                     NSArray *array               = [Class_All objectForKey:@"data"];
+                     [defaults setObject:array forKey:@"array_class"];
+                     [defaults synchronize];
+                     /**请求实验课表*/
+                     [manager GET:UrlXP_String parameters:nil progress:nil
+                          success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                              NSDictionary *ClassXP_All = [NSDictionary dictionaryWithDictionary:responseObject];
+                              NSString *Msg=[ClassXP_All objectForKey:@"msg"];
+                              if ([Msg isEqualToString:@"ok"]) {
+                                  NSArray *array               = [ClassXP_All objectForKey:@"data"];
+                                  [defaults setObject:array forKey:@"array_xp"];
+                                  [defaults synchronize];
+                                  [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                                  UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                                  ClassViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Class"];
+                                  AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+                                  [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:NO];
+                              }
+                          } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                              [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                              [MBProgressHUD showError:@"网络错误，实验课表查询失败"];
+                          }];
+                 }
+                 else if([Msg isEqualToString:@"令牌错误"]){
+                     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                     [MBProgressHUD showError:@"登录过期,请重新登录"];
+                 }
+                 else{
+                     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                     [MBProgressHUD showError:@"查询失败"];
+                 }
+             } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                 [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                 [MBProgressHUD showError:@"网络错误，平时课表查询失败"];
+             }];
     }
     else{
         UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
@@ -423,6 +373,8 @@ int class_error_;
         AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:NO];
     }
+    
+    
     
 } //实验课表
 

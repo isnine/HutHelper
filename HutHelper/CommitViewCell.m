@@ -7,7 +7,7 @@
 //
 
 #import "CommitViewCell.h"
-
+#import "SayViewController.h"
 @implementation CommitViewCell
 
 - (void)awakeFromNib {
@@ -24,4 +24,7 @@
 {
     return [[[NSBundle mainBundle] loadNibNamed:@"CommitViewCell" owner:nil options:nil] lastObject];
 }
+
+
+
 @end

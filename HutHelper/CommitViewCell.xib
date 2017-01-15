@@ -15,16 +15,16 @@
             <rect key="frame" x="0.0" y="0.0" width="321" height="36"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="321" height="36"/>
+                <rect key="frame" x="0.0" y="0.0" width="321" height="35"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BId-1P-Jey">
-                        <rect key="frame" x="264" y="9" width="17" height="17"/>
+                        <rect key="frame" x="264" y="9" width="17" height="16"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                         <state key="normal" backgroundImage="comment"/>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BNT-PU-OwX">
-                        <rect key="frame" x="287" y="7" width="20" height="20"/>
+                        <rect key="frame" x="287" y="7" width="20" height="19"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="0.22223478560000001" green="0.85787206890000001" blue="0.81014591459999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -33,6 +33,7 @@
                 </subviews>
             </tableViewCellContentView>
             <connections>
+                <outlet property="Commit" destination="BId-1P-Jey" id="KxL-cH-Jkf"/>
                 <outlet property="commitsize" destination="BNT-PU-OwX" id="VIC-be-8Hl"/>
             </connections>
             <point key="canvasLocation" x="26.5" y="48"/>

@@ -61,6 +61,10 @@
 		3A6FF7C51DB3151E004CFBE8 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A6FF7C41DB3151E004CFBE8 /* CoreTelephony.framework */; };
 		3A6FF7C71DB3152C004CFBE8 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A6FF7C61DB3152C004CFBE8 /* libz.tbd */; };
 		3A6FF7C91DB31544004CFBE8 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A6FF7C81DB31544004CFBE8 /* libsqlite3.0.tbd */; };
+		3A776DEC1E2B615100F600D6 /* FORGesture.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A776DE91E2B615100F600D6 /* FORGesture.m */; };
+		3A776DED1E2B615100F600D6 /* FORGestureTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A776DEB1E2B615100F600D6 /* FORGestureTrack.m */; };
+		3A776DF11E2B616500F600D6 /* UUInputAccessoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A776DF01E2B616500F600D6 /* UUInputAccessoryView.m */; };
+		3A776DF31E2B725A00F600D6 /* CommitViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A776DF21E2B725A00F600D6 /* CommitViewCell.xib */; };
 		3A7DFCC11E29D82E0082F379 /* SayViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A7DFCBF1E29D82E0082F379 /* SayViewCell.m */; };
 		3A7DFCC21E29D82E0082F379 /* SayViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A7DFCC01E29D82E0082F379 /* SayViewCell.xib */; };
 		3A7DFCC61E29D94A0082F379 /* SayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A7DFCC41E29D94A0082F379 /* SayViewController.m */; };
@@ -82,7 +86,6 @@
 		3AA8814B1E2A4644004F75B1 /* PhotoViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA881491E2A4644004F75B1 /* PhotoViewCell.m */; };
 		3AA8814C1E2A4644004F75B1 /* PhotoViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AA8814A1E2A4644004F75B1 /* PhotoViewCell.xib */; };
 		3AA881501E2A4654004F75B1 /* CommitViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA8814E1E2A4654004F75B1 /* CommitViewCell.m */; };
-		3AA881511E2A4654004F75B1 /* CommitViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AA8814F1E2A4654004F75B1 /* CommitViewCell.xib */; };
 		3AAC242B1DE1CB3C00546B11 /* JSHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AAC242A1DE1CB3C00546B11 /* JSHeaderView.m */; };
 		3AAC242E1DE1CB8C00546B11 /* UserInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AAC242D1DE1CB8C00546B11 /* UserInfoCell.m */; };
 		3AAC24331DE1F17400546B11 /* UsernameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AAC24321DE1F17400546B11 /* UsernameViewController.m */; };
@@ -213,6 +216,13 @@
 		3A6FF7C41DB3151E004CFBE8 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		3A6FF7C61DB3152C004CFBE8 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		3A6FF7C81DB31544004CFBE8 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		3A776DE81E2B615100F600D6 /* FORGesture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FORGesture.h; path = Lib/Commit/FORGestureTrack/FORGesture.h; sourceTree = "<group>"; };
+		3A776DE91E2B615100F600D6 /* FORGesture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FORGesture.m; path = Lib/Commit/FORGestureTrack/FORGesture.m; sourceTree = "<group>"; };
+		3A776DEA1E2B615100F600D6 /* FORGestureTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FORGestureTrack.h; path = Lib/Commit/FORGestureTrack/FORGestureTrack.h; sourceTree = "<group>"; };
+		3A776DEB1E2B615100F600D6 /* FORGestureTrack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FORGestureTrack.m; path = Lib/Commit/FORGestureTrack/FORGestureTrack.m; sourceTree = "<group>"; };
+		3A776DEF1E2B616500F600D6 /* UUInputAccessoryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UUInputAccessoryView.h; path = Lib/Commit/UUInputAccessoryView/UUInputAccessoryView.h; sourceTree = "<group>"; };
+		3A776DF01E2B616500F600D6 /* UUInputAccessoryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UUInputAccessoryView.m; path = Lib/Commit/UUInputAccessoryView/UUInputAccessoryView.m; sourceTree = "<group>"; };
+		3A776DF21E2B725A00F600D6 /* CommitViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommitViewCell.xib; sourceTree = "<group>"; };
 		3A7D3CA91DB0A6CB00355E7A /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		3A7DFCBE1E29D82E0082F379 /* SayViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SayViewCell.h; sourceTree = "<group>"; };
 		3A7DFCBF1E29D82E0082F379 /* SayViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SayViewCell.m; sourceTree = "<group>"; };
@@ -246,7 +256,6 @@
 		3AA8814A1E2A4644004F75B1 /* PhotoViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoViewCell.xib; sourceTree = "<group>"; };
 		3AA8814D1E2A4654004F75B1 /* CommitViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommitViewCell.h; sourceTree = "<group>"; };
 		3AA8814E1E2A4654004F75B1 /* CommitViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommitViewCell.m; sourceTree = "<group>"; };
-		3AA8814F1E2A4654004F75B1 /* CommitViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommitViewCell.xib; sourceTree = "<group>"; };
 		3AAC24291DE1CB3C00546B11 /* JSHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSHeaderView.h; sourceTree = "<group>"; };
 		3AAC242A1DE1CB3C00546B11 /* JSHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSHeaderView.m; sourceTree = "<group>"; };
 		3AAC242C1DE1CB8C00546B11 /* UserInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoCell.h; sourceTree = "<group>"; };
@@ -400,6 +409,7 @@
 		3A4D04191E19204300595183 /* 3rd */ = {
 			isa = PBXGroup;
 			children = (
+				3A776DE61E2B614200F600D6 /* Commit */,
 				3AD87B0D1DACD01C00357212 /* GWPCourseListView */,
 				3A3C68861DB1150C0088CC17 /* LGPlusButtonsView */,
 				3A026CFC1DBC9B35000288AF /* UUChart */,
@@ -480,7 +490,7 @@
 				3AA8814A1E2A4644004F75B1 /* PhotoViewCell.xib */,
 				3AA8814D1E2A4654004F75B1 /* CommitViewCell.h */,
 				3AA8814E1E2A4654004F75B1 /* CommitViewCell.m */,
-				3AA8814F1E2A4654004F75B1 /* CommitViewCell.xib */,
+				3A776DF21E2B725A00F600D6 /* CommitViewCell.xib */,
 			);
 			name = Say;
 			sourceTree = "<group>";
@@ -647,6 +657,35 @@
 				3A4D38AF1E1FAF7C00639C18 /* UINavigationBar+Awesome.m */,
 			);
 			name = LTNavigationBar;
+			sourceTree = "<group>";
+		};
+		3A776DE61E2B614200F600D6 /* Commit */ = {
+			isa = PBXGroup;
+			children = (
+				3A776DEE1E2B615C00F600D6 /* UUInputAccessoryView */,
+				3A776DE71E2B614800F600D6 /* FORGestureTrack */,
+			);
+			name = Commit;
+			sourceTree = "<group>";
+		};
+		3A776DE71E2B614800F600D6 /* FORGestureTrack */ = {
+			isa = PBXGroup;
+			children = (
+				3A776DE81E2B615100F600D6 /* FORGesture.h */,
+				3A776DE91E2B615100F600D6 /* FORGesture.m */,
+				3A776DEA1E2B615100F600D6 /* FORGestureTrack.h */,
+				3A776DEB1E2B615100F600D6 /* FORGestureTrack.m */,
+			);
+			name = FORGestureTrack;
+			sourceTree = "<group>";
+		};
+		3A776DEE1E2B615C00F600D6 /* UUInputAccessoryView */ = {
+			isa = PBXGroup;
+			children = (
+				3A776DEF1E2B616500F600D6 /* UUInputAccessoryView.h */,
+				3A776DF01E2B616500F600D6 /* UUInputAccessoryView.m */,
+			);
+			name = UUInputAccessoryView;
 			sourceTree = "<group>";
 		};
 		3A7D3CA81DB0A6CB00355E7A /* Frameworks */ = {
@@ -878,7 +917,7 @@
 				3AD87B181DACD08E00357212 /* Main.storyboard in Resources */,
 				3A85678B1DA908AA00EBD44A /* Assets.xcassets in Resources */,
 				3A449C711E16C2E500D89CEA /* header@2x.jpg in Resources */,
-				3AA881511E2A4654004F75B1 /* CommitViewCell.xib in Resources */,
+				3A776DF31E2B725A00F600D6 /* CommitViewCell.xib in Resources */,
 				3ABF727C1DDB2DD70062E757 /* MainPageViewController2.xib in Resources */,
 				3ACE12421E2666D800F28314 /* ExamCell.xib in Resources */,
 				3A4D04331E1963AC00595183 /* 工大助手API文档.docx in Resources */,
@@ -958,6 +997,7 @@
 				3A7DFCC61E29D94A0082F379 /* SayViewController.m in Sources */,
 				3AA8814B1E2A4644004F75B1 /* PhotoViewCell.m in Sources */,
 				3A4D38DB1E20DBC300639C18 /* ExamNewViewController.m in Sources */,
+				3A776DEC1E2B615100F600D6 /* FORGesture.m in Sources */,
 				3ACE12451E275D8300F28314 /* User.m in Sources */,
 				3ABE7F1E1DAF75FB003E4085 /* LibraryViewController.m in Sources */,
 				3A7DFCC11E29D82E0082F379 /* SayViewCell.m in Sources */,
@@ -990,6 +1030,7 @@
 				3A026D111DBC9B42000288AF /* TableViewCell.m in Sources */,
 				3ACE12411E2666D800F28314 /* ExamCell.m in Sources */,
 				3A6D7EEF1DABDB500081B70D /* AppDelegate.m in Sources */,
+				3A776DF11E2B616500F600D6 /* UUInputAccessoryView.m in Sources */,
 				3AD87B101DACD02E00357212 /* GWPCourseListView.m in Sources */,
 				3A7DFCCB1E29E7150082F379 /* SayCommitViewCell.m in Sources */,
 				3A6D7EF11DABDB500081B70D /* LeftSortsViewController.m in Sources */,
@@ -997,6 +1038,7 @@
 				3A33D7F21DAF1B810012EFDE /* SetViewController.m in Sources */,
 				3A33D7BE1DADE3A40012EFDE /* FeedbackViewController.m in Sources */,
 				3AA1BC181E16179C00F75A7E /* MBProgressHUD+MJ.m in Sources */,
+				3A776DED1E2B615100F600D6 /* FORGestureTrack.m in Sources */,
 				3A026D181DBC9B42000288AF /* UULineChart.m in Sources */,
 				3AB6BF9B1DDFF74300127C96 /* UserViewController.m in Sources */,
 				3A33D7D01DAE31AB0012EFDE /* SchoolsayViewController.m in Sources */,

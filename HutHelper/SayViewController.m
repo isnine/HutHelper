@@ -15,6 +15,10 @@
 #import "CommitViewCell.h"
 #import "PhotoViewCell.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "UUInputAccessoryView.h"
+#import "YYModel.h"
+#import "User.h"
+#import "AFNetworking.h"
 @interface SayViewController ()
 @property (nonatomic,copy) NSArray      *Say_content;
 @end
@@ -23,7 +27,7 @@
 int num=1;
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [super viewDidLoad];
+    num=1;
     self.navigationItem.title = @"校园说说";
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor]}];
     /**按钮*/
@@ -42,6 +46,7 @@ int num=1;
     //    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(reload)];
     //默认【上拉加载】
     self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(load)];
+    //评论框
     
 }
 
@@ -67,12 +72,20 @@ int num=1;
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{///每块的高度
     NSArray *photo=[_Say_content[indexPath.section] objectForKey:@"pics"];
     if (indexPath.row==0){
-        return 100;
+        int height=[self GetStringHeight:[self getContent:(short)indexPath.section]];
+      NSLog(@"宽度%lf，这是当前第%d条",[self GetStringHeight:[self getContent:(short)indexPath.section]],(short)indexPath.section);
+        if([[self getContent:(short)indexPath.section] rangeOfString:@"\n"].location !=NSNotFound)
+            return 120;
+         if (height<120)  return 85;
+        else if(height>=120&&height<300) return 90;
+        else if(height>=300&&height<500) return 100;
+        else  return 120;
     }
     else if (indexPath.row==1){
         if (photo.count==0)  return 45;//评论数
         else if (photo.count==1)  return 130;//图片
-        else                  return 250;//图片
+        else if (photo.count==2)  return 170;//图片
+        else                      return 250;//图片
     }
     else if (indexPath.row==2){
         if (photo.count==0)  return 55;//留言
@@ -95,9 +108,49 @@ int num=1;
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath*)indexPath
 {
     //当离开某行时，让某行的选中状态消失
+    
+    NSArray *photo=[_Say_content[indexPath.section] objectForKey:@"pics"];
+    if ((indexPath.row==1&&photo.count==0)||(indexPath.row==2&&photo.count!=0)) {
+        NSLog(@"被点击");
+        /**拼接地址*/
+        NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+        NSDictionary *User_Data=[defaults objectForKey:@"User"];
+        User *user=[User yy_modelWithJSON:User_Data];
+        NSString *Url_String=[NSString stringWithFormat:@"http://218.75.197.121:8888/api/v1/moments/comment/%@/%@/%@",user.data.studentKH,user.remember_code_app,[self getsayid:indexPath.section]];
+        [UUInputAccessoryView showKeyboardConfige:^(UUInputConfiger * _Nonnull configer) {
+            configer.keyboardType = UIKeyboardTypeDefault;
+            configer.content = @"";
+            configer.backgroundColor = [UIColor colorWithWhite:0 alpha:0.5];
+        }block:^(NSString * _Nonnull contentStr) {
+            // code
+            if (contentStr.length == 0) return ;
+            NSLog(@"%@",contentStr);
+            // 1.创建AFN管理者
+            AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+            // 2.利用AFN管理者发送请求
+            NSDictionary *params = @{
+                                     @"comment" : contentStr
+                                     };
+            NSLog(@"%@",Url_String);
+            [manager POST:Url_String parameters:params success:^(NSURLSessionDataTask *task, id responseObject) {
+                NSDictionary *response = [NSDictionary dictionaryWithDictionary:responseObject];
+                NSString *Msg=[response objectForKey:@"msg"];
+                if ([Msg isEqualToString:@"ok"])   {
+                    [MBProgressHUD showSuccess:@"评论成功"];
+                    [self reload];
+                }
+                else if ([Msg isEqualToString:@"令牌错误"])
+                    [MBProgressHUD showError:@"登录过期，请重新登录"];
+                else
+                    [MBProgressHUD showError:Msg];
+            } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                [MBProgressHUD showError:@"网络错误"];
+            }];
+            
+        }];
+    }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     SayViewCell *cell = [SayViewCell tableViewCell];
@@ -277,6 +330,10 @@ int num=1;
     
     return Commit_String;
 }
+/**评论部分*/
+-(NSString*)getsayid:(int)i{
+    return [_Say_content[i] objectForKey:@"id"];
+}
 -(int)getcommitcount:(int)i{
     NSArray *Commit=[_Say_content[i] objectForKey:@"comments"];
     return (short)Commit.count;
@@ -387,6 +444,24 @@ int num=1;
              [self.tableView.header endRefreshing];
              [MBProgressHUD showError:@"网络错误"];
          }];
+}
+
+-(float) GetStringWidth:(NSString *)text{
+    
+    CGSize size=[text sizeWithFont:[UIFont systemFontOfSize:14]constrainedToSize:CGSizeMake(MAXFLOAT,36)];
+    
+    //text是想要计算的字符串，15是字体的大小，36是字符串的高度（根据需求自己改变）
+    
+    return size.width;
+    
+}
+
+-(float)GetStringHeight:(NSString*)text{
+    
+    CGSize size=[text sizeWithFont:[UIFont systemFontOfSize:14]constrainedToSize:CGSizeMake(36, MAXFLOAT)];
+    
+    return size.height;
+    
 }
 
 /*
