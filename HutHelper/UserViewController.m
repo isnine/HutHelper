@@ -132,7 +132,6 @@ NSData* data;
     NSString *url_String=[NSString stringWithFormat:@"http://218.75.197.121:8888/api/v1/set/avatar/%@/%@",user.data.studentKH,user.remember_code_app];
 
     NSURL* url = [NSURL URLWithString:url_String];//请求url
-    
     // UIImage* img = [UIImage imageNamed:@"header.jpg"];
     data = UIImagePNGRepresentation(img);
     //ASIFormDataRequest请求是post请求，可以查看其源码

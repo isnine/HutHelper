@@ -29,7 +29,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *Img3;
 @property (weak, nonatomic) IBOutlet UIImageView *Img4;
 @property (weak, nonatomic) IBOutlet UITextView *Say_Text;
-
+@property (nonatomic,copy) NSString      *responstring;
+@property  int getphoto;
 @end
 
 @implementation AddSayViewController{
@@ -89,6 +90,7 @@
     [self presentViewController:imagePickerVc animated:YES completion:nil];
 }
 
+
 -(void)postsay{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     NSDictionary *User_Data=[defaults objectForKey:@"User"];
@@ -97,98 +99,85 @@
     
     NSLog(@"说说发生请求地址%@",Url_String);
     if (_selectedPhotos.count!=0) {
-        /*
-         此段代码如果需要修改，可以调整的位置
-         1. 把upload.php改成网站开发人员告知的地址
-         2. 把file改成网站开发人员告知的字段名
-         */
         
-        //AFN3.0+基于封住HTPPSession的句柄
+        _responstring=@"";
+        _getphoto=0;
         AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
         [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
         manager.requestSerializer.timeoutInterval = 5.f;
         [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
         NSDictionary *dict = @{@"username":@"Saup"};
-        
-        //formData: 专门用于拼接需要上传的数据,在此位置生成一个要上传的数据体
-        [manager POST:@"http://218.75.197.121:8888/api/v1/moments/upload" parameters:dict constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+        if ([_Say_Text.text isEqualToString:@"请输入发表内容..."]) {
+            [MBProgressHUD showError:@"必须输入发表内容"];
+        }
+        else{
+            //formData: 专门用于拼接需要上传的数据,在此位置生成一个要上传的数据体
             for (int i = 0; i < _selectedPhotos.count; i++) {
                 UIImage *image = _selectedPhotos[i];
-                NSData *imageData = UIImageJPEGRepresentation(image, 0.5);
-                // 在网络开发中，上传文件时，是文件不允许被覆盖，文件重名
-                // 要解决此问题，
-                // 可以在上传时使用当前的系统事件作为文件名
-                NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-                // 设置时间格式
-                [formatter setDateFormat:@"yyyyMMddHHmmss"];
-                NSString *dateString = [formatter stringFromDate:[NSDate date]];
-                NSString *fileName = [NSString  stringWithFormat:@"%@.jpg", dateString];
-                /*
-                 *该方法的参数
-                 1. appendPartWithFileData：要上传的照片[二进制流]
-                 2. name：对应网站上[upload.php中]处理文件的字段（比如upload）
-                 3. fileName：要保存在服务器上的文件名
-                 4. mimeType：上传的文件的类型
-                 */
-                [formData appendPartWithFileData:imageData name:@"file" fileName:fileName mimeType:@"image/jpeg"]; //
+                [manager POST:@"http://218.75.197.121:8888/api/v1/moments/upload" parameters:dict constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+                    NSData *imageData = UIImageJPEGRepresentation(image, 0.5);
+                    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+                    [formatter setDateFormat:@"yyyyMMddHHmmss"];
+                    NSString *dateString = [formatter stringFromDate:[NSDate date]];
+                    NSString *fileName = [NSString  stringWithFormat:@"%@.jpg", dateString];
+                    [formData appendPartWithFileData:imageData name:@"file" fileName:fileName mimeType:@"image/jpeg"]; //
+                } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                    NSLog(@"上传成功 %@", responseObject);
+                    NSString *msg=[responseObject objectForKey:@"msg"];
+                    if ([msg isEqualToString:@"ok"]) {
+                        _responstring=[_responstring stringByAppendingString:[responseObject objectForKey:@"data"]];
+                        _responstring=[_responstring stringByAppendingString:@"//"];
+                        _getphoto++;
+                        while (_getphoto==_selectedPhotos.count) {
+                            AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+                            [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
+                            manager.requestSerializer.timeoutInterval = 5.f;
+                            [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
+                            // 利用AFN管理者发送请求
+                            NSDictionary *params = @{
+                                                     @"content" : _Say_Text.text,
+                                                     @"hidden"  : _responstring
+                                                     };
+                            [MBProgressHUD showMessage:@"发表中" toView:self.view];
+                            [manager POST:Url_String parameters:params success:^(NSURLSessionDataTask *task, id responseObject) {
+                                NSDictionary *response = [NSDictionary dictionaryWithDictionary:responseObject];
+                                NSString *Msg=[response objectForKey:@"msg"];
+                                if ([Msg isEqualToString:@"ok"])
+                                {
+                                    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                                    [MBProgressHUD showSuccess:@"评论成功"];
+                                    [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:([self.navigationController.viewControllers count] -2)] animated:YES];  //返回Home
+                                    
+                                }
+                                else if ([Msg isEqualToString:@"令牌错误"]){
+                                    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                                    [MBProgressHUD showError:@"登录过期，请重新登录"];
+                                    [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:([self.navigationController.viewControllers count] -2)] animated:YES];  //返回Home
+                                }
+                                else{
+                                    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                                    [MBProgressHUD showError:Msg];}
+                            } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                                [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                                [MBProgressHUD showError:@"网络错误"];
+                            }];
+                            
+                            
+                            
+                            break;
+                        }
+                        
+                    }
+                    else{
+                        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                        [MBProgressHUD showError:@"发表失败"];
+                    }
+                } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                    [MBProgressHUD showError:@"网络错误"];
+                }];
             }
-            //上传
-            /*
-             此方法参数
-             1. 要上传的[二进制数据]
-             2. 对应网站上[upload.php中]处理文件的[字段"file"]
-             3. 要保存在服务器上的[文件名]
-             4. 上传文件的[mimeType]
-             */
-          //  [formData appendPartWithFileData:data name:@"file" fileName:fileName mimeType:@"image/png"];
-            
-        } progress:^(NSProgress * _Nonnull uploadProgress) {
-            
-            
-        } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-            NSLog(@"上传成功 %@", responseObject);
-            NSString *responstring=[responseObject objectForKey:@"data"];
-            AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-            [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
-            manager.requestSerializer.timeoutInterval = 5.f;
-            [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
-            // 利用AFN管理者发送请求
-            NSDictionary *params = @{
-                                     @"content" : _Say_Text.text,
-                                     @"hidden"  :@""
-                                     };
-            [MBProgressHUD showMessage:@"发表中" toView:self.view];
-            [manager POST:Url_String parameters:params success:^(NSURLSessionDataTask *task, id responseObject) {
-                NSDictionary *response = [NSDictionary dictionaryWithDictionary:responseObject];
-                NSString *Msg=[response objectForKey:@"msg"];
-                if ([Msg isEqualToString:@"ok"])
-                {
-                    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-                    [MBProgressHUD showSuccess:@"评论成功"];
-                    [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:([self.navigationController.viewControllers count] -2)] animated:YES];  //返回Home
-                }
-                else if ([Msg isEqualToString:@"令牌错误"]){
-                    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-                    [MBProgressHUD showError:@"登录过期，请重新登录"];
-                    [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:([self.navigationController.viewControllers count] -2)] animated:YES];  //返回Home
-                }
-                
-                else{
-                    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-                    [MBProgressHUD showError:Msg];}
-            } failure:^(NSURLSessionDataTask *task, NSError *error) {
-                [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-                [MBProgressHUD showError:@"网络错误"];
-            }];
-            
-            
-            
-            
-        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-            
-            NSLog(@"上传失败 %@", error);
-        }];
-        
+        }
     }
     else if([_Say_Text.text isEqual:@"请输入发表内容..."]||[_Say_Text.text isEqual:@""]){
         [MBProgressHUD showError:@"文本不能为空"];
@@ -231,7 +220,6 @@
 }
 
 -(BOOL)textViewShouldBeginEditing:(UITextView *)textView
-
 {
     
     textView.text=@"";
@@ -240,6 +228,48 @@
     return YES;
     
 }
+
+-(void)reload{
+    NSURLCache *sharedCache = [[NSURLCache alloc] initWithMemoryCapacity:0
+                                                            diskCapacity:0
+                                                                diskPath:nil];
+    [NSURLCache setSharedURLCache:sharedCache];
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    /**拼接地址*/
+    NSString *Url_String=@"http://218.75.197.121:8888/api/v1/moments/posts/1";
+    /**设置9秒超时*/
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
+    manager.requestSerializer.timeoutInterval = 4.f;
+    [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
+    /**请求平时课表*/
+    [manager GET:Url_String parameters:nil progress:nil
+         success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+             NSDictionary *Say_All = [NSDictionary dictionaryWithDictionary:responseObject];
+             if ([[Say_All objectForKey:@"msg"]isEqualToString:@"ok"]) {
+                 NSDictionary *Say_Data=[Say_All objectForKey:@"data"];
+                 NSArray *Say_content=[Say_Data objectForKey:@"posts"];//加载该页数据
+                 if (Say_content!=NULL) {
+                     [defaults setObject:Say_content forKey:@"Say"];
+                     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                     [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:([self.navigationController.viewControllers count] -2)] animated:YES];  //返回Home
+                 }
+                 else{
+                     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                     [MBProgressHUD showError:@"网络错误"];
+                 }
+             }
+             else{
+                 [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                 [MBProgressHUD showError:[Say_All objectForKey:@"msg"]];
+             }             [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+             [MBProgressHUD showError:@"网络错误"];
+             [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+         }];
+    
+}
+
 /*
  #pragma mark - Navigation
  

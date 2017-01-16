@@ -62,6 +62,10 @@
 		3A776DF11E2B616500F600D6 /* UUInputAccessoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A776DF01E2B616500F600D6 /* UUInputAccessoryView.m */; };
 		3A776DF31E2B725A00F600D6 /* CommitViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A776DF21E2B725A00F600D6 /* CommitViewCell.xib */; };
 		3A776DF61E2B83EB00F600D6 /* AddSayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A776DF51E2B83EB00F600D6 /* AddSayViewController.m */; };
+		3A776DFA1E2C96E800F600D6 /* HandTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A776DF81E2C96E800F600D6 /* HandTableViewController.m */; };
+		3A776DFB1E2C96E800F600D6 /* HandTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A776DF91E2C96E800F600D6 /* HandTableViewController.xib */; };
+		3A776DFF1E2C96FC00F600D6 /* HandTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A776DFD1E2C96FC00F600D6 /* HandTableViewCell.m */; };
+		3A776E001E2C96FC00F600D6 /* HandTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A776DFE1E2C96FC00F600D6 /* HandTableViewCell.xib */; };
 		3A7DFCC11E29D82E0082F379 /* SayViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A7DFCBF1E29D82E0082F379 /* SayViewCell.m */; };
 		3A7DFCC21E29D82E0082F379 /* SayViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A7DFCC01E29D82E0082F379 /* SayViewCell.xib */; };
 		3A7DFCC61E29D94A0082F379 /* SayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A7DFCC41E29D94A0082F379 /* SayViewController.m */; };
@@ -214,6 +218,12 @@
 		3A776DF21E2B725A00F600D6 /* CommitViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommitViewCell.xib; sourceTree = "<group>"; };
 		3A776DF41E2B83EB00F600D6 /* AddSayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddSayViewController.h; sourceTree = "<group>"; };
 		3A776DF51E2B83EB00F600D6 /* AddSayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddSayViewController.m; sourceTree = "<group>"; };
+		3A776DF71E2C96E800F600D6 /* HandTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HandTableViewController.h; sourceTree = "<group>"; };
+		3A776DF81E2C96E800F600D6 /* HandTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HandTableViewController.m; sourceTree = "<group>"; };
+		3A776DF91E2C96E800F600D6 /* HandTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HandTableViewController.xib; sourceTree = "<group>"; };
+		3A776DFC1E2C96FC00F600D6 /* HandTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HandTableViewCell.h; sourceTree = "<group>"; };
+		3A776DFD1E2C96FC00F600D6 /* HandTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HandTableViewCell.m; sourceTree = "<group>"; };
+		3A776DFE1E2C96FC00F600D6 /* HandTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HandTableViewCell.xib; sourceTree = "<group>"; };
 		3A7D3CA91DB0A6CB00355E7A /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		3A7DFCBE1E29D82E0082F379 /* SayViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SayViewCell.h; sourceTree = "<group>"; };
 		3A7DFCBF1E29D82E0082F379 /* SayViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SayViewCell.m; sourceTree = "<group>"; };
@@ -476,6 +486,12 @@
 			children = (
 				3A33D7D21DAE36420012EFDE /* SchoolHandViewController.h */,
 				3A33D7D31DAE36420012EFDE /* SchoolHandViewController.m */,
+				3A776DF71E2C96E800F600D6 /* HandTableViewController.h */,
+				3A776DF81E2C96E800F600D6 /* HandTableViewController.m */,
+				3A776DF91E2C96E800F600D6 /* HandTableViewController.xib */,
+				3A776DFC1E2C96FC00F600D6 /* HandTableViewCell.h */,
+				3A776DFD1E2C96FC00F600D6 /* HandTableViewCell.m */,
+				3A776DFE1E2C96FC00F600D6 /* HandTableViewCell.xib */,
 			);
 			name = Hand;
 			sourceTree = "<group>";
@@ -880,6 +896,7 @@
 				3A0898C21DB5ED6000D2CCE6 /* expandableImage@2x.png in Resources */,
 				3A45626D1DB4980800E5591A /* FirstLoginViewController.xib in Resources */,
 				3A4D04351E1963B900595183 /* interface.txt in Resources */,
+				3A776E001E2C96FC00F600D6 /* HandTableViewCell.xib in Resources */,
 				3A026D101DBC9B42000288AF /* RootViewController.xib in Resources */,
 				3A0898C61DB5EFD100D2CCE6 /* ScoreViewController.xib in Resources */,
 				3A0898C11DB5ED6000D2CCE6 /* expandableImage.png in Resources */,
@@ -893,6 +910,7 @@
 				3AD87B181DACD08E00357212 /* Main.storyboard in Resources */,
 				3A85678B1DA908AA00EBD44A /* Assets.xcassets in Resources */,
 				3A449C711E16C2E500D89CEA /* header@2x.jpg in Resources */,
+				3A776DFB1E2C96E800F600D6 /* HandTableViewController.xib in Resources */,
 				3A776DF31E2B725A00F600D6 /* CommitViewCell.xib in Resources */,
 				3ABF727C1DDB2DD70062E757 /* MainPageViewController2.xib in Resources */,
 				3ACE12421E2666D800F28314 /* ExamCell.xib in Resources */,
@@ -970,6 +988,7 @@
 				3A026D131DBC9B42000288AF /* UUBar.m in Sources */,
 				3A33D7C61DAE00300012EFDE /* Feedback2ViewController.m in Sources */,
 				3A7DFCC61E29D94A0082F379 /* SayViewController.m in Sources */,
+				3A776DFA1E2C96E800F600D6 /* HandTableViewController.m in Sources */,
 				3AA8814B1E2A4644004F75B1 /* PhotoViewCell.m in Sources */,
 				3A4D38DB1E20DBC300639C18 /* ExamNewViewController.m in Sources */,
 				3A776DEC1E2B615100F600D6 /* FORGesture.m in Sources */,
@@ -1004,6 +1023,7 @@
 				3A6D7EEF1DABDB500081B70D /* AppDelegate.m in Sources */,
 				3A776DF11E2B616500F600D6 /* UUInputAccessoryView.m in Sources */,
 				3AD87B101DACD02E00357212 /* GWPCourseListView.m in Sources */,
+				3A776DFF1E2C96FC00F600D6 /* HandTableViewCell.m in Sources */,
 				3A7DFCCB1E29E7150082F379 /* SayCommitViewCell.m in Sources */,
 				3A6D7EF11DABDB500081B70D /* LeftSortsViewController.m in Sources */,
 				3A776DF61E2B83EB00F600D6 /* AddSayViewController.m in Sources */,

@@ -104,8 +104,6 @@ int num=1;
     return 15;
 }
 
-
-
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
     return 0.00001;
 }
@@ -113,7 +111,6 @@ int num=1;
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath*)indexPath
 {
     //当离开某行时，让某行的选中状态消失
-    
     NSArray *photo=[_Say_content[indexPath.section] objectForKey:@"pics"];
     if ((indexPath.row==1&&photo.count==0)||(indexPath.row==2&&photo.count!=0)) {
         NSLog(@"被点击");
@@ -132,23 +129,31 @@ int num=1;
             NSLog(@"%@",contentStr);
             // 1.创建AFN管理者
             AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+            [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
+            manager.requestSerializer.timeoutInterval = 4.f;
+            [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
             // 2.利用AFN管理者发送请求
             NSDictionary *params = @{
                                      @"comment" : contentStr
                                      };
-            NSLog(@"%@",Url_String);
+            NSLog(@"评论请求地址%@",Url_String);
+            [MBProgressHUD showMessage:@"发表中" toView:self.view];
             [manager POST:Url_String parameters:params success:^(NSURLSessionDataTask *task, id responseObject) {
                 NSDictionary *response = [NSDictionary dictionaryWithDictionary:responseObject];
                 NSString *Msg=[response objectForKey:@"msg"];
                 if ([Msg isEqualToString:@"ok"])   {
+                    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
                     [MBProgressHUD showSuccess:@"评论成功"];
                     [self reload];
                 }
-                else if ([Msg isEqualToString:@"令牌错误"])
-                    [MBProgressHUD showError:@"登录过期，请重新登录"];
-                else
-                    [MBProgressHUD showError:Msg];
+                else if ([Msg isEqualToString:@"令牌错误"]){
+                    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                    [MBProgressHUD showError:@"登录过期，请重新登录"];}
+                else{
+                    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                    [MBProgressHUD showError:Msg];}
             } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
                 [MBProgressHUD showError:@"网络错误"];
             }];
             
@@ -172,6 +177,7 @@ int num=1;
         cell.username.text=[self getName:(short)indexPath.section];
         cell.created_on.text=[self getTime:(short)indexPath.section];
         cell.content.text=[self getContent:(short)indexPath.section];
+       
         cell.img.image = [self getImg:(short)indexPath.section];
         return cell;
     }
@@ -233,12 +239,15 @@ int num=1;
         
     }
     else{
-        if(photo.count==1){
+        if(photo.count!=0){
             exis=3;}
         cellcommit.CommitName.text=[self getcommitname:(short)indexPath.section with:(short)indexPath.row-exis];
         cellcommit.CommitContent.text=[self getcommitcontent:(short)indexPath.section with:(short)indexPath.row-exis];
+                     NSLog(@"【照片】%@,第%d部分,第%d行",[self getcommitcontent:(short)indexPath.section with:(short)indexPath.row-exis],(short)indexPath.section,(short)indexPath.row-exis);
+        NSLog(@"%@",_Say_content[0]);
         cellcommit.CommitTime.text=[self getcommittime:(short)indexPath.section with:(short)indexPath.row-exis];
         return cellcommit;
+            
     }
 }
 #pragma mark - "其他"
@@ -282,9 +291,8 @@ int num=1;
 -(NSString*)getPhoto:(int)i with:(int)j{
     NSArray *photo=[_Say_content[i] objectForKey:@"pics"];
     NSString *Url=[NSString stringWithFormat:@"http://218.75.197.121:8888/%@",photo[j]];
-    
+    NSLog(@"请求地址%@",Url);
     return Url;
-    
 }
 -(NSString*)getContent:(int)i{
     return [_Say_content[i] objectForKey:@"content"];
@@ -311,7 +319,7 @@ int num=1;
         Commit_String=[Commit[j] objectForKey:@"comment"];
     }
     else
-        Commit_String=@"";
+        Commit_String=@"null";
     
     return Commit_String;
 }
@@ -473,64 +481,6 @@ int num=1;
     
 }
 
-/*
- // Override to support conditional editing of the table view.
- - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
- // Return NO if you do not want the specified item to be editable.
- return YES;
- }
- */
 
-/*
- // Override to support editing the table view.
- - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
- if (editingStyle == UITableViewCellEditingStyleDelete) {
- // Delete the row from the data source
- [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
- } else if (editingStyle == UITableViewCellEditingStyleInsert) {
- // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
- }
- }
- */
-
-/*
- // Override to support rearranging the table view.
- - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
- }
- */
-
-/*
- // Override to support conditional rearranging of the table view.
- - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
- // Return NO if you do not want the item to be re-orderable.
- return YES;
- }
- */
-
-/*
- #pragma mark - Table view delegate
- 
- // In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
- - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
- // Navigation logic may go here, for example:
- // Create the next view controller.
- <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:<#@"Nib name"#> bundle:nil];
- 
- // Pass the selected object to the new view controller.
- 
- // Push the view controller.
- [self.navigationController pushViewController:detailViewController animated:YES];
- }
- */
-
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
 
 @end

@@ -32,6 +32,7 @@
 #import "AFNetworking.h"
 #import "MBProgressHUD+MJ.h"
 #import "SayViewController.h"
+#import "HandTableViewController.h"
 #define vBackBarButtonItemName  @"backArrow.png"    //导航条返回默认图片名
 @interface MainPageViewController ()
 
@@ -420,6 +421,7 @@ int class_error_;
                  NSArray *Say_content=[Say_Data objectForKey:@"posts"];//加载该页数据
                  if (Say_content!=NULL) {
                      [defaults setObject:Say_content forKey:@"Say"];
+                     [defaults synchronize];
                      [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
                      SayViewController *Say      = [[SayViewController alloc] init];
                      AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -443,15 +445,43 @@ int class_error_;
     
     
     
-
+    
     
 } //校园说说
 
 - (IBAction)SchoolHand:(id)sender {
-    UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    ClassViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Schoolhand"];
-    AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:YES];
+    //    UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    //    ClassViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Schoolhand"];
+    //    AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    //    [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:YES];
+    NSURLCache *sharedCache = [[NSURLCache alloc] initWithMemoryCapacity:0
+                                                            diskCapacity:0
+                                                                diskPath:nil];
+    [NSURLCache setSharedURLCache:sharedCache];
+    [MBProgressHUD showMessage:@"加载中" toView:self.view];
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    /**拼接地址*/
+    NSString *Url_String=@"http://218.75.197.121:8888/api/v1/stuff/goods/1";
+    /**设置9秒超时*/
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
+    manager.requestSerializer.timeoutInterval = 4.f;
+    [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
+    /**请求平时课表*/
+    [manager GET:Url_String parameters:nil progress:nil
+         success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+             NSDictionary *dic1 = [NSDictionary dictionaryWithObject:responseObject forKey:@""];
+             NSArray *Hand           = [dic1 objectForKey:@""];
+             [defaults setObject:Hand forKey:@"Hand"];
+             [defaults synchronize];
+             [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+             HandTableViewController *hand=[[HandTableViewController alloc]init];
+             AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+             [tempAppDelegate.mainNavigationController pushViewController:hand animated:YES];
+         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+             [MBProgressHUD showError:@"网络错误"];
+             [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+         }];
 } //二手市场
 
 - (IBAction)Score:(id)sender {
