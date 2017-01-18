@@ -22,11 +22,17 @@
                         <rect key="frame" x="38" y="19" width="300" height="397"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                         <state key="normal" backgroundImage="hand_shop"/>
+                        <connections>
+                            <action selector="Buuton1:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="mg1-vT-2Sc"/>
+                        </connections>
                     </button>
                     <button opaque="NO" contentMode="top" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xfc-3q-ck2">
                         <rect key="frame" x="370" y="16" width="300" height="403"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                         <state key="normal" backgroundImage="hand_shop2"/>
+                        <connections>
+                            <action selector="Button2:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="vtm-cF-vm7"/>
+                        </connections>
                     </button>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GXb-cK-PhC">
                         <rect key="frame" x="38" y="19" width="300" height="300"/>

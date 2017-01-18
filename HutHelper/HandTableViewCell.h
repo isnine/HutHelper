@@ -17,6 +17,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *name2;
 @property (weak, nonatomic) IBOutlet UILabel *time1;
 @property (weak, nonatomic) IBOutlet UILabel *time2;
-
+@property (nonatomic,copy) NSArray      *Hand_content;
 +(instancetype)tableviewcell;
 @end

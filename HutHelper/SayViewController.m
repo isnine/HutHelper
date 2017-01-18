@@ -474,7 +474,6 @@ int num=1;
 }
 
 -(float)GetStringHeight:(NSString*)text{
-    
     CGSize size=[text sizeWithFont:[UIFont systemFontOfSize:14]constrainedToSize:CGSizeMake(36, MAXFLOAT)];
     
     return size.height;

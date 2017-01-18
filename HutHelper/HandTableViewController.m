@@ -12,6 +12,8 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "MBProgressHUD+MJ.h"
 #import "AFNetworking.h"
+#import "HandShowViewController.h"
+#import "AppDelegate.h"
 @interface HandTableViewController ()
 @property (nonatomic,copy) NSArray      *Hand_content;
 @property int num;
@@ -79,8 +81,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     HandTableViewCell *cell = [HandTableViewCell tableviewcell];
-    
-    NSLog(@"当前第%d",indexPath.section);
+    NSLog(@"当前第%d",(short)indexPath.section);
     cell.price1.text=[self getprize:(short)(indexPath.section+1)*2-1];
     cell.price2.text=[self getprize:(short)(indexPath.section+1)*2];
     cell.name1.text=[self getName:(short)(indexPath.section+1)*2-1];
@@ -98,7 +99,10 @@
 
 #pragma mark -"其他"
 -(void)menu{
-    
+    UIStoryboard *Main=[UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    HandShowViewController *HandShow=[Main instantiateViewControllerWithIdentifier:@"ShowHand"];
+    AppDelegate *temp=(AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [temp.mainNavigationController pushViewController:HandShow animated:YES];
 }
 -(NSString*)getPhoto:(int)i{
     NSString *photo=[_Hand_content[i] objectForKey:@"image"];

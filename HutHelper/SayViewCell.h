@@ -14,7 +14,5 @@
 @property (weak, nonatomic) IBOutlet UILabel *username;
 @property (weak, nonatomic) IBOutlet UILabel *created_on;
 @property (weak, nonatomic) IBOutlet UITextView *content;
-
 @property (weak, nonatomic) IBOutlet UIImageView *img;
-
 @end
