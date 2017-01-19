@@ -44,6 +44,7 @@
 		3A4D38B01E1FAF7C00639C18 /* UINavigationBar+Awesome.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A4D38AF1E1FAF7C00639C18 /* UINavigationBar+Awesome.m */; };
 		3A4D38DB1E20DBC300639C18 /* ExamNewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A4D38DA1E20DBC300639C18 /* ExamNewViewController.m */; };
 		3A59A50F1E2F6FE200D65F7E /* HandShowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A59A50E1E2F6FE200D65F7E /* HandShowViewController.m */; };
+		3A61F2691E30A033000E9A38 /* AddhandViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A61F2681E30A033000E9A38 /* AddhandViewController.m */; };
 		3A6D7EDE1DABD9DA0081B70D /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A6D7EDD1DABD9DA0081B70D /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		3A6D7EE31DABD9F50081B70D /* LeftSlideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A6D7EE11DABD9F50081B70D /* LeftSlideViewController.m */; };
 		3A6D7EE41DABD9F50081B70D /* UIView_extra.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A6D7EE21DABD9F50081B70D /* UIView_extra.m */; };
@@ -188,6 +189,8 @@
 		3A4D38DA1E20DBC300639C18 /* ExamNewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExamNewViewController.m; sourceTree = "<group>"; };
 		3A59A50D1E2F6FE200D65F7E /* HandShowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HandShowViewController.h; sourceTree = "<group>"; };
 		3A59A50E1E2F6FE200D65F7E /* HandShowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HandShowViewController.m; sourceTree = "<group>"; };
+		3A61F2671E30A033000E9A38 /* AddhandViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddhandViewController.h; sourceTree = "<group>"; };
+		3A61F2681E30A033000E9A38 /* AddhandViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddhandViewController.m; sourceTree = "<group>"; };
 		3A6D7EDC1DABD9DA0081B70D /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSONKit.h; path = HutHelper/Lib/JSONKit.h; sourceTree = "<group>"; };
 		3A6D7EDD1DABD9DA0081B70D /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JSONKit.m; path = HutHelper/Lib/JSONKit.m; sourceTree = "<group>"; };
 		3A6D7EDF1DABD9F50081B70D /* LeftSlideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LeftSlideViewController.h; path = Lib/LeftSlideViewController/LeftSlideViewController.h; sourceTree = "<group>"; };
@@ -497,6 +500,8 @@
 				3A776DFE1E2C96FC00F600D6 /* HandTableViewCell.xib */,
 				3A59A50D1E2F6FE200D65F7E /* HandShowViewController.h */,
 				3A59A50E1E2F6FE200D65F7E /* HandShowViewController.m */,
+				3A61F2671E30A033000E9A38 /* AddhandViewController.h */,
+				3A61F2681E30A033000E9A38 /* AddhandViewController.m */,
 			);
 			name = Hand;
 			sourceTree = "<group>";
@@ -989,6 +994,7 @@
 				3A0898BE1DB5ED5800D2CCE6 /* SKSTableViewCellIndicator.m in Sources */,
 				3A026D141DBC9B42000288AF /* UUBarChart.m in Sources */,
 				3A7DFCCF1E29F2960082F379 /* Say.m in Sources */,
+				3A61F2691E30A033000E9A38 /* AddhandViewController.m in Sources */,
 				3A026D0F1DBC9B42000288AF /* RootViewController.m in Sources */,
 				3A026D131DBC9B42000288AF /* UUBar.m in Sources */,
 				3A33D7C61DAE00300012EFDE /* Feedback2ViewController.m in Sources */,

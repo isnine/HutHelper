@@ -14,6 +14,7 @@
 #import "AFNetworking.h"
 #import "HandShowViewController.h"
 #import "AppDelegate.h"
+#import "AddhandViewController.h"
 @interface HandTableViewController ()
 @property (nonatomic,copy) NSArray      *Hand_content;
 @property int num;
@@ -100,9 +101,9 @@
 #pragma mark -"其他"
 -(void)menu{
     UIStoryboard *Main=[UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    HandShowViewController *HandShow=[Main instantiateViewControllerWithIdentifier:@"ShowHand"];
+    AddhandViewController *Add=[Main instantiateViewControllerWithIdentifier:@"Addhand"];
     AppDelegate *temp=(AppDelegate *)[[UIApplication sharedApplication] delegate];
-    [temp.mainNavigationController pushViewController:HandShow animated:YES];
+    [temp.mainNavigationController pushViewController:Add animated:YES];
 }
 -(NSString*)getPhoto:(int)i{
     NSString *photo=[_Hand_content[i] objectForKey:@"image"];
