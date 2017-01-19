@@ -21,7 +21,7 @@
 
 #import "UMSocialUIManager.h"
 #import <UMSocialCore/UMSocialCore.h>
-
+#import "FirstLoginViewController.h"
 #import "User.h"
 #import "YYModel.h"
 @interface LeftSortsViewController () <UITableViewDelegate,UITableViewDataSource>
@@ -149,10 +149,16 @@
     }
 
     if (indexPath.row == 3) {  //切换用户
-        UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        ClassViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Login"];
-        AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-        [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:YES];
+//        UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//        ClassViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Login"];
+//        AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+//        [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:YES];
+//        
+        NSString *appDomain       = [[NSBundle mainBundle] bundleIdentifier];
+        [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:appDomain];
+        AppDelegate *tempAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        FirstLoginViewController *firstlogin                = [[FirstLoginViewController alloc] init];
+        [tempAppDelegate.mainNavigationController pushViewController:firstlogin animated:YES];
     }
     if (indexPath.row == 4) {  //设置
         UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];

@@ -37,6 +37,7 @@
 @interface MainPageViewController ()
 
 @property (weak, nonatomic) IBOutlet UILabel *Scontent;
+@property (weak, nonatomic) IBOutlet UILabel *Time;
 
 
 @end
@@ -186,7 +187,8 @@ int CountWeeks(int nowyear, int nowmonth, int nowday) {
     [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:0/255.0 green:224/255.0 blue:208/255.0 alpha:1]];
     /** 预留方法 */
     [self jspath];
-    
+    /**时间Label*/
+    [self SetTimeLabel];
 }
 
 - (void) openOrCloseLeftList  //侧栏滑动
@@ -620,24 +622,70 @@ int class_error_;
     NSString *lastRunKey = [defaults objectForKey:@"last_run_version_key"];
     NSLog(@"当前版本%@",currentVersion);
     NSLog(@"上个版本%@",lastRunKey);
-    //    if (lastRunKey==NULL) {
-    //        NSString *appDomain       = [[NSBundle mainBundle] bundleIdentifier];
-    //        [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:appDomain];
-    //        [defaults setObject:currentVersion forKey:@"last_run_version_key"];
-    //        NSLog(@"没有记录");
-    //
-    //    }
-    //    else if (![lastRunKey isEqualToString:currentVersion]) {
-    //        NSString *appDomain       = [[NSBundle mainBundle] bundleIdentifier];
-    //        [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:appDomain];
-    //        [defaults setObject:currentVersion forKey:@"last_run_version_key"];
-    //        NSLog(@"记录不匹配");
-    //    }
+        if (lastRunKey==NULL) {
+            NSString *appDomain       = [[NSBundle mainBundle] bundleIdentifier];
+            [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:appDomain];
+            [defaults setObject:currentVersion forKey:@"last_run_version_key"];
+            NSLog(@"没有记录");
+    
+        }
+        else if (![lastRunKey isEqualToString:currentVersion]) {
+            NSString *appDomain       = [[NSBundle mainBundle] bundleIdentifier];
+            [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:appDomain];
+            [defaults setObject:currentVersion forKey:@"last_run_version_key"];
+            NSLog(@"记录不匹配");
+        }
     
 }
 #pragma mark -"其他方法"
 -(void)jspath{
     
+}
+-(void)SetTimeLabel{
+    NSDate *now                               = [NSDate date];
+    NSCalendar *calendar                      = [NSCalendar currentCalendar];
+    NSUInteger unitFlags                      = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit |NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
+    NSDateComponents *dateComponent           = [calendar components:unitFlags fromDate:now];
+
+        int y                                     = (short)[dateComponent year];//年
+        int m                                    = [dateComponent month];//月
+       int mou                                    = [dateComponent month];//月
+    NSLog(@"%d月",m);
+        int d                                      = (short)[dateComponent day];//日
+       int day                                      = (short)[dateComponent day];//日
+        if(m==1||m==2) {
+            m+=12;
+            y--;
+        }
+        int iWeek=(d+2*m+3*(m+1)/5+y+y/4-y/100+y/400)%7+1;
+    NSString *Week;
+    switch (iWeek) {
+        case 1:
+            Week=@"一";
+            break;
+        case 2:
+            Week=@"二";
+            break;
+        case 3:
+            Week=@"三";
+            break;
+        case 4:
+            Week=@"四";
+            break;
+        case 5:
+            Week=@"五";
+            break;
+        case 6:
+            Week=@"六";
+            break;
+        case 7:
+            Week=@"日";
+            break;
+        default:
+            Week=@"";
+            break;
+    }
+    _Time.text=[NSString stringWithFormat:@"%d月%d日 星期%@",mou,day,Week];
 }
 
 -(void)EnterExam{

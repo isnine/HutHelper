@@ -12,6 +12,7 @@
 #import "AppDelegate.h"
 #import "User.h"
 #import "YYModel.h"
+#import "MBProgressHUD+MJ.h"
 @interface FeedbackViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *Mail;
 @property (weak, nonatomic) IBOutlet UITextView *Content;
@@ -28,16 +29,30 @@
     UIColor *greyColor                 = [UIColor colorWithRed:239/255.0 green:239/255.0 blue:239/255.0 alpha:1];
     self.view.backgroundColor          = greyColor;
 
-    _Mail.placeholder=@"联系方式";
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor]}];
-
+    _Content.text = @"请输入反馈意见";
+    _Content.textColor = [UIColor lightGrayColor];
+    _Content.delegate=self;
 }
-
+-(BOOL)textViewShouldBeginEditing:(UITextView *)textView
+{
+    
+    textView.text=@"";
+    textView.textColor = [UIColor blackColor];
+    
+    return YES;
+    
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 - (IBAction)Submit:(id)sender {
+    
+    if ([_Mail.text isEqualToString:@""]||[_Content.text isEqualToString:@""]||[_Content.text isEqualToString:@"请输入反馈意见"]) {
+        [MBProgressHUD showError:@"联系方式与反馈内容不能为空"];
+    }
+    else{
     NSURL * url                        = [NSURL URLWithString:@"http://218.75.197.121:8888/home/msg/0"];
     NSString *str1=@"email=";
     NSString *Mail_String              = _Mail.text;
@@ -67,16 +82,11 @@
         //创建NSURLConnection 对象用来连接服务器并且发送请求
     NSURLConnection * conn   = [[NSURLConnection alloc] initWithRequest:request delegate:self];
         [conn start];
-
-   
-
-    
-
     UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     ClassViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Feedback2"];
     AppDelegate *tempAppDelegate= (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:NO];
-
+    }
 
 
 }

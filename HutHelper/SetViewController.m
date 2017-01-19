@@ -77,20 +77,6 @@
 
 
 
-- (IBAction)Delete:(id)sender {
-    NSString *appDomain       = [[NSBundle mainBundle] bundleIdentifier];
-    [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:appDomain];
-
-    UIAlertView *alertView    = [[UIAlertView alloc] initWithTitle:@"温馨提示"
-                                                        message:@"已清除所有数据"
-                                                       delegate:self
-                                              cancelButtonTitle:@"取消"
-                                              otherButtonTitles:@"确定", nil];
-    [alertView show];
-    AppDelegate *tempAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    FirstLoginViewController *firstlogin                = [[FirstLoginViewController alloc] init];
-    [tempAppDelegate.mainNavigationController pushViewController:firstlogin animated:YES];
-}
 
 
 @end

@@ -21,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *time;
 @property (weak, nonatomic) IBOutlet UIImageView *Img5;
 @property (weak, nonatomic) IBOutlet UIImageView *Img6;
+@property (weak, nonatomic) IBOutlet UILabel *Ttile;
 
 @end
 
@@ -46,6 +47,7 @@
     _contact.text=[self getcontact];
     _user.text=[[_Hand_show objectForKey:@"user"] objectForKey:@"username"];
     _time.text=[_Hand_show objectForKey:@"created_on"];
+    _Ttile.text=[_Hand_show objectForKey:@"tit"];
     NSArray *img=[_Hand_show objectForKey:@"pics"];
     switch (img.count) {
         case 1:
