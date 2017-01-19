@@ -1001,6 +1001,15 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="Describe" destination="IST-pn-ijf" id="SP1-ut-Km6"/>
+                        <outlet property="Old" destination="YZe-4Z-U6r" id="9WQ-aL-Dlh"/>
+                        <outlet property="Phone" destination="iXq-k2-bxm" id="SYB-ru-2Rk"/>
+                        <outlet property="Price" destination="KBl-TJ-xyD" id="9Id-NP-Mda"/>
+                        <outlet property="QQ" destination="jPC-pp-RiB" id="6bN-6a-6pq"/>
+                        <outlet property="Title" destination="xv0-LX-joD" id="6DI-E9-WPu"/>
+                        <outlet property="Wechat" destination="Qte-Ic-IiF" id="dnD-wL-E9C"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JK0-4X-Gr7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
