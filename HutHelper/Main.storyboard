@@ -523,78 +523,6 @@
             </objects>
             <point key="canvasLocation" x="3797.5999999999999" y="318.89055472263868"/>
         </scene>
-        <!--Schoolsay View Controller-->
-        <scene sceneID="aaP-as-kwI">
-            <objects>
-                <viewController storyboardIdentifier="Schoolsay" automaticallyAdjustsScrollViewInsets="NO" id="tgh-mD-Qyh" customClass="SchoolsayViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="wFs-2a-k3g"/>
-                        <viewControllerLayoutGuide type="bottom" id="rme-OK-P7t"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Gse-WV-xSi">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <webView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EjR-aw-097">
-                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <connections>
-                                    <outlet property="delegate" destination="tgh-mD-Qyh" id="b2l-se-fgj"/>
-                                </connections>
-                            </webView>
-                        </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="EjR-aw-097" secondAttribute="trailing" id="0pv-Ng-uFl"/>
-                            <constraint firstItem="EjR-aw-097" firstAttribute="leading" secondItem="Gse-WV-xSi" secondAttribute="leading" id="6xa-cw-kDz"/>
-                            <constraint firstItem="rme-OK-P7t" firstAttribute="top" secondItem="EjR-aw-097" secondAttribute="bottom" id="YWd-ug-Uul"/>
-                            <constraint firstItem="EjR-aw-097" firstAttribute="top" secondItem="Gse-WV-xSi" secondAttribute="top" constant="64" id="c8c-eV-9iG"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="Show" destination="EjR-aw-097" id="zN0-es-Om0"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="87a-SG-kDE" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="967" y="-430"/>
-        </scene>
-        <!--School Hand View Controller-->
-        <scene sceneID="wIo-PU-ew0">
-            <objects>
-                <viewController storyboardIdentifier="Schoolhand" automaticallyAdjustsScrollViewInsets="NO" id="plS-oy-5lU" customClass="SchoolHandViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="agt-tL-gLT"/>
-                        <viewControllerLayoutGuide type="bottom" id="BFq-UD-KVN"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="1xt-YE-Azz">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <webView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KE2-Ue-l9H">
-                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <connections>
-                                    <outlet property="delegate" destination="plS-oy-5lU" id="cy0-Sx-PTU"/>
-                                </connections>
-                            </webView>
-                        </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="BFq-UD-KVN" firstAttribute="top" secondItem="KE2-Ue-l9H" secondAttribute="bottom" id="SWC-sU-en1"/>
-                            <constraint firstItem="KE2-Ue-l9H" firstAttribute="leading" secondItem="1xt-YE-Azz" secondAttribute="leading" id="s3I-gG-uHA"/>
-                            <constraint firstAttribute="trailing" secondItem="KE2-Ue-l9H" secondAttribute="trailing" id="uhd-GM-VeR"/>
-                            <constraint firstItem="KE2-Ue-l9H" firstAttribute="top" secondItem="1xt-YE-Azz" secondAttribute="top" constant="64" id="vI4-so-o45"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="Show" destination="KE2-Ue-l9H" id="5fU-cU-2eG"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="0aa-3E-Dor" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1639" y="-430"/>
-        </scene>
         <!--Home Work View Controller-->
         <scene sceneID="917-nz-IZS">
             <objects>
@@ -1106,7 +1034,7 @@
                                         <rect key="frame" x="0.0" y="28" width="655" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uBA-0W-HBu" id="Lih-Cl-fIF">
-                                            <rect key="frame" x="0.0" y="0.0" width="655" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="655" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>

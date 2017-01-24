@@ -10,5 +10,3 @@
 #import "YYModel.h"
 @implementation User
 @end
-@implementation User_data
-@end

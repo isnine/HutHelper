@@ -23,8 +23,29 @@
 @property (weak, nonatomic) IBOutlet UITextField *UserName;
 @property (weak, nonatomic) IBOutlet UITextField *Password;
 @end
-
+@implementation NSDictionary (MyDictionary)
+- (NSDictionary *)deleteAllNullValue{
+    NSMutableDictionary *mutableDic = [[NSMutableDictionary alloc] init];
+    for (NSString *keyStr in self.allKeys) {
+        if ([[self objectForKey:keyStr] isEqual:[NSNull null]]) {
+            [mutableDic setObject:@"" forKey:keyStr];
+        }
+        else{
+            [mutableDic setObject:[self objectForKey:keyStr] forKey:keyStr];
+        }
+    }
+    return mutableDic;
+}
+@end
 @implementation FirstLoginViewController
+
+- (NSString*)dictionaryToJson:(NSDictionary *)dic
+{
+    NSError *parseError = nil;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dic options:NSJSONWritingPrettyPrinted error:&parseError];
+    return [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+}
+
 - (IBAction)Login:(id)sender {
     NSString *UserName_String =[NSString stringWithFormat:@"%@",_UserName.text];
     NSString *Password_String =[NSString stringWithFormat:@"%@",_Password.text];
@@ -42,11 +63,13 @@
          success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
              NSDictionary *User_All = [NSDictionary dictionaryWithDictionary:responseObject];
              NSDictionary *User_Data=[User_All objectForKey:@"data"];//All字典 -> Data字典
+             User_Data=[User_Data deleteAllNullValue];
              NSString *Msg=[User_All objectForKey:@"msg"];
              if ([Msg isEqualToString: @"ok"])
              {
-                 [defaults setObject:User_All forKey:@"User"];
-                 User *user = [User yy_modelWithJSON:User_All];
+                 [defaults setObject:User_Data forKey:@"User"];
+                 [defaults setObject:[User_All objectForKey:@"remember_code_app"] forKey:@"remember_code_app"];
+              //   User *user = [User yy_modelWithJSON:User_Data];
                  NSString *currentVersion = [[[NSBundle mainBundle] infoDictionary]
                                              objectForKey:@"CFBundleShortVersionString"];
                  [defaults setObject:currentVersion forKey:@"last_run_version_key"]; //保存版本信息
@@ -63,9 +86,6 @@
              [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
              [MBProgressHUD showError:@"网络错误或超时"];
          }];
-
-
-
 }
 
 
@@ -81,6 +101,7 @@
     [_UserName setValue:[UIColor whiteColor] forKeyPath:@"_placeholderLabel.textColor"];
     _Password.placeholder=@"密码";
     [_Password setValue:[UIColor whiteColor] forKeyPath:@"_placeholderLabel.textColor"];
+
     
 }
 - (IBAction)resetpassword:(id)sender {
@@ -109,4 +130,7 @@
     
 }
 
+
+
 @end
+

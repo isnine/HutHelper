@@ -27,7 +27,7 @@
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     NSDictionary *User_Data=[defaults objectForKey:@"User"];
     User *user=[User yy_modelWithJSON:User_Data];
-    NSString *Url_String=[NSString stringWithFormat:@"http://218.75.197.121:8888/api/v1/get/myhomework/%@/%@",user.data.studentKH,user.remember_code_app];
+    NSString *Url_String=[NSString stringWithFormat:@"http://218.75.197.121:8888/api/v1/get/myhomework/%@/%@",user.studentKH,[defaults objectForKey:@"remember_code_app"]];
     NSURL *url                = [[NSURL alloc]initWithString:Url_String];
     _views.delegate=self;
     [_views loadRequest:[NSURLRequest requestWithURL:url]];

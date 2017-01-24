@@ -36,7 +36,7 @@
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     NSDictionary *User_Data=[defaults objectForKey:@"User"];
     User *user=[User yy_modelWithJSON:User_Data];
-    NSString *username=user.data.username;
+    NSString *username=user.username;
     if ([defaults objectForKey:@"username"]!=NULL) {
         username=[defaults objectForKey:@"username"];
     }
@@ -62,7 +62,7 @@
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     NSDictionary *User_Data=[defaults objectForKey:@"User"];
     User *user=[User yy_modelWithJSON:User_Data];
-    NSString *last_login=user.data.last_login;
+    NSString *last_login=user.last_login;
     if (last_login ==NULL) {
         last_login=@"无";
     }

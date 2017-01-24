@@ -78,7 +78,7 @@ int num=1;
     NSArray *photo=[_Say_content[indexPath.section] objectForKey:@"pics"];
     if (indexPath.row==0){
         int height=[self GetStringHeight:[self getContent:(short)indexPath.section]];
-        NSLog(@"宽度%lf，这是当前第%d条",[self GetStringHeight:[self getContent:(short)indexPath.section]],(short)indexPath.section);
+//        NSLog(@"宽度%lf，这是当前第%d条",[self GetStringHeight:[self getContent:(short)indexPath.section]],(short)indexPath.section);
         if([[self getContent:(short)indexPath.section] rangeOfString:@"\n"].location !=NSNotFound)
             return 120;
         if (height<120)  return 85;
@@ -113,12 +113,12 @@ int num=1;
     //当离开某行时，让某行的选中状态消失
     NSArray *photo=[_Say_content[indexPath.section] objectForKey:@"pics"];
     if ((indexPath.row==1&&photo.count==0)||(indexPath.row==2&&photo.count!=0)) {
-        NSLog(@"被点击");
+       
         /**拼接地址*/
         NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
         NSDictionary *User_Data=[defaults objectForKey:@"User"];
         User *user=[User yy_modelWithJSON:User_Data];
-        NSString *Url_String=[NSString stringWithFormat:@"http://218.75.197.121:8888/api/v1/moments/comment/%@/%@/%@",user.data.studentKH,user.remember_code_app,[self getsayid:indexPath.section]];
+        NSString *Url_String=[NSString stringWithFormat:@"http://218.75.197.121:8888/api/v1/moments/comment/%@/%@/%@",user.studentKH,[defaults objectForKey:@"remember_code_app"],[self getsayid:indexPath.section]];
         [UUInputAccessoryView showKeyboardConfige:^(UUInputConfiger * _Nonnull configer) {
             configer.keyboardType = UIKeyboardTypeDefault;
             configer.content = @"";
@@ -126,7 +126,7 @@ int num=1;
         }block:^(NSString * _Nonnull contentStr) {
             // code
             if (contentStr.length == 0) return ;
-            NSLog(@"%@",contentStr);
+           // NSLog(@"%@",contentStr);
             // 1.创建AFN管理者
             AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
             [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
@@ -243,8 +243,8 @@ int num=1;
             exis=3;}
         cellcommit.CommitName.text=[self getcommitname:(short)indexPath.section with:(short)indexPath.row-exis];
         cellcommit.CommitContent.text=[self getcommitcontent:(short)indexPath.section with:(short)indexPath.row-exis];
-                     NSLog(@"【照片】%@,第%d部分,第%d行",[self getcommitcontent:(short)indexPath.section with:(short)indexPath.row-exis],(short)indexPath.section,(short)indexPath.row-exis);
-        NSLog(@"%@",_Say_content[0]);
+//                     NSLog(@"【照片】%@,第%d部分,第%d行",[self getcommitcontent:(short)indexPath.section with:(short)indexPath.row-exis],(short)indexPath.section,(short)indexPath.row-exis);
+     
         cellcommit.CommitTime.text=[self getcommittime:(short)indexPath.section with:(short)indexPath.row-exis];
         return cellcommit;
             

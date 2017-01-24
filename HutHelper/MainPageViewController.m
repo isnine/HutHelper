@@ -7,7 +7,6 @@
 //
 
 #import "MainPageViewController.h"
-#import "MainPageViewController2.h"
 #import "AppDelegate.h"
 #import "JSONKit.h"
 #import "HomeWorkViewController.h"
@@ -15,8 +14,6 @@
 #import "PowerViewController.h"
 #import "LibraryViewController.h"
 #import "NoticeViewController.h"
-#import "SchoolsayViewController.h"
-#import "SchoolHandViewController.h"
 #import "DayViewController.h"
 #import "UMessage.h"
 #import "UMMobClick/MobClick.h"
@@ -33,6 +30,7 @@
 #import "MBProgressHUD+MJ.h"
 #import "SayViewController.h"
 #import "HandTableViewController.h"
+#import "Math.h"
 #define vBackBarButtonItemName  @"backArrow.png"    //导航条返回默认图片名
 @interface MainPageViewController ()
 
@@ -60,54 +58,7 @@
 @end
 
 @implementation MainPageViewController
-const int startyear                       = 2016;
-const int startmonth                      = 8;
-const int startday                        = 29;
 
-
-int CountDays(int year, int month, int day) {
-    //返回当前是本年的第几天，year,month,day 表示现在的年月日，整数。
-    int a[12]                                 = {31,0,31,30,31,30,31,31,30,31,30,31};
-    int s                                     = 0;
-    for(int i           = 0; i < month-1; i++) {s   += a[i];
-    }
-    if(month > 2) {
-        if(year % (year % 100 ? 4 : 400 ) ? 0 : 1)s                                         += 29;
-        else
-            s                                         += 28;
-    }
-    return (s + day);
-}  //当前星期几
-
-int CountWeeks(int nowyear, int nowmonth, int nowday) {
-    //返回当前是本学期第几周，nowyear,nowmonth,nowday 表示现在的年月日，整数。
-    int ans                                   = 0;
-    if (nowyear == startyear) {
-        ans                                       = CountDays(nowyear, nowmonth, nowday) - CountDays(startyear, startmonth, startday) + 1;
-        printf("%d\n", ans);
-    } else {
-        ans                                       = CountDays(nowyear, nowmonth, nowday) - CountDays(nowyear, 1, 1) + 1;
-        printf("%d\n", ans);
-        ans                                       += (CountDays(startyear, 12, 31) - CountDays(startyear, startmonth, startday) + 1);
-        printf("%d\n", ans);
-    }
-    return (ans + 6) / 7;
-} //当前第几周
-
-- (NSString *) SHA:(NSString *)input //SHA1计算函数
-{
-    const char *cstr = [input cStringUsingEncoding:NSUTF8StringEncoding];
-    NSData *data = [NSData dataWithBytes:cstr length:input.length];
-    
-    uint8_t digest[CC_SHA1_DIGEST_LENGTH];
-    CC_SHA1(data.bytes, (unsigned int)data.length, digest);
-    NSMutableString *output = [NSMutableString stringWithCapacity:CC_SHA1_DIGEST_LENGTH * 2];
-    
-    for(int i=0; i<CC_SHA1_DIGEST_LENGTH; i++) {
-        [output appendFormat:@"%02x", digest[i]];
-    }
-    return output;
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -155,8 +106,9 @@ int CountWeeks(int nowyear, int nowmonth, int nowday) {
     int year                                  = [dateComponent year];//年
     int month                                 = [dateComponent month];//月
     int day                                   = [dateComponent day];//日
-    [defaults setInteger:CountWeeks(year, month, day) forKey:@"NowWeek"];
+    [defaults setInteger:[Math CountWeeks:year m:month d:day] forKey:@"NowWeek"];
     
+   
     NSArray *array                            = [defaults objectForKey:@"array_class"];
     NSString *autoclass=[defaults objectForKey:@"autoclass"];
     /**  是否自动打开课程表  */
@@ -179,7 +131,7 @@ int CountWeeks(int nowyear, int nowmonth, int nowday) {
             }];  //学院
     /** 添加别名*/
     User *user = [User yy_modelWithJSON:User_All];
-    [UMessage addAlias:user.data.studentKH type:kUMessageAliasTypeSina response:^(id responseObject, NSError *error) {
+    [UMessage addAlias:user.studentKH type:kUMessageAliasTypeSina response:^(id responseObject, NSError *error) {
     }];
     /** 标题栏样式 */
     UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
@@ -229,8 +181,8 @@ int CountWeeks(int nowyear, int nowmonth, int nowday) {
     int year                                  = [dateComponent year];//年
     int month                                 = [dateComponent month];//月
     int day                                   = [dateComponent day];//日
-    [defaults setInteger:CountWeeks(year, month, day) forKey:@"NowWeek"];
-    [defaults setInteger:CountWeeks(year, month, day) forKey:@"TrueWeek"];
+    [defaults setInteger:[Math CountWeeks:year m:month d:day] forKey:@"NowWeek"];
+    [defaults setInteger:[Math CountWeeks:year m:month d:day] forKey:@"TrueWeek"];
     //判断完毕//
     /**导航栏变为透明*/
     [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:0];
@@ -247,14 +199,14 @@ int class_error_;
     if(array_class==NULL&&array_xp==NULL){
         /**拼接地址*/
         [MBProgressHUD showMessage:@"查询中" toView:self.view];
-        NSString *Url_String=[NSString stringWithFormat:@"http://218.75.197.121:8888/api/v1/get/lessons/%@/%@",user.data.studentKH,user.remember_code_app];
+        NSString *Url_String=[NSString stringWithFormat:@"http://218.75.197.121:8888/api/v1/get/lessons/%@/%@",user.studentKH,[defaults objectForKey:@"remember_code_app"]];
         NSLog(@"平时课表地址:%@",Url_String);
-        NSString *UrlXP_String=[NSString stringWithFormat:@"http://218.75.197.121:8888/api/v1/get/lessonsexp/%@/%@",user.data.studentKH,user.remember_code_app];
+        NSString *UrlXP_String=[NSString stringWithFormat:@"http://218.75.197.121:8888/api/v1/get/lessonsexp/%@/%@",user.studentKH,[defaults objectForKey:@"remember_code_app"]];
         NSLog(@"实验课表地址:%@",UrlXP_String);
-        /**设置9秒超时*/
+        /**设置4秒超时*/
         AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
         [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
-        manager.requestSerializer.timeoutInterval = 9.f;
+        manager.requestSerializer.timeoutInterval = 4.f;
         [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
         /**请求平时课表*/
         [manager GET:Url_String parameters:nil progress:nil
@@ -266,6 +218,7 @@ int class_error_;
                      [defaults setObject:array forKey:@"array_class"];
                      [defaults synchronize];
                      /**请求实验课表*/
+                     
                      [manager GET:UrlXP_String parameters:nil progress:nil
                           success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                               NSDictionary *ClassXP_All = [NSDictionary dictionaryWithDictionary:responseObject];
@@ -280,10 +233,20 @@ int class_error_;
                                   AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
                                   [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:NO];
                               }
+                              else{
+                                  [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                                  UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                                  ClassViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Class"];
+                                  AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+                                  [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:NO];
+                                  [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                                  [MBProgressHUD showError:Msg];
+                              }
                           } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                               [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
                               [MBProgressHUD showError:@"网络错误，实验课表查询失败"];
                           }];
+                     
                  }
                  else if([Msg isEqualToString:@"令牌错误"]){
                      [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
@@ -319,9 +282,9 @@ int class_error_;
     if(array_class==NULL&&array_xp==NULL){
         /**拼接地址*/
         [MBProgressHUD showMessage:@"查询中" toView:self.view];
-        NSString *Url_String=[NSString stringWithFormat:@"http://218.75.197.121:8888/api/v1/get/lessons/%@/%@",user.data.studentKH,user.remember_code_app];
+        NSString *Url_String=[NSString stringWithFormat:@"http://218.75.197.121:8888/api/v1/get/lessons/%@/%@",user.studentKH,[defaults objectForKey:@"remember_code_app"]];
         NSLog(@"平时课表地址:%@",Url_String);
-        NSString *UrlXP_String=[NSString stringWithFormat:@"http://218.75.197.121:8888/api/v1/get/lessonsexp/%@/%@",user.data.studentKH,user.remember_code_app];
+        NSString *UrlXP_String=[NSString stringWithFormat:@"http://218.75.197.121:8888/api/v1/get/lessonsexp/%@/%@",user.studentKH,[defaults objectForKey:@"remember_code_app"]];
         NSLog(@"实验课表地址:%@",UrlXP_String);
         /**设置9秒超时*/
         AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
@@ -396,10 +359,6 @@ int class_error_;
 } //电费查询
 
 - (IBAction)SchoolSay:(id)sender {
-    //    UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    //    ClassViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Schoolsay"];
-    //    AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    //    [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:YES];
     /**设置不缓存*/
     NSURLCache *sharedCache = [[NSURLCache alloc] initWithMemoryCapacity:0
                                                             diskCapacity:0
@@ -452,10 +411,6 @@ int class_error_;
 } //校园说说
 
 - (IBAction)SchoolHand:(id)sender {
-    //    UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    //    ClassViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Schoolhand"];
-    //    AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    //    [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:YES];
     NSURLCache *sharedCache = [[NSURLCache alloc] initWithMemoryCapacity:0
                                                             diskCapacity:0
                                                                 diskPath:nil];
@@ -494,10 +449,10 @@ int class_error_;
     if(ScoreData==NULL){
         /**拼接地址*/
         [MBProgressHUD showMessage:@"查询中" toView:self.view];
-        NSString *SHA_String=[user.data.studentKH stringByAppendingString:user.remember_code_app];
+        NSString *SHA_String=[user.studentKH stringByAppendingString:[defaults objectForKey:@"remember_code_app"]];
         SHA_String=[SHA_String stringByAppendingString:@"f$Z@%"];
-        SHA_String=[self SHA:SHA_String];
-        NSString *Url_String=[NSString stringWithFormat:@"http://218.75.197.121:8888/api/v1/get/scores/%@/%@/%@",user.data.studentKH,user.remember_code_app,SHA_String];
+        SHA_String=[Math sha1:SHA_String];
+        NSString *Url_String=[NSString stringWithFormat:@"http://218.75.197.121:8888/api/v1/get/scores/%@/%@/%@",user.studentKH,[defaults objectForKey:@"remember_code_app"],SHA_String];
         NSLog(@"成绩查询地址:%@",Url_String);
         /**设置9秒超时*/
         AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
@@ -549,9 +504,9 @@ int class_error_;
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     NSDictionary *User_Data=[defaults objectForKey:@"User"];
     User *user=[User yy_modelWithJSON:User_Data];
-    NSString *ss=[user.data.studentKH stringByAppendingString:@"apiforapp!"];
+    NSString *ss=[user.studentKH stringByAppendingString:@"apiforapp!"];
     ss=[ss MD5];
-    NSString *Url_String=[NSString stringWithFormat:@"http://218.75.197.124:84/api/exam/%@/key/%@",user.data.studentKH,ss];
+    NSString *Url_String=[NSString stringWithFormat:@"http://218.75.197.124:84/api/exam/%@/key/%@",user.studentKH,ss];
     NSLog(@"考试地址:%@",Url_String);
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
@@ -602,14 +557,14 @@ int class_error_;
 
 - (IBAction)Day:(id)sender {  //校历
     UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    MainPageViewController2 *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Day"];
+    MainPageViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Day"];
     AppDelegate *tempAppDelegate= (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:NO];
 }  //校历
 
 - (IBAction)Lost:(id)sender {
     UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    MainPageViewController2 *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Lost"];
+    MainPageViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Lost"];
     AppDelegate *tempAppDelegate= (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:NO];
 }  //失物招领
@@ -690,7 +645,7 @@ int class_error_;
 
 -(void)EnterExam{
     UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    MainPageViewController2 *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"ExamNew"];
+    MainPageViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"ExamNew"];
     AppDelegate *tempAppDelegate= (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:NO];
 }

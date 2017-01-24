@@ -95,7 +95,7 @@
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     NSDictionary *User_Data=[defaults objectForKey:@"User"];
     User *user=[User yy_modelWithJSON:User_Data];
-    NSString *Url_String=[NSString stringWithFormat:@"http://218.75.197.121:8888/api/v1/moments/create/%@/%@",user.data.studentKH,user.remember_code_app];
+    NSString *Url_String=[NSString stringWithFormat:@"http://218.75.197.121:8888/api/v1/moments/create/%@/%@",user.studentKH,[defaults objectForKey:@"remember_code_app"]];
     
     NSLog(@"说说发生请求地址%@",Url_String);
     if (_selectedPhotos.count!=0) {
@@ -122,7 +122,7 @@
                     NSString *fileName = [NSString  stringWithFormat:@"%@.jpg", dateString];
                     [formData appendPartWithFileData:imageData name:@"file" fileName:fileName mimeType:@"image/jpeg"]; //
                 } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                    NSLog(@"上传成功 %@", responseObject);
+//                    NSLog(@"上传成功 %@", responseObject);
                     NSString *msg=[responseObject objectForKey:@"msg"];
                     if ([msg isEqualToString:@"ok"]) {
                         _responstring=[_responstring stringByAppendingString:[responseObject objectForKey:@"data"]];

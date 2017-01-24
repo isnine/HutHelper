@@ -61,7 +61,7 @@
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     NSDictionary *User_Data=[defaults objectForKey:@"User"];
     User *user=[User yy_modelWithJSON:User_Data];
-    NSString *studentKH=user.data.studentKH;
+    NSString *studentKH=user.studentKH;
     if(studentKH==NULL){
         str2=@"&content= ";
     }

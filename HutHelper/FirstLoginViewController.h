@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 
+@interface NSDictionary (MyDictionary)
+-(NSDictionary *)deleteAllNullValue;
+@end
 @interface FirstLoginViewController : UIViewController
 
 @end

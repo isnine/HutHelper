@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface User_data : NSObject
+@interface User : NSObject
 @property NSString *TrueName; //姓名
 @property NSString *address;//省份
 @property NSString *class_name;//班级
@@ -21,8 +21,8 @@
 @property NSString *user_id;//说说id
 @end
 
-@interface User : NSObject
-@property NSString *msg;
-@property NSString *remember_code_app;
-@property User_data *data; 
-@end
+//@interface User : NSObject
+//@property NSString *msg;
+//@property NSString *remember_code_app;
+//@property User_data *data; 
+//@end

@@ -38,8 +38,8 @@ UIImage* img ;
     if ([defaults objectForKey:@"head_img"]!=NULL) {
         self.headerView = [[JSHeaderView alloc] initWithImage:[UIImage imageWithData:[defaults objectForKey:@"head_img"]]];
     }
-    else if(user.data.head_pic_thumb!=NULL){
-        NSString *image_url=user.data.head_pic_thumb;
+    else if(user.head_pic_thumb!=NULL){
+        NSString *image_url=user.head_pic_thumb;
         image_url=[@"http://218.75.197.121:8888/" stringByAppendingString:image_url];
         NSURL *url                   = [NSURL URLWithString: image_url];//接口地址
         NSData *data = [NSData dataWithContentsOfURL:url];
@@ -129,7 +129,7 @@ NSData* data;
     User *user=[User yy_modelWithJSON:User_Data];
 
     
-    NSString *url_String=[NSString stringWithFormat:@"http://218.75.197.121:8888/api/v1/set/avatar/%@/%@",user.data.studentKH,user.remember_code_app];
+    NSString *url_String=[NSString stringWithFormat:@"http://218.75.197.121:8888/api/v1/set/avatar/%@/%@",user.studentKH,[defaults objectForKey:@"remember_code_app"]];
 
     NSURL* url = [NSURL URLWithString:url_String];//请求url
     // UIImage* img = [UIImage imageNamed:@"header.jpg"];
@@ -184,11 +184,11 @@ NSData* data;
     NSDictionary *User_Data=[defaults objectForKey:@"User"];
     User *user=[User yy_modelWithJSON:User_Data];
 
-    NSString *TrueName=user.data.TrueName; //真实姓名
-    NSString *studentKH=user.data.studentKH; //学号
-    NSString *dep_name=user.data.dep_name; //学院
-    NSString *class_name=user.data.class_name;  //班级
-    NSString *sex=user.data.sex;  //性别
+    NSString *TrueName=user.TrueName; //真实姓名
+    NSString *studentKH=user.studentKH; //学号
+    NSString *dep_name=user.dep_name; //学院
+    NSString *class_name=user.class_name;  //班级
+    NSString *sex=user.sex;  //性别
     if(sex ==NULL){
         sex=@"";
     }

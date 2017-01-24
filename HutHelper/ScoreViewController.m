@@ -70,10 +70,10 @@
     NSData* ScoreData           = [defaults objectForKey:@"Score"];
     NSDictionary *User_Data=[defaults objectForKey:@"User"];
     User *user=[User yy_modelWithJSON:User_Data];
-    NSString *SHA_String=[user.data.studentKH stringByAppendingString:user.remember_code_app];
+    NSString *SHA_String=[user.studentKH stringByAppendingString:[defaults objectForKey:@"remember_code_app"]];
     SHA_String=[SHA_String stringByAppendingString:@"f$Z@%"];
     SHA_String=[self SHA:SHA_String];
-    NSString *Url_String=[NSString stringWithFormat:@"http://218.75.197.121:8888/api/v1/get/scores/%@/%@/%@",user.data.studentKH,user.remember_code_app,SHA_String];
+    NSString *Url_String=[NSString stringWithFormat:@"http://218.75.197.121:8888/api/v1/get/scores/%@/%@/%@",user.studentKH,[defaults objectForKey:@"remember_code_app"],SHA_String];
     NSLog(@"成绩查询地址:%@",Url_String);
     /**设置5秒超时*/
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];

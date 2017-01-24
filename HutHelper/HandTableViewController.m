@@ -82,7 +82,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     HandTableViewCell *cell = [HandTableViewCell tableviewcell];
-    NSLog(@"当前第%d",(short)indexPath.section);
+
     cell.price1.text=[self getprize:(short)(indexPath.section+1)*2-1];
     cell.price2.text=[self getprize:(short)(indexPath.section+1)*2];
     cell.name1.text=[self getName:(short)(indexPath.section+1)*2-1];
