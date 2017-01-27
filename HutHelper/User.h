@@ -19,6 +19,7 @@
 @property NSString *studentKH;//学号
 @property NSString *username;//昵称
 @property NSString *user_id;//说说id
+
 @end
 
 //@interface User : NSObject

@@ -9,7 +9,6 @@
 #import "LeftSortsViewController.h"
 #import "AppDelegate.h"
 
-#import "LoginViewController.h"
 #import "HomeWorkViewController.h"
 
 #import "ClassViewController.h"
@@ -113,7 +112,7 @@
 
     AppDelegate *tempAppDelegate     = (AppDelegate *)[[UIApplication sharedApplication] delegate];
 
-    LoginViewController *vb          = [[LoginViewController alloc] init];
+   
     HomeWorkViewController *vc       = [[HomeWorkViewController alloc] init];
     [tempAppDelegate.LeftSlideVC closeLeftView];//关闭左侧抽屉
 

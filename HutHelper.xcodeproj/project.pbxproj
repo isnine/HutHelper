@@ -51,7 +51,6 @@
 		3A6D7EEF1DABDB500081B70D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A6D7EE71DABDB500081B70D /* AppDelegate.m */; };
 		3A6D7EF01DABDB500081B70D /* HomeWorkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A6D7EE81DABDB500081B70D /* HomeWorkViewController.m */; };
 		3A6D7EF11DABDB500081B70D /* LeftSortsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A6D7EE91DABDB500081B70D /* LeftSortsViewController.m */; };
-		3A6D7EF21DABDB500081B70D /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A6D7EEA1DABDB500081B70D /* LoginViewController.m */; };
 		3A6D7EF31DABDB500081B70D /* MainPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A6D7EEB1DABDB500081B70D /* MainPageViewController.m */; };
 		3A6D7EF41DABDB500081B70D /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A6D7EEC1DABDB500081B70D /* MainViewController.m */; };
 		3A6D7EF61DABDB500081B70D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A6D7EEE1DABDB500081B70D /* ViewController.m */; };
@@ -196,14 +195,12 @@
 		3A6D7EE71DABDB500081B70D /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		3A6D7EE81DABDB500081B70D /* HomeWorkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HomeWorkViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		3A6D7EE91DABDB500081B70D /* LeftSortsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = LeftSortsViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		3A6D7EEA1DABDB500081B70D /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		3A6D7EEB1DABDB500081B70D /* MainPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = MainPageViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		3A6D7EEC1DABDB500081B70D /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		3A6D7EEE1DABDB500081B70D /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		3A6D7EF71DABDB680081B70D /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3A6D7EF81DABDB680081B70D /* HomeWorkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeWorkViewController.h; sourceTree = "<group>"; };
 		3A6D7EF91DABDB680081B70D /* LeftSortsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftSortsViewController.h; sourceTree = "<group>"; };
-		3A6D7EFA1DABDB680081B70D /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		3A6D7EFB1DABDB680081B70D /* MainPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainPageViewController.h; sourceTree = "<group>"; };
 		3A6D7EFC1DABDB680081B70D /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		3A6D7EFE1DABDB680081B70D /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
@@ -442,9 +439,7 @@
 			children = (
 				3A4562691DB4980800E5591A /* FirstLoginViewController.h */,
 				3A45626A1DB4980800E5591A /* FirstLoginViewController.m */,
-				3A6D7EEA1DABDB500081B70D /* LoginViewController.m */,
 				3A33D7F51DAF646B0012EFDE /* Login2ViewController.m */,
-				3A6D7EFA1DABDB680081B70D /* LoginViewController.h */,
 				3A33D7F41DAF646B0012EFDE /* Login2ViewController.h */,
 			);
 			name = Login;
@@ -971,7 +966,6 @@
 			files = (
 				3ABF72801DDB32F60062E757 /* LostViewController.m in Sources */,
 				3A33D7F71DAF646B0012EFDE /* Login2ViewController.m in Sources */,
-				3A6D7EF21DABDB500081B70D /* LoginViewController.m in Sources */,
 				3A6D7EDE1DABD9DA0081B70D /* JSONKit.m in Sources */,
 				3AAC242B1DE1CB3C00546B11 /* JSHeaderView.m in Sources */,
 				3A45626C1DB4980800E5591A /* FirstLoginViewController.m in Sources */,

@@ -19,6 +19,7 @@
 #import "MBProgressHUD+MJ.h"
 #import "User.h"
 #import "YYModel.h"
+
 @interface FirstLoginViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *UserName;
 @property (weak, nonatomic) IBOutlet UITextField *Password;
@@ -55,7 +56,7 @@
     /**请求*/
     [MBProgressHUD showMessage:@"登录中" toView:self.view];
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    /**设置9秒超时*/
+    /**设置4秒超时*/
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
     manager.requestSerializer.timeoutInterval = 4.f;
     [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
@@ -63,13 +64,13 @@
          success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
              NSDictionary *User_All = [NSDictionary dictionaryWithDictionary:responseObject];
              NSDictionary *User_Data=[User_All objectForKey:@"data"];//All字典 -> Data字典
+
              User_Data=[User_Data deleteAllNullValue];
              NSString *Msg=[User_All objectForKey:@"msg"];
              if ([Msg isEqualToString: @"ok"])
              {
                  [defaults setObject:User_Data forKey:@"User"];
                  [defaults setObject:[User_All objectForKey:@"remember_code_app"] forKey:@"remember_code_app"];
-              //   User *user = [User yy_modelWithJSON:User_Data];
                  NSString *currentVersion = [[[NSBundle mainBundle] infoDictionary]
                                              objectForKey:@"CFBundleShortVersionString"];
                  [defaults setObject:currentVersion forKey:@"last_run_version_key"]; //保存版本信息
@@ -106,14 +107,14 @@
 }
 - (IBAction)resetpassword:(id)sender {
     UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    LoginViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Login2"];
+    Login2ViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Login2"];
     AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:NO];
 }
 
 -(void)sein{
     UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    LoginViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Login2"];
+    Login2ViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Login2"];
     AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:NO];
 }
