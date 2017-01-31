@@ -184,6 +184,7 @@ int num=1;
     else if (indexPath.row==1) {
         if (photo.count==0) {
             cellshowcommit.commitsize.text=[NSString stringWithFormat:@"%d",[self getcommitcount:(short)indexPath.section]];
+            cellshowcommit.delectButton.hidden=![self isShowDelect:(short)indexPath.section];
             return cellshowcommit;
         }
         else if(photo.count==1){
@@ -230,10 +231,12 @@ int num=1;
             cellcommit.CommitName.text=[self getcommitname:(short)indexPath.section with:(short)indexPath.row-exis];
             cellcommit.CommitContent.text=[self getcommitcontent:(short)indexPath.section with:(short)indexPath.row-exis];
             cellcommit.CommitTime.text=[self getcommittime:(short)indexPath.section with:(short)indexPath.row-exis];
+        //    cellcommit.delectButton.hidden=![self isShowCommitDelect:(short)indexPath.section with:(short)indexPath.row-exis];
             return cellcommit;
         }
         else{
             cellshowcommit.commitsize.text=[NSString stringWithFormat:@"%d",[self getcommitcount:(short)indexPath.section]];
+            cellshowcommit.delectButton.hidden=![self isShowDelect:(short)indexPath.section];
             return cellshowcommit;
         }
         
@@ -243,8 +246,7 @@ int num=1;
             exis=3;}
         cellcommit.CommitName.text=[self getcommitname:(short)indexPath.section with:(short)indexPath.row-exis];
         cellcommit.CommitContent.text=[self getcommitcontent:(short)indexPath.section with:(short)indexPath.row-exis];
-//                     NSLog(@"【照片】%@,第%d部分,第%d行",[self getcommitcontent:(short)indexPath.section with:(short)indexPath.row-exis],(short)indexPath.section,(short)indexPath.row-exis);
-     
+     //   cellcommit.delectButton.hidden=![self isShowCommitDelect:(short)indexPath.section with:(short)indexPath.row-exis];
         cellcommit.CommitTime.text=[self getcommittime:(short)indexPath.section with:(short)indexPath.row-exis];
         return cellcommit;
             
@@ -286,6 +288,32 @@ int num=1;
              [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
              [MBProgressHUD showError:@"网络错误"];
          }];
+}
+-(Boolean)isShowDelect:(int)i{
+    NSString *sayId=[_Say_content[i] objectForKey:@"user_id"];
+
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    NSDictionary *User_Data=[defaults objectForKey:@"User"];
+    
+    User *user=[User yy_modelWithJSON:User_Data];
+    
+    if ([sayId isEqualToString:user.user_id])
+        return  true;
+    else
+        return false;
+}
+-(Boolean)isShowCommitDelect:(int)i with:(int)j{
+    NSArray *Commit=[_Say_content[i] objectForKey:@"comments"];
+    NSString *commitId=[Commit[j] objectForKey:@"user_id"];
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    NSDictionary *User_Data=[defaults objectForKey:@"User"];
+    
+    User *user=[User yy_modelWithJSON:User_Data];
+    NSLog(@"说说:%@个人:%@",commitId,user.user_id);
+    if ([commitId isEqualToString:user.user_id])
+        return  true;
+    else
+        return false;
 }
 
 -(NSString*)getPhoto:(int)i with:(int)j{

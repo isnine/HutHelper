@@ -12,5 +12,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *CommitName;
 @property (weak, nonatomic) IBOutlet UITextView *CommitContent;
 @property (weak, nonatomic) IBOutlet UILabel *CommitTime;
+@property (weak, nonatomic) IBOutlet UIButton *delectButton;
 +(instancetype)tableViewCell;
 @end

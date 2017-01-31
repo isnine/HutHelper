@@ -30,7 +30,7 @@
                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                     </textView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="user" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EKO-IM-2gK">
-                        <rect key="frame" x="28" y="47" width="134" height="15"/>
+                        <rect key="frame" x="27" y="45" width="134" height="15"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                         <color key="textColor" red="0.39996373653411865" green="0.4000239372253418" blue="0.3999447226524353" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -47,12 +47,24 @@
                         <rect key="frame" x="387" y="46" width="14" height="14"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     </imageView>
+                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B13-bK-f2q">
+                        <rect key="frame" x="344" y="41" width="35" height="22"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                        <state key="normal" title="删除">
+                            <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
+                        <connections>
+                            <action selector="delectCommit:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="RfW-vC-P2t"/>
+                        </connections>
+                    </button>
                 </subviews>
             </tableViewCellContentView>
             <connections>
                 <outlet property="CommitContent" destination="k8V-fQ-ilm" id="Mo0-hW-3i3"/>
                 <outlet property="CommitName" destination="EKO-IM-2gK" id="a2L-c2-Ecg"/>
                 <outlet property="CommitTime" destination="8Is-UU-1CH" id="P19-Kb-y3K"/>
+                <outlet property="delectButton" destination="B13-bK-f2q" id="GVx-Lz-iHo"/>
             </connections>
             <point key="canvasLocation" x="92" y="53.5"/>
         </tableViewCell>

@@ -15,7 +15,7 @@
             <rect key="frame" x="0.0" y="0.0" width="321" height="36"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="321" height="35"/>
+                <rect key="frame" x="0.0" y="0.0" width="321" height="36"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BId-1P-Jey">
@@ -30,11 +30,23 @@
                         <color key="textColor" red="0.22223478560000001" green="0.85787206890000001" blue="0.81014591459999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MjK-HJ-UFg">
+                        <rect key="frame" x="6" y="0.0" width="38" height="33"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <state key="normal" title="删除">
+                            <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
+                        <connections>
+                            <action selector="delectCommit:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="wLl-Ge-yDv"/>
+                        </connections>
+                    </button>
                 </subviews>
             </tableViewCellContentView>
             <connections>
                 <outlet property="Commit" destination="BId-1P-Jey" id="KxL-cH-Jkf"/>
                 <outlet property="commitsize" destination="BNT-PU-OwX" id="VIC-be-8Hl"/>
+                <outlet property="delectButton" destination="MjK-HJ-UFg" id="zVM-DG-3SR"/>
             </connections>
             <point key="canvasLocation" x="26.5" y="48"/>
         </tableViewCell>

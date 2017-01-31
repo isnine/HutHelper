@@ -11,5 +11,6 @@
 @interface CommitViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *commitsize;
 @property (weak, nonatomic) IBOutlet UIButton *Commit;
+@property (weak, nonatomic) IBOutlet UIButton *delectButton;
 + (instancetype)tableViewCell;
 @end

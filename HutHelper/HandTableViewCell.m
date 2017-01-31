@@ -31,6 +31,7 @@
     return [[[NSBundle mainBundle] loadNibNamed:@"HandTableViewCell" owner:nil options:nil]lastObject];
 }
 - (IBAction)Buuton1:(id)sender {
+    
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     NSDictionary *User_Data=[defaults objectForKey:@"User"];
     User *user=[User yy_modelWithJSON:User_Data];

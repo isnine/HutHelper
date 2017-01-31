@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface SayViewController : UITableViewController
-
+-(void)reload;
 @end
