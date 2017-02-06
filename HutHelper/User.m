@@ -10,5 +10,10 @@
 #import "YYModel.h"
 @implementation User
 
-
+//+ (void) load {
+//        NSLog(@"Load被调用");
+//     }
+//+ (void) initialize {
+//    NSLog(@"initialize被调用");¿
+//}
 @end

@@ -78,7 +78,6 @@ int num=1;
     NSArray *photo=[_Say_content[indexPath.section] objectForKey:@"pics"];
     if (indexPath.row==0){
         int height=[self GetStringHeight:[self getContent:(short)indexPath.section]];
-//        NSLog(@"宽度%lf，这是当前第%d条",[self GetStringHeight:[self getContent:(short)indexPath.section]],(short)indexPath.section);
         if([[self getContent:(short)indexPath.section] rangeOfString:@"\n"].location !=NSNotFound)
             return 120;
         if (height<120)  return 85;
