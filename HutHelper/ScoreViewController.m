@@ -88,7 +88,7 @@
              
              NSString *Msg=[Score_All objectForKey:@"msg"];
              if([Msg isEqualToString:@"ok"]){
-                 [defaults setObject:Score_Data forKey:@"data_score"];
+                 [defaults setObject:Score_Data forKey:@"Score"];
                  [defaults synchronize];
                  [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
                  [MBProgressHUD showSuccess:@"刷新成功"];
@@ -134,7 +134,7 @@
     self.navigationItem.rightBarButtonItem = rightCunstomButtonView;
     //----添加按钮
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    NSData* ScoreData           = [defaults objectForKey:@"data_score"];//地址 -> 数据
+    NSData* ScoreData           = [defaults objectForKey:@"Score"];//地址 -> 数据
     NSDictionary *Score_All     = [ScoreData objectFromJSONData];//数据 -> 字典
     NSArray *array_score             = [Score_All objectForKey:@"data"];
    

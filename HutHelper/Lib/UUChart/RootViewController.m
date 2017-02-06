@@ -110,7 +110,7 @@
 
 -(NSArray *)getStudent{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    NSData* ScoreData           = [defaults objectForKey:@"data_score"];//地址 -> 数据
+    NSData* ScoreData           = [defaults objectForKey:@"Score"];//地址 -> 数据
     NSDictionary *Score_All     = [ScoreData objectFromJSONData];//数据 -> 字典
     NSArray *array_score             = [Score_All objectForKey:@"data"];
     return array_score;

@@ -43,6 +43,8 @@
 		3A4D04351E1963B900595183 /* interface.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3A4D04341E1963B900595183 /* interface.txt */; };
 		3A4D38B01E1FAF7C00639C18 /* UINavigationBar+Awesome.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A4D38AF1E1FAF7C00639C18 /* UINavigationBar+Awesome.m */; };
 		3A4D38DB1E20DBC300639C18 /* ExamNewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A4D38DA1E20DBC300639C18 /* ExamNewViewController.m */; };
+		3A540A4B1E48AAAE00C10871 /* ScoreShowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A540A4A1E48AAAE00C10871 /* ScoreShowViewController.m */; };
+		3A540A4E1E48AF4F00C10871 /* Score.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A540A4D1E48AF4F00C10871 /* Score.m */; };
 		3A59A50F1E2F6FE200D65F7E /* HandShowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A59A50E1E2F6FE200D65F7E /* HandShowViewController.m */; };
 		3A61F2691E30A033000E9A38 /* AddhandViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A61F2681E30A033000E9A38 /* AddhandViewController.m */; };
 		3A6D7EDE1DABD9DA0081B70D /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A6D7EDD1DABD9DA0081B70D /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -182,6 +184,10 @@
 		3A4D38AF1E1FAF7C00639C18 /* UINavigationBar+Awesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+Awesome.m"; sourceTree = "<group>"; };
 		3A4D38D91E20DBC300639C18 /* ExamNewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExamNewViewController.h; sourceTree = "<group>"; };
 		3A4D38DA1E20DBC300639C18 /* ExamNewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExamNewViewController.m; sourceTree = "<group>"; };
+		3A540A491E48AAAE00C10871 /* ScoreShowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreShowViewController.h; sourceTree = "<group>"; };
+		3A540A4A1E48AAAE00C10871 /* ScoreShowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScoreShowViewController.m; sourceTree = "<group>"; };
+		3A540A4C1E48AF4F00C10871 /* Score.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Score.h; path = HutHelper/Score.h; sourceTree = "<group>"; };
+		3A540A4D1E48AF4F00C10871 /* Score.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Score.m; path = HutHelper/Score.m; sourceTree = "<group>"; };
 		3A59A50D1E2F6FE200D65F7E /* HandShowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HandShowViewController.h; sourceTree = "<group>"; };
 		3A59A50E1E2F6FE200D65F7E /* HandShowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HandShowViewController.m; sourceTree = "<group>"; };
 		3A61F2671E30A033000E9A38 /* AddhandViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddhandViewController.h; sourceTree = "<group>"; };
@@ -491,6 +497,8 @@
 			children = (
 				3A0898A11DB5EA5700D2CCE6 /* ScoreViewController.h */,
 				3A0898A21DB5EA5700D2CCE6 /* ScoreViewController.m */,
+				3A540A491E48AAAE00C10871 /* ScoreShowViewController.h */,
+				3A540A4A1E48AAAE00C10871 /* ScoreShowViewController.m */,
 			);
 			name = Score;
 			sourceTree = "<group>";
@@ -774,6 +782,8 @@
 				3ACE12441E275D8300F28314 /* User.m */,
 				3A2381C01E376295007ED999 /* Math.h */,
 				3A2381C11E376295007ED999 /* Math.m */,
+				3A540A4C1E48AF4F00C10871 /* Score.h */,
+				3A540A4D1E48AF4F00C10871 /* Score.m */,
 			);
 			name = Model;
 			path = ..;
@@ -988,6 +998,7 @@
 				3A7DFCC11E29D82E0082F379 /* SayViewCell.m in Sources */,
 				3A33D7CB1DAE28380012EFDE /* PowerViewController.m in Sources */,
 				3A6D7EE41DABD9F50081B70D /* UIView_extra.m in Sources */,
+				3A540A4B1E48AAAE00C10871 /* ScoreShowViewController.m in Sources */,
 				3A0898BC1DB5ED5800D2CCE6 /* SKSTableView.m in Sources */,
 				3A8DE29C1E22800700E47945 /* APIManager.m in Sources */,
 				3A4D38B01E1FAF7C00639C18 /* UINavigationBar+Awesome.m in Sources */,
@@ -1002,6 +1013,7 @@
 				3AFB7BA51DAD19530040B55F /* AboutViewController.m in Sources */,
 				3AD87B081DACCE7600357212 /* ClassViewController.m in Sources */,
 				3A7ED5701DE3254A00389399 /* ExamaddViewController.m in Sources */,
+				3A540A4E1E48AF4F00C10871 /* Score.m in Sources */,
 				3AA881501E2A4654004F75B1 /* CommitViewCell.m in Sources */,
 				3AAC24331DE1F17400546B11 /* UsernameViewController.m in Sources */,
 				3A6D7EF01DABDB500081B70D /* HomeWorkViewController.m in Sources */,

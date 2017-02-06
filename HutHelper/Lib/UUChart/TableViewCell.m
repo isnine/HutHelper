@@ -133,7 +133,7 @@ int class=0;
 }
 -(NSArray *)getStudent{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    NSData* ScoreData           = [defaults objectForKey:@"data_score"];//地址 -> 数据
+    NSData* ScoreData           = [defaults objectForKey:@"Score"];//地址 -> 数据
     NSDictionary *Score_All     = [ScoreData objectFromJSONData];//数据 -> 字典
     NSArray *array_score             = [Score_All objectForKey:@"data"];
     return array_score;
@@ -310,8 +310,6 @@ int class=0;
        jd2 = @[xf_2016_2];
         class=1;
     }
-
-
 
 NSArray *ary1 = @[];
 NSArray *ary2 = @[@"2.3",@"2.5",@"2.6"];

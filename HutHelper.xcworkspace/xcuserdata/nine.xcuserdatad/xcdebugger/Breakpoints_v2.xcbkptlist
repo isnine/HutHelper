@@ -35,13 +35,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "HutHelper/FirstLoginViewController.m"
-            timestampString = "507788845.174677"
+            filePath = "HutHelper/Lib/UUChart/RootViewController.m"
+            timestampString = "508081207.424388"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "77"
-            endingLineNumber = "77"
-            landmarkName = "-Login:"
+            startingLineNumber = "239"
+            endingLineNumber = "239"
+            landmarkName = "-get_zxf"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

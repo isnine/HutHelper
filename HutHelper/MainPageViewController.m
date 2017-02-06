@@ -30,6 +30,7 @@
 #import "MBProgressHUD+MJ.h"
 #import "SayViewController.h"
 #import "HandTableViewController.h"
+#import "ScoreShowViewController.h"
 #import "Math.h"
 #define vBackBarButtonItemName  @"backArrow.png"    //导航条返回默认图片名
 @interface MainPageViewController ()
@@ -467,9 +468,11 @@ int class_error_;
                  
                  NSString *Msg=[Score_All objectForKey:@"msg"];
                  if([Msg isEqualToString:@"ok"]){
-                     [defaults setObject:Score_Data forKey:@"data_score"];
+                     [defaults setObject:Score_Data forKey:@"Score"];
                      [defaults synchronize];
-                     RootViewController *Score      = [[RootViewController alloc] init];
+//                     RootViewController *Score      = [[RootViewController alloc] init];
+                     UIStoryboard *main=[UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                     ScoreShowViewController *Score      = [main instantiateViewControllerWithIdentifier:@"ScoreShow"];
                      AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
                      [tempAppDelegate.mainNavigationController pushViewController:Score animated:YES];
                      [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
@@ -486,7 +489,15 @@ int class_error_;
                  [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
                  [MBProgressHUD showError:@"请检查网络或者重新登录"];
              }];
+    }else{
+       UIStoryboard *main=[UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        ScoreShowViewController *Score      = [main instantiateViewControllerWithIdentifier:@"ScoreShow"];
+     //   RootViewController *Score      = [[RootViewController alloc] init];
+
+        AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        [tempAppDelegate.mainNavigationController pushViewController:Score animated:YES];
     }
+    
     
 } //成绩查询
 
