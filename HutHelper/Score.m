@@ -16,7 +16,7 @@
  
  @return 成绩数组
  */
--(NSArray *)getStudent{
+-(NSArray *)getScore{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     NSData* ScoreData           = [defaults objectForKey:@"Score"];//地址 -> 数据
     NSDictionary *Score_All     = [ScoreData objectFromJSONData];//数据 -> 字典
@@ -30,7 +30,7 @@
  @return 未通过的课程
  */
 -(int)getWtg{
-    NSArray *array_score             = [self getStudent];
+    NSArray *array_score             = [self getScore];
     NSMutableArray *score_select=[NSMutableArray arrayWithCapacity:30];
     NSMutableArray *xf_select=[NSMutableArray arrayWithCapacity:30];
     NSMutableArray *score_select2=[NSMutableArray arrayWithCapacity:30];
@@ -98,7 +98,7 @@
  @return 总绩点
  */
 -(double)getZxf{
-    NSArray *array_score             = [self getStudent];
+    NSArray *array_score             = [self getScore];
     NSMutableArray *score_select=[NSMutableArray arrayWithCapacity:30];
     NSMutableArray *xf_select=[NSMutableArray arrayWithCapacity:30];
     NSMutableArray *score_select2=[NSMutableArray arrayWithCapacity:30];
@@ -126,7 +126,6 @@
         if ([string_xf isEqual:[NSNull null]])  string_xf         = @"0.1";//学期
         
         if ([string_cxbj isEqual:[NSNull null]]) string_cxbj         = @"NULL";//学期
-        
         
         int int_score          = [string_score intValue];
         int int_score2          = [string_score2 intValue];
@@ -159,7 +158,7 @@
  @return 该学期的绩点
  */
 -(double)getZxf:(NSString*)name{
-    NSArray *array_score             = [self getStudent];
+    NSArray *array_score             = [self getScore];
     NSMutableArray *score_select=[NSMutableArray arrayWithCapacity:30];
     NSMutableArray *xf_select=[NSMutableArray arrayWithCapacity:30];
     NSMutableArray *score_select2=[NSMutableArray arrayWithCapacity:30];
@@ -230,7 +229,7 @@
  @return 未得学分/总学分
  */
 -(NSString*)getScale{
-    NSArray *array_score             = [self getStudent];
+    NSArray *array_score             = [self getScore];
     NSMutableArray *score_select=[NSMutableArray arrayWithCapacity:30];
     NSMutableArray *xf_select=[NSMutableArray arrayWithCapacity:30];
     NSMutableArray *score_select2=[NSMutableArray arrayWithCapacity:30];
@@ -294,6 +293,132 @@
     }
     NSString *result=[NSString stringWithFormat:@"%.1lf/%.1lf",wtg,zxf];
     return result;
+}
+
+
+/**
+ 分学期返回 考试名/成绩
+
+ @param name 学期名
+ @return 该学期的数组
+ */
+-(NSArray*)getScore:(NSString*)name{
+    NSMutableArray *result= [[NSMutableArray alloc] init];
+    NSArray *array_score             = [self getScore];
+    for(int i=0;i<array_score.count;i++){
+        NSDictionary *dict1        = array_score[i];
+        NSString *string_xn= [dict1 objectForKey:@"XN"];//学期
+        NSString *string_xq= [dict1 objectForKey:@"XQ"];//学期
+
+        if ([string_xn isEqual:[NSNull null]])
+            string_xn         = @"NULL";//学期
+        
+        if ([string_xq isEqual:[NSNull null]])
+            string_xq         = @"NULL";//学期
+
+        string_xn         = [string_xn stringByAppendingString:@"第"];
+        string_xn         = [string_xn stringByAppendingString:string_xq];
+        string_xn         = [string_xn stringByAppendingString:@"学期"];
+        if ([string_xn isEqualToString:name])
+                [result addObject:array_score[i]];
+    }
+        return result;
+}
++(NSString*)getGradeName:(NSString*)Name{
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    int grade=[[defaults objectForKey:@"sourceGrade"] intValue];
+    switch (grade) {
+        case 11:
+            if ([Name isEqualToString:@"大一上学期"])
+                return @"2016-2017第1学期";
+            
+            break;
+        case 12:
+            if ([Name isEqualToString:@"大一上学期"])
+                return @"2016-2017第1学期";
+            else if ([Name isEqualToString:@"大一下学期"])
+                return @"2016-2017第2学期";
+            break;
+        case 21:
+            if ([Name isEqualToString:@"大一上学期"])
+                return @"2015-2016第1学期";
+            else if ([Name isEqualToString:@"大一下学期"])
+                return @"2015-2016第2学期";
+            else if ([Name isEqualToString:@"大二上学期"])
+                return @"2016-2017第1学期";
+            break;
+        case 22:
+            if ([Name isEqualToString:@"大一上学期"])
+                return @"2015-2016第1学期";
+            else if ([Name isEqualToString:@"大一下学期"])
+                return @"2015-2016第2学期";
+            else if ([Name isEqualToString:@"大二上学期"])
+                return @"2016-2017第1学期";
+            else if ([Name isEqualToString:@"大二下学期"])
+                return @"2016-2017第2学期";
+            break;
+        case 31:
+            if ([Name isEqualToString:@"大一上学期"])
+                return @"2014-2015第1学期";
+            else if ([Name isEqualToString:@"大一下学期"])
+                return @"2014-2015第2学期";
+            else if ([Name isEqualToString:@"大二上学期"])
+                return @"2015-2016第1学期";
+            else if ([Name isEqualToString:@"大二下学期"])
+                return @"2015-2016第2学期";
+            else if ([Name isEqualToString:@"大三上学期"])
+                return @"2016-2017第1学期";
+            break;
+        case 32:
+            if ([Name isEqualToString:@"大一上学期"])
+                return @"2014-2015第1学期";
+            else if ([Name isEqualToString:@"大一下学期"])
+                return @"2014-2015第2学期";
+            else if ([Name isEqualToString:@"大二上学期"])
+                return @"2015-2016第1学期";
+            else if ([Name isEqualToString:@"大二下学期"])
+                return @"2015-2016第2学期";
+            else if ([Name isEqualToString:@"大三上学期"])
+                return @"2016-2017第1学期";
+            else if ([Name isEqualToString:@"大三下学期"])
+                return @"2016-2017第2学期";
+            break;
+        case 41:
+            if ([Name isEqualToString:@"大一上学期"])
+                return @"2013-2014第1学期";
+            else if ([Name isEqualToString:@"大一下学期"])
+                return @"2013-2014第2学期";
+            else if ([Name isEqualToString:@"大二上学期"])
+                return @"2014-2015第1学期";
+            else if ([Name isEqualToString:@"大二下学期"])
+                return @"2014-2015第2学期";
+            else if ([Name isEqualToString:@"大三上学期"])
+                return @"2015-2016第1学期";
+            else if ([Name isEqualToString:@"大三下学期"])
+                return @"2015-2016第2学期";
+            else if ([Name isEqualToString:@"大四上学期"])
+                return @"2016-2017第1学期";
+            break;
+        case 42:
+            if ([Name isEqualToString:@"大一上学期"])
+                return @"2013-2014第1学期";
+            else if ([Name isEqualToString:@"大一下学期"])
+                return @"2013-2014第2学期";
+            else if ([Name isEqualToString:@"大二上学期"])
+                return @"2014-2015第1学期";
+            else if ([Name isEqualToString:@"大二下学期"])
+                return @"2014-2015第2学期";
+            else if ([Name isEqualToString:@"大三上学期"])
+                return @"2015-2016第1学期";
+            else if ([Name isEqualToString:@"大三下学期"])
+                return @"2015-2016第2学期";
+            else if ([Name isEqualToString:@"大四上学期"])
+                return @"2016-2017第1学期";
+            else if ([Name isEqualToString:@"大四下学期"])
+                return @"2016-2017第2学期";
+            break;
+    }
+    return @"2016-2017第1学期";
 }
 
 @end

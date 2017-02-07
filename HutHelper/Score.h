@@ -14,4 +14,7 @@
 -(double)getZxf;
 -(double)getZxf:(NSString*)name;
 -(NSString*)getScale;
+-(NSArray*)getScore:(NSString*)name;
+-(NSArray *)getScore;
++(NSString*)getGradeName:(NSString*)Name;
 @end

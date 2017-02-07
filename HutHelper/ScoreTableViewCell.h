@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface ScoreTableViewCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *Class;
+@property (weak, nonatomic) IBOutlet UILabel *Time;
+@property (weak, nonatomic) IBOutlet UILabel *Xf;
 +(instancetype)tableViewCell;
 @end
