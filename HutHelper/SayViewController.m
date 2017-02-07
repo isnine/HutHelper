@@ -141,15 +141,15 @@ int num=1;
                 NSDictionary *response = [NSDictionary dictionaryWithDictionary:responseObject];
                 NSString *Msg=[response objectForKey:@"msg"];
                 if ([Msg isEqualToString:@"ok"])   {
-                    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                    [MBProgressHUD hideHUDForView:self.view animated:YES];
                     [MBProgressHUD showSuccess:@"评论成功"];
                     [self reload];
                 }
                 else if ([Msg isEqualToString:@"令牌错误"]){
-                    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                    [MBProgressHUD hideHUDForView:self.view animated:YES];
                     [MBProgressHUD showError:@"登录过期，请重新登录"];}
                 else{
-                    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                    [MBProgressHUD hideHUDForView:self.view animated:YES];
                     [MBProgressHUD showError:Msg];}
             } failure:^(NSURLSessionDataTask *task, NSError *error) {
                 [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
@@ -428,7 +428,7 @@ int num=1;
                      [defaults setObject:Say_content forKey:@"Say"];
                      _Say_content=[defaults objectForKey:@"Say"];
                      [MBProgressHUD showSuccess:@"刷新成功"];
-                     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                     [MBProgressHUD hideHUDForView:self.view animated:YES];
                      [self.tableView.header endRefreshing];
                      [self.tableView reloadData];
                  }
@@ -469,7 +469,7 @@ int num=1;
                      [MBProgressHUD showSuccess:@"刷新成功"];
                      NSString *num_string=[NSString stringWithFormat:@"第%d页",num];
                      self.navigationItem.title = num_string;
-                     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                     [MBProgressHUD hideHUDForView:self.view animated:YES];
                      [self.tableView.footer endRefreshing];
                      self.tableView.mj_header.hidden = YES;
                      [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];

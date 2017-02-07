@@ -90,16 +90,16 @@
              if([Msg isEqualToString:@"ok"]){
                  [defaults setObject:Score_Data forKey:@"Score"];
                  [defaults synchronize];
-                 [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                 [MBProgressHUD hideHUDForView:self.view animated:YES];
                  [MBProgressHUD showSuccess:@"刷新成功"];
 
              }
              else if([Msg isEqualToString:@"令牌错误"]){
-                 [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                 [MBProgressHUD hideHUDForView:self.view animated:YES];
                  [MBProgressHUD showError:@"登录过期,请重新登录"];
              }
              else{
-                 [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                 [MBProgressHUD hideHUDForView:self.view animated:YES];
                  [MBProgressHUD showError:@"请检查网络或者重新登录"];
              }
          } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {

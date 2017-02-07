@@ -144,21 +144,21 @@
                                 NSString *Msg=[response objectForKey:@"msg"];
                                 if ([Msg isEqualToString:@"ok"])
                                 {
-                                    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                                    [MBProgressHUD hideHUDForView:self.view animated:YES];
                                     [MBProgressHUD showSuccess:@"评论成功"];
                                     [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:([self.navigationController.viewControllers count] -2)] animated:YES];  //返回Home
                                     
                                 }
                                 else if ([Msg isEqualToString:@"令牌错误"]){
-                                    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                                    [MBProgressHUD hideHUDForView:self.view animated:YES];
                                     [MBProgressHUD showError:@"登录过期，请重新登录"];
                                     [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:([self.navigationController.viewControllers count] -2)] animated:YES];  //返回Home
                                 }
                                 else{
-                                    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                                    [MBProgressHUD hideHUDForView:self.view animated:YES];
                                     [MBProgressHUD showError:Msg];}
                             } failure:^(NSURLSessionDataTask *task, NSError *error) {
-                                [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                                [MBProgressHUD hideHUDForView:self.view animated:YES];
                                 [MBProgressHUD showError:@"网络错误"];
                             }];
                             
@@ -169,11 +169,11 @@
                         
                     }
                     else{
-                        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                        [MBProgressHUD hideHUDForView:self.view animated:YES];
                         [MBProgressHUD showError:@"发表失败"];
                     }
                 } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                    [MBProgressHUD hideHUDForView:self.view animated:YES];
                     [MBProgressHUD showError:@"网络错误"];
                 }];
             }
@@ -251,16 +251,16 @@
                  NSArray *Say_content=[Say_Data objectForKey:@"posts"];//加载该页数据
                  if (Say_content!=NULL) {
                      [defaults setObject:Say_content forKey:@"Say"];
-                     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                     [MBProgressHUD hideHUDForView:self.view animated:YES];
                      [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:([self.navigationController.viewControllers count] -2)] animated:YES];  //返回Home
                  }
                  else{
-                     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                     [MBProgressHUD hideHUDForView:self.view animated:YES];
                      [MBProgressHUD showError:@"网络错误"];
                  }
              }
              else{
-                 [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                 [MBProgressHUD hideHUDForView:self.view animated:YES];
                  [MBProgressHUD showError:[Say_All objectForKey:@"msg"]];
              }             [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
          } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {

@@ -723,7 +723,7 @@ NSString *show_xp;
                               NSArray *array               = [ClassXP_All objectForKey:@"data"];
                               [defaults setObject:array forKey:@"array_xp"];
                               [defaults synchronize];
-                              [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                              [MBProgressHUD hideHUDForView:self.view animated:YES];
                               [MBProgressHUD showSuccess:@"刷新成功"];
                               if(now_xp==0){
                                   [self addCourse];
@@ -733,16 +733,16 @@ NSString *show_xp;
                               }
                           }
                       } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                          [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                          [MBProgressHUD hideHUDForView:self.view animated:YES];
                           [MBProgressHUD showError:@"网络错误，实验课表查询失败"];
                       }];
              }
              else if([Msg isEqualToString:@"令牌错误"]){
-                 [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                 [MBProgressHUD hideHUDForView:self.view animated:YES];
                  [MBProgressHUD showError:@"登录过期,请重新登录"];
              }
              else{
-                 [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                 [MBProgressHUD hideHUDForView:self.view animated:YES];
                  [MBProgressHUD showError:@"查询失败"];
              }
          } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {

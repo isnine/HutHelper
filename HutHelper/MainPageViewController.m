@@ -228,37 +228,37 @@ int class_error_;
                                   NSArray *array               = [ClassXP_All objectForKey:@"data"];
                                   [defaults setObject:array forKey:@"array_xp"];
                                   [defaults synchronize];
-                                  [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                                  [MBProgressHUD hideHUDForView:self.view animated:YES];
                                   UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
                                   ClassViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Class"];
                                   AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
                                   [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:NO];
                               }
                               else{
-                                  [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                                  [MBProgressHUD hideHUDForView:self.view animated:YES];
                                   UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
                                   ClassViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Class"];
                                   AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
                                   [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:NO];
-                                  [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                                  [MBProgressHUD hideHUDForView:self.view animated:YES];
                                   [MBProgressHUD showError:Msg];
                               }
                           } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                              [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                              [MBProgressHUD hideHUDForView:self.view animated:YES];
                               [MBProgressHUD showError:@"网络错误，实验课表查询失败"];
                           }];
                      
                  }
                  else if([Msg isEqualToString:@"令牌错误"]){
-                     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                     [MBProgressHUD hideHUDForView:self.view animated:YES];
                      [MBProgressHUD showError:@"登录过期,请重新登录"];
                  }
                  else{
-                     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                     [MBProgressHUD hideHUDForView:self.view animated:YES];
                      [MBProgressHUD showError:@"查询失败"];
                  }
              } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                 [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                 [MBProgressHUD hideHUDForView:self.view animated:YES];
                  [MBProgressHUD showError:@"网络错误，平时课表查询失败"];
              }];
     }
@@ -310,27 +310,27 @@ int class_error_;
                                   NSArray *array               = [ClassXP_All objectForKey:@"data"];
                                   [defaults setObject:array forKey:@"array_xp"];
                                   [defaults synchronize];
-                                  [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                                  [MBProgressHUD hideHUDForView:self.view animated:YES];
                                   UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
                                   ClassViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Class"];
                                   AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
                                   [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:NO];
                               }
                           } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                              [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                              [MBProgressHUD hideHUDForView:self.view animated:YES];
                               [MBProgressHUD showError:@"网络错误，实验课表查询失败"];
                           }];
                  }
                  else if([Msg isEqualToString:@"令牌错误"]){
-                     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                     [MBProgressHUD hideHUDForView:self.view animated:YES];
                      [MBProgressHUD showError:@"登录过期,请重新登录"];
                  }
                  else{
-                     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                     [MBProgressHUD hideHUDForView:self.view animated:YES];
                      [MBProgressHUD showError:@"查询失败"];
                  }
              } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                 [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                 [MBProgressHUD hideHUDForView:self.view animated:YES];
                  [MBProgressHUD showError:@"网络错误，平时课表查询失败"];
              }];
     }
@@ -384,19 +384,19 @@ int class_error_;
                  if (Say_content!=NULL) {
                      [defaults setObject:Say_content forKey:@"Say"];
                      [defaults synchronize];
-                     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                     [MBProgressHUD hideHUDForView:self.view animated:YES];
                      SayViewController *Say      = [[SayViewController alloc] init];
                      AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
                      [tempAppDelegate.mainNavigationController pushViewController:Say animated:YES];
                      
                  }
                  else{
-                     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                     [MBProgressHUD hideHUDForView:self.view animated:YES];
                      [MBProgressHUD showError:@"网络错误"];
                  }
              }
              else{
-                 [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                 [MBProgressHUD hideHUDForView:self.view animated:YES];
                  [MBProgressHUD showError:[Say_All objectForKey:@"msg"]];
              }             [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
          } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -475,18 +475,18 @@ int class_error_;
                      ScoreShowViewController *Score      = [main instantiateViewControllerWithIdentifier:@"ScoreShow"];
                      AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
                      [tempAppDelegate.mainNavigationController pushViewController:Score animated:YES];
-                     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                     [MBProgressHUD hideHUDForView:self.view animated:YES];
                  }
                  else if([Msg isEqualToString:@"令牌错误"]){
-                     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                     [MBProgressHUD hideHUDForView:self.view animated:YES];
                      [MBProgressHUD showError:@"登录过期,请重新登录"];
                  }
                  else{
-                     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                     [MBProgressHUD hideHUDForView:self.view animated:YES];
                      [MBProgressHUD showError:@"请检查网络或者重新登录"];
                  }
              } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                 [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                 [MBProgressHUD hideHUDForView:self.view animated:YES];
                  [MBProgressHUD showError:@"请检查网络或者重新登录"];
              }];
     }else{
@@ -542,10 +542,10 @@ int class_error_;
                  NSInteger *exam_on                        = [defaults integerForKey:@"exam_on"];
                  if(array.count!=0){
                      [self EnterExam];
-                     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                     [MBProgressHUD hideHUDForView:self.view animated:YES];
                  }
                  else{
-                     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                     [MBProgressHUD hideHUDForView:self.view animated:YES];
                      [MBProgressHUD showError:@"计划表上暂无考试"];
                  }
              }
@@ -556,11 +556,11 @@ int class_error_;
          } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
              if ([defaults objectForKey:@"Exam"]!=NULL) {
                  [self EnterExam];
-                 [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                 [MBProgressHUD hideHUDForView:self.view animated:YES];
                  [MBProgressHUD showError:@"超时,显示本地数据"];
              }
              else{
-                 [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                 [MBProgressHUD hideHUDForView:self.view animated:YES];
                  [MBProgressHUD showError:@"网络错误"];
              }
          }];

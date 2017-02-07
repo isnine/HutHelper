@@ -24,20 +24,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *UserName;
 @property (weak, nonatomic) IBOutlet UITextField *Password;
 @end
-@implementation NSDictionary (MyDictionary)
-- (NSDictionary *)deleteAllNullValue{
-    NSMutableDictionary *mutableDic = [[NSMutableDictionary alloc] init];
-    for (NSString *keyStr in self.allKeys) {
-        if ([[self objectForKey:keyStr] isEqual:[NSNull null]]) {
-            [mutableDic setObject:@"" forKey:keyStr];
-        }
-        else{
-            [mutableDic setObject:[self objectForKey:keyStr] forKey:keyStr];
-        }
-    }
-    return mutableDic;
-}
-@end
+
 @implementation FirstLoginViewController
 
 - (NSString*)dictionaryToJson:(NSDictionary *)dic
@@ -52,11 +39,12 @@
     NSString *Password_String =[NSString stringWithFormat:@"%@",_Password.text];
     /**请求地址*/
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    NSString *Url_String=[NSString stringWithFormat:@"http://218.75.197.121:8888/api/v1/get/login/%@/%@/1",UserName_String,Password_String];
+   NSString *Url_String=[NSString stringWithFormat:@"http://218.75.197.121:8888/api/v1/get/login/%@/%@/1",UserName_String,Password_String];
     /**请求*/
     [MBProgressHUD showMessage:@"登录中" toView:self.view];
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     /**设置4秒超时*/
+    ((AFJSONResponseSerializer *)manager.responseSerializer).removesKeysWithNullValues = YES;
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
     manager.requestSerializer.timeoutInterval = 4.f;
     [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
@@ -64,8 +52,6 @@
          success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
              NSDictionary *User_All = [NSDictionary dictionaryWithDictionary:responseObject];
              NSDictionary *User_Data=[User_All objectForKey:@"data"];//All字典 -> Data字典
-
-             User_Data=[User_Data deleteAllNullValue];
              NSString *Msg=[User_All objectForKey:@"msg"];
              if ([Msg isEqualToString: @"ok"])
              {
@@ -76,11 +62,11 @@
                  [defaults setObject:currentVersion forKey:@"last_run_version_key"]; //保存版本信息
                  [defaults synchronize];
                  [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:([self.navigationController.viewControllers count] -2)] animated:YES];  //返回上一个View
-                 [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                 [MBProgressHUD hideHUDForView:self.view animated:YES];
              }
              else {
                  NSString *Show_Msg=[Msg stringByAppendingString:@",默认密码身份证后六位"];
-                 [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                 [MBProgressHUD hideHUDForView:self.view animated:YES];
                  [MBProgressHUD showError:Show_Msg];
              }
          } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {

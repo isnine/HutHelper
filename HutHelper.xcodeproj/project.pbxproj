@@ -50,6 +50,7 @@
 		3A59A50F1E2F6FE200D65F7E /* HandShowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A59A50E1E2F6FE200D65F7E /* HandShowViewController.m */; };
 		3A61F2691E30A033000E9A38 /* AddhandViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A61F2681E30A033000E9A38 /* AddhandViewController.m */; };
 		3A63DF6F1E499C6500AAAAAA /* ScoreDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A63DF6E1E499C6500AAAAAA /* ScoreDataViewController.m */; };
+		3A63DF721E49F11600AAAAAA /* NullSafe.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A63DF711E49F11600AAAAAA /* NullSafe.m */; };
 		3A6D7EDE1DABD9DA0081B70D /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A6D7EDD1DABD9DA0081B70D /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		3A6D7EE31DABD9F50081B70D /* LeftSlideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A6D7EE11DABD9F50081B70D /* LeftSlideViewController.m */; };
 		3A6D7EE41DABD9F50081B70D /* UIView_extra.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A6D7EE21DABD9F50081B70D /* UIView_extra.m */; };
@@ -200,6 +201,7 @@
 		3A61F2681E30A033000E9A38 /* AddhandViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddhandViewController.m; sourceTree = "<group>"; };
 		3A63DF6D1E499C6500AAAAAA /* ScoreDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreDataViewController.h; sourceTree = "<group>"; };
 		3A63DF6E1E499C6500AAAAAA /* ScoreDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScoreDataViewController.m; sourceTree = "<group>"; };
+		3A63DF711E49F11600AAAAAA /* NullSafe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NullSafe.m; path = Lib/NullSafe/NullSafe.m; sourceTree = "<group>"; };
 		3A6D7EDC1DABD9DA0081B70D /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSONKit.h; path = HutHelper/Lib/JSONKit.h; sourceTree = "<group>"; };
 		3A6D7EDD1DABD9DA0081B70D /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JSONKit.m; path = HutHelper/Lib/JSONKit.m; sourceTree = "<group>"; };
 		3A6D7EDF1DABD9F50081B70D /* LeftSlideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LeftSlideViewController.h; path = Lib/LeftSlideViewController/LeftSlideViewController.h; sourceTree = "<group>"; };
@@ -392,6 +394,7 @@
 		3A4D04181E19201B00595183 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				3A63DF701E49F10B00AAAAAA /* NullSafe */,
 				3A4D38AD1E1FAF6900639C18 /* LTNavigationBar */,
 				3A33D7D81DAE50EF0012EFDE /* UMessage_Sdk_1.4.0 */,
 				3AA1BC101E16178900F75A7E /* MBProgressHUD+MJ */,
@@ -660,6 +663,14 @@
 				3A4D38AF1E1FAF7C00639C18 /* UINavigationBar+Awesome.m */,
 			);
 			name = LTNavigationBar;
+			sourceTree = "<group>";
+		};
+		3A63DF701E49F10B00AAAAAA /* NullSafe */ = {
+			isa = PBXGroup;
+			children = (
+				3A63DF711E49F11600AAAAAA /* NullSafe.m */,
+			);
+			name = NullSafe;
 			sourceTree = "<group>";
 		};
 		3A776DE61E2B614200F600D6 /* Commit */ = {
@@ -999,6 +1010,7 @@
 				3A61F2691E30A033000E9A38 /* AddhandViewController.m in Sources */,
 				3A026D0F1DBC9B42000288AF /* RootViewController.m in Sources */,
 				3A026D131DBC9B42000288AF /* UUBar.m in Sources */,
+				3A63DF721E49F11600AAAAAA /* NullSafe.m in Sources */,
 				3A33D7C61DAE00300012EFDE /* Feedback2ViewController.m in Sources */,
 				3A7DFCC61E29D94A0082F379 /* SayViewController.m in Sources */,
 				3A59A50F1E2F6FE200D65F7E /* HandShowViewController.m in Sources */,
