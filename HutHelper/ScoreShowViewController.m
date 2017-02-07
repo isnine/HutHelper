@@ -8,6 +8,7 @@
 
 #import "ScoreShowViewController.h"
 #import "UINavigationBar+Awesome.h"
+#import "AppDelegate.h"
 #import "Score.h"
 @interface ScoreShowViewController ()
 
@@ -42,11 +43,21 @@
     self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:0/255.0 green:224/255.0 blue:208/255.0 alpha:1];
     [self.navigationController.navigationBar lt_reset];
 }
+- (IBAction)PushScoreData:(id)sender {
+    UIStoryboard *main=[UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    ScoreShowViewController *Score      = [main instantiateViewControllerWithIdentifier:@"ScoreData"];
+    AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [tempAppDelegate.mainNavigationController pushViewController:Score animated:YES];
+}
 #pragma - 其他
 -(void)setTitle{
     self.title=@"成绩";
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    /** 标题栏样式 */
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+    self.navigationItem.backBarButtonItem = item;
+    [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:0/255.0 green:224/255.0 blue:208/255.0 alpha:1]];
 }
 -(void)setOther{
     Score *score=[[Score alloc]init];
