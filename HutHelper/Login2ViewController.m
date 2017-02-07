@@ -40,14 +40,14 @@
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
     
-    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
     
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
 {
     //隐藏显示
-    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
     [MBProgressHUD showError:@"网络错误"];
 }
 

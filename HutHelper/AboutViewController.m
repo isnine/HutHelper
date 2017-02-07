@@ -30,6 +30,8 @@
     // Do any additional setup after loading the view from its nib.
     NSString *app_Version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
    _version.text=app_Version;
+  
+
 }
 - (IBAction)Appscore:(id)sender {
     NSString *str = @"https://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=1164848835&pageNumber=0&sortOrdering=2&type=Purple+Software&mt=8";
@@ -43,7 +45,5 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-
 
 @end

@@ -10,7 +10,6 @@
 #import "MainPageViewController.h"
 #import "LeftSortsViewController.h"
 #import "UMessage.h"
-#import "ScoreViewController.h"
 #import "UMMobClick/MobClick.h"
 #import <UMSocialCore/UMSocialCore.h>
 #import <JSPatchPlatform/JSPatch.h>
@@ -61,8 +60,8 @@
 
     //    MainPageViewController *mainVC = [[MainPageViewController alloc] init]; //代码界面
     MainPageViewController *mainVC   = [[MainPageViewController alloc] initWithNibName:@"MainViewController" bundle:nil];
-    self.mainNavigationController    = [[UINavigationController alloc] initWithRootViewController:mainVC];
-
+//    MainPageViewController *nav = [[UINavigationController alloc]initWithRootViewController:[[NSClassFromString(@"MainViewController") alloc]init]];
+        self.mainNavigationController    = [[UINavigationController alloc] initWithRootViewController:mainVC];
     LeftSortsViewController *leftVC  = [[LeftSortsViewController alloc] init];
     self.LeftSlideVC                 = [[LeftSlideViewController alloc] initWithLeftView:leftVC andMainView:self.mainNavigationController];
     self.window.rootViewController   = self.LeftSlideVC;

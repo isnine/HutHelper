@@ -70,7 +70,7 @@
                  [MBProgressHUD showError:Show_Msg];
              }
          } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-             [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+             [MBProgressHUD hideHUDForView:self.view animated:YES];
              [MBProgressHUD showError:@"网络错误或超时"];
          }];
 }

@@ -198,21 +198,21 @@
             NSString *Msg=[response objectForKey:@"msg"];
             if ([Msg isEqualToString:@"ok"])
             {
-                [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                [MBProgressHUD hideHUDForView:self.view animated:YES];
                 [MBProgressHUD showSuccess:@"评论成功"];
                 [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:([self.navigationController.viewControllers count] -2)] animated:YES];  //返回Home
             }
             else if ([Msg isEqualToString:@"令牌错误"]){
-                [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                [MBProgressHUD hideHUDForView:self.view animated:YES];
                 [MBProgressHUD showError:@"登录过期，请重新登录"];
                 [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:([self.navigationController.viewControllers count] -2)] animated:YES];  //返回Home
             }
             
             else{
-                [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                [MBProgressHUD hideHUDForView:self.view animated:YES];
                 [MBProgressHUD showError:Msg];}
         } failure:^(NSURLSessionDataTask *task, NSError *error) {
-            [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
             [MBProgressHUD showError:@"网络错误"];
         }];}
     
@@ -262,10 +262,10 @@
              else{
                  [MBProgressHUD hideHUDForView:self.view animated:YES];
                  [MBProgressHUD showError:[Say_All objectForKey:@"msg"]];
-             }             [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+             }             [MBProgressHUD hideHUDForView:self.view animated:YES];
          } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
              [MBProgressHUD showError:@"网络错误"];
-             [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+             [MBProgressHUD hideHUDForView:self.view animated:YES];
          }];
     
 }

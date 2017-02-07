@@ -19,9 +19,7 @@
 #import "UMMobClick/MobClick.h"
 #import "FirstLoginViewController.h"
 #import<CommonCrypto/CommonDigest.h>
-#import "ScoreViewController.h"
 #import "MBProgressHUD.h"
-#import "RootViewController.h"
 #import "UINavigationBar+Awesome.h"
 #import "APIManager.h"
 #import "YYModel.h"
@@ -398,10 +396,10 @@ int class_error_;
              else{
                  [MBProgressHUD hideHUDForView:self.view animated:YES];
                  [MBProgressHUD showError:[Say_All objectForKey:@"msg"]];
-             }             [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+             }             [MBProgressHUD hideHUDForView:self.view animated:YES];
          } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
              [MBProgressHUD showError:@"网络错误"];
-             [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+             [MBProgressHUD hideHUDForView:self.view animated:YES];
          }];
     
     
@@ -432,13 +430,13 @@ int class_error_;
              NSArray *Hand           = [dic1 objectForKey:@""];
              [defaults setObject:Hand forKey:@"Hand"];
              [defaults synchronize];
-             [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+             [MBProgressHUD hideHUDForView:self.view animated:YES];
              HandTableViewController *hand=[[HandTableViewController alloc]init];
              AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
              [tempAppDelegate.mainNavigationController pushViewController:hand animated:YES];
          } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
              [MBProgressHUD showError:@"网络错误"];
-             [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+             [MBProgressHUD hideHUDForView:self.view animated:YES];
          }];
 } //二手市场
 
