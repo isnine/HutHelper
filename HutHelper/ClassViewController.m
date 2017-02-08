@@ -74,7 +74,7 @@ NSString *show_xp;
     [super viewDidLoad];
     //标题//
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    now_week=[defaults integerForKey:@"TrueWeek"];
+    now_week=(short)[defaults integerForKey:@"TrueWeek"];
     show_xp=[defaults objectForKey:@"show_xp"];
     NSString *nowweek_string=@"第";
     NSString *now2=[NSString stringWithFormat:@"%d",now_week];
@@ -104,7 +104,7 @@ NSString *show_xp;
 
 - (void)addCourse{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    int *nowweek                           = [defaults integerForKey:@"NowWeek"];
+    int nowweek                           = (short)[defaults integerForKey:@"NowWeek"];
     
     CourseModel *a1  = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
     CourseModel *a2  = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];

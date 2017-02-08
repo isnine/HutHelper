@@ -146,9 +146,9 @@ int datediff(int y1,int m1,int d1,int y2,int m2,int d2)
     NSCalendar *calendar                      = [NSCalendar currentCalendar];
     NSUInteger unitFlags                      = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit |NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
     NSDateComponents *dateComponent           = [calendar components:unitFlags fromDate:now];
-    int year                                  = [dateComponent year];//年
-    int month                                 = [dateComponent month];//月
-    int day                                   = [dateComponent day];//日
+    int year                                  = (short)[dateComponent year];//年
+    int month                                 = (short)[dateComponent month];//月
+    int day                                   = (short)[dateComponent day];//日
     NSString *lastime;
     if (datediff(year,month,day,Year,Mouth,Day)>0&&datediff(year,month,day,Year,Mouth,Day)<500) {
         lastime=[[NSString alloc]initWithFormat:@"倒计时%d天",datediff(year,month,day,Year,Mouth,Day)];

@@ -195,20 +195,20 @@
                      _lostData=[defaults objectForKey:@"Lost"];
                      [MBProgressHUD showSuccess:@"刷新成功"];
                      [MBProgressHUD hideHUDForView:self.view animated:YES];
-                     [self.tableView.header endRefreshing];
+                     [self.tableView.mj_header endRefreshing];
                      [self.tableView reloadData];
                  }
                  else{
-                     [self.tableView.header endRefreshing];
+                     [self.tableView.mj_header endRefreshing];
                      [MBProgressHUD showError:@"网络错误"];
                  }
              }
              else{
-                 [self.tableView.header endRefreshing];
+                 [self.tableView.mj_header endRefreshing];
                  [MBProgressHUD showError:[Say_All objectForKey:@"msg"]];
-             }             [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+             }             [MBProgressHUD hideHUDForView:self.view animated:YES];
          } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-             [self.tableView.header endRefreshing];
+             [self.tableView.mj_header endRefreshing];
              [MBProgressHUD showError:@"网络错误"];
          }];
 }
@@ -239,27 +239,27 @@
                          NSString *num_string=[NSString stringWithFormat:@"第%d页",_num];
                          self.navigationItem.title = num_string;
                          [MBProgressHUD hideHUDForView:self.view animated:YES];
-                         [self.tableView.footer endRefreshing];
+                         [self.tableView.mj_footer endRefreshing];
                          self.tableView.mj_header.hidden = YES;
                          [self.tableView reloadData];}
                      else{
                          [MBProgressHUD showError:@"当前已是最大页数"];
-                          [self.tableView.footer endRefreshing];
+                          [self.tableView.mj_footer endRefreshing];
                      
                      }
                  }
                  else{
-                     [self.tableView.footer endRefreshing];
+                     [self.tableView.mj_footer endRefreshing];
                      [MBProgressHUD showError:@"网络错误"];
                  }
              }
              else{
-                 [self.tableView.footer endRefreshing];
+                 [self.tableView.mj_footer endRefreshing];
                  [MBProgressHUD showError:[Say_All objectForKey:@"msg"]];
              }
-             [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+             [MBProgressHUD hideHUDForView:self.view animated:YES];
          } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-             [self.tableView.footer endRefreshing];
+             [self.tableView.mj_footer endRefreshing];
              [MBProgressHUD showError:@"网络错误"];
          }];
 }

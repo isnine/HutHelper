@@ -140,9 +140,9 @@ int getweek(){
     NSCalendar *calendar                         = [NSCalendar currentCalendar];
     NSUInteger unitFlags                         = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit |NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
     NSDateComponents *dateComponent              = [calendar components:unitFlags fromDate:now];
-    int y                                     = [dateComponent year];//年
-    int m                                    = [dateComponent month];//月
-    int d                                      = [dateComponent day];//日
+    int y                                     = (short)[dateComponent year];//年
+    int m                                    = (short)[dateComponent month];//月
+    int d                                      =(short) [dateComponent day];//日
     if(m==1||m==2) {
         m+=12;
         y--;

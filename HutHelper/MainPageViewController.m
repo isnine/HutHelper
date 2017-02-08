@@ -102,9 +102,9 @@
     NSCalendar *calendar                      = [NSCalendar currentCalendar];
     NSUInteger unitFlags                      = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit |NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
     NSDateComponents *dateComponent           = [calendar components:unitFlags fromDate:now];
-    int year                                  = [dateComponent year];//年
-    int month                                 = [dateComponent month];//月
-    int day                                   = [dateComponent day];//日
+    int year                                  = (short)[dateComponent year];//年
+    int month                                 =(short) [dateComponent month];//月
+    int day                                   = (short)[dateComponent day];//日
     [defaults setInteger:[Math CountWeeks:year m:month d:day] forKey:@"NowWeek"];
     NSArray *array                            = [defaults objectForKey:@"array_class"];
     NSString *autoclass=[defaults objectForKey:@"autoclass"];
@@ -175,9 +175,9 @@
     NSCalendar *calendar                      = [NSCalendar currentCalendar];
     NSUInteger unitFlags                      = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit |NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
     NSDateComponents *dateComponent           = [calendar components:unitFlags fromDate:now];
-    int year                                  = [dateComponent year];//年
-    int month                                 = [dateComponent month];//月
-    int day                                   = [dateComponent day];//日
+    int year                                  = (short)[dateComponent year];//年
+    int month                                 = (short)[dateComponent month];//月
+    int day                                   = (short)[dateComponent day];//日
     [defaults setInteger:[Math CountWeeks:year m:month d:day] forKey:@"NowWeek"];
     [defaults setInteger:[Math CountWeeks:year m:month d:day] forKey:@"TrueWeek"];
     //判断完毕//
@@ -649,8 +649,8 @@ int class_error_;
     NSDateComponents *dateComponent           = [calendar components:unitFlags fromDate:now];
 
         int y                                     = (short)[dateComponent year];//年
-        int m                                    = [dateComponent month];//月
-       int mou                                    = [dateComponent month];//月
+        int m                                    =(short) [dateComponent month];//月
+       int mou                                    = (short)[dateComponent month];//月
     NSLog(@"%d月",m);
         int d                                      = (short)[dateComponent day];//日
        int day                                      = (short)[dateComponent day];//日

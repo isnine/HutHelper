@@ -89,19 +89,19 @@
             NSDictionary *response = [NSDictionary dictionaryWithDictionary:responseObject];
             NSString *Msg=[response objectForKey:@"msg"];
             if ([Msg isEqualToString:@"ok"])   {
-                [MBProgressHUD hideAllHUDsForView:self animated:YES];
+                [MBProgressHUD hideHUDForView:self animated:YES];
                 [MBProgressHUD showSuccess:@"评论成功"];
                 SayViewController *say=[[SayViewController alloc]init];
                 [say reload];
             }
             else if ([Msg isEqualToString:@"令牌错误"]){
-                [MBProgressHUD hideAllHUDsForView:self animated:YES];
+                [MBProgressHUD hideHUDForView:self animated:YES];
                 [MBProgressHUD showError:@"登录过期，请重新登录"];}
             else{
-                [MBProgressHUD hideAllHUDsForView:self animated:YES];
+                [MBProgressHUD hideHUDForView:self animated:YES];
                 [MBProgressHUD showError:Msg];}
         } failure:^(NSURLSessionDataTask *task, NSError *error) {
-            [MBProgressHUD hideAllHUDsForView:self animated:YES];
+            [MBProgressHUD hideHUDForView:self animated:YES];
             [MBProgressHUD showError:@"网络错误"];
         }];
         

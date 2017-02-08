@@ -106,7 +106,7 @@ UIImage* img ;
     img = info[UIImagePickerControllerEditedImage]; //获得修改后
     // img = [info objectForKey:UIImagePickerControllerOriginalImage];   //获得原图
     NSData *imageData = UIImageJPEGRepresentation(img,1.0);
-    int length = [imageData length]/1024;
+    int length = (short)[imageData length]/1024;
     if (length<=2500) {
         [self postimage:img];
     }

@@ -152,7 +152,7 @@ int num=1;
                     [MBProgressHUD hideHUDForView:self.view animated:YES];
                     [MBProgressHUD showError:Msg];}
             } failure:^(NSURLSessionDataTask *task, NSError *error) {
-                [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                [MBProgressHUD hideHUDForView:self.view animated:YES];
                 [MBProgressHUD showError:@"网络错误"];
             }];
             
@@ -282,9 +282,9 @@ int num=1;
              else
                  [MBProgressHUD showError:[Say_All objectForKey:@"msg"]];
              
-             [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+             [MBProgressHUD hideHUDForView:self.view animated:YES];
          } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-             [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+             [MBProgressHUD hideHUDForView:self.view animated:YES];
              [MBProgressHUD showError:@"网络错误"];
          }];
 }
@@ -401,11 +401,11 @@ int num=1;
 
 -(void)refresh
 {
-    [self.tableView.header beginRefreshing];
+    [self.tableView.mj_header beginRefreshing];
 }
 -(void)loadMore
 {
-    [self.tableView.header beginRefreshing];
+    [self.tableView.mj_header beginRefreshing];
 }
 
 -(void)reload{
@@ -429,20 +429,20 @@ int num=1;
                      _Say_content=[defaults objectForKey:@"Say"];
                      [MBProgressHUD showSuccess:@"刷新成功"];
                      [MBProgressHUD hideHUDForView:self.view animated:YES];
-                     [self.tableView.header endRefreshing];
+                     [self.tableView.mj_header endRefreshing];
                      [self.tableView reloadData];
                  }
                  else{
-                     [self.tableView.header endRefreshing];
+                     [self.tableView.mj_header endRefreshing];
                      [MBProgressHUD showError:@"网络错误"];
                  }
              }
              else{
-                 [self.tableView.header endRefreshing];
+                 [self.tableView.mj_header endRefreshing];
                  [MBProgressHUD showError:[Say_All objectForKey:@"msg"]];
-             }             [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+             }             [MBProgressHUD hideHUDForView:self.view animated:YES];
          } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-             [self.tableView.header endRefreshing];
+             [self.tableView.mj_header endRefreshing];
              [MBProgressHUD showError:@"网络错误"];
          }];
 }
@@ -470,22 +470,22 @@ int num=1;
                      NSString *num_string=[NSString stringWithFormat:@"第%d页",num];
                      self.navigationItem.title = num_string;
                      [MBProgressHUD hideHUDForView:self.view animated:YES];
-                     [self.tableView.footer endRefreshing];
+                     [self.tableView.mj_footer endRefreshing];
                      self.tableView.mj_header.hidden = YES;
                      [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
                      [self.tableView reloadData];
                  }
                  else{
-                     [self.tableView.footer endRefreshing];
+                     [self.tableView.mj_footer endRefreshing];
                      [MBProgressHUD showError:@"网络错误"];
                  }
              }
              else{
-                 [self.tableView.footer endRefreshing];
+                 [self.tableView.mj_footer endRefreshing];
                  [MBProgressHUD showError:[Say_All objectForKey:@"msg"]];
-             }             [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+             }             [MBProgressHUD hideHUDForView:self.view animated:YES];
          } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-             [self.tableView.footer endRefreshing];
+             [self.tableView.mj_footer endRefreshing];
              [MBProgressHUD showError:@"网络错误"];
          }];
 }

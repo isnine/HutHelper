@@ -147,11 +147,11 @@
              [defaults synchronize];
              _Hand_content=Hand;
              [self.tableView reloadData];
-             [self.tableView.header endRefreshing];
+             [self.tableView.mj_header endRefreshing];
              [MBProgressHUD showSuccess:@"刷新成功"];
          } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
              [MBProgressHUD showError:@"网络错误"];
-             [self.tableView.header endRefreshing];
+             [self.tableView.mj_header endRefreshing];
              [MBProgressHUD hideHUDForView:self.view animated:YES];
          }];
 }
@@ -182,11 +182,11 @@
              self.navigationItem.title = num_string;
              [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
              [self.tableView reloadData];
-             [self.tableView.footer endRefreshing];
+             [self.tableView.mj_footer endRefreshing];
              self.tableView.mj_header.hidden = YES;
          } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
              [MBProgressHUD showError:@"网络错误"];
-             [self.tableView.footer endRefreshing];
+             [self.tableView.mj_footer endRefreshing];
              [MBProgressHUD hideHUDForView:self.view animated:YES];
          }];
     
