@@ -286,7 +286,7 @@ int class_error_;
         /**设置9秒超时*/
         AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
         [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
-        manager.requestSerializer.timeoutInterval = 9.f;
+        manager.requestSerializer.timeoutInterval = 4.f;
         [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
         /**请求平时课表*/
         [manager GET:Url_String parameters:nil progress:nil
@@ -368,7 +368,7 @@ int class_error_;
     /**设置9秒超时*/
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
-    manager.requestSerializer.timeoutInterval = 4.f;
+    manager.requestSerializer.timeoutInterval = 3.f;
     [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
     /**请求平时课表*/
     [manager GET:Url_String parameters:nil progress:nil
@@ -419,7 +419,7 @@ int class_error_;
     /**设置9秒超时*/
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
-    manager.requestSerializer.timeoutInterval = 4.f;
+    manager.requestSerializer.timeoutInterval = 3.f;
     [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
     /**请求平时课表*/
     [manager GET:Url_String parameters:nil progress:nil
@@ -454,7 +454,7 @@ int class_error_;
         /**设置9秒超时*/
         AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
         [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
-        manager.requestSerializer.timeoutInterval = 9.f;
+        manager.requestSerializer.timeoutInterval = 5.f;
         [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
         /**请求*/
         [manager GET:Url_String parameters:nil progress:nil
@@ -519,7 +519,7 @@ int class_error_;
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     /**设置4秒超时*/
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
-    manager.requestSerializer.timeoutInterval = 4.f;
+    manager.requestSerializer.timeoutInterval = 3.f;
     [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
     /**请求*/
     [manager GET:Url_String parameters:nil progress:nil
@@ -582,7 +582,7 @@ int class_error_;
     /**设置9秒超时*/
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
-    manager.requestSerializer.timeoutInterval = 4.f;
+    manager.requestSerializer.timeoutInterval = 3.f;
     [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
     /**请求平时课表*/
     [manager GET:Url_String parameters:nil progress:nil

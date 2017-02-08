@@ -14,6 +14,7 @@
 		3A218F861E4AFA1700A27D48 /* LostShowPhotoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A218F841E4AFA1700A27D48 /* LostShowPhotoTableViewCell.xib */; };
 		3A218F8A1E4B041B00A27D48 /* LostShowTimeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A218F881E4B041B00A27D48 /* LostShowTimeTableViewCell.m */; };
 		3A218F8B1E4B041B00A27D48 /* LostShowTimeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A218F891E4B041B00A27D48 /* LostShowTimeTableViewCell.xib */; };
+		3A218F8F1E4B16DF00A27D48 /* AddLostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A218F8D1E4B16DF00A27D48 /* AddLostViewController.m */; };
 		3A2381BF1E372F4C007ED999 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A2381BE1E372F4C007ED999 /* Launch Screen.storyboard */; };
 		3A2381C21E376295007ED999 /* Math.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A2381C11E376295007ED999 /* Math.m */; };
 		3A2D10621DB66063009916D0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A2D105F1DB66063009916D0 /* Foundation.framework */; };
@@ -88,7 +89,6 @@
 		3ABE7F1E1DAF75FB003E4085 /* LibraryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ABE7F1C1DAF75FB003E4085 /* LibraryViewController.m */; };
 		3ABE7F231DAF78B9003E4085 /* DayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ABE7F211DAF78B9003E4085 /* DayViewController.m */; };
 		3ABE7F281DAF7BBE003E4085 /* NoticeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ABE7F261DAF7BBE003E4085 /* NoticeViewController.m */; };
-		3ABF72801DDB32F60062E757 /* LostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ABF727E1DDB32F60062E757 /* LostViewController.m */; };
 		3ACE12411E2666D800F28314 /* ExamCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ACE123F1E2666D800F28314 /* ExamCell.m */; };
 		3ACE12421E2666D800F28314 /* ExamCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3ACE12401E2666D800F28314 /* ExamCell.xib */; };
 		3ACE12451E275D8300F28314 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ACE12441E275D8300F28314 /* User.m */; };
@@ -126,6 +126,8 @@
 		3A218F871E4B041B00A27D48 /* LostShowTimeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LostShowTimeTableViewCell.h; sourceTree = "<group>"; };
 		3A218F881E4B041B00A27D48 /* LostShowTimeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LostShowTimeTableViewCell.m; sourceTree = "<group>"; };
 		3A218F891E4B041B00A27D48 /* LostShowTimeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LostShowTimeTableViewCell.xib; sourceTree = "<group>"; };
+		3A218F8C1E4B16DF00A27D48 /* AddLostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddLostViewController.h; sourceTree = "<group>"; };
+		3A218F8D1E4B16DF00A27D48 /* AddLostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddLostViewController.m; sourceTree = "<group>"; };
 		3A2381BE1E372F4C007ED999 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = "Launch Screen.storyboard"; path = "HutHelper/Launch Screen.storyboard"; sourceTree = "<group>"; };
 		3A2381C01E376295007ED999 /* Math.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Math.h; path = HutHelper/Math.h; sourceTree = "<group>"; };
 		3A2381C11E376295007ED999 /* Math.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Math.m; path = HutHelper/Math.m; sourceTree = "<group>"; };
@@ -249,8 +251,6 @@
 		3ABE7F211DAF78B9003E4085 /* DayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DayViewController.m; sourceTree = "<group>"; };
 		3ABE7F251DAF7BBE003E4085 /* NoticeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoticeViewController.h; sourceTree = "<group>"; };
 		3ABE7F261DAF7BBE003E4085 /* NoticeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoticeViewController.m; sourceTree = "<group>"; };
-		3ABF727D1DDB32F60062E757 /* LostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LostViewController.h; sourceTree = "<group>"; };
-		3ABF727E1DDB32F60062E757 /* LostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LostViewController.m; sourceTree = "<group>"; };
 		3ACE123E1E2666D800F28314 /* ExamCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExamCell.h; sourceTree = "<group>"; };
 		3ACE123F1E2666D800F28314 /* ExamCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExamCell.m; sourceTree = "<group>"; };
 		3ACE12401E2666D800F28314 /* ExamCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExamCell.xib; sourceTree = "<group>"; };
@@ -474,8 +474,6 @@
 		3A4D04241E1925BF00595183 /* Lost */ = {
 			isa = PBXGroup;
 			children = (
-				3ABF727D1DDB32F60062E757 /* LostViewController.h */,
-				3ABF727E1DDB32F60062E757 /* LostViewController.m */,
 				3A218F771E4AE9D900A27D48 /* LostShowViewController.h */,
 				3A218F781E4AE9D900A27D48 /* LostShowViewController.m */,
 				3A218F7A1E4AEC9900A27D48 /* LostShowTableViewCell.h */,
@@ -487,6 +485,8 @@
 				3A218F871E4B041B00A27D48 /* LostShowTimeTableViewCell.h */,
 				3A218F881E4B041B00A27D48 /* LostShowTimeTableViewCell.m */,
 				3A218F891E4B041B00A27D48 /* LostShowTimeTableViewCell.xib */,
+				3A218F8C1E4B16DF00A27D48 /* AddLostViewController.h */,
+				3A218F8D1E4B16DF00A27D48 /* AddLostViewController.m */,
 			);
 			name = Lost;
 			sourceTree = "<group>";
@@ -958,7 +958,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3ABF72801DDB32F60062E757 /* LostViewController.m in Sources */,
 				3A33D7F71DAF646B0012EFDE /* Login2ViewController.m in Sources */,
 				3A6D7EDE1DABD9DA0081B70D /* JSONKit.m in Sources */,
 				3AAC242B1DE1CB3C00546B11 /* JSHeaderView.m in Sources */,
@@ -994,6 +993,7 @@
 				3AD87B081DACCE7600357212 /* ClassViewController.m in Sources */,
 				3A7ED5701DE3254A00389399 /* ExamaddViewController.m in Sources */,
 				3A540A4E1E48AF4F00C10871 /* Score.m in Sources */,
+				3A218F8F1E4B16DF00A27D48 /* AddLostViewController.m in Sources */,
 				3AA881501E2A4654004F75B1 /* CommitViewCell.m in Sources */,
 				3AAC24331DE1F17400546B11 /* UsernameViewController.m in Sources */,
 				3A6D7EF01DABDB500081B70D /* HomeWorkViewController.m in Sources */,
