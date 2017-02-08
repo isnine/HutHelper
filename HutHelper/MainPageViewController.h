@@ -10,4 +10,8 @@
 
 @interface MainPageViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UILabel *body;
+@property (weak, nonatomic) IBOutlet UILabel *noticetitle;
+@property (weak, nonatomic) IBOutlet UILabel *noticetime;
+
 @end

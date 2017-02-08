@@ -38,7 +38,7 @@
     NSString *Password_String =[NSString stringWithFormat:@"%@",_Password.text];
     /**请求地址*/
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-   NSString *Url_String=[NSString stringWithFormat:@"http://218.75.197.121:8888/api/v1/get/login/%@/%@/1",UserName_String,Password_String];
+    NSString *Url_String=[NSString stringWithFormat:@"http://218.75.197.121:8888/api/v1/get/login/%@/%@/1",UserName_String,Password_String];
     /**请求*/
     [MBProgressHUD showMessage:@"登录中" toView:self.view];
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
@@ -60,6 +60,7 @@
                                              objectForKey:@"CFBundleShortVersionString"];
                  [defaults setObject:currentVersion forKey:@"last_run_version_key"]; //保存版本信息
                  [defaults synchronize];
+                 [self addNotice];//新增通知
                  [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:([self.navigationController.viewControllers count] -2)] animated:YES];  //返回上一个View
                  [MBProgressHUD hideHUDForView:self.view animated:YES];
              }
@@ -87,7 +88,7 @@
     [_UserName setValue:[UIColor whiteColor] forKeyPath:@"_placeholderLabel.textColor"];
     _Password.placeholder=@"密码";
     [_Password setValue:[UIColor whiteColor] forKeyPath:@"_placeholderLabel.textColor"];
-
+    
     
 }
 - (IBAction)resetpassword:(id)sender {
@@ -116,7 +117,18 @@
     
 }
 
-
+-(void)addNotice{
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    NSMutableDictionary *noticeDictionary=[[NSMutableDictionary alloc]init];
+    NSMutableArray *notice=[[NSMutableArray alloc]init];
+    [noticeDictionary setObject:@"2017-02-20" forKey:@"time"];
+    [noticeDictionary setObject:@"欢迎使用工大助手" forKey:@"title"];
+    [noticeDictionary setObject:@"在新的版本中,我们修改了大量的界面\n并且对已知的所有Bug进行了修复" forKey:@"body"];
+    [notice insertObject:noticeDictionary atIndex:0];
+    NSArray *array = [NSArray arrayWithArray:notice];
+    [defaults setObject:array forKey:@"Notice"];//通知列表
+    [defaults synchronize];
+}
 
 @end
 

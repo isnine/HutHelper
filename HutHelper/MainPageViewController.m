@@ -138,6 +138,8 @@
     [self jspath];
     /**时间Label*/
     [self SetTimeLabel];
+    /**设置通知*/
+    [self setNotice];
 }
 
 - (void) openOrCloseLeftList  //侧栏滑动
@@ -614,6 +616,12 @@ int class_error_;
              [MBProgressHUD hideHUDForView:self.view animated:YES];
          }];
 }  //失物招领
+- (IBAction)Notice:(id)sender {
+    UIStoryboard *main=[UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    NoticeViewController *View      = [main instantiateViewControllerWithIdentifier:@"Notice"];
+    AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [tempAppDelegate.mainNavigationController pushViewController:View animated:YES];
+} //通知界面
 
 - (void) isAppFirstRun{
     NSString *currentVersion = [[[NSBundle mainBundle] infoDictionary]
@@ -694,5 +702,13 @@ int class_error_;
     MainPageViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"ExamNew"];
     AppDelegate *tempAppDelegate= (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:NO];
+}
+
+-(void)setNotice{
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    NSArray *notice=[defaults objectForKey:@"Notice"];
+    _body.text=[notice[0] objectForKey:@"body"];
+    _noticetitle.text=[notice[0] objectForKey:@"title"];
+    _noticetime.text=[[notice[0] objectForKey:@"time"] substringWithRange:NSMakeRange(5,5)];
 }
 @end

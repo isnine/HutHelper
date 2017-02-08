@@ -33,6 +33,9 @@
 		3A4D04351E1963B900595183 /* interface.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3A4D04341E1963B900595183 /* interface.txt */; };
 		3A4D38B01E1FAF7C00639C18 /* UINavigationBar+Awesome.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A4D38AF1E1FAF7C00639C18 /* UINavigationBar+Awesome.m */; };
 		3A4D38DB1E20DBC300639C18 /* ExamNewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A4D38DA1E20DBC300639C18 /* ExamNewViewController.m */; };
+		3A519FB31E4B5514001A7E89 /* NoticeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A519FB11E4B5514001A7E89 /* NoticeTableViewCell.m */; };
+		3A519FB41E4B5514001A7E89 /* NoticeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A519FB21E4B5514001A7E89 /* NoticeTableViewCell.xib */; };
+		3A519FB71E4B5EB3001A7E89 /* NoticeShowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A519FB61E4B5EB3001A7E89 /* NoticeShowViewController.m */; };
 		3A540A4B1E48AAAE00C10871 /* ScoreShowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A540A4A1E48AAAE00C10871 /* ScoreShowViewController.m */; };
 		3A540A4E1E48AF4F00C10871 /* Score.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A540A4D1E48AF4F00C10871 /* Score.m */; };
 		3A540A571E499A3A00C10871 /* ScoreTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A540A551E499A3A00C10871 /* ScoreTableViewCell.m */; };
@@ -157,6 +160,11 @@
 		3A4D38AF1E1FAF7C00639C18 /* UINavigationBar+Awesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+Awesome.m"; sourceTree = "<group>"; };
 		3A4D38D91E20DBC300639C18 /* ExamNewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExamNewViewController.h; sourceTree = "<group>"; };
 		3A4D38DA1E20DBC300639C18 /* ExamNewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExamNewViewController.m; sourceTree = "<group>"; };
+		3A519FB01E4B5514001A7E89 /* NoticeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoticeTableViewCell.h; sourceTree = "<group>"; };
+		3A519FB11E4B5514001A7E89 /* NoticeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoticeTableViewCell.m; sourceTree = "<group>"; };
+		3A519FB21E4B5514001A7E89 /* NoticeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoticeTableViewCell.xib; sourceTree = "<group>"; };
+		3A519FB51E4B5EB3001A7E89 /* NoticeShowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoticeShowViewController.h; sourceTree = "<group>"; };
+		3A519FB61E4B5EB3001A7E89 /* NoticeShowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoticeShowViewController.m; sourceTree = "<group>"; };
 		3A540A491E48AAAE00C10871 /* ScoreShowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreShowViewController.h; sourceTree = "<group>"; };
 		3A540A4A1E48AAAE00C10871 /* ScoreShowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScoreShowViewController.m; sourceTree = "<group>"; };
 		3A540A4C1E48AF4F00C10871 /* Score.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Score.h; path = HutHelper/Score.h; sourceTree = "<group>"; };
@@ -528,6 +536,11 @@
 			children = (
 				3ABE7F251DAF7BBE003E4085 /* NoticeViewController.h */,
 				3ABE7F261DAF7BBE003E4085 /* NoticeViewController.m */,
+				3A519FB01E4B5514001A7E89 /* NoticeTableViewCell.h */,
+				3A519FB11E4B5514001A7E89 /* NoticeTableViewCell.m */,
+				3A519FB21E4B5514001A7E89 /* NoticeTableViewCell.xib */,
+				3A519FB51E4B5EB3001A7E89 /* NoticeShowViewController.h */,
+				3A519FB61E4B5EB3001A7E89 /* NoticeShowViewController.m */,
 			);
 			name = Notice;
 			sourceTree = "<group>";
@@ -898,6 +911,7 @@
 				3A776DFB1E2C96E800F600D6 /* HandTableViewController.xib in Resources */,
 				3A776DF31E2B725A00F600D6 /* CommitViewCell.xib in Resources */,
 				3ACE12421E2666D800F28314 /* ExamCell.xib in Resources */,
+				3A519FB41E4B5514001A7E89 /* NoticeTableViewCell.xib in Resources */,
 				3A4D04331E1963AC00595183 /* 工大助手API文档.docx in Resources */,
 				3AA1BC161E16179C00F75A7E /* MBProgressHUD.bundle in Resources */,
 			);
@@ -980,6 +994,7 @@
 				3A7DFCC11E29D82E0082F379 /* SayViewCell.m in Sources */,
 				3A33D7CB1DAE28380012EFDE /* PowerViewController.m in Sources */,
 				3A6D7EE41DABD9F50081B70D /* UIView_extra.m in Sources */,
+				3A519FB71E4B5EB3001A7E89 /* NoticeShowViewController.m in Sources */,
 				3A540A4B1E48AAAE00C10871 /* ScoreShowViewController.m in Sources */,
 				3A4D38B01E1FAF7C00639C18 /* UINavigationBar+Awesome.m in Sources */,
 				3A6D7EF41DABDB500081B70D /* MainViewController.m in Sources */,
@@ -1001,6 +1016,7 @@
 				3ACE12411E2666D800F28314 /* ExamCell.m in Sources */,
 				3A6D7EEF1DABDB500081B70D /* AppDelegate.m in Sources */,
 				3A776DF11E2B616500F600D6 /* UUInputAccessoryView.m in Sources */,
+				3A519FB31E4B5514001A7E89 /* NoticeTableViewCell.m in Sources */,
 				3AD87B101DACD02E00357212 /* GWPCourseListView.m in Sources */,
 				3A776DFF1E2C96FC00F600D6 /* HandTableViewCell.m in Sources */,
 				3A218F7D1E4AEC9900A27D48 /* LostShowTableViewCell.m in Sources */,
