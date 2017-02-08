@@ -14,7 +14,6 @@
 #import "UMessage.h"
 #import "MainPageViewController.h"
 #import "MBProgressHUD.h"
-#import "APIManager.h"
 #import "AFNetworking.h"
 #import "MBProgressHUD+MJ.h"
 #import "User.h"

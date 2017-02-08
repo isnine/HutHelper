@@ -14,7 +14,6 @@
 #import "UMMobClick/MobClick.h"
 #import "JSONKit.h"
 #import "MBProgressHUD.h"
-#import "APIManager.h"
 #import "YYModel.h"
 #import "User.h"
 #import "AFNetworking.h"

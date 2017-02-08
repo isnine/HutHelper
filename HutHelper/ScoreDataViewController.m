@@ -29,8 +29,8 @@
     [self addTitleMenu];
     [self getScoreData];
     [self setTitleButton];
-    self.tableView.dataSource = self;
-    self.tableView.delegate=self;
+    self.tableView.dataSource = (id)self;
+    self.tableView.delegate=(id)self;
 }
 
 - (void)didReceiveMemoryWarning {

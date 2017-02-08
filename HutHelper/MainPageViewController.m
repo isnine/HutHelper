@@ -21,7 +21,6 @@
 #import<CommonCrypto/CommonDigest.h>
 #import "MBProgressHUD.h"
 #import "UINavigationBar+Awesome.h"
-#import "APIManager.h"
 #import "YYModel.h"
 #import "User.h"
 #import "AFNetworking.h"
@@ -30,6 +29,7 @@
 #import "HandTableViewController.h"
 #import "ScoreShowViewController.h"
 #import "Math.h"
+#import "LeftSortsViewController.h"
 #define vBackBarButtonItemName  @"backArrow.png"    //导航条返回默认图片名
 @interface MainPageViewController ()
 
@@ -106,8 +106,6 @@
     int month                                 = [dateComponent month];//月
     int day                                   = [dateComponent day];//日
     [defaults setInteger:[Math CountWeeks:year m:month d:day] forKey:@"NowWeek"];
-    
-   
     NSArray *array                            = [defaults objectForKey:@"array_class"];
     NSString *autoclass=[defaults objectForKey:@"autoclass"];
     /**  是否自动打开课程表  */
@@ -572,10 +570,49 @@ int class_error_;
 }  //校历
 
 - (IBAction)Lost:(id)sender {
-    UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    MainPageViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Lost"];
-    AppDelegate *tempAppDelegate= (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:NO];
+    /**设置不缓存*/
+    NSURLCache *sharedCache = [[NSURLCache alloc] initWithMemoryCapacity:0
+                                                            diskCapacity:0
+                                                                diskPath:nil];
+    [NSURLCache setSharedURLCache:sharedCache];
+    [MBProgressHUD showMessage:@"加载中" toView:self.view];
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    /**拼接地址*/
+    NSString *Url_String=@"http://218.75.197.121:8888/api/v1/loses/posts/1";
+    /**设置9秒超时*/
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
+    manager.requestSerializer.timeoutInterval = 4.f;
+    [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
+    /**请求平时课表*/
+    [manager GET:Url_String parameters:nil progress:nil
+         success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+             NSDictionary *Say_All = [NSDictionary dictionaryWithDictionary:responseObject];
+             if ([[Say_All objectForKey:@"msg"]isEqualToString:@"ok"]) {
+                 NSDictionary *Say_Data=[Say_All objectForKey:@"data"];
+                 NSArray *Say_content=[Say_Data objectForKey:@"posts"];//加载该页数据
+                 if (Say_content!=NULL) {
+                     [defaults setObject:Say_content forKey:@"Lost"];
+                     [defaults synchronize];
+                     [MBProgressHUD hideHUDForView:self.view animated:YES];
+                     UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                     MainPageViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"LostShow"];
+                     AppDelegate *tempAppDelegate= (AppDelegate *)[[UIApplication sharedApplication] delegate];
+                     [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:NO];
+                 }
+                 else{
+                     [MBProgressHUD hideHUDForView:self.view animated:YES];
+                     [MBProgressHUD showError:@"网络错误"];
+                 }
+             }
+             else{
+                 [MBProgressHUD hideHUDForView:self.view animated:YES];
+                 [MBProgressHUD showError:[Say_All objectForKey:@"msg"]];
+             }             [MBProgressHUD hideHUDForView:self.view animated:YES];
+         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+             [MBProgressHUD showError:@"网络错误"];
+             [MBProgressHUD hideHUDForView:self.view animated:YES];
+         }];
 }  //失物招领
 
 - (void) isAppFirstRun{

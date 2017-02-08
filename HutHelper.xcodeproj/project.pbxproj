@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3A0898BB1DB5ED5800D2CCE6 /* SKSTableView-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3A0898B31DB5ED5800D2CCE6 /* SKSTableView-Info.plist */; };
-		3A0898BC1DB5ED5800D2CCE6 /* SKSTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A0898B61DB5ED5800D2CCE6 /* SKSTableView.m */; };
-		3A0898BD1DB5ED5800D2CCE6 /* SKSTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A0898B81DB5ED5800D2CCE6 /* SKSTableViewCell.m */; };
-		3A0898BE1DB5ED5800D2CCE6 /* SKSTableViewCellIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A0898BA1DB5ED5800D2CCE6 /* SKSTableViewCellIndicator.m */; };
-		3A0898C11DB5ED6000D2CCE6 /* expandableImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A0898BF1DB5ED6000D2CCE6 /* expandableImage.png */; };
-		3A0898C21DB5ED6000D2CCE6 /* expandableImage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A0898C01DB5ED6000D2CCE6 /* expandableImage@2x.png */; };
-		3A0898C61DB5EFD100D2CCE6 /* ScoreViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A0898C51DB5EFD100D2CCE6 /* ScoreViewController.xib */; };
+		3A218F791E4AE9D900A27D48 /* LostShowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A218F781E4AE9D900A27D48 /* LostShowViewController.m */; };
+		3A218F7D1E4AEC9900A27D48 /* LostShowTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A218F7B1E4AEC9900A27D48 /* LostShowTableViewCell.m */; };
+		3A218F7E1E4AEC9900A27D48 /* LostShowTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A218F7C1E4AEC9900A27D48 /* LostShowTableViewCell.xib */; };
+		3A218F851E4AFA1700A27D48 /* LostShowPhotoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A218F831E4AFA1700A27D48 /* LostShowPhotoTableViewCell.m */; };
+		3A218F861E4AFA1700A27D48 /* LostShowPhotoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A218F841E4AFA1700A27D48 /* LostShowPhotoTableViewCell.xib */; };
+		3A218F8A1E4B041B00A27D48 /* LostShowTimeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A218F881E4B041B00A27D48 /* LostShowTimeTableViewCell.m */; };
+		3A218F8B1E4B041B00A27D48 /* LostShowTimeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A218F891E4B041B00A27D48 /* LostShowTimeTableViewCell.xib */; };
 		3A2381BF1E372F4C007ED999 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A2381BE1E372F4C007ED999 /* Launch Screen.storyboard */; };
 		3A2381C21E376295007ED999 /* Math.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A2381C11E376295007ED999 /* Math.m */; };
 		3A2D10621DB66063009916D0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A2D105F1DB66063009916D0 /* Foundation.framework */; };
@@ -75,7 +75,6 @@
 		3A8BACF91DDDBD71001C78B8 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A8BACF81DDDBD71001C78B8 /* libsqlite3.tbd */; };
 		3A8BACFB1DDDBD81001C78B8 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A8BACFA1DDDBD81001C78B8 /* libc++.tbd */; };
 		3A8BACFD1DDDBDDB001C78B8 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A8BACFC1DDDBDDB001C78B8 /* ImageIO.framework */; };
-		3A8DE29C1E22800700E47945 /* APIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8DE29B1E22800700E47945 /* APIManager.m */; };
 		3A8E0E251DAB442E00F458DB /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A8E0E231DAB442E00F458DB /* MainViewController.xib */; };
 		3AA1BC161E16179C00F75A7E /* MBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3AA1BC111E16179C00F75A7E /* MBProgressHUD.bundle */; };
 		3AA1BC181E16179C00F75A7E /* MBProgressHUD+MJ.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA1BC151E16179C00F75A7E /* MBProgressHUD+MJ.m */; };
@@ -89,7 +88,6 @@
 		3ABE7F1E1DAF75FB003E4085 /* LibraryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ABE7F1C1DAF75FB003E4085 /* LibraryViewController.m */; };
 		3ABE7F231DAF78B9003E4085 /* DayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ABE7F211DAF78B9003E4085 /* DayViewController.m */; };
 		3ABE7F281DAF7BBE003E4085 /* NoticeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ABE7F261DAF7BBE003E4085 /* NoticeViewController.m */; };
-		3ABE7F291DAF7BBE003E4085 /* NoticeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3ABE7F271DAF7BBE003E4085 /* NoticeViewController.xib */; };
 		3ABF72801DDB32F60062E757 /* LostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ABF727E1DDB32F60062E757 /* LostViewController.m */; };
 		3ACE12411E2666D800F28314 /* ExamCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ACE123F1E2666D800F28314 /* ExamCell.m */; };
 		3ACE12421E2666D800F28314 /* ExamCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3ACE12401E2666D800F28314 /* ExamCell.xib */; };
@@ -117,17 +115,17 @@
 
 /* Begin PBXFileReference section */
 		0BEA75F30B57DEF614969189 /* Pods-HutHelper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HutHelper.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HutHelper/Pods-HutHelper.debug.xcconfig"; sourceTree = "<group>"; };
-		3A0898B31DB5ED5800D2CCE6 /* SKSTableView-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "SKSTableView-Info.plist"; path = "HutHelper/Lib/SKTTable/SKSTableView-Info.plist"; sourceTree = "<group>"; };
-		3A0898B41DB5ED5800D2CCE6 /* SKSTableView-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SKSTableView-Prefix.pch"; path = "HutHelper/Lib/SKTTable/SKSTableView-Prefix.pch"; sourceTree = "<group>"; };
-		3A0898B51DB5ED5800D2CCE6 /* SKSTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SKSTableView.h; path = HutHelper/Lib/SKTTable/SKSTableView.h; sourceTree = "<group>"; };
-		3A0898B61DB5ED5800D2CCE6 /* SKSTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SKSTableView.m; path = HutHelper/Lib/SKTTable/SKSTableView.m; sourceTree = "<group>"; };
-		3A0898B71DB5ED5800D2CCE6 /* SKSTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SKSTableViewCell.h; path = HutHelper/Lib/SKTTable/SKSTableViewCell.h; sourceTree = "<group>"; };
-		3A0898B81DB5ED5800D2CCE6 /* SKSTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SKSTableViewCell.m; path = HutHelper/Lib/SKTTable/SKSTableViewCell.m; sourceTree = "<group>"; };
-		3A0898B91DB5ED5800D2CCE6 /* SKSTableViewCellIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SKSTableViewCellIndicator.h; path = HutHelper/Lib/SKTTable/SKSTableViewCellIndicator.h; sourceTree = "<group>"; };
-		3A0898BA1DB5ED5800D2CCE6 /* SKSTableViewCellIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SKSTableViewCellIndicator.m; path = HutHelper/Lib/SKTTable/SKSTableViewCellIndicator.m; sourceTree = "<group>"; };
-		3A0898BF1DB5ED6000D2CCE6 /* expandableImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = expandableImage.png; path = HutHelper/Lib/SKTTable/expandableImage.png; sourceTree = "<group>"; };
-		3A0898C01DB5ED6000D2CCE6 /* expandableImage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "expandableImage@2x.png"; path = "HutHelper/Lib/SKTTable/expandableImage@2x.png"; sourceTree = "<group>"; };
-		3A0898C51DB5EFD100D2CCE6 /* ScoreViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ScoreViewController.xib; path = HutHelper/ScoreViewController.xib; sourceTree = "<group>"; };
+		3A218F771E4AE9D900A27D48 /* LostShowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LostShowViewController.h; sourceTree = "<group>"; };
+		3A218F781E4AE9D900A27D48 /* LostShowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LostShowViewController.m; sourceTree = "<group>"; };
+		3A218F7A1E4AEC9900A27D48 /* LostShowTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LostShowTableViewCell.h; sourceTree = "<group>"; };
+		3A218F7B1E4AEC9900A27D48 /* LostShowTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LostShowTableViewCell.m; sourceTree = "<group>"; };
+		3A218F7C1E4AEC9900A27D48 /* LostShowTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LostShowTableViewCell.xib; sourceTree = "<group>"; };
+		3A218F821E4AFA1700A27D48 /* LostShowPhotoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LostShowPhotoTableViewCell.h; sourceTree = "<group>"; };
+		3A218F831E4AFA1700A27D48 /* LostShowPhotoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LostShowPhotoTableViewCell.m; sourceTree = "<group>"; };
+		3A218F841E4AFA1700A27D48 /* LostShowPhotoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LostShowPhotoTableViewCell.xib; sourceTree = "<group>"; };
+		3A218F871E4B041B00A27D48 /* LostShowTimeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LostShowTimeTableViewCell.h; sourceTree = "<group>"; };
+		3A218F881E4B041B00A27D48 /* LostShowTimeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LostShowTimeTableViewCell.m; sourceTree = "<group>"; };
+		3A218F891E4B041B00A27D48 /* LostShowTimeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LostShowTimeTableViewCell.xib; sourceTree = "<group>"; };
 		3A2381BE1E372F4C007ED999 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = "Launch Screen.storyboard"; path = "HutHelper/Launch Screen.storyboard"; sourceTree = "<group>"; };
 		3A2381C01E376295007ED999 /* Math.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Math.h; path = HutHelper/Math.h; sourceTree = "<group>"; };
 		3A2381C11E376295007ED999 /* Math.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Math.m; path = HutHelper/Math.m; sourceTree = "<group>"; };
@@ -171,8 +169,8 @@
 		3A63DF6D1E499C6500AAAAAA /* ScoreDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreDataViewController.h; sourceTree = "<group>"; };
 		3A63DF6E1E499C6500AAAAAA /* ScoreDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScoreDataViewController.m; sourceTree = "<group>"; };
 		3A63DF711E49F11600AAAAAA /* NullSafe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NullSafe.m; path = Lib/NullSafe/NullSafe.m; sourceTree = "<group>"; };
-		3A6D7EDC1DABD9DA0081B70D /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSONKit.h; path = HutHelper/Lib/JSONKit.h; sourceTree = "<group>"; };
-		3A6D7EDD1DABD9DA0081B70D /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JSONKit.m; path = HutHelper/Lib/JSONKit.m; sourceTree = "<group>"; };
+		3A6D7EDC1DABD9DA0081B70D /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSONKit.h; path = Lib/JSONKit.h; sourceTree = "<group>"; };
+		3A6D7EDD1DABD9DA0081B70D /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JSONKit.m; path = Lib/JSONKit.m; sourceTree = "<group>"; };
 		3A6D7EDF1DABD9F50081B70D /* LeftSlideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LeftSlideViewController.h; path = Lib/LeftSlideViewController/LeftSlideViewController.h; sourceTree = "<group>"; };
 		3A6D7EE01DABD9F50081B70D /* UIView_extra.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIView_extra.h; path = Lib/LeftSlideViewController/UIView_extra.h; sourceTree = "<group>"; };
 		3A6D7EE11DABD9F50081B70D /* LeftSlideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LeftSlideViewController.m; path = Lib/LeftSlideViewController/LeftSlideViewController.m; sourceTree = "<group>"; };
@@ -228,8 +226,6 @@
 		3A8BACF81DDDBD71001C78B8 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		3A8BACFA1DDDBD81001C78B8 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		3A8BACFC1DDDBDDB001C78B8 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
-		3A8DE29A1E22800700E47945 /* APIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = APIManager.h; path = HutHelper/APIManager.h; sourceTree = "<group>"; };
-		3A8DE29B1E22800700E47945 /* APIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = APIManager.m; path = HutHelper/APIManager.m; sourceTree = "<group>"; };
 		3A8E0E231DAB442E00F458DB /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainViewController.xib; path = HutHelper/MainViewController.xib; sourceTree = "<group>"; };
 		3AA1BC111E16179C00F75A7E /* MBProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = MBProgressHUD.bundle; path = HutHelper/Lib/MBProgressHUD/MBProgressHUD.bundle; sourceTree = "<group>"; };
 		3AA1BC141E16179C00F75A7E /* MBProgressHUD+MJ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MBProgressHUD+MJ.h"; path = "HutHelper/Lib/MBProgressHUD/MBProgressHUD+MJ.h"; sourceTree = "<group>"; };
@@ -253,7 +249,6 @@
 		3ABE7F211DAF78B9003E4085 /* DayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DayViewController.m; sourceTree = "<group>"; };
 		3ABE7F251DAF7BBE003E4085 /* NoticeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoticeViewController.h; sourceTree = "<group>"; };
 		3ABE7F261DAF7BBE003E4085 /* NoticeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoticeViewController.m; sourceTree = "<group>"; };
-		3ABE7F271DAF7BBE003E4085 /* NoticeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NoticeViewController.xib; path = HutHelper/NoticeViewController.xib; sourceTree = "<group>"; };
 		3ABF727D1DDB32F60062E757 /* LostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LostViewController.h; sourceTree = "<group>"; };
 		3ABF727E1DDB32F60062E757 /* LostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LostViewController.m; sourceTree = "<group>"; };
 		3ACE123E1E2666D800F28314 /* ExamCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExamCell.h; sourceTree = "<group>"; };
@@ -307,23 +302,6 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		3A0898B21DB5ED4300D2CCE6 /* SKTTable */ = {
-			isa = PBXGroup;
-			children = (
-				3A0898B31DB5ED5800D2CCE6 /* SKSTableView-Info.plist */,
-				3A0898B41DB5ED5800D2CCE6 /* SKSTableView-Prefix.pch */,
-				3A0898B51DB5ED5800D2CCE6 /* SKSTableView.h */,
-				3A0898B61DB5ED5800D2CCE6 /* SKSTableView.m */,
-				3A0898B71DB5ED5800D2CCE6 /* SKSTableViewCell.h */,
-				3A0898B81DB5ED5800D2CCE6 /* SKSTableViewCell.m */,
-				3A0898B91DB5ED5800D2CCE6 /* SKSTableViewCellIndicator.h */,
-				3A0898BA1DB5ED5800D2CCE6 /* SKSTableViewCellIndicator.m */,
-				3A0898BF1DB5ED6000D2CCE6 /* expandableImage.png */,
-				3A0898C01DB5ED6000D2CCE6 /* expandableImage@2x.png */,
-			);
-			name = SKTTable;
-			sourceTree = "<group>";
-		};
 		3A33D7D81DAE50EF0012EFDE /* UMessage_Sdk_1.4.0 */ = {
 			isa = PBXGroup;
 			children = (
@@ -339,7 +317,6 @@
 			children = (
 				3A63DF701E49F10B00AAAAAA /* NullSafe */,
 				3A4D38AD1E1FAF6900639C18 /* LTNavigationBar */,
-				3A33D7D81DAE50EF0012EFDE /* UMessage_Sdk_1.4.0 */,
 				3AA1BC101E16178900F75A7E /* MBProgressHUD+MJ */,
 			);
 			name = Utils;
@@ -348,6 +325,12 @@
 		3A4D04191E19204300595183 /* 3rd */ = {
 			isa = PBXGroup;
 			children = (
+				3A2D105F1DB66063009916D0 /* Foundation.framework */,
+				3A2D10601DB66063009916D0 /* CoreGraphics.framework */,
+				3A2D10611DB66063009916D0 /* UIKit.framework */,
+				3A8567A11DA90D2D00EBD44A /* LeftSildeViewController */,
+				3A33D7D81DAE50EF0012EFDE /* UMessage_Sdk_1.4.0 */,
+				3A6F216F1E4A076B00CC0EEF /* JsonKit */,
 				3A776DE61E2B614200F600D6 /* Commit */,
 				3AD87B0D1DACD01C00357212 /* GWPCourseListView */,
 				3AAC24281DE1CB3C00546B11 /* JSHeaderView */,
@@ -493,6 +476,17 @@
 			children = (
 				3ABF727D1DDB32F60062E757 /* LostViewController.h */,
 				3ABF727E1DDB32F60062E757 /* LostViewController.m */,
+				3A218F771E4AE9D900A27D48 /* LostShowViewController.h */,
+				3A218F781E4AE9D900A27D48 /* LostShowViewController.m */,
+				3A218F7A1E4AEC9900A27D48 /* LostShowTableViewCell.h */,
+				3A218F7B1E4AEC9900A27D48 /* LostShowTableViewCell.m */,
+				3A218F7C1E4AEC9900A27D48 /* LostShowTableViewCell.xib */,
+				3A218F821E4AFA1700A27D48 /* LostShowPhotoTableViewCell.h */,
+				3A218F831E4AFA1700A27D48 /* LostShowPhotoTableViewCell.m */,
+				3A218F841E4AFA1700A27D48 /* LostShowPhotoTableViewCell.xib */,
+				3A218F871E4B041B00A27D48 /* LostShowTimeTableViewCell.h */,
+				3A218F881E4B041B00A27D48 /* LostShowTimeTableViewCell.m */,
+				3A218F891E4B041B00A27D48 /* LostShowTimeTableViewCell.xib */,
 			);
 			name = Lost;
 			sourceTree = "<group>";
@@ -613,6 +607,51 @@
 			name = NullSafe;
 			sourceTree = "<group>";
 		};
+		3A6F216F1E4A076B00CC0EEF /* JsonKit */ = {
+			isa = PBXGroup;
+			children = (
+				3A6D7EDC1DABD9DA0081B70D /* JSONKit.h */,
+				3A6D7EDD1DABD9DA0081B70D /* JSONKit.m */,
+			);
+			name = JsonKit;
+			sourceTree = "<group>";
+		};
+		3A6F21701E4A081200CC0EEF /* User */ = {
+			isa = PBXGroup;
+			children = (
+				3ACE12431E275D8300F28314 /* User.h */,
+				3ACE12441E275D8300F28314 /* User.m */,
+			);
+			name = User;
+			sourceTree = "<group>";
+		};
+		3A6F21711E4A081A00CC0EEF /* Math */ = {
+			isa = PBXGroup;
+			children = (
+				3A2381C01E376295007ED999 /* Math.h */,
+				3A2381C11E376295007ED999 /* Math.m */,
+			);
+			name = Math;
+			sourceTree = "<group>";
+		};
+		3A6F21721E4A082200CC0EEF /* Score */ = {
+			isa = PBXGroup;
+			children = (
+				3A540A4C1E48AF4F00C10871 /* Score.h */,
+				3A540A4D1E48AF4F00C10871 /* Score.m */,
+			);
+			name = Score;
+			sourceTree = "<group>";
+		};
+		3A6F21731E4A083C00CC0EEF /* Class */ = {
+			isa = PBXGroup;
+			children = (
+				3AD87B111DACD05B00357212 /* CourseModel.h */,
+				3AD87B121DACD05B00357212 /* CourseModel.m */,
+			);
+			name = Class;
+			sourceTree = "<group>";
+		};
 		3A776DE61E2B614200F600D6 /* Commit */ = {
 			isa = PBXGroup;
 			children = (
@@ -711,17 +750,14 @@
 				3A6D7EE21DABD9F50081B70D /* UIView_extra.m */,
 			);
 			name = LeftSildeViewController;
-			path = HutHelper;
 			sourceTree = "<group>";
 		};
 		3A8567D91DAA3D8F00EBD44A /* View */ = {
 			isa = PBXGroup;
 			children = (
-				3A8E0E231DAB442E00F458DB /* MainViewController.xib */,
 				3AD87B171DACD08E00357212 /* Main.storyboard */,
-				3ABE7F271DAF7BBE003E4085 /* NoticeViewController.xib */,
+				3A8E0E231DAB442E00F458DB /* MainViewController.xib */,
 				3A45626B1DB4980800E5591A /* FirstLoginViewController.xib */,
-				3A0898C51DB5EFD100D2CCE6 /* ScoreViewController.xib */,
 				3A2381BE1E372F4C007ED999 /* Launch Screen.storyboard */,
 			);
 			name = View;
@@ -731,23 +767,10 @@
 		3A8567DB1DAA3DF800EBD44A /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				3A8567A11DA90D2D00EBD44A /* LeftSildeViewController */,
-				3A0898B21DB5ED4300D2CCE6 /* SKTTable */,
-				3A6D7EDC1DABD9DA0081B70D /* JSONKit.h */,
-				3A6D7EDD1DABD9DA0081B70D /* JSONKit.m */,
-				3AD87B111DACD05B00357212 /* CourseModel.h */,
-				3AD87B121DACD05B00357212 /* CourseModel.m */,
-				3A2D105F1DB66063009916D0 /* Foundation.framework */,
-				3A2D10601DB66063009916D0 /* CoreGraphics.framework */,
-				3A2D10611DB66063009916D0 /* UIKit.framework */,
-				3A8DE29A1E22800700E47945 /* APIManager.h */,
-				3A8DE29B1E22800700E47945 /* APIManager.m */,
-				3ACE12431E275D8300F28314 /* User.h */,
-				3ACE12441E275D8300F28314 /* User.m */,
-				3A2381C01E376295007ED999 /* Math.h */,
-				3A2381C11E376295007ED999 /* Math.m */,
-				3A540A4C1E48AF4F00C10871 /* Score.h */,
-				3A540A4D1E48AF4F00C10871 /* Score.m */,
+				3A6F21731E4A083C00CC0EEF /* Class */,
+				3A6F21721E4A082200CC0EEF /* Score */,
+				3A6F21711E4A081A00CC0EEF /* Math */,
+				3A6F21701E4A081200CC0EEF /* User */,
 			);
 			name = Model;
 			path = ..;
@@ -857,20 +880,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A7DFCC21E29D82E0082F379 /* SayViewCell.xib in Resources */,
-				3A0898C21DB5ED6000D2CCE6 /* expandableImage@2x.png in Resources */,
+				3A218F7E1E4AEC9900A27D48 /* LostShowTableViewCell.xib in Resources */,
 				3A45626D1DB4980800E5591A /* FirstLoginViewController.xib in Resources */,
 				3A4D04351E1963B900595183 /* interface.txt in Resources */,
 				3A776E001E2C96FC00F600D6 /* HandTableViewCell.xib in Resources */,
+				3A218F8B1E4B041B00A27D48 /* LostShowTimeTableViewCell.xib in Resources */,
 				3A540A581E499A3A00C10871 /* ScoreTableViewCell.xib in Resources */,
-				3A0898C61DB5EFD100D2CCE6 /* ScoreViewController.xib in Resources */,
-				3A0898C11DB5ED6000D2CCE6 /* expandableImage.png in Resources */,
 				3A7DFCCC1E29E7150082F379 /* SayCommitViewCell.xib in Resources */,
-				3ABE7F291DAF7BBE003E4085 /* NoticeViewController.xib in Resources */,
 				3AA8814C1E2A4644004F75B1 /* PhotoViewCell.xib in Resources */,
-				3A0898BB1DB5ED5800D2CCE6 /* SKSTableView-Info.plist in Resources */,
 				3A2381BF1E372F4C007ED999 /* Launch Screen.storyboard in Resources */,
 				3A8E0E251DAB442E00F458DB /* MainViewController.xib in Resources */,
 				3A7DFCC71E29D94A0082F379 /* SayViewController.xib in Resources */,
+				3A218F861E4AFA1700A27D48 /* LostShowPhotoTableViewCell.xib in Resources */,
 				3AD87B181DACD08E00357212 /* Main.storyboard in Resources */,
 				3A85678B1DA908AA00EBD44A /* Assets.xcassets in Resources */,
 				3A449C711E16C2E500D89CEA /* header@2x.jpg in Resources */,
@@ -943,10 +964,10 @@
 				3AAC242B1DE1CB3C00546B11 /* JSHeaderView.m in Sources */,
 				3A45626C1DB4980800E5591A /* FirstLoginViewController.m in Sources */,
 				3AD87B131DACD05B00357212 /* CourseModel.m in Sources */,
-				3A0898BE1DB5ED5800D2CCE6 /* SKSTableViewCellIndicator.m in Sources */,
 				3A61F2691E30A033000E9A38 /* AddhandViewController.m in Sources */,
 				3A63DF721E49F11600AAAAAA /* NullSafe.m in Sources */,
 				3A33D7C61DAE00300012EFDE /* Feedback2ViewController.m in Sources */,
+				3A218F851E4AFA1700A27D48 /* LostShowPhotoTableViewCell.m in Sources */,
 				3A7DFCC61E29D94A0082F379 /* SayViewController.m in Sources */,
 				3A59A50F1E2F6FE200D65F7E /* HandShowViewController.m in Sources */,
 				3A776DFA1E2C96E800F600D6 /* HandTableViewController.m in Sources */,
@@ -955,13 +976,12 @@
 				3A4D38DB1E20DBC300639C18 /* ExamNewViewController.m in Sources */,
 				3A776DEC1E2B615100F600D6 /* FORGesture.m in Sources */,
 				3ACE12451E275D8300F28314 /* User.m in Sources */,
+				3A218F8A1E4B041B00A27D48 /* LostShowTimeTableViewCell.m in Sources */,
 				3ABE7F1E1DAF75FB003E4085 /* LibraryViewController.m in Sources */,
 				3A7DFCC11E29D82E0082F379 /* SayViewCell.m in Sources */,
 				3A33D7CB1DAE28380012EFDE /* PowerViewController.m in Sources */,
 				3A6D7EE41DABD9F50081B70D /* UIView_extra.m in Sources */,
 				3A540A4B1E48AAAE00C10871 /* ScoreShowViewController.m in Sources */,
-				3A0898BC1DB5ED5800D2CCE6 /* SKSTableView.m in Sources */,
-				3A8DE29C1E22800700E47945 /* APIManager.m in Sources */,
 				3A4D38B01E1FAF7C00639C18 /* UINavigationBar+Awesome.m in Sources */,
 				3A6D7EF41DABDB500081B70D /* MainViewController.m in Sources */,
 				3A6D7EE31DABD9F50081B70D /* LeftSlideViewController.m in Sources */,
@@ -978,12 +998,12 @@
 				3AAC24331DE1F17400546B11 /* UsernameViewController.m in Sources */,
 				3A6D7EF01DABDB500081B70D /* HomeWorkViewController.m in Sources */,
 				3ABE7F281DAF7BBE003E4085 /* NoticeViewController.m in Sources */,
-				3A0898BD1DB5ED5800D2CCE6 /* SKSTableViewCell.m in Sources */,
 				3ACE12411E2666D800F28314 /* ExamCell.m in Sources */,
 				3A6D7EEF1DABDB500081B70D /* AppDelegate.m in Sources */,
 				3A776DF11E2B616500F600D6 /* UUInputAccessoryView.m in Sources */,
 				3AD87B101DACD02E00357212 /* GWPCourseListView.m in Sources */,
 				3A776DFF1E2C96FC00F600D6 /* HandTableViewCell.m in Sources */,
+				3A218F7D1E4AEC9900A27D48 /* LostShowTableViewCell.m in Sources */,
 				3A7DFCCB1E29E7150082F379 /* SayCommitViewCell.m in Sources */,
 				3A6D7EF11DABDB500081B70D /* LeftSortsViewController.m in Sources */,
 				3A776DF61E2B83EB00F600D6 /* AddSayViewController.m in Sources */,
@@ -992,6 +1012,7 @@
 				3AA1BC181E16179C00F75A7E /* MBProgressHUD+MJ.m in Sources */,
 				3A776DED1E2B615100F600D6 /* FORGestureTrack.m in Sources */,
 				3A63DF6F1E499C6500AAAAAA /* ScoreDataViewController.m in Sources */,
+				3A218F791E4AE9D900A27D48 /* LostShowViewController.m in Sources */,
 				3AB6BF9B1DDFF74300127C96 /* UserViewController.m in Sources */,
 				3ABE7F231DAF78B9003E4085 /* DayViewController.m in Sources */,
 			);
