@@ -61,6 +61,8 @@ int class_error_;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    /** 预留方法 */
+    [self jspath];
     /**设置标题*/
     [self setTitle];
     /**友盟统计*/
@@ -73,12 +75,8 @@ int class_error_;
     [self loadSet];
     /**设置友盟标签&别名*/
     [self setAlias];
-    /** 预留方法 */
-    [self jspath];
     /**时间Label*/
     [self SetTimeLabel];
-    /**设置通知*/
-    [self setNotice];
 }
 
 #pragma mark - 各按钮事件
@@ -616,6 +614,8 @@ int class_error_;
     [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:0];
     /**让黑线消失的方法*/
     self.navigationController.navigationBar.shadowImage=[UIImage new];
+    /**设置通知*/
+    [self setNotice];
 }
 #pragma mark - 设置方法
 -(void)setNotice{
