@@ -8,6 +8,7 @@
 
 #import "ScoreShowViewController.h"
 #import "UINavigationBar+Awesome.h"
+#import "UMMobClick/MobClick.h"
 #import "AppDelegate.h"
 #import "Score.h"
 @interface ScoreShowViewController ()
@@ -32,6 +33,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    [MobClick beginLogPageView:@"成绩查询"];
     //标题栏透明
     [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:0];
     self.navigationController.navigationBar.shadowImage=[UIImage new];
@@ -42,6 +44,7 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
+    [MobClick endLogPageView:@"成绩查询"];
     //标题栏透明取消
     self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:0/255.0 green:224/255.0 blue:208/255.0 alpha:1];
     [self.navigationController.navigationBar lt_reset];

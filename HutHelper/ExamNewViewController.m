@@ -7,17 +7,38 @@
 //
 
 #import "ExamNewViewController.h"
+#import "UMMobClick/MobClick.h"
+#import "YYModel.h"
+#import "User.h"
+#import "AFNetworking.h"
+#import "MBProgressHUD+MJ.h"
 #import "ExamCell.h"
 #import "JSONKit.h"
 #include <stdio.h>
 #include <time.h>
+#import<CommonCrypto/CommonDigest.h>
 @interface ExamNewViewController ()<UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) UITableView *tableView;
 @property (nonatomic, retain) NSMutableArray *array;
 @property (nonatomic, retain) NSMutableArray *arraycx;
 @end
-
+@implementation NSString (MMD5)
+- (id)MMD5
+{
+    const char *cStr           = [self UTF8String];
+    unsigned char digest[16];
+    unsigned int x=(int)strlen(cStr) ;
+    CC_MD5( cStr, x, digest );
+    // This is the md5 call
+    NSMutableString *output    = [NSMutableString stringWithCapacity:CC_MD5_DIGEST_LENGTH * 2];
+    
+    for(int i                  = 0; i < CC_MD5_DIGEST_LENGTH; i++)
+        [output appendFormat:@"%02x", digest[i]];
+    
+    return  output;
+}
+@end
 @implementation ExamNewViewController
 
 int datediff(int y1,int m1,int d1,int y2,int m2,int d2)
@@ -189,18 +210,71 @@ int datediff(int y1,int m1,int d1,int y2,int m2,int d2)
     _arraycx = [Class_Data objectForKey:@"cxexam"];
 }
 -(void)reloadexam{
- NSIndexPath *index = [NSIndexPath indexPathForRow:1 inSection:0];
-    
+    [MBProgressHUD showMessage:@"查询中" toView:self.view];
+    /**拼接地址*/
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    NSDictionary *User_Data=[defaults objectForKey:@"User"];
+    User *user=[User yy_modelWithJSON:User_Data];
+    NSString *ss=[user.studentKH stringByAppendingString:@"apiforapp!"];
+    ss=[ss MMD5];
+    NSString *Url_String=[NSString stringWithFormat:@"http://218.75.197.124:84/api/exam/%@/key/%@",user.studentKH,ss];
+    NSLog(@"考试地址:%@",Url_String);
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    /**设置4秒超时*/
+    [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
+    manager.requestSerializer.timeoutInterval = 3.f;
+    [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
+    /**请求*/
+    [manager GET:Url_String parameters:nil progress:nil
+         success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+             NSDictionary *Exam_All = [NSDictionary dictionaryWithDictionary:responseObject];
+             NSDictionary *Exam_Data=[Exam_All objectForKey:@"data"];//All字典 -> Data字典
+             NSData *Exam_data =    [NSJSONSerialization dataWithJSONObject:Exam_All options:NSJSONWritingPrettyPrinted error:nil];
+             NSString *message=[Exam_All objectForKey:@"message"];
+             NSString *status=[Exam_All objectForKey:@"status"];
+             if([status isEqualToString:@"success"]){
+                 NSDictionary *Class_Data=[Exam_All objectForKey:@"res"];
+                 NSMutableArray *array             = [Class_Data objectForKey:@"exam"];
+                 NSMutableArray *arraycx             = [Class_Data objectForKey:@"cxexam"];
+                 [defaults setObject:Exam_data forKey:@"Exam"];
+                 [defaults synchronize];
+                 NSInteger *exam_on                        = [defaults integerForKey:@"exam_on"];
+                 if(array.count!=0){
+                     [self.tableView reloadData];
+                     [MBProgressHUD showSuccess:@"刷新成功"];
+                     [MBProgressHUD hideHUDForView:self.view animated:YES];
+                 }
+                 else{
+                     [MBProgressHUD hideHUDForView:self.view animated:YES];
+                     [MBProgressHUD showError:@"计划表上暂无考试"];
+                 }
+             }
+             else{
+                
+                 [MBProgressHUD showError:@"超时,显示本地数据"];
+             }
+         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+             if ([defaults objectForKey:@"Exam"]!=NULL) {
+                 
+                 [MBProgressHUD hideHUDForView:self.view animated:YES];
+                 [MBProgressHUD showError:@"超时,显示本地数据"];
+             }
+             else{
+                 [MBProgressHUD hideHUDForView:self.view animated:YES];
+                 [MBProgressHUD showError:@"网络错误"];
+             }
+         }];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [MobClick beginLogPageView:@"考试计划"];//("PageOne"为页面名称，可自定义)
 }
-*/
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [MobClick endLogPageView:@"考试计划"];
+}
 
 @end

@@ -12,6 +12,7 @@
 #import "AppDelegate.h"
 #import "ASIHTTPRequest.h"
 #import "ASIFormDataRequest.h"
+#import "UMMobClick/MobClick.h"
 #import "JSONKit.h"
 #import "MBProgressHUD+MJ.h"
 #import "YYModel.h"
@@ -64,7 +65,7 @@ UIImage* img ;
         [self getImageFromIpc];
         
     }];
-
+    
     /** 标题栏样式 */
     UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     self.navigationItem.backBarButtonItem = item;
@@ -123,14 +124,14 @@ NSData* data;
 - (void)postimage:(UIImage *)img
 {
     
-
+    
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     NSDictionary *User_Data=[defaults objectForKey:@"User"];
     User *user=[User yy_modelWithJSON:User_Data];
-
+    
     
     NSString *url_String=[NSString stringWithFormat:@"http://218.75.197.121:8888/api/v1/set/avatar/%@/%@",user.studentKH,[defaults objectForKey:@"remember_code_app"]];
-
+    
     NSURL* url = [NSURL URLWithString:url_String];//请求url
     // UIImage* img = [UIImage imageNamed:@"header.jpg"];
     data = UIImagePNGRepresentation(img);
@@ -145,7 +146,7 @@ NSData* data;
     
     
     [request startAsynchronous];
-
+    
     [request setDidFinishSelector:@selector(postsucces)];//当成功后会自动触发 headPortraitSuccess 方法
     [request setDidFailSelector:@selector(postfailure)];//如果失败会 自动触发 headPortraitFail 方法
     [MBProgressHUD showMessage:@"上传中" toView:self.view];
@@ -183,7 +184,7 @@ NSData* data;
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     NSDictionary *User_Data=[defaults objectForKey:@"User"];
     User *user=[User yy_modelWithJSON:User_Data];
-
+    
     NSString *TrueName=user.TrueName; //真实姓名
     NSString *studentKH=user.studentKH; //学号
     NSString *dep_name=user.dep_name; //学院
@@ -241,13 +242,13 @@ NSData* data;
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-
+    [MobClick beginLogPageView:@"个人中心"];
     self.navigationController.interactivePopGestureRecognizer.enabled = NO;
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    
+    [MobClick endLogPageView:@"个人中心"];
     self.navigationController.interactivePopGestureRecognizer.enabled = YES;
 }
 @end

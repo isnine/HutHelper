@@ -23,16 +23,9 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    
-    //------------推送--------------------//
-    //初始化方法,也可以使用(void)startWithAppkey:(NSString *)appKey launchOptions:(NSDictionary * )launchOptions httpsenable:(BOOL)value;这个方法，方便设置https请求。
+    /**友盟推送*/
     [UMessage startWithAppkey:@"57fe13d867e58e0e59000ca1" launchOptions:launchOptions];
-    
-    
-    //注册通知，如果要使用category的自定义策略，可以参考demo中的代码。
     [UMessage registerForRemoteNotifications];
-    
-    //iOS10必须加下面这段代码。
     UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
     center.delegate                  = self;
     UNAuthorizationOptions types10   = UNAuthorizationOptionBadge|UNAuthorizationOptionAlert|UNAuthorizationOptionSound;
@@ -45,54 +38,30 @@
             //这里可以添加一些自己的逻辑
         }
     }];
-    //打开日志，方便调试
-    [UMessage setLogEnabled:YES];
-    //统计------//
+    [UMessage setLogEnabled:YES];//打开日志，方便调试
+    /**友盟统计*/
     UMConfigInstance.appKey          = @"57fe13d867e58e0e59000ca1";
     UMConfigInstance.ChannelId       = @"App Store";
     UMConfigInstance.eSType          = E_UM_GAME;//仅适用于游戏场景，应用统计不用设置
-    
+    NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+    [MobClick setAppVersion:version];
     [MobClick startWithConfigure:UMConfigInstance];//配置以上参数后调用此方法初始化SDK！
-    ///
-    
+    /**设置初始界面*/
     self.window                      = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor      = [UIColor whiteColor];//设置通用背景颜色
     [self.window makeKeyAndVisible];
-    
-    //    MainPageViewController *mainVC = [[MainPageViewController alloc] init]; //代码界面
     MainPageViewController *mainVC   = [[MainPageViewController alloc] initWithNibName:@"MainViewController" bundle:nil];
-    //    MainPageViewController *nav = [[UINavigationController alloc]initWithRootViewController:[[NSClassFromString(@"MainViewController") alloc]init]];
     self.mainNavigationController    = [[UINavigationController alloc] initWithRootViewController:mainVC];
     LeftSortsViewController *leftVC  = [[LeftSortsViewController alloc] init];
     self.LeftSlideVC                 = [[LeftSlideViewController alloc] initWithLeftView:leftVC andMainView:self.mainNavigationController];
     self.window.rootViewController   = self.LeftSlideVC;
-    
-    
-    
     UIColor *ownColor                = [UIColor colorWithRed:255/255.0 green:255/255.0 blue:255/255.0 alpha:1];
     [[UINavigationBar appearance] setBarTintColor: ownColor];  //颜色
-    
-    [UMessage removeAllTags:^(id responseObject, NSInteger remain, NSError *error) {
-    }];
-    
-    /**分享*/
-    //打开调试日志
-    [[UMSocialManager defaultManager] openLog:NO];
-    
-    //设置友盟appkey
-    [[UMSocialManager defaultManager] setUmSocialAppkey:@"57fe13d867e58e0e59000ca1"];
-    
-    // 获取友盟social版本号
-    //NSLog(@"UMeng social version: %@", [UMSocialGlobal umSocialSDKVersion]);
-    
-    //设置微信的appKey和appSecret
-    //    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_WechatSession appKey:@"wxdc1e388c3822c80b" appSecret:@"3baf1193c85774b3fd9d18447d76cab0" redirectURL:@"http://mobile.umeng.com/social"];
-    
-    //设置分享到QQ互联的appKey和appSecret
+    /**友盟分享*/
+    [[UMSocialManager defaultManager] openLog:NO]; //打开调试日志
+    [[UMSocialManager defaultManager] setUmSocialAppkey:@"57fe13d867e58e0e59000ca1"];//设置友盟appkey
     [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_QQ appKey:@"1105703863"  appSecret:@"y7n6BRLtnH9mrFT3" redirectURL:@"http://mobile.umeng.com/social"];
-    
-    //设置新浪的appKey和appSecret
-    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_Sina appKey:@"1046968355"  appSecret:@"ba2997aaab6a1602406fc94247dc072d" redirectURL:@"http://sns.whalecloud.com/sina2/callback"];
+//    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_Sina appKey:@"1046968355"  appSecret:@"ba2997aaab6a1602406fc94247dc072d" redirectURL:@"http://sns.whalecloud.com/sina2/callback"];
     return YES;
 }
 
@@ -162,8 +131,6 @@
         NoticeViewController *View      = [main instantiateViewControllerWithIdentifier:@"NoticeShow"];//跳转通知详情界面
         AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         [tempAppDelegate.mainNavigationController pushViewController:View animated:YES];
-        
-        NSLog(@"前台介绍通知");
         [UMessage setAutoAlert:NO];
         //必须加这句代码
         [UMessage didReceiveRemoteNotification:userInfo];

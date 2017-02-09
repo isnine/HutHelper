@@ -13,6 +13,7 @@
 #import "AppDelegate.h"
 #import "AddLostViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "UMMobClick/MobClick.h"
 #import "MBProgressHUD+MJ.h"
 #import "AFNetworking.h"
 #import "MJRefresh.h"
@@ -292,5 +293,16 @@
     NSString *Url=[NSString stringWithFormat:@"http://218.75.197.121:8888/%@",photo[j]];
     NSLog(@"请求地址%@",Url);
     return Url;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [MobClick beginLogPageView:@"失物招领"];//("PageOne"为页面名称，可自定义)
+}
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [MobClick endLogPageView:@"失物招领"];
 }
 @end

@@ -9,6 +9,7 @@
 #import "NoticeViewController.h"
 #import "NoticeTableViewCell.h"
 #import "NoticeShowViewController.h"
+#import "UMMobClick/MobClick.h"
 #import "AppDelegate.h"
 @interface NoticeViewController ()
 @property (nonatomic,copy) NSArray      *noticeData;
@@ -72,6 +73,7 @@
     NoticeTableViewCell *cell=[NoticeTableViewCell tableViewCell];
     cell.Title.text=[self getTitle:(short)indexPath.section];
     cell.Time.text=[self getTime:(short)indexPath.section];
+    cell.Body.text=[self getBody:(short)indexPath.section];
     return cell;
 }
 #pragma mark - 数据源
@@ -85,5 +87,18 @@
 -(NSString*)getTime:(int)i{
     return [_noticeData[i] objectForKey:@"time"];
 }
+-(NSString*)getBody:(int)i{
+    return [_noticeData[i] objectForKey:@"body"];
+}
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [MobClick beginLogPageView:@"通知"];//("PageOne"为页面名称，可自定义)
+}
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [MobClick endLogPageView:@"通知"];
+}
 @end

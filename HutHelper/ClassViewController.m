@@ -91,7 +91,7 @@ NSString *show_xp;
     //主页搜索按钮
     UIButton *mainAndSearchBtn = [[UIButton alloc] initWithFrame:CGRectMake(70, 0, 50, 50)];
     [rightButtonView addSubview:mainAndSearchBtn];
-    [mainAndSearchBtn setImage:[UIImage imageNamed:@"reload"] forState:UIControlStateNormal];
+    [mainAndSearchBtn setImage:[UIImage imageNamed:@"refresh"] forState:UIControlStateNormal];
     [mainAndSearchBtn addTarget:self action:@selector(reloadcourse) forControlEvents:UIControlEventTouchUpInside];
     //把右侧的两个按钮添加到rightBarButtonItem
     UIBarButtonItem *rightCunstomButtonView = [[UIBarButtonItem alloc] initWithCustomView:rightButtonView];
@@ -824,7 +824,7 @@ titleBackgroundColorInTopbarAtIndex:(NSInteger)index{
 {
     [super viewWillAppear:animated];
     
-    [MobClick beginLogPageView:@"课表查询"];//("PageOne"为页面名称，可自定义)
+    [MobClick beginLogPageView:@"课表查询"];
     _plusButtonsViewMain                         = [LGPlusButtonsView plusButtonsViewWithNumberOfButtons:4
                                                                                  firstButtonIsPlusButton:YES
                                                                                            showAfterInit:YES

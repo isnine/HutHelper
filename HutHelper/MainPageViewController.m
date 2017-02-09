@@ -57,83 +57,22 @@
 @end
 
 @implementation MainPageViewController
-
+int class_error_;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    /**标题文字*/
-    //  self.navigationItem.title                 = @"主界面";
-    UIColor *greyColor                        = [UIColor colorWithRed:239/255.0 green:239/255.0 blue:239/255.0 alpha:1];
-    self.view.backgroundColor                 = greyColor;
-    [self.navigationController.navigationBar setTitleTextAttributes:
-     @{NSFontAttributeName:[UIFont systemFontOfSize:19],
-       NSForegroundColorAttributeName:[UIColor whiteColor]}];   //标题字体颜色
-    
+    /**设置标题*/
+    [self setTitle];
     /**友盟统计*/
-    Class cls                                 = NSClassFromString(@"UMANUtil");
-    SEL deviceIDSelector                      = @selector(openUDIDString);
-    NSString *deviceID                        = nil;
-    if(cls && [cls respondsToSelector:deviceIDSelector]){
-        deviceID                                  = [cls performSelector:deviceIDSelector];
-    }
-    NSData* jsonData                          = [NSJSONSerialization dataWithJSONObject:@{@"oid" : deviceID}
-                                                                                options:NSJSONWritingPrettyPrinted
-                                                                                  error:nil];
-    
+    [self setUMeng];
     /**主界面*/
-    UIButton *menuBtn                         = [UIButton buttonWithType:UIButtonTypeCustom];
-    menuBtn.frame                             = CGRectMake(0, 0, 20, 18);
-    [menuBtn setBackgroundImage:[UIImage imageNamed:@"menu"] forState:UIControlStateNormal];
-    [menuBtn addTarget:self action:@selector(openOrCloseLeftList) forControlEvents:UIControlEventTouchUpInside];
-    self.navigationItem.leftBarButtonItem     = [[UIBarButtonItem alloc] initWithCustomView:menuBtn];
-    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    
     [self isAppFirstRun];
-    /**  首次登陆 */
-    NSDictionary *User_All=[defaults objectForKey:@"User"];
-    if(User_All==NULL){
-        AppDelegate *tempAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-        FirstLoginViewController *firstlogin                = [[FirstLoginViewController alloc] init];
-        [tempAppDelegate.mainNavigationController pushViewController:firstlogin animated:YES];
-    }
-    
-    /**   判断第几周 */
-    NSDate *now                               = [NSDate date];
-    NSCalendar *calendar                      = [NSCalendar currentCalendar];
-    NSUInteger unitFlags                      = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit |NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
-    NSDateComponents *dateComponent           = [calendar components:unitFlags fromDate:now];
-    int year                                  = (short)[dateComponent year];//年
-    int month                                 =(short) [dateComponent month];//月
-    int day                                   = (short)[dateComponent day];//日
-    [defaults setInteger:[Math CountWeeks:year m:month d:day] forKey:@"NowWeek"];
-    NSArray *array                            = [defaults objectForKey:@"array_class"];
-    NSString *autoclass=[defaults objectForKey:@"autoclass"];
-    /**  是否自动打开课程表  */
-    if(array!=NULL&&[autoclass isEqualToString:@"打开"]){
-        UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        ClassViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Class"];
-        AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-        [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:NO];
-    }
-    /** 添加标签 */
-    NSString *class_name                      = [defaults objectForKey:@"class_name"];
-    NSString *dep_name                        = [defaults objectForKey:@"dep_name"];
-    [UMessage addTag:class_name
-            response:^(id responseObject, NSInteger remain, NSError *error) {
-                
-            }];//班级
-    [UMessage addTag:dep_name
-            response:^(id responseObject, NSInteger remain, NSError *error) {
-                //add your codes
-            }];  //学院
-    /** 添加别名*/
-    User *user = [User yy_modelWithJSON:User_All];
-    [UMessage addAlias:user.studentKH type:kUMessageAliasTypeSina response:^(id responseObject, NSError *error) {
-    }];
-    /** 标题栏样式 */
-    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
-    self.navigationItem.backBarButtonItem = item;
-    [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:0/255.0 green:224/255.0 blue:208/255.0 alpha:1]];
+    /**设置第几周*/
+    [self setTime];
+    /**  首次登陆以及判断是否打开课程表 */
+    [self loadSet];
+    /**设置友盟标签&别名*/
+    [self setAlias];
     /** 预留方法 */
     [self jspath];
     /**时间Label*/
@@ -142,53 +81,7 @@
     [self setNotice];
 }
 
-- (void) openOrCloseLeftList  //侧栏滑动
-{
-    AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    if (tempAppDelegate.LeftSlideVC.closed)
-    {
-        [tempAppDelegate.LeftSlideVC openLeftView];
-        
-    }
-    else
-    {
-        [tempAppDelegate.LeftSlideVC closeLeftView];
-    }
-}
-
-- (void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-    AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    [tempAppDelegate.LeftSlideVC setPanEnabled:NO];
-    UIColor *ownColor                = [UIColor colorWithRed:255/255.0 green:255/255.0 blue:255/255.0 alpha:1];
-    [[UINavigationBar appearance] setBarTintColor: ownColor];  //颜色
-    [self.navigationController.navigationBar lt_reset];
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    
-    [super viewWillAppear:animated];
-    AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    [tempAppDelegate.LeftSlideVC setPanEnabled:YES];
-    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    NSDate *now                               = [NSDate date];
-    NSCalendar *calendar                      = [NSCalendar currentCalendar];
-    NSUInteger unitFlags                      = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit |NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
-    NSDateComponents *dateComponent           = [calendar components:unitFlags fromDate:now];
-    int year                                  = (short)[dateComponent year];//年
-    int month                                 = (short)[dateComponent month];//月
-    int day                                   = (short)[dateComponent day];//日
-    [defaults setInteger:[Math CountWeeks:year m:month d:day] forKey:@"NowWeek"];
-    [defaults setInteger:[Math CountWeeks:year m:month d:day] forKey:@"TrueWeek"];
-    //判断完毕//
-    /**导航栏变为透明*/
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:0];
-    /**让黑线消失的方法*/
-    self.navigationController.navigationBar.shadowImage=[UIImage new];
-}
-int class_error_;
+#pragma mark - 各按钮事件
 - (IBAction)ClassFind:(id)sender {  //课表界面
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     NSArray *array_class                            = [defaults objectForKey:@"array_class"];
@@ -468,7 +361,7 @@ int class_error_;
                  if([Msg isEqualToString:@"ok"]){
                      [defaults setObject:Score_Data forKey:@"Score"];
                      [defaults synchronize];
-//                     RootViewController *Score      = [[RootViewController alloc] init];
+                     //                     RootViewController *Score      = [[RootViewController alloc] init];
                      UIStoryboard *main=[UIStoryboard storyboardWithName:@"Main" bundle:nil];
                      ScoreShowViewController *Score      = [main instantiateViewControllerWithIdentifier:@"ScoreShow"];
                      AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -488,10 +381,10 @@ int class_error_;
                  [MBProgressHUD showError:@"请检查网络或者重新登录"];
              }];
     }else{
-       UIStoryboard *main=[UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        UIStoryboard *main=[UIStoryboard storyboardWithName:@"Main" bundle:nil];
         ScoreShowViewController *Score      = [main instantiateViewControllerWithIdentifier:@"ScoreShow"];
-     //   RootViewController *Score      = [[RootViewController alloc] init];
-
+        //   RootViewController *Score      = [[RootViewController alloc] init];
+        
         AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         [tempAppDelegate.mainNavigationController pushViewController:Score animated:YES];
     }
@@ -517,7 +410,6 @@ int class_error_;
     ss=[ss MD5];
     NSString *Url_String=[NSString stringWithFormat:@"http://218.75.197.124:84/api/exam/%@/key/%@",user.studentKH,ss];
     NSLog(@"考试地址:%@",Url_String);
-    
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     /**设置4秒超时*/
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
@@ -616,6 +508,7 @@ int class_error_;
              [MBProgressHUD hideHUDForView:self.view animated:YES];
          }];
 }  //失物招领
+
 - (IBAction)Notice:(id)sender {
     UIStoryboard *main=[UIStoryboard storyboardWithName:@"Main" bundle:nil];
     NoticeViewController *View      = [main instantiateViewControllerWithIdentifier:@"Notice"];
@@ -623,30 +516,7 @@ int class_error_;
     [tempAppDelegate.mainNavigationController pushViewController:View animated:YES];
 } //通知界面
 
-- (void) isAppFirstRun{
-    NSString *currentVersion = [[[NSBundle mainBundle] infoDictionary]
-                                objectForKey:@"CFBundleShortVersionString"];
-    
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *lastRunKey = [defaults objectForKey:@"last_run_version_key"];
-    NSLog(@"当前版本%@",currentVersion);
-    NSLog(@"上个版本%@",lastRunKey);
-        if (lastRunKey==NULL) {
-            NSString *appDomain       = [[NSBundle mainBundle] bundleIdentifier];
-            [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:appDomain];
-            [defaults setObject:currentVersion forKey:@"last_run_version_key"];
-            NSLog(@"没有记录");
-    
-        }
-        else if (![lastRunKey isEqualToString:currentVersion]) {
-            NSString *appDomain       = [[NSBundle mainBundle] bundleIdentifier];
-            [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:appDomain];
-            [defaults setObject:currentVersion forKey:@"last_run_version_key"];
-            NSLog(@"记录不匹配");
-        }
-    
-}
-#pragma mark -"其他方法"
+#pragma mark - 其他方法
 -(void)jspath{
     
 }
@@ -655,18 +525,18 @@ int class_error_;
     NSCalendar *calendar                      = [NSCalendar currentCalendar];
     NSUInteger unitFlags                      = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit |NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
     NSDateComponents *dateComponent           = [calendar components:unitFlags fromDate:now];
-
-        int y                                     = (short)[dateComponent year];//年
-        int m                                    =(short) [dateComponent month];//月
-       int mou                                    = (short)[dateComponent month];//月
+    
+    int y                                     = (short)[dateComponent year];//年
+    int m                                    =(short) [dateComponent month];//月
+    int mou                                    = (short)[dateComponent month];//月
     NSLog(@"%d月",m);
-        int d                                      = (short)[dateComponent day];//日
-       int day                                      = (short)[dateComponent day];//日
-        if(m==1||m==2) {
-            m+=12;
-            y--;
-        }
-        int iWeek=(d+2*m+3*(m+1)/5+y+y/4-y/100+y/400)%7+1;
+    int d                                      = (short)[dateComponent day];//日
+    int day                                      = (short)[dateComponent day];//日
+    if(m==1||m==2) {
+        m+=12;
+        y--;
+    }
+    int iWeek=(d+2*m+3*(m+1)/5+y+y/4-y/100+y/400)%7+1;
     NSString *Week;
     switch (iWeek) {
         case 1:
@@ -696,19 +566,164 @@ int class_error_;
     }
     _Time.text=[NSString stringWithFormat:@"%d月%d日 星期%@",mou,day,Week];
 }
-
 -(void)EnterExam{
     UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     MainPageViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"ExamNew"];
     AppDelegate *tempAppDelegate= (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:NO];
 }
+- (void) openOrCloseLeftList  //侧栏滑动
+{
+    AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    if (tempAppDelegate.LeftSlideVC.closed)
+    {
+        [tempAppDelegate.LeftSlideVC openLeftView];
+        
+    }
+    else
+    {
+        [tempAppDelegate.LeftSlideVC closeLeftView];
+    }
+}
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [tempAppDelegate.LeftSlideVC setPanEnabled:NO];
+    UIColor *ownColor                = [UIColor colorWithRed:255/255.0 green:255/255.0 blue:255/255.0 alpha:1];
+    [[UINavigationBar appearance] setBarTintColor: ownColor];  //颜色
+    [self.navigationController.navigationBar lt_reset];
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    
+    [super viewWillAppear:animated];
+    AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [tempAppDelegate.LeftSlideVC setPanEnabled:YES];
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    NSDate *now                               = [NSDate date];
+    NSCalendar *calendar                      = [NSCalendar currentCalendar];
+    NSUInteger unitFlags                      = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit |NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
+    NSDateComponents *dateComponent           = [calendar components:unitFlags fromDate:now];
+    int year                                  = (short)[dateComponent year];//年
+    int month                                 = (short)[dateComponent month];//月
+    int day                                   = (short)[dateComponent day];//日
+    [defaults setInteger:[Math CountWeeks:year m:month d:day] forKey:@"NowWeek"];
+    [defaults setInteger:[Math CountWeeks:year m:month d:day] forKey:@"TrueWeek"];
+    //判断完毕//
+    /**导航栏变为透明*/
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:0];
+    /**让黑线消失的方法*/
+    self.navigationController.navigationBar.shadowImage=[UIImage new];
+}
+#pragma mark - 设置方法
 -(void)setNotice{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     NSArray *notice=[defaults objectForKey:@"Notice"];
     _body.text=[notice[0] objectForKey:@"body"];
     _noticetitle.text=[notice[0] objectForKey:@"title"];
     _noticetime.text=[[notice[0] objectForKey:@"time"] substringWithRange:NSMakeRange(5,5)];
+}
+-(void)loadSet{
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    NSDictionary *User_All=[defaults objectForKey:@"User"];
+    if(User_All==NULL){
+        AppDelegate *tempAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        FirstLoginViewController *firstlogin                = [[FirstLoginViewController alloc] init];
+        [tempAppDelegate.mainNavigationController pushViewController:firstlogin animated:YES];
+    }
+    
+    NSArray *array                            = [defaults objectForKey:@"array_class"];
+    NSString *autoclass=[defaults objectForKey:@"autoclass"];
+    /**  是否自动打开课程表  */
+    if(array!=NULL&&[autoclass isEqualToString:@"打开"]){
+        UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        ClassViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Class"];
+        AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:NO];
+    }
+}
+-(void)setTime{
+    /**   判断第几周 */
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    NSDate *now                               = [NSDate date];
+    NSCalendar *calendar                      = [NSCalendar currentCalendar];
+    NSUInteger unitFlags                      = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit |NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
+    NSDateComponents *dateComponent           = [calendar components:unitFlags fromDate:now];
+    int year                                  = (short)[dateComponent year];//年
+    int month                                 =(short) [dateComponent month];//月
+    int day                                   = (short)[dateComponent day];//日
+    [defaults setInteger:[Math CountWeeks:year m:month d:day] forKey:@"NowWeek"];
+}
+-(void)setUMeng{
+    /**友盟统计*/
+    Class cls                                 = NSClassFromString(@"UMANUtil");
+    SEL deviceIDSelector                      = @selector(openUDIDString);
+    NSString *deviceID                        = nil;
+    if(cls && [cls respondsToSelector:deviceIDSelector]){
+        deviceID                                  = [cls performSelector:deviceIDSelector];
+    }
+    NSData* jsonData                          = [NSJSONSerialization dataWithJSONObject:@{@"oid" : deviceID}
+                                                                                options:NSJSONWritingPrettyPrinted
+                                                                                  error:nil];
+}
+-(void)setTitle{
+    /**标题文字*/
+    //  self.navigationItem.title                 = @"主界面";
+    UIColor *greyColor                        = [UIColor colorWithRed:239/255.0 green:239/255.0 blue:239/255.0 alpha:1];
+    self.view.backgroundColor                 = greyColor;
+    [self.navigationController.navigationBar setTitleTextAttributes:
+     @{NSFontAttributeName:[UIFont systemFontOfSize:19],
+       NSForegroundColorAttributeName:[UIColor whiteColor]}];   //标题字体颜色
+    /** 标题栏样式 */
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+    self.navigationItem.backBarButtonItem = item;
+    /**按钮*/
+    [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:0/255.0 green:224/255.0 blue:208/255.0 alpha:1]];
+    UIButton *menuBtn                         = [UIButton buttonWithType:UIButtonTypeCustom];
+    menuBtn.frame                             = CGRectMake(0, 0, 20, 18);
+    [menuBtn setBackgroundImage:[UIImage imageNamed:@"menu"] forState:UIControlStateNormal];
+    [menuBtn addTarget:self action:@selector(openOrCloseLeftList) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.leftBarButtonItem     = [[UIBarButtonItem alloc] initWithCustomView:menuBtn];
+}
+-(void)setAlias{
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    NSDictionary *User_Data=[defaults objectForKey:@"User"];
+    User *user=[User yy_modelWithJSON:User_Data];
+    /** 友盟统计账号 */
+    [MobClick profileSignInWithPUID:user.studentKH];
+    /** 添加标签 */
+    [UMessage addTag:user.class_name
+            response:^(id responseObject, NSInteger remain, NSError *error) {
+            }];//班级
+    [UMessage addTag:user.dep_name
+            response:^(id responseObject, NSInteger remain, NSError *error) {
+            }];  //学院
+    /** 添加别名*/
+    [UMessage addAlias:user.studentKH type:kUMessageAliasTypeSina response:^(id responseObject, NSError *error) {
+    }];
+}
+- (void) isAppFirstRun{
+    NSString *currentVersion = [[[NSBundle mainBundle] infoDictionary]
+                                objectForKey:@"CFBundleShortVersionString"];
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *lastRunKey = [defaults objectForKey:@"last_run_version_key"];
+    NSLog(@"当前版本%@",currentVersion);
+    NSLog(@"上个版本%@",lastRunKey);
+    if (lastRunKey==NULL) {
+        NSString *appDomain       = [[NSBundle mainBundle] bundleIdentifier];
+        [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:appDomain];
+        [defaults setObject:currentVersion forKey:@"last_run_version_key"];
+        NSLog(@"没有记录");
+        
+    }
+    else if (![lastRunKey isEqualToString:currentVersion]) {
+        NSString *appDomain       = [[NSBundle mainBundle] bundleIdentifier];
+        [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:appDomain];
+        [defaults setObject:currentVersion forKey:@"last_run_version_key"];
+        NSLog(@"记录不匹配");
+    }
 }
 @end

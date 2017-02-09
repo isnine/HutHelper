@@ -44,9 +44,7 @@
         [defaults setObject:@"关闭" forKey:@"examcet"];
         [defaults synchronize];
     }
-    
-    
-    
+ 
 }
 
 /*

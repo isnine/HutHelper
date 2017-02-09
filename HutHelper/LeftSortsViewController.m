@@ -17,7 +17,7 @@
 #import "AboutViewController.h"
 
 #import "FeedbackViewController.h"
-
+#import "UMessage.h"
 #import "UMSocialUIManager.h"
 #import <UMSocialCore/UMSocialCore.h>
 #import "FirstLoginViewController.h"
@@ -131,8 +131,6 @@
         ClassViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"User"];
         AppDelegate *tempAppDelegate     = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:NO];
-        
-        
     }
     
     if (indexPath.row == 2) {  //分享
@@ -141,10 +139,12 @@
     
     if (indexPath.row == 3) {  //切换用户
         NSString *appDomain       = [[NSBundle mainBundle] bundleIdentifier];
-        [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:appDomain];
+        [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:appDomain];  //删除本地数据缓存
         AppDelegate *tempAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         FirstLoginViewController *firstlogin                = [[FirstLoginViewController alloc] init];
         [tempAppDelegate.mainNavigationController pushViewController:firstlogin animated:YES];
+        [UMessage removeAllTags:^(id responseObject, NSInteger remain, NSError *error) {//删除友盟标签缓存
+        }];
     }
     if (indexPath.row == 4) {  //设置
         UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];

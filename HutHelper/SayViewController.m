@@ -16,6 +16,7 @@
 #import "PhotoViewCell.h"
 #import "AppDelegate.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "UMMobClick/MobClick.h"
 #import "UUInputAccessoryView.h"
 #import "YYModel.h"
 #import "User.h"
@@ -507,6 +508,15 @@ int num=1;
     
 }
 
-
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [MobClick beginLogPageView:@"校园说说"];//("PageOne"为页面名称，可自定义)
+}
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [MobClick endLogPageView:@"校园说说"];
+}
 
 @end

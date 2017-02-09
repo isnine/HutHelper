@@ -11,5 +11,6 @@
 @interface NoticeTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *Title;
 @property (weak, nonatomic) IBOutlet UILabel *Time;
+@property (weak, nonatomic) IBOutlet UILabel *Body;
 +(instancetype)tableViewCell;
 @end

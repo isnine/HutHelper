@@ -8,6 +8,7 @@
 
 #import "HandShowViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "UMMobClick/MobClick.h"
 @interface HandShowViewController ()
 @property (weak, nonatomic) IBOutlet UITextView *Content;
 @property (weak, nonatomic) IBOutlet UIImageView *Img1;
@@ -90,5 +91,15 @@
 -(NSString*)getcontact{
     NSString *Contact=[NSString stringWithFormat:@"手机:%@\nQQ:%@\n微信:%@\n",[_Hand_show objectForKey:@"phone"],[_Hand_show objectForKey:@"qq"],[_Hand_show objectForKey:@"wechat"]];
     return Contact;
+}
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [MobClick beginLogPageView:@"二手市场"];//("PageOne"为页面名称，可自定义)
+}
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [MobClick endLogPageView:@"二手市场"];
 }
 @end
