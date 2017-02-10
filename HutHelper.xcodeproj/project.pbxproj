@@ -44,6 +44,7 @@
 		3A61F2691E30A033000E9A38 /* AddhandViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A61F2681E30A033000E9A38 /* AddhandViewController.m */; };
 		3A63DF6F1E499C6500AAAAAA /* ScoreDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A63DF6E1E499C6500AAAAAA /* ScoreDataViewController.m */; };
 		3A63DF721E49F11600AAAAAA /* NullSafe.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A63DF711E49F11600AAAAAA /* NullSafe.m */; };
+		3A65C3201E4DBE5F00340888 /* Config.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A65C31F1E4DBE5F00340888 /* Config.m */; };
 		3A6D7EDE1DABD9DA0081B70D /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A6D7EDD1DABD9DA0081B70D /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		3A6D7EE31DABD9F50081B70D /* LeftSlideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A6D7EE11DABD9F50081B70D /* LeftSlideViewController.m */; };
 		3A6D7EE41DABD9F50081B70D /* UIView_extra.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A6D7EE21DABD9F50081B70D /* UIView_extra.m */; };
@@ -92,6 +93,7 @@
 		3ABE7F1E1DAF75FB003E4085 /* LibraryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ABE7F1C1DAF75FB003E4085 /* LibraryViewController.m */; };
 		3ABE7F231DAF78B9003E4085 /* DayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ABE7F211DAF78B9003E4085 /* DayViewController.m */; };
 		3ABE7F281DAF7BBE003E4085 /* NoticeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ABE7F261DAF7BBE003E4085 /* NoticeViewController.m */; };
+		3AC51D7F1E4C8B0000F8D525 /* language.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3AC51D811E4C8B0000F8D525 /* language.strings */; };
 		3ACE12411E2666D800F28314 /* ExamCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ACE123F1E2666D800F28314 /* ExamCell.m */; };
 		3ACE12421E2666D800F28314 /* ExamCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3ACE12401E2666D800F28314 /* ExamCell.xib */; };
 		3ACE12451E275D8300F28314 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ACE12441E275D8300F28314 /* User.m */; };
@@ -179,6 +181,9 @@
 		3A63DF6D1E499C6500AAAAAA /* ScoreDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreDataViewController.h; sourceTree = "<group>"; };
 		3A63DF6E1E499C6500AAAAAA /* ScoreDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScoreDataViewController.m; sourceTree = "<group>"; };
 		3A63DF711E49F11600AAAAAA /* NullSafe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NullSafe.m; path = Lib/NullSafe/NullSafe.m; sourceTree = "<group>"; };
+		3A65C31D1E4DBB9C00340888 /* HUTAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HUTAPI.h; path = HutHelper/HUTAPI.h; sourceTree = "<group>"; };
+		3A65C31E1E4DBE5F00340888 /* Config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
+		3A65C31F1E4DBE5F00340888 /* Config.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Config.m; sourceTree = "<group>"; };
 		3A6D7EDC1DABD9DA0081B70D /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSONKit.h; path = Lib/JSONKit.h; sourceTree = "<group>"; };
 		3A6D7EDD1DABD9DA0081B70D /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JSONKit.m; path = Lib/JSONKit.m; sourceTree = "<group>"; };
 		3A6D7EDF1DABD9F50081B70D /* LeftSlideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LeftSlideViewController.h; path = Lib/LeftSlideViewController/LeftSlideViewController.h; sourceTree = "<group>"; };
@@ -259,6 +264,8 @@
 		3ABE7F211DAF78B9003E4085 /* DayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DayViewController.m; sourceTree = "<group>"; };
 		3ABE7F251DAF7BBE003E4085 /* NoticeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoticeViewController.h; sourceTree = "<group>"; };
 		3ABE7F261DAF7BBE003E4085 /* NoticeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoticeViewController.m; sourceTree = "<group>"; };
+		3AC51D801E4C8B0000F8D525 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/language.strings; sourceTree = "<group>"; };
+		3AC51D821E4C8B0900F8D525 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/language.strings"; sourceTree = "<group>"; };
 		3ACE123E1E2666D800F28314 /* ExamCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExamCell.h; sourceTree = "<group>"; };
 		3ACE123F1E2666D800F28314 /* ExamCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExamCell.m; sourceTree = "<group>"; };
 		3ACE12401E2666D800F28314 /* ExamCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExamCell.xib; sourceTree = "<group>"; };
@@ -620,6 +627,16 @@
 			name = NullSafe;
 			sourceTree = "<group>";
 		};
+		3A65C31C1E4DBB5C00340888 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				3A65C31D1E4DBB9C00340888 /* HUTAPI.h */,
+				3A65C31E1E4DBE5F00340888 /* Config.h */,
+				3A65C31F1E4DBE5F00340888 /* Config.m */,
+			);
+			name = API;
+			sourceTree = "<group>";
+		};
 		3A6F216F1E4A076B00CC0EEF /* JsonKit */ = {
 			isa = PBXGroup;
 			children = (
@@ -750,6 +767,7 @@
 				3A33D7D71DAE4F8D0012EFDE /* HutHelper.entitlements */,
 				3A85678F1DA908AA00EBD44A /* Info.plist */,
 				3A85677F1DA908AA00EBD44A /* main.m */,
+				3AC51D811E4C8B0000F8D525 /* language.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -780,6 +798,7 @@
 		3A8567DB1DAA3DF800EBD44A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				3A65C31C1E4DBB5C00340888 /* API */,
 				3A6F21731E4A083C00CC0EEF /* Class */,
 				3A6F21721E4A082200CC0EEF /* Score */,
 				3A6F21711E4A081A00CC0EEF /* Math */,
@@ -876,6 +895,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = 3A8567721DA908AA00EBD44A;
 			productRefGroup = 3A85677C1DA908AA00EBD44A /* Products */;
@@ -902,6 +922,7 @@
 				3A7DFCCC1E29E7150082F379 /* SayCommitViewCell.xib in Resources */,
 				3AA8814C1E2A4644004F75B1 /* PhotoViewCell.xib in Resources */,
 				3A2381BF1E372F4C007ED999 /* Launch Screen.storyboard in Resources */,
+				3AC51D7F1E4C8B0000F8D525 /* language.strings in Resources */,
 				3A8E0E251DAB442E00F458DB /* MainViewController.xib in Resources */,
 				3A7DFCC71E29D94A0082F379 /* SayViewController.xib in Resources */,
 				3A218F861E4AFA1700A27D48 /* LostShowPhotoTableViewCell.xib in Resources */,
@@ -997,6 +1018,7 @@
 				3A519FB71E4B5EB3001A7E89 /* NoticeShowViewController.m in Sources */,
 				3A540A4B1E48AAAE00C10871 /* ScoreShowViewController.m in Sources */,
 				3A4D38B01E1FAF7C00639C18 /* UINavigationBar+Awesome.m in Sources */,
+				3A65C3201E4DBE5F00340888 /* Config.m in Sources */,
 				3A6D7EF41DABDB500081B70D /* MainViewController.m in Sources */,
 				3A6D7EE31DABD9F50081B70D /* LeftSlideViewController.m in Sources */,
 				3AAC242E1DE1CB8C00546B11 /* UserInfoCell.m in Sources */,
@@ -1035,6 +1057,18 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		3AC51D811E4C8B0000F8D525 /* language.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3AC51D801E4C8B0000F8D525 /* Base */,
+				3AC51D821E4C8B0900F8D525 /* zh-Hans */,
+			);
+			name = language.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		3A8567901DA908AA00EBD44A /* Debug */ = {

@@ -17,6 +17,7 @@
 #include <stdio.h>
 #include <time.h>
 #import<CommonCrypto/CommonDigest.h>
+#import "Config.h"
 @interface ExamNewViewController ()<UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) UITableView *tableView;
@@ -217,7 +218,7 @@ int datediff(int y1,int m1,int d1,int y2,int m2,int d2)
     User *user=[User yy_modelWithJSON:User_Data];
     NSString *ss=[user.studentKH stringByAppendingString:@"apiforapp!"];
     ss=[ss MMD5];
-    NSString *Url_String=[NSString stringWithFormat:@"http://218.75.197.124:84/api/exam/%@/key/%@",user.studentKH,ss];
+    NSString *Url_String=[NSString stringWithFormat:API_EXAM,user.studentKH,ss];
     NSLog(@"考试地址:%@",Url_String);
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     /**设置4秒超时*/
@@ -242,10 +243,10 @@ int datediff(int y1,int m1,int d1,int y2,int m2,int d2)
                  if(array.count!=0){
                      [self.tableView reloadData];
                      [MBProgressHUD showSuccess:@"刷新成功"];
-                     [MBProgressHUD hideHUDForView:self.view animated:YES];
+                     HideAllHUD
                  }
                  else{
-                     [MBProgressHUD hideHUDForView:self.view animated:YES];
+                     HideAllHUD
                      [MBProgressHUD showError:@"计划表上暂无考试"];
                  }
              }
@@ -256,11 +257,11 @@ int datediff(int y1,int m1,int d1,int y2,int m2,int d2)
          } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
              if ([defaults objectForKey:@"Exam"]!=NULL) {
                  
-                 [MBProgressHUD hideHUDForView:self.view animated:YES];
+                 HideAllHUD
                  [MBProgressHUD showError:@"超时,显示本地数据"];
              }
              else{
-                 [MBProgressHUD hideHUDForView:self.view animated:YES];
+                 HideAllHUD
                  [MBProgressHUD showError:@"网络错误"];
              }
          }];

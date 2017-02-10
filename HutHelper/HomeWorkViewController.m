@@ -11,6 +11,7 @@
 #import "MBProgressHUD+MJ.h"
 #import "YYModel.h"
 #import "User.h"
+#import "Config.h"
 @interface HomeWorkViewController ()
 @property (weak, nonatomic) IBOutlet UIWebView *views;
 
@@ -27,7 +28,7 @@
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     NSDictionary *User_Data=[defaults objectForKey:@"User"];
     User *user=[User yy_modelWithJSON:User_Data];
-    NSString *Url_String=[NSString stringWithFormat:@"http://218.75.197.121:8888/api/v1/get/myhomework/%@/%@",user.studentKH,[defaults objectForKey:@"remember_code_app"]];
+    NSString *Url_String=[NSString stringWithFormat:API_HOMEWORK,user.studentKH,[defaults objectForKey:@"remember_code_app"]];
     NSURL *url                = [[NSURL alloc]initWithString:Url_String];
     _views.delegate=self;
     [_views loadRequest:[NSURLRequest requestWithURL:url]];
@@ -54,13 +55,13 @@
 /** webView的代理方法*/
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
-    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    HideAllHUD
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
 {
     //隐藏显示
-    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    HideAllHUD
     [MBProgressHUD showError:@"网络错误"];
 }
 @end

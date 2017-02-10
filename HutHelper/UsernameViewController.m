@@ -11,6 +11,7 @@
 #import "YYModel.h"
 #import "User.h"
 #import "MBProgressHUD+MJ.h"
+#import "Config.h"
 @interface UsernameViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *Username;
 
@@ -30,7 +31,7 @@
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     NSDictionary *User_Data=[defaults objectForKey:@"User"];
     User *user=[User yy_modelWithJSON:User_Data];
-    NSString *Url_String=[NSString stringWithFormat:@"http://218.75.197.121:8888/api/v1/set/profile/%@/%@",user.studentKH,[defaults objectForKey:@"remember_code_app"]];
+    NSString *Url_String=[NSString stringWithFormat:API_PROFILE_USERNAME,user.studentKH,[defaults objectForKey:@"remember_code_app"]];
     NSURL * url  = [NSURL URLWithString:Url_String];
     NSString *str=@"username=";
     str=[str stringByAppendingString:_Username.text];
@@ -51,17 +52,17 @@
     
     if ([Msg isEqualToString:@"ok"]) {
         [defaults setObject:username_text forKey:@"username"];
-        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        HideAllHUD
         [MBProgressHUD showSuccess:@"修改成功"];
           [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:([self.navigationController.viewControllers count] -3)] animated:YES];  //返回用户
     }
     else if ([Msg isEqualToString:@"令牌错误"]){
-        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        HideAllHUD
         [MBProgressHUD showError:@"登录过期，请重新登录"];
         [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:([self.navigationController.viewControllers count] -3)] animated:YES];  //返回Home
     }
     else{
-        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        HideAllHUD
         [MBProgressHUD showError:@"网络错误"];
     }
 

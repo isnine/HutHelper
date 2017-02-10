@@ -10,6 +10,7 @@
 #import "JSONKit.h"
 #import "UMMobClick/MobClick.h"
 #import "UINavigationBar+Awesome.h"
+#import "Config.h"
 @interface PowerViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *Building;
 @property (weak, nonatomic) IBOutlet UITextField *Room;
@@ -36,13 +37,9 @@
 }
 
 - (IBAction)Mark:(id)sender {
-    NSString *Url_String_1=@"http://218.75.197.121:8888/api/v1/get/power/";
-    NSString *Url_String_2=@"/";
     NSString *Build_String    = _Building.text;
     NSString *Room_String     = _Room.text;
-    NSString *Url_String=[Url_String_1 stringByAppendingString:Build_String];
-    Url_String=[Url_String stringByAppendingString:Url_String_2];
-    Url_String=[Url_String stringByAppendingString:Room_String];
+    NSString *Url_String=[NSString stringWithFormat:API_POWER,Build_String,Room_String];
     
     NSURL *url                = [NSURL URLWithString: Url_String];//接口地址
     NSError *error            = nil;

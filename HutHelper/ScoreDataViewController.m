@@ -16,6 +16,7 @@
 #import "AFNetworking.h"
 #import "MBProgressHUD+MJ.h"
 #import "Math.h"
+#import "Config.h"
 #define ColorWithRGB(r,g,b) [UIColor colorWithRed:r/255. green:g/255. blue:b/255. alpha:1]
 @interface ScoreDataViewController ()
 @property (nonatomic,copy) NSArray      *scoreData;
@@ -272,7 +273,7 @@
     NSString *SHA_String=[user.studentKH stringByAppendingString:[defaults objectForKey:@"remember_code_app"]];
     SHA_String=[SHA_String stringByAppendingString:@"f$Z@%"];
     SHA_String=[Math sha1:SHA_String];
-    NSString *Url_String=[NSString stringWithFormat:@"http://218.75.197.121:8888/api/v1/get/scores/%@/%@/%@",user.studentKH,[defaults objectForKey:@"remember_code_app"],SHA_String];
+    NSString *Url_String=[NSString stringWithFormat:API_SCORES,user.studentKH,[defaults objectForKey:@"remember_code_app"],SHA_String];
     NSLog(@"成绩查询地址:%@",Url_String);
     /**设置5秒超时*/
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
@@ -294,20 +295,20 @@
                  else
                     [self getScoreData];
                  [self.tableView reloadData];
-                 [MBProgressHUD hideHUDForView:self.view animated:YES];
+                 HideAllHUD
                  [MBProgressHUD showSuccess:@"刷新成功"];
                  
              }
              else if([Msg isEqualToString:@"令牌错误"]){
-                 [MBProgressHUD hideHUDForView:self.view animated:YES];
+                 HideAllHUD
                  [MBProgressHUD showError:@"登录过期,请重新登录"];
              }
              else{
-                 [MBProgressHUD hideHUDForView:self.view animated:YES];
+                 HideAllHUD
                  [MBProgressHUD showError:@"请检查网络或者重新登录"];
              }
          } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-             [MBProgressHUD hideHUDForView:self.view animated:YES];
+             HideAllHUD
              [MBProgressHUD showError:@"网络错误"];
          }];
 }

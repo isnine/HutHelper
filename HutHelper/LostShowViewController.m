@@ -17,6 +17,7 @@
 #import "MBProgressHUD+MJ.h"
 #import "AFNetworking.h"
 #import "MJRefresh.h"
+#import "Config.h"
 @interface LostShowViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic,copy) NSArray      *lostData;
@@ -178,7 +179,7 @@
 -(void)reload{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     /**拼接地址*/
-    NSString *Url_String=[NSString stringWithFormat:@"http://218.75.197.121:8888/api/v1/loses/posts/%d",_num];
+    NSString *Url_String=[NSString stringWithFormat:API_LOST,_num];
     /**设置9秒超时*/
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
@@ -195,7 +196,7 @@
                      [defaults setObject:Say_content forKey:@"Lost"];
                      _lostData=[defaults objectForKey:@"Lost"];
                      [MBProgressHUD showSuccess:@"刷新成功"];
-                     [MBProgressHUD hideHUDForView:self.view animated:YES];
+                     HideAllHUD
                      [self.tableView.mj_header endRefreshing];
                      [self.tableView reloadData];
                  }
@@ -207,7 +208,7 @@
              else{
                  [self.tableView.mj_header endRefreshing];
                  [MBProgressHUD showError:[Say_All objectForKey:@"msg"]];
-             }             [MBProgressHUD hideHUDForView:self.view animated:YES];
+             }             HideAllHUD
          } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
              [self.tableView.mj_header endRefreshing];
              [MBProgressHUD showError:@"网络错误"];
@@ -217,7 +218,7 @@
     _num++;
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     /**拼接地址*/
-    NSString *Url_String=[NSString stringWithFormat:@"http://218.75.197.121:8888/api/v1/loses/posts/%d",_num];
+    NSString *Url_String=[NSString stringWithFormat:API_LOST,_num];
     /**设置9秒超时*/
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
@@ -239,7 +240,7 @@
                          [MBProgressHUD showSuccess:@"刷新成功"];
                          NSString *num_string=[NSString stringWithFormat:@"第%d页",_num];
                          self.navigationItem.title = num_string;
-                         [MBProgressHUD hideHUDForView:self.view animated:YES];
+                         HideAllHUD
                          [self.tableView.mj_footer endRefreshing];
                          self.tableView.mj_header.hidden = YES;
                          [self.tableView reloadData];}
@@ -258,7 +259,7 @@
                  [self.tableView.mj_footer endRefreshing];
                  [MBProgressHUD showError:[Say_All objectForKey:@"msg"]];
              }
-             [MBProgressHUD hideHUDForView:self.view animated:YES];
+             HideAllHUD
          } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
              [self.tableView.mj_footer endRefreshing];
              [MBProgressHUD showError:@"网络错误"];
@@ -290,7 +291,7 @@
 }
 -(NSString*)getPhoto:(int)i with:(int)j{
     NSArray *photo=[_lostData[i] objectForKey:@"pics"];
-    NSString *Url=[NSString stringWithFormat:@"http://218.75.197.121:8888/%@",photo[j]];
+    NSString *Url=[NSString stringWithFormat:API_IMG,photo[j]];
     NSLog(@"请求地址%@",Url);
     return Url;
 }

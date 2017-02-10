@@ -13,6 +13,7 @@
 #import "User.h"
 #import "YYModel.h"
 #import "MBProgressHUD+MJ.h"
+#import "Config.h"
 @interface FeedbackViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *Mail;
 @property (weak, nonatomic) IBOutlet UITextView *Content;
@@ -53,7 +54,7 @@
         [MBProgressHUD showError:@"联系方式与反馈内容不能为空"];
     }
     else{
-    NSURL * url                        = [NSURL URLWithString:@"http://218.75.197.121:8888/home/msg/0"];
+    NSURL * url                        = [NSURL URLWithString:API_FEEDBACK];
     NSString *str1=@"email=";
     NSString *Mail_String              = _Mail.text;
     NSString *str2=@"&content=";

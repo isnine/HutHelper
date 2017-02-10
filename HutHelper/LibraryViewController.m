@@ -10,6 +10,7 @@
 #import "UMMobClick/MobClick.h"
 #import "MBProgressHUD.h"
 #import "MBProgressHUD+MJ.h"
+#import "Config.h"
 @interface LibraryViewController ()
 @property (weak, nonatomic) IBOutlet UIWebView *views;
 
@@ -64,14 +65,14 @@ NSString *Url_String;
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
     
-    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    HideAllHUD
     
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
 {
     //隐藏显示
-    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    HideAllHUD
     [MBProgressHUD showError:@"网络错误"];
 }
 

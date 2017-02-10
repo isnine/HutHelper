@@ -8,6 +8,7 @@
 
 #import "Login2ViewController.h"
 #import "MBProgressHUD+MJ.h"
+#import "Config.h"
 @interface Login2ViewController ()
 @property (weak, nonatomic) IBOutlet UIWebView *views;
 
@@ -18,7 +19,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"重置密码";
-    NSString *Url_String=@"http://218.75.197.121:8888/auth/resetPass";
+    NSString *Url_String=API_LOGIN_RESET;
     
     NSURL *url = [[NSURL alloc]initWithString:Url_String];
     [_views loadRequest:[NSURLRequest requestWithURL:url]];
@@ -40,14 +41,14 @@
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
     
-    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    HideAllHUD
     
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
 {
     //隐藏显示
-    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    HideAllHUD
     [MBProgressHUD showError:@"网络错误"];
 }
 

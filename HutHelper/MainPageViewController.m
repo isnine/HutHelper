@@ -30,6 +30,7 @@
 #import "ScoreShowViewController.h"
 #import "Math.h"
 #import "LeftSortsViewController.h"
+#import "Config.h"
 #define vBackBarButtonItemName  @"backArrow.png"    //导航条返回默认图片名
 @interface MainPageViewController ()
 
@@ -89,9 +90,9 @@ int class_error_;
     if(array_class==NULL&&array_xp==NULL){
         /**拼接地址*/
         [MBProgressHUD showMessage:@"查询中" toView:self.view];
-        NSString *Url_String=[NSString stringWithFormat:@"http://218.75.197.121:8888/api/v1/get/lessons/%@/%@",user.studentKH,[defaults objectForKey:@"remember_code_app"]];
+        NSString *Url_String=[NSString stringWithFormat:API_CLASS,user.studentKH,[defaults objectForKey:@"remember_code_app"]];
         NSLog(@"平时课表地址:%@",Url_String);
-        NSString *UrlXP_String=[NSString stringWithFormat:@"http://218.75.197.121:8888/api/v1/get/lessonsexp/%@/%@",user.studentKH,[defaults objectForKey:@"remember_code_app"]];
+        NSString *UrlXP_String=[NSString stringWithFormat:API_CLASSXP,user.studentKH,[defaults objectForKey:@"remember_code_app"]];
         NSLog(@"实验课表地址:%@",UrlXP_String);
         /**设置4秒超时*/
         AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
@@ -117,37 +118,37 @@ int class_error_;
                                   NSArray *array               = [ClassXP_All objectForKey:@"data"];
                                   [defaults setObject:array forKey:@"array_xp"];
                                   [defaults synchronize];
-                                  [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                  HideAllHUD
                                   UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
                                   ClassViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Class"];
                                   AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
                                   [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:NO];
                               }
                               else{
-                                  [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                  HideAllHUD
                                   UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
                                   ClassViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Class"];
                                   AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
                                   [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:NO];
-                                  [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                  HideAllHUD
                                   [MBProgressHUD showError:Msg];
                               }
                           } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                              [MBProgressHUD hideHUDForView:self.view animated:YES];
+                              HideAllHUD
                               [MBProgressHUD showError:@"网络错误，实验课表查询失败"];
                           }];
                      
                  }
                  else if([Msg isEqualToString:@"令牌错误"]){
-                     [MBProgressHUD hideHUDForView:self.view animated:YES];
+                     HideAllHUD
                      [MBProgressHUD showError:@"登录过期,请重新登录"];
                  }
                  else{
-                     [MBProgressHUD hideHUDForView:self.view animated:YES];
+                     HideAllHUD
                      [MBProgressHUD showError:@"查询失败"];
                  }
              } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                 [MBProgressHUD hideHUDForView:self.view animated:YES];
+                 HideAllHUD
                  [MBProgressHUD showError:@"网络错误，平时课表查询失败"];
              }];
     }
@@ -172,9 +173,9 @@ int class_error_;
     if(array_class==NULL&&array_xp==NULL){
         /**拼接地址*/
         [MBProgressHUD showMessage:@"查询中" toView:self.view];
-        NSString *Url_String=[NSString stringWithFormat:@"http://218.75.197.121:8888/api/v1/get/lessons/%@/%@",user.studentKH,[defaults objectForKey:@"remember_code_app"]];
+        NSString *Url_String=[NSString stringWithFormat:API_CLASS,user.studentKH,[defaults objectForKey:@"remember_code_app"]];
         NSLog(@"平时课表地址:%@",Url_String);
-        NSString *UrlXP_String=[NSString stringWithFormat:@"http://218.75.197.121:8888/api/v1/get/lessonsexp/%@/%@",user.studentKH,[defaults objectForKey:@"remember_code_app"]];
+        NSString *UrlXP_String=[NSString stringWithFormat:API_CLASSXP,user.studentKH,[defaults objectForKey:@"remember_code_app"]];
         NSLog(@"实验课表地址:%@",UrlXP_String);
         /**设置9秒超时*/
         AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
@@ -199,27 +200,27 @@ int class_error_;
                                   NSArray *array               = [ClassXP_All objectForKey:@"data"];
                                   [defaults setObject:array forKey:@"array_xp"];
                                   [defaults synchronize];
-                                  [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                  HideAllHUD
                                   UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
                                   ClassViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Class"];
                                   AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
                                   [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:NO];
                               }
                           } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                              [MBProgressHUD hideHUDForView:self.view animated:YES];
+                              HideAllHUD
                               [MBProgressHUD showError:@"网络错误，实验课表查询失败"];
                           }];
                  }
                  else if([Msg isEqualToString:@"令牌错误"]){
-                     [MBProgressHUD hideHUDForView:self.view animated:YES];
+                     HideAllHUD
                      [MBProgressHUD showError:@"登录过期,请重新登录"];
                  }
                  else{
-                     [MBProgressHUD hideHUDForView:self.view animated:YES];
+                     HideAllHUD
                      [MBProgressHUD showError:@"查询失败"];
                  }
              } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                 [MBProgressHUD hideHUDForView:self.view animated:YES];
+                 HideAllHUD
                  [MBProgressHUD showError:@"网络错误，平时课表查询失败"];
              }];
     }
@@ -257,7 +258,7 @@ int class_error_;
     [MBProgressHUD showMessage:@"加载中" toView:self.view];
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     /**拼接地址*/
-    NSString *Url_String=@"http://218.75.197.121:8888/api/v1/moments/posts/1";
+    NSString *Url_String=[NSString stringWithFormat:API_MOMENTS,1];
     /**设置9秒超时*/
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
@@ -273,24 +274,24 @@ int class_error_;
                  if (Say_content!=NULL) {
                      [defaults setObject:Say_content forKey:@"Say"];
                      [defaults synchronize];
-                     [MBProgressHUD hideHUDForView:self.view animated:YES];
+                     HideAllHUD
                      SayViewController *Say      = [[SayViewController alloc] init];
                      AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
                      [tempAppDelegate.mainNavigationController pushViewController:Say animated:YES];
                      
                  }
                  else{
-                     [MBProgressHUD hideHUDForView:self.view animated:YES];
+                     HideAllHUD
                      [MBProgressHUD showError:@"网络错误"];
                  }
              }
              else{
-                 [MBProgressHUD hideHUDForView:self.view animated:YES];
+                 HideAllHUD
                  [MBProgressHUD showError:[Say_All objectForKey:@"msg"]];
-             }             [MBProgressHUD hideHUDForView:self.view animated:YES];
+             }             HideAllHUD
          } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
              [MBProgressHUD showError:@"网络错误"];
-             [MBProgressHUD hideHUDForView:self.view animated:YES];
+             HideAllHUD
          }];
     
     
@@ -308,7 +309,7 @@ int class_error_;
     [MBProgressHUD showMessage:@"加载中" toView:self.view];
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     /**拼接地址*/
-    NSString *Url_String=@"http://218.75.197.121:8888/api/v1/stuff/goods/1";
+    NSString *Url_String=[NSString stringWithFormat:API_GOODS,1];
     /**设置9秒超时*/
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
@@ -321,13 +322,13 @@ int class_error_;
              NSArray *Hand           = [dic1 objectForKey:@""];
              [defaults setObject:Hand forKey:@"Hand"];
              [defaults synchronize];
-             [MBProgressHUD hideHUDForView:self.view animated:YES];
+             HideAllHUD
              HandTableViewController *hand=[[HandTableViewController alloc]init];
              AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
              [tempAppDelegate.mainNavigationController pushViewController:hand animated:YES];
          } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
              [MBProgressHUD showError:@"网络错误"];
-             [MBProgressHUD hideHUDForView:self.view animated:YES];
+             HideAllHUD
          }];
 } //二手市场
 
@@ -342,7 +343,7 @@ int class_error_;
         NSString *SHA_String=[user.studentKH stringByAppendingString:[defaults objectForKey:@"remember_code_app"]];
         SHA_String=[SHA_String stringByAppendingString:@"f$Z@%"];
         SHA_String=[Math sha1:SHA_String];
-        NSString *Url_String=[NSString stringWithFormat:@"http://218.75.197.121:8888/api/v1/get/scores/%@/%@/%@",user.studentKH,[defaults objectForKey:@"remember_code_app"],SHA_String];
+        NSString *Url_String=[NSString stringWithFormat:API_SCORES,user.studentKH,[defaults objectForKey:@"remember_code_app"],SHA_String];
         NSLog(@"成绩查询地址:%@",Url_String);
         /**设置9秒超时*/
         AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
@@ -364,18 +365,18 @@ int class_error_;
                      ScoreShowViewController *Score      = [main instantiateViewControllerWithIdentifier:@"ScoreShow"];
                      AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
                      [tempAppDelegate.mainNavigationController pushViewController:Score animated:YES];
-                     [MBProgressHUD hideHUDForView:self.view animated:YES];
+                     HideAllHUD
                  }
                  else if([Msg isEqualToString:@"令牌错误"]){
-                     [MBProgressHUD hideHUDForView:self.view animated:YES];
+                     HideAllHUD
                      [MBProgressHUD showError:@"登录过期,请重新登录"];
                  }
                  else{
-                     [MBProgressHUD hideHUDForView:self.view animated:YES];
+                     HideAllHUD
                      [MBProgressHUD showError:@"请检查网络或者重新登录"];
                  }
              } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                 [MBProgressHUD hideHUDForView:self.view animated:YES];
+                 HideAllHUD
                  [MBProgressHUD showError:@"请检查网络或者重新登录"];
              }];
     }else{
@@ -406,7 +407,7 @@ int class_error_;
     User *user=[User yy_modelWithJSON:User_Data];
     NSString *ss=[user.studentKH stringByAppendingString:@"apiforapp!"];
     ss=[ss MD5];
-    NSString *Url_String=[NSString stringWithFormat:@"http://218.75.197.124:84/api/exam/%@/key/%@",user.studentKH,ss];
+    NSString *Url_String=[NSString stringWithFormat:API_EXAM,user.studentKH,ss];
     NSLog(@"考试地址:%@",Url_String);
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     /**设置4秒超时*/
@@ -430,10 +431,10 @@ int class_error_;
                  NSInteger *exam_on                        = [defaults integerForKey:@"exam_on"];
                  if(array.count!=0){
                      [self EnterExam];
-                     [MBProgressHUD hideHUDForView:self.view animated:YES];
+                     HideAllHUD
                  }
                  else{
-                     [MBProgressHUD hideHUDForView:self.view animated:YES];
+                     HideAllHUD
                      [MBProgressHUD showError:@"计划表上暂无考试"];
                  }
              }
@@ -444,11 +445,11 @@ int class_error_;
          } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
              if ([defaults objectForKey:@"Exam"]!=NULL) {
                  [self EnterExam];
-                 [MBProgressHUD hideHUDForView:self.view animated:YES];
+                 HideAllHUD
                  [MBProgressHUD showError:@"超时,显示本地数据"];
              }
              else{
-                 [MBProgressHUD hideHUDForView:self.view animated:YES];
+                 HideAllHUD
                  [MBProgressHUD showError:@"网络错误"];
              }
          }];
@@ -470,7 +471,7 @@ int class_error_;
     [MBProgressHUD showMessage:@"加载中" toView:self.view];
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     /**拼接地址*/
-    NSString *Url_String=@"http://218.75.197.121:8888/api/v1/loses/posts/1";
+    NSString *Url_String=[NSString stringWithFormat:API_LOST,1];
     /**设置9秒超时*/
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
@@ -486,24 +487,24 @@ int class_error_;
                  if (Say_content!=NULL) {
                      [defaults setObject:Say_content forKey:@"Lost"];
                      [defaults synchronize];
-                     [MBProgressHUD hideHUDForView:self.view animated:YES];
+                     HideAllHUD
                      UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
                      MainPageViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"LostShow"];
                      AppDelegate *tempAppDelegate= (AppDelegate *)[[UIApplication sharedApplication] delegate];
                      [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:NO];
                  }
                  else{
-                     [MBProgressHUD hideHUDForView:self.view animated:YES];
+                     HideAllHUD
                      [MBProgressHUD showError:@"网络错误"];
                  }
              }
              else{
-                 [MBProgressHUD hideHUDForView:self.view animated:YES];
+                 HideAllHUD
                  [MBProgressHUD showError:[Say_All objectForKey:@"msg"]];
-             }             [MBProgressHUD hideHUDForView:self.view animated:YES];
+             }             HideAllHUD
          } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
              [MBProgressHUD showError:@"网络错误"];
-             [MBProgressHUD hideHUDForView:self.view animated:YES];
+             HideAllHUD
          }];
 }  //失物招领
 

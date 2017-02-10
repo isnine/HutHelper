@@ -17,6 +17,7 @@
 #import "MBProgressHUD+MJ.h"
 #import "YYModel.h"
 #import "User.h"
+#import "Config.h"
 static NSString *const kUserInfoCellId = @"kUserInfoCellId";
 
 @interface UserViewController () <UITableViewDelegate, UITableViewDataSource,UIImagePickerControllerDelegate, UINavigationControllerDelegate>
@@ -130,7 +131,7 @@ NSData* data;
     User *user=[User yy_modelWithJSON:User_Data];
     
     
-    NSString *url_String=[NSString stringWithFormat:@"http://218.75.197.121:8888/api/v1/set/avatar/%@/%@",user.studentKH,[defaults objectForKey:@"remember_code_app"]];
+    NSString *url_String=[NSString stringWithFormat:API_PROFILE_AVATAR,user.studentKH,[defaults objectForKey:@"remember_code_app"]];
     
     NSURL* url = [NSURL URLWithString:url_String];//请求url
     // UIImage* img = [UIImage imageNamed:@"header.jpg"];
@@ -155,7 +156,7 @@ NSData* data;
 
 -(void)postsucces{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    HideAllHUD
     [MBProgressHUD showSuccess:@"上传成功"];
     [defaults setObject:data forKey:@"head_img"];
     [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:([self.navigationController.viewControllers count] -2)] animated:YES];  //返回Home
@@ -163,7 +164,7 @@ NSData* data;
 }
 
 -(void)postfailure{
-    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    HideAllHUD
     [MBProgressHUD showError:@"上传失败"];
 }
 

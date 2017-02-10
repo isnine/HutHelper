@@ -13,6 +13,7 @@
 #import "YYModel.h"
 #import "User.h"
 #import "AFNetworking.h"
+#import "Config.h"
 @implementation HandTableViewCell
 
 - (void)awakeFromNib {
@@ -35,7 +36,7 @@
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     NSDictionary *User_Data=[defaults objectForKey:@"User"];
     User *user=[User yy_modelWithJSON:User_Data];
-    NSString *Url_String=[NSString stringWithFormat:@"http://218.75.197.121:8888/api/v1/stuff/detail/%@/%@/%@",user.studentKH,[defaults objectForKey:@"remember_code_app"],[self getid:(short)([self getIndexPath].section+1)*2-1]];
+    NSString *Url_String=[NSString stringWithFormat:API_GOODS_SHOW,user.studentKH,[defaults objectForKey:@"remember_code_app"],[self getid:(short)([self getIndexPath].section+1)*2-1]];
     NSLog(@"商品查询地址:%@",Url_String);
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
@@ -73,7 +74,7 @@
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     NSDictionary *User_Data=[defaults objectForKey:@"User"];
     User *user=[User yy_modelWithJSON:User_Data];
-    NSString *Url_String=[NSString stringWithFormat:@"http://218.75.197.121:8888/api/v1/stuff/detail/%@/%@/%@",user.studentKH,[defaults objectForKey:@"remember_code_app"],[self getid:(short)([self getIndexPath].section+1)*2]];
+    NSString *Url_String=[NSString stringWithFormat:API_GOODS_SHOW,user.studentKH,[defaults objectForKey:@"remember_code_app"],[self getid:(short)([self getIndexPath].section+1)*2]];
     NSLog(@"商品查询地址:%@",Url_String);
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];

@@ -14,6 +14,7 @@
 #import "MBProgressHUD+MJ.h"
 #import "ASIHTTPRequest.h"
 #import "ASIFormDataRequest.h"
+#import "Config.h"
 @interface AddLostViewController ()<TZImagePickerControllerDelegate,UICollectionViewDataSource,UICollectionViewDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,UIAlertViewDelegate,UINavigationControllerDelegate> {
     NSMutableArray *_selectedPhotos;
     NSMutableArray *_selectedAssets;
@@ -76,7 +77,7 @@
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     NSDictionary *User_Data=[defaults objectForKey:@"User"];
     User *user=[User yy_modelWithJSON:User_Data];
-    NSString *Url_String=[NSString stringWithFormat:@"http://218.75.197.121:8888/api/v1/loses/create/%@/%@",user.studentKH,[defaults objectForKey:@"remember_code_app"]];
+    NSString *Url_String=[NSString stringWithFormat:API_LOSES_CREATE,user.studentKH,[defaults objectForKey:@"remember_code_app"]];
     
     NSLog(@"失物发生请求地址%@",Url_String);
     if (_selectedPhotos.count!=0) {
@@ -94,7 +95,7 @@
             //formData: 专门用于拼接需要上传的数据,在此位置生成一个要上传的数据体
             for (int i = 0; i < _selectedPhotos.count; i++) {
                 UIImage *image = _selectedPhotos[i];
-                [manager POST:@"http://218.75.197.121:8888/api/v1/loses/upload" parameters:dict constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+                [manager POST:API_LOSES_IMG_UPLOAD parameters:dict constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
                     NSData *imageData = UIImageJPEGRepresentation(image, 0.5);
                     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
                     [formatter setDateFormat:@"yyyyMMddHHmmss"];
@@ -130,21 +131,21 @@
                                 NSString *Msg=[response objectForKey:@"msg"];
                                 if ([Msg isEqualToString:@"ok"])
                                 {
-                                    [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                    HideAllHUD
                                     [MBProgressHUD showSuccess:@"发布成功"];
                                     [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:([self.navigationController.viewControllers count] -2)] animated:YES];  //返回Home
                                     
                                 }
                                 else if ([Msg isEqualToString:@"令牌错误"]){
-                                    [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                    HideAllHUD
                                     [MBProgressHUD showError:@"登录过期，请重新登录"];
                                     [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:([self.navigationController.viewControllers count] -2)] animated:YES];  //返回Home
                                 }
                                 else{
-                                    [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                    HideAllHUD
                                     [MBProgressHUD showError:Msg];}
                             } failure:^(NSURLSessionDataTask *task, NSError *error) {
-                                [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                HideAllHUD
                                 [MBProgressHUD showError:@"网络错误"];
                             }];
                             
@@ -155,11 +156,11 @@
                         
                     }
                     else{
-                        [MBProgressHUD hideHUDForView:self.view animated:YES];
+                        HideAllHUD
                         [MBProgressHUD showError:@"发表失败"];
                     }
                 } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                    [MBProgressHUD hideHUDForView:self.view animated:YES];
+                    HideAllHUD
                     [MBProgressHUD showError:@"网络错误"];
                 }];
             }
@@ -190,21 +191,21 @@
             NSString *Msg=[response objectForKey:@"msg"];
             if ([Msg isEqualToString:@"ok"])
             {
-                [MBProgressHUD hideHUDForView:self.view animated:YES];
+                HideAllHUD
                 [MBProgressHUD showSuccess:@"发表成功"];
                 [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:([self.navigationController.viewControllers count] -2)] animated:YES];  //返回Home
             }
             else if ([Msg isEqualToString:@"令牌错误"]){
-                [MBProgressHUD hideHUDForView:self.view animated:YES];
+                HideAllHUD
                 [MBProgressHUD showError:@"登录过期，请重新登录"];
                 [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:([self.navigationController.viewControllers count] -2)] animated:YES];  //返回Home
             }
             
             else{
-                [MBProgressHUD hideHUDForView:self.view animated:YES];
+                HideAllHUD
                 [MBProgressHUD showError:Msg];}
         } failure:^(NSURLSessionDataTask *task, NSError *error) {
-            [MBProgressHUD hideHUDForView:self.view animated:YES];
+            HideAllHUD
             [MBProgressHUD showError:@"网络错误"];
         }];}
 }

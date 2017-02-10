@@ -22,6 +22,7 @@
 #import "User.h"
 #import "AFNetworking.h"
 #import "AddSayViewController.h"
+#import "Config.h"
 @interface SayViewController ()
 @property (nonatomic,copy) NSArray      *Say_content;
 @end
@@ -118,7 +119,7 @@ int num=1;
         NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
         NSDictionary *User_Data=[defaults objectForKey:@"User"];
         User *user=[User yy_modelWithJSON:User_Data];
-        NSString *Url_String=[NSString stringWithFormat:@"http://218.75.197.121:8888/api/v1/moments/comment/%@/%@/%@",user.studentKH,[defaults objectForKey:@"remember_code_app"],[self getsayid:indexPath.section]];
+        NSString *Url_String=[NSString stringWithFormat:API_MOMENTS_CREATE_COMMENT,user.studentKH,[defaults objectForKey:@"remember_code_app"],[self getsayid:indexPath.section]];
         [UUInputAccessoryView showKeyboardConfige:^(UUInputConfiger * _Nonnull configer) {
             configer.keyboardType = UIKeyboardTypeDefault;
             configer.content = @"";
@@ -142,18 +143,18 @@ int num=1;
                 NSDictionary *response = [NSDictionary dictionaryWithDictionary:responseObject];
                 NSString *Msg=[response objectForKey:@"msg"];
                 if ([Msg isEqualToString:@"ok"])   {
-                    [MBProgressHUD hideHUDForView:self.view animated:YES];
+                    HideAllHUD
                     [MBProgressHUD showSuccess:@"评论成功"];
                     [self reload];
                 }
                 else if ([Msg isEqualToString:@"令牌错误"]){
-                    [MBProgressHUD hideHUDForView:self.view animated:YES];
+                    HideAllHUD
                     [MBProgressHUD showError:@"登录过期，请重新登录"];}
                 else{
-                    [MBProgressHUD hideHUDForView:self.view animated:YES];
+                    HideAllHUD
                     [MBProgressHUD showError:Msg];}
             } failure:^(NSURLSessionDataTask *task, NSError *error) {
-                [MBProgressHUD hideHUDForView:self.view animated:YES];
+                HideAllHUD
                 [MBProgressHUD showError:@"网络错误"];
             }];
             
@@ -262,7 +263,7 @@ int num=1;
 
 -(void)load:(int)num{
     [MBProgressHUD showMessage:@"查询中" toView:self.view];
-    NSString *Url_String=[NSString stringWithFormat:@"http://218.75.197.121:8888/api/v1/moments/posts/%d",num];
+    NSString *Url_String=[NSString stringWithFormat:API_MOMENTS,num];
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
     manager.requestSerializer.timeoutInterval = 9.f;
@@ -283,9 +284,9 @@ int num=1;
              else
                  [MBProgressHUD showError:[Say_All objectForKey:@"msg"]];
              
-             [MBProgressHUD hideHUDForView:self.view animated:YES];
+             HideAllHUD
          } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-             [MBProgressHUD hideHUDForView:self.view animated:YES];
+             HideAllHUD
              [MBProgressHUD showError:@"网络错误"];
          }];
 }
@@ -318,7 +319,7 @@ int num=1;
 
 -(NSString*)getPhoto:(int)i with:(int)j{
     NSArray *photo=[_Say_content[i] objectForKey:@"pics"];
-    NSString *Url=[NSString stringWithFormat:@"http://218.75.197.121:8888/%@",photo[j]];
+    NSString *Url=[NSString stringWithFormat:API_IMG,photo[j]];
     NSLog(@"请求地址%@",Url);
     return Url;
 }
@@ -332,7 +333,7 @@ int num=1;
     return [_Say_content[i] objectForKey:@"username"];
 }
 -(UIImage*)getImg:(int)i{
-    NSString *Url=[NSString stringWithFormat:@"http://218.75.197.121:8888/%@",[_Say_content[i] objectForKey:@"head_pic_thumb"]];
+    NSString *Url=[NSString stringWithFormat:API_IMG,[_Say_content[i] objectForKey:@"head_pic_thumb"]];
     if ([Url isEqualToString:@"http://218.75.197.121:8888/"]) {
         return [self circleImage:[UIImage imageNamed:@"img_defalut"]];
     }else{
@@ -412,7 +413,7 @@ int num=1;
 -(void)reload{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     /**拼接地址*/
-    NSString *Url_String=[NSString stringWithFormat:@"http://218.75.197.121:8888/api/v1/moments/posts/%d",num];
+    NSString *Url_String=[NSString stringWithFormat:API_MOMENTS,num];
     /**设置9秒超时*/
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
@@ -429,7 +430,7 @@ int num=1;
                      [defaults setObject:Say_content forKey:@"Say"];
                      _Say_content=[defaults objectForKey:@"Say"];
                      [MBProgressHUD showSuccess:@"刷新成功"];
-                     [MBProgressHUD hideHUDForView:self.view animated:YES];
+                     HideAllHUD
                      [self.tableView.mj_header endRefreshing];
                      [self.tableView reloadData];
                  }
@@ -441,7 +442,7 @@ int num=1;
              else{
                  [self.tableView.mj_header endRefreshing];
                  [MBProgressHUD showError:[Say_All objectForKey:@"msg"]];
-             }             [MBProgressHUD hideHUDForView:self.view animated:YES];
+             }             HideAllHUD
          } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
              [self.tableView.mj_header endRefreshing];
              [MBProgressHUD showError:@"网络错误"];
@@ -451,7 +452,7 @@ int num=1;
     num++;
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     /**拼接地址*/
-    NSString *Url_String=[NSString stringWithFormat:@"http://218.75.197.121:8888/api/v1/moments/posts/%d",num];
+    NSString *Url_String=[NSString stringWithFormat:API_MOMENTS,num];
     /**设置9秒超时*/
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
@@ -470,7 +471,7 @@ int num=1;
                      [MBProgressHUD showSuccess:@"刷新成功"];
                      NSString *num_string=[NSString stringWithFormat:@"第%d页",num];
                      self.navigationItem.title = num_string;
-                     [MBProgressHUD hideHUDForView:self.view animated:YES];
+                     HideAllHUD
                      [self.tableView.mj_footer endRefreshing];
                      self.tableView.mj_header.hidden = YES;
                      [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
@@ -484,7 +485,7 @@ int num=1;
              else{
                  [self.tableView.mj_footer endRefreshing];
                  [MBProgressHUD showError:[Say_All objectForKey:@"msg"]];
-             }             [MBProgressHUD hideHUDForView:self.view animated:YES];
+             }             HideAllHUD
          } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
              [self.tableView.mj_footer endRefreshing];
              [MBProgressHUD showError:@"网络错误"];

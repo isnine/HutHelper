@@ -11,6 +11,7 @@
 #import "User.h"
 #import "AFNetworking.h"
 #import "MBProgressHUD+MJ.h"
+#import "Config.h"
 @implementation SayCommitViewCell
 
 - (void)awakeFromNib {
@@ -31,7 +32,7 @@
     NSArray *Say_content=[defaults objectForKey:@"Say"];
     NSDictionary *User_Data=[defaults objectForKey:@"User"];
     User *user=[User yy_modelWithJSON:User_Data];
-    NSString *Url_String=[NSString stringWithFormat:@"http://218.75.197.121:8888/api/v1/moments/delete/%@/%@/%@",user.studentKH,[defaults objectForKey:@"remember_code_app"],[Say_content[[self getIndexPath].section] objectForKey:@"id"]];
+    NSString *Url_String=[NSString stringWithFormat:API_MOMENTS_DELETE,user.studentKH,[defaults objectForKey:@"remember_code_app"],[Say_content[[self getIndexPath].section] objectForKey:@"id"]];
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];

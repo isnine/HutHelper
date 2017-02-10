@@ -15,6 +15,7 @@
 #import "HandShowViewController.h"
 #import "AppDelegate.h"
 #import "AddhandViewController.h"
+#import "Config.h"
 @interface HandTableViewController ()
 @property (nonatomic,copy) NSArray      *Hand_content;
 @property int num;
@@ -107,11 +108,11 @@
 }
 -(NSString*)getPhoto:(int)i{
     NSString *photo=[_Hand_content[i] objectForKey:@"image"];
-    NSString *Url=[NSString stringWithFormat:@"http://218.75.197.121:8888/%@",photo];
+    NSString *Url=[NSString stringWithFormat:API_IMG,photo];
     return Url;
 }
 -(UIImage*)getImg:(int)i{
-        NSString *Url=[NSString stringWithFormat:@"http://218.75.197.121:8888/%@",[_Hand_content[i] objectForKey:@"image"]];
+        NSString *Url=[NSString stringWithFormat:API_IMG,[_Hand_content[i] objectForKey:@"image"]];
         NSURL *imageUrl = [NSURL URLWithString:Url];
         return [UIImage imageWithData:[NSData dataWithContentsOfURL:imageUrl]];
 }
@@ -132,7 +133,7 @@
     [NSURLCache setSharedURLCache:sharedCache];
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     /**拼接地址*/
-    NSString *Url_String=[NSString stringWithFormat:@"http://218.75.197.121:8888/api/v1/stuff/goods/%d",_num];
+    NSString *Url_String=[NSString stringWithFormat:API_GOODS,_num];
     /**设置9秒超时*/
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
@@ -152,7 +153,7 @@
          } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
              [MBProgressHUD showError:@"网络错误"];
              [self.tableView.mj_header endRefreshing];
-             [MBProgressHUD hideHUDForView:self.view animated:YES];
+             HideAllHUD
          }];
 }
 
@@ -164,7 +165,7 @@
     [NSURLCache setSharedURLCache:sharedCache];
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     /**拼接地址*/
-     NSString *Url_String=[NSString stringWithFormat:@"http://218.75.197.121:8888/api/v1/stuff/goods/%d",_num];
+     NSString *Url_String=[NSString stringWithFormat:API_GOODS,_num];
     /**设置9秒超时*/
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
@@ -187,7 +188,7 @@
          } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
              [MBProgressHUD showError:@"网络错误"];
              [self.tableView.mj_footer endRefreshing];
-             [MBProgressHUD hideHUDForView:self.view animated:YES];
+             HideAllHUD
          }];
     
 }

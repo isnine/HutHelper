@@ -18,6 +18,7 @@
 #import "User.h"
 #import "AFNetworking.h"
 #import "MBProgressHUD+MJ.h"
+#import "Config.h"
 @interface ClassViewController ()<GWPCourseListViewDataSource, GWPCourseListViewDelegate>
 @property (weak, nonatomic) IBOutlet GWPCourseListView *courseListView;
 @property (nonatomic, strong) NSMutableArray<CourseModel*> *courseArr;
@@ -694,9 +695,9 @@ NSString *show_xp;
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     NSDictionary *User_Data=[defaults objectForKey:@"User"];
     User *user=[User yy_modelWithJSON:User_Data];
-    NSString *Url_String=[NSString stringWithFormat:@"http://218.75.197.121:8888/api/v1/get/lessons/%@/%@",user.studentKH,[defaults objectForKey:@"remember_code_app"]];
+    NSString *Url_String=[NSString stringWithFormat:API_CLASS,user.studentKH,[defaults objectForKey:@"remember_code_app"]];
     NSLog(@"平时课表地址:%@",Url_String);
-    NSString *UrlXP_String=[NSString stringWithFormat:@"http://218.75.197.121:8888/api/v1/get/lessonsexp/%@/%@",user.studentKH,[defaults objectForKey:@"remember_code_app"]];
+    NSString *UrlXP_String=[NSString stringWithFormat:API_CLASSXP,user.studentKH,[defaults objectForKey:@"remember_code_app"]];
     NSLog(@"实验课表地址:%@",UrlXP_String);
     /**设置9秒超时*/
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
@@ -722,7 +723,7 @@ NSString *show_xp;
                               NSArray *array               = [ClassXP_All objectForKey:@"data"];
                               [defaults setObject:array forKey:@"array_xp"];
                               [defaults synchronize];
-                              [MBProgressHUD hideHUDForView:self.view animated:YES];
+                              HideAllHUD
                               [MBProgressHUD showSuccess:@"刷新成功"];
                               if(now_xp==0){
                                   [self addCourse];
@@ -732,20 +733,20 @@ NSString *show_xp;
                               }
                           }
                       } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                          [MBProgressHUD hideHUDForView:self.view animated:YES];
+                          HideAllHUD
                           [MBProgressHUD showError:@"网络错误，实验课表查询失败"];
                       }];
              }
              else if([Msg isEqualToString:@"令牌错误"]){
-                 [MBProgressHUD hideHUDForView:self.view animated:YES];
+                 HideAllHUD
                  [MBProgressHUD showError:@"登录过期,请重新登录"];
              }
              else{
-                 [MBProgressHUD hideHUDForView:self.view animated:YES];
+                 HideAllHUD
                  [MBProgressHUD showError:@"查询失败"];
              }
          } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-             [MBProgressHUD hideHUDForView:self.view animated:YES];
+             HideAllHUD
              [MBProgressHUD showError:@"网络错误，平时课表查询失败"];
          }];
 

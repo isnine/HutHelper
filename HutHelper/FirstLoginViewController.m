@@ -18,7 +18,7 @@
 #import "MBProgressHUD+MJ.h"
 #import "User.h"
 #import "YYModel.h"
-
+#import "Config.h"
 @interface FirstLoginViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *UserName;
 @property (weak, nonatomic) IBOutlet UITextField *Password;
@@ -38,7 +38,7 @@
     NSString *Password_String =[NSString stringWithFormat:@"%@",_Password.text];
     /**请求地址*/
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    NSString *Url_String=[NSString stringWithFormat:@"http://218.75.197.121:8888/api/v1/get/login/%@/%@/1",UserName_String,Password_String];
+    NSString *Url_String=[NSString stringWithFormat:API_LOGIN,UserName_String,Password_String];
     /**请求*/
     [MBProgressHUD showMessage:@"登录中" toView:self.view];
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
@@ -62,15 +62,15 @@
                  [defaults synchronize];
                  [self addNotice];//新增通知
                  [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:([self.navigationController.viewControllers count] -2)] animated:YES];  //返回上一个View
-                 [MBProgressHUD hideHUDForView:self.view animated:YES];
+                 HideAllHUD
              }
              else {
                  NSString *Show_Msg=[Msg stringByAppendingString:@",默认密码身份证后六位"];
-                 [MBProgressHUD hideHUDForView:self.view animated:YES];
+                 HideAllHUD
                  [MBProgressHUD showError:Show_Msg];
              }
          } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-             [MBProgressHUD hideHUDForView:self.view animated:YES];
+             HideAllHUD
              [MBProgressHUD showError:@"网络错误或超时"];
          }];
 }
@@ -107,7 +107,14 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     self.navigationController.navigationBarHidden = YES;
+
 }
+
+
+
+
+
+
 
 - (void)viewWillDisappear:(BOOL)animated{
     self.navigationController.navigationBarHidden = NO;
@@ -129,7 +136,7 @@
     [notice insertObject:noticeDictionary atIndex:0];
     [noticeDictionary3 setObject:@"2017-02-09 08:00" forKey:@"time"];
     [noticeDictionary3 setObject:@"开发者的一些话" forKey:@"title"];
-    [noticeDictionary3 setObject:@"首先感谢你在新的学期里继续使用工大助手,由于团队每个人的分工不同，整个iOS端仅由我一个人的负责开发。对此，如果之前版本App有给你带来不便的地方，希望您能够理解。\n\n在新的版本中，我修改了大量的界面并对程序进行了优化。如果您还发现有任何Bug，可以通过【左滑菜单-反馈】向我反馈，我向您保证，您反馈的每一个Bug我都会修复，提的每一个建议，我们都会认真考虑。\n\n同时如果App给您有带来了一丝便利，我希望您可以在【左滑菜单-关于-去AppStore评分】给App进行评分，这对一个整天码代码的程序猿来说，这真的是最好的鼓励了🙏\n" forKey:@"body"];
+    [noticeDictionary3 setObject:@"首先感谢你在新的学期里继续使用工大助手,由于团队每个人的分工不同，整个iOS端仅由我一个人的负责开发。对此，如果之前版本App有给你带来不便的地方，希望您能够理解。\n\n在新的版本中，我修改了大量的界面并对程序进行了优化。如果您还发现有任何Bug，可以通过【左滑菜单-反馈】向我反馈，我向您保证，您反馈的每一个Bug我都会修复，提的每一个建议，我们都会认真考虑。\n\n同时如果App给您有带来了一丝便利，我希望您可以在【左滑菜单-关于-去AppStore评分】给App进行评分，对一个整天码代码的程序猿来说，这真的是最好的鼓励了🙏\n" forKey:@"body"];
     [notice insertObject:noticeDictionary3 atIndex:1];
     [noticeDictionary2 setObject:@"2017-02-09 08:00" forKey:@"time"];
     [noticeDictionary2 setObject:@"个人中心的使用" forKey:@"title"];
