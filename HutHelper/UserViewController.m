@@ -13,6 +13,7 @@
 #import "ASIHTTPRequest.h"
 #import "ASIFormDataRequest.h"
 #import "UMMobClick/MobClick.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 #import "JSONKit.h"
 #import "MBProgressHUD+MJ.h"
 #import "YYModel.h"
@@ -36,32 +37,36 @@ UIImage* img ;
     //    UIImage *getimage2 = [UIImage imageWithContentsOfFile:imagePath];
     //
     NSDictionary *User_Data=[defaults objectForKey:@"User"];
+    SDWebImageManager *manager = [SDWebImageManager sharedManager];
+    
     User *user=[User yy_modelWithJSON:User_Data];
     if ([defaults objectForKey:@"head_img"]!=NULL) {
         self.headerView = [[JSHeaderView alloc] initWithImage:[UIImage imageWithData:[defaults objectForKey:@"head_img"]]];
     }
     else if(user.head_pic_thumb!=NULL){
-        NSString *image_url=user.head_pic_thumb;
-        image_url=[@"http://218.75.197.121:8888/" stringByAppendingString:image_url];
+        NSString *image_url=[NSString stringWithFormat:API_IMG,user.head_pic_thumb];
         NSURL *url                   = [NSURL URLWithString: image_url];//接口地址
-        NSData *data = [NSData dataWithContentsOfURL:url];
-        if (data!=NULL&&![image_url isEqualToString:@"http://218.75.197.121:8888/"]) {
-            [defaults setObject:data forKey:@"head_img"];
-            [defaults synchronize];
-            self.headerView = [[JSHeaderView alloc] initWithImage:[UIImage imageWithData:data]];
-        }
-        else{
-            self.headerView = [[JSHeaderView alloc] initWithImage:[UIImage imageNamed:@"header.jpg"]];
-        }
+        [manager downloadImageWithURL:url options:SDWebImageRetryFailed progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+        } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+            NSData *data = UIImagePNGRepresentation(image);
+            NSLog(@"下载完成");
+                if (data!=NULL&&![image_url isEqualToString:INDEX]) {
+                    [defaults setObject:data forKey:@"head_img"];
+                    [defaults synchronize];
+                    self.headerView = [[JSHeaderView alloc] initWithImage:[UIImage imageWithData:data]];
+                }
+                else{
+                    self.headerView = [[JSHeaderView alloc] initWithImage:[UIImage imageNamed:@"header.jpg"]];
+                }
+                self.navigationItem.titleView = self.headerView;
+        }];
     }
     else{
         self.headerView = [[JSHeaderView alloc] initWithImage:[UIImage imageNamed:@"header.jpg"]];
     }
-    
+        self.navigationItem.titleView = self.headerView;
     
     [self.headerView reloadSizeWithScrollView:self.tableView];
-    self.navigationItem.titleView = self.headerView;
-    
     [self.headerView handleClickActionWithBlock:^{
         [self getImageFromIpc];
         
@@ -98,7 +103,11 @@ UIImage* img ;
     // 5.modal出这个控制器
     [self presentViewController:ipc animated:YES completion:nil];
 }
-
+- (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated
+{
+    viewController.navigationItem.leftBarButtonItem.tintColor = [UIColor blackColor];
+    viewController.navigationItem.rightBarButtonItem.tintColor = [UIColor blackColor];
+}
 #pragma mark -- <UIImagePickerControllerDelegate>--
 // 获取图片后的操作
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info

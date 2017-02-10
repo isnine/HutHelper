@@ -125,7 +125,7 @@
     }
     
     
-    if (indexPath.row == 0) { //登录
+    if (indexPath.row == 0) { //个人界面
         [self.tableview reloadData];
         UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         ClassViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"User"];

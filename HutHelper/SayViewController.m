@@ -334,7 +334,7 @@ int num=1;
 }
 -(UIImage*)getImg:(int)i{
     NSString *Url=[NSString stringWithFormat:API_IMG,[_Say_content[i] objectForKey:@"head_pic_thumb"]];
-    if ([Url isEqualToString:@"http://218.75.197.121:8888/"]) {
+    if ([Url isEqualToString:INDEX]) {
         return [self circleImage:[UIImage imageNamed:@"img_defalut"]];
     }else{
         NSURL *imageUrl = [NSURL URLWithString:Url];

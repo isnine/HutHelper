@@ -160,8 +160,6 @@ int class_error_;
     }
     
     
-    
-    
 } //课程表
 
 - (IBAction)ClassXPFind:(id)sender {  //课表界面
@@ -687,6 +685,8 @@ int class_error_;
     [menuBtn setBackgroundImage:[UIImage imageNamed:@"menu"] forState:UIControlStateNormal];
     [menuBtn addTarget:self action:@selector(openOrCloseLeftList) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.leftBarButtonItem     = [[UIBarButtonItem alloc] initWithCustomView:menuBtn];
+    
+    self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:0/255.0 green:224/255.0 blue:208/255.0 alpha:1];
 }
 -(void)setAlias{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];

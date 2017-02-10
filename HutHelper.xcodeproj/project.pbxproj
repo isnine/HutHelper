@@ -29,8 +29,6 @@
 		3A449C711E16C2E500D89CEA /* header@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3A449C701E16C2E500D89CEA /* header@2x.jpg */; };
 		3A45626C1DB4980800E5591A /* FirstLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A45626A1DB4980800E5591A /* FirstLoginViewController.m */; };
 		3A45626D1DB4980800E5591A /* FirstLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A45626B1DB4980800E5591A /* FirstLoginViewController.xib */; };
-		3A4D04331E1963AC00595183 /* 工大助手API文档.docx in Resources */ = {isa = PBXBuildFile; fileRef = 3A4D04321E1963AC00595183 /* 工大助手API文档.docx */; };
-		3A4D04351E1963B900595183 /* interface.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3A4D04341E1963B900595183 /* interface.txt */; };
 		3A4D38B01E1FAF7C00639C18 /* UINavigationBar+Awesome.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A4D38AF1E1FAF7C00639C18 /* UINavigationBar+Awesome.m */; };
 		3A4D38DB1E20DBC300639C18 /* ExamNewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A4D38DA1E20DBC300639C18 /* ExamNewViewController.m */; };
 		3A519FB31E4B5514001A7E89 /* NoticeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A519FB11E4B5514001A7E89 /* NoticeTableViewCell.m */; };
@@ -156,8 +154,6 @@
 		3A4562691DB4980800E5591A /* FirstLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstLoginViewController.h; sourceTree = "<group>"; };
 		3A45626A1DB4980800E5591A /* FirstLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstLoginViewController.m; sourceTree = "<group>"; };
 		3A45626B1DB4980800E5591A /* FirstLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FirstLoginViewController.xib; path = HutHelper/FirstLoginViewController.xib; sourceTree = "<group>"; };
-		3A4D04321E1963AC00595183 /* 工大助手API文档.docx */ = {isa = PBXFileReference; lastKnownFileType = file; name = "工大助手API文档.docx"; path = "Docs/工大助手API文档.docx"; sourceTree = "<group>"; };
-		3A4D04341E1963B900595183 /* interface.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = interface.txt; path = Docs/interface.txt; sourceTree = "<group>"; };
 		3A4D38AE1E1FAF7C00639C18 /* UINavigationBar+Awesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+Awesome.h"; sourceTree = "<group>"; };
 		3A4D38AF1E1FAF7C00639C18 /* UINavigationBar+Awesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+Awesome.m"; sourceTree = "<group>"; };
 		3A4D38D91E20DBC300639C18 /* ExamNewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExamNewViewController.h; sourceTree = "<group>"; };
@@ -601,15 +597,6 @@
 			name = Other;
 			sourceTree = "<group>";
 		};
-		3A4D04311E19639700595183 /* Doc */ = {
-			isa = PBXGroup;
-			children = (
-				3A4D04321E1963AC00595183 /* 工大助手API文档.docx */,
-				3A4D04341E1963B900595183 /* interface.txt */,
-			);
-			name = Doc;
-			sourceTree = "<group>";
-		};
 		3A4D38AD1E1FAF6900639C18 /* LTNavigationBar */ = {
 			isa = PBXGroup;
 			children = (
@@ -734,7 +721,6 @@
 				3A85677D1DA908AA00EBD44A /* HutHelper */,
 				3A85678A1DA908AA00EBD44A /* Assets.xcassets */,
 				3A85677C1DA908AA00EBD44A /* Products */,
-				3A4D04311E19639700595183 /* Doc */,
 				3A7D3CA81DB0A6CB00355E7A /* Frameworks */,
 				12486D9D0B1F337F5979987B /* Pods */,
 			);
@@ -915,7 +901,6 @@
 				3A7DFCC21E29D82E0082F379 /* SayViewCell.xib in Resources */,
 				3A218F7E1E4AEC9900A27D48 /* LostShowTableViewCell.xib in Resources */,
 				3A45626D1DB4980800E5591A /* FirstLoginViewController.xib in Resources */,
-				3A4D04351E1963B900595183 /* interface.txt in Resources */,
 				3A776E001E2C96FC00F600D6 /* HandTableViewCell.xib in Resources */,
 				3A218F8B1E4B041B00A27D48 /* LostShowTimeTableViewCell.xib in Resources */,
 				3A540A581E499A3A00C10871 /* ScoreTableViewCell.xib in Resources */,
@@ -933,7 +918,6 @@
 				3A776DF31E2B725A00F600D6 /* CommitViewCell.xib in Resources */,
 				3ACE12421E2666D800F28314 /* ExamCell.xib in Resources */,
 				3A519FB41E4B5514001A7E89 /* NoticeTableViewCell.xib in Resources */,
-				3A4D04331E1963AC00595183 /* 工大助手API文档.docx in Resources */,
 				3AA1BC161E16179C00F75A7E /* MBProgressHUD.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
