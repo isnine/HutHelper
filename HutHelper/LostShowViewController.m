@@ -17,6 +17,7 @@
 #import "MBProgressHUD+MJ.h"
 #import "AFNetworking.h"
 #import "MJRefresh.h"
+#import "XWScanImage.h"
 #import "Config.h"
 @interface LostShowViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -114,12 +115,23 @@
         else if (photo.count==1) {
             [cellPhoto.Img11 sd_setImageWithURL:[NSURL URLWithString:[self getPhoto:(short)indexPath.section with:0]]
                                placeholderImage:[UIImage imageNamed:@"load_img"]];
+            UITapGestureRecognizer *tapGestureRecognizer1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scanBigImageClick:)];
+            [cellPhoto.Img11 addGestureRecognizer:tapGestureRecognizer1];
+            [cellPhoto.Img11 setUserInteractionEnabled:YES];
+            
         }
         else if(photo.count==2){
             [cellPhoto.Img21 sd_setImageWithURL:[NSURL URLWithString:[self getPhoto:(short)indexPath.section with:0]]
                                placeholderImage:[UIImage imageNamed:@"load_img"]];
             [cellPhoto.Img22 sd_setImageWithURL:[NSURL URLWithString:[self getPhoto:(short)indexPath.section with:1]]
                                placeholderImage:[UIImage imageNamed:@"load_img"]];
+            UITapGestureRecognizer *tapGestureRecognizer1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scanBigImageClick:)];
+            [cellPhoto.Img21 addGestureRecognizer:tapGestureRecognizer1];
+            [cellPhoto.Img21 setUserInteractionEnabled:YES];
+            
+            UITapGestureRecognizer *tapGestureRecognizer2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scanBigImageClick:)];
+            [cellPhoto.Img22 addGestureRecognizer:tapGestureRecognizer2];
+            [cellPhoto.Img22 setUserInteractionEnabled:YES];
         }
         else if(photo.count==3){
             [cellPhoto.Img41 sd_setImageWithURL:[NSURL URLWithString:[self getPhoto:(short)indexPath.section with:0]]
@@ -128,6 +140,17 @@
                                placeholderImage:[UIImage imageNamed:@"load_img"]];
             [cellPhoto.Img43 sd_setImageWithURL:[NSURL URLWithString:[self getPhoto:(short)indexPath.section with:2]]
                                placeholderImage:[UIImage imageNamed:@"load_img"]];
+            UITapGestureRecognizer *tapGestureRecognizer1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scanBigImageClick:)];
+            [cellPhoto.Img41 addGestureRecognizer:tapGestureRecognizer1];
+            [cellPhoto.Img41 setUserInteractionEnabled:YES];
+            
+            UITapGestureRecognizer *tapGestureRecognizer2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scanBigImageClick:)];
+            [cellPhoto.Img42 addGestureRecognizer:tapGestureRecognizer2];
+            [cellPhoto.Img42 setUserInteractionEnabled:YES];
+            
+            UITapGestureRecognizer *tapGestureRecognizer3 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scanBigImageClick:)];
+            [cellPhoto.Img43 addGestureRecognizer:tapGestureRecognizer3];
+            [cellPhoto.Img43 setUserInteractionEnabled:YES];
         }
         else {
             [cellPhoto.Img41 sd_setImageWithURL:[NSURL URLWithString:[self getPhoto:(short)indexPath.section with:0]]
@@ -138,6 +161,21 @@
                                placeholderImage:[UIImage imageNamed:@"load_img"]];
             [cellPhoto.Img44 sd_setImageWithURL:[NSURL URLWithString:[self getPhoto:(short)indexPath.section with:3]]
                                placeholderImage:[UIImage imageNamed:@"load_img"]];
+            UITapGestureRecognizer *tapGestureRecognizer1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scanBigImageClick:)];
+            [cellPhoto.Img41 addGestureRecognizer:tapGestureRecognizer1];
+            [cellPhoto.Img41 setUserInteractionEnabled:YES];
+            
+            UITapGestureRecognizer *tapGestureRecognizer2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scanBigImageClick:)];
+            [cellPhoto.Img42 addGestureRecognizer:tapGestureRecognizer2];
+            [cellPhoto.Img42 setUserInteractionEnabled:YES];
+            
+            UITapGestureRecognizer *tapGestureRecognizer3 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scanBigImageClick:)];
+            [cellPhoto.Img43 addGestureRecognizer:tapGestureRecognizer3];
+            [cellPhoto.Img43 setUserInteractionEnabled:YES];
+            
+            UITapGestureRecognizer *tapGestureRecognizer4 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scanBigImageClick:)];
+            [cellPhoto.Img44 addGestureRecognizer:tapGestureRecognizer4];
+            [cellPhoto.Img44 setUserInteractionEnabled:YES];
         }
         return cellPhoto;
     }
@@ -147,7 +185,10 @@
         return cellTime;
     }
 }
-
+-(void)scanBigImageClick:(UITapGestureRecognizer *)tap{
+    UIImageView *clickedImageView = (UIImageView *)tap.view;
+    [XWScanImage scanBigImageWithImageView:clickedImageView];
+}
 -(void)setTitle{
     self.navigationItem.title = @"失物招领";
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor]}];

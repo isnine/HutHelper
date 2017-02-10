@@ -9,6 +9,7 @@
 #import "HandShowViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "UMMobClick/MobClick.h"
+#import "XWScanImage.h"
 #import "Config.h"
 @interface HandShowViewController ()
 @property (weak, nonatomic) IBOutlet UITextView *Content;
@@ -52,25 +53,49 @@
     _Ttile.text=[_Hand_show objectForKey:@"tit"];
     NSArray *img=[_Hand_show objectForKey:@"pics"];
     switch (img.count) {
-        case 1:
+        case 1:{
             [_Img5 sd_setImageWithURL:[NSURL URLWithString:[self getimg:0]]
                               placeholderImage:[UIImage imageNamed:@"load_img"]];
+            UITapGestureRecognizer *tapGestureRecognizer1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scanBigImageClick:)];
+            [_Img5 addGestureRecognizer:tapGestureRecognizer1];
+            [_Img5 setUserInteractionEnabled:YES];
+        }
             break;
-        case 2:
+        case 2:{
             [_Img5 sd_setImageWithURL:[NSURL URLWithString:[self getimg:0]]
                      placeholderImage:[UIImage imageNamed:@"load_img"]];
             [_Img6 sd_setImageWithURL:[NSURL URLWithString:[self getimg:1]]
                      placeholderImage:[UIImage imageNamed:@"load_img"]];
+            UITapGestureRecognizer *tapGestureRecognizer1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scanBigImageClick:)];
+            [_Img5 addGestureRecognizer:tapGestureRecognizer1];
+            [_Img5 setUserInteractionEnabled:YES];
+            
+            UITapGestureRecognizer *tapGestureRecognizer2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scanBigImageClick:)];
+            [_Img6 addGestureRecognizer:tapGestureRecognizer2];
+            [_Img6 setUserInteractionEnabled:YES];
+        }
             break;
-        case 3:
+        case 3:{
             [_Img1 sd_setImageWithURL:[NSURL URLWithString:[self getimg:0]]
                      placeholderImage:[UIImage imageNamed:@"load_img"]];
             [_Img2 sd_setImageWithURL:[NSURL URLWithString:[self getimg:1]]
                      placeholderImage:[UIImage imageNamed:@"load_img"]];
             [_Img3 sd_setImageWithURL:[NSURL URLWithString:[self getimg:2]]
                      placeholderImage:[UIImage imageNamed:@"load_img"]];
+            UITapGestureRecognizer *tapGestureRecognizer1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scanBigImageClick:)];
+            [_Img1 addGestureRecognizer:tapGestureRecognizer1];
+            [_Img1 setUserInteractionEnabled:YES];
+            
+            UITapGestureRecognizer *tapGestureRecognizer2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scanBigImageClick:)];
+            [_Img2 addGestureRecognizer:tapGestureRecognizer2];
+            [_Img2 setUserInteractionEnabled:YES];
+            
+            UITapGestureRecognizer *tapGestureRecognizer3 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scanBigImageClick:)];
+            [_Img3 addGestureRecognizer:tapGestureRecognizer3];
+            [_Img3 setUserInteractionEnabled:YES];
+    }
             break;
-        case 4:
+        case 4:{
             [_Img1 sd_setImageWithURL:[NSURL URLWithString:[self getimg:0]]
                      placeholderImage:[UIImage imageNamed:@"load_img"]];
             [_Img2 sd_setImageWithURL:[NSURL URLWithString:[self getimg:1]]
@@ -79,10 +104,31 @@
                      placeholderImage:[UIImage imageNamed:@"load_img"]];
             [_Img4 sd_setImageWithURL:[NSURL URLWithString:[self getimg:3]]
                      placeholderImage:[UIImage imageNamed:@"load_img"]];
+            UITapGestureRecognizer *tapGestureRecognizer1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scanBigImageClick:)];
+            [_Img1 addGestureRecognizer:tapGestureRecognizer1];
+            [_Img1 setUserInteractionEnabled:YES];
+            
+            UITapGestureRecognizer *tapGestureRecognizer2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scanBigImageClick:)];
+            [_Img2 addGestureRecognizer:tapGestureRecognizer2];
+            [_Img2 setUserInteractionEnabled:YES];
+            
+            UITapGestureRecognizer *tapGestureRecognizer3 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scanBigImageClick:)];
+            [_Img3 addGestureRecognizer:tapGestureRecognizer3];
+            [_Img3 setUserInteractionEnabled:YES];
+            
+            UITapGestureRecognizer *tapGestureRecognizer4 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scanBigImageClick:)];
+            [_Img4 addGestureRecognizer:tapGestureRecognizer4];
+            [_Img4 setUserInteractionEnabled:YES];
+            
+        }
             break;
         default:
             break;
     }
+}
+-(void)scanBigImageClick:(UITapGestureRecognizer *)tap{
+    UIImageView *clickedImageView = (UIImageView *)tap.view;
+    [XWScanImage scanBigImageWithImageView:clickedImageView];
 }
 -(NSString*)getimg:(int)i{
     NSArray *img=[_Hand_show objectForKey:@"pics"];

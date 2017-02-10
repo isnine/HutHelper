@@ -22,6 +22,7 @@
 #import "User.h"
 #import "AFNetworking.h"
 #import "AddSayViewController.h"
+#import "XWScanImage.h"
 #import "Config.h"
 @interface SayViewController ()
 @property (nonatomic,copy) NSArray      *Say_content;
@@ -192,6 +193,12 @@ int num=1;
             exis++;
             [cellphoto.Img1 sd_setImageWithURL:[NSURL URLWithString:[self getPhoto:(short)indexPath.section with:0]]
                               placeholderImage:[UIImage imageNamed:@"load_img"]];
+            //为UIImageView1添加点击事件
+            UITapGestureRecognizer *tapGestureRecognizer1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scanBigImageClick:)];
+            [cellphoto.Img1 addGestureRecognizer:tapGestureRecognizer1];
+            //让UIImageView和它的父类开启用户交互属性
+            [cellphoto.Img1 setUserInteractionEnabled:YES];
+            
             return cellphoto;
         }
         else if(photo.count==2){
@@ -200,6 +207,13 @@ int num=1;
                               placeholderImage:[UIImage imageNamed:@"load_img"]];
             [cellphoto.Img2 sd_setImageWithURL:[NSURL URLWithString:[self getPhoto:(short)indexPath.section with:1]]
                               placeholderImage:[UIImage imageNamed:@"load_img"]];
+            UITapGestureRecognizer *tapGestureRecognizer1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scanBigImageClick:)];
+            [cellphoto.Img1 addGestureRecognizer:tapGestureRecognizer1];
+            [cellphoto.Img1 setUserInteractionEnabled:YES];
+            
+            UITapGestureRecognizer *tapGestureRecognizer2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scanBigImageClick:)];
+            [cellphoto.Img2 addGestureRecognizer:tapGestureRecognizer2];
+            [cellphoto.Img2 setUserInteractionEnabled:YES];
             return cellphoto;
         }
         else if(photo.count==3){
@@ -210,6 +224,17 @@ int num=1;
                               placeholderImage:[UIImage imageNamed:@"load_img"]];
             [cellphoto.Img3 sd_setImageWithURL:[NSURL URLWithString:[self getPhoto:(short)indexPath.section with:2]]
                               placeholderImage:[UIImage imageNamed:@"load_img"]];
+            UITapGestureRecognizer *tapGestureRecognizer1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scanBigImageClick:)];
+            [cellphoto.Img1 addGestureRecognizer:tapGestureRecognizer1];
+            [cellphoto.Img1 setUserInteractionEnabled:YES];
+            
+            UITapGestureRecognizer *tapGestureRecognizer2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scanBigImageClick:)];
+            [cellphoto.Img2 addGestureRecognizer:tapGestureRecognizer2];
+            [cellphoto.Img2 setUserInteractionEnabled:YES];
+            
+            UITapGestureRecognizer *tapGestureRecognizer3 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scanBigImageClick:)];
+            [cellphoto.Img3 addGestureRecognizer:tapGestureRecognizer3];
+            [cellphoto.Img3 setUserInteractionEnabled:YES];
             return cellphoto;
         }
         else {
@@ -220,8 +245,23 @@ int num=1;
                               placeholderImage:[UIImage imageNamed:@"load_img"]];
             [cellphoto.Img3 sd_setImageWithURL:[NSURL URLWithString:[self getPhoto:(short)indexPath.section with:2]]
                               placeholderImage:[UIImage imageNamed:@"load_img"]];
-            [cellphoto.Img3 sd_setImageWithURL:[NSURL URLWithString:[self getPhoto:(short)indexPath.section with:3]]
+            [cellphoto.Img4 sd_setImageWithURL:[NSURL URLWithString:[self getPhoto:(short)indexPath.section with:3]]
                               placeholderImage:[UIImage imageNamed:@"load_img"]];
+            UITapGestureRecognizer *tapGestureRecognizer1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scanBigImageClick:)];
+            [cellphoto.Img1 addGestureRecognizer:tapGestureRecognizer1];
+            [cellphoto.Img1 setUserInteractionEnabled:YES];
+            
+            UITapGestureRecognizer *tapGestureRecognizer2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scanBigImageClick:)];
+            [cellphoto.Img2 addGestureRecognizer:tapGestureRecognizer2];
+            [cellphoto.Img2 setUserInteractionEnabled:YES];
+            
+            UITapGestureRecognizer *tapGestureRecognizer3 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scanBigImageClick:)];
+            [cellphoto.Img3 addGestureRecognizer:tapGestureRecognizer3];
+            [cellphoto.Img3 setUserInteractionEnabled:YES];
+            
+            UITapGestureRecognizer *tapGestureRecognizer4 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scanBigImageClick:)];
+            [cellphoto.Img4 addGestureRecognizer:tapGestureRecognizer4];
+            [cellphoto.Img4 setUserInteractionEnabled:YES];
             return cellphoto;
         }
         
@@ -252,6 +292,11 @@ int num=1;
         return cellcommit;
             
     }
+}
+
+-(void)scanBigImageClick:(UITapGestureRecognizer *)tap{
+    UIImageView *clickedImageView = (UIImageView *)tap.view;
+    [XWScanImage scanBigImageWithImageView:clickedImageView];
 }
 #pragma mark - "其他"
 -(void)menu{

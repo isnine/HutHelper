@@ -79,6 +79,7 @@
 		3A8BACFB1DDDBD81001C78B8 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A8BACFA1DDDBD81001C78B8 /* libc++.tbd */; };
 		3A8BACFD1DDDBDDB001C78B8 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A8BACFC1DDDBDDB001C78B8 /* ImageIO.framework */; };
 		3A8E0E251DAB442E00F458DB /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A8E0E231DAB442E00F458DB /* MainViewController.xib */; };
+		3A92E64D1E4DEA4200EDB030 /* XWScanImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A92E64C1E4DEA4200EDB030 /* XWScanImage.m */; };
 		3AA1BC161E16179C00F75A7E /* MBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3AA1BC111E16179C00F75A7E /* MBProgressHUD.bundle */; };
 		3AA1BC181E16179C00F75A7E /* MBProgressHUD+MJ.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA1BC151E16179C00F75A7E /* MBProgressHUD+MJ.m */; };
 		3AA8814B1E2A4644004F75B1 /* PhotoViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA881491E2A4644004F75B1 /* PhotoViewCell.m */; };
@@ -238,6 +239,8 @@
 		3A8BACFA1DDDBD81001C78B8 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		3A8BACFC1DDDBDDB001C78B8 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		3A8E0E231DAB442E00F458DB /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainViewController.xib; path = HutHelper/MainViewController.xib; sourceTree = "<group>"; };
+		3A92E64B1E4DEA4200EDB030 /* XWScanImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWScanImage.h; sourceTree = "<group>"; };
+		3A92E64C1E4DEA4200EDB030 /* XWScanImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWScanImage.m; sourceTree = "<group>"; };
 		3AA1BC111E16179C00F75A7E /* MBProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = MBProgressHUD.bundle; path = HutHelper/Lib/MBProgressHUD/MBProgressHUD.bundle; sourceTree = "<group>"; };
 		3AA1BC141E16179C00F75A7E /* MBProgressHUD+MJ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MBProgressHUD+MJ.h"; path = "HutHelper/Lib/MBProgressHUD/MBProgressHUD+MJ.h"; sourceTree = "<group>"; };
 		3AA1BC151E16179C00F75A7E /* MBProgressHUD+MJ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MBProgressHUD+MJ.m"; path = "HutHelper/Lib/MBProgressHUD/MBProgressHUD+MJ.m"; sourceTree = "<group>"; };
@@ -339,6 +342,7 @@
 				3A2D105F1DB66063009916D0 /* Foundation.framework */,
 				3A2D10601DB66063009916D0 /* CoreGraphics.framework */,
 				3A2D10611DB66063009916D0 /* UIKit.framework */,
+				3A92E64A1E4DEA4200EDB030 /* XWScanImage */,
 				3A8567A11DA90D2D00EBD44A /* LeftSildeViewController */,
 				3A33D7D81DAE50EF0012EFDE /* UMessage_Sdk_1.4.0 */,
 				3A6F216F1E4A076B00CC0EEF /* JsonKit */,
@@ -794,6 +798,16 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
+		3A92E64A1E4DEA4200EDB030 /* XWScanImage */ = {
+			isa = PBXGroup;
+			children = (
+				3A92E64B1E4DEA4200EDB030 /* XWScanImage.h */,
+				3A92E64C1E4DEA4200EDB030 /* XWScanImage.m */,
+			);
+			name = XWScanImage;
+			path = Lib/XWScanImage;
+			sourceTree = "<group>";
+		};
 		3AA1BC101E16178900F75A7E /* MBProgressHUD+MJ */ = {
 			isa = PBXGroup;
 			children = (
@@ -978,6 +992,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A33D7F71DAF646B0012EFDE /* Login2ViewController.m in Sources */,
+				3A92E64D1E4DEA4200EDB030 /* XWScanImage.m in Sources */,
 				3A6D7EDE1DABD9DA0081B70D /* JSONKit.m in Sources */,
 				3AAC242B1DE1CB3C00546B11 /* JSHeaderView.m in Sources */,
 				3A45626C1DB4980800E5591A /* FirstLoginViewController.m in Sources */,

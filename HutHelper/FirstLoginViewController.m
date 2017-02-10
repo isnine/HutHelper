@@ -88,6 +88,9 @@
     [_UserName setValue:[UIColor whiteColor] forKeyPath:@"_placeholderLabel.textColor"];
     _Password.placeholder=@"密码";
     [_Password setValue:[UIColor whiteColor] forKeyPath:@"_placeholderLabel.textColor"];
+    /** 标题栏样式 */
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+    self.navigationItem.backBarButtonItem = item;
     
     
 }
@@ -95,7 +98,7 @@
     UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     Login2ViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Login2"];
     AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:NO];
+    [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:YES];
 }
 
 -(void)sein{
