@@ -20,13 +20,18 @@
 @property (weak, nonatomic) IBOutlet UILabel *Time3;
 @property (weak, nonatomic) IBOutlet UILabel *Name4;
 @property (weak, nonatomic) IBOutlet UILabel *Time4;
-
+@property (weak, nonatomic) IBOutlet UIImageView *Ico1;
+@property (weak, nonatomic) IBOutlet UIImageView *Ico2;
+@property (weak, nonatomic) IBOutlet UIImageView *Ico3;
+@property (weak, nonatomic) IBOutlet UIImageView *Ico4;
+@property int classnum;
 @end
 
 @implementation TodayViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _classnum=0;
     _Day.text=[ExtendModel setDay];
     [self addCourse];
 }
@@ -76,39 +81,73 @@
                
             }
         }
+            _classnum=classSolution.count;
         switch (classSolution.count) {
             case 1:
                 _Name.text=[classSolution[0] objectForKey:@"name"];
-                _Time.text=[NSString stringWithFormat:@"第%@-%d节 @%@",[classSolution[0] objectForKey:@"djj"],[[classSolution[0] objectForKey:@"djj"] intValue]+1,[classSolution[0] objectForKey:@"room"]];
+                _Time.text=[NSString stringWithFormat:@"第%@-%d节 %@   @%@",[classSolution[0] objectForKey:@"djj"],[[classSolution[0] objectForKey:@"djj"] intValue]+1,[self getTime:[[classSolution[0] objectForKey:@"djj"] intValue]],[classSolution[0] objectForKey:@"room"]];
+                _Ico1.hidden=false;
                 break;
             case 2:
                 _Name.text=[classSolution[0] objectForKey:@"name"];
-                _Time.text=[NSString stringWithFormat:@"第%@-%d节 @%@",[classSolution[0] objectForKey:@"djj"],[[classSolution[0] objectForKey:@"djj"] intValue]+1,[classSolution[0] objectForKey:@"room"]];
+                _Time.text=[NSString stringWithFormat:@"第%@-%d节 %@   @%@",[classSolution[0] objectForKey:@"djj"],[[classSolution[0] objectForKey:@"djj"] intValue]+1,[self getTime:[[classSolution[0] objectForKey:@"djj"] intValue]],[classSolution[0] objectForKey:@"room"]];
                 _Name2.text=[classSolution[1] objectForKey:@"name"];
-                _Time2.text=[NSString stringWithFormat:@"第%@-%d节 @%@",[classSolution[1] objectForKey:@"djj"],[[classSolution[1] objectForKey:@"djj"] intValue]+1,[classSolution[1] objectForKey:@"room"]];
+                _Time2.text=[NSString stringWithFormat:@"第%@-%d节 %@   @%@",[classSolution[1] objectForKey:@"djj"],[[classSolution[1] objectForKey:@"djj"] intValue]+1,[self getTime:[[classSolution[0] objectForKey:@"djj"] intValue]],[classSolution[1] objectForKey:@"room"]];
+                _Ico1.hidden=false;
+                _Ico2.hidden=false;
                 break;
             case 3:
                 _Name.text=[classSolution[0] objectForKey:@"name"];
-                _Time.text=[NSString stringWithFormat:@"第%@-%d节 @%@",[classSolution[0] objectForKey:@"djj"],[[classSolution[0] objectForKey:@"djj"] intValue]+1,[classSolution[0] objectForKey:@"room"]];
+                _Time.text=[NSString stringWithFormat:@"第%@-%d节 %@   @%@",[classSolution[0] objectForKey:@"djj"],[[classSolution[0] objectForKey:@"djj"] intValue]+1,[self getTime:[[classSolution[0] objectForKey:@"djj"] intValue]],[classSolution[0] objectForKey:@"room"]];
                 _Name2.text=[classSolution[1] objectForKey:@"name"];
-                _Time2.text=[NSString stringWithFormat:@"第%@-%d节 @%@",[classSolution[1] objectForKey:@"djj"],[[classSolution[1] objectForKey:@"djj"] intValue]+1,[classSolution[1] objectForKey:@"room"]];
+                _Time2.text=[NSString stringWithFormat:@"第%@-%d节 %@   @%@",[classSolution[1] objectForKey:@"djj"],[[classSolution[1] objectForKey:@"djj"] intValue]+1,[self getTime:[[classSolution[0] objectForKey:@"djj"] intValue]],[classSolution[1] objectForKey:@"room"]];
                 _Name3.text=[classSolution[2] objectForKey:@"name"];
-                _Time3.text=[NSString stringWithFormat:@"第%@-%d节 @%@",[classSolution[2] objectForKey:@"djj"],[[classSolution[2] objectForKey:@"djj"] intValue]+1,[classSolution[2] objectForKey:@"room"]];
+                _Time3.text=[NSString stringWithFormat:@"第%@-%d节 %@   @%@",[classSolution[2] objectForKey:@"djj"],[[classSolution[2] objectForKey:@"djj"] intValue]+1,[self getTime:[[classSolution[0] objectForKey:@"djj"] intValue]],[classSolution[2] objectForKey:@"room"]];
+                _Ico1.hidden=false;
+                _Ico2.hidden=false;
+                _Ico3.hidden=false;
                 break;
             case 4:
                 _Name.text=[classSolution[0] objectForKey:@"name"];
-                _Time.text=[NSString stringWithFormat:@"第%@-%d节 @%@",[classSolution[0] objectForKey:@"djj"],[[classSolution[0] objectForKey:@"djj"] intValue]+1,[classSolution[0] objectForKey:@"room"]];
+                _Time.text=[NSString stringWithFormat:@"第%@-%d节 %@   @%@",[classSolution[0] objectForKey:@"djj"],[[classSolution[0] objectForKey:@"djj"] intValue]+1,[self getTime:[[classSolution[0] objectForKey:@"djj"] intValue]],[classSolution[0] objectForKey:@"room"]];
                 _Name2.text=[classSolution[1] objectForKey:@"name"];
-                _Time2.text=[NSString stringWithFormat:@"第%@-%d节 @%@",[classSolution[1] objectForKey:@"djj"],[[classSolution[1] objectForKey:@"djj"] intValue]+1,[classSolution[1] objectForKey:@"room"]];
+                _Time2.text=[NSString stringWithFormat:@"第%@-%d节 %@   @%@",[classSolution[1] objectForKey:@"djj"],[[classSolution[1] objectForKey:@"djj"] intValue]+1,[self getTime:[[classSolution[0] objectForKey:@"djj"] intValue]],[classSolution[1] objectForKey:@"room"]];
                 _Name3.text=[classSolution[2] objectForKey:@"name"];
-                _Time3.text=[NSString stringWithFormat:@"第%@-%d节 @%@",[classSolution[2] objectForKey:@"djj"],[[classSolution[2] objectForKey:@"djj"] intValue]+1,[classSolution[2] objectForKey:@"room"]];
+                _Time3.text=[NSString stringWithFormat:@"第%@-%d节 %@   @%@",[classSolution[2] objectForKey:@"djj"],[[classSolution[2] objectForKey:@"djj"] intValue]+1,[self getTime:[[classSolution[0] objectForKey:@"djj"] intValue]],[classSolution[2] objectForKey:@"room"]];
                 _Name4.text=[classSolution[3] objectForKey:@"name"];
-                _Time4.text=[NSString stringWithFormat:@"第%@-%d节 @%@",[classSolution[3] objectForKey:@"djj"],[[classSolution[3] objectForKey:@"djj"] intValue]+1,[classSolution[3] objectForKey:@"room"]];
+                _Time4.text=[NSString stringWithFormat:@"第%@-%d节 %@   @%@",[classSolution[3] objectForKey:@"djj"],[[classSolution[3] objectForKey:@"djj"] intValue]+1,[self getTime:[[classSolution[0] objectForKey:@"djj"] intValue]],[classSolution[3] objectForKey:@"room"]];
+                _Ico1.hidden=false;
+                _Ico2.hidden=false;
+                _Ico3.hidden=false;
+                _Ico4.hidden=false;
                 break;
             default:
                 break;
         }
 
+    }
+}
+
+-(NSString*)getTime:(int)time{
+    switch (time) {
+        case 1:
+            return @"8:00-9:45";
+            break;
+        case 3:
+            return @"10:00-11:45";
+            break;
+        case 5:
+            return @"14:00-15:45";
+            break;
+        case 7:
+            return @"16:00-15:45";
+            break;
+        case 9:
+            return @"19:00-20:45";
+            break;
+        default:
+            return @"";
+            break;
     }
 }
 - (void)didReceiveMemoryWarning {
@@ -129,19 +168,30 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     self.extensionContext.widgetLargestAvailableDisplayMode = NCWidgetDisplayModeExpanded;
-    //    if (self.extensionContext.widgetLargestAvailableDisplayMode == NCWidgetDisplayModeCompact) {
-    //        self.preferredContentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width, 110);
-    //    } else
-    //    {
-    //        self.preferredContentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width, 300);
-    //    }
 }
 - (void)widgetActiveDisplayModeDidChange:(NCWidgetDisplayMode)activeDisplayMode withMaximumSize:(CGSize)maxSize {
     if (activeDisplayMode == NCWidgetDisplayModeCompact) {
         self.preferredContentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width, 110);
     } else
     {
-        self.preferredContentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width, 300);
+        switch (_classnum) {
+            case 1:
+                self.preferredContentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width, 110);
+                break;
+            case 2:
+                self.preferredContentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width, 180);
+                break;
+            case 3:
+                self.preferredContentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width, 240);
+                break;
+            case 4:
+                self.preferredContentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width, 300);
+                break;
+            default:
+                self.preferredContentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width, 300);
+                break;
+        }
+
     }
 }
 @end

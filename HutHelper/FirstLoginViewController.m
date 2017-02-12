@@ -45,7 +45,7 @@
     /**设置4秒超时*/
     ((AFJSONResponseSerializer *)manager.responseSerializer).removesKeysWithNullValues = YES;
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
-    manager.requestSerializer.timeoutInterval = 4.f;
+    manager.requestSerializer.timeoutInterval = 9.f;
     [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
     [manager GET:Url_String parameters:nil progress:nil
          success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {

@@ -28,7 +28,16 @@
     self.title=@"电费查询";
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
-    // Do any additional setup after loading the view from its nib.
+    [self getRoom];
+}
+-(void)getRoom{
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    if ([defaults objectForKey:@"PowerBuild"]) {
+        _Building.text=[defaults objectForKey:@"PowerBuild"];
+    }
+    if ([defaults objectForKey:@"PowerRoom"]) {
+        _Room.text=[defaults objectForKey:@"PowerRoom"];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -37,10 +46,10 @@
 }
 
 - (IBAction)Mark:(id)sender {
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     NSString *Build_String    = _Building.text;
     NSString *Room_String     = _Room.text;
     NSString *Url_String=[NSString stringWithFormat:API_POWER,Build_String,Room_String];
-    
     NSURL *url                = [NSURL URLWithString: Url_String];//接口地址
     NSError *error            = nil;
     NSString *jsonString      = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:&error];//Url -> String
@@ -57,6 +66,8 @@
         power_String=[power_String stringByAppendingString:power2_String];
         power_String=[power_String stringByAppendingString:power_money];
         power_String=[power_String stringByAppendingString:power3_String];
+        [defaults setObject:Build_String forKey:@"PowerBuild"];
+        [defaults setObject:Room_String forKey:@"PowerRoom"];
         UIAlertView *alertView    = [[UIAlertView alloc] initWithTitle:@"查询成功"
                                                                message:power_String
                                                               delegate:self
