@@ -69,4 +69,21 @@ int startday                        = 29;
 } //当前第几周
 
 
+/**
+ 获得当前是星期几
+
+ @param y 年
+ @param m 月
+ @param d 日
+ @return 星期几
+ */
++(int) getweek:(int)y m:(int)m d:(int)d{
+    if(m==1||m==2) {
+        m+=12;
+        y--;
+    }
+    int iWeek=(d+2*m+3*(m+1)/5+y+y/4-y/100+y/400)%7+1;
+    return iWeek;
+}
+
 @end

@@ -4,6 +4,18 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Extend 2.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>17</integer>
+		</dict>
+		<key>Extend.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>16</integer>
+		</dict>
 		<key>HutHelper.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -17,6 +29,16 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>3A2FF4D81E50170400B07EB6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>3A2FF4E71E50179700B07EB6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>3A7D3CAE1DB0A7ED00355E7A</key>
 		<dict>
 			<key>primary</key>

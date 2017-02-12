@@ -83,11 +83,11 @@ int class_error_;
 #pragma mark - 各按钮事件
 - (IBAction)ClassFind:(id)sender {  //课表界面
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    NSArray *array_class                            = [defaults objectForKey:@"array_class"];
-    NSArray *array_xp                            = [defaults objectForKey:@"array_xp"];
+    NSArray *Class                            = [defaults objectForKey:@"Class"];
+    NSArray *ClassXP                            = [defaults objectForKey:@"ClassXP"];
     NSDictionary *User_Data=[defaults objectForKey:@"User"];
     User *user=[User yy_modelWithJSON:User_Data];
-    if(array_class==NULL&&array_xp==NULL){
+    if(Class==NULL&&ClassXP==NULL){
         /**拼接地址*/
         [MBProgressHUD showMessage:@"查询中" toView:self.view];
         NSString *Url_String=[NSString stringWithFormat:API_CLASS,user.studentKH,[defaults objectForKey:@"remember_code_app"]];
@@ -106,8 +106,11 @@ int class_error_;
                  NSString *Msg=[Class_All objectForKey:@"msg"];
                  if ([Msg isEqualToString:@"ok"]) {
                      NSArray *array               = [Class_All objectForKey:@"data"];
-                     [defaults setObject:array forKey:@"array_class"];
+                     [defaults setObject:array forKey:@"Class"];
                      [defaults synchronize];
+                     NSUserDefaults *shared = [[NSUserDefaults alloc] initWithSuiteName:@"group.HutHelper"];
+                     [shared setObject:array forKey:@"Class"];
+                     [shared synchronize];
                      /**请求实验课表*/
                      
                      [manager GET:UrlXP_String parameters:nil progress:nil
@@ -116,8 +119,11 @@ int class_error_;
                               NSString *Msg=[ClassXP_All objectForKey:@"msg"];
                               if ([Msg isEqualToString:@"ok"]) {
                                   NSArray *array               = [ClassXP_All objectForKey:@"data"];
-                                  [defaults setObject:array forKey:@"array_xp"];
+                                  [defaults setObject:array forKey:@"ClassXP"];
                                   [defaults synchronize];
+                                  NSUserDefaults *shared = [[NSUserDefaults alloc] initWithSuiteName:@"group.HutHelper"];
+                                  [shared setObject:array forKey:@"ClassXP"];
+                                  [shared synchronize];
                                   HideAllHUD
                                   UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
                                   ClassViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Class"];
@@ -164,11 +170,11 @@ int class_error_;
 
 - (IBAction)ClassXPFind:(id)sender {  //课表界面
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    NSArray *array_class                            = [defaults objectForKey:@"array_class"];
-    NSArray *array_xp                            = [defaults objectForKey:@"array_xp"];
+    NSArray *Class                            = [defaults objectForKey:@"Class"];
+    NSArray *ClassXP                            = [defaults objectForKey:@"ClassXP"];
     NSDictionary *User_Data=[defaults objectForKey:@"User"];
     User *user=[User yy_modelWithJSON:User_Data];
-    if(array_class==NULL&&array_xp==NULL){
+    if(Class==NULL&&ClassXP==NULL){
         /**拼接地址*/
         [MBProgressHUD showMessage:@"查询中" toView:self.view];
         NSString *Url_String=[NSString stringWithFormat:API_CLASS,user.studentKH,[defaults objectForKey:@"remember_code_app"]];
@@ -187,7 +193,7 @@ int class_error_;
                  NSString *Msg=[Class_All objectForKey:@"msg"];
                  if ([Msg isEqualToString:@"ok"]) {
                      NSArray *array               = [Class_All objectForKey:@"data"];
-                     [defaults setObject:array forKey:@"array_class"];
+                     [defaults setObject:array forKey:@"Class"];
                      [defaults synchronize];
                      /**请求实验课表*/
                      [manager GET:UrlXP_String parameters:nil progress:nil
@@ -196,7 +202,7 @@ int class_error_;
                               NSString *Msg=[ClassXP_All objectForKey:@"msg"];
                               if ([Msg isEqualToString:@"ok"]) {
                                   NSArray *array               = [ClassXP_All objectForKey:@"data"];
-                                  [defaults setObject:array forKey:@"array_xp"];
+                                  [defaults setObject:array forKey:@"ClassXP"];
                                   [defaults synchronize];
                                   HideAllHUD
                                   UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
@@ -633,7 +639,7 @@ int class_error_;
         [tempAppDelegate.mainNavigationController pushViewController:firstlogin animated:YES];
     }
     
-    NSArray *array                            = [defaults objectForKey:@"array_class"];
+    NSArray *array                            = [defaults objectForKey:@"Class"];
     NSString *autoclass=[defaults objectForKey:@"autoclass"];
     /**  是否自动打开课程表  */
     if(array!=NULL&&[autoclass isEqualToString:@"打开"]){

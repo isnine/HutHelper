@@ -11,5 +11,6 @@
 @interface Math : NSObject
 +(int) CountWeeks:(int)nowyear m:(int)nowmonth d:(int)nowday;
 +(int) CountDays:(int)year m:(int)month d:(int)day;
++(int) getweek:(int)y m:(int)m d:(int)d;
 + (NSString*)sha1:(NSString *)input;
 @end

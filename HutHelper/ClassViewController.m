@@ -135,12 +135,8 @@ NSString *show_xp;
     CourseModel *a26 = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
     CourseModel *a27 = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
     
-    if ([defaults objectForKey:@"array_class"]!=NULL) {
-        NSArray *array                               = [defaults objectForKey:@"array_class"];
-        
-        
-        
-        
+    if ([defaults objectForKey:@"Class"]!=NULL) {
+        NSArray *array                               = [defaults objectForKey:@"Class"];
         int day1 = 1,day2=1,day3=1,day4=1,day5=1,day6=1;
         
         for (int i= 0; i<=(array.count-1); i++) {
@@ -167,8 +163,6 @@ NSString *show_xp;
             int ab             = 1;
             
             int EndClass       = (short)StartClass_num + 1;
-            
-            
             ClassName=[ClassName stringByAppendingString:@"\n@"];
             ClassName=[ClassName stringByAppendingString:Room];
             
@@ -348,13 +342,13 @@ NSString *show_xp;
     CourseModel *a26 = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
     CourseModel *a27 = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
     
-    if([defaults objectForKey:@"array_xp"]!=NULL){
-        NSArray *array_xp                            = [defaults objectForKey:@"array_xp"];
+    if([defaults objectForKey:@"ClassXP"]!=NULL){
+        NSArray *ClassXP                            = [defaults objectForKey:@"ClassXP"];
         
         int day1                                     = 1,day2=1,day3=1,day4=1,day5=1,day6=1;
         
-        for (int ixp                                 = 0; ixp<array_xp.count; ixp++) {
-            NSDictionary *dict1_xp                       = array_xp[ixp];
+        for (int ixp                                 = 0; ixp<ClassXP.count; ixp++) {
+            NSDictionary *dict1_xp                       = ClassXP[ixp];
             NSString *ClassName_xp                       = [dict1_xp objectForKey:@"lesson"];//第几节
             NSString *StartClass_xp                      = [dict1_xp objectForKey:@"lesson_no"];//第几节
             int StartClass_xp_num                 = [StartClass_xp intValue];
@@ -523,7 +517,7 @@ NSString *show_xp;
 
 - (void)xp{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    NSArray *array_xp                            = [defaults objectForKey:@"array_xp"];
+    NSArray *ClassXP                            = [defaults objectForKey:@"ClassXP"];
     CourseModel *a1  = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
     CourseModel *a2  = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
     CourseModel *a3  = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
@@ -540,8 +534,8 @@ NSString *show_xp;
     CourseModel *a14 = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
     CourseModel *a15 = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
     
-    for (int ixp                                 = 0; ixp<array_xp.count; ixp++) {
-        NSDictionary *dict1_xp                       = array_xp[ixp];
+    for (int ixp                                 = 0; ixp<ClassXP.count; ixp++) {
+        NSDictionary *dict1_xp                       = ClassXP[ixp];
         NSString *ClassName_xp                       = [dict1_xp objectForKey:@"lesson"];//第几节
         NSString *StartClass_xp                      = [dict1_xp objectForKey:@"lesson_no"];//第几节
         int StartClass_xp_num                 = [StartClass_xp intValue];
@@ -711,7 +705,7 @@ NSString *show_xp;
              NSString *Msg=[Class_All objectForKey:@"msg"];
              if ([Msg isEqualToString:@"ok"]) {
                  NSArray *array               = [Class_All objectForKey:@"data"];
-                 [defaults setObject:array forKey:@"array_class"];
+                 [defaults setObject:array forKey:@"Class"];
                  [defaults synchronize];
                  
                  /**请求实验课表*/
@@ -721,7 +715,7 @@ NSString *show_xp;
                           NSString *Msg=[ClassXP_All objectForKey:@"msg"];
                           if ([Msg isEqualToString:@"ok"]) {
                               NSArray *array               = [ClassXP_All objectForKey:@"data"];
-                              [defaults setObject:array forKey:@"array_xp"];
+                              [defaults setObject:array forKey:@"ClassXP"];
                               [defaults synchronize];
                               HideAllHUD
                               [MBProgressHUD showSuccess:@"刷新成功"];
