@@ -142,7 +142,7 @@ int startday                        = 29;
     int month                                 =(short) [dateComponent month];//月
     int day                                   = (short)[dateComponent day];//日
     
-    int nowweek=[self CountWeeks:year m:month d:day]-9;
+    int nowweek=[self CountWeeks:year m:month d:day];
     NSLog(@"现在第:%d周",nowweek);
     if (nowweek > jsz)
         return 0;

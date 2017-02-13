@@ -272,7 +272,7 @@ int num=1;
             cellcommit.CommitName.text=[self getcommitname:(short)indexPath.section with:(short)indexPath.row-exis];
             cellcommit.CommitContent.text=[self getcommitcontent:(short)indexPath.section with:(short)indexPath.row-exis];
             cellcommit.CommitTime.text=[self getcommittime:(short)indexPath.section with:(short)indexPath.row-exis];
-        //    cellcommit.delectButton.hidden=![self isShowCommitDelect:(short)indexPath.section with:(short)indexPath.row-exis];
+            cellcommit.delectButton.hidden=![self isShowCommitDelect:(short)indexPath.section with:(short)indexPath.row-exis];
             return cellcommit;
         }
         else{
@@ -287,7 +287,7 @@ int num=1;
             exis=3;}
         cellcommit.CommitName.text=[self getcommitname:(short)indexPath.section with:(short)indexPath.row-exis];
         cellcommit.CommitContent.text=[self getcommitcontent:(short)indexPath.section with:(short)indexPath.row-exis];
-     //   cellcommit.delectButton.hidden=![self isShowCommitDelect:(short)indexPath.section with:(short)indexPath.row-exis];
+        cellcommit.delectButton.hidden=![self isShowCommitDelect:(short)indexPath.section with:(short)indexPath.row-exis];
         cellcommit.CommitTime.text=[self getcommittime:(short)indexPath.section with:(short)indexPath.row-exis];
         return cellcommit;
             
@@ -355,12 +355,12 @@ int num=1;
     NSDictionary *User_Data=[defaults objectForKey:@"User"];
     
     User *user=[User yy_modelWithJSON:User_Data];
-    NSLog(@"说说:%@个人:%@",commitId,user.user_id);
     if ([commitId isEqualToString:user.user_id])
         return  true;
     else
         return false;
 }
+
 
 -(NSString*)getPhoto:(int)i with:(int)j{
     NSArray *photo=[_Say_content[i] objectForKey:@"pics"];

@@ -151,7 +151,7 @@ int class_error_;
                  }
                  else{
                      HideAllHUD
-                     [MBProgressHUD showError:@"查询失败"];
+                     [MBProgressHUD showError:Msg];
                  }
              } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                  HideAllHUD
@@ -210,6 +210,10 @@ int class_error_;
                                   AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
                                   [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:NO];
                               }
+                              else{
+                                  HideAllHUD
+                                  [MBProgressHUD showError:Msg];
+                              }
                           } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                               HideAllHUD
                               [MBProgressHUD showError:@"网络错误，实验课表查询失败"];
@@ -221,7 +225,7 @@ int class_error_;
                  }
                  else{
                      HideAllHUD
-                     [MBProgressHUD showError:@"查询失败"];
+                     [MBProgressHUD showError:Msg];
                  }
              } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                  HideAllHUD
@@ -377,7 +381,7 @@ int class_error_;
                  }
                  else{
                      HideAllHUD
-                     [MBProgressHUD showError:@"请检查网络或者重新登录"];
+                     [MBProgressHUD showError:Msg];
                  }
              } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                  HideAllHUD
@@ -504,7 +508,7 @@ int class_error_;
              }
              else{
                  HideAllHUD
-                 [MBProgressHUD showError:[Say_All objectForKey:@"msg"]];
+                 [MBProgressHUD showError:[Say_All objectForKey:[Say_All objectForKey:@"msg"]]];
              }             HideAllHUD
          } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
              [MBProgressHUD showError:@"网络错误"];

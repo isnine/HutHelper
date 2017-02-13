@@ -104,6 +104,7 @@
         cell.locate.text=[self getLocate:(short)indexPath.section];
         cell.time.text=[self getTime:(short)indexPath.section];
         cell.content.text=[self getContent:(short)indexPath.section];
+        cell.phone.text=[self getPhone:(short)indexPath.section];
         return cell;
     }
     else if(indexPath.row==1){//照片
@@ -329,6 +330,22 @@
 }
 -(NSString*)getUsername:(int)i{
     return [_lostData[i] objectForKey:@"username" ];
+}
+-(NSString*)getPhone:(int)i{
+    NSString *photo=[_lostData[i] objectForKey:@"phone"];
+    NSString *qq=[_lostData[i] objectForKey:@"qq"];
+    NSString *wechat=[_lostData[i] objectForKey:@"wechat"];
+    NSString *res=@"联系方式: ";
+    if (![photo isEqualToString:@""]) {
+        res=[[res stringByAppendingString:@"手机:"] stringByAppendingString:photo];
+    }
+    if (![qq isEqualToString:@""]) {
+        res=[[res stringByAppendingString:@" QQ:"] stringByAppendingString:qq];
+    }
+    if (![wechat isEqualToString:@""]) {
+        res=[[res stringByAppendingString:@" 微信:"] stringByAppendingString:wechat];
+    }
+    return res;
 }
 -(NSString*)getPhoto:(int)i with:(int)j{
     NSArray *photo=[_lostData[i] objectForKey:@"pics"];

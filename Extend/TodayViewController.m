@@ -24,6 +24,13 @@
 @property (weak, nonatomic) IBOutlet UIImageView *Ico2;
 @property (weak, nonatomic) IBOutlet UIImageView *Ico3;
 @property (weak, nonatomic) IBOutlet UIImageView *Ico4;
+@property (weak, nonatomic) IBOutlet UIImageView *Ico5;
+@property (weak, nonatomic) IBOutlet UIImageView *Ico6;
+@property (weak, nonatomic) IBOutlet UIImageView *Ico7;
+@property (weak, nonatomic) IBOutlet UIImageView *Ico8;
+@property (weak, nonatomic) IBOutlet UIImageView *Xian1;
+@property (weak, nonatomic) IBOutlet UIImageView *Xian2;
+@property (weak, nonatomic) IBOutlet UIImageView *Xian3;
 @property int classnum;
 @end
 
@@ -62,7 +69,7 @@
             NSString *teacher         = [dict1 objectForKey:@"teacher"];//老师
             NSString *weekDay         = [dict1 objectForKey:@"xqj"];//第几天
             int weekDay_num  = [weekDay intValue];
-            if ([ExtendModel IfWeeks:dsz_num qsz:startWeek_num jsz:endWeek_num]&&[ExtendModel getWeek_solution]-2==weekDay_num) {
+            if ([ExtendModel IfWeeks:dsz_num qsz:startWeek_num jsz:endWeek_num]&&[ExtendModel getWeek_solution]==weekDay_num) {
                 if(classSolution.count!=0){
                     for (int j=0; j<classSolution.count; j++) {
                         if ([[array[i] objectForKey:@"djj"] intValue]<[[classSolution[j] objectForKey:@"djj"] intValue]) {
@@ -87,6 +94,7 @@
                 _Name.text=[classSolution[0] objectForKey:@"name"];
                 _Time.text=[NSString stringWithFormat:@"第%@-%d节 %@   @%@",[classSolution[0] objectForKey:@"djj"],[[classSolution[0] objectForKey:@"djj"] intValue]+1,[self getTime:[[classSolution[0] objectForKey:@"djj"] intValue]],[classSolution[0] objectForKey:@"room"]];
                 _Ico1.hidden=false;
+                _Ico5.hidden=false;
                 break;
             case 2:
                 _Name.text=[classSolution[0] objectForKey:@"name"];
@@ -95,6 +103,8 @@
                 _Time2.text=[NSString stringWithFormat:@"第%@-%d节 %@   @%@",[classSolution[1] objectForKey:@"djj"],[[classSolution[1] objectForKey:@"djj"] intValue]+1,[self getTime:[[classSolution[0] objectForKey:@"djj"] intValue]],[classSolution[1] objectForKey:@"room"]];
                 _Ico1.hidden=false;
                 _Ico2.hidden=false;
+                _Ico5.hidden=false;
+                _Ico6.hidden=false;
                 break;
             case 3:
                 _Name.text=[classSolution[0] objectForKey:@"name"];
@@ -106,6 +116,9 @@
                 _Ico1.hidden=false;
                 _Ico2.hidden=false;
                 _Ico3.hidden=false;
+                _Ico5.hidden=false;
+                _Ico6.hidden=false;
+                _Ico7.hidden=false;
                 break;
             case 4:
                 _Name.text=[classSolution[0] objectForKey:@"name"];
@@ -120,6 +133,10 @@
                 _Ico2.hidden=false;
                 _Ico3.hidden=false;
                 _Ico4.hidden=false;
+                _Ico5.hidden=false;
+                _Ico6.hidden=false;
+                _Ico7.hidden=false;
+                _Ico8.hidden=false;
                 break;
             default:
                 break;
@@ -180,12 +197,18 @@
                 break;
             case 2:
                 self.preferredContentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width, 180);
+                _Ico1.hidden=false;
                 break;
             case 3:
                 self.preferredContentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width, 240);
+                _Ico1.hidden=false;
+                _Ico2.hidden=false;
                 break;
             case 4:
                 self.preferredContentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width, 300);
+                _Ico1.hidden=false;
+                _Ico2.hidden=false;
+                _Ico3.hidden=false;
                 break;
             default:
                 self.preferredContentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width, 300);

@@ -40,6 +40,7 @@
 #define API_MOMENTS_CREATE @"http://218.75.197.121:8888/api/v1/moments/create/%@/%@"
 #define API_MOMENTS_IMG_UPLOAD @"http://218.75.197.121:8888/api/v1/moments/upload"
 #define API_MOMENTS_DELETE @"http://218.75.197.121:8888/api/v1/moments/delete/%@/%@/%@"
+#define API_MOMENTS_COMMENT_DELETE @"http://218.75.197.121:8888/api/v1/moments/deletec/%@/%@/%@"
 #define API_MOMENTS_CREATE_COMMENT @"http://218.75.197.121:8888/api/v1/moments/comment/%@/%@/%@"
 /**反馈*/
 #define API_FEEDBACK @"http://218.75.197.121:8888/home/msg/0"
