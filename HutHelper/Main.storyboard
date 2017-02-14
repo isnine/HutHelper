@@ -382,7 +382,7 @@
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7uR-iM-ItG">
-                                <rect key="frame" x="16" y="97" width="314" height="191"/>
+                                <rect key="frame" x="16" y="110" width="337" height="191"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -403,8 +403,16 @@
                                 <color key="textColor" red="0.67854183909999999" green="0.68246322869999998" blue="0.6864371896" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="xian" translatesAutoresizingMaskIntoConstraints="NO" id="A43-lP-M9Z">
+                                <rect key="frame" x="13" y="393" width="343" height="1"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="xian" translatesAutoresizingMaskIntoConstraints="NO" id="Cb3-Av-Fen">
+                                <rect key="frame" x="13" y="104" width="343" height="1"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入您的联系方式以便与你取得联系" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9Ku-fi-teZ">
-                                <rect key="frame" x="16" y="384" width="343" height="51"/>
+                                <rect key="frame" x="16" y="389" width="343" height="51"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -1451,7 +1459,7 @@
                                         <rect key="frame" x="0.0" y="28" width="655" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uBA-0W-HBu" id="Lih-Cl-fIF">
-                                            <rect key="frame" x="0.0" y="0.0" width="655" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="655" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
