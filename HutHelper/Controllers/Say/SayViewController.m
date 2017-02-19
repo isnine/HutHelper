@@ -187,6 +187,7 @@ int num=1;
         if (photo.count==0) {
             cellshowcommit.commitsize.text=[NSString stringWithFormat:@"%d",[self getcommitcount:(short)indexPath.section]];
             cellshowcommit.delectButton.hidden=![self isShowDelect:(short)indexPath.section];
+             cellshowcommit.dep_name.text=[NSString stringWithFormat:@"%@",[self getDepName:(short)indexPath.section]];
             return cellshowcommit;
         }
         else if(photo.count==1){
@@ -278,6 +279,7 @@ int num=1;
         else{
             cellshowcommit.commitsize.text=[NSString stringWithFormat:@"%d",[self getcommitcount:(short)indexPath.section]];
             cellshowcommit.delectButton.hidden=![self isShowDelect:(short)indexPath.section];
+            cellshowcommit.dep_name.text=[NSString stringWithFormat:@"%@",[self getDepName:(short)indexPath.section]];
             return cellshowcommit;
         }
         
@@ -376,6 +378,9 @@ int num=1;
 }
 -(NSString*)getName:(int)i{
     return [_Say_content[i] objectForKey:@"username"];
+}
+-(NSString*)getDepName:(int)i{
+    return [_Say_content[i] objectForKey:@"dep_name"];
 }
 -(UIImage*)getImg:(int)i{
     NSString *Url=[NSString stringWithFormat:API_IMG,[_Say_content[i] objectForKey:@"head_pic_thumb"]];

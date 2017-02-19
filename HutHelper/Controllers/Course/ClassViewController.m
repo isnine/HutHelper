@@ -30,7 +30,6 @@
 @end
 
 @implementation ClassViewController
-
 int getweekday(){
     NSDate *now                                  = [NSDate date];
     NSCalendar *calendar                         = [NSCalendar currentCalendar];
@@ -81,9 +80,12 @@ NSString *show_xp;
     NSString *now2=[NSString stringWithFormat:@"%d",now_week];
     nowweek_string=[nowweek_string stringByAppendingString:now2];
     nowweek_string=[nowweek_string stringByAppendingString:@"周"];
+    /** 标题栏样式 */
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+    self.navigationItem.backBarButtonItem = item;
     //标题结束//
     self.navigationItem.title                    = nowweek_string;
-        [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor]}];
+     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor]}];
     //------------按钮--------
     UIBarButtonItem *myButton = [[UIBarButtonItem alloc] initWithTitle:@"刷新" style:UIBarButtonItemStyleBordered target:self action:@selector(clickEvent)];
     self.navigationItem.rightBarButtonItem = myButton;
@@ -92,15 +94,21 @@ NSString *show_xp;
     //主页搜索按钮
     UIButton *mainAndSearchBtn = [[UIButton alloc] initWithFrame:CGRectMake(70, 0, 50, 50)];
     [rightButtonView addSubview:mainAndSearchBtn];
-    [mainAndSearchBtn setImage:[UIImage imageNamed:@"refresh"] forState:UIControlStateNormal];
-    [mainAndSearchBtn addTarget:self action:@selector(reloadcourse) forControlEvents:UIControlEventTouchUpInside];
+    [mainAndSearchBtn setImage:[UIImage imageNamed:@"set_new"] forState:UIControlStateNormal];
+    [mainAndSearchBtn addTarget:self action:@selector(toSet) forControlEvents:UIControlEventTouchUpInside];
+    UIButton *secondAndSearchBtn = [[UIButton alloc] initWithFrame:CGRectMake(35, 0, 50, 50)];
+    [rightButtonView addSubview:secondAndSearchBtn];
+    [secondAndSearchBtn setImage:[UIImage imageNamed:@"refresh"] forState:UIControlStateNormal];
+    [secondAndSearchBtn addTarget:self action:@selector(reloadcourse) forControlEvents:UIControlEventTouchUpInside];
     //把右侧的两个按钮添加到rightBarButtonItem
     UIBarButtonItem *rightCunstomButtonView = [[UIBarButtonItem alloc] initWithCustomView:rightButtonView];
     self.navigationItem.rightBarButtonItem = rightCunstomButtonView;
     //------------按钮--------
     now_xp=0;
     [self addCourse];
-
+    if ([Config getIsxp]==1) {
+        [self isxp];
+    }
 }
 
 - (void)addCourse{
@@ -677,6 +685,15 @@ NSString *show_xp;
     
 }
 
+-(void)isxp{
+    NSString *nowweek_string=@"第";
+    NSString *now2=[NSString stringWithFormat:@"%d",now_week];
+    nowweek_string=[nowweek_string stringByAppendingString:now2];
+    nowweek_string=[nowweek_string stringByAppendingString:@"周实验课表"];
+    //标题结束//
+    self.navigationItem.title                    = nowweek_string;
+    [self addXpCourse];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -747,7 +764,12 @@ NSString *show_xp;
         
 }
 
-
+-(void)toSet{
+    UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    ClassViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Set"];
+    AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:YES];
+}
 
 #pragma mark - GWPCourseListViewDataSource
 - (NSArray<id<Course>> *)courseForCourseListView:(GWPCourseListView *)courseListView{

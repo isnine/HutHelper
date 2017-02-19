@@ -12,4 +12,6 @@
 #define HideAllHUD  [MBProgressHUD hideHUDForView:self.view animated:YES];
 @interface Config : NSObject
 
++ (void)setIsxp:(int )Isxp;
++ (int )getIsxp;
 @end

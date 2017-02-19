@@ -37,7 +37,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *Scontent;
 @property (weak, nonatomic) IBOutlet UILabel *Time;
 
-
 @end
 
 @implementation NSString (MD5)
@@ -59,7 +58,7 @@
 
 @implementation MainPageViewController
 int class_error_;
-
+int isxp=0;
 - (void)viewDidLoad {
     [super viewDidLoad];
     /** 预留方法 */
@@ -97,7 +96,7 @@ int class_error_;
         /**设置4秒超时*/
         AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
         [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
-        manager.requestSerializer.timeoutInterval = 4.f;
+        manager.requestSerializer.timeoutInterval = 6.f;
         [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
         /**请求平时课表*/
         [manager GET:Url_String parameters:nil progress:nil
@@ -112,7 +111,7 @@ int class_error_;
                      [shared setObject:array forKey:@"Class"];
                      [shared synchronize];
                      /**请求实验课表*/
-                     
+                    
                      [manager GET:UrlXP_String parameters:nil progress:nil
                           success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                               NSDictionary *ClassXP_All = [NSDictionary dictionaryWithDictionary:responseObject];
@@ -125,10 +124,13 @@ int class_error_;
                                   [shared setObject:array forKey:@"ClassXP"];
                                   [shared synchronize];
                                   HideAllHUD
+                                  isxp=0;
+                                  [Config setIsxp:0];
                                   UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
                                   ClassViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Class"];
                                   AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
                                   [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:NO];
+                                  
                               }
                               else{
                                   HideAllHUD
@@ -141,7 +143,7 @@ int class_error_;
                               }
                           } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                               HideAllHUD
-                              [MBProgressHUD showError:@"网络错误，实验课表查询失败"];
+                              [MBProgressHUD showError:@"网络超时，实验课表查询失败"];
                           }];
                      
                  }
@@ -155,10 +157,11 @@ int class_error_;
                  }
              } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                  HideAllHUD
-                 [MBProgressHUD showError:@"网络错误，平时课表查询失败"];
+                 [MBProgressHUD showError:@"网络超时，平时课表查询失败"];
              }];
     }
     else{
+        [Config setIsxp:0];
         UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         ClassViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Class"];
         AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -184,7 +187,7 @@ int class_error_;
         /**设置9秒超时*/
         AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
         [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
-        manager.requestSerializer.timeoutInterval = 4.f;
+        manager.requestSerializer.timeoutInterval = 6.f;
         [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
         /**请求平时课表*/
         [manager GET:Url_String parameters:nil progress:nil
@@ -205,10 +208,12 @@ int class_error_;
                                   [defaults setObject:array forKey:@"ClassXP"];
                                   [defaults synchronize];
                                   HideAllHUD
+                                  [Config setIsxp:1];
                                   UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
                                   ClassViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Class"];
                                   AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
                                   [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:NO];
+                                  
                               }
                               else{
                                   HideAllHUD
@@ -216,7 +221,7 @@ int class_error_;
                               }
                           } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                               HideAllHUD
-                              [MBProgressHUD showError:@"网络错误，实验课表查询失败"];
+                              [MBProgressHUD showError:@"网络超时，实验课表查询失败"];
                           }];
                  }
                  else if([Msg isEqualToString:@"令牌错误"]){
@@ -229,10 +234,11 @@ int class_error_;
                  }
              } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                  HideAllHUD
-                 [MBProgressHUD showError:@"网络错误，平时课表查询失败"];
+                 [MBProgressHUD showError:@"网络超时，平时课表查询失败"];
              }];
     }
     else{
+        [Config setIsxp:1];
         UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         ClassViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Class"];
         AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -270,7 +276,7 @@ int class_error_;
     /**设置9秒超时*/
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
-    manager.requestSerializer.timeoutInterval = 3.f;
+    manager.requestSerializer.timeoutInterval = 5.f;
     [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
     /**请求平时课表*/
     [manager GET:Url_String parameters:nil progress:nil
@@ -287,18 +293,18 @@ int class_error_;
                      AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
                      [tempAppDelegate.mainNavigationController pushViewController:Say animated:YES];
                      
-                 }
-                 else{
+                 }else{
                      HideAllHUD
-                     [MBProgressHUD showError:@"网络错误"];
+                     [MBProgressHUD showError:@"数据错误"];
                  }
              }
              else{
                  HideAllHUD
                  [MBProgressHUD showError:[Say_All objectForKey:@"msg"]];
-             }             HideAllHUD
+             }
+             HideAllHUD
          } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-             [MBProgressHUD showError:@"网络错误"];
+             [MBProgressHUD showError:@"网络超时"];
              HideAllHUD
          }];
     
@@ -321,7 +327,7 @@ int class_error_;
     /**设置9秒超时*/
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
-    manager.requestSerializer.timeoutInterval = 3.f;
+    manager.requestSerializer.timeoutInterval = 5.f;
     [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
     /**请求平时课表*/
     [manager GET:Url_String parameters:nil progress:nil
@@ -335,7 +341,7 @@ int class_error_;
              AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
              [tempAppDelegate.mainNavigationController pushViewController:hand animated:YES];
          } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-             [MBProgressHUD showError:@"网络错误"];
+             [MBProgressHUD showError:@"网络超时，请检查网络并重试"];
              HideAllHUD
          }];
 } //二手市场
@@ -385,7 +391,7 @@ int class_error_;
                  }
              } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                  HideAllHUD
-                 [MBProgressHUD showError:@"请检查网络或者重新登录"];
+                 [MBProgressHUD showError:@"网络超时，请检查网络并重试"];
              }];
     }else{
         UIStoryboard *main=[UIStoryboard storyboardWithName:@"Main" bundle:nil];
@@ -420,7 +426,7 @@ int class_error_;
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     /**设置4秒超时*/
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
-    manager.requestSerializer.timeoutInterval = 3.f;
+    manager.requestSerializer.timeoutInterval = 5.f;
     [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
     /**请求*/
     [manager GET:Url_String parameters:nil progress:nil
@@ -483,7 +489,7 @@ int class_error_;
     /**设置9秒超时*/
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
-    manager.requestSerializer.timeoutInterval = 3.f;
+    manager.requestSerializer.timeoutInterval = 5.f;
     [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
     /**请求平时课表*/
     [manager GET:Url_String parameters:nil progress:nil
@@ -503,7 +509,7 @@ int class_error_;
                  }
                  else{
                      HideAllHUD
-                     [MBProgressHUD showError:@"网络错误"];
+                     [MBProgressHUD showError:@"数据错误"];
                  }
              }
              else{
@@ -511,7 +517,7 @@ int class_error_;
                  [MBProgressHUD showError:[Say_All objectForKey:[Say_All objectForKey:@"msg"]]];
              }             HideAllHUD
          } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-             [MBProgressHUD showError:@"网络错误"];
+             [MBProgressHUD showError:@"网络超时，请检查网络并重试"];
              HideAllHUD
          }];
 }  //失物招领

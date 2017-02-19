@@ -132,6 +132,7 @@
     NSMutableDictionary *noticeDictionary=[[NSMutableDictionary alloc]init];
     NSMutableDictionary *noticeDictionary2=[[NSMutableDictionary alloc]init];
     NSMutableDictionary *noticeDictionary3=[[NSMutableDictionary alloc]init];
+    NSMutableDictionary *noticeDictionary4=[[NSMutableDictionary alloc]init];
     NSMutableArray *notice=[[NSMutableArray alloc]init];
     [noticeDictionary setObject:@"2017-02-09 08:00" forKey:@"time"];
     [noticeDictionary setObject:@"欢迎使用工大助手" forKey:@"title"];
@@ -139,12 +140,17 @@
     [notice insertObject:noticeDictionary atIndex:0];
     [noticeDictionary3 setObject:@"2017-02-09 08:00" forKey:@"time"];
     [noticeDictionary3 setObject:@"开发者的一些话" forKey:@"title"];
-    [noticeDictionary3 setObject:@"首先感谢你在新的学期里继续使用工大助手,由于团队每个人的分工不同，整个iOS端仅由我一个人的负责开发。对此，如果之前版本App有给你带来不便的地方，希望您能够理解。\n\n在新的版本中，我修改了大量的界面并对程序进行了优化。如果您还发现有任何Bug，可以通过【左滑菜单-反馈】向我反馈，我向您保证，您反馈的每一个Bug我都会修复，提的每一个建议，我们都会认真考虑。\n\n同时如果App给您有带来了一丝便利，我希望您可以在【左滑菜单-关于-去AppStore评分】给App进行评分，对一个整天码代码的程序猿来说，这真的是最好的鼓励了🙏\n" forKey:@"body"];
+    [noticeDictionary3 setObject:@"首先感谢你在新的学期里继续使用工大助手,由于团队每个人的分工不同，整个iOS端仅由我一个人的负责开发。对此，如果之前版本App有给你带来不便的地方，希望您能够理解。\n\n在新的版本中，我修改了大量的界面并对程序进行了优化。如果您还发现有任何Bug，可以通过【左滑菜单-反馈】向我反馈，我向您保证，您反馈的每一个Bug我都会修复，提的每一个建议，我们都会认真考虑。\n\n同时如果App给您有带来了便利，希望您可以在【左滑菜单-关于-去AppStore评分】给App进行评分，对一个整天码代码的程序猿来说，这真的是最好的鼓励了🙏\n" forKey:@"body"];
     [notice insertObject:noticeDictionary3 atIndex:1];
     [noticeDictionary2 setObject:@"2017-02-09 08:00" forKey:@"time"];
     [noticeDictionary2 setObject:@"个人中心的使用" forKey:@"title"];
     [noticeDictionary2 setObject:@"在新的版本中,我们支持了用户自定义昵称和修改头像。\n【设置昵称】左滑菜单-个人中心-修改昵称\n【设置头像】左滑菜单-个人中心-点击头像\n修改后的昵称将在校园说说中显示" forKey:@"body"];
     [notice insertObject:noticeDictionary2 atIndex:2];
+
+    [noticeDictionary4 setObject:@"2017-02-09 08:00" forKey:@"time"];
+    [noticeDictionary4 setObject:@"Widget的使用" forKey:@"title"];
+    [noticeDictionary4 setObject:@"使用工大助手Widget可以在不打开App的情况下查询课表\n开启方式:\n在系统主界面，滑动屏幕到最左边，点击编辑添加工大助手。\n\n注:因为是新功能，如果有发现Bug，记得在反馈中向我们反馈哦" forKey:@"body"];
+    [notice insertObject:noticeDictionary4 atIndex:3];
     NSArray *array = [NSArray arrayWithArray:notice];
     [defaults setObject:array forKey:@"Notice"];//通知列表
     [defaults synchronize];

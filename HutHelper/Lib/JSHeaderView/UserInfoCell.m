@@ -41,7 +41,7 @@
         username=[defaults objectForKey:@"username"];
     }
     else if(username == NULL ){
-        username=@"(无名氏)";
+        username=user.TrueName;
     }
 
     if (!_nameLabel) {

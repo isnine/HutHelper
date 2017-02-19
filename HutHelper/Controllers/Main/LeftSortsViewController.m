@@ -23,7 +23,10 @@
 #import "FirstLoginViewController.h"
 #import "User.h"
 #import "YYModel.h"
-
+#import "LeftUserTableViewCell.h"
+#import "LeftItemTableViewCell.h"
+#import "Config.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 @interface LeftSortsViewController () <UITableViewDelegate,UITableViewDataSource>
 
 @end
@@ -52,7 +55,13 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.row==0) {
+        return 150;
+    }else{
+        return 45;
+    }
+}
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return 7;
@@ -60,50 +69,55 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *Identifier      = @"Identifier";
-    UITableViewCell *cell            = [tableView dequeueReusableCellWithIdentifier:Identifier];
-    
-    if (cell == nil) {
-        cell  = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:Identifier];
+
+    LeftUserTableViewCell *userCell;
+    LeftItemTableViewCell *itemCell;
+    if (!userCell) {
+        userCell=[LeftUserTableViewCell tableViewCell];
     }
-    
-    cell.textLabel.font              = [UIFont systemFontOfSize:20.0f];
-    cell.backgroundColor             = [UIColor clearColor];
-    cell.textLabel.textColor         = [UIColor whiteColor];
+    if (!itemCell) {
+        itemCell=[LeftItemTableViewCell tableViewCell];
+    }
+    userCell.backgroundColor             = [UIColor clearColor];
+    itemCell.backgroundColor             = [UIColor clearColor];
     
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults]; //得到用户数据
     NSDictionary *User_Data=[defaults objectForKey:@"User"];
     User *user=[User yy_modelWithJSON:User_Data];
-    NSString *name=user.TrueName;
-    
     if (indexPath.row == 0) {
-        if(name==NULL){
-            cell.textLabel.text              = @"个人中心";
+        if(!user.TrueName){
+            userCell.Username.text              = @"个人中心";
+        }else{
+            userCell.Username.text                = user.TrueName;
         }
-        else
-            cell.textLabel.text              = user.TrueName;
-    } else if (indexPath.row == 1) {
-        cell.textLabel.text              = @"";
+        userCell.Head.image=[self getImg];
+        return userCell;
     } else if (indexPath.row == 2) {
-        cell.textLabel.text              = @"分享应用";
-        cell.accessoryType               = UITableViewCellAccessoryDisclosureIndicator;
+        itemCell.Text.text              = @"分享应用";
+        itemCell.Img.image=[UIImage imageNamed:@"shares"];
+        return itemCell;
     } else if (indexPath.row == 3) {
-        cell.textLabel.text              = @"切换用户";
-        cell.accessoryType               = UITableViewCellAccessoryDisclosureIndicator;
+        itemCell.Text.text                = @"切换用户";
+        itemCell.Img.image=[UIImage imageNamed:@"sign-out"];
+        return itemCell;
     } else if (indexPath.row == 4) {
-        cell.textLabel.text              = @"设置";
-        cell.accessoryType               = UITableViewCellAccessoryDisclosureIndicator;
+        itemCell.Text.text                = @"关于";
+        itemCell.Img.image=[UIImage imageNamed:@"about"];
+        return itemCell;
     } else if (indexPath.row == 5) {
-        cell.textLabel.text              = @"关于";
-        cell.accessoryType               = UITableViewCellAccessoryDisclosureIndicator;
-    } else if (indexPath.row == 6) {
-        cell.textLabel.text              = @"反馈";
-        cell.accessoryType               = UITableViewCellAccessoryDisclosureIndicator;
+        itemCell.Text.text                = @"反馈";
+        itemCell.Img.image=[UIImage imageNamed:@"feedback"];
+        return itemCell;
+    }else{
+        return itemCell;
     }
     
-    return cell;
+    
 }
 
+//-(NSInteger)tableView:(UITableView *)tableView indentationLevelForRowAtIndexPath:(NSIndexPath *)indexPath{
+//    return row;
+//}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -120,10 +134,10 @@
     
     static NSString *Identifier      = @"Identifier";
     UITableViewCell *cell            = [tableView dequeueReusableCellWithIdentifier:Identifier];
+    LeftUserTableViewCell *userCell=[LeftUserTableViewCell tableViewCell];
     if (cell == nil) {
-        cell                             = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:Identifier];
+        cell                = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:Identifier];
     }
-    
     
     if (indexPath.row == 0) { //个人界面
         [self.tableview reloadData];
@@ -131,6 +145,7 @@
         ClassViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"User"];
         AppDelegate *tempAppDelegate     = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:NO];
+        
     }
     
     if (indexPath.row == 2) {  //分享
@@ -146,19 +161,13 @@
         [UMessage removeAllTags:^(id responseObject, NSInteger remain, NSError *error) {//删除友盟标签缓存
         }];
     }
-    if (indexPath.row == 4) {  //设置
-        UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        ClassViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Set"];
-        AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-        [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:YES];
-    }
-    if (indexPath.row == 5) {  //关于
+    if (indexPath.row == 4) {  //关于
         UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         ClassViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"About"];
         AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:YES];
     }
-    if (indexPath.row == 6) {  //反馈
+    if (indexPath.row == 5) {  //反馈
         UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         ClassViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Feedback"];
         AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -169,7 +178,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 180;
+    return 130;
     
 }
 
@@ -244,8 +253,62 @@
     }];
 }
 
+-(NSString*)getHeadUrl{
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    NSDictionary *User_Data=[defaults objectForKey:@"User"];
+    User *user=[User yy_modelWithJSON:User_Data];
+    return [NSString stringWithFormat:API_IMG,user.head_pic_thumb];
+}
+-(void)downHead{
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    NSDictionary *User_Data=[defaults objectForKey:@"User"];
+    SDWebImageManager *manager = [SDWebImageManager sharedManager];
+    User *user=[User yy_modelWithJSON:User_Data];
+    NSString *image_url=[NSString stringWithFormat:API_IMG,user.head_pic_thumb];
+    NSURL *url                   = [NSURL URLWithString: image_url];//接口地址
+    [manager downloadImageWithURL:url options:SDWebImageRetryFailed progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+    } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+        NSData *data = UIImagePNGRepresentation(image);
+        if (data!=NULL&&![image_url isEqualToString:INDEX]) {
+            [defaults setObject:data forKey:@"head_img"];
+            [defaults synchronize];
+            
+        }
+    }];
+}
 
-
-
-
+-(UIImage*) circleImage:(UIImage*) image{
+    UIGraphicsBeginImageContext(image.size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextSetLineWidth(context, 2);
+    CGContextSetStrokeColorWithColor(context, [UIColor whiteColor].CGColor);
+    CGRect rect = CGRectMake(0, 0, image.size.width , image.size.height );
+    CGContextAddEllipseInRect(context, rect);
+    CGContextClip(context);
+    
+    [image drawInRect:rect];
+    CGContextAddEllipseInRect(context, rect);
+    CGContextStrokePath(context);
+    UIImage *newimg = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return newimg;
+}
+-(UIImage*)getImg{
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults]; //得到用户数据
+    NSDictionary *User_Data=[defaults objectForKey:@"User"];
+    User *user=[User yy_modelWithJSON:User_Data];
+    NSString *Url=[NSString stringWithFormat:API_IMG,user.head_pic_thumb];
+    if ((!user.head_pic_thumb)||[user.head_pic_thumb isEqualToString:@""]) {
+        return [self circleImage:[UIImage imageNamed:@"img_defalut"]];
+    }else if ([defaults objectForKey:@"head_img"]!=NULL){
+        return [self circleImage:[UIImage imageWithData:[defaults objectForKey:@"head_img"]]];
+    }else{
+        NSURL *imageUrl = [NSURL URLWithString:Url];
+        UIImage *Img=[UIImage imageWithData:[NSData dataWithContentsOfURL:imageUrl]];
+        NSData *data = UIImagePNGRepresentation(Img);
+        [defaults setObject:data forKey:@"head_img"];
+        [defaults synchronize];
+        return [self circleImage:Img];
+    }
+}
 @end

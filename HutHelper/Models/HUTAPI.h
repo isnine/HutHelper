@@ -13,6 +13,8 @@
 /**课表查询*/
 #define API_CLASS @"http://218.75.197.121:8888/api/v1/get/lessons/%@/%@"
 #define API_CLASSXP @"http://218.75.197.121:8888/api/v1/get/lessonsexp/%@/%@"
+//#define API_CLASS @"http://app.wxz.name/api/Class_ps"
+//#define API_CLASSXP @"http://app.wxz.name/api/Class_xp"
 /**成绩查询*/
 #define API_SCORES @"http://218.75.197.121:8888/api/v1/get/scores/%@/%@/%@"
 #define API_EXAM @"http://218.75.197.124:84/api/exam/%@/key/%@"

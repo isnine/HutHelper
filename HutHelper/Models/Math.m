@@ -9,9 +9,9 @@
 #import "Math.h"
 #import <CommonCrypto/CommonDigest.h>
 @implementation Math
-int startyear                       = 2016;
-int startmonth                      = 8;
-int startday                        = 29;
+int startyear                       = 2017;
+int startmonth                      = 2;
+int startday                        = 20;
 #pragma mark -加密
 + (NSString*)sha1:(NSString *)input
 {

@@ -12,5 +12,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *commitsize;
 @property (weak, nonatomic) IBOutlet UIButton *Commit;
 @property (weak, nonatomic) IBOutlet UIButton *delectButton;
+@property (weak, nonatomic) IBOutlet UILabel *dep_name;
 + (instancetype)tableViewCell;
 @end

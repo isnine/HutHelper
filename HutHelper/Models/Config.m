@@ -7,7 +7,14 @@
 //
 
 #import "Config.h"
-
+static int Isxp ;
 @implementation Config
-
++ (void)setIsxp:(int )bools
+{
+    Isxp = bools;
+}
++ (int )getIsxp
+{
+    return Isxp;
+}
 @end

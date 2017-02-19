@@ -38,33 +38,9 @@ UIImage* img ;
     //
     NSDictionary *User_Data=[defaults objectForKey:@"User"];
     SDWebImageManager *manager = [SDWebImageManager sharedManager];
-    
     User *user=[User yy_modelWithJSON:User_Data];
-    if ([defaults objectForKey:@"head_img"]!=NULL) {
-        self.headerView = [[JSHeaderView alloc] initWithImage:[UIImage imageWithData:[defaults objectForKey:@"head_img"]]];
-    }
-    else if(user.head_pic_thumb!=NULL){
-        NSString *image_url=[NSString stringWithFormat:API_IMG,user.head_pic_thumb];
-        NSURL *url                   = [NSURL URLWithString: image_url];//接口地址
-        [manager downloadImageWithURL:url options:SDWebImageRetryFailed progress:^(NSInteger receivedSize, NSInteger expectedSize) {
-        } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
-            NSData *data = UIImagePNGRepresentation(image);
-            NSLog(@"下载完成");
-                if (data!=NULL&&![image_url isEqualToString:INDEX]) {
-                    [defaults setObject:data forKey:@"head_img"];
-                    [defaults synchronize];
-                    self.headerView = [[JSHeaderView alloc] initWithImage:[UIImage imageWithData:data]];
-                }
-                else{
-                    self.headerView = [[JSHeaderView alloc] initWithImage:[UIImage imageNamed:@"header.jpg"]];
-                }
-                self.navigationItem.titleView = self.headerView;
-        }];
-    }
-    else{
-        self.headerView = [[JSHeaderView alloc] initWithImage:[UIImage imageNamed:@"header.jpg"]];
-    }
-        self.navigationItem.titleView = self.headerView;
+    self.headerView=[[JSHeaderView alloc] initWithImage:[self getImg]];
+    self.navigationItem.titleView = self.headerView;
     
     [self.headerView reloadSizeWithScrollView:self.tableView];
     [self.headerView handleClickActionWithBlock:^{
@@ -190,6 +166,7 @@ NSData* data;
     return 85.f;
 }
 
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     NSDictionary *User_Data=[defaults objectForKey:@"User"];
@@ -260,5 +237,25 @@ NSData* data;
     [super viewWillDisappear:animated];
     [MobClick endLogPageView:@"个人中心"];
     self.navigationController.interactivePopGestureRecognizer.enabled = YES;
+}
+
+-(UIImage*)getImg{
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults]; //得到用户数据
+    NSDictionary *User_Data=[defaults objectForKey:@"User"];
+    User *user=[User yy_modelWithJSON:User_Data];
+    NSString *Url=[NSString stringWithFormat:API_IMG,user.head_pic_thumb];
+    if ((!user.head_pic_thumb)||[user.head_pic_thumb isEqualToString:@""]) {
+        return [UIImage imageNamed:@"header.jpg"];
+    }
+    else if ([defaults objectForKey:@"head_img"]){
+        return [UIImage imageWithData:[defaults objectForKey:@"head_img"]];
+    }else{
+        NSURL *imageUrl = [NSURL URLWithString:Url];
+        UIImage *Img=[UIImage imageWithData:[NSData dataWithContentsOfURL:imageUrl]];
+        NSData *data = UIImagePNGRepresentation(Img);
+        [defaults setObject:data forKey:@"head_img"];
+        [defaults synchronize];
+        return Img;
+    }
 }
 @end

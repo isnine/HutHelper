@@ -96,6 +96,10 @@
 		3A796C6E1E534DAE00794043 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A796C6A1E534DAE00794043 /* MainViewController.xib */; };
 		3A8567801DA908AA00EBD44A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A85677F1DA908AA00EBD44A /* main.m */; };
 		3A85678B1DA908AA00EBD44A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A85678A1DA908AA00EBD44A /* Assets.xcassets */; };
+		3A85BB011E597458008854CF /* LeftUserTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A85BAFF1E597458008854CF /* LeftUserTableViewCell.m */; };
+		3A85BB021E597458008854CF /* LeftUserTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A85BB001E597458008854CF /* LeftUserTableViewCell.xib */; };
+		3A85BB061E5990C5008854CF /* LeftItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A85BB041E5990C5008854CF /* LeftItemTableViewCell.m */; };
+		3A85BB071E5990C5008854CF /* LeftItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A85BB051E5990C5008854CF /* LeftItemTableViewCell.xib */; };
 		3A8BACF71DDDBD5D001C78B8 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A8BACF61DDDBD5D001C78B8 /* SystemConfiguration.framework */; };
 		3A8BACF91DDDBD71001C78B8 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A8BACF81DDDBD71001C78B8 /* libsqlite3.tbd */; };
 		3A8BACFB1DDDBD81001C78B8 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A8BACFA1DDDBD81001C78B8 /* libc++.tbd */; };
@@ -289,6 +293,12 @@
 		3A85677F1DA908AA00EBD44A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		3A85678A1DA908AA00EBD44A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = HutHelper/Assets.xcassets; sourceTree = "<group>"; };
 		3A85678F1DA908AA00EBD44A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3A85BAFE1E597458008854CF /* LeftUserTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftUserTableViewCell.h; sourceTree = "<group>"; };
+		3A85BAFF1E597458008854CF /* LeftUserTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftUserTableViewCell.m; sourceTree = "<group>"; };
+		3A85BB001E597458008854CF /* LeftUserTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LeftUserTableViewCell.xib; sourceTree = "<group>"; };
+		3A85BB031E5990C5008854CF /* LeftItemTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftItemTableViewCell.h; sourceTree = "<group>"; };
+		3A85BB041E5990C5008854CF /* LeftItemTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftItemTableViewCell.m; sourceTree = "<group>"; };
+		3A85BB051E5990C5008854CF /* LeftItemTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LeftItemTableViewCell.xib; sourceTree = "<group>"; };
 		3A8BACF61DDDBD5D001C78B8 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		3A8BACF81DDDBD71001C78B8 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		3A8BACFA1DDDBD81001C78B8 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
@@ -610,6 +620,12 @@
 				3A796BDD1E534C1B00794043 /* MainPageViewController.m */,
 				3A796BDE1E534C1B00794043 /* MainViewController.h */,
 				3A796BDF1E534C1B00794043 /* MainViewController.m */,
+				3A85BAFE1E597458008854CF /* LeftUserTableViewCell.h */,
+				3A85BAFF1E597458008854CF /* LeftUserTableViewCell.m */,
+				3A85BB001E597458008854CF /* LeftUserTableViewCell.xib */,
+				3A85BB031E5990C5008854CF /* LeftItemTableViewCell.h */,
+				3A85BB041E5990C5008854CF /* LeftItemTableViewCell.m */,
+				3A85BB051E5990C5008854CF /* LeftItemTableViewCell.xib */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -965,6 +981,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A796C2A1E534C1B00794043 /* HandTableViewCell.xib in Resources */,
+				3A85BB021E597458008854CF /* LeftUserTableViewCell.xib in Resources */,
 				3A796C491E534C1B00794043 /* SayCommitViewCell.xib in Resources */,
 				3A796C471E534C1B00794043 /* PhotoViewCell.xib in Resources */,
 				3A796C3E1E534C1B00794043 /* NoticeTableViewCell.xib in Resources */,
@@ -975,6 +992,7 @@
 				3A796C6C1E534DAE00794043 /* Launch Screen.storyboard in Resources */,
 				3A796C371E534C1B00794043 /* LostShowTimeTableViewCell.xib in Resources */,
 				3A796C451E534C1B00794043 /* CommitViewCell.xib in Resources */,
+				3A85BB071E5990C5008854CF /* LeftItemTableViewCell.xib in Resources */,
 				3A796C6D1E534DAE00794043 /* Main.storyboard in Resources */,
 				3A85678B1DA908AA00EBD44A /* Assets.xcassets in Resources */,
 				3A449C711E16C2E500D89CEA /* header@2x.jpg in Resources */,
@@ -1073,6 +1091,7 @@
 				3A796C261E534C1B00794043 /* FeedbackViewController.m in Sources */,
 				3A796C481E534C1B00794043 /* SayCommitViewCell.m in Sources */,
 				3A796C3C1E534C1B00794043 /* NoticeShowViewController.m in Sources */,
+				3A85BB061E5990C5008854CF /* LeftItemTableViewCell.m in Sources */,
 				3A796C3D1E534C1B00794043 /* NoticeTableViewCell.m in Sources */,
 				3A796C2F1E534C1B00794043 /* FirstLoginViewController.m in Sources */,
 				3A796C541E534C1B00794043 /* UserViewController.m in Sources */,
@@ -1101,6 +1120,7 @@
 				3A796C4F1E534C1B00794043 /* ScoreShowViewController.m in Sources */,
 				3A796C2D1E534C1B00794043 /* HomeWorkViewController.m in Sources */,
 				3A796C3B1E534C1B00794043 /* MainViewController.m in Sources */,
+				3A85BB011E597458008854CF /* LeftUserTableViewCell.m in Sources */,
 				3A796C341E534C1B00794043 /* LostShowTableViewCell.m in Sources */,
 				3A6D7EE31DABD9F50081B70D /* LeftSlideViewController.m in Sources */,
 				3AAC242E1DE1CB8C00546B11 /* UserInfoCell.m in Sources */,
@@ -1154,7 +1174,7 @@
 				CODE_SIGN_ENTITLEMENTS = Extend/Extend.entitlements;
 				DEVELOPMENT_TEAM = JW2LR94V6G;
 				INFOPLIST_FILE = Extend/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = name.wxz.HutHelper.Extend;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1169,7 +1189,7 @@
 				CODE_SIGN_ENTITLEMENTS = Extend/Extend.entitlements;
 				DEVELOPMENT_TEAM = JW2LR94V6G;
 				INFOPLIST_FILE = Extend/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = name.wxz.HutHelper.Extend;
 				PRODUCT_NAME = "$(TARGET_NAME)";
