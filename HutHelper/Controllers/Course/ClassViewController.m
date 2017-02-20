@@ -33,7 +33,7 @@
 int getweekday(){
     NSDate *now                                  = [NSDate date];
     NSCalendar *calendar                         = [NSCalendar currentCalendar];
-    NSUInteger unitFlags                         = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit |NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
+    NSUInteger unitFlags                         = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay |NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
     NSDateComponents *dateComponent              = [calendar components:unitFlags fromDate:now];
     int y                                     = (short)[dateComponent year];//年
     int m                                    = (short)[dateComponent month];//月
@@ -692,6 +692,7 @@ NSString *show_xp;
     nowweek_string=[nowweek_string stringByAppendingString:@"周实验课表"];
     //标题结束//
     self.navigationItem.title                    = nowweek_string;
+    now_xp=1;
     [self addXpCourse];
 }
 

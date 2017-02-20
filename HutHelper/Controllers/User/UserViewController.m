@@ -37,8 +37,7 @@ UIImage* img ;
     //    UIImage *getimage2 = [UIImage imageWithContentsOfFile:imagePath];
     //
     NSDictionary *User_Data=[defaults objectForKey:@"User"];
-    SDWebImageManager *manager = [SDWebImageManager sharedManager];
-    User *user=[User yy_modelWithJSON:User_Data];
+
     self.headerView=[[JSHeaderView alloc] initWithImage:[self getImg]];
     self.navigationItem.titleView = self.headerView;
     

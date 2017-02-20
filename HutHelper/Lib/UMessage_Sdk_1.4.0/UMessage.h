@@ -89,7 +89,7 @@ typedef NS_ENUM(NSInteger, kUMessageError) {
 /** 注册RemoteNotification的类型
  @brief 分别针对iOS8以下版本及iOS8及以上开启推送消息推送。
  默认的时候是sound，badge ,alert三个功能全部打开。
- @param categories 交互式推送行为分类。可以具体查看demo。
+ @param categories8 交互式推送行为分类。可以具体查看demo。
  */
 + (void)registerForRemoteNotifications:(nullable NSSet<UIUserNotificationCategory *> *)categories8;
 
@@ -106,9 +106,7 @@ typedef NS_ENUM(NSInteger, kUMessageError) {
 
 
 
-/** 解除RemoteNotification的注册（关闭消息推送，实际调用：[[UIApplication sharedApplication] unregisterForRemoteNotifications]）
- @param types 消息类型，参见`UIRemoteNotificationType`
- */
+
 + (void)unregisterForRemoteNotifications;
 
 /** 向友盟注册该设备的deviceToken，便于发送Push消息

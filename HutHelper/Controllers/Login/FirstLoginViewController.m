@@ -19,6 +19,7 @@
 #import "User.h"
 #import "YYModel.h"
 #import "Config.h"
+#import "UMMobClick/MobClick.h"
 @interface FirstLoginViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *UserName;
 @property (weak, nonatomic) IBOutlet UITextField *Password;
@@ -61,13 +62,43 @@
                  [defaults setObject:currentVersion forKey:@"last_run_version_key"]; //保存版本信息
                  [defaults synchronize];
                  [self addNotice];//新增通知
+                 /**设置友盟标签&别名*/
+                 User *user=[User yy_modelWithJSON:User_Data];
+                 [MobClick profileSignInWithPUID:user.studentKH];
+                 [UMessage addTag:user.class_name
+                         response:^(id responseObject, NSInteger remain, NSError *error) {
+                         }];//班级
+                 [UMessage addTag:user.dep_name
+                         response:^(id responseObject, NSInteger remain, NSError *error) {
+                         }];  //学院
+                 
+                 [UMessage addAlias:user.studentKH type:kUMessageAliasTypeSina response:^(id responseObject, NSError *error) {
+                 }];
                  [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:([self.navigationController.viewControllers count] -2)] animated:YES];  //返回上一个View
                  HideAllHUD
              }
              else {
                  NSString *Show_Msg=[Msg stringByAppendingString:@",默认密码身份证后六位"];
+                 if ([Msg isEqualToString:@"多次失败，请稍后再试，或修改密码"]) {
+                     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"密码多次错误" message:Msg preferredStyle:  UIAlertControllerStyleAlert];
+                     
+                     [alert addAction:[UIAlertAction actionWithTitle:@"稍后再试" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                         //点击按钮的响应事件；
+                     }]];
+                     [alert addAction:[UIAlertAction actionWithTitle:@"修改密码" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                         UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                         Login2ViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Login2"];
+                         AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+                         [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:YES];
+                     }]];
+                     
+                     //弹出提示框；
+                     [self presentViewController:alert animated:true completion:nil];
+                 } else{
+                     [MBProgressHUD showError:Show_Msg];
+                 }
                  HideAllHUD
-                 [MBProgressHUD showError:Show_Msg];
+                
              }
          } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
              HideAllHUD
@@ -110,14 +141,8 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     self.navigationController.navigationBarHidden = YES;
-
+    
 }
-
-
-
-
-
-
 
 - (void)viewWillDisappear:(BOOL)animated{
     self.navigationController.navigationBarHidden = NO;
@@ -146,7 +171,7 @@
     [noticeDictionary2 setObject:@"个人中心的使用" forKey:@"title"];
     [noticeDictionary2 setObject:@"在新的版本中,我们支持了用户自定义昵称和修改头像。\n【设置昵称】左滑菜单-个人中心-修改昵称\n【设置头像】左滑菜单-个人中心-点击头像\n修改后的昵称将在校园说说中显示" forKey:@"body"];
     [notice insertObject:noticeDictionary2 atIndex:2];
-
+    
     [noticeDictionary4 setObject:@"2017-02-09 08:00" forKey:@"time"];
     [noticeDictionary4 setObject:@"Widget的使用" forKey:@"title"];
     [noticeDictionary4 setObject:@"使用工大助手Widget可以在不打开App的情况下查询课表\n开启方式:\n在系统主界面，滑动屏幕到最左边，点击编辑添加工大助手。\n\n注:因为是新功能，如果有发现Bug，记得在反馈中向我们反馈哦" forKey:@"body"];

@@ -38,7 +38,7 @@
             //这里可以添加一些自己的逻辑
         }
     }];
-    [UMessage setLogEnabled:YES];//打开日志，方便调试
+    [UMessage setLogEnabled:NO];//打开日志，方便调试
     /**友盟统计*/
     UMConfigInstance.appKey          = @"57fe13d867e58e0e59000ca1";
     UMConfigInstance.ChannelId       = @"App Store";

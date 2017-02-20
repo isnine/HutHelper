@@ -13,7 +13,7 @@
 /**
 *  浏览大图
 *
-*  @param scanImageView 图片所在的imageView
+*  @param currentImageview 图片所在的imageView
 */
 +(void)scanBigImageWithImageView:(UIImageView *)currentImageview;
 @end

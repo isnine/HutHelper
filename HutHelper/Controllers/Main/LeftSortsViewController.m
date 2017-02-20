@@ -126,7 +126,6 @@
     AppDelegate *tempAppDelegate     = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
     
-    HomeWorkViewController *vc       = [[HomeWorkViewController alloc] init];
     [tempAppDelegate.LeftSlideVC closeLeftView];//关闭左侧抽屉
     
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];  //得到用户数据

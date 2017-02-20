@@ -146,7 +146,6 @@
     
     int int_score          = [string_score intValue];
     int int_score2          = [string_score2 intValue];
-    double double_xf          = string_xf.doubleValue;
     if (int_score<60&&int_score<int_score2)
         int_score=int_score2;
     
@@ -267,7 +266,7 @@
 - (void)reload{
     [MBProgressHUD showMessage:@"查询中" toView:self.view];
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    NSData* ScoreData           = [defaults objectForKey:@"Score"];
+
     NSDictionary *User_Data=[defaults objectForKey:@"User"];
     User *user=[User yy_modelWithJSON:User_Data];
     NSString *SHA_String=[user.studentKH stringByAppendingString:[defaults objectForKey:@"remember_code_app"]];

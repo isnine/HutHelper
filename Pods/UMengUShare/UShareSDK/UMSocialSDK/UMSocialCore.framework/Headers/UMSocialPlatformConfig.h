@@ -152,7 +152,7 @@ typedef void (^UMSocialRequestCompletionHandler)(id result,NSError *error);
 /**
  *  授权，分享，UserProfile等操作的回调
  *
- *  @param result 表示回调的结果
+ *  @param shareResponse 表示回调的结果
  *  @param error  表示回调的错误码
  */
 typedef void (^UMSocialShareCompletionHandler)(id shareResponse,NSError *error);
@@ -315,29 +315,12 @@ typedef NS_ENUM(NSInteger,UMSocialPlatformType)
 @property(nonatomic,strong)NSString* appSecret;
 @property(nonatomic,strong)NSString* redirectURL;
 
-/**
- *
- *  @param platformType @see UMSocialPlatformType
- *
- *  @return 平台名称
- */
+
 + (NSString *)platformNameWithPlatformType:(UMSocialPlatformType)platformType;
 
-/**
- *
- *  @param platformType @see UMSocialPlatformType
- *
- *  @return 平台handler
- */
 + (id)platformHandlerWithPlatformType:(UMSocialPlatformType)platformType;
 
-/**
- *
- *  @param errorType @see UMSocialPlatformErrorType
- *  @param userInfo  @see 错误信息
- *
- *  @return 如果平台有效就返回YES，否则返回NO
- */
+
 + (NSError *)errorWithSocialErrorType:(UMSocialPlatformErrorType)errorType userInfo:(id)userInfo;
 
 @end

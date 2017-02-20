@@ -80,13 +80,7 @@
              withViewController:(UIViewController*)viewController
           withCompletionHandler:(UMSocialRequestCompletionHandler)completionHandler;
 
-/**
- *  取消授权
- *
- *  @param userInfo          用户的授权的自定义数据
- *  @param completionHandler 授权后的回调
- *  @discuss userInfo在有些平台可以带入，如果没有就传入nil.
- */
+
 -(void)umSocial_cancelAuthWithCompletionHandler:(UMSocialRequestCompletionHandler)completionHandler;
 
 /**
@@ -122,11 +116,7 @@
 
 
 #pragma mark - 平台的特性
-/**
- *  平台的特性
- *
- *  @return @see
- */
+
 -(UMSocialPlatformFeature)umSocial_SupportedFeatures;
 
 /**

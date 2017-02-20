@@ -29,12 +29,12 @@ typedef void(^ClickHeaderBlock) ();
 - (instancetype)init;
 
 /** 初始化方法
- * @param image: 头像图片
+ * @param image 头像图片
  */
 - (instancetype)initWithImage:(UIImage *)image;
 
 /** 更新头像大小
- * @param scrollView: 滚动视图
+ * @param scrollView 滚动视图
  */
 - (void)reloadSizeWithScrollView:(UIScrollView *)scrollView;
 

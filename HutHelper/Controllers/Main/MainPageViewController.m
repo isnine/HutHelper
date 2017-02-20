@@ -73,8 +73,6 @@ int isxp=0;
     [self setTime];
     /**  首次登陆以及判断是否打开课程表 */
     [self loadSet];
-    /**设置友盟标签&别名*/
-    [self setAlias];
     /**时间Label*/
     [self SetTimeLabel];
 }
@@ -453,8 +451,15 @@ int isxp=0;
                  }
              }
              else{
-                 [self EnterExam];
-                 [MBProgressHUD showError:@"超时,显示本地数据"];
+                 if ([defaults objectForKey:@"Exam"]!=NULL) {
+                     [self EnterExam];
+                     [MBProgressHUD showError:@"超时,显示本地数据"];
+                 }else{
+                     [MBProgressHUD showError:[Exam_All objectForKey:@"message"]];
+                 }
+                 
+                 HideAllHUD
+                 
              }
          } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
              if ([defaults objectForKey:@"Exam"]!=NULL) {
@@ -536,7 +541,7 @@ int isxp=0;
 -(void)SetTimeLabel{
     NSDate *now                               = [NSDate date];
     NSCalendar *calendar                      = [NSCalendar currentCalendar];
-    NSUInteger unitFlags                      = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit |NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
+    NSUInteger unitFlags                      = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay |NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
     NSDateComponents *dateComponent           = [calendar components:unitFlags fromDate:now];
     
     int y                                     = (short)[dateComponent year];//年
@@ -617,7 +622,7 @@ int isxp=0;
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     NSDate *now                               = [NSDate date];
     NSCalendar *calendar                      = [NSCalendar currentCalendar];
-    NSUInteger unitFlags                      = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit |NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
+    NSUInteger unitFlags                      = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay |NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
     NSDateComponents *dateComponent           = [calendar components:unitFlags fromDate:now];
     int year                                  = (short)[dateComponent year];//年
     int month                                 = (short)[dateComponent month];//月
@@ -664,7 +669,7 @@ int isxp=0;
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     NSDate *now                               = [NSDate date];
     NSCalendar *calendar                      = [NSCalendar currentCalendar];
-    NSUInteger unitFlags                      = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit |NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
+    NSUInteger unitFlags                      = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay |NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
     NSDateComponents *dateComponent           = [calendar components:unitFlags fromDate:now];
     int year                                  = (short)[dateComponent year];//年
     int month                                 =(short) [dateComponent month];//月
@@ -704,23 +709,7 @@ int isxp=0;
     
     self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:0/255.0 green:224/255.0 blue:208/255.0 alpha:1];
 }
--(void)setAlias{
-    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    NSDictionary *User_Data=[defaults objectForKey:@"User"];
-    User *user=[User yy_modelWithJSON:User_Data];
-    /** 友盟统计账号 */
-    [MobClick profileSignInWithPUID:user.studentKH];
-    /** 添加标签 */
-    [UMessage addTag:user.class_name
-            response:^(id responseObject, NSInteger remain, NSError *error) {
-            }];//班级
-    [UMessage addTag:user.dep_name
-            response:^(id responseObject, NSInteger remain, NSError *error) {
-            }];  //学院
-    /** 添加别名*/
-    [UMessage addAlias:user.studentKH type:kUMessageAliasTypeSina response:^(id responseObject, NSError *error) {
-    }];
-}
+
 - (void) isAppFirstRun{
     NSString *currentVersion = [[[NSBundle mainBundle] infoDictionary]
                                 objectForKey:@"CFBundleShortVersionString"];
