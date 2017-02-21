@@ -234,6 +234,9 @@
 -(NSString*)gettime:(int)i{
     return [_Hand_content[i] objectForKey:@"created_on"];
 }
+-(NSNumber*)getMaxPage{
+    return [_Hand_content[0] objectForKey:@"page_max"];
+}
 
 -(void)reload{
     NSURLCache *sharedCache = [[NSURLCache alloc] initWithMemoryCapacity:0
@@ -268,37 +271,44 @@
 
 -(void)load{
     _num++;
-    NSURLCache *sharedCache = [[NSURLCache alloc] initWithMemoryCapacity:0
-                                                            diskCapacity:0
-                                                                diskPath:nil];
-    [NSURLCache setSharedURLCache:sharedCache];
-    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    /**拼接地址*/
-     NSString *Url_String=[NSString stringWithFormat:API_GOODS,_num];
-    /**设置9秒超时*/
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
-    manager.requestSerializer.timeoutInterval = 4.f;
-    [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
-    /**请求平时课表*/
-    [manager GET:Url_String parameters:nil progress:nil
-         success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-             NSDictionary *dic1 = [NSDictionary dictionaryWithObject:responseObject forKey:@""];
-             NSArray *Hand           = [dic1 objectForKey:@""];
-             [defaults setObject:Hand forKey:@"Hand"];
-             [defaults synchronize];
-             _Hand_content=Hand;
-             NSString *num_string=[NSString stringWithFormat:@"第%d页",_num];
-             self.navigationItem.title = num_string;
-             [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
-             [self.tableView reloadData];
-             [self.tableView.mj_footer endRefreshing];
-             self.tableView.mj_header.hidden = YES;
-         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-             [MBProgressHUD showError:@"网络错误"];
-             [self.tableView.mj_footer endRefreshing];
-             HideAllHUD
-         }];
+    if (_num<=[[self getMaxPage] intValue]) {
+        NSURLCache *sharedCache = [[NSURLCache alloc] initWithMemoryCapacity:0
+                                                                diskCapacity:0
+                                                                    diskPath:nil];
+        [NSURLCache setSharedURLCache:sharedCache];
+        NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+        /**拼接地址*/
+        NSString *Url_String=[NSString stringWithFormat:API_GOODS,_num];
+        /**设置9秒超时*/
+        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+        [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
+        manager.requestSerializer.timeoutInterval = 4.f;
+        [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
+        /**请求平时课表*/
+        [manager GET:Url_String parameters:nil progress:nil
+             success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                 NSDictionary *dic1 = [NSDictionary dictionaryWithObject:responseObject forKey:@""];
+                 NSArray *Hand           = [dic1 objectForKey:@""];
+                 [defaults setObject:Hand forKey:@"Hand"];
+                 [defaults synchronize];
+                 _Hand_content=Hand;
+                 NSString *num_string=[NSString stringWithFormat:@"第%d页",_num];
+                 self.navigationItem.title = num_string;
+                 [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+                 [self.tableView reloadData];
+                 [self.tableView.mj_footer endRefreshing];
+                 self.tableView.mj_header.hidden = YES;
+             } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                 [MBProgressHUD showError:@"网络错误"];
+                 _num--;
+                 [self.tableView.mj_footer endRefreshing];
+                 HideAllHUD
+             }];
+    }else{
+        [MBProgressHUD showError:@"当前已是最大页数"];
+        [self.tableView.mj_footer endRefreshing];
+    }
+  
     
 }
 @end

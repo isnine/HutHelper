@@ -38,7 +38,7 @@
     [self setRefresh];
     _num=1;
     self.tableView.dataSource = (id)self;
-    self.tableView.delegate=(id)self;
+   self.tableView.delegate=(id)self;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -413,7 +413,7 @@
                     //                                    image:nil
                     //                                      tag:102
                     //                                 userInfo:@{@"title":@"Menu"}],
-                  //  logoutItem
+                   logoutItem
                     ] mutableCopy];
     }
     return _items;

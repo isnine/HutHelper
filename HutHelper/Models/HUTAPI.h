@@ -36,6 +36,7 @@
 #define API_GOODS_SHOW @"http://218.75.197.121:8888/api/v1/stuff/detail/%@/%@/%@"
 /**失物招领*/
 #define API_LOST @"http://218.75.197.121:8888/api/v1/loses/posts/%d"
+#define API_LOST_USER @"http://218.75.197.121:8888/api/v1/loses/posts/page/%@"
 #define API_LOSES_CREATE @"http://218.75.197.121:8888/api/v1/loses/create/%@/%@"
 #define API_LOSES_IMG_UPLOAD @"http://218.75.197.121:8888/api/v1/loses/upload"
 /**校园说说*/
