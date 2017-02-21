@@ -16,13 +16,16 @@
 #import "AppDelegate.h"
 #import "AddhandViewController.h"
 #import "Config.h"
+
+#import "YCXMenu.h"
 @interface HandTableViewController ()
 @property (nonatomic,copy) NSArray      *Hand_content;
+@property (nonatomic , strong) NSMutableArray *items;
 @property int num;
 @end
 
 @implementation HandTableViewController
-
+@synthesize items = _items;
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title=@"二手市场";
@@ -100,11 +103,71 @@
 }
 
 #pragma mark -"其他"
--(void)menu{
+-(void)addHand{
     UIStoryboard *Main=[UIStoryboard storyboardWithName:@"Main" bundle:nil];
     AddhandViewController *Add=[Main instantiateViewControllerWithIdentifier:@"Addhand"];
     AppDelegate *temp=(AppDelegate *)[[UIApplication sharedApplication] delegate];
     [temp.mainNavigationController pushViewController:Add animated:YES];
+}
+-(void)myHand{
+//    UIStoryboard *Main=[UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//    AddhandViewController *Add=[Main instantiateViewControllerWithIdentifier:@"Addhand"];
+//    AppDelegate *temp=(AppDelegate *)[[UIApplication sharedApplication] delegate];
+//    [temp.mainNavigationController pushViewController:Add animated:YES];
+}
+#pragma mark - 菜单
+-(void)menu{
+    [YCXMenu setTintColor:[UIColor colorWithRed:240/255.0 green:240/255.0 blue:240/255.0 alpha:1]];
+    [YCXMenu setSeparatorColor:[UIColor colorWithRed:240/255.0 green:240/255.0 blue:240/255.0 alpha:1]];
+    //    [YCXMenu setTitleFont:[UIFont systemFontOfSize:19.0]];
+    //    [YCXMenu setSelectedColor:[UIColor redColor]];
+    if ([YCXMenu isShow]){
+        [YCXMenu dismissMenu];
+    } else {
+        [YCXMenu showMenuInView:self.view fromRect:CGRectMake(self.view.frame.size.width - 50, 70, 50, 0) menuItems:self.items selected:^(NSInteger index, YCXMenuItem *item) {
+            
+        }];
+    }
+    
+}
+
+- (NSMutableArray *)items {
+    if (!_items) {
+        
+        //        // set title
+        //        YCXMenuItem *firstTitle = [YCXMenuItem firstTitle:@"添加失物" WithIcon:nil];
+        //        firstTitle.foreColor = [UIColor whiteColor];
+        //        firstTitle.titleFont = [UIFont boldSystemFontOfSize:20.0f];
+        YCXMenuItem *firstTitle = [YCXMenuItem menuItem:@"添加商品" image:[UIImage imageNamed:@"adds"] target:self action:@selector(addHand)];
+        firstTitle.foreColor = [UIColor blackColor];
+        firstTitle.alignment = NSTextAlignmentCenter;
+        //set logout button
+        YCXMenuItem *SecondTitle = [YCXMenuItem menuItem:@"我的发布" image:[UIImage imageNamed:@"mine"] target:self action:@selector(toSet)];
+        SecondTitle.foreColor = [UIColor blackColor];
+        SecondTitle.alignment = NSTextAlignmentCenter;
+        
+        //        //set item
+        _items = [@[firstTitle,
+                    //                    [YCXMenuItem menuItem:@"个人中心"
+                    //                                    image:nil
+                    //                                      tag:100
+                    //                                 userInfo:@{@"title":@"Menu"}],
+                    //                    [YCXMenuItem menuItem:@"ACTION 133"
+                    //                                    image:nil
+                    //                                      tag:101
+                    //                                 userInfo:@{@"title":@"Menu"}],
+                    //                    [YCXMenuItem menuItem:@"检查更新"
+                    //                                    image:nil
+                    //                                      tag:102
+                    //                                 userInfo:@{@"title":@"Menu"}],
+                    //SecondTitle
+                    ] mutableCopy];
+    }
+    return _items;
+}
+
+- (void)setItems:(NSMutableArray *)items {
+    _items = items;
 }
 -(NSString*)getPhoto:(int)i{
     NSString *photo=[_Hand_content[i] objectForKey:@"image"];

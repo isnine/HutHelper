@@ -14,4 +14,5 @@ target "HutHelper" do
     pod 'LGPlusButtonsView', '~> 1.1.0'
     pod 'TZImagePickerController'
     pod 'DTKDropdownMenu', '~> 0.0.4'
+    pod 'YCXMenu', '~> 0.0.11'
 end

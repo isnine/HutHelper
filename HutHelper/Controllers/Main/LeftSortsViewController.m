@@ -271,7 +271,6 @@
         if (data!=NULL&&![image_url isEqualToString:INDEX]) {
             [defaults setObject:data forKey:@"head_img"];
             [defaults synchronize];
-            
         }
     }];
 }

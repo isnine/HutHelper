@@ -19,14 +19,18 @@
 #import "MJRefresh.h"
 #import "XWScanImage.h"
 #import "Config.h"
+
+#import "YCXMenuItem.h"
+#import "YCXMenu.h"
 @interface LostShowViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic,copy) NSArray      *lostData;
+@property (nonatomic , strong) NSMutableArray *items;
 @property  int num;
 @end
 
 @implementation LostShowViewController
-
+@synthesize items = _items;
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self getLostData];
@@ -212,12 +216,10 @@
     //默认【上拉加载】
     self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(load)];
 }
--(void)menu{
-    UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    AddLostViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"AddLosta"];
-    AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:YES];
-}
+
+
+
+
 -(void)reload{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     /**拼接地址*/
@@ -288,8 +290,8 @@
                          [self.tableView reloadData];}
                      else{
                          [MBProgressHUD showError:@"当前已是最大页数"];
-                          [self.tableView.mj_footer endRefreshing];
-                     
+                         [self.tableView.mj_footer endRefreshing];
+                         
                      }
                  }
                  else{
@@ -363,5 +365,72 @@
 {
     [super viewWillDisappear:animated];
     [MobClick endLogPageView:@"失物招领"];
+}
+
+
+#pragma mark - 菜单
+-(void)menu{
+    [YCXMenu setTintColor:[UIColor whiteColor]];
+    [YCXMenu setSeparatorColor:[UIColor whiteColor]];
+//    [YCXMenu setTitleFont:[UIFont systemFontOfSize:19.0]];
+    //    [YCXMenu setSelectedColor:[UIColor redColor]];
+    if ([YCXMenu isShow]){
+        [YCXMenu dismissMenu];
+    } else {
+        [YCXMenu showMenuInView:self.view fromRect:CGRectMake(self.view.frame.size.width - 50, 70, 50, 0) menuItems:self.items selected:^(NSInteger index, YCXMenuItem *item) {
+            
+        }];
+    }
+    
+}
+
+- (NSMutableArray *)items {
+    if (!_items) {
+        
+        //        // set title
+        //        YCXMenuItem *menuTitle = [YCXMenuItem menuTitle:@"添加失物" WithIcon:nil];
+        //        menuTitle.foreColor = [UIColor whiteColor];
+        //        menuTitle.titleFont = [UIFont boldSystemFontOfSize:20.0f];
+        YCXMenuItem *menuTitle = [YCXMenuItem menuItem:@"添加失物" image:[UIImage imageNamed:@"adds"] target:self action:@selector(addLost)];
+        menuTitle.foreColor = [UIColor blackColor];
+        menuTitle.alignment = NSTextAlignmentCenter;
+        //set logout button
+        YCXMenuItem *logoutItem = [YCXMenuItem menuItem:@"我的失物" image:[UIImage imageNamed:@"mine"] target:self action:@selector(myLost)];
+        logoutItem.foreColor = [UIColor blackColor];
+        logoutItem.alignment = NSTextAlignmentCenter;
+        
+        //        //set item
+        _items = [@[menuTitle,
+                    //                    [YCXMenuItem menuItem:@"个人中心"
+                    //                                    image:nil
+                    //                                      tag:100
+                    //                                 userInfo:@{@"title":@"Menu"}],
+                    //                    [YCXMenuItem menuItem:@"ACTION 133"
+                    //                                    image:nil
+                    //                                      tag:101
+                    //                                 userInfo:@{@"title":@"Menu"}],
+                    //                    [YCXMenuItem menuItem:@"检查更新"
+                    //                                    image:nil
+                    //                                      tag:102
+                    //                                 userInfo:@{@"title":@"Menu"}],
+                  //  logoutItem
+                    ] mutableCopy];
+    }
+    return _items;
+}
+-(void)addLost{
+        UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        AddLostViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"AddLosta"];
+        AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:YES];
+}
+-(void)myLost{
+    UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    AddLostViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"AddLosta"];
+    AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:YES];
+}
+- (void)setItems:(NSMutableArray *)items {
+    _items = items;
 }
 @end

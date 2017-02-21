@@ -39,6 +39,7 @@
 #define API_LOSES_IMG_UPLOAD @"http://218.75.197.121:8888/api/v1/loses/upload"
 /**校园说说*/
 #define API_MOMENTS @"http://218.75.197.121:8888/api/v1/moments/posts/%d"
+#define API_MOMENTS_USER @"http://218.75.197.121:8888/api/v1/moments/posts/page/%@"
 #define API_MOMENTS_CREATE @"http://218.75.197.121:8888/api/v1/moments/create/%@/%@"
 #define API_MOMENTS_IMG_UPLOAD @"http://218.75.197.121:8888/api/v1/moments/upload"
 #define API_MOMENTS_DELETE @"http://218.75.197.121:8888/api/v1/moments/delete/%@/%@/%@"

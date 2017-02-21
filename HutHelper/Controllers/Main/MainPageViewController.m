@@ -287,6 +287,7 @@ int isxp=0;
                      [defaults setObject:Say_content forKey:@"Say"];
                      [defaults synchronize];
                      HideAllHUD
+                     [Config setIssay:0];
                      SayViewController *Say      = [[SayViewController alloc] init];
                      AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
                      [tempAppDelegate.mainNavigationController pushViewController:Say animated:YES];
@@ -725,7 +726,7 @@ int isxp=0;
         NSLog(@"没有记录");
         
     }
-    else if (![lastRunKey isEqualToString:currentVersion]) {
+    else if (!([lastRunKey isEqualToString:currentVersion]||[lastRunKey isEqualToString:@"1.9.5"])) {
         NSString *appDomain       = [[NSBundle mainBundle] bundleIdentifier];
         [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:appDomain];
         [defaults setObject:currentVersion forKey:@"last_run_version_key"];

@@ -8,6 +8,7 @@
 
 #import "Config.h"
 static int Isxp ;
+static int Issay ;
 @implementation Config
 + (void)setIsxp:(int )bools
 {
@@ -16,5 +17,13 @@ static int Isxp ;
 + (int )getIsxp
 {
     return Isxp;
+}
++ (void)setIssay:(int )bools
+{
+    Issay = bools;
+}
++ (int )getIssay
+{
+    return Issay;
 }
 @end

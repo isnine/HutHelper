@@ -50,6 +50,7 @@ PODS:
     - UMengUShare/Core
   - UMengUShare/UI (6.0.3):
     - UMengUShare/Core
+  - YCXMenu (0.0.11)
   - YYModel (1.0.4)
 
 DEPENDENCIES:
@@ -66,6 +67,7 @@ DEPENDENCIES:
   - UMengAnalytics-NO-IDFA
   - UMengUShare/Social/QQ
   - UMengUShare/UI
+  - YCXMenu (~> 0.0.11)
   - YYModel
 
 SPEC CHECKSUMS:
@@ -83,8 +85,9 @@ SPEC CHECKSUMS:
   TZImagePickerController: cbfd57ba947263759b860f74132dd1bc33125afc
   UMengAnalytics-NO-IDFA: f1b08b540eba6ebad044a574cae6d988cf40cfda
   UMengUShare: f231fc086d789d4e560a5090dcc13a2db15c686d
+  YCXMenu: 6003bcd20d8ac72e3eb3c442c97ed21948c6dc1f
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: e8d9eb9a76c895ac45ca77bc8c1e0287b8c8db1d
+PODFILE CHECKSUM: 116e5ac08724aeb95e4ea47b93ef8fdd4cbddb36
 
 COCOAPODS: 1.1.1

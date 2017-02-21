@@ -14,4 +14,7 @@
 
 + (void)setIsxp:(int )Isxp;
 + (int )getIsxp;
+
++ (void)setIssay:(int )Issay;
++ (int )getIssay;
 @end

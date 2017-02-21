@@ -24,33 +24,42 @@
 #import "AddSayViewController.h"
 #import "XWScanImage.h"
 #import "Config.h"
+
+#import "YCXMenu.h"
 @interface SayViewController ()
 @property (nonatomic,copy) NSArray      *Say_content;
+@property (nonatomic , strong) NSMutableArray *items;
 @end
 
 @implementation SayViewController
+@synthesize items = _items;
 int num=1;
 - (void)viewDidLoad {
     [super viewDidLoad];
     num=1;
     self.navigationItem.title = @"校园说说";
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor]}];
-    /**按钮*/
-    UIView *rightButtonView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 50)];
-    UIButton *mainAndSearchBtn = [[UIButton alloc] initWithFrame:CGRectMake(70, 0, 50, 50)];
-    [rightButtonView addSubview:mainAndSearchBtn];
-    [mainAndSearchBtn setImage:[UIImage imageNamed:@"new_menu"] forState:UIControlStateNormal];
-    [mainAndSearchBtn addTarget:self action:@selector(menu) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *rightCunstomButtonView = [[UIBarButtonItem alloc] initWithCustomView:rightButtonView];
-    self.navigationItem.rightBarButtonItem = rightCunstomButtonView;
+    
     /**加载数据*/
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     _Say_content=[defaults objectForKey:@"Say"];
     /**下拉刷新*/
-    //默认【下拉刷新】
-    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(reload)];
-    //默认【上拉加载】
-    self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(load)];
+    if([Config getIssay]==0){
+        self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(reload)];
+        self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(load)];
+        /**按钮*/
+        UIView *rightButtonView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 50)];
+        UIButton *mainAndSearchBtn = [[UIButton alloc] initWithFrame:CGRectMake(70, 0, 50, 50)];
+        [rightButtonView addSubview:mainAndSearchBtn];
+        [mainAndSearchBtn setImage:[UIImage imageNamed:@"new_menu"] forState:UIControlStateNormal];
+        [mainAndSearchBtn addTarget:self action:@selector(menu) forControlEvents:UIControlEventTouchUpInside];
+        UIBarButtonItem *rightCunstomButtonView = [[UIBarButtonItem alloc] initWithCustomView:rightButtonView];
+        self.navigationItem.rightBarButtonItem = rightCunstomButtonView;
+    }else{
+        if([self getName:0]){
+            self.navigationItem.title = [NSString stringWithFormat:@"%@的说说",[self getName:0]];
+        }
+    }
     /** 标题栏样式 */
     UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     self.navigationItem.backBarButtonItem = item;
@@ -66,7 +75,7 @@ int num=1;
 #pragma mark - "设置表格代理"
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{  //多少块
     
-    return 20;
+    return _Say_content.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{//每块几部分
@@ -114,8 +123,11 @@ int num=1;
 {
     //当离开某行时，让某行的选中状态消失
     NSArray *photo=[_Say_content[indexPath.section] objectForKey:@"pics"];
+    if(indexPath.row==0){
+        [self showSay:[_Say_content[indexPath.section] objectForKey:@"user_id"]];
+    }
     if ((indexPath.row==1&&photo.count==0)||(indexPath.row==2&&photo.count!=0)) {
-       
+        
         /**拼接地址*/
         NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
         NSDictionary *User_Data=[defaults objectForKey:@"User"];
@@ -128,7 +140,7 @@ int num=1;
         }block:^(NSString * _Nonnull contentStr) {
             // code
             if (contentStr.length == 0) return ;
-           // NSLog(@"%@",contentStr);
+            // NSLog(@"%@",contentStr);
             // 1.创建AFN管理者
             AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
             [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
@@ -179,7 +191,7 @@ int num=1;
         cell.username.text=[self getName:(short)indexPath.section];
         cell.created_on.text=[self getTime:(short)indexPath.section];
         cell.content.text=[self getContent:(short)indexPath.section];
-       
+        
         cell.img.image = [self getImg:(short)indexPath.section];
         return cell;
     }
@@ -187,7 +199,7 @@ int num=1;
         if (photo.count==0) {
             cellshowcommit.commitsize.text=[NSString stringWithFormat:@"%d",[self getcommitcount:(short)indexPath.section]];
             cellshowcommit.delectButton.hidden=![self isShowDelect:(short)indexPath.section];
-             cellshowcommit.dep_name.text=[NSString stringWithFormat:@"%@",[self getDepName:(short)indexPath.section]];
+            cellshowcommit.dep_name.text=[NSString stringWithFormat:@"%@",[self getDepName:(short)indexPath.section]];
             return cellshowcommit;
         }
         else if(photo.count==1){
@@ -292,7 +304,7 @@ int num=1;
         cellcommit.delectButton.hidden=![self isShowCommitDelect:(short)indexPath.section with:(short)indexPath.row-exis];
         cellcommit.CommitTime.text=[self getcommittime:(short)indexPath.section with:(short)indexPath.row-exis];
         return cellcommit;
-            
+        
     }
 }
 
@@ -301,11 +313,160 @@ int num=1;
     [XWScanImage scanBigImageWithImageView:clickedImageView];
 }
 #pragma mark - "其他"
--(void)menu{
+-(void)addSay{
     UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     AddSayViewController *addsayViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"AddSay"];
     AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [tempAppDelegate.mainNavigationController pushViewController:addsayViewController animated:NO];
+}
+-(void)mySay{
+    NSURLCache *sharedCache = [[NSURLCache alloc] initWithMemoryCapacity:0
+                                                            diskCapacity:0
+                                                                diskPath:nil];
+    [NSURLCache setSharedURLCache:sharedCache];
+    [MBProgressHUD showMessage:@"加载中" toView:self.view];
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    /**拼接地址*/
+    NSDictionary *User_Data=[defaults objectForKey:@"User"];
+    User *user=[User yy_modelWithJSON:User_Data];
+    NSString *Url_String=[NSString stringWithFormat:API_MOMENTS_USER,user.user_id];
+    /**设置9秒超时*/
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
+    manager.requestSerializer.timeoutInterval = 5.f;
+    [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
+    /**请求平时课表*/
+    [manager GET:Url_String parameters:nil progress:nil
+         success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+             NSDictionary *Say_All = [NSDictionary dictionaryWithDictionary:responseObject];
+             if ([[Say_All objectForKey:@"msg"]isEqualToString:@"ok"]) {
+                 NSDictionary *Say_Data=[Say_All objectForKey:@"data"];
+                 NSArray *Say_content=[Say_Data objectForKey:@"posts"];//加载该页数据
+                 if (Say_content!=NULL) {
+                     [defaults setObject:Say_content forKey:@"Say"];
+                     [defaults synchronize];
+                     HideAllHUD
+                     [Config setIssay:1];
+                     SayViewController *Say      = [[SayViewController alloc] init];
+                     AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+                     [tempAppDelegate.mainNavigationController pushViewController:Say animated:YES];
+                     
+                 }else{
+                     HideAllHUD
+                     [MBProgressHUD showError:@"数据错误"];
+                 }
+             }
+             else{
+                 HideAllHUD
+                 [MBProgressHUD showError:[Say_All objectForKey:@"msg"]];
+             }
+             HideAllHUD
+         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+             [MBProgressHUD showError:@"网络超时"];
+             HideAllHUD
+         }];
+}
+-(void)showSay:(NSString*)username{
+    NSURLCache *sharedCache = [[NSURLCache alloc] initWithMemoryCapacity:0
+                                                            diskCapacity:0
+                                                                diskPath:nil];
+    [NSURLCache setSharedURLCache:sharedCache];
+
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    /**拼接地址*/
+    NSDictionary *User_Data=[defaults objectForKey:@"User"];
+    User *user=[User yy_modelWithJSON:User_Data];
+    NSString *Url_String=[NSString stringWithFormat:API_MOMENTS_USER,username];
+    /**设置9秒超时*/
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
+    manager.requestSerializer.timeoutInterval = 5.f;
+    [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
+    /**请求平时课表*/
+    [manager GET:Url_String parameters:nil progress:nil
+         success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+             NSDictionary *Say_All = [NSDictionary dictionaryWithDictionary:responseObject];
+             if ([[Say_All objectForKey:@"msg"]isEqualToString:@"ok"]) {
+                 NSDictionary *Say_Data=[Say_All objectForKey:@"data"];
+                 NSArray *Say_content=[Say_Data objectForKey:@"posts"];//加载该页数据
+                 if (Say_content!=NULL) {
+                     [defaults setObject:Say_content forKey:@"Say"];
+                     [defaults synchronize];
+                     HideAllHUD
+                     [Config setIssay:1];
+                     SayViewController *Say      = [[SayViewController alloc] init];
+                     AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+                     [tempAppDelegate.mainNavigationController pushViewController:Say animated:YES];
+                     
+                 }else{
+                     HideAllHUD
+                  //   [MBProgressHUD showError:@"数据错误"];
+                 }
+             }
+             else{
+                 HideAllHUD
+                // [MBProgressHUD showError:[Say_All objectForKey:@"msg"]];
+             }
+             HideAllHUD
+         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+             
+             HideAllHUD
+         }];
+}
+
+
+-(void)menu{
+    [YCXMenu setTintColor:[UIColor colorWithRed:240/255.0 green:240/255.0 blue:240/255.0 alpha:1]];
+    [YCXMenu setSeparatorColor:[UIColor colorWithRed:240/255.0 green:240/255.0 blue:240/255.0 alpha:1]];
+    //    [YCXMenu setTitleFont:[UIFont systemFontOfSize:19.0]];
+    //    [YCXMenu setSelectedColor:[UIColor redColor]];
+    if ([YCXMenu isShow]){
+        [YCXMenu dismissMenu];
+    } else {
+        [YCXMenu showMenuInView:self.view fromRect:CGRectMake(self.view.frame.size.width - 50, 70, 50, 0) menuItems:self.items selected:^(NSInteger index, YCXMenuItem *item) {
+            
+        }];
+    }
+    
+}
+
+- (NSMutableArray *)items {
+    if (!_items) {
+        
+        //        // set title
+        //        YCXMenuItem *firstTitle = [YCXMenuItem firstTitle:@"添加失物" WithIcon:nil];
+        //        firstTitle.foreColor = [UIColor whiteColor];
+        //        firstTitle.titleFont = [UIFont boldSystemFontOfSize:20.0f];
+        YCXMenuItem *firstTitle = [YCXMenuItem menuItem:@"添加说说" image:[UIImage imageNamed:@"adds"] target:self action:@selector(addSay)];
+        firstTitle.foreColor = [UIColor blackColor];
+        firstTitle.alignment = NSTextAlignmentCenter;
+        //set logout button
+        YCXMenuItem *SecondTitle = [YCXMenuItem menuItem:@"我的说说" image:[UIImage imageNamed:@"mine"] target:self action:@selector(mySay)];
+        SecondTitle.foreColor = [UIColor blackColor];
+        SecondTitle.alignment = NSTextAlignmentCenter;
+        
+        //        //set item
+        _items = [@[firstTitle,
+                    //                    [YCXMenuItem menuItem:@"个人中心"
+                    //                                    image:nil
+                    //                                      tag:100
+                    //                                 userInfo:@{@"title":@"Menu"}],
+                    //                    [YCXMenuItem menuItem:@"ACTION 133"
+                    //                                    image:nil
+                    //                                      tag:101
+                    //                                 userInfo:@{@"title":@"Menu"}],
+                    //                    [YCXMenuItem menuItem:@"检查更新"
+                    //                                    image:nil
+                    //                                      tag:102
+                    //                                 userInfo:@{@"title":@"Menu"}],
+                    SecondTitle
+                    ] mutableCopy];
+    }
+    return _items;
+}
+
+- (void)setItems:(NSMutableArray *)items {
+    _items = items;
 }
 
 -(void)load:(int)num{
@@ -339,7 +500,7 @@ int num=1;
 }
 -(Boolean)isShowDelect:(int)i{
     NSString *sayId=[_Say_content[i] objectForKey:@"user_id"];
-
+    
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     NSDictionary *User_Data=[defaults objectForKey:@"User"];
     

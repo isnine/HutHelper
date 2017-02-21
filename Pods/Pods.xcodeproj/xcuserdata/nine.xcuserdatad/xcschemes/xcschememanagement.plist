@@ -69,6 +69,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>YCXMenu.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>YYModel.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -82,12 +87,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>3E4F42329B6B9617356E7A571F7942B9</key>
+		<key>393FE4AA53032054B34A1242EFD5245E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>48B4E1C8EAD63C3502A4214A71CC9EFD</key>
+		<key>3E4F42329B6B9617356E7A571F7942B9</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -97,12 +102,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>6D8CB1F045759DFE1DB32514FAAE2821</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>71045D231DDFBEAA6A91239FEA8D5BB7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7E6BD5B87D240227F8D160FA6698408A</key>
+		<key>81BAD427191E88B5BFBDD109F1DC665A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>834958F3F0D32224B34B41866299FA69</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -117,17 +132,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A5AB0AD2BB9BAAFAFB0772048E30F474</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>BE21DA0F82C3C25FA9F9F3CC5FC01D39</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>BE3F89E433E6E7FE11F9EA62509A80A8</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -137,12 +142,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D2C1629A51671E823332F1B44F0A7F8C</key>
+		<key>EDC826B1782AEBCE161DEA67D5FFA5E3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>F0EA78F8F3362DEBC9840500226DA5E7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FEF5089760E43B207AA6B0FAB0996B36</key>
 		<dict>
 			<key>primary</key>
 			<true/>
