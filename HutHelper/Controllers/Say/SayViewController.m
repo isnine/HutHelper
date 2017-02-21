@@ -44,7 +44,7 @@ int num=1;
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     _Say_content=[defaults objectForKey:@"Say"];
     /**下拉刷新*/
-    if([Config getIssay]==0){
+    if([Config getIs]==0){
         self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(reload)];
         self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(load)];
         /**按钮*/
@@ -346,7 +346,7 @@ int num=1;
                      [defaults setObject:Say_content forKey:@"Say"];
                      [defaults synchronize];
                      HideAllHUD
-                     [Config setIssay:1];
+                     [Config setIs:1];
                      SayViewController *Say      = [[SayViewController alloc] init];
                      AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
                      [tempAppDelegate.mainNavigationController pushViewController:Say animated:YES];
@@ -393,7 +393,7 @@ int num=1;
                      [defaults setObject:Say_content forKey:@"Say"];
                      [defaults synchronize];
                      HideAllHUD
-                     [Config setIssay:1];
+                     [Config setIs:1];
                      SayViewController *Say      = [[SayViewController alloc] init];
                      AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
                      [tempAppDelegate.mainNavigationController pushViewController:Say animated:YES];

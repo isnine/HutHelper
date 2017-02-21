@@ -7,23 +7,16 @@
 //
 
 #import "Config.h"
-static int Isxp ;
-static int Issay ;
+static int Is ;
+
 @implementation Config
-+ (void)setIsxp:(int )bools
++ (void)setIs:(int )bools
 {
-    Isxp = bools;
+    Is = bools;
 }
-+ (int )getIsxp
++ (int )getIs
 {
-    return Isxp;
+    return Is;
 }
-+ (void)setIssay:(int )bools
-{
-    Issay = bools;
-}
-+ (int )getIssay
-{
-    return Issay;
-}
+
 @end

@@ -123,7 +123,7 @@ int isxp=0;
                                   [shared synchronize];
                                   HideAllHUD
                                   isxp=0;
-                                  [Config setIsxp:0];
+                                  [Config setIs:0];
                                   UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
                                   ClassViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Class"];
                                   AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -159,7 +159,7 @@ int isxp=0;
              }];
     }
     else{
-        [Config setIsxp:0];
+        [Config setIs:0];
         UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         ClassViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Class"];
         AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -206,7 +206,7 @@ int isxp=0;
                                   [defaults setObject:array forKey:@"ClassXP"];
                                   [defaults synchronize];
                                   HideAllHUD
-                                  [Config setIsxp:1];
+                                  [Config setIs:1];
                                   UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
                                   ClassViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Class"];
                                   AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -236,7 +236,7 @@ int isxp=0;
              }];
     }
     else{
-        [Config setIsxp:1];
+        [Config setIs:1];
         UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         ClassViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Class"];
         AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -287,7 +287,7 @@ int isxp=0;
                      [defaults setObject:Say_content forKey:@"Say"];
                      [defaults synchronize];
                      HideAllHUD
-                     [Config setIssay:0];
+                     [Config setIs:0];
                      SayViewController *Say      = [[SayViewController alloc] init];
                      AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
                      [tempAppDelegate.mainNavigationController pushViewController:Say animated:YES];
@@ -336,6 +336,7 @@ int isxp=0;
              [defaults setObject:Hand forKey:@"Hand"];
              [defaults synchronize];
              HideAllHUD
+             [Config setIs:0];
              HandTableViewController *hand=[[HandTableViewController alloc]init];
              AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
              [tempAppDelegate.mainNavigationController pushViewController:hand animated:YES];

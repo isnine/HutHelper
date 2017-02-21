@@ -22,7 +22,7 @@
 #define API_LOGIN @"http://218.75.197.121:8888/api/v1/get/login/%@/%@/1"
 #define API_LOGIN_RESET @"http://218.75.197.121:8888/auth/resetPass"
 /**用户界面*/
-#define API_PROFILE_USERNAME @"http://218.75.197.121:8888/api/v1/set/profile/%@/%@"
+#define API_PROFILE_USER @"http://218.75.197.121:8888/api/v1/set/profile/%@/%@"
 #define API_PROFILE_AVATAR @"http://218.75.197.121:8888/api/v1/set/avatar/%@/%@"
 /**网上作业*/
 #define API_HOMEWORK @"http://218.75.197.121:8888/api/v1/get/myhomework/%@/%@"
@@ -30,6 +30,7 @@
 #define API_POWER @"http://218.75.197.121:8888/api/v1/get/power/%@/%@"
 /**二手市场*/
 #define API_GOODS @"http://218.75.197.121:8888/api/v1/stuff/goods/%d"
+#define API_GOODS_USER @"http://218.75.197.121:8888/api/v1/stuff/own1/%@/%@/1"
 #define API_GOODS_CREATE @"http://218.75.197.121:8888/api/v1/stuff/create/%@/%@"
 #define API_GOODS_IMG_UPLOAD @"http://218.75.197.121:8888/api/v1/stuff/upload"
 #define API_GOODS_SHOW @"http://218.75.197.121:8888/api/v1/stuff/detail/%@/%@/%@"

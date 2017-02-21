@@ -100,7 +100,7 @@ NSString *show_xp;
     self.navigationItem.rightBarButtonItem = rightCunstomButtonView;
     now_xp=0;
     [self addCourse];
-    if ([Config getIsxp]==1) {
+    if ([Config getIs]==1) {
         [self isxp];
     }
 }
