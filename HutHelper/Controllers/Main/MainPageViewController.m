@@ -459,9 +459,7 @@ int isxp=0;
                  }else{
                      [MBProgressHUD showError:[Exam_All objectForKey:@"message"]];
                  }
-                 
                  HideAllHUD
-                 
              }
          } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
              if ([defaults objectForKey:@"Exam"]!=NULL) {
@@ -727,11 +725,19 @@ int isxp=0;
         NSLog(@"没有记录");
         
     }
-    else if (!([lastRunKey isEqualToString:currentVersion]||[lastRunKey isEqualToString:@"1.9.5"])) {
+    else if ([lastRunKey isEqualToString:@"1.9.5"]){
+        [defaults setObject:currentVersion forKey:@"last_run_version_key"];
+        [Config addNotice];
+    }
+    else if (![lastRunKey isEqualToString:currentVersion]) {
         NSString *appDomain       = [[NSBundle mainBundle] bundleIdentifier];
         [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:appDomain];
         [defaults setObject:currentVersion forKey:@"last_run_version_key"];
         NSLog(@"记录不匹配");
     }
+
+    
+    
+    
 }
 @end

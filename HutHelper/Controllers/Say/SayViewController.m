@@ -342,7 +342,7 @@ int num=1;
              if ([[Say_All objectForKey:@"msg"]isEqualToString:@"ok"]) {
                  NSDictionary *Say_Data=[Say_All objectForKey:@"data"];
                  NSArray *Say_content=[Say_Data objectForKey:@"posts"];//加载该页数据
-                 if (Say_content!=NULL) {
+                 if (Say_content.count!=0) {
                      [defaults setObject:Say_content forKey:@"Say"];
                      [defaults synchronize];
                      HideAllHUD
@@ -353,7 +353,7 @@ int num=1;
                      
                  }else{
                      HideAllHUD
-                     [MBProgressHUD showError:@"数据错误"];
+                     [MBProgressHUD showError:@"您没有发布的说说"];
                  }
              }
              else{
@@ -367,51 +367,54 @@ int num=1;
          }];
 }
 -(void)showSay:(NSString*)username{
-    NSURLCache *sharedCache = [[NSURLCache alloc] initWithMemoryCapacity:0
-                                                            diskCapacity:0
-                                                                diskPath:nil];
-    [NSURLCache setSharedURLCache:sharedCache];
-
-    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    /**拼接地址*/
-    NSDictionary *User_Data=[defaults objectForKey:@"User"];
-    User *user=[User yy_modelWithJSON:User_Data];
-    NSString *Url_String=[NSString stringWithFormat:API_MOMENTS_USER,username];
-    /**设置9秒超时*/
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
-    manager.requestSerializer.timeoutInterval = 5.f;
-    [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
-    /**请求平时课表*/
-    [manager GET:Url_String parameters:nil progress:nil
-         success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-             NSDictionary *Say_All = [NSDictionary dictionaryWithDictionary:responseObject];
-             if ([[Say_All objectForKey:@"msg"]isEqualToString:@"ok"]) {
-                 NSDictionary *Say_Data=[Say_All objectForKey:@"data"];
-                 NSArray *Say_content=[Say_Data objectForKey:@"posts"];//加载该页数据
-                 if (Say_content!=NULL) {
-                     [defaults setObject:Say_content forKey:@"Say"];
-                     [defaults synchronize];
-                     HideAllHUD
-                     [Config setIs:1];
-                     SayViewController *Say      = [[SayViewController alloc] init];
-                     AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-                     [tempAppDelegate.mainNavigationController pushViewController:Say animated:YES];
-                     
-                 }else{
-                     HideAllHUD
-                  //   [MBProgressHUD showError:@"数据错误"];
+    if ([Config getIs]==0) {
+        NSURLCache *sharedCache = [[NSURLCache alloc] initWithMemoryCapacity:0
+                                                                diskCapacity:0
+                                                                    diskPath:nil];
+        [NSURLCache setSharedURLCache:sharedCache];
+        
+        NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+        /**拼接地址*/
+        NSDictionary *User_Data=[defaults objectForKey:@"User"];
+        User *user=[User yy_modelWithJSON:User_Data];
+        NSString *Url_String=[NSString stringWithFormat:API_MOMENTS_USER,username];
+        /**设置9秒超时*/
+        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+        [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
+        manager.requestSerializer.timeoutInterval = 5.f;
+        [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
+        /**请求平时课表*/
+        [manager GET:Url_String parameters:nil progress:nil
+             success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                 NSDictionary *Say_All = [NSDictionary dictionaryWithDictionary:responseObject];
+                 if ([[Say_All objectForKey:@"msg"]isEqualToString:@"ok"]) {
+                     NSDictionary *Say_Data=[Say_All objectForKey:@"data"];
+                     NSArray *Say_content=[Say_Data objectForKey:@"posts"];//加载该页数据
+                     if (Say_content.count!=0) {
+                         [defaults setObject:Say_content forKey:@"Say"];
+                         [defaults synchronize];
+                         HideAllHUD
+                         [Config setIs:1];
+                         SayViewController *Say      = [[SayViewController alloc] init];
+                         AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+                         [tempAppDelegate.mainNavigationController pushViewController:Say animated:YES];
+                         
+                     }else{
+                         HideAllHUD
+                         //[MBProgressHUD showError:@"数据错误"];
+                     }
                  }
-             }
-             else{
+                 else{
+                     HideAllHUD
+                     // [MBProgressHUD showError:[Say_All objectForKey:@"msg"]];
+                 }
                  HideAllHUD
-                // [MBProgressHUD showError:[Say_All objectForKey:@"msg"]];
-             }
-             HideAllHUD
-         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-             
-             HideAllHUD
-         }];
+             } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                 
+                 HideAllHUD
+             }];
+    }
+    
 }
 
 

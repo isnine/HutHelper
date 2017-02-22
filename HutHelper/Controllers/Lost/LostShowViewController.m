@@ -19,7 +19,8 @@
 #import "MJRefresh.h"
 #import "XWScanImage.h"
 #import "Config.h"
-
+#import "User.h"
+#import "YYModel.h"
 #import "YCXMenuItem.h"
 #import "YCXMenu.h"
 @interface LostShowViewController ()
@@ -35,7 +36,12 @@
     [super viewDidLoad];
     [self getLostData];
     [self setTitle];
-    [self setRefresh];
+    if([Config getIs]==0){
+       [self setRefresh];
+    }else{
+       self.navigationItem.title = @"我的发布";
+    }
+    
     _num=1;
     self.tableView.dataSource = (id)self;
    self.tableView.delegate=(id)self;
@@ -289,22 +295,26 @@
                          self.tableView.mj_header.hidden = YES;
                          [self.tableView reloadData];}
                      else{
+                         _num--;
                          [MBProgressHUD showError:@"当前已是最大页数"];
                          [self.tableView.mj_footer endRefreshing];
                          
                      }
                  }
                  else{
+                     _num--;
                      [self.tableView.mj_footer endRefreshing];
                      [MBProgressHUD showError:@"网络错误"];
                  }
              }
              else{
+                 _num--;
                  [self.tableView.mj_footer endRefreshing];
                  [MBProgressHUD showError:[Say_All objectForKey:@"msg"]];
              }
              HideAllHUD
          } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+             _num--;
              [self.tableView.mj_footer endRefreshing];
              [MBProgressHUD showError:@"网络错误"];
          }];
@@ -370,8 +380,8 @@
 
 #pragma mark - 菜单
 -(void)menu{
-    [YCXMenu setTintColor:[UIColor whiteColor]];
-    [YCXMenu setSeparatorColor:[UIColor whiteColor]];
+    [YCXMenu setTintColor:[UIColor colorWithRed:240/255.0 green:240/255.0 blue:240/255.0 alpha:1]];
+    [YCXMenu setSeparatorColor:[UIColor colorWithRed:240/255.0 green:240/255.0 blue:240/255.0 alpha:1]];
 //    [YCXMenu setTitleFont:[UIFont systemFontOfSize:19.0]];
     //    [YCXMenu setSelectedColor:[UIColor redColor]];
     if ([YCXMenu isShow]){
@@ -395,7 +405,7 @@
         menuTitle.foreColor = [UIColor blackColor];
         menuTitle.alignment = NSTextAlignmentCenter;
         //set logout button
-        YCXMenuItem *logoutItem = [YCXMenuItem menuItem:@"我的失物" image:[UIImage imageNamed:@"mine"] target:self action:@selector(myLost)];
+        YCXMenuItem *logoutItem = [YCXMenuItem menuItem:@"我的发布" image:[UIImage imageNamed:@"mine"] target:self action:@selector(myLost)];
         logoutItem.foreColor = [UIColor blackColor];
         logoutItem.alignment = NSTextAlignmentCenter;
         
@@ -425,10 +435,52 @@
         [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:YES];
 }
 -(void)myLost{
-    UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    AddLostViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"AddLosta"];
-    AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:YES];
+    /**设置不缓存*/
+    NSURLCache *sharedCache = [[NSURLCache alloc] initWithMemoryCapacity:0
+                                                            diskCapacity:0
+                                                                diskPath:nil];
+    [NSURLCache setSharedURLCache:sharedCache];
+    [MBProgressHUD showMessage:@"加载中" toView:self.view];
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    NSDictionary *User_Data=[defaults objectForKey:@"User"];
+    User *user=[User yy_modelWithJSON:User_Data];
+    /**拼接地址*/
+    NSString *Url_String=[NSString stringWithFormat:API_LOST_USER,user.user_id];
+    /**设置9秒超时*/
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
+    manager.requestSerializer.timeoutInterval = 5.f;
+    [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
+    /**请求平时课表*/
+    [manager GET:Url_String parameters:nil progress:nil
+         success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+             NSDictionary *Say_All = [NSDictionary dictionaryWithDictionary:responseObject];
+             if ([[Say_All objectForKey:@"msg"]isEqualToString:@"ok"]) {
+                 NSDictionary *Say_Data=[Say_All objectForKey:@"data"];
+                 NSArray *Say_content=[Say_Data objectForKey:@"posts"];//加载该页数据
+                 if (Say_content.count!=0) {
+                     [defaults setObject:Say_content forKey:@"Lost"];
+                     [defaults synchronize];
+                     HideAllHUD
+                     [Config setIs:1];
+                     UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                     LostShowViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"LostShow"];
+                     AppDelegate *tempAppDelegate= (AppDelegate *)[[UIApplication sharedApplication] delegate];
+                     [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:NO];
+                 }
+                 else{
+                     HideAllHUD
+                     [MBProgressHUD showError:@"您没有发布的失物"];
+                 }
+             }
+             else{
+                 HideAllHUD
+                 [MBProgressHUD showError:[Say_All objectForKey:[Say_All objectForKey:@"msg"]]];
+             }             HideAllHUD
+         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+             [MBProgressHUD showError:@"网络超时，请检查网络并重试"];
+             HideAllHUD
+         }];
 }
 - (void)setItems:(NSMutableArray *)items {
     _items = items;

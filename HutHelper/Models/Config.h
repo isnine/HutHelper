@@ -14,6 +14,6 @@
 
 + (void)setIs:(int )Is;
 + (int )getIs;
-
++(void)addNotice;
 
 @end

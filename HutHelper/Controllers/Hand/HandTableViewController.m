@@ -144,18 +144,22 @@
 //             NSMutableDictionary *dic1=[NSMutableDictionary dictionaryWithDictionary:[NSDictionary dictionaryWithObject:responseObject forKey:@""]];
              NSDictionary *dic1 = [NSDictionary dictionaryWithObject:responseObject forKey:@""];
              NSArray *Hand           = [dic1 objectForKey:@""];
-             
-             NSMutableArray *data=[[NSMutableArray alloc]init];
-             [data addObject:_Hand_content[0]];
-             [data addObjectsFromArray:Hand];
-             NSArray *Hands = [NSArray arrayWithArray:data];
-             [defaults setObject:Hands forKey:@"Hand"];
-             [defaults synchronize];
-             HideAllHUD
-             [Config setIs:1];
-             HandTableViewController *hand=[[HandTableViewController alloc]init];
-             AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-             [tempAppDelegate.mainNavigationController pushViewController:hand animated:YES];
+             if (Hand.count!=0) {
+                 NSMutableArray *data=[[NSMutableArray alloc]init];
+                 [data addObject:_Hand_content[0]];
+                 [data addObjectsFromArray:Hand];
+                 NSArray *Hands = [NSArray arrayWithArray:data];
+                 [defaults setObject:Hands forKey:@"Hand"];
+                 [defaults synchronize];
+                 HideAllHUD
+                 [Config setIs:1];
+                 HandTableViewController *hand=[[HandTableViewController alloc]init];
+                 AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+                 [tempAppDelegate.mainNavigationController pushViewController:hand animated:YES];
+             }else{
+                 HideAllHUD
+                 [MBProgressHUD showError:@"您没有发布的商品"];
+             }
          } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
              [MBProgressHUD showError:@"网络超时，请检查网络并重试"];
              HideAllHUD
