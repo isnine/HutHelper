@@ -36,7 +36,7 @@ static int Is ;
     
     [noticeDictionary2 setObject:@"2017-02-20 08:00" forKey:@"time"];
     [noticeDictionary2 setObject:@"部分新功能的使用" forKey:@"title"];
-    [noticeDictionary2 setObject:@"在新的版本中,我们支持了用户自定义昵称和修改头像。\n【设置昵称】左滑菜单-个人中心-修改昵称\n【设置头像】左滑菜单-个人中心-点击头像\n修改后的昵称将在校园说说中显示\n\n同时为了方便用户查询课表，我们开发了Widget。\n【打开Widget】系统主界面-滑动屏幕到最左边-编辑-添加工大助手\n添加后您可以在不打开App的情况下查询课表" forKey:@"body"];
+    [noticeDictionary2 setObject:@"在新的版本中,我们支持了用户自定义昵称和修改头像。\n【设置昵称】左滑菜单-个人中心-修改昵称\n【设置头像】左滑菜单-个人中心-点击头像\n\n\n\n【打开Widget】系统主界面-滑动屏幕到最左边-编辑-添加工大助手\n添加后您可以在不打开App的情况下查询课表" forKey:@"body"];
     [notice insertObject:noticeDictionary2 atIndex:2];
     NSArray *array = [NSArray arrayWithArray:notice];
     [defaults setObject:array forKey:@"Notice"];//通知列表
