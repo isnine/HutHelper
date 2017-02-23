@@ -7,6 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+
 
 /**
  新浪微博
@@ -17,6 +19,11 @@ extern NSString *const  UMSPlatformNameSina;
  腾讯微博
  */
 extern NSString *const  UMSPlatformNameTencentWb;
+
+/**
+ 钉钉
+ */
+extern NSString *const  UMSPlatformNameDingDing;
 
 /**
  人人网
@@ -140,6 +147,41 @@ extern NSString *const  UMSPlatformNameKakaoTalk;
 extern NSString *const  UMSPlatformNameFlickr;
 
 
+/**
+ *  有道云笔记
+ */
+extern NSString *const  UMSPlatformNameYouDaoNote;
+
+/**
+ *  印象笔记
+ */
+extern NSString *const  UMSPlatformNameEverNote;
+
+/**
+ *  google+
+ */
+extern NSString *const  UMSPlatformNameGooglePlus;
+
+/**
+ *  Pocket
+ */
+extern NSString *const  UMSPlatformNamePocket;
+
+/**
+ *  dropbox
+ */
+extern NSString *const  UMSPlatformNameDropBox;
+
+/**
+ *  vkontakte
+ */
+extern NSString *const  UMSPlatformNameVKontakte;
+
+/**
+ *  FaceBookMessenger
+ */
+extern NSString *const  UMSPlatformNameFaceBookMessenger;
+
 
 /**
  *  授权，分享，UserProfile等操作的回调
@@ -195,6 +237,7 @@ typedef NS_ENUM(NSInteger, UMSocialPlatformErrorType) {
     UMSocialPlatformErrorType_SourceError       = 2011,             // 第三方错误
     
     UMSocialPlatformErrorType_ProtocolNotOverride = 2013,   // 对应的	UMSocialPlatformProvider的方法没有实现
+    UMSocialPlatformErrorType_NotUsingHttps      = 2014,   // 没有用https的请求,@see UMSocialGlobal isUsingHttpsWhenShareContent
     
 };
 
@@ -271,17 +314,27 @@ typedef NS_ENUM(NSInteger,UMSocialPlatformType)
     UMSocialPlatformType_Facebook           = 16,//Facebook
     UMSocialPlatformType_Twitter            = 17,//Twitter
     UMSocialPlatformType_Douban             = 18,//豆瓣
-    UMSocialPlatformType_KakaoTalk          = 19,//KakaoTalk（暂未支持）
-    UMSocialPlatformType_Pinterest          = 20,//Pinterest（暂未支持）
+    UMSocialPlatformType_KakaoTalk          = 19,//KakaoTalk
+    UMSocialPlatformType_Pinterest          = 20,//Pinteres
     UMSocialPlatformType_Line               = 21,//Line
     
     UMSocialPlatformType_Linkedin           = 22,//领英
     
     UMSocialPlatformType_Flickr             = 23,//Flickr
 
-    UMSocialPlatformType_Tumblr             = 24,//Tumblr（暂未支持）
+    UMSocialPlatformType_Tumblr             = 24,//Tumblr
     UMSocialPlatformType_Instagram          = 25,//Instagram
     UMSocialPlatformType_Whatsapp           = 26,//Whatsapp
+    UMSocialPlatformType_DingDing           = 27,//钉钉
+    
+    UMSocialPlatformType_YouDaoNote         = 28,//有道云笔记
+    UMSocialPlatformType_EverNote           = 29,//印象笔记
+    UMSocialPlatformType_GooglePlus         = 30,//Google+
+    UMSocialPlatformType_Pocket             = 31,//Pocket
+    UMSocialPlatformType_DropBox            = 32,//dropbox
+    UMSocialPlatformType_VKontakte          = 33,//vkontakte
+    UMSocialPlatformType_FaceBookMessenger  = 34,//FaceBookMessenger
+    
     UMSocialPlatformType_Predefine_end      = 999,
     
     //用户自定义的平台
@@ -316,11 +369,64 @@ typedef NS_ENUM(NSInteger,UMSocialPlatformType)
 @property(nonatomic,strong)NSString* redirectURL;
 
 
+/**
+ *  根据平台类型获得平台名称
+ *
+ *  @param platformType 平台类型
+ *  @see UMSocialPlatformType
+ *
+ *  @return 返回对应的平台名称
+ */
 + (NSString *)platformNameWithPlatformType:(UMSocialPlatformType)platformType;
 
+/**
+ *  根据平台的类型返回对应平台的对象
+ *
+ *  @param platformType 平台类型
+ *
+ *  @return 返回对应的平台对象
+ */
 + (id)platformHandlerWithPlatformType:(UMSocialPlatformType)platformType;
 
 
+/**
+ *  创建错误类型
+ *
+ *  @param errorType 平台类型
+ *  @param userInfo  用户的自定义信息userInfo
+ *
+ *  @return 返回错误对象
+ */
 + (NSError *)errorWithSocialErrorType:(UMSocialPlatformErrorType)errorType userInfo:(id)userInfo;
+
+@end
+
+
+/**
+ * 云端授权/分享编辑页面配置类
+ * 云端授权/分享页面目前适用于腾讯微博、豆瓣、人人的授权和分享编辑页面的自定义配置
+ */
+@interface UMSocialCloudViewConfig : NSObject
+
+
+/**
+ 授权页面
+ */
+@property (nonatomic, strong) NSString *authViewTitle;
+@property (nonatomic, strong) UIColor *authViewTitleColor;
+@property( nonatomic, strong) UIColor *authViewNavBarColor;
+// button仅需改动title或image即可，touch事件内部触发
+@property (nonatomic, strong) UIButton *authViewCloseButton;
+
+@property (nonatomic, strong) NSString *editViewTitle;
+@property (nonatomic, strong) UIColor *editViewTitleColor;
+@property( nonatomic, strong) UIColor *editViewNavBarColor;
+// button仅需改动title或image即可，touch事件内部触发
+@property (nonatomic, strong) UIButton *editViewCloseButton;
+@property (nonatomic, strong) UIButton *editViewShareButton;
+
+
+
++ (instancetype)sharedInstance;
 
 @end

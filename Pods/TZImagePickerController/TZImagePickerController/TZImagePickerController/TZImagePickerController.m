@@ -4,7 +4,7 @@
 //
 //  Created by 谭真 on 15/12/24.
 //  Copyright © 2015年 谭真. All rights reserved.
-//  version 1.7.1 - 2016.10.18
+//  version 1.7.8 - 2016.12.20
 
 #import "TZImagePickerController.h"
 #import "TZPhotoPickerController.h"
@@ -35,6 +35,8 @@
 
 @implementation TZImagePickerController
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
@@ -69,10 +71,7 @@
     if (iOS9Later) {
         barItem = [UIBarButtonItem appearanceWhenContainedInInstancesOfClasses:@[[TZImagePickerController class]]];
     } else {
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
         barItem = [UIBarButtonItem appearanceWhenContainedIn:[TZImagePickerController class], nil];
-#pragma clang diagnostic pop
     }
     NSMutableDictionary *textAttrs = [NSMutableDictionary dictionary];
     textAttrs[NSForegroundColorAttributeName] = self.barItemTextColor;
@@ -83,10 +82,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     _originStatusBarStyle = [UIApplication sharedApplication].statusBarStyle;
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
     [UIApplication sharedApplication].statusBarStyle = iOS7Later ? UIStatusBarStyleLightContent : UIStatusBarStyleBlackOpaque;
-#pragma clang diagnostic pop
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -119,15 +115,10 @@
         self.allowPickingVideo = YES;
         self.allowPickingImage = YES;
         self.allowTakePicture = YES;
-        self.timeout = 15;
-        self.photoWidth = 828.0;
-        self.photoPreviewMaxWidth = 600;
         self.sortAscendingByModificationDate = YES;
         self.autoDismiss = YES;
-        self.barItemTextFont = [UIFont systemFontOfSize:15];
-        self.barItemTextColor = [UIColor whiteColor];
         self.columnNumber = columnNumber;
-        [self configDefaultImageName];
+        [self configDefaultSetting];
         
         if (![[TZImageManager manager] authorizationStatusAuthorized]) {
             _tipLable = [[UILabel alloc] init];
@@ -143,7 +134,7 @@
             [self.view addSubview:_tipLable];
             
             _settingBtn = [UIButton buttonWithType:UIButtonTypeSystem];
-            [_settingBtn setTitle:[NSBundle tz_localizedStringForKey:@"Setting"] forState:UIControlStateNormal];
+            [_settingBtn setTitle:self.settingBtnTitleStr forState:UIControlStateNormal];
             _settingBtn.frame = CGRectMake(0, 180, self.view.tz_width, 44);
             _settingBtn.titleLabel.font = [UIFont systemFontOfSize:18];
             [_settingBtn addTarget:self action:@selector(settingBtnClick) forControlEvents:UIControlEventTouchUpInside];
@@ -164,24 +155,57 @@
     if (self) {
         self.selectedAssets = [NSMutableArray arrayWithArray:selectedAssets];
         self.allowPickingOriginalPhoto = self.allowPickingOriginalPhoto;
-        self.timeout = 15;
-        self.photoWidth = 828.0;
-        self.photoPreviewMaxWidth = 600;
-        self.barItemTextFont = [UIFont systemFontOfSize:15];
-        self.barItemTextColor = [UIColor whiteColor];
-        [self configDefaultImageName];
-        
+        [self configDefaultSetting];
+
         previewVc.photos = [NSMutableArray arrayWithArray:selectedPhotos];
         previewVc.currentIndex = index;
         __weak typeof(self) weakSelf = self;
-        [previewVc setOkButtonClickBlockWithPreviewType:^(NSArray<UIImage *> *photos, NSArray *assets, BOOL isSelectOriginalPhoto) {
-            if (weakSelf.didFinishPickingPhotosHandle) {
-                weakSelf.didFinishPickingPhotosHandle(photos,assets,isSelectOriginalPhoto);
-            }
-            [weakSelf dismissViewControllerAnimated:YES completion:nil];
+        [previewVc setDoneButtonClickBlockWithPreviewType:^(NSArray<UIImage *> *photos, NSArray *assets, BOOL isSelectOriginalPhoto) {
+            [weakSelf dismissViewControllerAnimated:YES completion:^{
+                if (weakSelf.didFinishPickingPhotosHandle) {
+                    weakSelf.didFinishPickingPhotosHandle(photos,assets,isSelectOriginalPhoto);
+                }
+            }];
         }];
     }
     return self;
+}
+
+/// This init method for crop photo / 用这个初始化方法以裁剪图片
+- (instancetype)initCropTypeWithAsset:(id)asset photo:(UIImage *)photo completion:(void (^)(UIImage *cropImage,id asset))completion {
+    TZPhotoPreviewController *previewVc = [[TZPhotoPreviewController alloc] init];
+    self = [super initWithRootViewController:previewVc];
+    if (self) {
+        self.maxImagesCount = 1;
+        self.allowCrop = YES;
+        self.selectedAssets = [NSMutableArray arrayWithArray:@[asset]];
+        [self configDefaultSetting];
+        
+        previewVc.photos = [NSMutableArray arrayWithArray:@[photo]];
+        previewVc.isCropImage = YES;
+        previewVc.currentIndex = 0;
+        __weak typeof(self) weakSelf = self;
+        [previewVc setDoneButtonClickBlockCropMode:^(UIImage *cropImage, id asset) {
+            [weakSelf dismissViewControllerAnimated:YES completion:^{
+                if (completion) {
+                    completion(cropImage,asset);
+                }
+            }];
+        }];
+    }
+    return self;
+}
+
+- (void)configDefaultSetting {
+    self.timeout = 15;
+    self.photoWidth = 828.0;
+    self.photoPreviewMaxWidth = 600;
+    self.barItemTextFont = [UIFont systemFontOfSize:15];
+    self.barItemTextColor = [UIColor whiteColor];
+    self.allowPreview = YES;
+    
+    [self configDefaultImageName];
+    [self configDefaultBtnTitle];
 }
 
 - (void)configDefaultImageName {
@@ -192,6 +216,15 @@
     self.photoPreviewOriginDefImageName = @"preview_original_def.png";
     self.photoOriginDefImageName = @"photo_original_def.png";
     self.photoOriginSelImageName = @"photo_original_sel.png";
+}
+
+- (void)configDefaultBtnTitle {
+    self.doneBtnTitleStr = [NSBundle tz_localizedStringForKey:@"Done"];
+    self.cancelBtnTitleStr = [NSBundle tz_localizedStringForKey:@"Cancel"];
+    self.previewBtnTitleStr = [NSBundle tz_localizedStringForKey:@"Preview"];
+    self.fullImageBtnTitleStr = [NSBundle tz_localizedStringForKey:@"Full image"];
+    self.settingBtnTitleStr = [NSBundle tz_localizedStringForKey:@"Setting"];
+    self.processHintStr = [NSBundle tz_localizedStringForKey:@"Processing..."];
 }
 
 - (void)observeAuthrizationStatusChange {
@@ -225,10 +258,7 @@
         [alertController addAction:[UIAlertAction actionWithTitle:[NSBundle tz_localizedStringForKey:@"OK"] style:UIAlertActionStyleDefault handler:nil]];
         [self presentViewController:alertController animated:YES completion:nil];
     } else {
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
         [[[UIAlertView alloc] initWithTitle:title message:nil delegate:nil cancelButtonTitle:[NSBundle tz_localizedStringForKey:@"OK"] otherButtonTitles:nil, nil] show];
-#pragma clang diagnostic pop
     }
 }
 
@@ -250,7 +280,7 @@
         _HUDLable = [[UILabel alloc] init];
         _HUDLable.frame = CGRectMake(0,40, 120, 50);
         _HUDLable.textAlignment = NSTextAlignmentCenter;
-        _HUDLable.text = @"正在处理...";
+        _HUDLable.text = self.processHintStr;
         _HUDLable.font = [UIFont systemFontOfSize:15];
         _HUDLable.textColor = [UIColor whiteColor];
         
@@ -272,6 +302,43 @@
         [_HUDIndicatorView stopAnimating];
         [_progressHUD removeFromSuperview];
     }
+}
+
+- (void)setMaxImagesCount:(NSInteger)maxImagesCount {
+    _maxImagesCount = maxImagesCount;
+    if (maxImagesCount > 1) {
+        _showSelectBtn = YES;
+        _allowCrop = NO;
+    }
+}
+
+- (void)setShowSelectBtn:(BOOL)showSelectBtn {
+    _showSelectBtn = showSelectBtn;
+    // 多选模式下，不允许让showSelectBtn为NO
+    if (!showSelectBtn && _maxImagesCount > 1) {
+        _showSelectBtn = YES;
+    }
+}
+
+- (void)setAllowCrop:(BOOL)allowCrop {
+    _allowCrop = _maxImagesCount > 1 ? NO : allowCrop;
+    if (allowCrop) { // 允许裁剪的时候，不能选原图和GIF
+        self.allowPickingOriginalPhoto = NO;
+        self.allowPickingGif = NO;
+    }
+}
+
+- (void)setCircleCropRadius:(NSInteger)circleCropRadius {
+    _circleCropRadius = circleCropRadius;
+    _cropRect = CGRectMake(self.view.tz_width / 2 - circleCropRadius, self.view.tz_height / 2 - _circleCropRadius, _circleCropRadius * 2, _circleCropRadius * 2);
+}
+
+- (CGRect)cropRect {
+    if (_cropRect.size.width > 0) {
+        return _cropRect;
+    }
+    CGFloat cropViewWH = self.view.tz_width;
+    return CGRectMake(0, (self.view.tz_height - self.view.tz_width) / 2, cropViewWH, cropViewWH);
 }
 
 - (void)setTimeout:(NSInteger)timeout {
@@ -375,6 +442,31 @@
     return UIInterfaceOrientationMaskPortrait;
 }
 
+#pragma mark - Public
+
+- (void)cancelButtonClick {
+    if (self.autoDismiss) {
+        [self dismissViewControllerAnimated:YES completion:^{
+            [self callDelegateMethod];
+        }];
+    } else {
+        [self callDelegateMethod];
+    }
+}
+
+- (void)callDelegateMethod {
+    // 兼容旧版本
+    if ([self.pickerDelegate respondsToSelector:@selector(imagePickerControllerDidCancel:)]) {
+        [self.pickerDelegate imagePickerControllerDidCancel:self];
+    }
+    if ([self.pickerDelegate respondsToSelector:@selector(tz_imagePickerControllerDidCancel:)]) {
+        [self.pickerDelegate tz_imagePickerControllerDidCancel:self];
+    }
+    if (self.imagePickerControllerDidCancelHandle) {
+        self.imagePickerControllerDidCancelHandle();
+    }
+}
+
 @end
 
 
@@ -390,7 +482,8 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     self.navigationItem.title = [NSBundle tz_localizedStringForKey:@"Photos"];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:[NSBundle tz_localizedStringForKey:@"Cancel"] style:UIBarButtonItemStylePlain target:self action:@selector(cancel)];
+    TZImagePickerController *imagePickerVc = (TZImagePickerController *)self.navigationController;
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:imagePickerVc.cancelBtnTitleStr style:UIBarButtonItemStylePlain target:imagePickerVc action:@selector(cancelButtonClick)];
     [self configTableView];
     // 1.6.10 采用微信的方式，只在相册列表页定义backBarButtonItem为返回，其余的顺系统的做法
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:[NSBundle tz_localizedStringForKey:@"Back"] style:UIBarButtonItemStylePlain target:nil action:nil];
@@ -407,6 +500,11 @@
         [_tableView reloadData];
     } else {
         [self configTableView];
+    }
+    if (imagePickerVc.allowTakePicture) {
+        self.navigationItem.title = [NSBundle tz_localizedStringForKey:@"Photos"];
+    } else if (imagePickerVc.allowPickingVideo) {
+        self.navigationItem.title = [NSBundle tz_localizedStringForKey:@"Videos"];
     }
 }
 
@@ -431,24 +529,6 @@
             [_tableView reloadData];
         }
     }];
-}
-
-#pragma mark - Click Event
-
-- (void)cancel {
-    TZImagePickerController *imagePickerVc = (TZImagePickerController *)self.navigationController;
-    if (imagePickerVc.autoDismiss) {
-        [self.navigationController dismissViewControllerAnimated:YES completion:nil];
-    }
-    if ([imagePickerVc.pickerDelegate respondsToSelector:@selector(imagePickerControllerDidCancel:)]) {
-        [imagePickerVc.pickerDelegate imagePickerControllerDidCancel:imagePickerVc];
-    }
-    if ([imagePickerVc.pickerDelegate respondsToSelector:@selector(tz_imagePickerControllerDidCancel:)]) {
-        [imagePickerVc.pickerDelegate tz_imagePickerControllerDidCancel:imagePickerVc];
-    }
-    if (imagePickerVc.imagePickerControllerDidCancelHandle) {
-        imagePickerVc.imagePickerControllerDidCancelHandle();
-    }
 }
 
 #pragma mark - UITableViewDataSource && Delegate
@@ -478,6 +558,7 @@
     [self.navigationController pushViewController:photoPickerVc animated:YES];
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
+#pragma clang diagnostic pop
 
 @end
 

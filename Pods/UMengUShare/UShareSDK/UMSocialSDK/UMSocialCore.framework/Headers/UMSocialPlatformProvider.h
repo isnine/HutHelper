@@ -17,6 +17,7 @@
  */
 @protocol UMSocialPlatformProvider <NSObject>
 
+@optional
 /**
  *  当前UMSocialPlatformProvider对应操作的UMSocialPlatformType
  *  @discuss 当前很多平台对应多个平台类型，出现一对多的关系
@@ -80,7 +81,12 @@
              withViewController:(UIViewController*)viewController
           withCompletionHandler:(UMSocialRequestCompletionHandler)completionHandler;
 
-
+/**
+ *  取消授权
+ *
+ *  @param completionHandler 授权后的回调
+ *  @discuss userInfo在有些平台可以带入，如果没有就传入nil.
+ */
 -(void)umSocial_cancelAuthWithCompletionHandler:(UMSocialRequestCompletionHandler)completionHandler;
 
 /**
@@ -113,10 +119,17 @@
  *  @return 是否处理  YES代表处理成功，NO代表不处理
  */
 -(BOOL)umSocial_handleOpenURL:(NSURL *)url;
+-(BOOL)umSocial_handleOpenURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation;
+-(BOOL)umSocial_handleOpenURL:(NSURL *)url options:(NSDictionary*)options;
 
 
 #pragma mark - 平台的特性
-
+/**
+ *  平台的特性
+ *
+ *  @return 返回平台特性
+ *
+ */
 -(UMSocialPlatformFeature)umSocial_SupportedFeatures;
 
 /**

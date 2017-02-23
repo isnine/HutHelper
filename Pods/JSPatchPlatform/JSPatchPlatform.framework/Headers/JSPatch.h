@@ -1,13 +1,12 @@
 //
 //  JSPatch.h
-//  JSPatch Platform SDK version 1.6.3
+//  JSPatch Platform SDK version 1.6.6
 //
 //  Created by bang on 15/7/28.
 //  Copyright (c) 2015 bang. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
-#import "JPEngine.h"
 
 typedef NS_ENUM(NSInteger, JPCallbackType){
     JPCallbackTypeUnknow        = 0,
@@ -17,6 +16,18 @@ typedef NS_ENUM(NSInteger, JPCallbackType){
     JPCallbackTypeCondition     = 4,    //条件下发
     JPCallbackTypeGray          = 5,    //灰度下发
     JPCallbackTypeUpdateFail    = 6,    //脚本拉取错误
+    JPCallbackTypeException     = 7,    //配置错误
+    JPCallbackTypeJSException   = 8,    //js脚本执行出错
+};
+
+typedef NS_ENUM(NSInteger, JPErrorCode) {
+    JPErrorUntar = 5001,
+    JPErrorUntarScript,
+    JPErrorMD5NotMatch,
+    JPErrorScriptFileMissing,
+    JPErrorKeyFileMissing,
+    JPErrorDecryptMd5,
+    JPErrorNetworkError,
 };
 
 @interface JSPatch : NSObject
@@ -37,6 +48,7 @@ typedef NS_ENUM(NSInteger, JPCallbackType){
 
 /*
  用于发布前测试脚本。先把脚本放入项目中，调用后，会在当前项目的 bundle 里寻找 main.js 文件执行
+ 可以使用 `+setupTestScriptFileName` 接口修改测试的文件名
  测试完成后请删除，改为调用 +startWithAppKey: 和 +sync
  */
 + (void)testScriptInBundle;
@@ -67,7 +79,13 @@ typedef NS_ENUM(NSInteger, JPCallbackType){
  事件回调
    type: 事件类型，详见 JPCallbackType 定义
    data: 回调数据
-   error: 事件错误
+   error: 事件错误, 
+        domain: @"jspatch.com",
+        error.code: JPErrorCode,
+        userInfo: @{@"message": msg,
+                    @"additionalError": error,
+                    @"retryTimes": retryTimes
+                   }
  在 `+startWithAppKey:` 之前调用
  */
 + (void)setupCallback:(void (^)(JPCallbackType type, NSDictionary *data, NSError *error))callback;
@@ -90,17 +108,34 @@ typedef NS_ENUM(NSInteger, JPCallbackType){
 
 /*
  使用http请求
- 默认使用https请求，若有特殊需求可以降为http
+ SDK所有请求默认使用 https，若有特殊需求可以通过这个接口降为 http
  在 `+sync:` 之前调用。
  */
 + (void)setupHttp;
 
 
+/*
+ 设置测试脚本文件名
+ 与 `+testScriptInBundle` 配合，默认测试脚本名为 main.js，可以通过这个接口修改
+ 在 `+testScriptInBundle` 之前调用。
+ */
++ (void)setupTestScriptFileName:(NSString *)fileName;
 
+
+#pragma mark - Debug
+
+/*
+ 在状态栏显示调试按钮，点击可以看到所有 JSPatch 相关的 log 和内容
+ */
++ (void)showDebugView;
+
+/*
+ 直接弹起 DebugViewController 显示所有 JSPatch 相关的 log 和内容
+ */
++ (void)presentDebugViewController;
 
 
 #pragma mark - 在线参数
-/***************** 在线参数 ******************/
 /*
  请求在线参数
  默认30分钟内多次调用只请求一次，若要实时性更强，请使用 +updateConfigWithAppKey:withInterval: 接口

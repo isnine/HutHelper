@@ -45,4 +45,9 @@ FOUNDATION_EXPORT const unsigned char UMSocialCoreVersionString[];
 //UMSocial log
 #import <UMSocialCore/UMSociallogMacros.h>
 
+#import <UMSocialCore/UMSBaeViewController.h>
+
+//watermark
+#import <UMSocialCore/UMSocialWarterMarkConfig.h>
+
 

@@ -18,7 +18,7 @@
 
 #import "FeedbackViewController.h"
 #import "UMessage.h"
-#import "UMSocialUIManager.h"
+#import <UShareUI/UShareUI.h>
 #import <UMSocialCore/UMSocialCore.h>
 #import "FirstLoginViewController.h"
 #import "User.h"
@@ -148,7 +148,10 @@
     }
     
     if (indexPath.row == 2) {  //分享
-        [self shareWebPageToPlatformType:UMSocialPlatformType_QQ];
+        [UMSocialUIManager setPreDefinePlatforms:@[@(UMSocialPlatformType_WechatSession),@(UMSocialPlatformType_QQ),@(UMSocialPlatformType_Sina)]];
+        [UMSocialUIManager showShareMenuViewInWindowWithPlatformSelectionBlock:^(UMSocialPlatformType platformType, NSDictionary *userInfo) {
+            [self shareWebPageToPlatformType:platformType];
+        }];
     }
     
     if (indexPath.row == 3) {  //切换用户
@@ -205,30 +208,7 @@
     }];
 }
 
-- (void)shareWithUI {
-    
-    //显示分享面板
-    [UMSocialUIManager showShareMenuViewInWindowWithPlatformSelectionBlock:^(UMShareMenuSelectionView *shareSelectionView, UMSocialPlatformType platformType) {
-        //创建分享消息对象
-        UMSocialMessageObject *messageObject = [UMSocialMessageObject messageObject];
-        
-        //创建网页内容对象
-        UMShareWebpageObject *shareObject = [UMShareWebpageObject shareObjectWithTitle:@"工大助手" descr:@"工大助手APP是由湖南工业大学计算机学院实验室移动组和网络组，为工大学生开发的产品，志于帮助同学们更加便捷的体验校园生活。" thumImage:[UIImage imageNamed:@"ico"]];
-        //设置网页地址
-        shareObject.webpageUrl =@"http://hugongda.com:8888/res/app/";
-        //分享消息对象设置分享内容对象
-        messageObject.shareObject = shareObject;
-        
-        //调用分享接口
-        [[UMSocialManager defaultManager] shareToPlatform:platformType messageObject:messageObject currentViewController:self completion:^(id data, NSError *error) {
-            if (error) {
-                NSLog(@"************Share fail with error %@*********",error);
-            }else{
-                NSLog(@"response data is %@",data);
-            }
-        }];
-    }];
-}
+
 
 - (void)shareWebPageToPlatformType:(UMSocialPlatformType)platformType
 {

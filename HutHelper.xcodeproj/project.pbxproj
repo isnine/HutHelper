@@ -334,11 +334,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A8BACFD1DDDBDDB001C78B8 /* ImageIO.framework in Frameworks */,
+				3A6FF7C71DB3152C004CFBE8 /* libz.tbd in Frameworks */,
+				3A8BACFB1DDDBD81001C78B8 /* libc++.tbd in Frameworks */,
+				3A8BACF91DDDBD71001C78B8 /* libsqlite3.tbd in Frameworks */,
 				3A6FF7C51DB3151E004CFBE8 /* CoreTelephony.framework in Frameworks */,
 				3A8BACF71DDDBD5D001C78B8 /* SystemConfiguration.framework in Frameworks */,
-				3A8BACFB1DDDBD81001C78B8 /* libc++.tbd in Frameworks */,
-				3A6FF7C71DB3152C004CFBE8 /* libz.tbd in Frameworks */,
-				3A8BACF91DDDBD71001C78B8 /* libsqlite3.tbd in Frameworks */,
 				3A6FF7C91DB31544004CFBE8 /* libsqlite3.0.tbd in Frameworks */,
 				3A2D10641DB66063009916D0 /* UIKit.framework in Frameworks */,
 				3A2D10621DB66063009916D0 /* Foundation.framework in Frameworks */,

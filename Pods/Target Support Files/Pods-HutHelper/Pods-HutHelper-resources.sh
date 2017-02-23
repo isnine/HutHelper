@@ -76,18 +76,24 @@ EOM
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_resource "DJRefresh/DJRefresh/DJRefresh.bundle"
   install_resource "DTKDropdownMenu/DTKDropdownMenuView/DTKDropdownMenuView.bundle"
+  install_resource "JSPatch/JSPatch/JSPatch.js"
   install_resource "MJRefresh/MJRefresh/MJRefresh.bundle"
   install_resource "TZImagePickerController/TZImagePickerController/TZImagePickerController/TZImagePickerController.bundle"
+  install_resource "UMengUShare/UShareSDK/UMSocialSDK/UMSocialSDKPromptResources.bundle"
   install_resource "UMengUShare/UShareSDK/SocialLibraries/QQ/TencentOpenApi_IOS_Bundle.bundle"
-  install_resource "UMengUShare/UShareSDK/UMSocialUI/Resource/UMSocialSDKResources.bundle"
+  install_resource "UMengUShare/UShareSDK/SocialLibraries/Sina/WeiboSDK.bundle"
+  install_resource "UMengUShare/UShareSDK/UMSocialUI/UMSocialSDKResources.bundle"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_resource "DJRefresh/DJRefresh/DJRefresh.bundle"
   install_resource "DTKDropdownMenu/DTKDropdownMenuView/DTKDropdownMenuView.bundle"
+  install_resource "JSPatch/JSPatch/JSPatch.js"
   install_resource "MJRefresh/MJRefresh/MJRefresh.bundle"
   install_resource "TZImagePickerController/TZImagePickerController/TZImagePickerController/TZImagePickerController.bundle"
+  install_resource "UMengUShare/UShareSDK/UMSocialSDK/UMSocialSDKPromptResources.bundle"
   install_resource "UMengUShare/UShareSDK/SocialLibraries/QQ/TencentOpenApi_IOS_Bundle.bundle"
-  install_resource "UMengUShare/UShareSDK/UMSocialUI/Resource/UMSocialSDKResources.bundle"
+  install_resource "UMengUShare/UShareSDK/SocialLibraries/Sina/WeiboSDK.bundle"
+  install_resource "UMengUShare/UShareSDK/UMSocialUI/UMSocialSDKResources.bundle"
 fi
 
 mkdir -p "${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"
