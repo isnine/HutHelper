@@ -46,6 +46,7 @@ PODS:
     - SDWebImage/Core (= 3.8.2)
   - SDWebImage/Core (3.8.2)
   - TZImagePickerController (1.7.8)
+  - UITableView+FDTemplateLayoutCell (1.4)
   - UMengAnalytics-NO-IDFA (4.2.5)
   - UMengUShare/Core (6.3.0):
     - UMengUShare/Network
@@ -72,6 +73,7 @@ DEPENDENCIES:
   - MJRefresh
   - SDWebImage (~> 3.8)
   - TZImagePickerController
+  - UITableView+FDTemplateLayoutCell
   - UMengAnalytics-NO-IDFA
   - UMengUShare/Social/QQ
   - UMengUShare/Social/Sina
@@ -94,11 +96,12 @@ SPEC CHECKSUMS:
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
   TZImagePickerController: 87a138ae5d585225aaa6c8abe2cface0f0ad19dd
+  UITableView+FDTemplateLayoutCell: 234e1582bcc4e18461af91155123bb96538ed030
   UMengAnalytics-NO-IDFA: 16666e32edce5be44ae5b14aaaa7f3582e09d6ab
   UMengUShare: b208ac3bcf1f63d11a100b359990e9d77a0f2085
   YCXMenu: 6003bcd20d8ac72e3eb3c442c97ed21948c6dc1f
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: 8c6c71603a9712af316fba15bd6adab200b8b584
+PODFILE CHECKSUM: b014ad5c4d042c3443c776bc872e1f07f58a5770
 
 COCOAPODS: 1.1.1

@@ -175,12 +175,57 @@ int num=1;
     }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
-
+int a=0,b=0,a2=0,a3=0,a4=0;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    SayViewCell *cell = [SayViewCell tableViewCell];
-    SayCommitViewCell *cellcommit = [SayCommitViewCell tableViewCell];
-    CommitViewCell *cellshowcommit=[CommitViewCell tableViewCell];
-    PhotoViewCell *cellphoto=[PhotoViewCell tableViewCell];
+        SayViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SayViewCell"];
+    if (!cell) {
+        UINib *nib = [UINib nibWithNibName:@"SayViewCell" bundle:nil];
+        [tableView registerNib:nib forCellReuseIdentifier:@"SayViewCell"];
+        cell = [tableView dequeueReusableCellWithIdentifier:@"SayViewCell"];
+        NSLog(@"a:%d",a++);
+    }
+    NSLog(@"b:%d",b++);
+    SayCommitViewCell *cellcommit = [tableView dequeueReusableCellWithIdentifier:@"SayCommitViewCell"];
+    if (!cellcommit) {
+        UINib *nib = [UINib nibWithNibName:@"SayCommitViewCell" bundle:nil];
+        [tableView registerNib:nib forCellReuseIdentifier:@"SayCommitViewCell"];
+        cellcommit = [tableView dequeueReusableCellWithIdentifier:@"SayCommitViewCell"];
+        NSLog(@"a2:%d",a2++);
+    }
+    CommitViewCell *cellshowcommit = [tableView dequeueReusableCellWithIdentifier:@"CommitViewCell"];
+    if (!cellshowcommit) {
+        UINib *nib = [UINib nibWithNibName:@"CommitViewCell" bundle:nil];
+        [tableView registerNib:nib forCellReuseIdentifier:@"CommitViewCell"];
+        cellshowcommit = [tableView dequeueReusableCellWithIdentifier:@"CommitViewCell"];
+        NSLog(@"a3:%d",a3++);
+    }
+//    PhotoViewCell *cellphoto = [tableView dequeueReusableCellWithIdentifier:@"PhotoViewCell"];
+//    if (!cellphoto) {
+//        UINib *nib = [UINib nibWithNibName:@"PhotoViewCell" bundle:nil];
+//        [tableView registerNib:nib forCellReuseIdentifier:@"PhotoViewCell"];
+//        cellphoto = [tableView dequeueReusableCellWithIdentifier:@"PhotoViewCell"];
+//        NSLog(@"a4:%d",a4++);
+////        cellphoto = [[[NSBundle mainBundle] loadNibNamed:@"PhotoViewCell" owner:self options:nil] lastObject];
+//    }
+    
+    
+//        SayViewCell *cell;
+//        SayCommitViewCell *cellcommit ;
+//        CommitViewCell *cellshowcommit;
+        PhotoViewCell *cellphoto;
+//        if (!cell) {
+//            cell = [SayViewCell tableViewCell];
+//        }
+//        if (!cellcommit) {
+//            cellcommit = [SayCommitViewCell tableViewCell];
+//        }
+//        if (!cellshowcommit) {
+//            cellshowcommit=[CommitViewCell tableViewCell];
+//        }
+        if (!cellphoto) {
+            cellphoto=[PhotoViewCell tableViewCell];
+        }
+    
     tableView.separatorStyle = NO;
     int exis=2;
     NSArray *photo=[_Say_content[indexPath.section] objectForKey:@"pics"];
@@ -188,11 +233,10 @@ int num=1;
     /**得到评论数组*/
     if (indexPath.row == 0)
     {
-        cell.username.text=[self getName:(short)indexPath.section];
-        cell.created_on.text=[self getTime:(short)indexPath.section];
-        cell.content.text=[self getContent:(short)indexPath.section];
-        
-        cell.img.image = [self getImg:(short)indexPath.section];
+                cell.username.text=[self getName:(short)indexPath.section];
+                cell.created_on.text=[self getTime:(short)indexPath.section];
+                cell.content.text=[self getContent:(short)indexPath.section];
+                cell.img.image = [self getImg:(short)indexPath.section];
         return cell;
     }
     else if (indexPath.row==1) {

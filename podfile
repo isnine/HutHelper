@@ -17,4 +17,5 @@ target "HutHelper" do
     pod 'TZImagePickerController'
     pod 'DTKDropdownMenu', '~> 0.0.4'
     pod 'YCXMenu', '~> 0.0.11'
+    pod  'UITableView+FDTemplateLayoutCell'
 end

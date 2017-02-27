@@ -511,8 +511,7 @@ int isxp=0;
                      MainPageViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"LostShow"];
                      AppDelegate *tempAppDelegate= (AppDelegate *)[[UIApplication sharedApplication] delegate];
                      [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:NO];
-                 }
-                 else{
+                 }else{
                      HideAllHUD
                      [MBProgressHUD showError:@"数据错误"];
                  }
