@@ -26,14 +26,19 @@
 #import "Config.h"
 
 #import "YCXMenu.h"
+
+#import "YYFPSLabel.h"
 @interface SayViewController ()
 @property (nonatomic,copy) NSArray      *Say_content;
 @property (nonatomic , strong) NSMutableArray *items;
+
+@property (nonatomic, strong) YYFPSLabel *fpsLabel;//ftp
 @end
 
 @implementation SayViewController
 @synthesize items = _items;
 int num=1;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     num=1;
@@ -44,17 +49,19 @@ int num=1;
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     _Say_content=[defaults objectForKey:@"Say"];
     /**下拉刷新*/
+    
     if([Config getIs]==0){
         self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(reload)];
         self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(load)];
-        /**按钮*/
-        UIView *rightButtonView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 50)];
-        UIButton *mainAndSearchBtn = [[UIButton alloc] initWithFrame:CGRectMake(70, 0, 50, 50)];
-        [rightButtonView addSubview:mainAndSearchBtn];
-        [mainAndSearchBtn setImage:[UIImage imageNamed:@"new_menu"] forState:UIControlStateNormal];
-        [mainAndSearchBtn addTarget:self action:@selector(menu) forControlEvents:UIControlEventTouchUpInside];
-        UIBarButtonItem *rightCunstomButtonView = [[UIBarButtonItem alloc] initWithCustomView:rightButtonView];
-        self.navigationItem.rightBarButtonItem = rightCunstomButtonView;
+        //        /**按钮*/
+        //        UIView *rightButtonView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 50)];
+        //        UIButton *mainAndSearchBtn = [[UIButton alloc] initWithFrame:CGRectMake(70, 0, 50, 50)];
+        //        [rightButtonView addSubview:mainAndSearchBtn];
+        //        [mainAndSearchBtn setImage:[UIImage imageNamed:@"new_menu"] forState:UIControlStateNormal];
+        //        [mainAndSearchBtn addTarget:self action:@selector(menu) forControlEvents:UIControlEventTouchUpInside];
+        //        UIBarButtonItem *rightCunstomButtonView = [[UIBarButtonItem alloc] initWithCustomView:rightButtonView];
+        //        self.navigationItem.rightBarButtonItem = rightCunstomButtonView;
+        
     }else{
         if([self getName:0]){
             self.navigationItem.title = [NSString stringWithFormat:@"%@的说说",[self getName:0]];
@@ -65,6 +72,8 @@ int num=1;
     self.navigationItem.backBarButtonItem = item;
     [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:0/255.0 green:224/255.0 blue:208/255.0 alpha:1]];
     
+    /**FTP*/
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:[[YYFPSLabel alloc]initWithFrame:CGRectMake(0, 5, 60, 30)]];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -108,7 +117,7 @@ int num=1;
         else                 return 45;//评论数
     }
     else
-        return 55;
+        return 50;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
@@ -150,7 +159,7 @@ int num=1;
             NSDictionary *params = @{
                                      @"comment" : contentStr
                                      };
-            NSLog(@"评论请求地址%@",Url_String);
+            //NSLog(@"评论请求地址%@",Url_String);
             [MBProgressHUD showMessage:@"发表中" toView:self.view];
             [manager POST:Url_String parameters:params success:^(NSURLSessionDataTask *task, id responseObject) {
                 NSDictionary *response = [NSDictionary dictionaryWithDictionary:responseObject];
@@ -176,77 +185,105 @@ int num=1;
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 int a=0,b=0,a2=0,a3=0,a4=0;
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-        SayViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SayViewCell"];
+    SayViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SayViewCell"];
     if (!cell) {
         UINib *nib = [UINib nibWithNibName:@"SayViewCell" bundle:nil];
         [tableView registerNib:nib forCellReuseIdentifier:@"SayViewCell"];
         cell = [tableView dequeueReusableCellWithIdentifier:@"SayViewCell"];
-        NSLog(@"a:%d",a++);
     }
-    NSLog(@"b:%d",b++);
     SayCommitViewCell *cellcommit = [tableView dequeueReusableCellWithIdentifier:@"SayCommitViewCell"];
     if (!cellcommit) {
         UINib *nib = [UINib nibWithNibName:@"SayCommitViewCell" bundle:nil];
         [tableView registerNib:nib forCellReuseIdentifier:@"SayCommitViewCell"];
         cellcommit = [tableView dequeueReusableCellWithIdentifier:@"SayCommitViewCell"];
-        NSLog(@"a2:%d",a2++);
     }
     CommitViewCell *cellshowcommit = [tableView dequeueReusableCellWithIdentifier:@"CommitViewCell"];
     if (!cellshowcommit) {
         UINib *nib = [UINib nibWithNibName:@"CommitViewCell" bundle:nil];
         [tableView registerNib:nib forCellReuseIdentifier:@"CommitViewCell"];
         cellshowcommit = [tableView dequeueReusableCellWithIdentifier:@"CommitViewCell"];
-        NSLog(@"a3:%d",a3++);
     }
-//    PhotoViewCell *cellphoto = [tableView dequeueReusableCellWithIdentifier:@"PhotoViewCell"];
-//    if (!cellphoto) {
-//        UINib *nib = [UINib nibWithNibName:@"PhotoViewCell" bundle:nil];
-//        [tableView registerNib:nib forCellReuseIdentifier:@"PhotoViewCell"];
-//        cellphoto = [tableView dequeueReusableCellWithIdentifier:@"PhotoViewCell"];
-//        NSLog(@"a4:%d",a4++);
-////        cellphoto = [[[NSBundle mainBundle] loadNibNamed:@"PhotoViewCell" owner:self options:nil] lastObject];
-//    }
-    
-    
-//        SayViewCell *cell;
-//        SayCommitViewCell *cellcommit ;
-//        CommitViewCell *cellshowcommit;
-        PhotoViewCell *cellphoto;
-//        if (!cell) {
-//            cell = [SayViewCell tableViewCell];
-//        }
-//        if (!cellcommit) {
-//            cellcommit = [SayCommitViewCell tableViewCell];
-//        }
-//        if (!cellshowcommit) {
-//            cellshowcommit=[CommitViewCell tableViewCell];
-//        }
-        if (!cellphoto) {
-            cellphoto=[PhotoViewCell tableViewCell];
-        }
+    PhotoViewCell *cellphoto = [tableView dequeueReusableCellWithIdentifier:@"PhotoViewCell"];
+    if (!cellphoto) {
+        UINib *nib = [UINib nibWithNibName:@"PhotoViewCell" bundle:nil];
+        [tableView registerNib:nib forCellReuseIdentifier:@"PhotoViewCell"];
+        cellphoto = [tableView dequeueReusableCellWithIdentifier:@"PhotoViewCell"];
+    }
+//
+    //
+    //
+    //    static NSString *cellIndentifier = @"SayViewCell";
+    //    SayViewCell *cell = (SayViewCell *)[tableView dequeueReusableCellWithIdentifier:cellIndentifier];
+    //    if (!cell) {
+    //        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:cellIndentifier owner:self options:nil];
+    //        cell = [nib objectAtIndex:0];
+    //    }
+    //    static NSString *cellcommitIndentifier = @"SayCommitViewCell";
+    //    SayCommitViewCell *cellcommit = (SayCommitViewCell *)[tableView dequeueReusableCellWithIdentifier:cellcommitIndentifier];
+    //    if (!cellcommit) {
+    //        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:cellcommitIndentifier owner:self options:nil];
+    //        cellcommit = [nib objectAtIndex:0];
+    //    }
+    //    static NSString *cellshowcommitIndentifier = @"CommitViewCell";
+    //    CommitViewCell *cellshowcommit = (CommitViewCell *)[tableView dequeueReusableCellWithIdentifier:cellshowcommitIndentifier];
+    //    if (!cellshowcommit) {
+    //        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:cellshowcommitIndentifier owner:self options:nil];
+    //        cellshowcommit = [nib objectAtIndex:0];
+    //    }
+    //    static NSString *cellphotoIndentifier = @"PhotoViewCell";
+    //    PhotoViewCell *cellphoto = (PhotoViewCell *)[tableView dequeueReusableCellWithIdentifier:cellphotoIndentifier];
+    //    if (!cellphoto) {
+    //        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:cellphotoIndentifier owner:self options:nil];
+    //        cellphoto = [nib objectAtIndex:0];
+    //    }
+    //
+    //
+//            SayViewCell *cell;
+//            SayCommitViewCell *cellcommit ;
+//            CommitViewCell *cellshowcommit;
+//            PhotoViewCell *cellphoto;
+//            if (!cell) {
+//                cell = [SayViewCell tableViewCell];
+//            }
+//            if (!cellcommit) {
+//                cellcommit = [SayCommitViewCell tableViewCell];
+//            }
+//            if (!cellshowcommit) {
+//                cellshowcommit=[CommitViewCell tableViewCell];
+//            }
+//            if (!cellphoto) {
+//                cellphoto=[PhotoViewCell tableViewCell];
+//            }
     
     tableView.separatorStyle = NO;
     int exis=2;
     NSArray *photo=[_Say_content[indexPath.section] objectForKey:@"pics"];
     
     /**得到评论数组*/
+    
     if (indexPath.row == 0)
     {
-                cell.username.text=[self getName:(short)indexPath.section];
-                cell.created_on.text=[self getTime:(short)indexPath.section];
-                cell.content.text=[self getContent:(short)indexPath.section];
-                cell.img.image = [self getImg:(short)indexPath.section];
+        cell.username.text=[self getName:(short)indexPath.section];
+        cell.created_on.text=[self getTime:(short)indexPath.section];
+        cell.content.text=[self getContent:(short)indexPath.section];
+        dispatch_queue_t asynchronousQueue = dispatch_queue_create("imageDownloadQueue", NULL);
+        dispatch_async(asynchronousQueue, ^{
+            UIImage *image=[self getImg:(short)indexPath.section];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                cell.img.image = image;
+            });
+        });
+        
         return cell;
-    }
-    else if (indexPath.row==1) {
+    }else if (indexPath.row==1) {
         if (photo.count==0) {
             cellshowcommit.commitsize.text=[NSString stringWithFormat:@"%d",[self getcommitcount:(short)indexPath.section]];
             cellshowcommit.delectButton.hidden=![self isShowDelect:(short)indexPath.section];
             cellshowcommit.dep_name.text=[NSString stringWithFormat:@"%@",[self getDepName:(short)indexPath.section]];
             return cellshowcommit;
-        }
-        else if(photo.count==1){
+        }else if(photo.count==1){
             exis++;
             [cellphoto.Img1 sd_setImageWithURL:[NSURL URLWithString:[self getPhoto:(short)indexPath.section with:0]]
                               placeholderImage:[UIImage imageNamed:@"load_img"]];
@@ -255,10 +292,9 @@ int a=0,b=0,a2=0,a3=0,a4=0;
             [cellphoto.Img1 addGestureRecognizer:tapGestureRecognizer1];
             //让UIImageView和它的父类开启用户交互属性
             [cellphoto.Img1 setUserInteractionEnabled:YES];
-            
+//
             return cellphoto;
-        }
-        else if(photo.count==2){
+        }else if(photo.count==2){
             exis++;
             [cellphoto.Img1 sd_setImageWithURL:[NSURL URLWithString:[self getPhoto:(short)indexPath.section with:0]]
                               placeholderImage:[UIImage imageNamed:@"load_img"]];
@@ -272,8 +308,7 @@ int a=0,b=0,a2=0,a3=0,a4=0;
             [cellphoto.Img2 addGestureRecognizer:tapGestureRecognizer2];
             [cellphoto.Img2 setUserInteractionEnabled:YES];
             return cellphoto;
-        }
-        else if(photo.count==3){
+        }else if(photo.count==3){
             exis++;
             [cellphoto.Img1 sd_setImageWithURL:[NSURL URLWithString:[self getPhoto:(short)indexPath.section with:0]]
                               placeholderImage:[UIImage imageNamed:@"load_img"]];
@@ -293,8 +328,7 @@ int a=0,b=0,a2=0,a3=0,a4=0;
             [cellphoto.Img3 addGestureRecognizer:tapGestureRecognizer3];
             [cellphoto.Img3 setUserInteractionEnabled:YES];
             return cellphoto;
-        }
-        else {
+        } else {
             exis++;
             [cellphoto.Img1 sd_setImageWithURL:[NSURL URLWithString:[self getPhoto:(short)indexPath.section with:0]]
                               placeholderImage:[UIImage imageNamed:@"load_img"]];
@@ -321,10 +355,7 @@ int a=0,b=0,a2=0,a3=0,a4=0;
             [cellphoto.Img4 setUserInteractionEnabled:YES];
             return cellphoto;
         }
-        
-        
-    }
-    else if (indexPath.row == 2) {
+    }  else if (indexPath.row == 2) {
         if (photo.count==0) {
             cellcommit.CommitName.text=[self getcommitname:(short)indexPath.section with:(short)indexPath.row-exis];
             cellcommit.CommitContent.text=[self getcommitcontent:(short)indexPath.section with:(short)indexPath.row-exis];
@@ -575,7 +606,6 @@ int a=0,b=0,a2=0,a3=0,a4=0;
 -(NSString*)getPhoto:(int)i with:(int)j{
     NSArray *photo=[_Say_content[i] objectForKey:@"pics"];
     NSString *Url=[NSString stringWithFormat:API_IMG,photo[j]];
-    NSLog(@"请求地址%@",Url);
     return Url;
 }
 -(NSString*)getContent:(int)i{

@@ -10,6 +10,9 @@
 #import "HUTAPI.h"
 
 #define HideAllHUD  [MBProgressHUD hideHUDForView:self.view animated:YES];
+#define DeviceMaxHeight ([UIScreen mainScreen].bounds.size.height)
+#define DeviceMaxWidth ([UIScreen mainScreen].bounds.size.width)
+#define SYReal(value) ((value)/414.0f*[UIScreen mainScreen].bounds.size.width)
 @interface Config : NSObject
 
 + (void)setIs:(int )Is;

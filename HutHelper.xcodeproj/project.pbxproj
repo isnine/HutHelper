@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A0AC4981E6AB82800827466 /* UILabel+LXAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A0AC4971E6AB82800827466 /* UILabel+LXAdd.m */; };
 		3A2D10621DB66063009916D0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A2D105F1DB66063009916D0 /* Foundation.framework */; };
 		3A2D10631DB66063009916D0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A2D10601DB66063009916D0 /* CoreGraphics.framework */; };
 		3A2D10641DB66063009916D0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A2D10611DB66063009916D0 /* UIKit.framework */; };
@@ -17,6 +18,12 @@
 		3A2FF4FC1E50202000B07EB6 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A2FF4FB1E50202000B07EB6 /* Media.xcassets */; };
 		3A2FF4FF1E50210E00B07EB6 /* ExtendModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A2FF4FE1E50210E00B07EB6 /* ExtendModel.m */; };
 		3A33D7DB1DAE50EF0012EFDE /* libUMessage_Sdk_1.4.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A33D7D91DAE50EF0012EFDE /* libUMessage_Sdk_1.4.0.a */; };
+		3A3D352F1E69C6A7006C391B /* YYFPSLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A3D352C1E69C6A7006C391B /* YYFPSLabel.m */; };
+		3A3D35301E69C6A7006C391B /* YYWeakProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A3D352E1E69C6A7006C391B /* YYWeakProxy.m */; };
+		3A4048FF1E6A67620038F207 /* MomentsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A4048FE1E6A67620038F207 /* MomentsTableViewController.m */; };
+		3A4049091E6A6C730038F207 /* MomentsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A4049081E6A6C730038F207 /* MomentsCell.m */; };
+		3A4049151E6A8BFE0038F207 /* CommentsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A4049121E6A8BFE0038F207 /* CommentsModel.m */; };
+		3A4049161E6A8BFE0038F207 /* MomentsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A4049141E6A8BFE0038F207 /* MomentsModel.m */; };
 		3A449C711E16C2E500D89CEA /* header@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3A449C701E16C2E500D89CEA /* header@2x.jpg */; };
 		3A63DF721E49F11600AAAAAA /* NullSafe.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A63DF711E49F11600AAAAAA /* NullSafe.m */; };
 		3A6D7EDE1DABD9DA0081B70D /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A6D7EDD1DABD9DA0081B70D /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -140,6 +147,8 @@
 
 /* Begin PBXFileReference section */
 		0BEA75F30B57DEF614969189 /* Pods-HutHelper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HutHelper.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HutHelper/Pods-HutHelper.debug.xcconfig"; sourceTree = "<group>"; };
+		3A0AC4961E6AB82800827466 /* UILabel+LXAdd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+LXAdd.h"; sourceTree = "<group>"; };
+		3A0AC4971E6AB82800827466 /* UILabel+LXAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+LXAdd.m"; sourceTree = "<group>"; };
 		3A2D105F1DB66063009916D0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		3A2D10601DB66063009916D0 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		3A2D10611DB66063009916D0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -156,6 +165,18 @@
 		3A33D7D71DAE4F8D0012EFDE /* HutHelper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HutHelper.entitlements; sourceTree = "<group>"; };
 		3A33D7D91DAE50EF0012EFDE /* libUMessage_Sdk_1.4.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUMessage_Sdk_1.4.0.a; sourceTree = "<group>"; };
 		3A33D7DA1DAE50EF0012EFDE /* UMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMessage.h; sourceTree = "<group>"; };
+		3A3D352B1E69C6A7006C391B /* YYFPSLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYFPSLabel.h; sourceTree = "<group>"; };
+		3A3D352C1E69C6A7006C391B /* YYFPSLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYFPSLabel.m; sourceTree = "<group>"; };
+		3A3D352D1E69C6A7006C391B /* YYWeakProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYWeakProxy.h; sourceTree = "<group>"; };
+		3A3D352E1E69C6A7006C391B /* YYWeakProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYWeakProxy.m; sourceTree = "<group>"; };
+		3A4048FD1E6A67620038F207 /* MomentsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MomentsTableViewController.h; path = Moments/MomentsTableViewController.h; sourceTree = "<group>"; };
+		3A4048FE1E6A67620038F207 /* MomentsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MomentsTableViewController.m; path = Moments/MomentsTableViewController.m; sourceTree = "<group>"; };
+		3A4049071E6A6C730038F207 /* MomentsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MomentsCell.h; sourceTree = "<group>"; };
+		3A4049081E6A6C730038F207 /* MomentsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MomentsCell.m; sourceTree = "<group>"; };
+		3A4049111E6A8BFE0038F207 /* CommentsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentsModel.h; sourceTree = "<group>"; };
+		3A4049121E6A8BFE0038F207 /* CommentsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentsModel.m; sourceTree = "<group>"; };
+		3A4049131E6A8BFE0038F207 /* MomentsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MomentsModel.h; sourceTree = "<group>"; };
+		3A4049141E6A8BFE0038F207 /* MomentsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MomentsModel.m; sourceTree = "<group>"; };
 		3A449C701E16C2E500D89CEA /* header@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "header@2x.jpg"; sourceTree = "<group>"; };
 		3A63DF711E49F11600AAAAAA /* NullSafe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NullSafe.m; path = Lib/NullSafe/NullSafe.m; sourceTree = "<group>"; };
 		3A6D7EDC1DABD9DA0081B70D /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSONKit.h; path = Lib/JSONKit.h; sourceTree = "<group>"; };
@@ -361,6 +382,16 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		3A0AC4951E6AB82800827466 /* UILabel+LXAdd */ = {
+			isa = PBXGroup;
+			children = (
+				3A0AC4961E6AB82800827466 /* UILabel+LXAdd.h */,
+				3A0AC4971E6AB82800827466 /* UILabel+LXAdd.m */,
+			);
+			name = "UILabel+LXAdd";
+			path = "Lib/UILabel+LXAdd";
+			sourceTree = "<group>";
+		};
 		3A2FF4EB1E50179700B07EB6 /* Extend */ = {
 			isa = PBXGroup;
 			children = (
@@ -386,9 +417,51 @@
 			path = Lib/UMessage_Sdk_1.4.0;
 			sourceTree = "<group>";
 		};
+		3A3D352A1E69C6A7006C391B /* YYFPSLabel */ = {
+			isa = PBXGroup;
+			children = (
+				3A3D352B1E69C6A7006C391B /* YYFPSLabel.h */,
+				3A3D352C1E69C6A7006C391B /* YYFPSLabel.m */,
+				3A3D352D1E69C6A7006C391B /* YYWeakProxy.h */,
+				3A3D352E1E69C6A7006C391B /* YYWeakProxy.m */,
+			);
+			name = YYFPSLabel;
+			path = Lib/XWScanImage/YYFPSLabel;
+			sourceTree = "<group>";
+		};
+		3A4048F81E6A663B0038F207 /* Moments */ = {
+			isa = PBXGroup;
+			children = (
+				3A4048FD1E6A67620038F207 /* MomentsTableViewController.h */,
+				3A4048FE1E6A67620038F207 /* MomentsTableViewController.m */,
+			);
+			name = Moments;
+			sourceTree = "<group>";
+		};
+		3A4049031E6A67C00038F207 /* Moments */ = {
+			isa = PBXGroup;
+			children = (
+				3A4049071E6A6C730038F207 /* MomentsCell.h */,
+				3A4049081E6A6C730038F207 /* MomentsCell.m */,
+			);
+			path = Moments;
+			sourceTree = "<group>";
+		};
+		3A4049101E6A8BFE0038F207 /* Moments */ = {
+			isa = PBXGroup;
+			children = (
+				3A4049111E6A8BFE0038F207 /* CommentsModel.h */,
+				3A4049121E6A8BFE0038F207 /* CommentsModel.m */,
+				3A4049131E6A8BFE0038F207 /* MomentsModel.h */,
+				3A4049141E6A8BFE0038F207 /* MomentsModel.m */,
+			);
+			path = Moments;
+			sourceTree = "<group>";
+		};
 		3A4D04181E19201B00595183 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				3A0AC4951E6AB82800827466 /* UILabel+LXAdd */,
 				3A63DF701E49F10B00AAAAAA /* NullSafe */,
 				3A4D38AD1E1FAF6900639C18 /* LTNavigationBar */,
 				3AA1BC101E16178900F75A7E /* MBProgressHUD+MJ */,
@@ -402,6 +475,7 @@
 				3A2D105F1DB66063009916D0 /* Foundation.framework */,
 				3A2D10601DB66063009916D0 /* CoreGraphics.framework */,
 				3A2D10611DB66063009916D0 /* UIKit.framework */,
+				3A3D352A1E69C6A7006C391B /* YYFPSLabel */,
 				3A92E64A1E4DEA4200EDB030 /* XWScanImage */,
 				3A8567A11DA90D2D00EBD44A /* LeftSildeViewController */,
 				3A33D7D81DAE50EF0012EFDE /* UMessage_Sdk_1.4.0 */,
@@ -471,6 +545,7 @@
 		3A796B9E1E534C1B00794043 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				3A4048F81E6A663B0038F207 /* Moments */,
 				3A796B9F1E534C1B00794043 /* About */,
 				3A796BA21E534C1B00794043 /* Course */,
 				3A796BA51E534C1B00794043 /* Day */,
@@ -725,6 +800,7 @@
 		3A796C121E534C1B00794043 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				3A4049101E6A8BFE0038F207 /* Moments */,
 				3A796C131E534C1B00794043 /* Config.h */,
 				3A796C141E534C1B00794043 /* Config.m */,
 				3A796C151E534C1B00794043 /* CourseModel.h */,
@@ -743,6 +819,7 @@
 		3A796C661E534DAE00794043 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				3A4049031E6A67C00038F207 /* Moments */,
 				3A796C671E534DAE00794043 /* FirstLoginViewController.xib */,
 				3A796C681E534DAE00794043 /* Launch Screen.storyboard */,
 				3A796C691E534DAE00794043 /* Main.storyboard */,
@@ -1098,12 +1175,15 @@
 				3A796C501E534C1B00794043 /* ScoreTableViewCell.m in Sources */,
 				3A796C201E534C1B00794043 /* DayViewController.m in Sources */,
 				3A796C3A1E534C1B00794043 /* MainPageViewController.m in Sources */,
+				3A0AC4981E6AB82800827466 /* UILabel+LXAdd.m in Sources */,
 				3A796C651E534CC200794043 /* UINavigationBar+Awesome.m in Sources */,
 				3A63DF721E49F11600AAAAAA /* NullSafe.m in Sources */,
 				3A796C431E534C1B00794043 /* AddSayViewController.m in Sources */,
 				3A776DEC1E2B615100F600D6 /* FORGesture.m in Sources */,
 				3A796C4E1E534C1B00794043 /* ScoreDataViewController.m in Sources */,
+				3A4049151E6A8BFE0038F207 /* CommentsModel.m in Sources */,
 				3A796C401E534C1B00794043 /* AppDelegate.m in Sources */,
+				3A3D352F1E69C6A7006C391B /* YYFPSLabel.m in Sources */,
 				3A796C1F1E534C1B00794043 /* ClassViewController.m in Sources */,
 				3A796C521E534C1B00794043 /* SetViewController.m in Sources */,
 				3A796C301E534C1B00794043 /* Login2ViewController.m in Sources */,
@@ -1111,16 +1191,19 @@
 				3A796C551E534C1B00794043 /* Config.m in Sources */,
 				3A6D7EE41DABD9F50081B70D /* UIView_extra.m in Sources */,
 				3A796C241E534C1B00794043 /* ExamNewViewController.m in Sources */,
+				3A4049091E6A6C730038F207 /* MomentsCell.m in Sources */,
 				3A796C361E534C1B00794043 /* LostShowTimeTableViewCell.m in Sources */,
 				3A796C4C1E534C1B00794043 /* SayViewController.m in Sources */,
 				3A796C1E1E534C1B00794043 /* AboutViewController.m in Sources */,
 				3A796C591E534C1B00794043 /* User.m in Sources */,
 				3A796C581E534C1B00794043 /* Score.m in Sources */,
 				3A796C421E534C1B00794043 /* PowerViewController.m in Sources */,
+				3A4048FF1E6A67620038F207 /* MomentsTableViewController.m in Sources */,
 				3A796C4F1E534C1B00794043 /* ScoreShowViewController.m in Sources */,
 				3A796C2D1E534C1B00794043 /* HomeWorkViewController.m in Sources */,
 				3A796C3B1E534C1B00794043 /* MainViewController.m in Sources */,
 				3A85BB011E597458008854CF /* LeftUserTableViewCell.m in Sources */,
+				3A4049161E6A8BFE0038F207 /* MomentsModel.m in Sources */,
 				3A796C341E534C1B00794043 /* LostShowTableViewCell.m in Sources */,
 				3A6D7EE31DABD9F50081B70D /* LeftSlideViewController.m in Sources */,
 				3AAC242E1DE1CB8C00546B11 /* UserInfoCell.m in Sources */,
@@ -1128,6 +1211,7 @@
 				3A776DF11E2B616500F600D6 /* UUInputAccessoryView.m in Sources */,
 				3A796C2E1E534C1B00794043 /* LibraryViewController.m in Sources */,
 				3AD87B101DACD02E00357212 /* GWPCourseListView.m in Sources */,
+				3A3D35301E69C6A7006C391B /* YYWeakProxy.m in Sources */,
 				3AA1BC181E16179C00F75A7E /* MBProgressHUD+MJ.m in Sources */,
 				3A796C281E534C1B00794043 /* HandShowViewController.m in Sources */,
 				3A796C411E534C1B00794043 /* ViewController.m in Sources */,

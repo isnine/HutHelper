@@ -28,6 +28,7 @@
 #import "SayViewController.h"
 #import "HandTableViewController.h"
 #import "ScoreShowViewController.h"
+#import "MomentsTableViewController.h"
 #import "Math.h"
 #import "LeftSortsViewController.h"
 #import "Config.h"
@@ -282,16 +283,16 @@ int isxp=0;
              NSDictionary *Say_All = [NSDictionary dictionaryWithDictionary:responseObject];
              if ([[Say_All objectForKey:@"msg"]isEqualToString:@"ok"]) {
                  NSDictionary *Say_Data=[Say_All objectForKey:@"data"];
-                 NSArray *Say_content=[Say_Data objectForKey:@"posts"];//加载该页数据
+                 NSDictionary *Say_content=[Say_Data objectForKey:@"posts"];//加载该页数据
                  if (Say_content!=NULL) {
                      [defaults setObject:Say_content forKey:@"Say"];
                      [defaults synchronize];
                      HideAllHUD
                      [Config setIs:0];
-                     SayViewController *Say      = [[SayViewController alloc] init];
+//                     SayViewController *Say      = [[SayViewController alloc] init];
+                     MomentsTableViewController *Say      = [[MomentsTableViewController alloc] init];
                      AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
                      [tempAppDelegate.mainNavigationController pushViewController:Say animated:YES];
-                     
                  }else{
                      HideAllHUD
                      [MBProgressHUD showError:@"数据错误"];
@@ -306,12 +307,6 @@ int isxp=0;
              [MBProgressHUD showError:@"网络超时"];
              HideAllHUD
          }];
-    
-    
-    
-    
-    
-    
 } //校园说说
 
 - (IBAction)SchoolHand:(id)sender {
