@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#define COMMENTS_WEIGHT 364
 @interface MomentsModel : NSObject
 ///说说的内容
 @property(nonatomic,copy)NSString *content;
@@ -17,11 +17,11 @@
 @property(nonatomic,copy)NSString *likes;
 ///说说的id
 @property(nonatomic,copy)NSString *moments_id;
+///个人的头像
+@property(nonatomic,copy)NSString *head_pic_thumb;
 ///说说的小图
-@property(nonatomic,copy)NSMutableArray *head_pic_thumb;
+@property(nonatomic,copy)NSMutableArray *pics;
 ///说说的大图
-@property(nonatomic,copy)NSMutableArray *head_pic;
-///说说的评论相关的所有信息
 @property(nonatomic,copy)NSMutableArray *commentsModelArray;
 ///发布说说的user昵称
 @property(nonatomic,copy)NSString *username;
@@ -31,9 +31,11 @@
 @property(nonatomic,copy)NSString *dep_name;
 ///文本高度
 @property(nonatomic,assign)double textHeight;
-///文本高度
+///文本宽度
 @property(nonatomic,assign)double textWidth;
 ///照片高度
-@property(nonatomic,assign)double photoCGSize;
+@property(nonatomic,assign)double photoHeight;
+///评论高度
+@property(nonatomic,assign)double commentsHeight;
 -(instancetype)initWithDic:(NSDictionary *)dic;
 @end

@@ -13,7 +13,7 @@
     self=[super init];
     if (self) {
         self.comment=dic[@"comment"];
-        self.created_on=dic[@"created_on"];
+        self.created_on=[dic[@"created_on"]substringWithRange:NSMakeRange(5,11)];
         self.comment_id=dic[@"id"];
         self.user_id=dic[@"user_id"];
         self.username=dic[@"username"];
