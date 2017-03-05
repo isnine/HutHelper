@@ -25,4 +25,5 @@
 @interface MomentsCell : UITableViewCell
 @property (nonatomic, weak) MomentsModel *data;
 - (void)draw;
+-(void)loadPhoto;
 @end

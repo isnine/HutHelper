@@ -31,6 +31,7 @@
 #import "MomentsTableViewController.h"
 #import "Math.h"
 #import "LeftSortsViewController.h"
+#import "MomentsViewController.h"
 #import "Config.h"
 #define vBackBarButtonItemName  @"backArrow.png"    //导航条返回默认图片名
 @interface MainPageViewController ()
@@ -289,8 +290,7 @@ int isxp=0;
                      [defaults synchronize];
                      HideAllHUD
                      [Config setIs:0];
-//                     SayViewController *Say      = [[SayViewController alloc] init];
-                     MomentsTableViewController *Say      = [[MomentsTableViewController alloc] init];
+                     MomentsViewController *Say      = [[MomentsViewController alloc] init];
                      AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
                      [tempAppDelegate.mainNavigationController pushViewController:Say animated:YES];
                  }else{

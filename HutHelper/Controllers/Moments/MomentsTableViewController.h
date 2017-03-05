@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface MomentsTableViewController : UITableViewController
-
+-(void)load;
 @end

@@ -85,7 +85,7 @@
     [text addAttribute:NSFontAttributeName value:_font range:NSMakeRange(0, text.length)];
     [text addAttribute:NSFontAttributeName value:_subFont range:NSMakeRange(text.length - 4, 1)];
     sumFtp+=(int)round(fps);
-//    NSLog(@"帧数第%d次%d，平均值为%f",++num,(int)round(fps),sumFtp/num);
+    NSLog(@"帧数第%d次%d，平均值为%f",++num,(int)round(fps),sumFtp/num);
     self.attributedText = text;
 }
 
