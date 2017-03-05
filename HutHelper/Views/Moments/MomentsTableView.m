@@ -1,13 +1,12 @@
 //
-//  MomentsTableViewController.m
+//  MomentsTableView.m
 //  HutHelper
 //
-//  Created by Nine on 2017/3/4.
+//  Created by Nine on 2017/3/5.
 //  Copyright © 2017年 nine. All rights reserved.
 //
 
-#import "MomentsTableViewController.h"
-#import "YYFPSLabel.h"
+#import "MomentsTableView.h"
 #import "MomentsCell.h"
 #import "MomentsModel.h"
 #import "AFNetworking.h"
@@ -15,103 +14,64 @@
 #import "MBProgressHUD+MJ.h"
 #import "MJRefresh.h"
 #import "Config.h"
-#import "MomentsTableView.h"
-@interface MomentsTableViewController (){
-    MomentsTableView *momentsTableView;
-}
-@property (nonatomic, strong) UITableView *tableView;
-@property (nonatomic, strong) YYFPSLabel *fpsLabel;
-@end
+@interface MomentsTableView() <UITableViewDelegate, UITableViewDataSource>
 
-@implementation MomentsTableViewController{
-    NSMutableArray *dataSource;
+@end
+@implementation MomentsTableView{
+    NSMutableArray *datas;
     NSMutableArray *needLoadArr;
-    UILabel *contentLabel;
+    BOOL scrollToToping;
     int num;
 }
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    self.navigationItem.title = @"校园说说";
-    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor]}];
-    /** 标题栏样式 */
-    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
-    self.navigationItem.backBarButtonItem = item;
-    [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:0/255.0 green:224/255.0 blue:208/255.0 alpha:1]];
-    /** FTP */
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:[[YYFPSLabel alloc]initWithFrame:CGRectMake(0, 5, 60, 30)]];
-    
-    self.tableView=[[UITableView alloc]init];
-    self.tableView.delegate=self;
-    self.tableView.dataSource=self;
-    dataSource = [[NSMutableArray alloc]init];
-    /** 加载数据 */
-    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    NSDictionary *JSONDic=[defaults objectForKey:@"Say"];
-    [self loadData:JSONDic];
-    num=1;
-    
-    
-    if([Config getIs]==0){
-        self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(reload)];
-        self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(load)];
-        //        /**按钮*/
-        //        UIView *rightButtonView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 50)];
-        //        UIButton *mainAndSearchBtn = [[UIButton alloc] initWithFrame:CGRectMake(70, 0, 50, 50)];
-        //        [rightButtonView addSubview:mainAndSearchBtn];
-        //        [mainAndSearchBtn setImage:[UIImage imageNamed:@"new_menu"] forState:UIControlStateNormal];
-        //        [mainAndSearchBtn addTarget:self action:@selector(menu) forControlEvents:UIControlEventTouchUpInside];
-        //        UIBarButtonItem *rightCunstomButtonView = [[UIBarButtonItem alloc] initWithCustomView:rightButtonView];
-        //        self.navigationItem.rightBarButtonItem = rightCunstomButtonView;
+- (instancetype)initWithFrame:(CGRect)frame style:(UITableViewStyle)style{
+    self = [super initWithFrame:frame style:style];
+    if (self) {
+        self.separatorStyle = UITableViewCellSeparatorStyleNone;
+        self.dataSource = self;
+        self.delegate = self;
+        datas = [[NSMutableArray alloc] init];
+        needLoadArr = [[NSMutableArray alloc] init];
         
-    }else{
-        MomentsModel *momentsModel=dataSource[0];
-        if(momentsModel.username){
-            self.navigationItem.title = [NSString stringWithFormat:@"%@的说说",momentsModel.username];
-        }
+        NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+        NSDictionary *JSONDic=[defaults objectForKey:@"Say"];
+        [self loadData:JSONDic];
+        num=1;
+        //        [self reloadData];
     }
+    self.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(reload)];
+    self.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(load)];
+    return self;
 }
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+-(void)HiddenMJ{
+    self.mj_footer.hidden = YES;
+    self.mj_header.hidden = YES;
 }
 - (void)drawCell:(MomentsCell *)cell withIndexPath:(NSIndexPath *)indexPath{
-    NSDictionary *data = [dataSource objectAtIndex:indexPath.section];
+    NSDictionary *data = [datas objectAtIndex:indexPath.section];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.data = data;
     [cell draw];
+    [cell loadPhoto];
+    
 }
-#pragma mark - 处理数据
--(void)loadData:(NSDictionary*)JSONDic{
-    for (NSDictionary *eachDic in JSONDic) {
-        MomentsModel *momentsModel=[[MomentsModel alloc]initWithDic:eachDic];
-        [dataSource addObject:momentsModel];
-    }
-}
--(void)reLoadData:(NSDictionary*)JSONDic{
-    dataSource = [[NSMutableArray alloc]init];
-    for (NSDictionary *eachDic in JSONDic) {
-        MomentsModel *momentsModel=[[MomentsModel alloc]initWithDic:eachDic];
-        [dataSource addObject:momentsModel];
-    }
-}
+
 #pragma mark - 表格
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return dataSource.count;
+    return datas.count;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return 1;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    MomentsModel *momentsModel=dataSource[indexPath.section];
+    MomentsModel *momentsModel=datas[indexPath.section];
     return SYReal(70)+momentsModel.textHeight+momentsModel.photoHeight+SYReal(30)+momentsModel.commentsHeight;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     return 15;
 }
-
-
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    return 0.00001;
+}
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *cellIndentifier = @"MomentsCell";
     MomentsCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIndentifier];
@@ -127,13 +87,24 @@
     
     return cell;
 }
-
-
+#pragma mark - 处理数据
+-(void)loadData:(NSDictionary*)JSONDic{
+    for (NSDictionary *eachDic in JSONDic) {
+        MomentsModel *momentsModel=[[MomentsModel alloc]initWithDic:eachDic];
+        [datas addObject:momentsModel];
+    }
+}
+-(void)reLoadData:(NSDictionary*)JSONDic{
+    datas = [[NSMutableArray alloc]init];
+    for (NSDictionary *eachDic in JSONDic) {
+        MomentsModel *momentsModel=[[MomentsModel alloc]initWithDic:eachDic];
+        [datas addObject:momentsModel];
+    }
+}
 #pragma mark - 加载方法
 -(void)reload{
-    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     /**拼接地址*/
-    NSString *Url_String=[NSString stringWithFormat:API_MOMENTS,num];
+    NSString *Url_String=[NSString stringWithFormat:API_MOMENTS,1];
     /**设置9秒超时*/
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
@@ -149,27 +120,25 @@
                  if (Say_content!=NULL) {
                      [self reLoadData:Say_content];
                      [MBProgressHUD showSuccess:@"刷新成功"];
-                     HideAllHUD
-                     [self.tableView.mj_header endRefreshing];
-                     [self.tableView reloadData];
+                     [self.mj_header endRefreshing];
+                     [self reloadData];
                  }
                  else{
-                     [self.tableView.mj_header endRefreshing];
+                     [self.mj_header endRefreshing];
                      [MBProgressHUD showError:@"网络错误"];
                  }
              }
              else{
-                 [self.tableView.mj_header endRefreshing];
+                 [self.mj_header endRefreshing];
                  [MBProgressHUD showError:[Say_All objectForKey:@"msg"]];
-             }             HideAllHUD
+             }
          } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-             [self.tableView.mj_header endRefreshing];
+             [self.mj_header endRefreshing];
              [MBProgressHUD showError:@"网络错误"];
          }];
 }
 -(void)load{
     num++;
-    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     /**拼接地址*/
     NSString *Url_String=[NSString stringWithFormat:API_MOMENTS,num];
     /**设置9秒超时*/
@@ -187,27 +156,27 @@
                  NSDictionary *Say_content=[Say_Data objectForKey:@"posts"];//加载该页数据
                  if (Say_content!=NULL) {
                      [self loadData:Say_content];
-                     [self.tableView.mj_footer endRefreshing];
-                     [self.tableView reloadData];
+                     [self.mj_footer endRefreshing];
+                     [self reloadData];
                      if (num==[sayMax intValue]) {
                          [MBProgressHUD showSuccess:@"当前为最大页数"];
-                        self.tableView.mj_footer.hidden = YES;
+                         self.mj_footer.hidden = YES;
                      }
-                     HideAllHUD
+                     
                  }else{
-                     [self.tableView.mj_footer endRefreshing];
+                     [self.mj_footer endRefreshing];
                      [MBProgressHUD showError:@"没有找到说说数据"];
                      num--;
                  }
              }
              else{
-                 [self.tableView.mj_footer endRefreshing];
+                 [self.mj_footer endRefreshing];
                  [MBProgressHUD showError:[Say_All objectForKey:@"msg"]];
                  num--;
              }
-             HideAllHUD
+             
          } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-             [self.tableView.mj_footer endRefreshing];
+             [self.mj_footer endRefreshing];
              [MBProgressHUD showError:@"网络错误"];
              num--;
          }];

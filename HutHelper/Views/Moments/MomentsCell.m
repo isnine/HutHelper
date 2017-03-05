@@ -8,7 +8,6 @@
 
 #import "MomentsCell.h"
 #import "MomentsModel.h"
-#import "MomentsTableViewController.h"
 #import "CommentsModel.h"
 #import "Config.h"
 #import <SDWebImage/UIImageView+WebCache.h>
@@ -22,6 +21,7 @@
 #import "AppDelegate.h"
 #import "UUInputAccessoryView.h"
 #import "MomentsViewController.h"
+#import "XWScanImage.h"
 @interface MomentsCell ()
 @end
 
@@ -191,6 +191,9 @@
         [photoImg1 sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:API_IMG,_data.pics[0]]]
                      placeholderImage:[UIImage imageNamed:@"load_img"]];
         [self.contentView addSubview:photoImg1];
+        UITapGestureRecognizer *tapGestureRecognizer1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scanBigImageClick:)];
+        [photoImg1 addGestureRecognizer:tapGestureRecognizer1];
+        [photoImg1 setUserInteractionEnabled:YES];
         
     }else if (_data.pics.count==2){
         photoImg1=[[UIImageView alloc] init];
@@ -203,6 +206,12 @@
         [photoImg2 sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:API_IMG,_data.pics[1]]]
                      placeholderImage:[UIImage imageNamed:@"load_img"]];
         [self.contentView addSubview:photoImg2];
+        UITapGestureRecognizer *tapGestureRecognizer1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scanBigImageClick:)];
+        [photoImg1 addGestureRecognizer:tapGestureRecognizer1];
+        [photoImg1 setUserInteractionEnabled:YES];
+        UITapGestureRecognizer *tapGestureRecognizer2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scanBigImageClick:)];
+        [photoImg2 addGestureRecognizer:tapGestureRecognizer2];
+        [photoImg2 setUserInteractionEnabled:YES];
         
     }else if (_data.pics.count==3){
         photoImg1=[[UIImageView alloc] init];
@@ -221,6 +230,15 @@
                      placeholderImage:[UIImage imageNamed:@"load_img"]];
         [self.contentView addSubview:photoImg3];
        
+        UITapGestureRecognizer *tapGestureRecognizer1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scanBigImageClick:)];
+        [photoImg1 addGestureRecognizer:tapGestureRecognizer1];
+        [photoImg1 setUserInteractionEnabled:YES];
+        UITapGestureRecognizer *tapGestureRecognizer2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scanBigImageClick:)];
+        [photoImg2 addGestureRecognizer:tapGestureRecognizer2];
+        [photoImg2 setUserInteractionEnabled:YES];
+        UITapGestureRecognizer *tapGestureRecognizer3 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scanBigImageClick:)];
+        [photoImg3 addGestureRecognizer:tapGestureRecognizer3];
+        [photoImg3 setUserInteractionEnabled:YES];
     }else if (_data.pics.count==4){
         photoImg1=[[UIImageView alloc] init];
         photoImg1.frame=CGRectMake(SYReal(20),SYReal(70)+_data.textHeight,SYReal(184), _data.photoHeight/2);
@@ -242,7 +260,18 @@
         [photoImg4 sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:API_IMG,_data.pics[3]]]
                      placeholderImage:[UIImage imageNamed:@"load_img"]];
         [self.contentView addSubview:photoImg4];
-        
+        UITapGestureRecognizer *tapGestureRecognizer1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scanBigImageClick:)];
+        [photoImg1 addGestureRecognizer:tapGestureRecognizer1];
+        [photoImg1 setUserInteractionEnabled:YES];
+        UITapGestureRecognizer *tapGestureRecognizer2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scanBigImageClick:)];
+        [photoImg2 addGestureRecognizer:tapGestureRecognizer2];
+        [photoImg2 setUserInteractionEnabled:YES];
+        UITapGestureRecognizer *tapGestureRecognizer3 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scanBigImageClick:)];
+        [photoImg3 addGestureRecognizer:tapGestureRecognizer3];
+        [photoImg3 setUserInteractionEnabled:YES];
+        UITapGestureRecognizer *tapGestureRecognizer4 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scanBigImageClick:)];
+        [photoImg4 addGestureRecognizer:tapGestureRecognizer4];
+        [photoImg4 setUserInteractionEnabled:YES];
     }
 }
 #pragma mark - 按钮事件
@@ -316,8 +345,6 @@
             if ([Msg isEqualToString:@"ok"])   {
                 [MBProgressHUD hideHUDForView:self.contentView animated:YES];
                 [MBProgressHUD showSuccess:@"评论成功"];
-                MomentsTableViewController *moments=[[MomentsTableViewController alloc]init];
-                
             }
             else if ([Msg isEqualToString:@"令牌错误"]){
                 [MBProgressHUD hideHUDForView:self.contentView animated:YES];
@@ -381,6 +408,12 @@
          }];
     
 }
+
+-(void)scanBigImageClick:(UITapGestureRecognizer *)tap{
+    UIImageView *clickedImageView = (UIImageView *)tap.view;
+    [XWScanImage scanBigImageWithImageView:clickedImageView];
+}
+
 -(UIImage*) circleImage:(UIImage*) image{
     UIGraphicsBeginImageContext(image.size);
     CGContextRef context = UIGraphicsGetCurrentContext();

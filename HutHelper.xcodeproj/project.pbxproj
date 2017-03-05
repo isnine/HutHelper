@@ -17,12 +17,12 @@
 		3A2FF4F51E50179700B07EB6 /* Extend.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 3A2FF4E81E50179700B07EB6 /* Extend.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		3A2FF4FC1E50202000B07EB6 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A2FF4FB1E50202000B07EB6 /* Media.xcassets */; };
 		3A2FF4FF1E50210E00B07EB6 /* ExtendModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A2FF4FE1E50210E00B07EB6 /* ExtendModel.m */; };
-		3A31E1DF1E6BC0EC0056565A /* MomentsTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A31E1DE1E6BC0EC0056565A /* MomentsTableView.m */; };
 		3A31E1E51E6BC5040056565A /* MomentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A31E1E41E6BC5040056565A /* MomentsViewController.m */; };
+		3A31E1E81E6BE68C0056565A /* AddSayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A31E1E71E6BE68C0056565A /* AddSayViewController.m */; };
+		3A31E1EB1E6BE6E20056565A /* MomentsTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A31E1EA1E6BE6E20056565A /* MomentsTableView.m */; };
 		3A33D7DB1DAE50EF0012EFDE /* libUMessage_Sdk_1.4.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A33D7D91DAE50EF0012EFDE /* libUMessage_Sdk_1.4.0.a */; };
 		3A3D352F1E69C6A7006C391B /* YYFPSLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A3D352C1E69C6A7006C391B /* YYFPSLabel.m */; };
 		3A3D35301E69C6A7006C391B /* YYWeakProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A3D352E1E69C6A7006C391B /* YYWeakProxy.m */; };
-		3A4048FF1E6A67620038F207 /* MomentsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A4048FE1E6A67620038F207 /* MomentsTableViewController.m */; };
 		3A4049091E6A6C730038F207 /* MomentsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A4049081E6A6C730038F207 /* MomentsCell.m */; };
 		3A4049151E6A8BFE0038F207 /* CommentsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A4049121E6A8BFE0038F207 /* CommentsModel.m */; };
 		3A4049161E6A8BFE0038F207 /* MomentsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A4049141E6A8BFE0038F207 /* MomentsModel.m */; };
@@ -75,17 +75,6 @@
 		3A796C401E534C1B00794043 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A796BEA1E534C1B00794043 /* AppDelegate.m */; };
 		3A796C411E534C1B00794043 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A796BEC1E534C1B00794043 /* ViewController.m */; };
 		3A796C421E534C1B00794043 /* PowerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A796BEF1E534C1B00794043 /* PowerViewController.m */; };
-		3A796C431E534C1B00794043 /* AddSayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A796BF21E534C1B00794043 /* AddSayViewController.m */; };
-		3A796C441E534C1B00794043 /* CommitViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A796BF41E534C1B00794043 /* CommitViewCell.m */; };
-		3A796C451E534C1B00794043 /* CommitViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A796BF51E534C1B00794043 /* CommitViewCell.xib */; };
-		3A796C461E534C1B00794043 /* PhotoViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A796BF71E534C1B00794043 /* PhotoViewCell.m */; };
-		3A796C471E534C1B00794043 /* PhotoViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A796BF81E534C1B00794043 /* PhotoViewCell.xib */; };
-		3A796C481E534C1B00794043 /* SayCommitViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A796BFA1E534C1B00794043 /* SayCommitViewCell.m */; };
-		3A796C491E534C1B00794043 /* SayCommitViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A796BFB1E534C1B00794043 /* SayCommitViewCell.xib */; };
-		3A796C4A1E534C1B00794043 /* SayViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A796BFD1E534C1B00794043 /* SayViewCell.m */; };
-		3A796C4B1E534C1B00794043 /* SayViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A796BFE1E534C1B00794043 /* SayViewCell.xib */; };
-		3A796C4C1E534C1B00794043 /* SayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A796C001E534C1B00794043 /* SayViewController.m */; };
-		3A796C4D1E534C1B00794043 /* SayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A796C011E534C1B00794043 /* SayViewController.xib */; };
 		3A796C4E1E534C1B00794043 /* ScoreDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A796C041E534C1B00794043 /* ScoreDataViewController.m */; };
 		3A796C4F1E534C1B00794043 /* ScoreShowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A796C061E534C1B00794043 /* ScoreShowViewController.m */; };
 		3A796C501E534C1B00794043 /* ScoreTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A796C081E534C1B00794043 /* ScoreTableViewCell.m */; };
@@ -164,10 +153,12 @@
 		3A2FF4FD1E50210E00B07EB6 /* ExtendModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExtendModel.h; sourceTree = "<group>"; };
 		3A2FF4FE1E50210E00B07EB6 /* ExtendModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExtendModel.m; sourceTree = "<group>"; };
 		3A2FF5001E50742E00B07EB6 /* Extend.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Extend.entitlements; sourceTree = "<group>"; };
-		3A31E1DD1E6BC0EC0056565A /* MomentsTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MomentsTableView.h; path = Moments/MomentsTableView.h; sourceTree = "<group>"; };
-		3A31E1DE1E6BC0EC0056565A /* MomentsTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MomentsTableView.m; path = Moments/MomentsTableView.m; sourceTree = "<group>"; };
 		3A31E1E31E6BC5040056565A /* MomentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MomentsViewController.h; path = Moments/MomentsViewController.h; sourceTree = "<group>"; };
 		3A31E1E41E6BC5040056565A /* MomentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MomentsViewController.m; path = Moments/MomentsViewController.m; sourceTree = "<group>"; };
+		3A31E1E61E6BE68C0056565A /* AddSayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddSayViewController.h; path = Moments/AddSayViewController.h; sourceTree = "<group>"; };
+		3A31E1E71E6BE68C0056565A /* AddSayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddSayViewController.m; path = Moments/AddSayViewController.m; sourceTree = "<group>"; };
+		3A31E1E91E6BE6E20056565A /* MomentsTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MomentsTableView.h; sourceTree = "<group>"; };
+		3A31E1EA1E6BE6E20056565A /* MomentsTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MomentsTableView.m; sourceTree = "<group>"; };
 		3A33D7D71DAE4F8D0012EFDE /* HutHelper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HutHelper.entitlements; sourceTree = "<group>"; };
 		3A33D7D91DAE50EF0012EFDE /* libUMessage_Sdk_1.4.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUMessage_Sdk_1.4.0.a; sourceTree = "<group>"; };
 		3A33D7DA1DAE50EF0012EFDE /* UMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMessage.h; sourceTree = "<group>"; };
@@ -175,8 +166,6 @@
 		3A3D352C1E69C6A7006C391B /* YYFPSLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYFPSLabel.m; sourceTree = "<group>"; };
 		3A3D352D1E69C6A7006C391B /* YYWeakProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYWeakProxy.h; sourceTree = "<group>"; };
 		3A3D352E1E69C6A7006C391B /* YYWeakProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYWeakProxy.m; sourceTree = "<group>"; };
-		3A4048FD1E6A67620038F207 /* MomentsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MomentsTableViewController.h; path = Moments/MomentsTableViewController.h; sourceTree = "<group>"; };
-		3A4048FE1E6A67620038F207 /* MomentsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MomentsTableViewController.m; path = Moments/MomentsTableViewController.m; sourceTree = "<group>"; };
 		3A4049071E6A6C730038F207 /* MomentsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MomentsCell.h; sourceTree = "<group>"; };
 		3A4049081E6A6C730038F207 /* MomentsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MomentsCell.m; sourceTree = "<group>"; };
 		3A4049111E6A8BFE0038F207 /* CommentsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentsModel.h; sourceTree = "<group>"; };
@@ -268,23 +257,6 @@
 		3A796BEC1E534C1B00794043 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		3A796BEE1E534C1B00794043 /* PowerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PowerViewController.h; sourceTree = "<group>"; };
 		3A796BEF1E534C1B00794043 /* PowerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PowerViewController.m; sourceTree = "<group>"; };
-		3A796BF11E534C1B00794043 /* AddSayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddSayViewController.h; sourceTree = "<group>"; };
-		3A796BF21E534C1B00794043 /* AddSayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddSayViewController.m; sourceTree = "<group>"; };
-		3A796BF31E534C1B00794043 /* CommitViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommitViewCell.h; sourceTree = "<group>"; };
-		3A796BF41E534C1B00794043 /* CommitViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommitViewCell.m; sourceTree = "<group>"; };
-		3A796BF51E534C1B00794043 /* CommitViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommitViewCell.xib; sourceTree = "<group>"; };
-		3A796BF61E534C1B00794043 /* PhotoViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoViewCell.h; sourceTree = "<group>"; };
-		3A796BF71E534C1B00794043 /* PhotoViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoViewCell.m; sourceTree = "<group>"; };
-		3A796BF81E534C1B00794043 /* PhotoViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoViewCell.xib; sourceTree = "<group>"; };
-		3A796BF91E534C1B00794043 /* SayCommitViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SayCommitViewCell.h; sourceTree = "<group>"; };
-		3A796BFA1E534C1B00794043 /* SayCommitViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SayCommitViewCell.m; sourceTree = "<group>"; };
-		3A796BFB1E534C1B00794043 /* SayCommitViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SayCommitViewCell.xib; sourceTree = "<group>"; };
-		3A796BFC1E534C1B00794043 /* SayViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SayViewCell.h; sourceTree = "<group>"; };
-		3A796BFD1E534C1B00794043 /* SayViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SayViewCell.m; sourceTree = "<group>"; };
-		3A796BFE1E534C1B00794043 /* SayViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SayViewCell.xib; sourceTree = "<group>"; };
-		3A796BFF1E534C1B00794043 /* SayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SayViewController.h; sourceTree = "<group>"; };
-		3A796C001E534C1B00794043 /* SayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SayViewController.m; sourceTree = "<group>"; };
-		3A796C011E534C1B00794043 /* SayViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SayViewController.xib; sourceTree = "<group>"; };
 		3A796C031E534C1B00794043 /* ScoreDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreDataViewController.h; sourceTree = "<group>"; };
 		3A796C041E534C1B00794043 /* ScoreDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScoreDataViewController.m; sourceTree = "<group>"; };
 		3A796C051E534C1B00794043 /* ScoreShowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreShowViewController.h; sourceTree = "<group>"; };
@@ -438,10 +410,8 @@
 		3A4048F81E6A663B0038F207 /* Moments */ = {
 			isa = PBXGroup;
 			children = (
-				3A4048FD1E6A67620038F207 /* MomentsTableViewController.h */,
-				3A4048FE1E6A67620038F207 /* MomentsTableViewController.m */,
-				3A31E1DD1E6BC0EC0056565A /* MomentsTableView.h */,
-				3A31E1DE1E6BC0EC0056565A /* MomentsTableView.m */,
+				3A31E1E61E6BE68C0056565A /* AddSayViewController.h */,
+				3A31E1E71E6BE68C0056565A /* AddSayViewController.m */,
 				3A31E1E31E6BC5040056565A /* MomentsViewController.h */,
 				3A31E1E41E6BC5040056565A /* MomentsViewController.m */,
 			);
@@ -451,6 +421,8 @@
 		3A4049031E6A67C00038F207 /* Moments */ = {
 			isa = PBXGroup;
 			children = (
+				3A31E1E91E6BE6E20056565A /* MomentsTableView.h */,
+				3A31E1EA1E6BE6E20056565A /* MomentsTableView.m */,
 				3A4049071E6A6C730038F207 /* MomentsCell.h */,
 				3A4049081E6A6C730038F207 /* MomentsCell.m */,
 			);
@@ -569,7 +541,6 @@
 				3A796BD91E534C1B00794043 /* Main */,
 				3A796BE01E534C1B00794043 /* Notice */,
 				3A796BED1E534C1B00794043 /* Power */,
-				3A796BF01E534C1B00794043 /* Say */,
 				3A796C021E534C1B00794043 /* Score */,
 				3A796C0A1E534C1B00794043 /* Set */,
 				3A796BE81E534C1B00794043 /* Other */,
@@ -747,30 +718,6 @@
 				3A796BEF1E534C1B00794043 /* PowerViewController.m */,
 			);
 			path = Power;
-			sourceTree = "<group>";
-		};
-		3A796BF01E534C1B00794043 /* Say */ = {
-			isa = PBXGroup;
-			children = (
-				3A796BF11E534C1B00794043 /* AddSayViewController.h */,
-				3A796BF21E534C1B00794043 /* AddSayViewController.m */,
-				3A796BF31E534C1B00794043 /* CommitViewCell.h */,
-				3A796BF41E534C1B00794043 /* CommitViewCell.m */,
-				3A796BF51E534C1B00794043 /* CommitViewCell.xib */,
-				3A796BF61E534C1B00794043 /* PhotoViewCell.h */,
-				3A796BF71E534C1B00794043 /* PhotoViewCell.m */,
-				3A796BF81E534C1B00794043 /* PhotoViewCell.xib */,
-				3A796BF91E534C1B00794043 /* SayCommitViewCell.h */,
-				3A796BFA1E534C1B00794043 /* SayCommitViewCell.m */,
-				3A796BFB1E534C1B00794043 /* SayCommitViewCell.xib */,
-				3A796BFC1E534C1B00794043 /* SayViewCell.h */,
-				3A796BFD1E534C1B00794043 /* SayViewCell.m */,
-				3A796BFE1E534C1B00794043 /* SayViewCell.xib */,
-				3A796BFF1E534C1B00794043 /* SayViewController.h */,
-				3A796C001E534C1B00794043 /* SayViewController.m */,
-				3A796C011E534C1B00794043 /* SayViewController.xib */,
-			);
-			path = Say;
 			sourceTree = "<group>";
 		};
 		3A796C021E534C1B00794043 /* Score */ = {
@@ -1069,16 +1016,12 @@
 			files = (
 				3A796C2A1E534C1B00794043 /* HandTableViewCell.xib in Resources */,
 				3A85BB021E597458008854CF /* LeftUserTableViewCell.xib in Resources */,
-				3A796C491E534C1B00794043 /* SayCommitViewCell.xib in Resources */,
-				3A796C471E534C1B00794043 /* PhotoViewCell.xib in Resources */,
 				3A796C3E1E534C1B00794043 /* NoticeTableViewCell.xib in Resources */,
 				3A796C511E534C1B00794043 /* ScoreTableViewCell.xib in Resources */,
-				3A796C4D1E534C1B00794043 /* SayViewController.xib in Resources */,
 				3AC51D7F1E4C8B0000F8D525 /* language.strings in Resources */,
 				3A796C6B1E534DAE00794043 /* FirstLoginViewController.xib in Resources */,
 				3A796C6C1E534DAE00794043 /* Launch Screen.storyboard in Resources */,
 				3A796C371E534C1B00794043 /* LostShowTimeTableViewCell.xib in Resources */,
-				3A796C451E534C1B00794043 /* CommitViewCell.xib in Resources */,
 				3A85BB071E5990C5008854CF /* LeftItemTableViewCell.xib in Resources */,
 				3A796C6D1E534DAE00794043 /* Main.storyboard in Resources */,
 				3A85678B1DA908AA00EBD44A /* Assets.xcassets in Resources */,
@@ -1089,7 +1032,6 @@
 				3A796C2C1E534C1B00794043 /* HandTableViewController.xib in Resources */,
 				3A796C331E534C1B00794043 /* LostShowPhotoTableViewCell.xib in Resources */,
 				3A796C6E1E534DAE00794043 /* MainViewController.xib in Resources */,
-				3A796C4B1E534C1B00794043 /* SayViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1158,6 +1100,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A92E64D1E4DEA4200EDB030 /* XWScanImage.m in Sources */,
+				3A31E1EB1E6BE6E20056565A /* MomentsTableView.m in Sources */,
 				3A796C391E534C1B00794043 /* LeftSortsViewController.m in Sources */,
 				3A796C221E534C1B00794043 /* ExamCell.m in Sources */,
 				3A796C251E534C1B00794043 /* Feedback2ViewController.m in Sources */,
@@ -1166,20 +1109,15 @@
 				3A796C561E534C1B00794043 /* CourseModel.m in Sources */,
 				3A796C311E534C1B00794043 /* AddLostViewController.m in Sources */,
 				3A796C531E534C1B00794043 /* UsernameViewController.m in Sources */,
-				3A796C441E534C1B00794043 /* CommitViewCell.m in Sources */,
 				3A796C571E534C1B00794043 /* Math.m in Sources */,
 				3A796C381E534C1B00794043 /* LostShowViewController.m in Sources */,
-				3A796C4A1E534C1B00794043 /* SayViewCell.m in Sources */,
 				3AAC242B1DE1CB3C00546B11 /* JSHeaderView.m in Sources */,
 				3A796C321E534C1B00794043 /* LostShowPhotoTableViewCell.m in Sources */,
 				3A796C2B1E534C1B00794043 /* HandTableViewController.m in Sources */,
 				3A796C3F1E534C1B00794043 /* NoticeViewController.m in Sources */,
-				3A796C461E534C1B00794043 /* PhotoViewCell.m in Sources */,
 				3A796C261E534C1B00794043 /* FeedbackViewController.m in Sources */,
-				3A796C481E534C1B00794043 /* SayCommitViewCell.m in Sources */,
 				3A796C3C1E534C1B00794043 /* NoticeShowViewController.m in Sources */,
 				3A85BB061E5990C5008854CF /* LeftItemTableViewCell.m in Sources */,
-				3A31E1DF1E6BC0EC0056565A /* MomentsTableView.m in Sources */,
 				3A796C3D1E534C1B00794043 /* NoticeTableViewCell.m in Sources */,
 				3A796C2F1E534C1B00794043 /* FirstLoginViewController.m in Sources */,
 				3A796C541E534C1B00794043 /* UserViewController.m in Sources */,
@@ -1189,7 +1127,6 @@
 				3A0AC4981E6AB82800827466 /* UILabel+LXAdd.m in Sources */,
 				3A796C651E534CC200794043 /* UINavigationBar+Awesome.m in Sources */,
 				3A63DF721E49F11600AAAAAA /* NullSafe.m in Sources */,
-				3A796C431E534C1B00794043 /* AddSayViewController.m in Sources */,
 				3A776DEC1E2B615100F600D6 /* FORGesture.m in Sources */,
 				3A796C4E1E534C1B00794043 /* ScoreDataViewController.m in Sources */,
 				3A4049151E6A8BFE0038F207 /* CommentsModel.m in Sources */,
@@ -1205,15 +1142,14 @@
 				3A796C241E534C1B00794043 /* ExamNewViewController.m in Sources */,
 				3A4049091E6A6C730038F207 /* MomentsCell.m in Sources */,
 				3A796C361E534C1B00794043 /* LostShowTimeTableViewCell.m in Sources */,
-				3A796C4C1E534C1B00794043 /* SayViewController.m in Sources */,
 				3A796C1E1E534C1B00794043 /* AboutViewController.m in Sources */,
 				3A796C591E534C1B00794043 /* User.m in Sources */,
 				3A796C581E534C1B00794043 /* Score.m in Sources */,
 				3A796C421E534C1B00794043 /* PowerViewController.m in Sources */,
-				3A4048FF1E6A67620038F207 /* MomentsTableViewController.m in Sources */,
 				3A796C4F1E534C1B00794043 /* ScoreShowViewController.m in Sources */,
 				3A796C2D1E534C1B00794043 /* HomeWorkViewController.m in Sources */,
 				3A796C3B1E534C1B00794043 /* MainViewController.m in Sources */,
+				3A31E1E81E6BE68C0056565A /* AddSayViewController.m in Sources */,
 				3A85BB011E597458008854CF /* LeftUserTableViewCell.m in Sources */,
 				3A4049161E6A8BFE0038F207 /* MomentsModel.m in Sources */,
 				3A796C341E534C1B00794043 /* LostShowTableViewCell.m in Sources */,
