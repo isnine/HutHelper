@@ -34,10 +34,10 @@
     _Content.text = @"请输入反馈意见";
     _Content.textColor = [UIColor lightGrayColor];
     _Content.delegate=self;
+    _Mail.delegate=self;
 }
 -(BOOL)textViewShouldBeginEditing:(UITextView *)textView
 {
-    
     textView.text=@"";
     textView.textColor = [UIColor blackColor];
     
@@ -91,5 +91,28 @@
 
 
 }
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    [self animateTextField: textField up: YES];
+}
 
+- (void)textFieldDidEndEditing:(UITextField *)textField
+
+{
+    [self animateTextField: textField up: NO];
+}
+
+- (void) animateTextField: (UITextField*) textField up: (BOOL) up
+
+{
+    const int movementDistance = SYReal(160); // tweak as needed
+    const float movementDuration = 0.3f; // tweak as needed
+    int movement = (up ? -movementDistance : movementDistance);
+    [UIView beginAnimations: @"anim" context: nil];
+    [UIView setAnimationBeginsFromCurrentState: YES];
+    [UIView setAnimationDuration: movementDuration];
+    self.view.frame = CGRectOffset(self.view.frame, 0, movement);
+    [UIView commitAnimations];
+    
+}
 @end

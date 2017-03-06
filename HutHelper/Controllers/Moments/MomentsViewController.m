@@ -49,6 +49,7 @@
         self.navigationItem.rightBarButtonItem = rightCunstomButtonView;
         momentsTableView = [[MomentsTableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
         [self.view addSubview:momentsTableView];
+        
     }else{
         NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
         NSDictionary *JSONDic=[defaults objectForKey:@"Say"];
@@ -61,6 +62,8 @@
             [self.view addSubview:momentsTableView];
         }
     }
+    
+    
 }
 -(void)reLoadData:(NSDictionary*)JSONDic{
     datas = [[NSMutableArray alloc]init];

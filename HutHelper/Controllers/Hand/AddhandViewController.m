@@ -50,6 +50,9 @@
     _Describe.text = @"描述下你的商品...";
     _Describe.textColor = [UIColor lightGrayColor];
     _Describe.delegate=self;
+    _Phone.delegate=self;
+    _QQ.delegate=self;
+    _Wechat.delegate=self;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -205,5 +208,29 @@
     }
     else
         [MBProgressHUD showError:@"必须添加图片"];
+}
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    [self animateTextField: textField up: YES];
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+
+{
+    [self animateTextField: textField up: NO];
+}
+
+- (void) animateTextField: (UITextField*) textField up: (BOOL) up
+
+{
+    const int movementDistance = SYReal(160); // tweak as needed
+    const float movementDuration = 0.3f; // tweak as needed
+    int movement = (up ? -movementDistance : movementDistance);
+    [UIView beginAnimations: @"anim" context: nil];
+    [UIView setAnimationBeginsFromCurrentState: YES];
+    [UIView setAnimationDuration: movementDuration];
+    self.view.frame = CGRectOffset(self.view.frame, 0, movement);
+    [UIView commitAnimations];
+    
 }
 @end

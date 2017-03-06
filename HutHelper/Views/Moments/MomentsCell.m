@@ -158,7 +158,7 @@
         commentUsernameLabel.font=[UIFont systemFontOfSize:8];
         [self.contentView addSubview:commentUsernameLabel];
         /**评论发布时间*/
-        commentsTimeLabel =[[UILabel alloc]initWithFrame:CGRectMake(SYReal(320)+SYReal(15),SYReal(5)+sumHeight+SYReal(28)+sumCommentsHeight+commentsModel.commentsHeight+SYReal(5),  SYReal(60), SYReal(10))];
+        commentsTimeLabel =[[UILabel alloc]initWithFrame:CGRectMake(SYReal(310)+SYReal(15),SYReal(5)+sumHeight+SYReal(28)+sumCommentsHeight+commentsModel.commentsHeight+SYReal(5),  SYReal(80), SYReal(10))];
         commentsTimeLabel.text=commentsModel.created_on;
         commentsTimeLabel.font=[UIFont systemFontOfSize:9];
         commentsTimeLabel.textColor=[UIColor colorWithRed:161/255.0 green:161/255.0 blue:161/255.0 alpha:1.0];
@@ -166,7 +166,7 @@
         /**删除评论按钮*/
         if ([user.user_id isEqualToString:commentsModel.user_id]) {
             comments_i=i;
-            deleteComment = [[UIButton alloc] initWithFrame:CGRectMake(SYReal(305), SYReal(5)+sumHeight+SYReal(20)+sumCommentsHeight+commentsModel.commentsHeight+SYReal(5), SYReal(25),SYReal(25))];
+            deleteComment = [[UIButton alloc] initWithFrame:CGRectMake(SYReal(290), SYReal(5)+sumHeight+SYReal(20)+sumCommentsHeight+commentsModel.commentsHeight+SYReal(5), SYReal(25),SYReal(25))];
             deleteComment.backgroundColor=[UIColor colorWithRed:242/255.0 green:244/255.0 blue:246/255.0 alpha:1.0];
             [deleteComment setTitle:@"删除" forState:UIControlStateNormal];
             deleteComment.titleLabel.font=[UIFont systemFontOfSize: 10.0];

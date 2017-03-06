@@ -717,7 +717,7 @@ int isxp=0;
         NSLog(@"没有记录");
         
     }
-    else if ([lastRunKey isEqualToString:@"1.9.5"]){
+    else if ([lastRunKey isEqualToString:@"1.9.5"]||[lastRunKey isEqualToString:@"1.9.6"]||[lastRunKey isEqualToString:@"1.9.7"]){
         [defaults setObject:currentVersion forKey:@"last_run_version_key"];
         [Config addNotice];
     }
