@@ -109,7 +109,7 @@ int isxp=0;
                      [shared setObject:array forKey:@"Class"];
                      [shared synchronize];
                      /**请求实验课表*/
-                    
+                     
                      [manager GET:UrlXP_String parameters:nil progress:nil
                           success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                               NSDictionary *ClassXP_All = [NSDictionary dictionaryWithDictionary:responseObject];
@@ -622,6 +622,7 @@ int isxp=0;
     [defaults setInteger:[Math CountWeeks:year m:month d:day] forKey:@"NowWeek"];
     [defaults setInteger:[Math CountWeeks:year m:month d:day] forKey:@"TrueWeek"];
     //判断完毕//
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:246/255.0 green:246/255.0 blue:246/255.0 alpha:1.0];
     /**导航栏变为透明*/
     [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:0];
     /**让黑线消失的方法*/
@@ -727,7 +728,7 @@ int isxp=0;
         [defaults setObject:currentVersion forKey:@"last_run_version_key"];
         NSLog(@"记录不匹配");
     }
-
+    
     
     
     

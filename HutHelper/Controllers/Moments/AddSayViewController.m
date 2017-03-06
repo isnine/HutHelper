@@ -49,6 +49,7 @@
     [mainAndSearchBtn addTarget:self action:@selector(postsay) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *rightCunstomButtonView = [[UIBarButtonItem alloc] initWithCustomView:rightButtonView];
     self.navigationItem.rightBarButtonItem = rightCunstomButtonView;
+    
     _Say_Text.text = @"请输入发表内容...";
     _Say_Text.textColor = [UIColor lightGrayColor];
     _Say_Text.delegate=self;

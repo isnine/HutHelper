@@ -47,8 +47,9 @@
     
     UIImageView *commentBackground;
     UILabel *commentLabel;
+    UIImageView *userCollegeImage;
+    UILabel *userCollegeLabel;
     UILabel *commentUsernameLabel;
-    
     UIImageView *commentBackground2;
     UILabel *commentsTimeLabel;
     
@@ -79,7 +80,7 @@
     /**发布时间*/
     timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(SYReal(60),SYReal(20),SYReal(400) ,SYReal(50))];
     timeLabel.text=_data.created_on;
-    timeLabel.font=[UIFont fontWithName:@"HelveticaNeue-Light" size:12];
+    timeLabel.font=[UIFont fontWithName:@"HelveticaNeue-Light" size:9];
     timeLabel.textColor=[UIColor colorWithRed:161/255.0 green:161/255.0 blue:161/255.0 alpha:1.0];
     [self.contentView addSubview:timeLabel];
     /**头像按钮*/
@@ -90,7 +91,7 @@
     [avatarButton addTarget:self action:@selector(btnAvatar) forControlEvents:UIControlEventTouchUpInside];
     [self.contentView addSubview:avatarButton];
     /**头像图片*/
-    cornerImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0,SYReal(40),SYReal(40))];
+    cornerImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0,SYReal(37),SYReal(37))];
     cornerImage.center = avatarButton.center;
     [cornerImage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:API_IMG,_data.head_pic_thumb]] placeholderImage:[self circleImage:[UIImage imageNamed:@"img_defalut"]] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
         if (![[NSString stringWithFormat:API_IMG,_data.head_pic_thumb] isEqualToString:INDEX]) {
@@ -102,6 +103,7 @@
     contentLabel = [[UILabel alloc] init];
     contentLabel.numberOfLines=0;
     contentLabel.font=[UIFont systemFontOfSize:15];
+    contentLabel.textColor=[UIColor colorWithRed:34/255.0 green:34/255.0 blue:34/255.0 alpha:1.0];
     contentLabel.text=_data.content;
     contentLabel.frame=CGRectMake(SYReal(20), SYReal(60),_data.textWidth,_data.textHeight);
     [self.contentView addSubview:contentLabel];
@@ -111,20 +113,34 @@
         //[self loadPhoto];
     }
     sumHeight+=_data.photoHeight;
+    /**评论图片*/
+    commentImage = [[UIImageView alloc] initWithFrame:CGRectMake(SYReal(365), SYReal(6)+sumHeight,SYReal(15),SYReal(16))];
+    commentImage.image=[UIImage imageNamed:@"comment"];
+    [self.contentView addSubview:commentImage];
+    /**学院图片*/
+    userCollegeImage = [[UIImageView alloc] initWithFrame:CGRectMake(SYReal(20), SYReal(8)+sumHeight,SYReal(13),SYReal(13))];
+    userCollegeImage.image=[UIImage imageNamed:@"icon_not_locationed"];
+    [self.contentView addSubview:userCollegeImage];
+    /**学院*/
+    userCollegeLabel = [[UILabel alloc] initWithFrame:CGRectMake(SYReal(35),SYReal(5)+sumHeight, SYReal(150),SYReal(20))];
+    userCollegeLabel.textColor=[UIColor colorWithRed:153/255.0 green:153/255.0 blue:153/255.0 alpha:1.0];
+    userCollegeLabel.font=[UIFont fontWithName:@"HelveticaNeue-Light" size:12];
+    userCollegeLabel.text=_data.dep_name;
+    [self.contentView addSubview:userCollegeLabel];
     /**评论按钮*/
     commentButton = [[UIButton alloc] init];
-    commentButton.frame=CGRectMake(SYReal(350), SYReal(5)+sumHeight, SYReal(40), SYReal(25));
+    commentButton.frame=CGRectMake(SYReal(360), SYReal(5)+sumHeight, SYReal(40), SYReal(20));
     [commentButton addTarget:self action:@selector(btnComment) forControlEvents:UIControlEventTouchUpInside];
     [self.contentView addSubview:commentButton];
     /**评论图片*/
-    commentImage = [[UIImageView alloc] initWithFrame:CGRectMake(SYReal(350), SYReal(5)+sumHeight,SYReal(20),SYReal(20))];
+    commentImage = [[UIImageView alloc] initWithFrame:CGRectMake(SYReal(365), SYReal(6)+sumHeight,SYReal(15),SYReal(16))];
     commentImage.image=[UIImage imageNamed:@"comment"];
     [self.contentView addSubview:commentImage];
     /**评论数*/
-    commentNumLabel = [[UILabel alloc] initWithFrame:CGRectMake(SYReal(375),SYReal(5)+sumHeight, SYReal(20),SYReal(20))];
-    commentNumLabel.textColor=[UIColor colorWithRed:4/255.0 green:213/255.0 blue:192/255.0 alpha:1.0];
-    commentNumLabel.text=[NSString stringWithFormat:@"%d",(short)_data.commentsModelArray.count];
-    [self.contentView addSubview:commentNumLabel];
+        commentNumLabel = [[UILabel alloc] initWithFrame:CGRectMake(SYReal(385),SYReal(5)+sumHeight, SYReal(18),SYReal(18))];
+        commentNumLabel.textColor=[UIColor colorWithRed:153/255.0 green:153/255.0 blue:153/255.0 alpha:1.0];
+        commentNumLabel.text=[NSString stringWithFormat:@"%d",(short)_data.commentsModelArray.count];
+        [self.contentView addSubview:commentNumLabel];
     /**删除说说按钮*/
     if ([user.user_id isEqualToString:_data.user_id]) {
         deleteSay = [[UIButton alloc] initWithFrame:CGRectMake(SYReal(320), sumHeight, SYReal(30),SYReal(30))];
@@ -135,6 +151,7 @@
         [self.contentView addSubview:deleteSay];
     }
     /**评论*/
+    sumHeight+=SYReal(10);
     [self loadComments];
 }
 -(void)loadComments{
@@ -149,13 +166,13 @@
         commentLabel =[[UILabel alloc]initWithFrame:CGRectMake(SYReal(30),SYReal(5)+sumHeight+SYReal(28)+sumCommentsHeight,SYReal(COMMENTS_WEIGHT), commentsModel.commentsHeight)];
         commentLabel.numberOfLines=0;
         commentLabel.text=commentsModel.comment;
-        commentLabel.font=[UIFont systemFontOfSize:13];
+        commentLabel.font=[UIFont fontWithName:@"HelveticaNeue-Light"  size:13];
         [self.contentView addSubview:commentLabel];
         /**评论用户昵称*/
         commentUsernameLabel =[[UILabel alloc]initWithFrame:CGRectMake(SYReal(30), SYReal(5)+sumHeight+SYReal(28)+sumCommentsHeight+commentsModel.commentsHeight+SYReal(5),  SYReal(354), SYReal(10))];
         commentUsernameLabel.text=commentsModel.username;
         commentUsernameLabel.textColor=[UIColor colorWithRed:80/255.0 green:80/255.0 blue:80/255.0 alpha:1.0];
-        commentUsernameLabel.font=[UIFont systemFontOfSize:8];
+        commentUsernameLabel.font=[UIFont boldSystemFontOfSize:8];
         [self.contentView addSubview:commentUsernameLabel];
         /**评论发布时间*/
         commentsTimeLabel =[[UILabel alloc]initWithFrame:CGRectMake(SYReal(310)+SYReal(15),SYReal(5)+sumHeight+SYReal(28)+sumCommentsHeight+commentsModel.commentsHeight+SYReal(5),  SYReal(80), SYReal(10))];
@@ -175,10 +192,10 @@
             [self.contentView addSubview:deleteComment];
         }
         /**评论间隔*/
-        commentBackground2 =[[UIImageView alloc]initWithFrame:CGRectMake(SYReal(20), SYReal(5)+sumHeight+SYReal(23)+sumCommentsHeight+SYReal(25)+commentsModel.commentsHeight, SYReal(374),SYReal(2))];
+        commentBackground2 =[[UIImageView alloc]initWithFrame:CGRectMake(SYReal(20), SYReal(5)+sumHeight+SYReal(23)+sumCommentsHeight+SYReal(25)+commentsModel.commentsHeight, SYReal(374),SYReal(1))];
         commentBackground2.backgroundColor=[UIColor colorWithRed:233/255.0 green:233/255.0 blue:233/255.0 alpha:1.0];
         [self.contentView addSubview:commentBackground2];
-        sumCommentsHeight+=SYReal(25)+commentsModel.commentsHeight+SYReal(2);
+        sumCommentsHeight+=SYReal(25)+commentsModel.commentsHeight+SYReal(1);
     }
 }
 -(void)loadPhoto{
@@ -225,7 +242,7 @@
                      placeholderImage:[UIImage imageNamed:@"load_img"]];
         [self.contentView addSubview:photoImg2];
         photoImg3=[[UIImageView alloc] init];
-        photoImg3.frame=CGRectMake(SYReal(20),SYReal(70)+_data.textHeight+_data.photoHeight/2,_data.photoHeight/2*1.77, _data.photoHeight/2);
+        photoImg3.frame=CGRectMake(SYReal(20),SYReal(70)+_data.textHeight+_data.photoHeight/2,SYReal(184), _data.photoHeight/2);
         [photoImg3 sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:API_IMG,_data.pics[2]]]
                      placeholderImage:[UIImage imageNamed:@"load_img"]];
         [self.contentView addSubview:photoImg3];

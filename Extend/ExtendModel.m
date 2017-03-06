@@ -139,7 +139,6 @@ int startday                        = 20;
     int day                                   = (short)[dateComponent day];//日
     
     int nowweek=[self CountWeeks:year m:month d:day];
-    NSLog(@"现在第:%d周",nowweek);
     if (nowweek > jsz)
         return 0;
     if (nowweek < qsz)

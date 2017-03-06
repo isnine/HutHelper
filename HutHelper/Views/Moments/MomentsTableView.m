@@ -64,7 +64,7 @@
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     MomentsModel *momentsModel=datas[indexPath.section];
-    return SYReal(70)+momentsModel.textHeight+momentsModel.photoHeight+SYReal(30)+momentsModel.commentsHeight;
+    return SYReal(70)+momentsModel.textHeight+momentsModel.photoHeight+SYReal(40)+momentsModel.commentsHeight;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     return 15;

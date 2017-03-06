@@ -27,7 +27,7 @@ static int Is ;
     NSMutableArray *notice=[[NSMutableArray alloc]init];
     [noticeDictionary setObject:@"2017-03-05 24:00" forKey:@"time"];
     [noticeDictionary setObject:@"工大助手" forKey:@"title"];
-    [noticeDictionary setObject:@"工大助手V1.9.8更新日志\n\n- 重构了校园说说，流畅度提升160%\n- 修复了二手市场虚拟键盘问题\n- 修复了反馈界面虚拟键盘的问题\n- 修改了分享界面 \n\n如果您对App有任何建议或者发现了Bug，可以在侧栏-反馈中告诉我们，我向您保证每个Bug都会尽快修复，每个意见都会得到回复。" forKey:@"body"];
+    [noticeDictionary setObject:@"工大助手V1.9.8更新日志\n\n- 重构了校园说说，流畅度提升160%\n- 修复了二手市场虚拟键盘问题\n- 修复了反馈界面虚拟键盘的问题\n- 修复了Widget周次问题 \n- 修改了分享界面 \n\n如果您对App有任何建议或者发现了Bug\n可以在侧栏-反馈中告诉我们，我向您保证每个Bug都会尽快修复，每个意见都会得到回复，另外在AppStore中求个好评🙏" forKey:@"body"];
     [notice insertObject:noticeDictionary atIndex:0];
     [noticeDictionary3 setObject:@"2017-02-20 08:00" forKey:@"time"];
     [noticeDictionary3 setObject:@"开发者的一些话" forKey:@"title"];

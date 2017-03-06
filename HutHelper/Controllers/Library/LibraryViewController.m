@@ -16,18 +16,19 @@
 
 @end
 
-@implementation LibraryViewController
-
-NSString *Url_String;
+@implementation LibraryViewController{
+    UIButton *mainAndSearchBtn;
+    NSString *Url_String;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self SetTitle];
     [self SetURL];
     NSURL *url                = [[NSURL alloc]initWithString:Url_String];
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor]}];
+    [self customBackButton];
     _views.delegate=self;
     [_views loadRequest:[NSURLRequest requestWithURL:url]];
-
 }
 
 -(void)SetURL{
@@ -38,7 +39,25 @@ NSString *Url_String;
     self.navigationItem.title = @"图书馆";
 }
 
-
+// 自定义返回按钮
+- (void)customBackButton{
+    /**按钮*/
+    UIView *rightButtonView = [[UIView alloc] initWithFrame:CGRectMake(-20,0, 40, 40)];
+    mainAndSearchBtn = [[UIButton alloc] initWithFrame:CGRectMake(-20,0, 40, 40)];
+    [rightButtonView addSubview:mainAndSearchBtn];
+    [mainAndSearchBtn setImage:[UIImage imageNamed:@"back"] forState:UIControlStateNormal];
+    [mainAndSearchBtn addTarget:self action:@selector(backBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *rightCunstomButtonView = [[UIBarButtonItem alloc] initWithCustomView:rightButtonView];
+    self.navigationItem.leftBarButtonItem = rightCunstomButtonView;
+}
+// 返回按钮按下
+- (void)backBtnClicked:(UIButton *)sender{
+    if(self.views.canGoBack){
+        [self.views goBack];
+    }else{
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -48,11 +67,16 @@ NSString *Url_String;
 {
     [super viewWillAppear:animated];
     [MobClick beginLogPageView:@"图书馆"];
+    self.navigationItem.backBarButtonItem = mainAndSearchBtn;
+    self.navigationController.interactivePopGestureRecognizer.delegate = self;
 }
 - (void)viewWillDisappear:(BOOL)animated
 {
+    
     [super viewWillDisappear:animated];
     [MobClick endLogPageView:@"图书馆"];
+    
+    
 }
 /** webView的代理方法*/
 
