@@ -13,7 +13,6 @@
 #import "UMessage.h"
 #import "UMMobClick/MobClick.h"
 #import <UMSocialCore/UMSocialCore.h>
-#import <JSPatchPlatform/JSPatch.h>
 @interface AppDelegate ()
 
 @end
@@ -84,9 +83,9 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     /*热更新**/
-    [JSPatch startWithAppKey:@"bd9208bd34ab8197"];
-    [JSPatch setupDevelopment];
-    [JSPatch sync];
+//    [JSPatch startWithAppKey:@"bd9208bd34ab8197"];
+//    [JSPatch setupDevelopment];
+//    [JSPatch sync];
 }
 - (void)configUSharePlatforms
 {

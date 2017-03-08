@@ -33,6 +33,10 @@
     UIButton *avatarButton;
     UIImageView *cornerImage;
     
+    UILabel *likesNumLabel;
+    UIButton *likesButton;
+    UIImageView *likesImage;
+    
     UILabel *commentNumLabel;
     UIButton *commentButton;
     UIImageView *commentImage;
@@ -113,10 +117,6 @@
         //[self loadPhoto];
     }
     sumHeight+=_data.photoHeight;
-    /**评论图片*/
-    commentImage = [[UIImageView alloc] initWithFrame:CGRectMake(SYReal(365), SYReal(6)+sumHeight,SYReal(15),SYReal(16))];
-    commentImage.image=[UIImage imageNamed:@"comment"];
-    [self.contentView addSubview:commentImage];
     /**学院图片*/
     userCollegeImage = [[UIImageView alloc] initWithFrame:CGRectMake(SYReal(20), SYReal(8)+sumHeight,SYReal(13),SYReal(13))];
     userCollegeImage.image=[UIImage imageNamed:@"icon_not_locationed"];
@@ -129,18 +129,34 @@
     [self.contentView addSubview:userCollegeLabel];
     /**评论按钮*/
     commentButton = [[UIButton alloc] init];
-    commentButton.frame=CGRectMake(SYReal(360), SYReal(5)+sumHeight, SYReal(40), SYReal(20));
+    commentButton.frame=CGRectMake(SYReal(320), SYReal(5)+sumHeight, SYReal(40), SYReal(20));
     [commentButton addTarget:self action:@selector(btnComment) forControlEvents:UIControlEventTouchUpInside];
     [self.contentView addSubview:commentButton];
     /**评论图片*/
-    commentImage = [[UIImageView alloc] initWithFrame:CGRectMake(SYReal(365), SYReal(6)+sumHeight,SYReal(15),SYReal(16))];
+    commentImage = [[UIImageView alloc] initWithFrame:CGRectMake(SYReal(325), SYReal(6)+sumHeight,SYReal(15),SYReal(16))];
     commentImage.image=[UIImage imageNamed:@"comment"];
     [self.contentView addSubview:commentImage];
     /**评论数*/
-        commentNumLabel = [[UILabel alloc] initWithFrame:CGRectMake(SYReal(385),SYReal(5)+sumHeight, SYReal(18),SYReal(18))];
-        commentNumLabel.textColor=[UIColor colorWithRed:153/255.0 green:153/255.0 blue:153/255.0 alpha:1.0];
-        commentNumLabel.text=[NSString stringWithFormat:@"%d",(short)_data.commentsModelArray.count];
-        [self.contentView addSubview:commentNumLabel];
+    commentNumLabel = [[UILabel alloc] initWithFrame:CGRectMake(SYReal(345),SYReal(5)+sumHeight, SYReal(18),SYReal(18))];
+    commentNumLabel.textColor=[UIColor colorWithRed:153/255.0 green:153/255.0 blue:153/255.0 alpha:1.0];
+    commentNumLabel.text=[NSString stringWithFormat:@"%d",(short)_data.commentsModelArray.count];
+    [self.contentView addSubview:commentNumLabel];
+    
+    /**赞按钮*/
+    likesButton = [[UIButton alloc] init];
+    likesButton.frame=CGRectMake(SYReal(360), SYReal(5)+sumHeight, SYReal(40), SYReal(20));
+    [likesButton addTarget:self action:@selector(btnLikes) forControlEvents:UIControlEventTouchUpInside];
+    [self.contentView addSubview:likesButton];
+    /**赞图片*/
+    likesImage = [[UIImageView alloc] initWithFrame:CGRectMake(SYReal(365), SYReal(6)+sumHeight,SYReal(15),SYReal(16))];
+    likesImage.image=[UIImage imageNamed:@"tweet_btn_like"];
+    [self.contentView addSubview:likesImage];
+    /**赞数*/
+    likesNumLabel = [[UILabel alloc] initWithFrame:CGRectMake(SYReal(385),SYReal(5)+sumHeight, SYReal(18),SYReal(18))];
+    likesNumLabel.textColor=[UIColor colorWithRed:153/255.0 green:153/255.0 blue:153/255.0 alpha:1.0];
+    likesNumLabel.text=[NSString stringWithFormat:@"%@",_data.likes];
+    [self.contentView addSubview:likesNumLabel];
+    
     /**删除说说按钮*/
     if ([user.user_id isEqualToString:_data.user_id]) {
         deleteSay = [[UIButton alloc] initWithFrame:CGRectMake(SYReal(320), sumHeight, SYReal(30),SYReal(30))];
@@ -246,7 +262,7 @@
         [photoImg3 sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:API_IMG,_data.pics[2]]]
                      placeholderImage:[UIImage imageNamed:@"load_img"]];
         [self.contentView addSubview:photoImg3];
-       
+        
         UITapGestureRecognizer *tapGestureRecognizer1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scanBigImageClick:)];
         [photoImg1 addGestureRecognizer:tapGestureRecognizer1];
         [photoImg1 setUserInteractionEnabled:YES];
@@ -307,7 +323,6 @@
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
     manager.requestSerializer.timeoutInterval = 5.f;
     [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
-    /**请求平时课表*/
     [manager GET:Url_String parameters:nil progress:nil
          success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
              NSDictionary *Say_All = [NSDictionary dictionaryWithDictionary:responseObject];
@@ -374,7 +389,40 @@
             [MBProgressHUD showError:@"网络错误"];
         }];
     }];
+}
+
+-(void)btnLikes{
+    NSURLCache *sharedCache = [[NSURLCache alloc] initWithMemoryCapacity:0
+                                                            diskCapacity:0
+                                                                diskPath:nil];
+    [NSURLCache setSharedURLCache:sharedCache];
     
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    NSString *Url_String=[NSString stringWithFormat:API_MOMENTS_LIKES,user.studentKH,[defaults objectForKey:@"remember_code_app"],_data.moments_id];
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
+    manager.requestSerializer.timeoutInterval = 5.f;
+    [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
+    [manager GET:Url_String parameters:nil progress:nil
+         success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+             NSDictionary *Say_All = [NSDictionary dictionaryWithDictionary:responseObject];
+             NSLog(@"%@",Say_All);
+             if ([[Say_All objectForKey:@"msg"]isEqualToString:@"成功点赞"]) {
+                 likesImage.image=[UIImage imageNamed:@"tweet_btn_liked"];
+                 likesNumLabel.text=[NSString stringWithFormat:@"%d",[_data.likes intValue]+1];
+                 _data.likes=[NSString stringWithFormat:@"%d",[_data.likes intValue]+1];
+             }else if([[Say_All objectForKey:@"msg"]isEqualToString:@"取消点赞"]){
+                 likesImage.image=[UIImage imageNamed:@"tweet_btn_like"];
+                 likesNumLabel.text=[NSString stringWithFormat:@"%d",[_data.likes intValue]-1];
+                 _data.likes=[NSString stringWithFormat:@"%d",[_data.likes intValue]-1];
+             }else if([[Say_All objectForKey:@"msg"]isEqualToString:@"令牌错误"]){
+                 [MBProgressHUD showError:@"登录过期，请重新登录"];
+             }
+             
+         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+             
+             
+         }];
 }
 -(void)btnDeleteComment{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
