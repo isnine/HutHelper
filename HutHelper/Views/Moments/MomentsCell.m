@@ -159,7 +159,7 @@
     
     /**删除说说按钮*/
     if ([user.user_id isEqualToString:_data.user_id]) {
-        deleteSay = [[UIButton alloc] initWithFrame:CGRectMake(SYReal(320), sumHeight, SYReal(30),SYReal(30))];
+        deleteSay = [[UIButton alloc] initWithFrame:CGRectMake(SYReal(290), sumHeight, SYReal(30),SYReal(30))];
         [deleteSay setTitle:@"删除" forState:UIControlStateNormal];
         deleteSay.titleLabel.font=[UIFont systemFontOfSize: 12.0];
         [deleteSay setTitleColor:[UIColor redColor]forState:UIControlStateNormal];

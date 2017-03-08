@@ -13,6 +13,7 @@
 #import "UMessage.h"
 #import "UMMobClick/MobClick.h"
 #import <UMSocialCore/UMSocialCore.h>
+#import "Config.h"
 @interface AppDelegate ()
 
 @end
@@ -23,7 +24,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     /**友盟推送*/
-    [UMessage startWithAppkey:@"57fe13d867e58e0e59000ca1" launchOptions:launchOptions];
+    [UMessage startWithAppkey:APPKEY_UMESSAGE launchOptions:launchOptions];
     [UMessage registerForRemoteNotifications];
     UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
     center.delegate                  = self;
@@ -39,7 +40,7 @@
     }];
     [UMessage setLogEnabled:NO];//打开日志，方便调试
     /**友盟统计*/
-    UMConfigInstance.appKey          = @"57fe13d867e58e0e59000ca1";
+    UMConfigInstance.appKey          = APPKEY_UMESSAGE;
     UMConfigInstance.ChannelId       = @"App Store";
     UMConfigInstance.eSType          = E_UM_GAME;//仅适用于游戏场景，应用统计不用设置
     NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
@@ -58,7 +59,7 @@
     [[UINavigationBar appearance] setBarTintColor: ownColor];  //颜色
     /**友盟分享*/
     [[UMSocialManager defaultManager] openLog:NO]; //打开调试日志
-    [[UMSocialManager defaultManager] setUmSocialAppkey:@"57fe13d867e58e0e59000ca1"];//设置友盟appkey
+    [[UMSocialManager defaultManager] setUmSocialAppkey:APPKEY_UMESSAGE];//设置友盟appkey
     [self configUSharePlatforms];
     
     return YES;
@@ -89,9 +90,9 @@
 }
 - (void)configUSharePlatforms
 {
-    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_QQ appKey:@"1105703863"  appSecret:@"y7n6BRLtnH9mrFT3" redirectURL:@"http://mobile.umeng.com/social"];
-    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_Sina appKey:@"1046968355"  appSecret:@"ba2997aaab6a1602406fc94247dc072d" redirectURL:@"http://sns.whalecloud.com/sina2/callback"];
-    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_WechatSession appKey:@"wx944eb9ae391a7c2b" appSecret:@"8bb26c6a577e61f0bbee160dde7e79af" redirectURL:@"http://mobile.umeng.com/social"];
+    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_QQ appKey:@"1105703863"  appSecret:APPKEY_QQ_SECRET redirectURL:@"http://mobile.umeng.com/social"];
+    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_Sina appKey:@"1046968355"  appSecret:APPKEY_SINA_SECRET redirectURL:@"http://sns.whalecloud.com/sina2/callback"];
+    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_WechatSession appKey:@"wx944eb9ae391a7c2b" appSecret:APPKEY_WECHAT_SECRET redirectURL:@"http://mobile.umeng.com/social"];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
