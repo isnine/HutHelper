@@ -64,6 +64,7 @@
                  [Config addNotice];//新增通知
                  /**设置友盟标签&别名*/
                  User *user=[User yy_modelWithJSON:User_Data];
+//                 User *user=[[User alloc]initWithDic:User_Data];
                  [MobClick profileSignInWithPUID:user.studentKH];
                  [UMessage addTag:user.class_name
                          response:^(id responseObject, NSInteger remain, NSError *error) {

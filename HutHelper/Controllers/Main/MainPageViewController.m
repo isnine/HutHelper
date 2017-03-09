@@ -410,8 +410,7 @@ int isxp=0;
     [MBProgressHUD showMessage:@"查询中" toView:self.view];
     /**拼接地址*/
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    NSDictionary *User_Data=[defaults objectForKey:@"User"];
-    User *user=[User yy_modelWithJSON:User_Data];
+    User *user=Config.getUser;
     NSString *ss=[user.studentKH stringByAppendingString:@"apiforapp!"];
     ss=[ss MD5];
     NSString *Url_String=[NSString stringWithFormat:API_EXAM,user.studentKH,ss];

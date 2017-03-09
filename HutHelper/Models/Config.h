@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "HUTAPI.h"
-
+@class User;
 #define HideAllHUD  [MBProgressHUD hideHUDForView:self.view animated:YES];
 #define DeviceMaxHeight ([UIScreen mainScreen].bounds.size.height)
 #define DeviceMaxWidth ([UIScreen mainScreen].bounds.size.width)
@@ -18,5 +18,5 @@
 + (void)setIs:(int )Is;
 + (int )getIs;
 +(void)addNotice;
-
++(User*)getUser;
 @end

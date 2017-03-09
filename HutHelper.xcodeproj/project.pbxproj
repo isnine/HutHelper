@@ -486,6 +486,24 @@
 			name = NullSafe;
 			sourceTree = "<group>";
 		};
+		3A68C0641E7117AF00DB264A /* Score */ = {
+			isa = PBXGroup;
+			children = (
+				3A796C1A1E534C1B00794043 /* Score.h */,
+				3A796C1B1E534C1B00794043 /* Score.m */,
+			);
+			name = Score;
+			sourceTree = "<group>";
+		};
+		3A68C0651E7117BE00DB264A /* Course */ = {
+			isa = PBXGroup;
+			children = (
+				3A796C151E534C1B00794043 /* CourseModel.h */,
+				3A796C161E534C1B00794043 /* CourseModel.m */,
+			);
+			name = Course;
+			sourceTree = "<group>";
+		};
 		3A6F216F1E4A076B00CC0EEF /* JsonKit */ = {
 			isa = PBXGroup;
 			children = (
@@ -757,16 +775,14 @@
 		3A796C121E534C1B00794043 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				3A68C0651E7117BE00DB264A /* Course */,
+				3A68C0641E7117AF00DB264A /* Score */,
 				3A4049101E6A8BFE0038F207 /* Moments */,
+				3A796C171E534C1B00794043 /* HUTAPI.h */,
 				3A796C131E534C1B00794043 /* Config.h */,
 				3A796C141E534C1B00794043 /* Config.m */,
-				3A796C151E534C1B00794043 /* CourseModel.h */,
-				3A796C161E534C1B00794043 /* CourseModel.m */,
-				3A796C171E534C1B00794043 /* HUTAPI.h */,
 				3A796C181E534C1B00794043 /* Math.h */,
 				3A796C191E534C1B00794043 /* Math.m */,
-				3A796C1A1E534C1B00794043 /* Score.h */,
-				3A796C1B1E534C1B00794043 /* Score.m */,
 				3A796C1C1E534C1B00794043 /* User.h */,
 				3A796C1D1E534C1B00794043 /* User.m */,
 			);

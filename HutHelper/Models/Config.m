@@ -7,6 +7,8 @@
 //
 
 #import "Config.h"
+#import "User.h"
+#import "YYmodel.h"
 static int Is ;
 
 @implementation Config
@@ -17,6 +19,12 @@ static int Is ;
 + (int )getIs
 {
     return Is;
+}
++(User*)getUser{
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    NSDictionary *User_Data=[defaults objectForKey:@"User"];
+    User *user=[User yy_modelWithJSON:User_Data];
+    return user;
 }
 +(void)addNotice{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];

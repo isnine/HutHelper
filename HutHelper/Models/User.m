@@ -10,10 +10,20 @@
 #import "YYModel.h"
 @implementation User
 
-//+ (void) load {
-//        NSLog(@"Load被调用");
-//     }
-//+ (void) initialize {
-//    NSLog(@"initialize被调用");¿
-//}
+-(instancetype)initWithDic:(NSDictionary*)Dic{
+    self = [super init];
+    if (self) {
+        self.TrueName=Dic[@"Dic"];
+        self.address=Dic[@"address"];
+        self.class_name=Dic[@"class_name"];
+        self.dep_name=Dic[@"dep_name"];
+        self.head_pic=Dic[@"head_pic"];
+        self.head_pic_thumb=Dic[@"head_pic_thumb"];
+        self.last_login=Dic[@"last_login"];
+        self.studentKH=Dic[@"studentKH"];
+        self.username=Dic[@"username"];
+        self.user_id=Dic[@"user_id"];
+    }
+    return self;
+}
 @end
