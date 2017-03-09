@@ -46,8 +46,8 @@
     NSUserDefaults *defaults=[[NSUserDefaults alloc] initWithSuiteName:@"group.HutHelper"];
     if (defaults) {
     NSMutableArray *classSolution=[[NSMutableArray alloc]init];
-    if ([defaults objectForKey:@"Class"]!=NULL) {
-        NSArray *array          = [defaults objectForKey:@"Class"];
+    if ([defaults objectForKey:@"kCourse"]!=NULL) {
+        NSArray *array          = [defaults objectForKey:@"kCourse"];
         NSLog(@"%@",array[1]);
         for (int i= 0; i<=(array.count-1); i++) {
             NSDictionary *dict1       = array[i];

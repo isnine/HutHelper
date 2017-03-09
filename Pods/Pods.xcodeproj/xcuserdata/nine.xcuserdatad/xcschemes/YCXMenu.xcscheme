@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'BE196868724FDA542A0AAD23BA8E7DD7'
+               BlueprintIdentifier = 'D5C339C8A8C7BD39EEDC3CE5A790B251'
                BlueprintName = 'YCXMenu'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'libYCXMenu.a'>

@@ -53,7 +53,6 @@ PODS:
   - UMengUShare/UI (6.3.0):
     - UMengUShare/Core
   - YCXMenu (0.0.11)
-  - YYModel (1.0.4)
 
 DEPENDENCIES:
   - AFNetworking (~> 3.0)
@@ -72,7 +71,6 @@ DEPENDENCIES:
   - UMengUShare/Social/WeChat
   - UMengUShare/UI
   - YCXMenu (~> 0.0.11)
-  - YYModel
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
@@ -90,8 +88,7 @@ SPEC CHECKSUMS:
   UMengAnalytics-NO-IDFA: 16666e32edce5be44ae5b14aaaa7f3582e09d6ab
   UMengUShare: b208ac3bcf1f63d11a100b359990e9d77a0f2085
   YCXMenu: 6003bcd20d8ac72e3eb3c442c97ed21948c6dc1f
-  YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: 948a814628076a690455965875130e9910478b8f
+PODFILE CHECKSUM: 8fae4841a4aad4130e405678ac69cec5569bedff
 
-COCOAPODS: 1.2.1.beta.1
+COCOAPODS: 1.1.1

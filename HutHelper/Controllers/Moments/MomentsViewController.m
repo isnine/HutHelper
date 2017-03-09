@@ -16,7 +16,7 @@
 #import "YCXMenu.h"
 #import "User.h"
 #import "AppDelegate.h"
-#import "YYmodel.h"
+
 #import "AddSayViewController.h"
 @interface MomentsViewController (){
     MomentsTableView *momentsTableView;
@@ -120,9 +120,7 @@
     [MBProgressHUD showMessage:@"加载中" toView:self.view];
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     /**拼接地址*/
-    NSDictionary *User_Data=[defaults objectForKey:@"User"];
-    User *user=[User yy_modelWithJSON:User_Data];
-    NSString *Url_String=[NSString stringWithFormat:API_MOMENTS_USER,user.user_id];
+    NSString *Url_String=[NSString stringWithFormat:API_MOMENTS_USER,Config.getUserId];
     /**设置9秒超时*/
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];

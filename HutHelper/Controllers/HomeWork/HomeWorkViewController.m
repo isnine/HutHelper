@@ -9,7 +9,7 @@
 #import "HomeWorkViewController.h"
 #import "UMMobClick/MobClick.h"
 #import "MBProgressHUD+MJ.h"
-#import "YYModel.h"
+
 #import "User.h"
 #import "Config.h"
 @interface HomeWorkViewController ()
@@ -25,10 +25,7 @@
     [super viewDidLoad];
     self.navigationItem.title = @"网上作业";
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor]}];
-    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    NSDictionary *User_Data=[defaults objectForKey:@"User"];
-    User *user=[User yy_modelWithJSON:User_Data];
-    NSString *Url_String=[NSString stringWithFormat:API_HOMEWORK,user.studentKH,[defaults objectForKey:@"remember_code_app"]];
+    NSString *Url_String=[NSString stringWithFormat:API_HOMEWORK,Config.getStudentKH,Config.getRememberCodeApp];
     NSURL *url                = [[NSURL alloc]initWithString:Url_String];
     _views.delegate=self;
     [_views loadRequest:[NSURLRequest requestWithURL:url]];

@@ -22,8 +22,4 @@
 @property NSString *user_id;//说说id
 -(instancetype)initWithDic:(NSDictionary*)Dic;
 @end
-//@interface User : NSObject
-//@property NSString *msg;
-//@property NSString *remember_code_app;
-//@property User_data *data; 
-//@end
+

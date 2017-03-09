@@ -7,13 +7,13 @@
 //
 
 #import "User.h"
-#import "YYModel.h"
+
 @implementation User
 
 -(instancetype)initWithDic:(NSDictionary*)Dic{
     self = [super init];
     if (self) {
-        self.TrueName=Dic[@"Dic"];
+        self.TrueName=Dic[@"TrueName"];
         self.address=Dic[@"address"];
         self.class_name=Dic[@"class_name"];
         self.dep_name=Dic[@"dep_name"];
@@ -23,6 +23,7 @@
         self.studentKH=Dic[@"studentKH"];
         self.username=Dic[@"username"];
         self.user_id=Dic[@"user_id"];
+        self.sex=Dic[@"sex"];
     }
     return self;
 }

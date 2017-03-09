@@ -8,8 +8,8 @@
 
 #import "UserInfoCell.h"
 #import "AppDelegate.h"
-#import "YYModel.h"
-#import "User.h"
+
+#import "Config.h"
 @interface UserInfoCell ()
 
 @property (nonatomic, strong) UILabel *nameLabel;
@@ -34,21 +34,19 @@
 
 - (UILabel *)nameLabel {
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    NSDictionary *User_Data=[defaults objectForKey:@"User"];
-    User *user=[User yy_modelWithJSON:User_Data];
-    NSString *username=user.username;
+    NSString *username=Config.getUserName;
     if ([defaults objectForKey:@"username"]!=NULL) {
         username=[defaults objectForKey:@"username"];
     }
     else if(username == NULL ){
-        username=user.TrueName;
+        username=Config.getTrueName;;
     }
-
+    
     if (!_nameLabel) {
-
+        
         _nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 200, 20)];
         _nameLabel.center = CGPointMake(kScreenWidth / 2, 60);
-      _nameLabel.text = username;
+        _nameLabel.text = username;
         _nameLabel.textAlignment = 1;
         _nameLabel.backgroundColor = [UIColor clearColor];
         _nameLabel.textColor = [UIColor blackColor];
@@ -58,18 +56,15 @@
 }
 
 - (UILabel *)infoLabel {
-
-    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    NSDictionary *User_Data=[defaults objectForKey:@"User"];
-    User *user=[User yy_modelWithJSON:User_Data];
-    NSString *last_login=user.last_login;
+    
+    NSString *last_login=Config.getLastLogin;
     if (last_login ==NULL) {
         last_login=@"无";
     }
     if ([last_login isEqualToString:@"1970-01-01 08:00"]) {
         last_login=@"无";
     }
-
+    
     
     last_login=[@"最后一次登录时间:" stringByAppendingString:last_login];
     
@@ -116,7 +111,7 @@
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
+    
     // Configure the view for the selected state
 }
 

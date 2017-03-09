@@ -21,8 +21,8 @@
 #import <UShareUI/UShareUI.h>
 #import <UMSocialCore/UMSocialCore.h>
 #import "FirstLoginViewController.h"
-#import "User.h"
-#import "YYModel.h"
+#import "Config.h"
+
 #import "LeftUserTableViewCell.h"
 #import "LeftItemTableViewCell.h"
 #import "Config.h"
@@ -82,13 +82,11 @@
     itemCell.backgroundColor             = [UIColor clearColor];
     
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults]; //得到用户数据
-    NSDictionary *User_Data=[defaults objectForKey:@"User"];
-    User *user=[User yy_modelWithJSON:User_Data];
     if (indexPath.row == 0) {
-        if(!user.TrueName){
+        if(!Config.getTrueName){
             userCell.Username.text              = @"个人中心";
         }else{
-            userCell.Username.text                = user.TrueName;
+            userCell.Username.text                = Config.getTrueName;
         }
         userCell.Head.image=[self getImg];
         return userCell;
@@ -234,16 +232,12 @@
 
 -(NSString*)getHeadUrl{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    NSDictionary *User_Data=[defaults objectForKey:@"User"];
-    User *user=[User yy_modelWithJSON:User_Data];
-    return [NSString stringWithFormat:API_IMG,user.head_pic_thumb];
+    return [NSString stringWithFormat:API_IMG,Config.getHeadPicThumb];
 }
 -(void)downHead{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    NSDictionary *User_Data=[defaults objectForKey:@"User"];
     SDWebImageManager *manager = [SDWebImageManager sharedManager];
-    User *user=[User yy_modelWithJSON:User_Data];
-    NSString *image_url=[NSString stringWithFormat:API_IMG,user.head_pic_thumb];
+    NSString *image_url=[NSString stringWithFormat:API_IMG,Config.getHeadPicThumb];
     NSURL *url                   = [NSURL URLWithString: image_url];//接口地址
     [manager downloadImageWithURL:url options:SDWebImageRetryFailed progress:^(NSInteger receivedSize, NSInteger expectedSize) {
     } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
@@ -273,10 +267,8 @@
 }
 -(UIImage*)getImg{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults]; //得到用户数据
-    NSDictionary *User_Data=[defaults objectForKey:@"User"];
-    User *user=[User yy_modelWithJSON:User_Data];
-    NSString *Url=[NSString stringWithFormat:API_IMG,user.head_pic_thumb];
-    if ((!user.head_pic_thumb)||[user.head_pic_thumb isEqualToString:@""]) {
+    NSString *Url=[NSString stringWithFormat:API_IMG,Config.getHeadPicThumb];
+    if ((!Config.getHeadPicThumb)||[Config.getHeadPicThumb isEqualToString:@""]) {
         return [self circleImage:[UIImage imageNamed:@"img_defalut"]];
     }else if ([defaults objectForKey:@"head_img"]!=NULL){
         return [self circleImage:[UIImage imageWithData:[defaults objectForKey:@"head_img"]]];

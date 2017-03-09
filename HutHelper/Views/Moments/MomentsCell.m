@@ -17,7 +17,7 @@
 #import "Config.h"
 #import "User.h"
 #import "AFNetworking.h"
-#import "YYModel.h"
+
 #import "AppDelegate.h"
 #import "UUInputAccessoryView.h"
 #import "MomentsViewController.h"
@@ -57,15 +57,11 @@
     UIImageView *commentBackground2;
     UILabel *commentsTimeLabel;
     
-    User *user;
     double sumHeight;
     int comments_i;
 }
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     if (self=[super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
-        NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-        NSDictionary *User_Data=[defaults objectForKey:@"User"];
-        user=[User yy_modelWithJSON:User_Data];
     }
     return self;
 }
@@ -158,7 +154,7 @@
     [self.contentView addSubview:likesNumLabel];
     
     /**删除说说按钮*/
-    if ([user.user_id isEqualToString:_data.user_id]) {
+    if ([Config.getUserId isEqualToString:_data.user_id]) {
         deleteSay = [[UIButton alloc] initWithFrame:CGRectMake(SYReal(290), sumHeight, SYReal(30),SYReal(30))];
         [deleteSay setTitle:@"删除" forState:UIControlStateNormal];
         deleteSay.titleLabel.font=[UIFont systemFontOfSize: 12.0];
@@ -197,7 +193,7 @@
         commentsTimeLabel.textColor=[UIColor colorWithRed:161/255.0 green:161/255.0 blue:161/255.0 alpha:1.0];
         [self.contentView addSubview:commentsTimeLabel];
         /**删除评论按钮*/
-        if ([user.user_id isEqualToString:commentsModel.user_id]) {
+        if ([Config.getUserId isEqualToString:commentsModel.user_id]) {
             comments_i=i;
             deleteComment = [[UIButton alloc] initWithFrame:CGRectMake(SYReal(290), SYReal(5)+sumHeight+SYReal(20)+sumCommentsHeight+commentsModel.commentsHeight+SYReal(5), SYReal(25),SYReal(25))];
             deleteComment.backgroundColor=[UIColor colorWithRed:242/255.0 green:244/255.0 blue:246/255.0 alpha:1.0];
@@ -351,7 +347,7 @@
 }
 -(void)btnComment{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    NSString *Url_String=[NSString stringWithFormat:API_MOMENTS_CREATE_COMMENT,user.studentKH,[defaults objectForKey:@"remember_code_app"],_data.moments_id];
+    NSString *Url_String=[NSString stringWithFormat:API_MOMENTS_CREATE_COMMENT,Config.getStudentKH,Config.getRememberCodeApp,_data.moments_id];
     [UUInputAccessoryView showKeyboardConfige:^(UUInputConfiger * _Nonnull configer) {
         configer.keyboardType = UIKeyboardTypeDefault;
         configer.content = @"";
@@ -397,8 +393,7 @@
                                                                 diskPath:nil];
     [NSURLCache setSharedURLCache:sharedCache];
     
-    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    NSString *Url_String=[NSString stringWithFormat:API_MOMENTS_LIKES,user.studentKH,[defaults objectForKey:@"remember_code_app"],_data.moments_id];
+    NSString *Url_String=[NSString stringWithFormat:API_MOMENTS_LIKES,Config.getStudentKH,Config.getRememberCodeApp,_data.moments_id];
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
     manager.requestSerializer.timeoutInterval = 5.f;
@@ -425,9 +420,8 @@
          }];
 }
 -(void)btnDeleteComment{
-    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     CommentsModel *commentsModel=_data.commentsModelArray[comments_i];
-    NSString *Url_String=[NSString stringWithFormat:API_MOMENTS_COMMENT_DELETE,user.studentKH,[defaults objectForKey:@"remember_code_app"],commentsModel.comment_id];
+    NSString *Url_String=[NSString stringWithFormat:API_MOMENTS_COMMENT_DELETE,Config.getStudentKH,Config.getRememberCodeApp,commentsModel.comment_id];
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
     manager.requestSerializer.timeoutInterval = 3.f;
@@ -450,8 +444,7 @@
     
 }
 -(void)btnDeleteSay{
-    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    NSString *Url_String=[NSString stringWithFormat:API_MOMENTS_DELETE,user.studentKH,[defaults objectForKey:@"remember_code_app"],_data.moments_id];
+    NSString *Url_String=[NSString stringWithFormat:API_MOMENTS_DELETE,Config.getStudentKH,Config.getRememberCodeApp,_data.moments_id];
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
     manager.requestSerializer.timeoutInterval = 3.f;

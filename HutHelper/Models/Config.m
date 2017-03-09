@@ -8,7 +8,7 @@
 
 #import "Config.h"
 #import "User.h"
-#import "YYmodel.h"
+
 static int Is ;
 
 @implementation Config
@@ -20,12 +20,122 @@ static int Is ;
 {
     return Is;
 }
+#pragma mark - 用户信息
 +(User*)getUser{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    NSDictionary *User_Data=[defaults objectForKey:@"User"];
-    User *user=[User yy_modelWithJSON:User_Data];
+    NSDictionary *userData=[defaults objectForKey:@"kUser"];
+    User *user=[[User alloc ]initWithDic:userData];
     return user;
 }
++(NSString*)getStudentKH{
+    User *user=self.getUser;
+    return user.studentKH;
+}
++(NSString*)getUserName{
+    User *user=self.getUser;
+    return user.username;
+}
++(NSString*)getTrueName{
+    User *user=self.getUser;
+    return user.TrueName;
+}
++(NSString*)getAddress{
+    User *user=self.getUser;
+    return user.address;
+}
++(NSString*)getClassName{
+    User *user=self.getUser;
+    return user.class_name;
+}
++(NSString*)getDepName{
+    User *user=self.getUser;
+    return user.dep_name;
+}
++(NSString*)getHeadPicThumb{
+    User *user=self.getUser;
+    return user.head_pic_thumb;
+}
++(NSString*)getLastLogin{
+    User *user=self.getUser;
+    return user.last_login;
+}
++(NSString*)getSex{
+    User *user=self.getUser;
+    return user.sex;
+}
++(NSString*)getUserId{
+    User *user=self.getUser;
+    return user.user_id;
+}
+
++(NSString*)getRememberCodeApp{
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    return [defaults objectForKey:@"remember_code_app"];
+}
+#pragma mark - 持续化存储
++(void)saveUser:(NSDictionary*)userData{
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    [defaults setObject:userData forKey:@"kUser"];
+    [defaults synchronize];
+}
++(void)saveRememberCodeApp:(NSString*)rememberCodeApp{
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    [defaults setObject:rememberCodeApp forKey:@"remember_code_app"];
+    [defaults synchronize];
+}
++(void)saveCourse:(NSArray*)course{
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    [defaults setObject:course forKey:@"kCourse"];
+    [defaults synchronize];
+}
++(void)saveCourseXp:(NSArray*)course{
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    [defaults setObject:course forKey:@"kCourseXp"];
+    [defaults synchronize];
+}
++(void)saveWidgetCourse:(NSArray*)course{
+    NSUserDefaults *shared = [[NSUserDefaults alloc] initWithSuiteName:@"group.HutHelper"];
+    [shared setObject:course forKey:@"kCourse"];
+    [shared synchronize];
+}
++(void)saveWidgetCourseXp:(NSArray*)course{
+    NSUserDefaults *shared = [[NSUserDefaults alloc] initWithSuiteName:@"group.HutHelper"];
+    [shared setObject:course forKey:@"kCourseXp"];
+    [shared synchronize];
+}
++(void)saveSay:(NSDictionary*)sayData{
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    [defaults setObject:sayData forKey:@"Say"];
+    [defaults synchronize];
+}
++(void)saveHand:(NSArray*)handData{
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    [defaults setObject:handData forKey:@"Hand"];
+    [defaults synchronize];
+}
++(void)saveScore:(NSData*)scoreData{
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    [defaults setObject:scoreData forKey:@"Score"];
+    [defaults synchronize];
+}
++(void)saveExam:(NSData*)examData{
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    [defaults setObject:examData forKey:@"Exam"];
+    [defaults synchronize];
+}
++(void)saveLost:(NSArray*)lostData{
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    [defaults setObject:lostData forKey:@"Lost"];
+    [defaults synchronize];
+}
+#pragma mark - 版本信息
++(void)saveCurrentVersion:(NSString*)currentVersion{
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    [defaults setObject:currentVersion forKey:@"last_run_version_key"];
+    [defaults synchronize];
+}
+
+#pragma mark - 通知
 +(void)addNotice{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     NSMutableDictionary *noticeDictionary=[[NSMutableDictionary alloc]init];

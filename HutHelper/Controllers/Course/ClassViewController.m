@@ -14,7 +14,6 @@
 #import "UMMobClick/MobClick.h"
 #import "JSONKit.h"
 #import "MBProgressHUD.h"
-#import "YYModel.h"
 #import "User.h"
 #import "AFNetworking.h"
 #import "MBProgressHUD+MJ.h"
@@ -137,8 +136,8 @@ NSString *show_xp;
     CourseModel *a26 = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
     CourseModel *a27 = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
     
-    if ([defaults objectForKey:@"Class"]!=NULL) {
-        NSArray *array                               = [defaults objectForKey:@"Class"];
+    if ([defaults objectForKey:@"kCourse"]!=NULL) {
+        NSArray *array                               = [defaults objectForKey:@"kCourse"];
         int day1 = 1,day2=1,day3=1,day4=1,day5=1,day6=1;
         
         for (int i= 0; i<=(array.count-1); i++) {
@@ -344,8 +343,8 @@ NSString *show_xp;
     CourseModel *a26 = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
     CourseModel *a27 = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
     
-    if([defaults objectForKey:@"ClassXP"]!=NULL){
-        NSArray *ClassXP                            = [defaults objectForKey:@"ClassXP"];
+    if([defaults objectForKey:@"kCourseXp"]!=NULL){
+        NSArray *ClassXP                            = [defaults objectForKey:@"kCourseXp"];
         
         int day1                                     = 1,day2=1,day3=1,day4=1,day5=1,day6=1;
         
@@ -519,7 +518,7 @@ NSString *show_xp;
 
 - (void)xp{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    NSArray *ClassXP                            = [defaults objectForKey:@"ClassXP"];
+    NSArray *ClassXP                            = [defaults objectForKey:@"kCourseXp"];
     CourseModel *a1  = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
     CourseModel *a2  = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
     CourseModel *a3  = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
@@ -699,11 +698,9 @@ NSString *show_xp;
     /**拼接地址*/
     [MBProgressHUD showMessage:@"刷新中" toView:self.view];
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    NSDictionary *User_Data=[defaults objectForKey:@"User"];
-    User *user=[User yy_modelWithJSON:User_Data];
-    NSString *Url_String=[NSString stringWithFormat:API_CLASS,user.studentKH,[defaults objectForKey:@"remember_code_app"]];
+    NSString *Url_String=[NSString stringWithFormat:API_CLASS,Config.getStudentKH,Config.getRememberCodeApp];
     NSLog(@"平时课表地址:%@",Url_String);
-    NSString *UrlXP_String=[NSString stringWithFormat:API_CLASSXP,user.studentKH,[defaults objectForKey:@"remember_code_app"]];
+    NSString *UrlXP_String=[NSString stringWithFormat:API_CLASSXP,Config.getStudentKH,Config.getRememberCodeApp];
     NSLog(@"实验课表地址:%@",UrlXP_String);
     /**设置9秒超时*/
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];

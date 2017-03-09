@@ -16,8 +16,6 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "JSONKit.h"
 #import "MBProgressHUD+MJ.h"
-#import "YYModel.h"
-#import "User.h"
 #import "Config.h"
 static NSString *const kUserInfoCellId = @"kUserInfoCellId";
 
@@ -111,11 +109,7 @@ NSData* data;
     
     
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    NSDictionary *User_Data=[defaults objectForKey:@"User"];
-    User *user=[User yy_modelWithJSON:User_Data];
-    
-    
-    NSString *url_String=[NSString stringWithFormat:API_PROFILE_AVATAR,user.studentKH,[defaults objectForKey:@"remember_code_app"]];
+    NSString *url_String=[NSString stringWithFormat:API_PROFILE_AVATAR,Config.getStudentKH,Config.getRememberCodeApp];
     
     NSURL* url = [NSURL URLWithString:url_String];//请求url
     // UIImage* img = [UIImage imageNamed:@"header.jpg"];
@@ -167,15 +161,11 @@ NSData* data;
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    NSDictionary *User_Data=[defaults objectForKey:@"User"];
-    User *user=[User yy_modelWithJSON:User_Data];
-    
-    NSString *TrueName=user.TrueName; //真实姓名
-    NSString *studentKH=user.studentKH; //学号
-    NSString *dep_name=user.dep_name; //学院
-    NSString *class_name=user.class_name;  //班级
-    NSString *sex=user.sex;  //性别
+    NSString *TrueName=Config.getTrueName; //真实姓名
+    NSString *studentKH=Config.getStudentKH; //学号
+    NSString *dep_name=Config.getDepName; //学院
+    NSString *class_name=Config.getClassName;  //班级
+    NSString *sex=Config.getSex;  //性别
     if(sex ==NULL){
         sex=@"";
     }
@@ -240,10 +230,8 @@ NSData* data;
 
 -(UIImage*)getImg{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults]; //得到用户数据
-    NSDictionary *User_Data=[defaults objectForKey:@"User"];
-    User *user=[User yy_modelWithJSON:User_Data];
-    NSString *Url=[NSString stringWithFormat:API_IMG,user.head_pic_thumb];
-    if ((!user.head_pic_thumb)||[user.head_pic_thumb isEqualToString:@""]) {
+    NSString *Url=[NSString stringWithFormat:API_IMG,Config.getHeadPicThumb];
+    if ((!Config.getHeadPicThumb)||[Config.getHeadPicThumb isEqualToString:@""]) {
         return [UIImage imageNamed:@"header.jpg"];
     }
     else if ([defaults objectForKey:@"head_img"]){

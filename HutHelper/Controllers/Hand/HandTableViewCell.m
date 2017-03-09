@@ -10,7 +10,7 @@
 #import "MBProgressHUD+MJ.h"
 #import "HandShowViewController.h"
 #import "AppDelegate.h"
-#import "YYModel.h"
+
 #import "User.h"
 #import "AFNetworking.h"
 #import "Config.h"
@@ -34,9 +34,7 @@
 - (IBAction)Buuton1:(id)sender {
     
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    NSDictionary *User_Data=[defaults objectForKey:@"User"];
-    User *user=[User yy_modelWithJSON:User_Data];
-    NSString *Url_String=[NSString stringWithFormat:API_GOODS_SHOW,user.studentKH,[defaults objectForKey:@"remember_code_app"],[self getid:(short)([self getIndexPath].section+1)*2-1]];
+    NSString *Url_String=[NSString stringWithFormat:API_GOODS_SHOW,Config.getStudentKH,Config.getRememberCodeApp,[self getid:(short)([self getIndexPath].section+1)*2-1]];
     NSLog(@"商品查询地址:%@",Url_String);
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
@@ -72,9 +70,7 @@
 }
 - (IBAction)Button2:(id)sender {
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    NSDictionary *User_Data=[defaults objectForKey:@"User"];
-    User *user=[User yy_modelWithJSON:User_Data];
-    NSString *Url_String=[NSString stringWithFormat:API_GOODS_SHOW,user.studentKH,[defaults objectForKey:@"remember_code_app"],[self getid:(short)([self getIndexPath].section+1)*2]];
+    NSString *Url_String=[NSString stringWithFormat:API_GOODS_SHOW,Config.getStudentKH,Config.getRememberCodeApp,[self getid:(short)([self getIndexPath].section+1)*2]];
     NSLog(@"商品查询地址:%@",Url_String);
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];

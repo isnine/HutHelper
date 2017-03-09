@@ -11,7 +11,7 @@
 #import "ClassViewController.h"
 #import "AppDelegate.h"
 #import "User.h"
-#import "YYModel.h"
+
 #import "MBProgressHUD+MJ.h"
 #import "Config.h"
 @interface FeedbackViewController ()
@@ -60,9 +60,7 @@
     NSString *str2=@"&content=";
     NSString *Content_String           = _Content.text;
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    NSDictionary *User_Data=[defaults objectForKey:@"User"];
-    User *user=[User yy_modelWithJSON:User_Data];
-    NSString *studentKH=user.studentKH;
+    NSString *studentKH=Config.getStudentKH;
     if(studentKH==NULL){
         str2=@"&content= ";
     }

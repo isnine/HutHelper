@@ -17,7 +17,7 @@
 #import "AddhandViewController.h"
 #import "Config.h"
 #import "User.h"
-#import "YYModel.h"
+
 #import "YCXMenu.h"
 @interface HandTableViewController ()
 @property (nonatomic,copy) NSArray      *Hand_content;
@@ -126,10 +126,8 @@
     [NSURLCache setSharedURLCache:sharedCache];
     [MBProgressHUD showMessage:@"加载中" toView:self.view];
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    NSDictionary  *User_Data=[defaults objectForKey:@"User"];
-    User *user=[User yy_modelWithJSON:User_Data];
     /**拼接地址*/
-    NSString *Url_String=[NSString stringWithFormat:API_GOODS_USER,user.studentKH,[defaults objectForKey:@"remember_code_app"]];
+    NSString *Url_String=[NSString stringWithFormat:API_GOODS_USER,Config.getStudentKH,Config.getRememberCodeApp];
     /**设置9秒超时*/
     NSLog(@"%@",Url_String);
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];

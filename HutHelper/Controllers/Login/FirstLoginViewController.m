@@ -17,7 +17,7 @@
 #import "AFNetworking.h"
 #import "MBProgressHUD+MJ.h"
 #import "User.h"
-#import "YYModel.h"
+
 #import "Config.h"
 #import "UMMobClick/MobClick.h"
 @interface FirstLoginViewController ()
@@ -43,28 +43,25 @@
     /**请求*/
     [MBProgressHUD showMessage:@"登录中" toView:self.view];
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    /**设置4秒超时*/
+    /**设置超时*/
     ((AFJSONResponseSerializer *)manager.responseSerializer).removesKeysWithNullValues = YES;
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
     manager.requestSerializer.timeoutInterval = 9.f;
     [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
     [manager GET:Url_String parameters:nil progress:nil
          success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-             NSDictionary *User_All = [NSDictionary dictionaryWithDictionary:responseObject];
-             NSDictionary *User_Data=[User_All objectForKey:@"data"];//All字典 -> Data字典
-             NSString *Msg=[User_All objectForKey:@"msg"];
-             if ([Msg isEqualToString: @"ok"])
+             NSDictionary *userAll = [NSDictionary dictionaryWithDictionary:responseObject];
+             NSDictionary *userData=[userAll objectForKey:@"data"];//All字典 -> Data字典
+             NSString *msg=[userAll objectForKey:@"msg"];
+             if ([msg isEqualToString: @"ok"])
              {
-                 [defaults setObject:User_Data forKey:@"User"];
-                 [defaults setObject:[User_All objectForKey:@"remember_code_app"] forKey:@"remember_code_app"];
-                 NSString *currentVersion = [[[NSBundle mainBundle] infoDictionary]
-                                             objectForKey:@"CFBundleShortVersionString"];
-                 [defaults setObject:currentVersion forKey:@"last_run_version_key"]; //保存版本信息
-                 [defaults synchronize];
-                 [Config addNotice];//新增通知
+                 [Config saveUser:userData];
+                 [Config saveRememberCodeApp:[userAll objectForKey:@"remember_code_app"]];
+                 [Config saveCurrentVersion:[[[NSBundle mainBundle] infoDictionary]
+                                             objectForKey:@"CFBundleShortVersionString"]];
+                 [Config addNotice];
                  /**设置友盟标签&别名*/
-                 User *user=[User yy_modelWithJSON:User_Data];
-//                 User *user=[[User alloc]initWithDic:User_Data];
+                 User *user=[[User alloc]initWithDic:userData];
                  [MobClick profileSignInWithPUID:user.studentKH];
                  [UMessage addTag:user.class_name
                          response:^(id responseObject, NSInteger remain, NSError *error) {
@@ -72,17 +69,15 @@
                  [UMessage addTag:user.dep_name
                          response:^(id responseObject, NSInteger remain, NSError *error) {
                          }];  //学院
-                 
                  [UMessage addAlias:user.studentKH type:kUMessageAliasTypeSina response:^(id responseObject, NSError *error) {
                  }];
                  [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:([self.navigationController.viewControllers count] -2)] animated:YES];  //返回上一个View
                  HideAllHUD
              }
              else {
-                 NSString *Show_Msg=[Msg stringByAppendingString:@",默认密码身份证后六位"];
-                 if ([Msg isEqualToString:@"多次失败，请稍后再试，或修改密码"]) {
-                     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"密码多次错误" message:Msg preferredStyle:  UIAlertControllerStyleAlert];
-                     
+                 NSString *Show_Msg=[msg stringByAppendingString:@",默认密码身份证后六位"];
+                 if ([msg isEqualToString:@"多次失败，请稍后再试，或修改密码"]) {
+                     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"密码多次错误" message:msg preferredStyle:  UIAlertControllerStyleAlert];
                      [alert addAction:[UIAlertAction actionWithTitle:@"稍后再试" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                          //点击按钮的响应事件；
                      }]];
@@ -92,7 +87,6 @@
                          AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
                          [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:YES];
                      }]];
-                     
                      //弹出提示框；
                      [self presentViewController:alert animated:true completion:nil];
                  } else{

@@ -11,7 +11,7 @@
 #import "DTKDropdownMenuView.h"
 #import "Score.h"
 #import "ScoreShowViewController.h"
-#import "YYModel.h"
+
 #import "User.h"
 #import "AFNetworking.h"
 #import "MBProgressHUD+MJ.h"
@@ -266,13 +266,10 @@
 - (void)reload{
     [MBProgressHUD showMessage:@"查询中" toView:self.view];
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-
-    NSDictionary *User_Data=[defaults objectForKey:@"User"];
-    User *user=[User yy_modelWithJSON:User_Data];
-    NSString *SHA_String=[user.studentKH stringByAppendingString:[defaults objectForKey:@"remember_code_app"]];
+    NSString *SHA_String=[Config.getStudentKH stringByAppendingString:Config.getRememberCodeApp];
     SHA_String=[SHA_String stringByAppendingString:@"f$Z@%"];
     SHA_String=[Math sha1:SHA_String];
-    NSString *Url_String=[NSString stringWithFormat:API_SCORES,user.studentKH,[defaults objectForKey:@"remember_code_app"],SHA_String];
+    NSString *Url_String=[NSString stringWithFormat:API_SCORES,Config.getStudentKH,Config.getRememberCodeApp,SHA_String];
     NSLog(@"成绩查询地址:%@",Url_String);
     /**设置5秒超时*/
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];

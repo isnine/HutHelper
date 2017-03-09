@@ -19,8 +19,8 @@
 #import "MJRefresh.h"
 #import "XWScanImage.h"
 #import "Config.h"
-#import "User.h"
-#import "YYModel.h"
+
+
 #import "YCXMenuItem.h"
 #import "YCXMenu.h"
 @interface LostShowViewController ()
@@ -442,10 +442,8 @@
     [NSURLCache setSharedURLCache:sharedCache];
     [MBProgressHUD showMessage:@"加载中" toView:self.view];
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    NSDictionary *User_Data=[defaults objectForKey:@"User"];
-    User *user=[User yy_modelWithJSON:User_Data];
     /**拼接地址*/
-    NSString *Url_String=[NSString stringWithFormat:API_LOST_USER,user.user_id];
+    NSString *Url_String=[NSString stringWithFormat:API_LOST_USER,Config.getUserId];
     /**设置9秒超时*/
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];

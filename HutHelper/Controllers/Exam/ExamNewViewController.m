@@ -8,7 +8,7 @@
 
 #import "ExamNewViewController.h"
 #import "UMMobClick/MobClick.h"
-#import "YYModel.h"
+
 #import "User.h"
 #import "AFNetworking.h"
 #import "MBProgressHUD+MJ.h"
@@ -214,11 +214,9 @@ int datediff(int y1,int m1,int d1,int y2,int m2,int d2)
     [MBProgressHUD showMessage:@"查询中" toView:self.view];
     /**拼接地址*/
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    NSDictionary *User_Data=[defaults objectForKey:@"User"];
-    User *user=[User yy_modelWithJSON:User_Data];
-    NSString *ss=[user.studentKH stringByAppendingString:@"apiforapp!"];
+    NSString *ss=[Config.getStudentKH stringByAppendingString:@"apiforapp!"];
     ss=[ss MMD5];
-    NSString *Url_String=[NSString stringWithFormat:API_EXAM,user.studentKH,ss];
+    NSString *Url_String=[NSString stringWithFormat:API_EXAM,Config.getStudentKH,ss];
     NSLog(@"考试地址:%@",Url_String);
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     /**设置4秒超时*/

@@ -8,7 +8,6 @@
 
 #import "AddSayViewController.h"
 #import "TZImagePickerController.h"
-#import "YYModel.h"
 #import "User.h"
 #import "AFNetworking.h"
 #import "MBProgressHUD+MJ.h"
@@ -94,11 +93,7 @@
 
 
 -(void)postsay{
-    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    NSDictionary *User_Data=[defaults objectForKey:@"User"];
-    User *user=[User yy_modelWithJSON:User_Data];
-    NSString *Url_String=[NSString stringWithFormat:API_MOMENTS_CREATE,user.studentKH,[defaults objectForKey:@"remember_code_app"]];
-    
+    NSString *Url_String=[NSString stringWithFormat:API_MOMENTS_CREATE,Config.getStudentKH,Config.getRememberCodeApp];
     NSLog(@"说说发生请求地址%@",Url_String);
     if (_selectedPhotos.count!=0) {
         
