@@ -14,6 +14,7 @@
 #import "UMMobClick/MobClick.h"
 #import <UMSocialCore/UMSocialCore.h>
 #import "Config.h"
+#import "iVersion.h"
 @interface AppDelegate ()
 
 @end
@@ -185,5 +186,8 @@
     }
     
 }
-
++ (void)initialize
+{
+    [iVersion sharedInstance].appStoreID = 1164848835;
+}
 @end

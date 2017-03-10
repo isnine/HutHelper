@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		3A0AC4981E6AB82800827466 /* UILabel+LXAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A0AC4971E6AB82800827466 /* UILabel+LXAdd.m */; };
+		3A1B65EA1E72E20A0045CBD7 /* iVersion.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3A1B65E71E72E20A0045CBD7 /* iVersion.bundle */; };
+		3A1B65EB1E72E20A0045CBD7 /* iVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A1B65E91E72E20A0045CBD7 /* iVersion.m */; };
 		3A2D10621DB66063009916D0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A2D105F1DB66063009916D0 /* Foundation.framework */; };
 		3A2D10631DB66063009916D0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A2D10601DB66063009916D0 /* CoreGraphics.framework */; };
 		3A2D10641DB66063009916D0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A2D10611DB66063009916D0 /* UIKit.framework */; };
@@ -141,6 +143,9 @@
 		0BEA75F30B57DEF614969189 /* Pods-HutHelper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HutHelper.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HutHelper/Pods-HutHelper.debug.xcconfig"; sourceTree = "<group>"; };
 		3A0AC4961E6AB82800827466 /* UILabel+LXAdd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+LXAdd.h"; sourceTree = "<group>"; };
 		3A0AC4971E6AB82800827466 /* UILabel+LXAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+LXAdd.m"; sourceTree = "<group>"; };
+		3A1B65E71E72E20A0045CBD7 /* iVersion.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = iVersion.bundle; sourceTree = "<group>"; };
+		3A1B65E81E72E20A0045CBD7 /* iVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iVersion.h; sourceTree = "<group>"; };
+		3A1B65E91E72E20A0045CBD7 /* iVersion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iVersion.m; sourceTree = "<group>"; };
 		3A2D105F1DB66063009916D0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		3A2D10601DB66063009916D0 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		3A2D10611DB66063009916D0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -371,6 +376,17 @@
 			);
 			name = "UILabel+LXAdd";
 			path = "Lib/UILabel+LXAdd";
+			sourceTree = "<group>";
+		};
+		3A1B65E61E72E20A0045CBD7 /* iVersion */ = {
+			isa = PBXGroup;
+			children = (
+				3A1B65E71E72E20A0045CBD7 /* iVersion.bundle */,
+				3A1B65E81E72E20A0045CBD7 /* iVersion.h */,
+				3A1B65E91E72E20A0045CBD7 /* iVersion.m */,
+			);
+			name = iVersion;
+			path = Lib/JSHeaderView/iVersion;
 			sourceTree = "<group>";
 		};
 		3A2FF4EB1E50179700B07EB6 /* Extend */ = {
@@ -852,6 +868,7 @@
 				3A796C121E534C1B00794043 /* Models */,
 				3A796C661E534DAE00794043 /* Views */,
 				3A4D04191E19204300595183 /* 3rd */,
+				3A1B65E61E72E20A0045CBD7 /* iVersion */,
 				3A4D04181E19201B00595183 /* Utils */,
 				3A85677E1DA908AA00EBD44A /* Supporting Files */,
 			);
@@ -1045,6 +1062,7 @@
 				3A796C371E534C1B00794043 /* LostShowTimeTableViewCell.xib in Resources */,
 				3A85BB071E5990C5008854CF /* LeftItemTableViewCell.xib in Resources */,
 				3A796C6D1E534DAE00794043 /* Main.storyboard in Resources */,
+				3A1B65EA1E72E20A0045CBD7 /* iVersion.bundle in Resources */,
 				3A85678B1DA908AA00EBD44A /* Assets.xcassets in Resources */,
 				3A449C711E16C2E500D89CEA /* header@2x.jpg in Resources */,
 				3A796C351E534C1B00794043 /* LostShowTableViewCell.xib in Resources */,
@@ -1168,6 +1186,7 @@
 				3A796C581E534C1B00794043 /* Score.m in Sources */,
 				3A796C421E534C1B00794043 /* PowerViewController.m in Sources */,
 				3A796C4F1E534C1B00794043 /* ScoreShowViewController.m in Sources */,
+				3A1B65EB1E72E20A0045CBD7 /* iVersion.m in Sources */,
 				3A796C2D1E534C1B00794043 /* HomeWorkViewController.m in Sources */,
 				3A796C3B1E534C1B00794043 /* MainViewController.m in Sources */,
 				3A31E1E81E6BE68C0056565A /* AddSayViewController.m in Sources */,

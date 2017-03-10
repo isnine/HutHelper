@@ -111,7 +111,7 @@ int class_error_;
                               if ([msg isEqualToString:@"ok"]) {
                                   NSArray *arrayCourseXp= [classXpAll objectForKey:@"data"];
                                   [Config saveCourseXp:arrayCourseXp];
-                                  [Config saveWidgetCourse:arrayCourseXp];
+                                  [Config saveWidgetCourseXp:arrayCourseXp];
                                   [Config setIs:0];
                                   HideAllHUD
                                   UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];

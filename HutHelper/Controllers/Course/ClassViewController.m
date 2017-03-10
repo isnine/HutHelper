@@ -713,9 +713,8 @@ NSString *show_xp;
              NSDictionary *Class_All = [NSDictionary dictionaryWithDictionary:responseObject];
              NSString *Msg=[Class_All objectForKey:@"msg"];
              if ([Msg isEqualToString:@"ok"]) {
-                 NSArray *array               = [Class_All objectForKey:@"data"];
-                 [defaults setObject:array forKey:@"Class"];
-                 [defaults synchronize];
+                 NSArray *arrayCourse               = [Class_All objectForKey:@"data"];
+                 [Config saveWidgetCourse:arrayCourse];
                  
                  /**请求实验课表*/
                  [manager GET:UrlXP_String parameters:nil progress:nil
@@ -723,9 +722,8 @@ NSString *show_xp;
                           NSDictionary *ClassXP_All = [NSDictionary dictionaryWithDictionary:responseObject];
                           NSString *Msg=[ClassXP_All objectForKey:@"msg"];
                           if ([Msg isEqualToString:@"ok"]) {
-                              NSArray *array               = [ClassXP_All objectForKey:@"data"];
-                              [defaults setObject:array forKey:@"ClassXP"];
-                              [defaults synchronize];
+                              NSArray *arrayCourseXp               = [ClassXP_All objectForKey:@"data"];
+                             [Config saveWidgetCourseXp:arrayCourseXp];
                               HideAllHUD
                               [MBProgressHUD showSuccess:@"刷新成功"];
                               if(now_xp==0){
