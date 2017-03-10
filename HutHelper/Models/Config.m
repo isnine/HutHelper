@@ -108,6 +108,11 @@ static int Is ;
     [defaults setObject:sayData forKey:@"Say"];
     [defaults synchronize];
 }
++(void)saveSayLikes:(NSDictionary*)sayLikesData{
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    [defaults setObject:sayLikesData forKey:@"SayLikes"];
+    [defaults synchronize];
+}
 +(void)saveHand:(NSArray*)handData{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     [defaults setObject:handData forKey:@"Hand"];

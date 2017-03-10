@@ -27,6 +27,7 @@
 		3A4049151E6A8BFE0038F207 /* CommentsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A4049121E6A8BFE0038F207 /* CommentsModel.m */; };
 		3A4049161E6A8BFE0038F207 /* MomentsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A4049141E6A8BFE0038F207 /* MomentsModel.m */; };
 		3A449C711E16C2E500D89CEA /* header@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3A449C701E16C2E500D89CEA /* header@2x.jpg */; };
+		3A54578D1E7245E300BE966E /* LikesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A54578C1E7245E300BE966E /* LikesModel.m */; };
 		3A63DF721E49F11600AAAAAA /* NullSafe.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A63DF711E49F11600AAAAAA /* NullSafe.m */; };
 		3A6D7EDE1DABD9DA0081B70D /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A6D7EDD1DABD9DA0081B70D /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		3A6D7EE31DABD9F50081B70D /* LeftSlideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A6D7EE11DABD9F50081B70D /* LeftSlideViewController.m */; };
@@ -173,6 +174,8 @@
 		3A4049131E6A8BFE0038F207 /* MomentsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MomentsModel.h; sourceTree = "<group>"; };
 		3A4049141E6A8BFE0038F207 /* MomentsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MomentsModel.m; sourceTree = "<group>"; };
 		3A449C701E16C2E500D89CEA /* header@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "header@2x.jpg"; sourceTree = "<group>"; };
+		3A54578B1E7245E300BE966E /* LikesModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LikesModel.h; sourceTree = "<group>"; };
+		3A54578C1E7245E300BE966E /* LikesModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LikesModel.m; sourceTree = "<group>"; };
 		3A63DF711E49F11600AAAAAA /* NullSafe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NullSafe.m; path = Lib/NullSafe/NullSafe.m; sourceTree = "<group>"; };
 		3A6D7EDC1DABD9DA0081B70D /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSONKit.h; path = Lib/JSONKit.h; sourceTree = "<group>"; };
 		3A6D7EDD1DABD9DA0081B70D /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JSONKit.m; path = Lib/JSONKit.m; sourceTree = "<group>"; };
@@ -436,6 +439,8 @@
 				3A4049121E6A8BFE0038F207 /* CommentsModel.m */,
 				3A4049131E6A8BFE0038F207 /* MomentsModel.h */,
 				3A4049141E6A8BFE0038F207 /* MomentsModel.m */,
+				3A54578B1E7245E300BE966E /* LikesModel.h */,
+				3A54578C1E7245E300BE966E /* LikesModel.m */,
 			);
 			path = Moments;
 			sourceTree = "<group>";
@@ -1174,6 +1179,7 @@
 				3A8567801DA908AA00EBD44A /* main.m in Sources */,
 				3A776DF11E2B616500F600D6 /* UUInputAccessoryView.m in Sources */,
 				3A796C2E1E534C1B00794043 /* LibraryViewController.m in Sources */,
+				3A54578D1E7245E300BE966E /* LikesModel.m in Sources */,
 				3AD87B101DACD02E00357212 /* GWPCourseListView.m in Sources */,
 				3A3D35301E69C6A7006C391B /* YYWeakProxy.m in Sources */,
 				3AA1BC181E16179C00F75A7E /* MBProgressHUD+MJ.m in Sources */,

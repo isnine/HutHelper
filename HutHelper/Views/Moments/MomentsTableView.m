@@ -9,6 +9,7 @@
 #import "MomentsTableView.h"
 #import "MomentsCell.h"
 #import "MomentsModel.h"
+#import "LikesModel.h"
 #import "AFNetworking.h"
 #import "UILabel+LXAdd.h"
 #import "MBProgressHUD+MJ.h"
@@ -19,6 +20,7 @@
 @end
 @implementation MomentsTableView{
     NSMutableArray *datas;
+    LikesModel *likeDatas;
     NSMutableArray *needLoadArr;
     BOOL scrollToToping;
     int num;
@@ -34,7 +36,9 @@
         
         NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
         NSDictionary *JSONDic=[defaults objectForKey:@"Say"];
+        NSDictionary *LikesDic=[defaults objectForKey:@"SayLikes"];
         [self loadData:JSONDic];
+        [self loadLikesData:LikesDic];
         num=1;
         //        [self reloadData];
     }
@@ -47,8 +51,9 @@
     self.mj_header.hidden = YES;
 }
 - (void)drawCell:(MomentsCell *)cell withIndexPath:(NSIndexPath *)indexPath{
-    NSDictionary *data = [datas objectAtIndex:indexPath.section];
+    MomentsModel *data = [datas objectAtIndex:indexPath.section];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.LikesData = likeDatas;
     cell.data = data;
     [cell draw];
     [cell loadPhoto];
@@ -101,10 +106,14 @@
         [datas addObject:momentsModel];
     }
 }
+-(void)loadLikesData:(NSDictionary*)JSONDic{
+    likeDatas=[[LikesModel alloc]initWithDic:JSONDic];
+}
 #pragma mark - 加载方法
 -(void)reload{
     /**拼接地址*/
     NSString *Url_String=[NSString stringWithFormat:API_MOMENTS,1];
+    NSString *likesDataString=[NSString stringWithFormat:API_MOMENTS_LIKES_SHOW,Config.getStudentKH,Config.getRememberCodeApp];
     /**设置9秒超时*/
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
@@ -117,11 +126,17 @@
              if ([[Say_All objectForKey:@"msg"]isEqualToString:@"ok"]) {
                  NSDictionary *Say_Data=[Say_All objectForKey:@"data"];
                  NSDictionary *Say_content=[Say_Data objectForKey:@"posts"];//加载该页数据
-                 if (Say_content!=NULL) {
-                     [self reLoadData:Say_content];
-                     [MBProgressHUD showSuccess:@"刷新成功"];
-                     [self.mj_header endRefreshing];
-                     [self reloadData];
+                 if (Say_content) {
+                     [manager GET:likesDataString parameters:nil progress:nil
+                          success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                              NSDictionary *sayLikesAll = [NSDictionary dictionaryWithDictionary:responseObject];
+                              [self reLoadData:Say_content];
+                              [self loadLikesData:sayLikesAll];
+                              [MBProgressHUD showSuccess:@"刷新成功"];
+                              [self.mj_header endRefreshing];
+                              [self reloadData];
+                          } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                          }];
                  }
                  else{
                      [self.mj_header endRefreshing];

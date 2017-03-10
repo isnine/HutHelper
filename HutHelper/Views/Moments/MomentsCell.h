@@ -22,8 +22,10 @@
 #define SIZE_FONT_SUBCONTENT (SIZE_FONT_CONTENT-1)
 
 @class MomentsModel;
+@class LikesModel;
 @interface MomentsCell : UITableViewCell
 @property (nonatomic, weak) MomentsModel *data;
+@property (nonatomic, weak) LikesModel *likesData;
 - (void)draw;
 -(void)loadPhoto;
 @end

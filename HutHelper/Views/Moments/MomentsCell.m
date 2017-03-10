@@ -17,7 +17,7 @@
 #import "Config.h"
 #import "User.h"
 #import "AFNetworking.h"
-
+#import "LikesModel.h"
 #import "AppDelegate.h"
 #import "UUInputAccessoryView.h"
 #import "MomentsViewController.h"
@@ -137,7 +137,6 @@
     commentNumLabel.textColor=[UIColor colorWithRed:153/255.0 green:153/255.0 blue:153/255.0 alpha:1.0];
     commentNumLabel.text=[NSString stringWithFormat:@"%d",(short)_data.commentsModelArray.count];
     [self.contentView addSubview:commentNumLabel];
-    
     /**赞按钮*/
     likesButton = [[UIButton alloc] init];
     likesButton.frame=CGRectMake(SYReal(360), SYReal(5)+sumHeight, SYReal(40), SYReal(20));
@@ -146,6 +145,11 @@
     /**赞图片*/
     likesImage = [[UIImageView alloc] initWithFrame:CGRectMake(SYReal(365), SYReal(6)+sumHeight,SYReal(15),SYReal(16))];
     likesImage.image=[UIImage imageNamed:@"tweet_btn_like"];
+    for (NSString *sayLikesId in _likesData.data) {
+        if ([sayLikesId isEqualToString:_data.moments_id]) {
+            likesImage.image=[UIImage imageNamed:@"tweet_btn_liked"];
+        }
+    }
     [self.contentView addSubview:likesImage];
     /**赞数*/
     likesNumLabel = [[UILabel alloc] initWithFrame:CGRectMake(SYReal(385),SYReal(5)+sumHeight, SYReal(18),SYReal(18))];
@@ -393,7 +397,7 @@
                                                                 diskPath:nil];
     [NSURLCache setSharedURLCache:sharedCache];
     
-    NSString *Url_String=[NSString stringWithFormat:API_MOMENTS_LIKES,Config.getStudentKH,Config.getRememberCodeApp,_data.moments_id];
+    NSString *Url_String=[NSString stringWithFormat:API_MOMENTS_LIKES_CREATE,Config.getStudentKH,Config.getRememberCodeApp,_data.moments_id];
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
     manager.requestSerializer.timeoutInterval = 5.f;

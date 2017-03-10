@@ -257,6 +257,7 @@ int class_error_;
     [MBProgressHUD showMessage:@"加载中" toView:self.view];
     /**拼接地址*/
     NSString *Url_String=[NSString stringWithFormat:API_MOMENTS,1];
+    NSString *likesDataString=[NSString stringWithFormat:API_MOMENTS_LIKES_SHOW,Config.getStudentKH,Config.getRememberCodeApp];
     NSLog(@"说说请求地址:%@",Url_String);
     /**设置超时*/
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
@@ -273,10 +274,17 @@ int class_error_;
                  if (sayContent) {
                      [Config saveSay:sayContent];
                      [Config setIs:0];
-                     MomentsViewController *Say      = [[MomentsViewController alloc] init];
-                     AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-                     [tempAppDelegate.mainNavigationController pushViewController:Say animated:YES];
-                     HideAllHUD
+                     [manager GET:likesDataString parameters:nil progress:nil
+                          success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                              NSDictionary *likesAll = [NSDictionary dictionaryWithDictionary:responseObject];
+                              [Config saveSayLikes:likesAll];
+                              MomentsViewController *Say      = [[MomentsViewController alloc] init];
+                              AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+                              [tempAppDelegate.mainNavigationController pushViewController:Say animated:YES];
+                              HideAllHUD
+                          } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                              
+                          }];
                  }else{
                      HideAllHUD
                      [MBProgressHUD showError:@"数据错误"];

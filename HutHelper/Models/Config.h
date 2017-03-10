@@ -26,6 +26,7 @@
 +(void)saveCourse:(NSArray*)course;
 +(void)saveWidgetCourse:(NSArray*)course;
 +(void)saveSay:(NSDictionary*)sayData;
++(void)saveSayLikes:(NSDictionary*)sayLikesData;
 +(void)saveHand:(NSArray*)handData;
 +(void)saveScore:(NSData*)scoreData;
 +(void)saveExam:(NSData*)examData;

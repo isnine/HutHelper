@@ -93,11 +93,6 @@
 }
 - (NSMutableArray *)items {
     if (!_items) {
-        
-        //        // set title
-        //        YCXMenuItem *firstTitle = [YCXMenuItem firstTitle:@"添加失物" WithIcon:nil];
-        //        firstTitle.foreColor = [UIColor whiteColor];
-        //        firstTitle.titleFont = [UIFont boldSystemFontOfSize:20.0f];
         YCXMenuItem *firstTitle = [YCXMenuItem menuItem:@"添加说说" image:[UIImage imageNamed:@"adds"] target:self action:@selector(addSay)];
         firstTitle.foreColor = [UIColor blackColor];
         firstTitle.alignment = NSTextAlignmentCenter;
@@ -140,8 +135,7 @@
                      [Config setIs:1];
                      MomentsViewController *Say      = [[MomentsViewController alloc] init];
                      AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-                     [tempAppDelegate.mainNavigationController pushViewController:Say animated:YES];
-                     
+                     [tempAppDelegate.mainNavigationController pushViewController:Say animated:YES];  
                  }else{
                      HideAllHUD
                      [MBProgressHUD showError:@"您没有发布的说说"];
