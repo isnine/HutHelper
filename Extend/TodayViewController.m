@@ -158,7 +158,7 @@
             return @"14:00-15:45";
             break;
         case 7:
-            return @"16:00-15:45";
+            return @"16:00-17:45";
             break;
         case 9:
             return @"19:00-20:45";

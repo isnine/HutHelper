@@ -110,6 +110,7 @@
 		3AA1BC181E16179C00F75A7E /* MBProgressHUD+MJ.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA1BC151E16179C00F75A7E /* MBProgressHUD+MJ.m */; };
 		3AAC242B1DE1CB3C00546B11 /* JSHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AAC242A1DE1CB3C00546B11 /* JSHeaderView.m */; };
 		3AAC242E1DE1CB8C00546B11 /* UserInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AAC242D1DE1CB8C00546B11 /* UserInfoCell.m */; };
+		3AB461841E7BFC9E00A7A0E2 /* NSData+CRC32.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AB461831E7BFC9E00A7A0E2 /* NSData+CRC32.m */; };
 		3AC51D7F1E4C8B0000F8D525 /* language.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3AC51D811E4C8B0000F8D525 /* language.strings */; };
 		3AD87B101DACD02E00357212 /* GWPCourseListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD87B0F1DACD02E00357212 /* GWPCourseListView.m */; };
 		DF4C1EB183B351F157BF18CD /* libPods-HutHelper.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CAE9EAE0009084B77EC3CAD6 /* libPods-HutHelper.a */; };
@@ -319,6 +320,8 @@
 		3AAC242A1DE1CB3C00546B11 /* JSHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSHeaderView.m; sourceTree = "<group>"; };
 		3AAC242C1DE1CB8C00546B11 /* UserInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoCell.h; sourceTree = "<group>"; };
 		3AAC242D1DE1CB8C00546B11 /* UserInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = UserInfoCell.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		3AB461821E7BFC9E00A7A0E2 /* NSData+CRC32.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+CRC32.h"; sourceTree = "<group>"; };
+		3AB461831E7BFC9E00A7A0E2 /* NSData+CRC32.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+CRC32.m"; sourceTree = "<group>"; };
 		3AC51D801E4C8B0000F8D525 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/language.strings; sourceTree = "<group>"; };
 		3AC51D821E4C8B0900F8D525 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/language.strings"; sourceTree = "<group>"; };
 		3AD87B0E1DACD02E00357212 /* GWPCourseListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GWPCourseListView.h; path = HutHelper/Lib/GWPCourseListView/GWPCourseListView.h; sourceTree = "<group>"; };
@@ -464,6 +467,7 @@
 		3A4D04181E19201B00595183 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				3AB461811E7BFC9E00A7A0E2 /* CRC32 */,
 				3A0AC4951E6AB82800827466 /* UILabel+LXAdd */,
 				3A63DF701E49F10B00AAAAAA /* NullSafe */,
 				3A4D38AD1E1FAF6900639C18 /* LTNavigationBar */,
@@ -931,6 +935,16 @@
 			path = Lib/JSHeaderView;
 			sourceTree = "<group>";
 		};
+		3AB461811E7BFC9E00A7A0E2 /* CRC32 */ = {
+			isa = PBXGroup;
+			children = (
+				3AB461821E7BFC9E00A7A0E2 /* NSData+CRC32.h */,
+				3AB461831E7BFC9E00A7A0E2 /* NSData+CRC32.m */,
+			);
+			name = CRC32;
+			path = Lib/CRC32;
+			sourceTree = "<group>";
+		};
 		3AD87B0D1DACD01C00357212 /* GWPCourseListView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1141,6 +1155,7 @@
 				3A92E64D1E4DEA4200EDB030 /* XWScanImage.m in Sources */,
 				3A31E1EB1E6BE6E20056565A /* MomentsTableView.m in Sources */,
 				3A796C391E534C1B00794043 /* LeftSortsViewController.m in Sources */,
+				3AB461841E7BFC9E00A7A0E2 /* NSData+CRC32.m in Sources */,
 				3A796C221E534C1B00794043 /* ExamCell.m in Sources */,
 				3A796C251E534C1B00794043 /* Feedback2ViewController.m in Sources */,
 				3A6D7EDE1DABD9DA0081B70D /* JSONKit.m in Sources */,
@@ -1373,7 +1388,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = HutHelper/HutHelper.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = JW2LR94V6G;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/HutHelper/Lib",
@@ -1417,7 +1432,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = HutHelper/HutHelper.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = JW2LR94V6G;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/HutHelper/Lib",

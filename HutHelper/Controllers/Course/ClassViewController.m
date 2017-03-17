@@ -18,8 +18,8 @@
 #import "AFNetworking.h"
 #import "MBProgressHUD+MJ.h"
 #import "Config.h"
-
 #import "YCXMenu.h"
+#import "NSData+CRC32.h"
 @interface ClassViewController ()<GWPCourseListViewDataSource, GWPCourseListViewDelegate>
 @property (weak, nonatomic) IBOutlet GWPCourseListView *courseListView;
 @property (nonatomic, strong) NSMutableArray<CourseModel*> *courseArr;
@@ -29,10 +29,13 @@
 @property (strong, nonatomic) LGPlusButtonsView *plusButtonsViewNavBar;
 @property (strong, nonatomic) LGPlusButtonsView *plusButtonsViewMain;
 @property (strong, nonatomic) LGPlusButtonsView *plusButtonsViewExample;
+@property (nonatomic , copy) NSMutableArray *selectCourse;
 @end
 
 @implementation ClassViewController
 @synthesize items = _items;
+int selects[260];
+int selectss=1;
 int getweekday(){
     NSDate *now                                  = [NSDate date];
     NSCalendar *calendar                         = [NSCalendar currentCalendar];
@@ -88,7 +91,7 @@ NSString *show_xp;
     self.navigationItem.backBarButtonItem = item;
     //标题结束//
     self.navigationItem.title                    = nowweek_string;
-     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor]}];
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor]}];
     /**按钮*/
     UIView *rightButtonView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 50)];
     UIButton *mainAndSearchBtn = [[UIButton alloc] initWithFrame:CGRectMake(70, 0, 50, 50)];
@@ -102,6 +105,7 @@ NSString *show_xp;
     if ([Config getIs]==1) {
         [self isxp];
     }
+    selectss=1;
 }
 
 - (void)addCourse{
@@ -723,7 +727,7 @@ NSString *show_xp;
                           NSString *Msg=[ClassXP_All objectForKey:@"msg"];
                           if ([Msg isEqualToString:@"ok"]) {
                               NSArray *arrayCourseXp               = [ClassXP_All objectForKey:@"data"];
-                             [Config saveWidgetCourseXp:arrayCourseXp];
+                              [Config saveWidgetCourseXp:arrayCourseXp];
                               HideAllHUD
                               [MBProgressHUD showSuccess:@"刷新成功"];
                               if(now_xp==0){
@@ -750,8 +754,8 @@ NSString *show_xp;
              HideAllHUD
              [MBProgressHUD showError:@"网络错误，平时课表查询失败"];
          }];
-
-        
+    
+    
 }
 
 -(void)toSet{
@@ -765,17 +769,41 @@ NSString *show_xp;
 - (NSArray<id<Course>> *)courseForCourseListView:(GWPCourseListView *)courseListView{
     return self.courseArr;
 }
-
 /** 课程单元背景色自定义 */
 - (UIColor *)courseListView:(GWPCourseListView *)courseListView courseTitleBackgroundColorForCourse:(id<Course>)course{
-    //    if ([course isEqual:[self.courseArr firstObject]]) {    // 第一个，返回自定义颜色
-    //        return [UIColor blueColor];
-    //    }
+    NSArray *lightColorArr = @[
+                               RGB(39, 201, 155, 1),
+                               RGB(250, 194, 97, 1),
+                               RGB(50, 218,210, 1),
+                               RGB(163, 232,102, 1),
+                               RGB(78, 221, 166, 1),
+                               RGB(247, 125, 138, 1),
+                               RGB(120, 192, 246, 1),
+                               RGB(254, 141, 65, 1),
+                               RGB(2, 179, 237, 1),
+                               RGB(110, 159, 245, 1),
+                               RGB(17, 202, 154, 1),
+                               RGB(228, 119, 195, 1),
+                               RGB(147, 299, 3, 1),
+                               ];
     
-    // 其他返回默认的随机色
+    if (course.courseName) {           NSRange range=[course.courseName rangeOfString:@"\n"];
+        NSData *sendData = [[course.courseName substringToIndex:range.location] dataUsingEncoding:NSUTF8StringEncoding];
+        int checksum = abs([sendData crc32])%256;
+        if (selectss+1>lightColorArr.count) {//超过配色数量，随机颜色
+            return nil;
+        }
+        if (selects[checksum]==0) {//第一次配色，设置颜色
+            selects[checksum]=selectss++;
+            NSLog(@"第一次颜色%d，%d:%@",selects[checksum],checksum,[course.courseName substringToIndex:range.location]);
+            return lightColorArr[selects[checksum]];
+        }else{//第二次配色，取之前颜色
+            NSLog(@"相同颜色%d，%d:%@",selects[checksum],checksum,[course.courseName substringToIndex:range.location]);
+            return lightColorArr[selects[checksum]];
+        }
+    }
     return nil;
 }
-
 /** 设置选项卡的title的文字属性，如果实现该方法，该方法返回的attribute将会是attributeString的属性 */
 - (NSDictionary*)courseListView:(GWPCourseListView *)courseListView titleAttributesInTopbarAtIndex:(NSInteger)index{
     if (index==getweekday()-1) {
@@ -786,9 +814,7 @@ NSString *show_xp;
     return nil;
 }
 /** 设置选项卡的title的背景颜色，默认白色 */
-- (UIColor*)courseListView:(GWPCourseListView *)courseListView
-
-titleBackgroundColorInTopbarAtIndex:(NSInteger)index{
+- (UIColor*)courseListView:(GWPCourseListView *)courseListView titleBackgroundColorInTopbarAtIndex:(NSInteger)index{
     if (index==getweekday()-1) {
         UIColor *greyColor                        = [UIColor colorWithRed:245/255.0 green:245/255.0 blue:245/255.0 alpha:1];
         return greyColor;
@@ -796,7 +822,6 @@ titleBackgroundColorInTopbarAtIndex:(NSInteger)index{
     
     return nil;
 }
-
 #pragma mark - GWPCourseListViewDelegate
 /** 选中(点击)某一个课程单元之后的回调 */
 - (void)courseListView:(GWPCourseListView *)courseListView didSelectedCourse:(id<Course>)course{
@@ -837,7 +862,7 @@ titleBackgroundColorInTopbarAtIndex:(NSInteger)index{
                                                                                            showAfterInit:YES
                                                                                            actionHandler:^(LGPlusButtonsView *plusButtonView, NSString *title, NSString *description, NSUInteger index)
                                                     {
-                                                   
+                                                        
                                                         NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
                                                         if (index == 0)
                                                             [_plusButtonsViewNavBar hideAnimated:YES completionHandler:nil];
@@ -992,7 +1017,7 @@ titleBackgroundColorInTopbarAtIndex:(NSInteger)index{
 
 - (void)dealloc
 {
-   
+    
 }
 
 #pragma mark - Appearing
@@ -1078,7 +1103,7 @@ titleBackgroundColorInTopbarAtIndex:(NSInteger)index{
                     //                                    image:nil
                     //                                      tag:102
                     //                                 userInfo:@{@"title":@"Menu"}],
-                      logoutItem
+                    logoutItem
                     ] mutableCopy];
     }
     return _items;

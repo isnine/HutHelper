@@ -108,7 +108,7 @@
     if (!_lightColorArr) {
         _lightColorArr = @[
                            RGB(39, 201, 155, 1),
-                           RGB(146, 196, 40, 1),
+                           RGB(146, 196, 40, 0.1),
                            RGB(253, 185, 46, 1),
                            RGB(112, 161, 246, 1),
                            RGB(246, 126, 140, 1),
@@ -400,7 +400,7 @@ int getweek(){
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     if ([tableView isEqual:self.timeTableView]) {
         cell.textLabel.text = [NSString stringWithFormat:@"%zd", indexPath.row+1];
-        cell.backgroundColor = [UIColor clearColor];
+        cell.backgroundColor = RGB(243, 243, 243, 1.0);
         cell.textLabel.textColor = [UIColor darkGrayColor];
         return cell;
     }

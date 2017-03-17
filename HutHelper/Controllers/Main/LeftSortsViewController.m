@@ -153,13 +153,21 @@
     }
     
     if (indexPath.row == 3) {  //切换用户
-        NSString *appDomain       = [[NSBundle mainBundle] bundleIdentifier];
-        [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:appDomain];  //删除本地数据缓存
-        AppDelegate *tempAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-        FirstLoginViewController *firstlogin                = [[FirstLoginViewController alloc] init];
-        [tempAppDelegate.mainNavigationController pushViewController:firstlogin animated:YES];
-        [UMessage removeAllTags:^(id responseObject, NSInteger remain, NSError *error) {//删除友盟标签缓存
-        }];
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"切换用户" message:@"是否要退出当前账号" preferredStyle:  UIAlertControllerStyleAlert];
+        [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            NSString *appDomain       = [[NSBundle mainBundle] bundleIdentifier];
+            [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:appDomain];  //删除本地数据缓存
+            AppDelegate *tempAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+            FirstLoginViewController *firstlogin                = [[FirstLoginViewController alloc] init];
+            [tempAppDelegate.mainNavigationController pushViewController:firstlogin animated:YES];
+            [UMessage removeAllTags:^(id responseObject, NSInteger remain, NSError *error) {//删除友盟标签缓存
+            }];
+        }]];
+        [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+
+        }]];
+        [self presentViewController:alert animated:true completion:nil];
+    
     }
     if (indexPath.row == 4) {  //关于
         UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];

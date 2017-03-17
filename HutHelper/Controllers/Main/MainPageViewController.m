@@ -618,7 +618,6 @@ int class_error_;
         FirstLoginViewController *firstlogin                = [[FirstLoginViewController alloc] init];
         [tempAppDelegate.mainNavigationController pushViewController:firstlogin animated:YES];
     }
-    
     NSArray *array                            = [defaults objectForKey:@"kCourse"];
     NSString *autoclass=[defaults objectForKey:@"autoclass"];
     /**  是否自动打开课程表  */
@@ -690,10 +689,10 @@ int class_error_;
         NSLog(@"没有记录");
         
     }
-    else if ([lastRunKey isEqualToString:@"1.9.5"]||[lastRunKey isEqualToString:@"1.9.6"]||[lastRunKey isEqualToString:@"1.9.7"]){
-        [defaults setObject:currentVersion forKey:@"last_run_version_key"];
-        [Config addNotice];
-    }
+//    else if ([lastRunKey isEqualToString:@"1.9.5"]||[lastRunKey isEqualToString:@"1.9.6"]||[lastRunKey isEqualToString:@"1.9.7"]){
+//        [defaults setObject:currentVersion forKey:@"last_run_version_key"];
+//        [Config addNotice];
+//    }
     else if (![lastRunKey isEqualToString:currentVersion]) {
         NSString *appDomain       = [[NSBundle mainBundle] bundleIdentifier];
         [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:appDomain];
