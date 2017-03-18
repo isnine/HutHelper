@@ -9,7 +9,7 @@
 #import "MomentsModel.h"
 #import "CommentsModel.h"
 #import "UILabel+LXAdd.h"
-#import "Config.h"
+ 
 @implementation MomentsModel{
     UILabel *contentLabel;
 }

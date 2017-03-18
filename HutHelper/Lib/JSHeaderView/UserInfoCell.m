@@ -9,7 +9,7 @@
 #import "UserInfoCell.h"
 #import "AppDelegate.h"
 
-#import "Config.h"
+ 
 @interface UserInfoCell ()
 
 @property (nonatomic, strong) UILabel *nameLabel;

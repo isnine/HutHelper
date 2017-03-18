@@ -13,7 +13,7 @@
 #import "User.h"
 
 #import "MBProgressHUD+MJ.h"
-#import "Config.h"
+ 
 @interface FeedbackViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *Mail;
 @property (weak, nonatomic) IBOutlet UITextView *Content;

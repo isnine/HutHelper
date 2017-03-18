@@ -12,25 +12,20 @@
 int startyear                       = 2017;
 int startmonth                      = 2;
 int startday                        = 20;
-#pragma mark -加密
+#pragma mark - 加密
 + (NSString*)sha1:(NSString *)input
 {
     const char *cstr = [input cStringUsingEncoding:NSUTF8StringEncoding];
     NSData *data = [NSData dataWithBytes:cstr length:input.length];
-    
     uint8_t digest[CC_SHA1_DIGEST_LENGTH];
-    
     CC_SHA1(data.bytes, (CC_LONG)data.length, digest);
-    
     NSMutableString* output = [NSMutableString stringWithCapacity:CC_SHA1_DIGEST_LENGTH * 2];
-    
     for(int i = 0; i < CC_SHA1_DIGEST_LENGTH; i++)
         [output appendFormat:@"%02x", digest[i]];
-    
     return output;
 }
 
-#pragma mark -日期
+#pragma mark - 日期
 +(int) CountDays:(int)year m:(int)month d:(int)day{
     //返回当前是本年的第几天，year,month,day 表示现在的年月日，整数。
     int a[12]                                 = {31,0,31,30,31,30,31,31,30,31,30,31};
@@ -63,8 +58,6 @@ int startday                        = 20;
     }
     return (ans + 6) / 7;
 }
-
-
 /**
  获得当前是星期几
 

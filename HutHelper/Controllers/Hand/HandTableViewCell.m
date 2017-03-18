@@ -13,7 +13,7 @@
 
 #import "User.h"
 #import "AFNetworking.h"
-#import "Config.h"
+ 
 @implementation HandTableViewCell
 
 - (void)awakeFromNib {

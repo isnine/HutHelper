@@ -313,6 +313,7 @@
 		3A8BACFC1DDDBDDB001C78B8 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		3A92E64B1E4DEA4200EDB030 /* XWScanImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWScanImage.h; sourceTree = "<group>"; };
 		3A92E64C1E4DEA4200EDB030 /* XWScanImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWScanImage.m; sourceTree = "<group>"; };
+		3A98CB431E7CF49600CABD0D /* HutHelper-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HutHelper-Prefix.pch"; sourceTree = "<group>"; };
 		3AA1BC111E16179C00F75A7E /* MBProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = MBProgressHUD.bundle; path = HutHelper/Lib/MBProgressHUD/MBProgressHUD.bundle; sourceTree = "<group>"; };
 		3AA1BC141E16179C00F75A7E /* MBProgressHUD+MJ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MBProgressHUD+MJ.h"; path = "HutHelper/Lib/MBProgressHUD/MBProgressHUD+MJ.h"; sourceTree = "<group>"; };
 		3AA1BC151E16179C00F75A7E /* MBProgressHUD+MJ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MBProgressHUD+MJ.m"; path = "HutHelper/Lib/MBProgressHUD/MBProgressHUD+MJ.m"; sourceTree = "<group>"; };
@@ -886,6 +887,7 @@
 				3A85678F1DA908AA00EBD44A /* Info.plist */,
 				3A85677F1DA908AA00EBD44A /* main.m */,
 				3AC51D811E4C8B0000F8D525 /* language.strings */,
+				3A98CB431E7CF49600CABD0D /* HutHelper-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -1399,7 +1401,7 @@
 					"$(PROJECT_DIR)/HutHelper/Lib/UMSocial/UMSocialSDK",
 				);
 				GCC_OPTIMIZATION_LEVEL = s;
-				GCC_PREFIX_HEADER = "";
+				GCC_PREFIX_HEADER = "HutHelper/HutHelper-Prefix.pch";
 				INFOPLIST_FILE = HutHelper/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1443,7 +1445,7 @@
 					"$(PROJECT_DIR)/HutHelper/Lib/UMSocial/UMSocialSDK",
 				);
 				GCC_OPTIMIZATION_LEVEL = s;
-				GCC_PREFIX_HEADER = "";
+				GCC_PREFIX_HEADER = "HutHelper/HutHelper-Prefix.pch";
 				INFOPLIST_FILE = HutHelper/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

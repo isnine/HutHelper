@@ -14,7 +14,7 @@
 #import "UILabel+LXAdd.h"
 #import "MBProgressHUD+MJ.h"
 #import "MJRefresh.h"
-#import "Config.h"
+ 
 @interface MomentsTableView() <UITableViewDelegate, UITableViewDataSource>
 
 @end

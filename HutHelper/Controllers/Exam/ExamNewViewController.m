@@ -17,7 +17,7 @@
 #include <stdio.h>
 #include <time.h>
 #import<CommonCrypto/CommonDigest.h>
-#import "Config.h"
+ 
 @interface ExamNewViewController ()<UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) UITableView *tableView;

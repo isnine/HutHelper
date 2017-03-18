@@ -8,7 +8,7 @@
 
 #import "Login2ViewController.h"
 #import "MBProgressHUD+MJ.h"
-#import "Config.h"
+ 
 @interface Login2ViewController ()
 @property (weak, nonatomic) IBOutlet UIWebView *views;
 

@@ -18,7 +18,7 @@
 #import "AFNetworking.h"
 #import "MJRefresh.h"
 #import "XWScanImage.h"
-#import "Config.h"
+ 
 
 
 #import "YCXMenuItem.h"

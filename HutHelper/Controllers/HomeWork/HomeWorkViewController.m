@@ -11,7 +11,7 @@
 #import "MBProgressHUD+MJ.h"
 
 #import "User.h"
-#import "Config.h"
+ 
 @interface HomeWorkViewController ()
 @property (weak, nonatomic) IBOutlet UIWebView *views;
 

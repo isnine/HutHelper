@@ -7,20 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "HUTAPI.h"
 @class User;
-#define HideAllHUD  [MBProgressHUD hideHUDForView:self.view animated:YES];
-#define DeviceMaxHeight ([UIScreen mainScreen].bounds.size.height)
-#define DeviceMaxWidth ([UIScreen mainScreen].bounds.size.width)
-#define SYReal(value) ((value)/414.0f*[UIScreen mainScreen].bounds.size.width)
-#define RGB(r,g,b,a) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:(a)]
-
-#ifdef DEBUG
-#define NSLog(...) NSLog(__VA_ARGS__)
-#else
-# define NSLog(...)
-#endif
-
 @interface Config : NSObject
 
 + (void)setIs:(int )Is;

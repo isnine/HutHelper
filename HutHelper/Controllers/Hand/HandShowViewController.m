@@ -10,7 +10,7 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "UMMobClick/MobClick.h"
 #import "XWScanImage.h"
-#import "Config.h"
+ 
 @interface HandShowViewController ()
 @property (weak, nonatomic) IBOutlet UITextView *Content;
 @property (weak, nonatomic) IBOutlet UIImageView *Img1;

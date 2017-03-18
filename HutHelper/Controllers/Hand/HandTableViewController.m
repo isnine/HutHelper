@@ -15,7 +15,7 @@
 #import "HandShowViewController.h"
 #import "AppDelegate.h"
 #import "AddhandViewController.h"
-#import "Config.h"
+ 
 #import "User.h"
 
 #import "YCXMenu.h"

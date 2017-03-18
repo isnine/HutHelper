@@ -17,7 +17,7 @@
 #import "User.h"
 #import "AFNetworking.h"
 #import "MBProgressHUD+MJ.h"
-#import "Config.h"
+ 
 #import "YCXMenu.h"
 #import "NSData+CRC32.h"
 @interface ClassViewController ()<GWPCourseListViewDataSource, GWPCourseListViewDelegate>

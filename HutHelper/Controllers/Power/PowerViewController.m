@@ -10,7 +10,7 @@
 #import "JSONKit.h"
 #import "UMMobClick/MobClick.h"
 #import "UINavigationBar+Awesome.h"
-#import "Config.h"
+ 
 @interface PowerViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *Building;
 @property (weak, nonatomic) IBOutlet UITextField *Room;

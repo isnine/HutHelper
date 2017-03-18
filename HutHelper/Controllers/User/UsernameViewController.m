@@ -11,7 +11,7 @@
 
 #import "User.h"
 #import "MBProgressHUD+MJ.h"
-#import "Config.h"
+ 
 @interface UsernameViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *Username;
 

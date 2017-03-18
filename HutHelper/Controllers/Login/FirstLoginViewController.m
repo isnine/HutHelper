@@ -18,7 +18,7 @@
 #import "MBProgressHUD+MJ.h"
 #import "User.h"
 
-#import "Config.h"
+ 
 #import "UMMobClick/MobClick.h"
 @interface FirstLoginViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *UserName;

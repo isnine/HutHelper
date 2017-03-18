@@ -6,9 +6,9 @@
 //  Copyright © 2017年 nine. All rights reserved.
 //
 
-#import "Config.h"
+ 
 #import "User.h"
-
+#import "Config.h"
 static int Is ;
 
 @implementation Config
@@ -152,7 +152,6 @@ static int Is ;
                                      @"title":@"开发者的一些话",
                                      @"body":@"首先感谢你在新的学期里继续使用工大助手,由于团队每个人的分工不同，整个iOS端仅由我一个人的负责开发。对此，如果之前版本App有给你带来不便的地方，希望您能够理解。\n\n在新的版本中，我修改了大量的界面并对程序进行了优化。如果您还发现有任何Bug，可以通过【左滑菜单-反馈】向我反馈，我向您保证，您反馈的每一个Bug我都会修复，提的每一个建议，我们都会认真考虑。\n\n同时如果App给您有带来了便利，希望您可以在【左滑菜单-关于-去AppStore评分】给App进行评分，对一个整天码代码的程序猿来说，这是最好的鼓励了🙏\n"
                                      };
-    
     NSArray *array = @[noticeDictionary,noticeDictionary2];
     [defaults setObject:array forKey:@"Notice"];//通知列表
     [defaults synchronize];

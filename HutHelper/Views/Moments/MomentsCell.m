@@ -9,12 +9,12 @@
 #import "MomentsCell.h"
 #import "MomentsModel.h"
 #import "CommentsModel.h"
-#import "Config.h"
+ 
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "UILabel+LXAdd.h"
 #import "MBProgressHUD+MJ.h"
 #import "MJRefresh.h"
-#import "Config.h"
+ 
 #import "User.h"
 #import "AFNetworking.h"
 #import "LikesModel.h"

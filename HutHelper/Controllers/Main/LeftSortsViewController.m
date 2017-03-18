@@ -21,11 +21,11 @@
 #import <UShareUI/UShareUI.h>
 #import <UMSocialCore/UMSocialCore.h>
 #import "FirstLoginViewController.h"
-#import "Config.h"
+ 
 
 #import "LeftUserTableViewCell.h"
 #import "LeftItemTableViewCell.h"
-#import "Config.h"
+ 
 #import <SDWebImage/UIImageView+WebCache.h>
 @interface LeftSortsViewController () <UITableViewDelegate,UITableViewDataSource>
 

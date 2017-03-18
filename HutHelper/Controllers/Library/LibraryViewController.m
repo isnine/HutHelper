@@ -10,7 +10,7 @@
 #import "UMMobClick/MobClick.h"
 #import "MBProgressHUD.h"
 #import "MBProgressHUD+MJ.h"
-#import "Config.h"
+ 
 @interface LibraryViewController ()
 @property (weak, nonatomic) IBOutlet UIWebView *views;
 

@@ -12,7 +12,7 @@
 #import "AFNetworking.h"
 #import "MBProgressHUD+MJ.h"
 #import "YYFPSLabel.h"
-#import "Config.h"
+ 
 #import "YCXMenu.h"
 #import "User.h"
 #import "AppDelegate.h"

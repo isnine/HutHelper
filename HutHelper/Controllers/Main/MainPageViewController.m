@@ -30,7 +30,7 @@
 #import "Math.h"
 #import "LeftSortsViewController.h"
 #import "MomentsViewController.h"
-#import "Config.h"
+ 
 #define vBackBarButtonItemName  @"backArrow.png"    //导航条返回默认图片名
 @interface MainPageViewController ()
 

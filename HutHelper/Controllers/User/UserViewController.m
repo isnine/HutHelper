@@ -16,7 +16,7 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "JSONKit.h"
 #import "MBProgressHUD+MJ.h"
-#import "Config.h"
+ 
 static NSString *const kUserInfoCellId = @"kUserInfoCellId";
 
 @interface UserViewController () <UITableViewDelegate, UITableViewDataSource,UIImagePickerControllerDelegate, UINavigationControllerDelegate>

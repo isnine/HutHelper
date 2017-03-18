@@ -13,7 +13,7 @@
 #import "UMessage.h"
 #import "UMMobClick/MobClick.h"
 #import <UMSocialCore/UMSocialCore.h>
-#import "Config.h"
+ 
 #import "iVersion.h"
 @interface AppDelegate ()
 
