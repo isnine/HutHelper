@@ -27,7 +27,7 @@
 #import "MBProgressHUD+MJ.h"
 #import "HandTableViewController.h"
 #import "ScoreShowViewController.h"
-#import "Math.h"
+  
 #import "LeftSortsViewController.h"
 #import "MomentsViewController.h"
  

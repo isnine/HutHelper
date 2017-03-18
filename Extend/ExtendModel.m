@@ -7,7 +7,7 @@
 //
 
 #import "ExtendModel.h"
-#import "Math.h"
+  
 @implementation ExtendModel
 int startyear                       = 2017;
 int startmonth                      = 2;
