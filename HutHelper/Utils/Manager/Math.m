@@ -24,7 +24,19 @@ int startday                        = 20;
         [output appendFormat:@"%02x", digest[i]];
     return output;
 }
-
++(NSString *)md5:(NSString *)input
+{
+    const char *cStr = [input UTF8String];
+    unsigned char result[CC_MD5_DIGEST_LENGTH];
+    CC_MD5( cStr, strlen(cStr), result );
+    
+    NSMutableString *hash = [NSMutableString string];
+    for(int i=0;i<CC_MD5_DIGEST_LENGTH;i++)
+    {
+        [hash appendFormat:@"%02X",result[i]];
+    }
+    return [hash lowercaseString];
+}
 #pragma mark - 日期
 /**
  返回本年第几天
@@ -46,7 +58,7 @@ int startday                        = 20;
 /**
  返回当前是本学期第几周
  */
-+(int) CountWeeks:(int)nowyear m:(int)nowmonth d:(int)nowday {
++(int) getWeek:(int)nowyear m:(int)nowmonth d:(int)nowday {
     int ans                                   = 0;
     if (nowyear == 2017) {
         ans     = [self CountDays:nowyear m:nowmonth d:nowday] - [self CountDays:2017 m:2 d:20] + 1;
@@ -56,18 +68,7 @@ int startday                        = 20;
     }
     return (ans + 6) / 7;
 }
-/**
- 获得当前是星期几
- */
-+(int) getweek:(int)y m:(int)m d:(int)d{
-    if(m==1||m==2) {
-        m+=12;
-        y--;
-    }
-    int iWeek=(d+2*m+3*(m+1)/5+y+y/4-y/100+y/400)%7+1;
-    return iWeek;
-}
-+(int)getweek{
++(int) getWeek{
     NSDate *now                                  = [NSDate date];
     NSCalendar *calendar                         = [NSCalendar currentCalendar];
     NSUInteger unitFlags                         = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay |NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
@@ -75,7 +76,28 @@ int startday                        = 20;
     int y                                     = (short)[dateComponent year];//年
     int m                                    = (short)[dateComponent month];//月
     int d                                      = (short)[dateComponent day];//日
-    return [self getweek:y m:m d:d];
+    return [self getWeek:y m:m d:d];
+}
+/**
+ 获得当前是星期几
+ */
++(int) getWeekDay:(int)y m:(int)m d:(int)d{
+    if(m==1||m==2) {
+        m+=12;
+        y--;
+    }
+    int iWeek=(d+2*m+3*(m+1)/5+y+y/4-y/100+y/400)%7+1;
+    return iWeek;
+}
++(int)getWeekDay{
+    NSDate *now                                  = [NSDate date];
+    NSCalendar *calendar                         = [NSCalendar currentCalendar];
+    NSUInteger unitFlags                         = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay |NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
+    NSDateComponents *dateComponent              = [calendar components:unitFlags fromDate:now];
+    int y                                     = (short)[dateComponent year];//年
+    int m                                    = (short)[dateComponent month];//月
+    int d                                      = (short)[dateComponent day];//日
+    return [self getWeekDay:y m:m d:d];
 }
 
 /**

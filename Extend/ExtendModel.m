@@ -21,7 +21,7 @@ int startday                        = 20;
     int month                                 =(short) [dateComponent month];//月
     int day                                   = (short)[dateComponent day];//日
     
-    return [NSString stringWithFormat:@"%d月%d日 第%d周 星期%@",month,day,[self CountWeeks:year m:month d:day],[self getweek:year m:month d:day]];
+    return [NSString stringWithFormat:@"%d月%d日 第%d周 星期%@",month,day,[self CountWeeks:year m:month d:day],[self getWeekDay:year m:month d:day]];
 }
 
 +(int) CountDays:(int)year m:(int)month d:(int)day{
@@ -65,7 +65,7 @@ int startday                        = 20;
  @param d 日
  @return 星期几
  */
-+(NSString*) getweek:(int)y m:(int)m d:(int)d{
++(NSString*) getWeekDay:(int)y m:(int)m d:(int)d{
     if(m==1||m==2) {
         m+=12;
         y--;
@@ -100,7 +100,7 @@ int startday                        = 20;
     }
 }
 
-+(int)getweek_num:(int)y m:(int)m d:(int)d{
++(int)getWeekDay_num:(int)y m:(int)m d:(int)d{
     if(m==1||m==2) {
         m+=12;
         y--;
@@ -110,7 +110,7 @@ int startday                        = 20;
     
 }
 
-+(int)getWeek_solution{
++(int)getWeekDay_solution{
     NSDate *now                               = [NSDate date];
     NSCalendar *calendar                      = [NSCalendar currentCalendar];
     NSUInteger unitFlags                      = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay |NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;

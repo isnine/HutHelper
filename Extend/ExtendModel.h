@@ -10,7 +10,7 @@
 
 @interface ExtendModel : NSObject
 +(NSString*)setDay;
-+(int)getweek_num:(int)y m:(int)m d:(int)d;
++(int)getWeekDay_num:(int)y m:(int)m d:(int)d;
 +(Boolean) IfWeeks:(int) dsz  qsz:(int)qsz  jsz:(int) jsz ;
-+(int)getWeek_solution;
++(int)getWeekDay_solution;
 @end

@@ -9,6 +9,7 @@
  
 #import "User.h"
 #import "Config.h"
+#import "AppDelegate.h"
 static int Is ;
 
 @implementation Config
@@ -133,13 +134,33 @@ static int Is ;
     [defaults setObject:lostData forKey:@"Lost"];
     [defaults synchronize];
 }
++(void)saveNowWeek:(int)nowWeek{
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    [defaults setInteger:nowWeek forKey:@"NowWeek"];
+    [defaults synchronize];
+}
+#pragma mark - 获得存储数据
++(NSArray*)getCourse{
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    return [defaults objectForKey:@"kCourse"];
+}
++(NSArray*)getCourseXp{
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    return [defaults objectForKey:@"kCourseXp"];
+}
 #pragma mark - 版本信息
 +(void)saveCurrentVersion:(NSString*)currentVersion{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     [defaults setObject:currentVersion forKey:@"last_run_version_key"];
     [defaults synchronize];
 }
-
+#pragma mark - 界面
++(void)pushViewController:(NSString*)controller{
+    UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UIViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:controller];
+    AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:YES];
+}
 #pragma mark - 通知
 +(void)addNotice{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
@@ -155,5 +176,12 @@ static int Is ;
     NSArray *array = @[noticeDictionary,noticeDictionary2];
     [defaults setObject:array forKey:@"Notice"];//通知列表
     [defaults synchronize];
+}
+#pragma mark - 设置
++(void)setNoSharedCache{
+    NSURLCache *sharedCache = [[NSURLCache alloc] initWithMemoryCapacity:0
+                                                            diskCapacity:0
+                                                                diskPath:nil];
+    [NSURLCache setSharedURLCache:sharedCache];
 }
 @end

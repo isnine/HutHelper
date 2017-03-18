@@ -122,8 +122,6 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     AppDelegate *tempAppDelegate     = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    
-    
     [tempAppDelegate.LeftSlideVC closeLeftView];//关闭左侧抽屉
     
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];  //得到用户数据
@@ -154,6 +152,9 @@
     
     if (indexPath.row == 3) {  //切换用户
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"切换用户" message:@"是否要退出当前账号" preferredStyle:  UIAlertControllerStyleAlert];
+        [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+
+        }]];
         [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             NSString *appDomain       = [[NSBundle mainBundle] bundleIdentifier];
             [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:appDomain];  //删除本地数据缓存
@@ -162,9 +163,6 @@
             [tempAppDelegate.mainNavigationController pushViewController:firstlogin animated:YES];
             [UMessage removeAllTags:^(id responseObject, NSInteger remain, NSError *error) {//删除友盟标签缓存
             }];
-        }]];
-        [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-
         }]];
         [self presentViewController:alert animated:true completion:nil];
     

@@ -108,7 +108,7 @@
     if (!_lightColorArr) {
         _lightColorArr = @[
                            RGB(39, 201, 155, 1),
-                           RGB(146, 196, 40, 0.1),
+                           RGB(146, 196, 40, 1),
                            RGB(253, 185, 46, 1),
                            RGB(112, 161, 246, 1),
                            RGB(246, 126, 140, 1),
@@ -141,7 +141,7 @@
     _timeTableWidth = 50;
     _courseListWidth = 0;
     _maxCourseCount = 12;
-    _selectedIndex = [Math getweek];
+    _selectedIndex = [Math getWeekDay];
     _topBarBgColor = [UIColor whiteColor];
     self.backgroundColor = RGB(245, 245, 245, 1);
     

@@ -81,7 +81,6 @@ NSString *show_xp;
 
 - (void)addCourse{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    int nowweek                           = (short)[defaults integerForKey:@"NowWeek"];
     
     CourseModel *a1  = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
     CourseModel *a2  = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
@@ -776,7 +775,7 @@ NSString *show_xp;
 }
 /** 设置选项卡的title的文字属性，如果实现该方法，该方法返回的attribute将会是attributeString的属性 */
 - (NSDictionary*)courseListView:(GWPCourseListView *)courseListView titleAttributesInTopbarAtIndex:(NSInteger)index{
-    if (index==[Math getweek]-1) {
+    if (index==[Math getWeekDay]-1) {
         UIColor *newblueColor                        = [UIColor colorWithRed:0/255.0 green:206/255.0 blue:216/255.0 alpha:1];
         return @{NSForegroundColorAttributeName:newblueColor, NSFontAttributeName:[UIFont systemFontOfSize:18]};
     }
@@ -785,7 +784,7 @@ NSString *show_xp;
 }
 /** 设置选项卡的title的背景颜色，默认白色 */
 - (UIColor*)courseListView:(GWPCourseListView *)courseListView titleBackgroundColorInTopbarAtIndex:(NSInteger)index{
-    if (index==[Math getweek]-1) {
+    if (index==[Math getWeekDay]-1) {
         UIColor *greyColor                        = [UIColor colorWithRed:245/255.0 green:245/255.0 blue:245/255.0 alpha:1];
         return greyColor;
     }

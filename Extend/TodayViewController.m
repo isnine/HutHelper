@@ -70,7 +70,7 @@
             NSString *teacher         = [dict1 objectForKey:@"teacher"];//老师
             NSString *weekDay         = [dict1 objectForKey:@"xqj"];//第几天
             int weekDay_num  = [weekDay intValue];
-            if ([ExtendModel IfWeeks:dsz_num qsz:startWeek_num jsz:endWeek_num]&&[ExtendModel getWeek_solution]==weekDay_num) {
+            if ([ExtendModel IfWeeks:dsz_num qsz:startWeek_num jsz:endWeek_num]&&[ExtendModel getWeekDay_solution]==weekDay_num) {
                 if(classSolution.count!=0){
                     for (int j=0; j<classSolution.count; j++) {
                         if ([[array[i] objectForKey:@"djj"] intValue]<[[classSolution[j] objectForKey:@"djj"] intValue]) {

@@ -13,6 +13,7 @@
 #define POST_TIMEOUT 10.f
 + (void)GET:(NSString *)URLString parameters:(id)parameters success:(void (^)(id))success failure:(void (^)(NSError *))failure
 {
+    NSLog(@"请求地址:%@",URLString);
     /**设置超时*/
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
