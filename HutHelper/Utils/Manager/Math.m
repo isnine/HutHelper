@@ -26,6 +26,9 @@ int startday                        = 20;
 }
 
 #pragma mark - 日期
+/**
+ 返回本年第几天
+ */
 +(int) CountDays:(int)year m:(int)month d:(int)day{
     //返回当前是本年的第几天，year,month,day 表示现在的年月日，整数。
     int a[12]                                 = {31,0,31,30,31,30,31,31,30,31,30,31};
@@ -42,11 +45,6 @@ int startday                        = 20;
 
 /**
  返回当前是本学期第几周
-
- @param nowyear 现在年份
- @param nowmonth 现在月份
- @param nowday 现在日期
- @return 当前是本学期第几周
  */
 +(int) CountWeeks:(int)nowyear m:(int)nowmonth d:(int)nowday {
     int ans                                   = 0;
@@ -60,11 +58,6 @@ int startday                        = 20;
 }
 /**
  获得当前是星期几
-
- @param y 年
- @param m 月
- @param d 日
- @return 星期几
  */
 +(int) getweek:(int)y m:(int)m d:(int)d{
     if(m==1||m==2) {
@@ -74,5 +67,31 @@ int startday                        = 20;
     int iWeek=(d+2*m+3*(m+1)/5+y+y/4-y/100+y/400)%7+1;
     return iWeek;
 }
++(int)getweek{
+    NSDate *now                                  = [NSDate date];
+    NSCalendar *calendar                         = [NSCalendar currentCalendar];
+    NSUInteger unitFlags                         = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay |NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
+    NSDateComponents *dateComponent              = [calendar components:unitFlags fromDate:now];
+    int y                                     = (short)[dateComponent year];//年
+    int m                                    = (short)[dateComponent month];//月
+    int d                                      = (short)[dateComponent day];//日
+    return [self getweek:y m:m d:d];
+}
 
+/**
+ 返回是否是本周课程
+ */
++(BOOL)IfWeeks:(int)nowweek  dsz:(int)dsz  qsz:(int)qsz jsz:(int)jsz {
+    /** nowweek 为的周数，整数
+     dsz 为课程是单周上，还是双周上，1为单周，2为双周，0为每周都要上，整数
+     qsz 为课程开始的周数，整数
+     jsz 为课程结束的周数，整数 **/
+    if (nowweek > jsz)
+        return 0;
+    if (nowweek < qsz)
+        return 0;
+    if (dsz == 0)
+        return 1;
+    return ((nowweek + dsz) % 2 == 0);
+}
 @end

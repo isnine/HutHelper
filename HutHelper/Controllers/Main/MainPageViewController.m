@@ -283,7 +283,10 @@ int class_error_;
                               [tempAppDelegate.mainNavigationController pushViewController:Say animated:YES];
                               HideAllHUD
                           } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                              
+//                              MomentsViewController *Say      = [[MomentsViewController alloc] init];
+//                              AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+//                              [tempAppDelegate.mainNavigationController pushViewController:Say animated:YES];
+//                              HideAllHUD
                           }];
                  }else{
                      HideAllHUD

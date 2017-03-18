@@ -109,6 +109,7 @@
 		3A98CC1D1E7CFDF900CABD0D /* language.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3A98CC191E7CFDF900CABD0D /* language.strings */; };
 		3A98CC241E7CFF0200CABD0D /* Config.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A98CC201E7CFF0200CABD0D /* Config.m */; };
 		3A98CC251E7CFF0200CABD0D /* Math.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A98CC231E7CFF0200CABD0D /* Math.m */; };
+		3AF73BF11E7D12610086417E /* APIRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF73BF01E7D12610086417E /* APIRequest.m */; };
 		DF4C1EB183B351F157BF18CD /* libPods-HutHelper.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CAE9EAE0009084B77EC3CAD6 /* libPods-HutHelper.a */; };
 /* End PBXBuildFile section */
 
@@ -317,6 +318,8 @@
 		3A98CC211E7CFF0200CABD0D /* HUTAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUTAPI.h; sourceTree = "<group>"; };
 		3A98CC221E7CFF0200CABD0D /* Math.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Math.h; sourceTree = "<group>"; };
 		3A98CC231E7CFF0200CABD0D /* Math.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Math.m; sourceTree = "<group>"; };
+		3AF73BEF1E7D12610086417E /* APIRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIRequest.h; sourceTree = "<group>"; };
+		3AF73BF01E7D12610086417E /* APIRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIRequest.m; sourceTree = "<group>"; };
 		A8DF4B266A6C75237AD1C11E /* Pods-HutHelper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HutHelper.release.xcconfig"; path = "Pods/Target Support Files/Pods-HutHelper/Pods-HutHelper.release.xcconfig"; sourceTree = "<group>"; };
 		CAE9EAE0009084B77EC3CAD6 /* libPods-HutHelper.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HutHelper.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -935,6 +938,8 @@
 				3A98CC211E7CFF0200CABD0D /* HUTAPI.h */,
 				3A98CC221E7CFF0200CABD0D /* Math.h */,
 				3A98CC231E7CFF0200CABD0D /* Math.m */,
+				3AF73BEF1E7D12610086417E /* APIRequest.h */,
+				3AF73BF01E7D12610086417E /* APIRequest.m */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -1205,6 +1210,7 @@
 				3A796C281E534C1B00794043 /* HandShowViewController.m in Sources */,
 				3A796C411E534C1B00794043 /* ViewController.m in Sources */,
 				3A796C291E534C1B00794043 /* HandTableViewCell.m in Sources */,
+				3AF73BF11E7D12610086417E /* APIRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

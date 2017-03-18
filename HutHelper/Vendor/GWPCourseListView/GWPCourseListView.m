@@ -135,28 +135,13 @@
     return self;
 }
 
-int getweek(){
-    NSDate *now                                  = [NSDate date];
-    NSCalendar *calendar                         = [NSCalendar currentCalendar];
-    NSUInteger unitFlags                         = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay |NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
-    NSDateComponents *dateComponent              = [calendar components:unitFlags fromDate:now];
-    int y                                     = (short)[dateComponent year];//年
-    int m                                    = (short)[dateComponent month];//月
-    int d                                      =(short) [dateComponent day];//日
-    if(m==1||m==2) {
-        m+=12;
-        y--;
-    }
-    int iWeek=(d+2*m+3*(m+1)/5+y+y/4-y/100+y/400)%7+1;
-    return iWeek;
-}
 - (void)setup{
     /*=============================== 初始化变量 ==============================*/
     _itemHeight = 50;
     _timeTableWidth = 50;
     _courseListWidth = 0;
     _maxCourseCount = 12;
-    _selectedIndex = getweek();
+    _selectedIndex = [Math getweek];
     _topBarBgColor = [UIColor whiteColor];
     self.backgroundColor = RGB(245, 245, 245, 1);
     

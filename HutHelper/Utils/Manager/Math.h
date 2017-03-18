@@ -12,5 +12,7 @@
 +(int) CountWeeks:(int)nowyear m:(int)nowmonth d:(int)nowday;
 +(int) CountDays:(int)year m:(int)month d:(int)day;
 +(int) getweek:(int)y m:(int)m d:(int)d;
++(int)getweek;
++(BOOL)IfWeeks:(int)nowweek  dsz:(int)dsz  qsz:(int)qsz jsz:(int)jsz;
 + (NSString*)sha1:(NSString *)input;
 @end

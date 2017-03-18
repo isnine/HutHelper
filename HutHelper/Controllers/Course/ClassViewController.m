@@ -36,35 +36,6 @@
 @synthesize items = _items;
 int selects[260];
 int selectss=1;
-int getweekday(){
-    NSDate *now                                  = [NSDate date];
-    NSCalendar *calendar                         = [NSCalendar currentCalendar];
-    NSUInteger unitFlags                         = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay |NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
-    NSDateComponents *dateComponent              = [calendar components:unitFlags fromDate:now];
-    int y                                     = (short)[dateComponent year];//年
-    int m                                    = (short)[dateComponent month];//月
-    int d                                      = (short)[dateComponent day];//日
-    if(m==1||m==2) {
-        m+=12;
-        y--;
-    }
-    int iWeek=(d+2*m+3*(m+1)/5+y+y/4-y/100+y/400)%7+1;
-    return iWeek;
-}
-
-_Bool IfWeeks(int nowweek, int dsz, int qsz, int jsz) {
-    /** nowweek 为的周数，整数
-     dsz 为课程是单周上，还是双周上，1为单周，2为双周，0为每周都要上，整数
-     qsz 为课程开始的周数，整数
-     jsz 为课程结束的周数，整数 **/
-    if (nowweek > jsz)
-        return 0;
-    if (nowweek < qsz)
-        return 0;
-    if (dsz == 0)
-        return 1;
-    return ((nowweek + dsz) % 2 == 0);
-}
 
 int now_week;
 int now_xp=0;
@@ -170,8 +141,7 @@ NSString *show_xp;
             int EndClass       = (short)StartClass_num + 1;
             ClassName=[ClassName stringByAppendingString:@"\n@"];
             ClassName=[ClassName stringByAppendingString:Room];
-            
-            if(IfWeeks(now_week,dsz_num,StartWeek_num,EndWeek_num)){
+            if([Math IfWeeks:now_week dsz:dsz_num qsz:StartWeek_num jsz:EndWeek_num]){
                 if(StartClass_num==1){
                     switch (day1) {
                         case 1:
@@ -806,7 +776,7 @@ NSString *show_xp;
 }
 /** 设置选项卡的title的文字属性，如果实现该方法，该方法返回的attribute将会是attributeString的属性 */
 - (NSDictionary*)courseListView:(GWPCourseListView *)courseListView titleAttributesInTopbarAtIndex:(NSInteger)index{
-    if (index==getweekday()-1) {
+    if (index==[Math getweek]-1) {
         UIColor *newblueColor                        = [UIColor colorWithRed:0/255.0 green:206/255.0 blue:216/255.0 alpha:1];
         return @{NSForegroundColorAttributeName:newblueColor, NSFontAttributeName:[UIFont systemFontOfSize:18]};
     }
@@ -815,7 +785,7 @@ NSString *show_xp;
 }
 /** 设置选项卡的title的背景颜色，默认白色 */
 - (UIColor*)courseListView:(GWPCourseListView *)courseListView titleBackgroundColorInTopbarAtIndex:(NSInteger)index{
-    if (index==getweekday()-1) {
+    if (index==[Math getweek]-1) {
         UIColor *greyColor                        = [UIColor colorWithRed:245/255.0 green:245/255.0 blue:245/255.0 alpha:1];
         return greyColor;
     }
