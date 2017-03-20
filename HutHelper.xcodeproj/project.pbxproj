@@ -49,7 +49,6 @@
 		3A796C381E534C1B00794043 /* LostShowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A796BD81E534C1B00794043 /* LostShowViewController.m */; };
 		3A796C391E534C1B00794043 /* LeftSortsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A796BDB1E534C1B00794043 /* LeftSortsViewController.m */; };
 		3A796C3A1E534C1B00794043 /* MainPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A796BDD1E534C1B00794043 /* MainPageViewController.m */; };
-		3A796C3B1E534C1B00794043 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A796BDF1E534C1B00794043 /* MainViewController.m */; };
 		3A796C3C1E534C1B00794043 /* NoticeShowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A796BE21E534C1B00794043 /* NoticeShowViewController.m */; };
 		3A796C3D1E534C1B00794043 /* NoticeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A796BE41E534C1B00794043 /* NoticeTableViewCell.m */; };
 		3A796C3E1E534C1B00794043 /* NoticeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A796BE51E534C1B00794043 /* NoticeTableViewCell.xib */; };
@@ -212,8 +211,6 @@
 		3A796BDB1E534C1B00794043 /* LeftSortsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftSortsViewController.m; sourceTree = "<group>"; };
 		3A796BDC1E534C1B00794043 /* MainPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainPageViewController.h; sourceTree = "<group>"; };
 		3A796BDD1E534C1B00794043 /* MainPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = MainPageViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		3A796BDE1E534C1B00794043 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
-		3A796BDF1E534C1B00794043 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		3A796BE11E534C1B00794043 /* NoticeShowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoticeShowViewController.h; sourceTree = "<group>"; };
 		3A796BE21E534C1B00794043 /* NoticeShowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoticeShowViewController.m; sourceTree = "<group>"; };
 		3A796BE31E534C1B00794043 /* NoticeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoticeTableViewCell.h; sourceTree = "<group>"; };
@@ -398,9 +395,25 @@
 			path = Moments;
 			sourceTree = "<group>";
 		};
+		3A55F5101E7D3DE9002FB120 /* Left */ = {
+			isa = PBXGroup;
+			children = (
+				3A796BDA1E534C1B00794043 /* LeftSortsViewController.h */,
+				3A796BDB1E534C1B00794043 /* LeftSortsViewController.m */,
+				3A85BAFE1E597458008854CF /* LeftUserTableViewCell.h */,
+				3A85BAFF1E597458008854CF /* LeftUserTableViewCell.m */,
+				3A85BB001E597458008854CF /* LeftUserTableViewCell.xib */,
+				3A85BB031E5990C5008854CF /* LeftItemTableViewCell.h */,
+				3A85BB041E5990C5008854CF /* LeftItemTableViewCell.m */,
+				3A85BB051E5990C5008854CF /* LeftItemTableViewCell.xib */,
+			);
+			name = Left;
+			sourceTree = "<group>";
+		};
 		3A796B9E1E534C1B00794043 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				3A796BD91E534C1B00794043 /* Main */,
 				3A4048F81E6A663B0038F207 /* Moments */,
 				3A796B9F1E534C1B00794043 /* About */,
 				3A796BA21E534C1B00794043 /* Course */,
@@ -412,7 +425,6 @@
 				3A796BC31E534C1B00794043 /* Library */,
 				3A796BC61E534C1B00794043 /* Login */,
 				3A796BCB1E534C1B00794043 /* Lost */,
-				3A796BD91E534C1B00794043 /* Main */,
 				3A796BE01E534C1B00794043 /* Notice */,
 				3A796BED1E534C1B00794043 /* Power */,
 				3A796C021E534C1B00794043 /* Score */,
@@ -544,18 +556,9 @@
 		3A796BD91E534C1B00794043 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				3A796BDA1E534C1B00794043 /* LeftSortsViewController.h */,
-				3A796BDB1E534C1B00794043 /* LeftSortsViewController.m */,
+				3A55F5101E7D3DE9002FB120 /* Left */,
 				3A796BDC1E534C1B00794043 /* MainPageViewController.h */,
 				3A796BDD1E534C1B00794043 /* MainPageViewController.m */,
-				3A796BDE1E534C1B00794043 /* MainViewController.h */,
-				3A796BDF1E534C1B00794043 /* MainViewController.m */,
-				3A85BAFE1E597458008854CF /* LeftUserTableViewCell.h */,
-				3A85BAFF1E597458008854CF /* LeftUserTableViewCell.m */,
-				3A85BB001E597458008854CF /* LeftUserTableViewCell.xib */,
-				3A85BB031E5990C5008854CF /* LeftItemTableViewCell.h */,
-				3A85BB041E5990C5008854CF /* LeftItemTableViewCell.m */,
-				3A85BB051E5990C5008854CF /* LeftItemTableViewCell.xib */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -1200,7 +1203,6 @@
 				3A796C4F1E534C1B00794043 /* ScoreShowViewController.m in Sources */,
 				3A98CC0E1E7CFA9C00CABD0D /* YYFPSLabel.m in Sources */,
 				3A796C2D1E534C1B00794043 /* HomeWorkViewController.m in Sources */,
-				3A796C3B1E534C1B00794043 /* MainViewController.m in Sources */,
 				3A31E1E81E6BE68C0056565A /* AddSayViewController.m in Sources */,
 				3A85BB011E597458008854CF /* LeftUserTableViewCell.m in Sources */,
 				3A796C341E534C1B00794043 /* LostShowTableViewCell.m in Sources */,
