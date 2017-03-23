@@ -125,25 +125,25 @@
     [self.contentView addSubview:userCollegeLabel];
     /**评论按钮*/
     commentButton = [[UIButton alloc] init];
-    commentButton.frame=CGRectMake(SYReal(320), SYReal(5)+sumHeight, SYReal(40), SYReal(20));
+    commentButton.frame=CGRectMake(SYReal(315), SYReal(5)+sumHeight, SYReal(40), SYReal(20));
     [commentButton addTarget:self action:@selector(btnComment) forControlEvents:UIControlEventTouchUpInside];
     [self.contentView addSubview:commentButton];
     /**评论图片*/
-    commentImage = [[UIImageView alloc] initWithFrame:CGRectMake(SYReal(325), SYReal(6)+sumHeight,SYReal(15),SYReal(16))];
+    commentImage = [[UIImageView alloc] initWithFrame:CGRectMake(SYReal(320), SYReal(6)+sumHeight,SYReal(15),SYReal(16))];
     commentImage.image=[UIImage imageNamed:@"comment"];
     [self.contentView addSubview:commentImage];
     /**评论数*/
-    commentNumLabel = [[UILabel alloc] initWithFrame:CGRectMake(SYReal(345),SYReal(5)+sumHeight, SYReal(18),SYReal(18))];
+    commentNumLabel = [[UILabel alloc] initWithFrame:CGRectMake(SYReal(340),SYReal(5)+sumHeight, SYReal(18),SYReal(18))];
     commentNumLabel.textColor=[UIColor colorWithRed:153/255.0 green:153/255.0 blue:153/255.0 alpha:1.0];
     commentNumLabel.text=[NSString stringWithFormat:@"%d",(short)_data.commentsModelArray.count];
     [self.contentView addSubview:commentNumLabel];
     /**赞按钮*/
     likesButton = [[UIButton alloc] init];
-    likesButton.frame=CGRectMake(SYReal(360), SYReal(5)+sumHeight, SYReal(40), SYReal(20));
+    likesButton.frame=CGRectMake(SYReal(355), SYReal(5)+sumHeight, SYReal(40), SYReal(20));
     [likesButton addTarget:self action:@selector(btnLikes) forControlEvents:UIControlEventTouchUpInside];
     [self.contentView addSubview:likesButton];
     /**赞图片*/
-    likesImage = [[UIImageView alloc] initWithFrame:CGRectMake(SYReal(365), SYReal(6)+sumHeight,SYReal(15),SYReal(16))];
+    likesImage = [[UIImageView alloc] initWithFrame:CGRectMake(SYReal(360), SYReal(6)+sumHeight,SYReal(15),SYReal(16))];
     likesImage.image=[UIImage imageNamed:@"tweet_btn_like"];
     for (NSString *sayLikesId in _likesData.data) {
         if ([sayLikesId isEqualToString:_data.moments_id]) {
@@ -152,11 +152,10 @@
     }
     [self.contentView addSubview:likesImage];
     /**赞数*/
-    likesNumLabel = [[UILabel alloc] initWithFrame:CGRectMake(SYReal(385),SYReal(5)+sumHeight, SYReal(18),SYReal(18))];
+    likesNumLabel = [[UILabel alloc] initWithFrame:CGRectMake(SYReal(380),SYReal(5)+sumHeight, SYReal(35),SYReal(18))];
     likesNumLabel.textColor=[UIColor colorWithRed:153/255.0 green:153/255.0 blue:153/255.0 alpha:1.0];
     likesNumLabel.text=[NSString stringWithFormat:@"%@",_data.likes];
     [self.contentView addSubview:likesNumLabel];
-    
     /**删除说说按钮*/
     if ([Config.getUserId isEqualToString:_data.user_id]) {
         deleteSay = [[UIButton alloc] initWithFrame:CGRectMake(SYReal(290), sumHeight, SYReal(30),SYReal(30))];

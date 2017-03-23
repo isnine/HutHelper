@@ -21,7 +21,6 @@
 @interface MomentsViewController (){
     MomentsTableView *momentsTableView;
     NSMutableArray *datas;
-    
 }
 @property (nonatomic , strong) NSMutableArray *items;
 @property (nonatomic, strong) YYFPSLabel *fpsLabel;
@@ -64,6 +63,11 @@
     }
     
     
+}
+- (void)viewWillDisappear:(BOOL)animated{
+    if ([self.navigationController.viewControllers count]==2&&[Config getIs]==1) {
+        [Config setIs:0];
+    }
 }
 -(void)reLoadData:(NSDictionary*)JSONDic{
     datas = [[NSMutableArray alloc]init];

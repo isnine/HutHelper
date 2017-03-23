@@ -388,7 +388,7 @@ int class_error_;
     int year                                  = (short)[dateComponent year];//年
     int month                                 = (short)[dateComponent month];//月
     int day                                   = (short)[dateComponent day];//日
-    [defaults setInteger:[Math getWeekDay:year m:month d:day] forKey:@"TrueWeek"];
+    [defaults setInteger:[Math getWeek:year m:month d:day] forKey:@"TrueWeek"];
     //判断完毕//
     self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:246/255.0 green:246/255.0 blue:246/255.0 alpha:1.0];
     /**导航栏变为透明*/
