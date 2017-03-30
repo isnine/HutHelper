@@ -41,16 +41,16 @@ PODS:
   - TZImagePickerController (1.7.8)
   - UITableView+FDTemplateLayoutCell (1.4)
   - UMengAnalytics-NO-IDFA (4.2.5)
-  - UMengUShare/Core (6.3.0):
+  - UMengUShare/Core (6.4.0):
     - UMengUShare/Network
-  - UMengUShare/Network (6.3.0)
-  - UMengUShare/Social/QQ (6.3.0):
+  - UMengUShare/Network (6.4.0)
+  - UMengUShare/Social/ReducedQQ (6.4.0):
     - UMengUShare/Core
-  - UMengUShare/Social/Sina (6.3.0):
+  - UMengUShare/Social/ReducedSina (6.4.0):
     - UMengUShare/Core
-  - UMengUShare/Social/WeChat (6.3.0):
+  - UMengUShare/Social/ReducedWeChat (6.4.0):
     - UMengUShare/Core
-  - UMengUShare/UI (6.3.0):
+  - UMengUShare/UI (6.4.0):
     - UMengUShare/Core
   - YCXMenu (0.0.11)
 
@@ -66,9 +66,9 @@ DEPENDENCIES:
   - TZImagePickerController
   - UITableView+FDTemplateLayoutCell
   - UMengAnalytics-NO-IDFA
-  - UMengUShare/Social/QQ
-  - UMengUShare/Social/Sina
-  - UMengUShare/Social/WeChat
+  - UMengUShare/Social/ReducedQQ
+  - UMengUShare/Social/ReducedSina
+  - UMengUShare/Social/ReducedWeChat
   - UMengUShare/UI
   - YCXMenu (~> 0.0.11)
 
@@ -86,9 +86,9 @@ SPEC CHECKSUMS:
   TZImagePickerController: 87a138ae5d585225aaa6c8abe2cface0f0ad19dd
   UITableView+FDTemplateLayoutCell: 234e1582bcc4e18461af91155123bb96538ed030
   UMengAnalytics-NO-IDFA: 16666e32edce5be44ae5b14aaaa7f3582e09d6ab
-  UMengUShare: b208ac3bcf1f63d11a100b359990e9d77a0f2085
+  UMengUShare: 83f849f356db0db9f18488cfbc2055a20b150481
   YCXMenu: 6003bcd20d8ac72e3eb3c442c97ed21948c6dc1f
 
-PODFILE CHECKSUM: 8fae4841a4aad4130e405678ac69cec5569bedff
+PODFILE CHECKSUM: 560634db532024697f11e85363e5e681093456bc
 
 COCOAPODS: 1.1.1

@@ -10,14 +10,14 @@
 #import "AppDelegate.h"
 #import "JSONKit.h"
 #import "HomeWorkViewController.h"
-#import "ClassViewController.h"
+#import "CourseViewController.h"
 #import "PowerViewController.h"
 #import "LibraryViewController.h"
 #import "NoticeViewController.h"
 #import "DayViewController.h"
 #import "UMessage.h"
 #import "UMMobClick/MobClick.h"
-#import "FirstLoginViewController.h"
+#import "LoginViewController.h"
 #import<CommonCrypto/CommonDigest.h>
 #import "MBProgressHUD.h"
 #import "UINavigationBar+Awesome.h"
@@ -411,7 +411,7 @@ int class_error_;
     NSDictionary *User_All=[defaults objectForKey:@"kUser"];
     if(User_All==NULL){
         AppDelegate *tempAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-        FirstLoginViewController *firstlogin                = [[FirstLoginViewController alloc] init];
+        LoginViewController *firstlogin                = [[LoginViewController alloc] init];
         [tempAppDelegate.mainNavigationController pushViewController:firstlogin animated:YES];
     }
     NSArray *array                            = [defaults objectForKey:@"kCourse"];
@@ -419,7 +419,7 @@ int class_error_;
     /**  是否自动打开课程表  */
     if(array!=NULL&&[autoclass isEqualToString:@"打开"]){
         UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        ClassViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Class"];
+        CourseViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Class"];
         AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:NO];
     }

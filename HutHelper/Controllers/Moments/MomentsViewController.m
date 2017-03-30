@@ -17,7 +17,7 @@
 #import "User.h"
 #import "AppDelegate.h"
 
-#import "AddSayViewController.h"
+#import "MomentsAddViewController.h"
 @interface MomentsViewController (){
     MomentsTableView *momentsTableView;
     NSMutableArray *datas;
@@ -157,8 +157,8 @@
 }
 -(void)addSay{
     UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    AddSayViewController *addsayViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"AddSay"];
+    MomentsAddViewController *MomentsAddViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"AddSay"];
     AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    [tempAppDelegate.mainNavigationController pushViewController:addsayViewController animated:NO];
+    [tempAppDelegate.mainNavigationController pushViewController:MomentsAddViewController animated:NO];
 }
 @end

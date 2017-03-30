@@ -1,1 +1,0 @@
-../../../../UMengUShare/UShareSDK/SocialLibraries/QQ/TencentOpenAPI.framework/Headers/QQApiInterface.h

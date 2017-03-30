@@ -11,8 +11,8 @@
 
 #import "HomeWorkViewController.h"
 
-#import "ClassViewController.h"
-#import "SetViewController.h"
+#import "CourseViewController.h"
+#import "CourseSetViewController.h"
 
 #import "AboutViewController.h"
 
@@ -20,7 +20,7 @@
 #import "UMessage.h"
 #import <UShareUI/UShareUI.h>
 #import <UMSocialCore/UMSocialCore.h>
-#import "FirstLoginViewController.h"
+#import "LoginViewController.h"
  
 
 #import "LeftUserTableViewCell.h"
@@ -137,14 +137,14 @@
     if (indexPath.row == 0) { //个人界面
         [self.tableview reloadData];
         UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        ClassViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"User"];
+        CourseViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"User"];
         AppDelegate *tempAppDelegate     = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:NO];
         
     }
     
     if (indexPath.row == 2) {  //分享
-        [UMSocialUIManager setPreDefinePlatforms:@[@(UMSocialPlatformType_WechatSession),@(UMSocialPlatformType_QQ),@(UMSocialPlatformType_Sina)]];
+        [UMSocialUIManager setPreDefinePlatforms:@[@(UMSocialPlatformType_WechatSession),@(UMSocialPlatformType_QQ),@(UMSocialPlatformType_Qzone),@(UMSocialPlatformType_Sina)]];
         [UMSocialUIManager showShareMenuViewInWindowWithPlatformSelectionBlock:^(UMSocialPlatformType platformType, NSDictionary *userInfo) {
             [self shareWebPageToPlatformType:platformType];
         }];
@@ -159,7 +159,7 @@
             NSString *appDomain       = [[NSBundle mainBundle] bundleIdentifier];
             [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:appDomain];  //删除本地数据缓存
             AppDelegate *tempAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-            FirstLoginViewController *firstlogin                = [[FirstLoginViewController alloc] init];
+            LoginViewController *firstlogin                = [[LoginViewController alloc] init];
             [tempAppDelegate.mainNavigationController pushViewController:firstlogin animated:YES];
             [UMessage removeAllTags:^(id responseObject, NSInteger remain, NSError *error) {//删除友盟标签缓存
             }];
@@ -169,13 +169,13 @@
     }
     if (indexPath.row == 4) {  //关于
         UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        ClassViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"About"];
+        CourseViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"About"];
         AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:YES];
     }
     if (indexPath.row == 5) {  //反馈
         UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        ClassViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Feedback"];
+        CourseViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Feedback"];
         AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:YES];
     }
