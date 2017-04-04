@@ -312,8 +312,17 @@ int class_error_;
     [Config pushViewController:@"Notice"];
 } //通知界面
 - (IBAction)Vedio:(id)sender { //视频专栏
-    [Config pushViewController:@"Vedio"];
-}
+    [MBProgressHUD showMessage:@"加载中" toView:self.view];
+    [APIRequest GET:@"http://app.wxz.name/api/vedio" parameters:nil success:^(id responseObject) {
+        [Config saveVedio:responseObject[@"links"]];
+        [Config pushViewController:@"Vedio"];
+    }failure:^(NSError *error) {
+        [MBProgressHUD showError:@"网络超时，请检查网络并重试"];
+        HideAllHUD
+    }];
+    
+} //视频专栏
+
 
 #pragma mark - 其他方法
 - (void)SetTimeLabel{

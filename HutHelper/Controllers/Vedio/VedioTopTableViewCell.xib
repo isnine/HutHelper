@@ -38,6 +38,11 @@
                     </label>
                 </subviews>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="button" destination="vlB-6B-FXo" id="EzT-XS-eMZ"/>
+                <outlet property="describe" destination="IWl-34-C27" id="ayB-ou-fXy"/>
+                <outlet property="name" destination="UVv-lk-T2l" id="bqq-ZK-gzD"/>
+            </connections>
             <point key="canvasLocation" x="25" y="144.5"/>
         </tableViewCell>
     </objects>

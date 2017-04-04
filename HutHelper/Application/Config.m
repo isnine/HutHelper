@@ -6,10 +6,12 @@
 //  Copyright © 2017年 nine. All rights reserved.
 //
 
- 
+
 #import "User.h"
 #import "Config.h"
 #import "AppDelegate.h"
+#import "UMessage.h"
+#import "UMMobClick/MobClick.h"
 static int Is ;
 
 @implementation Config
@@ -73,6 +75,10 @@ static int Is ;
 +(NSString*)getRememberCodeApp{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     return [defaults objectForKey:@"remember_code_app"];
+}
++(NSDictionary*)getVedio{
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    return [defaults objectForKey:@"Vedio"];
 }
 #pragma mark - 持续化存储
 +(void)saveUser:(NSDictionary*)userData{
@@ -140,6 +146,11 @@ static int Is ;
     [defaults setInteger:nowWeek forKey:@"NowWeek"];
     [defaults synchronize];
 }
++(void)saveVedio:(NSDictionary*)vedioData{
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    [defaults setObject:vedioData forKey:@"Vedio"];
+    [defaults synchronize];
+}
 #pragma mark - 获得存储数据
 +(NSArray*)getCourse{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
@@ -166,14 +177,14 @@ static int Is ;
 +(void)addNotice{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     NSDictionary *noticeDictionary=@{@"time":@"2017-03-17 24:00",
-                                            @"title":@"工大助手",
-                                            @"body":@"工大助手V1.9.9更新日志\n\n- 新增了校园说说点赞功能 \n- 修复了Widget时间问题 \n- 修改了校园说说配色\n- 修改了校园说说相同课程相同颜色  \n- 新增了切换用户提示语\n\n如果您对App有任何建议或者发现了Bug\n可以在侧栏-反馈中告诉我们，我向您保证每个Bug都会尽快修复，每个意见都会得到回复，另外在AppStore中求个好评🙏"
-    };
+                                     @"title":@"工大助手",
+                                     @"body":@"工大助手V1.9.9更新日志\n\n- 新增了校园说说点赞功能 \n- 修复了Widget时间问题 \n- 修改了校园说说配色\n- 修改了校园说说相同课程相同颜色  \n- 新增了切换用户提示语\n\n如果您对App有任何建议或者发现了Bug\n可以在侧栏-反馈中告诉我们，我向您保证每个Bug都会尽快修复，每个意见都会得到回复，另外在AppStore中求个好评🙏"
+                                     };
     
     NSDictionary *noticeDictionary2=@{@"time":@"2017-02-20 08:00",
-                                     @"title":@"开发者的一些话",
-                                     @"body":@"首先感谢你在新的学期里继续使用工大助手,由于团队每个人的分工不同，整个iOS端仅由我一个人的负责开发。对此，如果之前版本App有给你带来不便的地方，希望您能够理解。\n\n在新的版本中，我修改了大量的界面并对程序进行了优化。如果您还发现有任何Bug，可以通过【左滑菜单-反馈】向我反馈，我向您保证，您反馈的每一个Bug我都会修复，提的每一个建议，我们都会认真考虑。\n\n同时如果App给您有带来了便利，希望您可以在【左滑菜单-关于-去AppStore评分】给App进行评分，对一个整天码代码的程序猿来说，这是最好的鼓励了🙏\n"
-                                     };
+                                      @"title":@"开发者的一些话",
+                                      @"body":@"首先感谢你在新的学期里继续使用工大助手,由于团队每个人的分工不同，整个iOS端仅由我一个人的负责开发。对此，如果之前版本App有给你带来不便的地方，希望您能够理解。\n\n在新的版本中，我修改了大量的界面并对程序进行了优化。如果您还发现有任何Bug，可以通过【左滑菜单-反馈】向我反馈，我向您保证，您反馈的每一个Bug我都会修复，提的每一个建议，我们都会认真考虑。\n\n同时如果App给您有带来了便利，希望您可以在【左滑菜单-关于-去AppStore评分】给App进行评分，对一个整天码代码的程序猿来说，这是最好的鼓励了🙏\n"
+                                      };
     NSArray *array = @[noticeDictionary,noticeDictionary2];
     [defaults setObject:array forKey:@"Notice"];//通知列表
     [defaults synchronize];
@@ -184,5 +195,31 @@ static int Is ;
                                                             diskCapacity:0
                                                                 diskPath:nil];
     [NSURLCache setSharedURLCache:sharedCache];
+}
+/**保存和移除Umeng标签和别名*/
++(void)saveUmeng{
+    [MobClick profileSignInWithPUID:[self getUser].studentKH];
+    [UMessage addTag:[self getUser].class_name
+            response:^(id responseObject, NSInteger remain, NSError *error) {
+                NSLog(@"班级信息保存成功/n");
+            }];//班级
+    [UMessage addTag:[self getUser].dep_name
+            response:^(id responseObject, NSInteger remain, NSError *error) {
+                NSLog(@"学院信息保存成功/n");
+            }];  //学院
+    [UMessage addAlias:[self getUser].studentKH type:kUMessageAliasTypeSina response:^(id responseObject, NSError *error) {
+        NSLog(@"学号信息保存成功/n");
+    }];
+}
++(void)removeUmeng{
+    [UMessage removeAllTags:^(id responseObject, NSInteger remain, NSError *error) {//删除友盟标签缓存
+    }];
+    [UMessage removeAlias:[Config getStudentKH] type:kUMessageAliasTypeSina response:^(id responseObject, NSError *error) {
+    }];
+}
+/**删除本地数据缓存*/
++(void)removeUserDefaults{
+    NSString *appDomain       = [[NSBundle mainBundle] bundleIdentifier];
+    [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:appDomain];
 }
 @end

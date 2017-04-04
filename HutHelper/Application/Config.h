@@ -28,9 +28,11 @@
 +(void)saveExam:(NSData*)examData;
 +(void)saveLost:(NSArray*)lostData;
 +(void)saveNowWeek:(int)nowWeek;
++(void)saveVedio:(NSDictionary*)vedioData;
 #pragma mark - 获得存储数据
 +(NSArray*)getCourse;
 +(NSArray*)getCourseXp;
++(NSDictionary*)getVedio;
 #pragma mark - 获得用户数据
 +(User*)getUser;
 +(NSString*)getStudentKH;
@@ -45,6 +47,9 @@
 +(NSString*)getUserId;
 +(NSString*)getRememberCodeApp;
 #pragma mark - 设置
++(void)saveUmeng;
++(void)removeUmeng;
++(void)removeUserDefaults;
 +(void)setNoSharedCache;
 +(void)pushViewController:(NSString*)controller;
 @end

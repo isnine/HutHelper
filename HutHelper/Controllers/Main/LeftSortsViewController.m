@@ -130,7 +130,7 @@
     static NSString *Identifier      = @"Identifier";
     UITableViewCell *cell            = [tableView dequeueReusableCellWithIdentifier:Identifier];
     LeftUserTableViewCell *userCell=[LeftUserTableViewCell tableViewCell];
-    if (cell == nil) {
+    if (! cell) {
         cell                = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:Identifier];
     }
     
@@ -156,13 +156,11 @@
 
         }]];
         [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            NSString *appDomain       = [[NSBundle mainBundle] bundleIdentifier];
-            [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:appDomain];  //删除本地数据缓存
+            [Config removeUserDefaults];
+            [Config removeUmeng];
             AppDelegate *tempAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-            LoginViewController *firstlogin                = [[LoginViewController alloc] init];
+            LoginViewController *firstlogin                = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
             [tempAppDelegate.mainNavigationController pushViewController:firstlogin animated:YES];
-            [UMessage removeAllTags:^(id responseObject, NSInteger remain, NSError *error) {//删除友盟标签缓存
-            }];
         }]];
         [self presentViewController:alert animated:true completion:nil];
     

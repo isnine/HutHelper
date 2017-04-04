@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface VedioTopTableViewCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UIButton *button;
+@property (weak, nonatomic) IBOutlet UILabel *name;
+@property (weak, nonatomic) IBOutlet UILabel *describe;
 
 @end

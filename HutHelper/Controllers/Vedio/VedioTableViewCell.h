@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class VedioModel;
 @interface VedioTableViewCell : UITableViewCell
-
+-(void)drawLeft;
+-(void)drawRight;
+@property (nonatomic, weak) VedioModel *data;
 @end

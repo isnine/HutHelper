@@ -9,10 +9,6 @@
 #import "VedioTopTableViewCell.h"
 
 @implementation VedioTopTableViewCell{
-    UILabel *name;
-    UILabel *title;
-    UIButton *vedioButton;
-    UIImageView *vedioImg;
 }
 
 - (void)awakeFromNib {
