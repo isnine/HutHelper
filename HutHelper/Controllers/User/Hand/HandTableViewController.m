@@ -91,7 +91,14 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    HandTableViewCell *cell = [HandTableViewCell tableviewcell];
+    HandTableViewCell *cell =[tableView dequeueReusableCellWithIdentifier:@"HandTableViewCell"];
+    if (!cell) {
+        cell=[[[NSBundle mainBundle]loadNibNamed:@"HandTableViewCell" owner:self options:nil]lastObject];
+    }else{
+            NSLog(@"被重用了%d",indexPath.section);
+    }
+    
+    
 
     cell.price1.text=[self getprize:(short)(indexPath.section+1)*2-1];
     cell.name1.text=[self getName:(short)(indexPath.section+1)*2-1];

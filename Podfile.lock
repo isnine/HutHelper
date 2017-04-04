@@ -53,8 +53,6 @@ PODS:
   - UMengUShare/UI (6.4.1):
     - UMengUShare/Core
   - YCXMenu (0.0.11)
-  - ZFPlayer (2.1.3):
-    - Masonry
 
 DEPENDENCIES:
   - AFNetworking (~> 3.0)
@@ -73,7 +71,6 @@ DEPENDENCIES:
   - UMengUShare/Social/ReducedWeChat
   - UMengUShare/UI
   - YCXMenu (~> 0.0.11)
-  - ZFPlayer
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
@@ -91,8 +88,7 @@ SPEC CHECKSUMS:
   UMengAnalytics-NO-IDFA: 16666e32edce5be44ae5b14aaaa7f3582e09d6ab
   UMengUShare: 7756e2e46ceba04e3000fb2c9b1d3f61784ca2ff
   YCXMenu: 6003bcd20d8ac72e3eb3c442c97ed21948c6dc1f
-  ZFPlayer: 8dc82b4508fbba4ee59d0304c52e30f8b3390244
 
-PODFILE CHECKSUM: ed49ee5ce6afdd569d5a39dfdc44b00ccd2aeb50
+PODFILE CHECKSUM: 560634db532024697f11e85363e5e681093456bc
 
 COCOAPODS: 1.1.1

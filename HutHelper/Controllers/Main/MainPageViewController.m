@@ -311,6 +311,10 @@ int class_error_;
 - (IBAction)Notice:(id)sender {
     [Config pushViewController:@"Notice"];
 } //通知界面
+- (IBAction)Vedio:(id)sender { //视频专栏
+    [Config pushViewController:@"Vedio"];
+}
+
 #pragma mark - 其他方法
 - (void)SetTimeLabel{
     NSDate *now                               = [NSDate date];
@@ -376,7 +380,6 @@ int class_error_;
     [self.navigationController.navigationBar lt_reset];
 }
 - (void)viewWillAppear:(BOOL)animated{
-    
     [super viewWillAppear:animated];
     AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [tempAppDelegate.LeftSlideVC setPanEnabled:YES];
