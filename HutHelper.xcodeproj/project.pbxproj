@@ -90,6 +90,7 @@
 		3A85678B1DA908AA00EBD44A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A85678A1DA908AA00EBD44A /* Assets.xcassets */; };
 		3A8BACF91DDDBD71001C78B8 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A8BACF81DDDBD71001C78B8 /* libsqlite3.tbd */; };
 		3A8BACFD1DDDBDDB001C78B8 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A8BACFC1DDDBDDB001C78B8 /* ImageIO.framework */; };
+		3A96DEE51E94B384006C2CC8 /* VedioPlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A96DEE41E94B384006C2CC8 /* VedioPlayViewController.m */; };
 		3A98CB5B1E7CF7AA00CABD0D /* CourseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A98CB491E7CF7A900CABD0D /* CourseModel.m */; };
 		3A98CB5D1E7CF7AA00CABD0D /* CommentsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A98CB4F1E7CF7A900CABD0D /* CommentsModel.m */; };
 		3A98CB5E1E7CF7AA00CABD0D /* LikesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A98CB511E7CF7A900CABD0D /* LikesModel.m */; };
@@ -308,6 +309,8 @@
 		3A8BACF81DDDBD71001C78B8 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		3A8BACFA1DDDBD81001C78B8 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		3A8BACFC1DDDBDDB001C78B8 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		3A96DEE31E94B384006C2CC8 /* VedioPlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VedioPlayViewController.h; sourceTree = "<group>"; };
+		3A96DEE41E94B384006C2CC8 /* VedioPlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VedioPlayViewController.m; sourceTree = "<group>"; };
 		3A98CB481E7CF7A900CABD0D /* CourseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CourseModel.h; path = Course/CourseModel.h; sourceTree = "<group>"; };
 		3A98CB491E7CF7A900CABD0D /* CourseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CourseModel.m; path = Course/CourseModel.m; sourceTree = "<group>"; };
 		3A98CB4E1E7CF7A900CABD0D /* CommentsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentsModel.h; sourceTree = "<group>"; };
@@ -653,6 +656,8 @@
 				3AECAF321E912DF0003D802C /* VedioTopTableViewCell.h */,
 				3AECAF331E912DF0003D802C /* VedioTopTableViewCell.m */,
 				3AECAF341E912DF0003D802C /* VedioTopTableViewCell.xib */,
+				3A96DEE31E94B384006C2CC8 /* VedioPlayViewController.h */,
+				3A96DEE41E94B384006C2CC8 /* VedioPlayViewController.m */,
 			);
 			path = Vedio;
 			sourceTree = "<group>";
@@ -1323,6 +1328,7 @@
 				3A4D2FDB1E8D237500901E3B /* DayViewController.m in Sources */,
 				3A796C301E534C1B00794043 /* ResetPassWordViewController.m in Sources */,
 				3A532CCB1E910C13003CD5A8 /* UIView+CustomControlView.m in Sources */,
+				3A96DEE51E94B384006C2CC8 /* VedioPlayViewController.m in Sources */,
 				3A98CC1C1E7CFDF900CABD0D /* main.m in Sources */,
 				3A532CD11E910C13003CD5A8 /* ZFPlayerControlView.m in Sources */,
 				3A98CB5B1E7CF7AA00CABD0D /* CourseModel.m in Sources */,

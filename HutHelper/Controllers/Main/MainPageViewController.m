@@ -316,6 +316,7 @@ int class_error_;
     [APIRequest GET:@"http://app.wxz.name/api/vedio" parameters:nil success:^(id responseObject) {
         [Config saveVedio:responseObject[@"links"]];
         [Config pushViewController:@"Vedio"];
+        HideAllHUD
     }failure:^(NSError *error) {
         [MBProgressHUD showError:@"网络超时，请检查网络并重试"];
         HideAllHUD

@@ -21,9 +21,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title=@"视频专栏";
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+    self.navigationItem.backBarButtonItem = item;
+    [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:0/255.0 green:224/255.0 blue:208/255.0 alpha:1]];
+    
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor]}];
     NSDictionary *Dic=[Config getVedio];
     [self loadData:Dic];
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -33,7 +38,7 @@
 
 #pragma mark - Table view data source
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{  //多少块
-    return datas.count+1;
+    return (datas.count+3)/2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{//每块几部分
@@ -42,9 +47,9 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{///每块的高度
     if (indexPath.section==0) {
-        return 228;
+        return SYReal(228);
     }
-    return 143;
+    return SYReal(170);
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
@@ -67,7 +72,6 @@
         VedioTopTableViewCell *cellTop=[[VedioTopTableViewCell alloc]init];
         return topCell;
     }else{
-        
         static NSString *cellIndentifier=@"VedioTableViewCell";
         VedioTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:@"VedioTableViewCell"];
         if (!cell) {
@@ -83,9 +87,13 @@
     }
 }
 -(void)drawCell:(VedioTableViewCell*)cell withIndexPath:(NSIndexPath *)indexPath{
+    cell.data=datas[indexPath.section*2-2];
+        [cell drawLeft];
+    if (datas.count>indexPath.section*2-1) {
+        cell.data=datas[indexPath.section*2-1];
+        [cell drawRight];
+    }
     
-    cell.data=datas[indexPath.section-1];
-    [cell drawLeft];
 }
 #pragma mark - 处理数据
 -(void)loadData:(NSDictionary*)JSONDic{

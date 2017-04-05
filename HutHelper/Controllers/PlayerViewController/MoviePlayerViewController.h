@@ -26,4 +26,8 @@
 @interface MoviePlayerViewController : UIViewController
 /** 视频URL */
 @property (nonatomic, strong) NSURL *videoURL;
+@property (nonatomic, copy)NSString *name;
+@property (nonatomic, copy)NSString *img;
+@property (nonatomic, copy)NSArray *listUrl;
+
 @end
