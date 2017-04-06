@@ -22,11 +22,7 @@
 // THE SOFTWARE.
 
 #import "MoviePlayerViewController.h"
-#import <AVFoundation/AVFoundation.h>
-#import <MediaPlayer/MediaPlayer.h>
-#import <Masonry/Masonry.h>
 #import "ZFPlayer.h"
-#import "UINavigationBar+Awesome.h"
 @interface MoviePlayerViewController ()
 @property (weak, nonatomic)  IBOutlet UIView *playerFatherView;
 @property (strong, nonatomic) ZFPlayerView *playerView;

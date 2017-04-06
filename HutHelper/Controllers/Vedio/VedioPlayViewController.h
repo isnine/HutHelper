@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface VedioPlayViewController : UIViewController
-
+@property (nonatomic, copy)NSString *name;
+@property (nonatomic, copy)NSString *img;
+@property (nonatomic, copy)NSArray *listUrl;
 @end

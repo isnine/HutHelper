@@ -12,6 +12,8 @@
 @interface VedioTableViewCell : UITableViewCell
 -(void)drawLeft;
 -(void)drawRight;
-@property (nonatomic, weak) VedioModel *data;
+-(void)drawTop;
+@property (nonatomic, weak) VedioModel *dataLeft;
+@property (nonatomic, weak) VedioModel *dataRight;
 @property (nonatomic, strong) ZFPlayerModel *playerModel;
 @end

@@ -31,6 +31,7 @@
 #import "LeftSortsViewController.h"
 #import "MomentsViewController.h"
 #import "APIRequest.h"
+#import "VedioPlayViewController.h"
 #define vBackBarButtonItemName  @"backArrow.png"    //导航条返回默认图片名
 @interface MainPageViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *Scontent;

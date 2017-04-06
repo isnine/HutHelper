@@ -28,7 +28,7 @@
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor]}];
     NSDictionary *Dic=[Config getVedio];
     [self loadData:Dic];
-
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -38,7 +38,7 @@
 
 #pragma mark - Table view data source
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{  //多少块
-    return (datas.count+3)/2;
+    return (datas.count+2)/2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{//每块几部分
@@ -64,33 +64,31 @@
     return 0.00001;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section==0) {
-        VedioTopTableViewCell *topCell = [tableView dequeueReusableCellWithIdentifier:@"VedioTopTableViewCell"];
-        if (!topCell) {
-            topCell = (VedioTopTableViewCell *)[[[NSBundle mainBundle] loadNibNamed:@"VedioTopTableViewCell" owner:self options:nil] lastObject];
-        }
-        VedioTopTableViewCell *cellTop=[[VedioTopTableViewCell alloc]init];
-        return topCell;
+    static NSString *cellIndentifier=@"VedioTableViewCell";
+    VedioTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:@"VedioTableViewCell"];
+    if (!cell) {
+        cell=[[VedioTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIndentifier];
     }else{
-        static NSString *cellIndentifier=@"VedioTableViewCell";
-        VedioTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:@"VedioTableViewCell"];
-        if (!cell) {
-            cell=[[VedioTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIndentifier];
-        }else{
-            while ([cell.contentView.subviews lastObject]) {
-                [(UIView*)[cell.contentView.subviews lastObject]removeFromSuperview];
-            }
+        while ([cell.contentView.subviews lastObject]) {
+            [(UIView*)[cell.contentView.subviews lastObject]removeFromSuperview];
         }
-        [self drawCell:cell withIndexPath:indexPath];
-        
-        return cell;
     }
+    [self drawCell:cell withIndexPath:indexPath];
+    
+    return cell;
 }
 -(void)drawCell:(VedioTableViewCell*)cell withIndexPath:(NSIndexPath *)indexPath{
-    cell.data=datas[indexPath.section*2-2];
-        [cell drawLeft];
-    if (datas.count>indexPath.section*2-1) {
-        cell.data=datas[indexPath.section*2-1];
+    if (indexPath.section==0) {
+        cell.dataLeft=datas[0];
+        [cell drawTop];
+        return;
+    }
+    
+    NSLog(@"%ld",indexPath.section*2-1);
+    cell.dataLeft=datas[indexPath.section*2-1];
+    [cell drawLeft];
+    if (datas.count>indexPath.section*2) {
+        cell.dataRight=datas[indexPath.section*2];
         [cell drawRight];
     }
     
