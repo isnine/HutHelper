@@ -47,6 +47,8 @@
 #define API_MOMENTS_CREATE_COMMENT @"http://218.75.197.121:8888/api/v1/moments/comment/%@/%@/%@"
 #define API_MOMENTS_LIKES_CREATE @"http://218.75.197.121:8888/api/v1/moments/like/%@/%@/%@"
 #define API_MOMENTS_LIKES_SHOW @"http://218.75.197.121:8888/api/v1/moments/like/%@/%@"
+/**视频专栏*/
+#define API_VEDIO_SHOW @"http://vedio.wxz.name/api/vedio.html"
 /**反馈*/
 #define API_FEEDBACK @"http://218.75.197.121:8888/home/msg/0"
 /**其他*/

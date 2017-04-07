@@ -80,6 +80,14 @@ static int Is ;
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     return [defaults objectForKey:@"Vedio"];
 }
++(NSString*)getVedio480p{
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    return [defaults objectForKey:@"Vedio480p"];
+}
++(NSString*)getVedio1080p{
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    return [defaults objectForKey:@"Vedio1080p"];
+}
 #pragma mark - 持续化存储
 +(void)saveUser:(NSDictionary*)userData{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
@@ -149,6 +157,16 @@ static int Is ;
 +(void)saveVedio:(NSDictionary*)vedioData{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     [defaults setObject:vedioData forKey:@"Vedio"];
+    [defaults synchronize];
+}
++(void)saveVedio480p:(NSString*)vedioString{
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    [defaults setObject:vedioString forKey:@"Vedio480p"];
+    [defaults synchronize];
+}
++(void)saveVedio1080p:(NSString*)vedioString{
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    [defaults setObject:vedioString forKey:@"Vedio1080p"];
     [defaults synchronize];
 }
 #pragma mark - 获得存储数据

@@ -33,10 +33,15 @@
 }
 -(void)draw{
     int witgh=0;
+    int height=0;
     for(int i=0;i<_listUrl.count;i++){
         UIButton *button= [UIButton buttonWithType:UIButtonTypeRoundedRect];
         button.tag = i;
-        [button setFrame:CGRectMake(10+witgh,(DeviceMaxHeight-DeviceMaxWidth*9/16)*3/8+DeviceMaxWidth*9/16, SYReal(50), SYReal(50))];
+        if (SYReal(60)+witgh>DeviceMaxWidth) {
+            height+=SYReal(80);
+            witgh=0;
+        }
+        [button setFrame:CGRectMake(SYReal(10)+witgh,SYReal(120)+DeviceMaxWidth*9/16+height, SYReal(50), SYReal(50))];
         [button setTitle:[NSString stringWithFormat:@"%d",i+1] forState:UIControlStateNormal];
         button.titleLabel.font=[UIFont systemFontOfSize: 15.0];
         button.backgroundColor=[UIColor colorWithRed:242/255.0 green:244/255.0 blue:246/255.0 alpha:1.0];
@@ -47,10 +52,11 @@
         witgh+=SYReal(65);
     }
 }
+
 -(void)btnNewVedio:(UIButton *)button{
     int i=(short)button.tag;
     self.playerModel.title            = [_listUrl[i] objectForKey:@"title"];;
-    self.playerModel.videoURL         = [NSURL URLWithString:[_listUrl[i] objectForKey:@"url"]];
+    self.playerModel.videoURL         = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",[Config getVedio480p],[_listUrl[i] objectForKey:@"url"]]];
     _playerModel.placeholderImage = [UIImage imageNamed:@"loading_bgView1"];
     [self.playerView resetToPlayNewVideo:self.playerModel];
 }
@@ -61,7 +67,7 @@
     if (!_playerModel) {
         _playerModel                  = [[ZFPlayerModel alloc] init];
         _playerModel.title            = [_listUrl[0] objectForKey:@"title"];
-        _playerModel.videoURL         = [NSURL URLWithString:[_listUrl[0] objectForKey:@"url"]];
+        _playerModel.videoURL         = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",[Config getVedio480p],[_listUrl[0] objectForKey:@"url"]]];
         NSLog(@"网络地址%@",[_listUrl[0] objectForKey:@"url"]);
         _playerModel.placeholderImage = [UIImage imageNamed:@"loading_bgView1"];
         // _playerModel.placeholderImageURLString = [NSString stringWithFormat:API_IMG,_img];

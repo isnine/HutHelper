@@ -8,7 +8,6 @@
 
 #import "VedioTableViewController.h"
 #import "VedioTableViewCell.h"
-#import "VedioTopTableViewCell.h"
 #import "VedioModel.h"
 @interface VedioTableViewController ()
 
@@ -47,9 +46,10 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{///每块的高度
     if (indexPath.section==0) {
-        return SYReal(228);
+        return SYReal(270);
+    }else{
+    return SYReal(173);
     }
-    return SYReal(170);
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
@@ -64,6 +64,7 @@
     return 0.00001;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
     static NSString *cellIndentifier=@"VedioTableViewCell";
     VedioTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:@"VedioTableViewCell"];
     if (!cell) {
@@ -74,24 +75,20 @@
         }
     }
     [self drawCell:cell withIndexPath:indexPath];
-    
     return cell;
 }
 -(void)drawCell:(VedioTableViewCell*)cell withIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section==0) {
         cell.dataLeft=datas[0];
         [cell drawTop];
-        return;
+    }else{
+        cell.dataLeft=datas[indexPath.section*2-1];
+        [cell drawLeft];
+        if (datas.count>indexPath.section*2) {
+            cell.dataRight=datas[indexPath.section*2];
+            [cell drawRight];
+        }
     }
-    
-    NSLog(@"%ld",indexPath.section*2-1);
-    cell.dataLeft=datas[indexPath.section*2-1];
-    [cell drawLeft];
-    if (datas.count>indexPath.section*2) {
-        cell.dataRight=datas[indexPath.section*2];
-        [cell drawRight];
-    }
-    
 }
 #pragma mark - 处理数据
 -(void)loadData:(NSDictionary*)JSONDic{

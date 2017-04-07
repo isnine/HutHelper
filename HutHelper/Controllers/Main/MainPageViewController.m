@@ -314,8 +314,12 @@ int class_error_;
 } //通知界面
 - (IBAction)Vedio:(id)sender { //视频专栏
     [MBProgressHUD showMessage:@"加载中" toView:self.view];
-    [APIRequest GET:@"http://app.wxz.name/api/vedio" parameters:nil success:^(id responseObject) {
+    [APIRequest GET:API_VEDIO_SHOW parameters:nil success:^(id responseObject) {
+        NSLog(@"123");
+        [Config setNoSharedCache];
         [Config saveVedio:responseObject[@"links"]];
+        [Config saveVedio480p:responseObject[@"480P"]];
+        [Config saveVedio1080p:responseObject[@"1080P"]];
         [Config pushViewController:@"Vedio"];
         HideAllHUD
     }failure:^(NSError *error) {

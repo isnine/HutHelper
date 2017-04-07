@@ -54,7 +54,6 @@
 		3A4D30231E8D305300901E3B /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A4D301D1E8D305300901E3B /* TodayViewController.m */; };
 		3A4D30241E8D305300901E3B /* ExtendModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A4D30201E8D305300901E3B /* ExtendModel.m */; };
 		3A4D30251E8D305300901E3B /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A4D30221E8D305300901E3B /* MainInterface.storyboard */; };
-		3A532C9F1E910ACB003CD5A8 /* MoviePlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A532C9E1E910ACB003CD5A8 /* MoviePlayerViewController.m */; };
 		3A532CC51E910C13003CD5A8 /* ASValuePopUpView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A532CA61E910C13003CD5A8 /* ASValuePopUpView.m */; };
 		3A532CC61E910C13003CD5A8 /* ASValueTrackingSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A532CA81E910C13003CD5A8 /* ASValueTrackingSlider.m */; };
 		3A532CC71E910C13003CD5A8 /* UIAlertController+ZFPlayerRotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A532CAB1E910C13003CD5A8 /* UIAlertController+ZFPlayerRotation.m */; };
@@ -71,7 +70,6 @@
 		3A532CD21E910C13003CD5A8 /* ZFPlayerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A532CC21E910C13003CD5A8 /* ZFPlayerModel.m */; };
 		3A532CD31E910C13003CD5A8 /* ZFPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A532CC41E910C13003CD5A8 /* ZFPlayerView.m */; };
 		3A532CDD1E9121C5003CD5A8 /* VedioTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A532CDC1E9121C5003CD5A8 /* VedioTableViewController.m */; };
-		3A532CE11E91220D003CD5A8 /* VedioTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A532CDF1E91220D003CD5A8 /* VedioTableViewCell.m */; };
 		3A796C1F1E534C1B00794043 /* CourseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A796BA41E534C1B00794043 /* CourseViewController.m */; };
 		3A796C251E534C1B00794043 /* FeedbackResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A796BB21E534C1B00794043 /* FeedbackResultViewController.m */; };
 		3A796C261E534C1B00794043 /* FeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A796BB41E534C1B00794043 /* FeedbackViewController.m */; };
@@ -122,8 +120,7 @@
 		3A98CC1C1E7CFDF900CABD0D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A98CC181E7CFDF900CABD0D /* main.m */; };
 		3A98CC1D1E7CFDF900CABD0D /* language.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3A98CC191E7CFDF900CABD0D /* language.strings */; };
 		3A98CC251E7CFF0200CABD0D /* Math.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A98CC231E7CFF0200CABD0D /* Math.m */; };
-		3AECAF351E912DF0003D802C /* VedioTopTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AECAF331E912DF0003D802C /* VedioTopTableViewCell.m */; };
-		3AECAF361E912DF0003D802C /* VedioTopTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AECAF341E912DF0003D802C /* VedioTopTableViewCell.xib */; };
+		3AD443EB1E97CF5600720F42 /* VedioTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD443EA1E97CF5600720F42 /* VedioTableViewCell.m */; };
 		3AF73BF11E7D12610086417E /* APIRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF73BF01E7D12610086417E /* APIRequest.m */; };
 		DF4C1EB183B351F157BF18CD /* libPods-HutHelper.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CAE9EAE0009084B77EC3CAD6 /* libPods-HutHelper.a */; };
 /* End PBXBuildFile section */
@@ -234,8 +231,6 @@
 		3A4D301F1E8D305300901E3B /* ExtendModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExtendModel.h; sourceTree = "<group>"; };
 		3A4D30201E8D305300901E3B /* ExtendModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExtendModel.m; sourceTree = "<group>"; };
 		3A4D30221E8D305300901E3B /* MainInterface.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainInterface.storyboard; sourceTree = "<group>"; };
-		3A532C9D1E910ACB003CD5A8 /* MoviePlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MoviePlayerViewController.h; path = PlayerViewController/MoviePlayerViewController.h; sourceTree = "<group>"; };
-		3A532C9E1E910ACB003CD5A8 /* MoviePlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MoviePlayerViewController.m; path = PlayerViewController/MoviePlayerViewController.m; sourceTree = "<group>"; };
 		3A532CA51E910C13003CD5A8 /* ASValuePopUpView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASValuePopUpView.h; sourceTree = "<group>"; };
 		3A532CA61E910C13003CD5A8 /* ASValuePopUpView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASValuePopUpView.m; sourceTree = "<group>"; };
 		3A532CA71E910C13003CD5A8 /* ASValueTrackingSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASValueTrackingSlider.h; sourceTree = "<group>"; };
@@ -269,8 +264,6 @@
 		3A532CC41E910C13003CD5A8 /* ZFPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFPlayerView.m; sourceTree = "<group>"; };
 		3A532CDB1E9121C5003CD5A8 /* VedioTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VedioTableViewController.h; sourceTree = "<group>"; };
 		3A532CDC1E9121C5003CD5A8 /* VedioTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VedioTableViewController.m; sourceTree = "<group>"; };
-		3A532CDE1E91220D003CD5A8 /* VedioTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VedioTableViewCell.h; sourceTree = "<group>"; };
-		3A532CDF1E91220D003CD5A8 /* VedioTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VedioTableViewCell.m; sourceTree = "<group>"; };
 		3A6FF7C41DB3151E004CFBE8 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		3A6FF7C61DB3152C004CFBE8 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		3A6FF7C81DB31544004CFBE8 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
@@ -369,9 +362,8 @@
 		3A98CC1A1E7CFDF900CABD0D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/language.strings"; sourceTree = "<group>"; };
 		3A98CC221E7CFF0200CABD0D /* Math.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = Math.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		3A98CC231E7CFF0200CABD0D /* Math.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Math.m; sourceTree = "<group>"; };
-		3AECAF321E912DF0003D802C /* VedioTopTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VedioTopTableViewCell.h; sourceTree = "<group>"; };
-		3AECAF331E912DF0003D802C /* VedioTopTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VedioTopTableViewCell.m; sourceTree = "<group>"; };
-		3AECAF341E912DF0003D802C /* VedioTopTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VedioTopTableViewCell.xib; sourceTree = "<group>"; };
+		3AD443E91E97CF5600720F42 /* VedioTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VedioTableViewCell.h; sourceTree = "<group>"; };
+		3AD443EA1E97CF5600720F42 /* VedioTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VedioTableViewCell.m; sourceTree = "<group>"; };
 		3AF73BEF1E7D12610086417E /* APIRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIRequest.h; sourceTree = "<group>"; };
 		3AF73BF01E7D12610086417E /* APIRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIRequest.m; sourceTree = "<group>"; };
 		A8DF4B266A6C75237AD1C11E /* Pods-HutHelper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HutHelper.release.xcconfig"; path = "Pods/Target Support Files/Pods-HutHelper/Pods-HutHelper.release.xcconfig"; sourceTree = "<group>"; };
@@ -591,15 +583,6 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		3A532C9B1E910AB2003CD5A8 /* Test */ = {
-			isa = PBXGroup;
-			children = (
-				3A532C9D1E910ACB003CD5A8 /* MoviePlayerViewController.h */,
-				3A532C9E1E910ACB003CD5A8 /* MoviePlayerViewController.m */,
-			);
-			name = Test;
-			sourceTree = "<group>";
-		};
 		3A532CA41E910C13003CD5A8 /* ZFPlayer */ = {
 			isa = PBXGroup;
 			children = (
@@ -651,11 +634,6 @@
 			children = (
 				3A532CDB1E9121C5003CD5A8 /* VedioTableViewController.h */,
 				3A532CDC1E9121C5003CD5A8 /* VedioTableViewController.m */,
-				3A532CDE1E91220D003CD5A8 /* VedioTableViewCell.h */,
-				3A532CDF1E91220D003CD5A8 /* VedioTableViewCell.m */,
-				3AECAF321E912DF0003D802C /* VedioTopTableViewCell.h */,
-				3AECAF331E912DF0003D802C /* VedioTopTableViewCell.m */,
-				3AECAF341E912DF0003D802C /* VedioTopTableViewCell.xib */,
 				3A96DEE31E94B384006C2CC8 /* VedioPlayViewController.h */,
 				3A96DEE41E94B384006C2CC8 /* VedioPlayViewController.m */,
 			);
@@ -666,7 +644,6 @@
 			isa = PBXGroup;
 			children = (
 				3A532CD41E91212A003CD5A8 /* Vedio */,
-				3A532C9B1E910AB2003CD5A8 /* Test */,
 				3A796BD91E534C1B00794043 /* Main */,
 				3A4D2FE21E8D245F00901E3B /* Hand */,
 				3A4048F81E6A663B0038F207 /* Moments */,
@@ -774,6 +751,7 @@
 			children = (
 				3A4D300B1E8D297200901E3B /* Main */,
 				3A4D2FBA1E8D20E900901E3B /* Hand */,
+				3AD443E81E97CF5600720F42 /* Vedio */,
 				3A4D2FBF1E8D226000901E3B /* Lost */,
 				3A06D9B11E8CEDE400066DD1 /* Exam */,
 				3A4D2FF51E8D24E200901E3B /* Score */,
@@ -1068,6 +1046,15 @@
 			path = Manager;
 			sourceTree = "<group>";
 		};
+		3AD443E81E97CF5600720F42 /* Vedio */ = {
+			isa = PBXGroup;
+			children = (
+				3AD443E91E97CF5600720F42 /* VedioTableViewCell.h */,
+				3AD443EA1E97CF5600720F42 /* VedioTableViewCell.m */,
+			);
+			path = Vedio;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1183,7 +1170,6 @@
 				3A98CC1D1E7CFDF900CABD0D /* language.strings in Resources */,
 				3A4D2FCC1E8D226000901E3B /* LostShowTableViewCell.xib in Resources */,
 				3A796C6C1E534DAE00794043 /* Launch Screen.storyboard in Resources */,
-				3AECAF361E912DF0003D802C /* VedioTopTableViewCell.xib in Resources */,
 				3A98CC041E7CFA9C00CABD0D /* header@2x.jpg in Resources */,
 				3A98CC1B1E7CFDF900CABD0D /* Info.plist in Resources */,
 				3A4D2FBD1E8D20E900901E3B /* HandTableViewCell.xib in Resources */,
@@ -1272,6 +1258,7 @@
 				3A31E1EB1E6BE6E20056565A /* MomentsTableView.m in Sources */,
 				3A796C391E534C1B00794043 /* LeftSortsViewController.m in Sources */,
 				3A98CB5E1E7CF7AA00CABD0D /* LikesModel.m in Sources */,
+				3AD443EB1E97CF5600720F42 /* VedioTableViewCell.m in Sources */,
 				3A532CCA1E910C13003CD5A8 /* UITabBarController+ZFPlayerRotation.m in Sources */,
 				3A98CC071E7CFA9C00CABD0D /* JSHeaderView.m in Sources */,
 				3A98CB611E7CF7AA00CABD0D /* User.m in Sources */,
@@ -1295,14 +1282,12 @@
 				3A4D2FC91E8D226000901E3B /* LostShowPhotoTableViewCell.m in Sources */,
 				3A98CC081E7CFA9C00CABD0D /* UserInfoCell.m in Sources */,
 				3A98CBFE1E7CFA9C00CABD0D /* FORGesture.m in Sources */,
-				3A532CE11E91220D003CD5A8 /* VedioTableViewCell.m in Sources */,
 				3A98CC0B1E7CFA9C00CABD0D /* UIView_extra.m in Sources */,
 				3A4D2FEE1E8D245F00901E3B /* HandTableViewController.m in Sources */,
 				3A98CB711E7CF82F00CABD0D /* UINavigationBar+Awesome.m in Sources */,
 				3A796C261E534C1B00794043 /* FeedbackViewController.m in Sources */,
 				3A796C3C1E534C1B00794043 /* NoticeShowViewController.m in Sources */,
 				3A98CC001E7CFA9C00CABD0D /* UUInputAccessoryView.m in Sources */,
-				3A532C9F1E910ACB003CD5A8 /* MoviePlayerViewController.m in Sources */,
 				3A532CCF1E910C13003CD5A8 /* ZFBrightnessView.m in Sources */,
 				3A4D30131E8D297200901E3B /* LeftItemTableViewCell.m in Sources */,
 				3A06D9B51E8CEDE400066DD1 /* ExamCell.m in Sources */,
@@ -1349,7 +1334,6 @@
 				3A4D30031E8D27F800901E3B /* ExamViewController.m in Sources */,
 				3A532CC71E910C13003CD5A8 /* UIAlertController+ZFPlayerRotation.m in Sources */,
 				3A98CC0E1E7CFA9C00CABD0D /* YYFPSLabel.m in Sources */,
-				3AECAF351E912DF0003D802C /* VedioTopTableViewCell.m in Sources */,
 				3A31E1E81E6BE68C0056565A /* MomentsAddViewController.m in Sources */,
 				3A98CC0F1E7CFA9C00CABD0D /* YYWeakProxy.m in Sources */,
 				3A98CC251E7CFF0200CABD0D /* Math.m in Sources */,
