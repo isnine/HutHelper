@@ -213,6 +213,7 @@ int class_error_;
 - (IBAction)SchoolHand:(id)sender {
     [Config setNoSharedCache];
     if ([Config getHand]) {
+        [Config setIs:0];
         HandTableViewController *hand=[[HandTableViewController alloc]init];
         AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         [tempAppDelegate.mainNavigationController pushViewController:hand animated:YES];
