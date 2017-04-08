@@ -58,10 +58,7 @@
                  [defaults setObject:array forKey:@"Hand_Show"];
                  [defaults synchronize];
                  //进入商品界面
-                 UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-                 HandShowViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"ShowHand"];
-                 AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-                 [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:NO];
+                 [Config pushViewController:@"ShowHand"];
              }
              else if ([Msg isEqualToString:@"令牌错误"]){
                  [MBProgressHUD showError:@"登录过期,请重新登录"];
@@ -94,10 +91,7 @@
                  [defaults setObject:array forKey:@"Hand_Show"];
                  [defaults synchronize];
                  //进入商品界面
-                 UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-                 HandShowViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"ShowHand"];
-                 AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-                 [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:NO];
+                  [Config pushViewController:@"ShowHand"];
              }
              else{
                  [MBProgressHUD showError:@"查询失败"];

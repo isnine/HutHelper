@@ -31,9 +31,8 @@
     [super viewDidLoad];
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor]}];
     /**加载数据*/
-    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    _Hand_content=[defaults objectForKey:@"Hand"];
     if ([Config getIs]==0) {
+        _Hand_content=[Config getHand];
         /**按钮*/
         UIView *rightButtonView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 50)];
         UIButton *mainAndSearchBtn = [[UIButton alloc] initWithFrame:CGRectMake(70, 0, 50, 50)];
@@ -47,7 +46,9 @@
         self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(reload)];
         //上拉加载
         self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(load)];
+        [self.tableView.mj_header beginRefreshing];
     }else{
+        _Hand_content=[Config getOtherHand];
         self.navigationItem.title=@"我的发布";
     }
     /** 标题栏样式 */
@@ -97,12 +98,11 @@
     }else{
             NSLog(@"被重用了%d",indexPath.section);
     }
-    
-    
-
     cell.price1.text=[self getprize:(short)(indexPath.section+1)*2-1];
     cell.name1.text=[self getName:(short)(indexPath.section+1)*2-1];
     cell.time1.text=[self gettime:(short)(indexPath.section+1)*2-1];
+    cell.img1.contentMode =UIViewContentModeScaleAspectFill;
+    cell.img1.clipsToBounds = YES;
     [cell.img1 sd_setImageWithURL:[NSURL URLWithString:[self getPhoto:(short)(indexPath.section+1)*2-1]]
                       placeholderImage:[UIImage imageNamed:@"load_img"]];
     if (_Hand_content.count>(indexPath.section+1)*2) {
@@ -110,6 +110,8 @@
         cell.name2.text=[self getName:(short)(indexPath.section+1)*2];
         cell.time2.text=[self gettime:(short)(indexPath.section+1)*2];
         cell.Button2.hidden=false;
+        cell.img2.contentMode =UIViewContentModeScaleAspectFill;
+        cell.img2.clipsToBounds = YES;
         [cell.img2 sd_setImageWithURL:[NSURL URLWithString:[self getPhoto:(short)(indexPath.section+1)*2]]
                      placeholderImage:[UIImage imageNamed:@"load_img"]];
     }
@@ -121,10 +123,7 @@
 
 #pragma mark -"其他"
 -(void)addHand{
-    UIStoryboard *Main=[UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    HandAddViewController *Add=[Main instantiateViewControllerWithIdentifier:@"Addhand"];
-    AppDelegate *temp=(AppDelegate *)[[UIApplication sharedApplication] delegate];
-    [temp.mainNavigationController pushViewController:Add animated:YES];
+     [Config pushViewController:@"Addhand"];
 }
 -(void)myHand{
     NSURLCache *sharedCache = [[NSURLCache alloc] initWithMemoryCapacity:0
@@ -154,7 +153,7 @@
                  [data addObject:_Hand_content[0]];
                  [data addObjectsFromArray:Hand];
                  NSArray *Hands = [NSArray arrayWithArray:data];
-                 [defaults setObject:Hands forKey:@"Hand"];
+                 [defaults setObject:Hands forKey:@"otherHand"];
                  [defaults synchronize];
                  HideAllHUD
                  [Config setIs:1];
@@ -248,10 +247,7 @@
 }
 
 -(void)reload{
-    NSURLCache *sharedCache = [[NSURLCache alloc] initWithMemoryCapacity:0
-                                                            diskCapacity:0
-                                                                diskPath:nil];
-    [NSURLCache setSharedURLCache:sharedCache];
+    [Config setNoSharedCache];
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     /**拼接地址*/
     NSString *Url_String=[NSString stringWithFormat:API_GOODS,_num];
@@ -265,12 +261,10 @@
          success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
              NSDictionary *dic1 = [NSDictionary dictionaryWithObject:responseObject forKey:@""];
              NSArray *Hand           = [dic1 objectForKey:@""];
-             [defaults setObject:Hand forKey:@"Hand"];
-             [defaults synchronize];
+             [Config saveHand:Hand];
              _Hand_content=Hand;
              [self.tableView reloadData];
              [self.tableView.mj_header endRefreshing];
-             [MBProgressHUD showSuccess:@"刷新成功"];
          } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
              [MBProgressHUD showError:@"网络错误"];
              [self.tableView.mj_header endRefreshing];
@@ -281,10 +275,7 @@
 -(void)load{
     _num++;
     if (_num<=[[self getMaxPage] intValue]) {
-        NSURLCache *sharedCache = [[NSURLCache alloc] initWithMemoryCapacity:0
-                                                                diskCapacity:0
-                                                                    diskPath:nil];
-        [NSURLCache setSharedURLCache:sharedCache];
+        [Config setNoSharedCache];
         NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
         /**拼接地址*/
         NSString *Url_String=[NSString stringWithFormat:API_GOODS,_num];

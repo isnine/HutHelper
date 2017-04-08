@@ -51,10 +51,7 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     [defaults setObject:_noticeData[indexPath.section] forKey:@"NoticeShow"];
-    UIStoryboard *main=[UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    NoticeShowViewController *View      = [main instantiateViewControllerWithIdentifier:@"NoticeShow"];
-    AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    [tempAppDelegate.mainNavigationController pushViewController:View animated:YES];
+    [Config pushViewController:@"NoticeShow"];
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 80;

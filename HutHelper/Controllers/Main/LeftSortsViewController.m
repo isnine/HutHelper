@@ -136,11 +136,7 @@
     
     if (indexPath.row == 0) { //个人界面
         [self.tableview reloadData];
-        UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        CourseViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"User"];
-        AppDelegate *tempAppDelegate     = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-        [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:NO];
-        
+        [Config pushViewController:@"User"];
     }
     
     if (indexPath.row == 2) {  //分享
@@ -166,16 +162,10 @@
     
     }
     if (indexPath.row == 4) {  //关于
-        UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        CourseViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"About"];
-        AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-        [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:YES];
+        [Config pushViewController:@"About"];
     }
     if (indexPath.row == 5) {  //反馈
-        UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        CourseViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Feedback"];
-        AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-        [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:YES];
+        [Config pushViewController:@"Feedback"];
     }
     
 }

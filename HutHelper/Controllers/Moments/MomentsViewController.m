@@ -46,17 +46,18 @@
         [mainAndSearchBtn addTarget:self action:@selector(menu) forControlEvents:UIControlEventTouchUpInside];
         UIBarButtonItem *rightCunstomButtonView = [[UIBarButtonItem alloc] initWithCustomView:rightButtonView];
         self.navigationItem.rightBarButtonItem = rightCunstomButtonView;
-        momentsTableView = [[MomentsTableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
+        momentsTableView = [[MomentsTableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain withSay:[Config getSay] withSayLike:[Config getSayLike]];
+        momentsTableView.beginload;
         [self.view addSubview:momentsTableView];
         
     }else{
         NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-        NSDictionary *JSONDic=[defaults objectForKey:@"Say"];
+        NSDictionary *JSONDic=[defaults objectForKey:@"otherSay"];
         [self reLoadData:JSONDic];
         MomentsModel *momentsModel=datas[0];
         if(momentsModel.username){
             self.navigationItem.title = [NSString stringWithFormat:@"%@的说说",momentsModel.username];
-            momentsTableView = [[MomentsTableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
+            momentsTableView = [[MomentsTableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain withSay:[defaults objectForKey:@"otherSay"] withSayLike:[Config getSayLike]];
             momentsTableView.HiddenMJ;
             [self.view addSubview:momentsTableView];
         }
@@ -133,7 +134,7 @@
                  NSDictionary *Say_Data=[Say_All objectForKey:@"data"];
                  NSArray *Say_content=[Say_Data objectForKey:@"posts"];//加载该页数据
                  if (Say_content.count!=0) {
-                     [defaults setObject:Say_content forKey:@"Say"];
+                     [defaults setObject:Say_content forKey:@"otherSay"];
                      [defaults synchronize];
                      HideAllHUD
                      [Config setIs:1];
@@ -156,9 +157,6 @@
          }];
 }
 -(void)addSay{
-    UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    MomentsAddViewController *MomentsAddViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"AddSay"];
-    AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    [tempAppDelegate.mainNavigationController pushViewController:MomentsAddViewController animated:NO];
+    [Config pushViewController:@"AddSay"];
 }
 @end

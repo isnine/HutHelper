@@ -1,5 +1,5 @@
 //
-//  ExamNewViewController.m
+//  ExamViewController.m
 //  HutHelper
 //
 //  Created by nine on 2017/1/7.
@@ -17,10 +17,9 @@
 #include <stdio.h>
 #include <time.h>
 #import<CommonCrypto/CommonDigest.h>
- 
-@interface ExamViewController ()<UITableViewDataSource, UITableViewDelegate>
+#import "MJRefresh.h"
+@interface ExamViewController ()
 
-@property (strong, nonatomic) UITableView *tableView;
 @property (nonatomic, retain) NSMutableArray *array;
 @property (nonatomic, retain) NSMutableArray *arraycx;
 @end
@@ -67,21 +66,14 @@ int datediff(int y1,int m1,int d1,int y2,int m2,int d2)
     [super viewDidLoad];
     self.navigationItem.title = @"考试查询";
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor]}];
-    /**按钮*/
-    UIView *rightButtonView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 50)];
-    UIButton *mainAndSearchBtn = [[UIButton alloc] initWithFrame:CGRectMake(70, 0, 50, 50)];
-    [rightButtonView addSubview:mainAndSearchBtn];
-    [mainAndSearchBtn setImage:[UIImage imageNamed:@"refresh"] forState:UIControlStateNormal];
-    [mainAndSearchBtn addTarget:self action:@selector(reloadexam) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *rightCunstomButtonView = [[UIBarButtonItem alloc] initWithCustomView:rightButtonView];
-    self.navigationItem.rightBarButtonItem = rightCunstomButtonView;
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(reloadexam)];
     //获得考试信息
     [self getexam];
-
+    [self.tableView.mj_header beginRefreshing];
 }
 #pragma mark - "设置表格代理"
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-  
+    
     return _array.count+_arraycx.count;
 }
 
@@ -115,7 +107,7 @@ int datediff(int y1,int m1,int d1,int y2,int m2,int d2)
     int i;
     /**考试数据*/
     if (indexPath.section<_array.count)
-      dict1=_array[indexPath.section];
+        dict1=_array[indexPath.section];
     else if(indexPath.section<_arraycx.count+_array.count)
         dict1=_arraycx[indexPath.section-_array.count];
     /**考试信息*/
@@ -133,7 +125,7 @@ int datediff(int y1,int m1,int d1,int y2,int m2,int d2)
     if ([isset isEqual:[NSNull null]])        isset   = @"-";
     /**添加重修标志*/
     if (indexPath.section>=_array.count&&indexPath.section<_arraycx.count+_array.count)
-            CourseName=[@"【重修】" stringByAppendingString:CourseName];
+        CourseName=[@"【重修】" stringByAppendingString:CourseName];
     /**计算考试时间*/
     int Year,Mouth,Day,Hour,Minutes,End_Hour,End_Minutes=0;
     if (![EndTime isEqual:@"-"]) {
@@ -161,7 +153,7 @@ int datediff(int y1,int m1,int d1,int y2,int m2,int d2)
         Exam_Time=[NSString stringWithFormat:@"%@周/%d.%d.%d/%d:%@-%d:%@",Week_Num,Year,Mouth,Day,Hour,String_Minutes,End_Hour,String_End_Minutes];
     }
     else
-    Exam_Time=@"-";
+        Exam_Time=@"-";
     NSLog(@"%@",Exam_Time);
     /**计算倒计时*/
     NSDate *now                               = [NSDate date];
@@ -182,7 +174,7 @@ int datediff(int y1,int m1,int d1,int y2,int m2,int d2)
         lastime=@"今天考试";
     }
     else lastime=@"-";
-   /**考试状态*/
+    /**考试状态*/
     if ([isset isEqualToString:@"1"]) {
         isset=@"已执行";
     }
@@ -192,13 +184,13 @@ int datediff(int y1,int m1,int d1,int y2,int m2,int d2)
     else{
         isset=@"-";
     }
-            cell.Label_ExamName.text=CourseName;
-            cell.Label_ExamRoom.text=RoomName;
-            cell.Label_ExamTime.text=Exam_Time;
-            cell.Label_ExamIsset.text=isset;
-            cell.Label_ExamLast.text=lastime;
-
-  //  NSLog(@"%@",dict1);
+    cell.Label_ExamName.text=CourseName;
+    cell.Label_ExamRoom.text=RoomName;
+    cell.Label_ExamTime.text=Exam_Time;
+    cell.Label_ExamIsset.text=isset;
+    cell.Label_ExamLast.text=lastime;
+    
+    //  NSLog(@"%@",dict1);
     return cell;
 }
 #pragma mark - "读取考试信息"
@@ -211,7 +203,6 @@ int datediff(int y1,int m1,int d1,int y2,int m2,int d2)
     _arraycx = [Class_Data objectForKey:@"cxexam"];
 }
 -(void)reloadexam{
-    [MBProgressHUD showMessage:@"查询中" toView:self.view];
     /**拼接地址*/
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     NSString *ss=[Config.getStudentKH stringByAppendingString:@"apiforapp!"];
@@ -221,47 +212,33 @@ int datediff(int y1,int m1,int d1,int y2,int m2,int d2)
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     /**设置4秒超时*/
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
-    manager.requestSerializer.timeoutInterval = 3.f;
+    manager.requestSerializer.timeoutInterval = 4.f;
     [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
     /**请求*/
     [manager GET:Url_String parameters:nil progress:nil
          success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
              NSDictionary *Exam_All = [NSDictionary dictionaryWithDictionary:responseObject];
-             NSDictionary *Exam_Data=[Exam_All objectForKey:@"data"];//All字典 -> Data字典
              NSData *Exam_data =    [NSJSONSerialization dataWithJSONObject:Exam_All options:NSJSONWritingPrettyPrinted error:nil];
-             NSString *message=[Exam_All objectForKey:@"message"];
              NSString *status=[Exam_All objectForKey:@"status"];
              if([status isEqualToString:@"success"]){
                  NSDictionary *Class_Data=[Exam_All objectForKey:@"res"];
                  NSMutableArray *array             = [Class_Data objectForKey:@"exam"];
-                 NSMutableArray *arraycx             = [Class_Data objectForKey:@"cxexam"];
-                 [defaults setObject:Exam_data forKey:@"Exam"];
-                 [defaults synchronize];
-                 NSInteger *exam_on                        = [defaults integerForKey:@"exam_on"];
+                 [Config saveExam:Exam_data];
                  if(array.count!=0){
                      [self.tableView reloadData];
-                     [MBProgressHUD showSuccess:@"刷新成功"];
-                     HideAllHUD
+                     [self.tableView.mj_header endRefreshing];
                  }
                  else{
-                     HideAllHUD
                      [MBProgressHUD showError:@"计划表上暂无考试"];
                  }
              }
              else{
-                
+                 
                  [MBProgressHUD showError:@"超时,显示本地数据"];
              }
          } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-             if ([defaults objectForKey:@"Exam"]!=NULL) {
-                 
-                 HideAllHUD
-                 [MBProgressHUD showError:@"超时,显示本地数据"];
-             }
-             else{
-                 HideAllHUD
-                 [MBProgressHUD showError:@"网络错误"];
-             }
+             [MBProgressHUD showError:@"网络错误"];
+             [self.tableView.mj_header endRefreshing];
          }];
 }
 

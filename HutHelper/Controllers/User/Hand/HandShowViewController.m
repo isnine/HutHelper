@@ -38,7 +38,6 @@
     _Hand_show=[defaults objectForKey:@"Hand_Show"];
     [self setshow];
 }
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -52,6 +51,18 @@
     _time.text=[_Hand_show objectForKey:@"created_on"];
     _Ttile.text=[_Hand_show objectForKey:@"tit"];
     NSArray *img=[_Hand_show objectForKey:@"pics"];
+    _Img1.contentMode =UIViewContentModeScaleAspectFill;
+    _Img1.clipsToBounds = YES;
+    _Img2.contentMode =UIViewContentModeScaleAspectFill;
+    _Img2.clipsToBounds = YES;
+    _Img3.contentMode =UIViewContentModeScaleAspectFill;
+    _Img3.clipsToBounds = YES;
+    _Img4.contentMode =UIViewContentModeScaleAspectFill;
+    _Img4.clipsToBounds = YES;
+    _Img5.contentMode =UIViewContentModeScaleAspectFill;
+    _Img5.clipsToBounds = YES;
+    _Img6.contentMode =UIViewContentModeScaleAspectFill;
+    _Img6.clipsToBounds = YES;
     switch (img.count) {
         case 1:{
             [_Img5 sd_setImageWithURL:[NSURL URLWithString:[self getimg:0]]

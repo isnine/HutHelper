@@ -1060,18 +1060,6 @@ NSString *show_xp;
         
         //        //set item
         _items = [@[menuTitle,
-                    //                    [YCXMenuItem menuItem:@"个人中心"
-                    //                                    image:nil
-                    //                                      tag:100
-                    //                                 userInfo:@{@"title":@"Menu"}],
-                    //                    [YCXMenuItem menuItem:@"ACTION 133"
-                    //                                    image:nil
-                    //                                      tag:101
-                    //                                 userInfo:@{@"title":@"Menu"}],
-                    //                    [YCXMenuItem menuItem:@"检查更新"
-                    //                                    image:nil
-                    //                                      tag:102
-                    //                                 userInfo:@{@"title":@"Menu"}],
                     logoutItem
                     ] mutableCopy];
     }

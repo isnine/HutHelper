@@ -165,6 +165,14 @@ int class_error_;
 } //电费查询
 - (IBAction)SchoolSay:(id)sender {
     [Config setNoSharedCache];
+    if ([Config getSay]) {
+        [Config setIs:0];
+        MomentsViewController *Say      = [[MomentsViewController alloc] init];
+        AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        [tempAppDelegate.mainNavigationController pushViewController:Say animated:YES];
+        return;
+    }
+    
     [MBProgressHUD showMessage:@"加载中" toView:self.view];
     NSString *urlString=[NSString stringWithFormat:API_MOMENTS,1];
     NSString *urlLikesString=[NSString stringWithFormat:API_MOMENTS_LIKES_SHOW,Config.getStudentKH,Config.getRememberCodeApp];
@@ -204,6 +212,12 @@ int class_error_;
 } //校园说说
 - (IBAction)SchoolHand:(id)sender {
     [Config setNoSharedCache];
+    if ([Config getHand]) {
+        HandTableViewController *hand=[[HandTableViewController alloc]init];
+        AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        [tempAppDelegate.mainNavigationController pushViewController:hand animated:YES];
+        return;
+    }
     [MBProgressHUD showMessage:@"加载中" toView:self.view];
     NSString *urlString=[NSString stringWithFormat:API_GOODS,1];
     [APIRequest GET:urlString parameters:nil success:^(id responseObject){
@@ -252,8 +266,11 @@ int class_error_;
     [Config pushViewController:@"Library"];
 } //图书馆
 - (IBAction)Exam:(id)sender {
+    if ([Config getExam]) {
+        [Config pushViewController:@"Exam"];
+        return;
+    }
     [MBProgressHUD showMessage:@"查询中" toView:self.view];
-    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     NSString *urlString=[NSString stringWithFormat:API_EXAM,Config.getStudentKH,[Math md5:[Config.getStudentKH stringByAppendingString:@"apiforapp!"]]];
     [APIRequest GET:urlString parameters:nil success:^(id responseObject) {
         NSData *Exam_data =    [NSJSONSerialization dataWithJSONObject:responseObject options:NSJSONWritingPrettyPrinted error:nil];
@@ -261,13 +278,13 @@ int class_error_;
             NSMutableArray *array             = responseObject[@"res"][@"exam"];
             [Config saveExam:Exam_data];
             if(array.count!=0){
-                [Config pushViewController:@"ExamNew"];
+                [Config pushViewController:@"Exam"];
             } else{
                 [MBProgressHUD showError:@"计划表上暂无考试"];
             }
         }else{
-            if ([defaults objectForKey:@"Exam"]) {
-                [Config pushViewController:@"ExamNew"];
+            if ([Config getExam]) {
+                [Config pushViewController:@"Exam"];
                 [MBProgressHUD showError:@"超时,显示本地数据"];
             }else{
                 [MBProgressHUD showError:responseObject[@"message"]];
@@ -275,8 +292,8 @@ int class_error_;
         }
         HideAllHUD
     } failure:^(NSError *error) {
-        if ([defaults objectForKey:@"Exam"]) {
-            [Config pushViewController:@"ExamNew"];
+        if ([Config getExam]) {
+            [Config pushViewController:@"Exam"];
             [MBProgressHUD showError:@"超时,显示本地数据"];
         }else{
             [MBProgressHUD showError:@"网络错误"];
@@ -313,13 +330,14 @@ int class_error_;
     [Config pushViewController:@"Notice"];
 } //通知界面
 - (IBAction)Vedio:(id)sender { //视频专栏
+    [Config setNoSharedCache];
+    if ([Config getVedio]) {
+        [Config pushViewController:@"Vedio"];
+        return;
+    }
     [MBProgressHUD showMessage:@"加载中" toView:self.view];
     [APIRequest GET:API_VEDIO_SHOW parameters:nil success:^(id responseObject) {
-        NSLog(@"123");
-        [Config setNoSharedCache];
-        [Config saveVedio:responseObject[@"links"]];
-        [Config saveVedio480p:responseObject[@"480P"]];
-        [Config saveVedio1080p:responseObject[@"1080P"]];
+        [Config saveVedio:responseObject];
         [Config pushViewController:@"Vedio"];
         HideAllHUD
     }failure:^(NSError *error) {
@@ -328,7 +346,6 @@ int class_error_;
     }];
     
 } //视频专栏
-
 
 #pragma mark - 其他方法
 - (void)SetTimeLabel{

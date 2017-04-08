@@ -57,6 +57,7 @@
     int i=(short)button.tag;
     self.playerModel.title            = [_listUrl[i] objectForKey:@"title"];;
     self.playerModel.videoURL         = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",[Config getVedio480p],[_listUrl[i] objectForKey:@"url"]]];
+    NSLog(@"%@",[NSString stringWithFormat:@"%@%@",[Config getVedio480p],[_listUrl[i] objectForKey:@"url"]]);
     _playerModel.placeholderImage = [UIImage imageNamed:@"loading_bgView1"];
     [self.playerView resetToPlayNewVideo:self.playerModel];
 }
@@ -68,10 +69,15 @@
         _playerModel                  = [[ZFPlayerModel alloc] init];
         _playerModel.title            = [_listUrl[0] objectForKey:@"title"];
         _playerModel.videoURL         = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",[Config getVedio480p],[_listUrl[0] objectForKey:@"url"]]];
-        NSLog(@"网络地址%@",[_listUrl[0] objectForKey:@"url"]);
+        //        NSLog(@"网络地址%@",[_listUrl[0] objectForKey:@"url"]);
         _playerModel.placeholderImage = [UIImage imageNamed:@"loading_bgView1"];
         // _playerModel.placeholderImageURLString = [NSString stringWithFormat:API_IMG,_img];
         _playerModel.fatherView       = self.playerFatherView;
+        NSLog(@"%@",[NSString stringWithFormat:@"%@%@",[Config getVedio1080p],[_listUrl[0] objectForKey:@"url"]]);
+        _playerModel.resolutionDic = @{
+                                       @"高清" : [NSString stringWithFormat:@"%@%@",[Config getVedio480p],[_listUrl[0] objectForKey:@"url"]],
+                                       @"超清" : [NSString stringWithFormat:@"%@%@",[Config getVedio1080p],[_listUrl[0] objectForKey:@"url"]]
+                                       };
     }
     return _playerModel;
 }

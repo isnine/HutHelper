@@ -10,4 +10,8 @@
 
 @interface MomentsTableView : UITableView
 -(void)HiddenMJ;
+-(void)beginload;
+@property(nonatomic,copy)NSDictionary *JSONDic;
+@property(nonatomic,copy)NSDictionary *LikesDic;
+- (instancetype)initWithFrame:(CGRect)frame style:(UITableViewStyle)style withSay:(NSDictionary *)JSONDic withSayLike:(NSDictionary *)LikesDic;
 @end

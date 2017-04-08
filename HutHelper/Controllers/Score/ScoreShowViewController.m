@@ -51,10 +51,7 @@
     
 }
 - (IBAction)PushScoreData:(id)sender {
-    UIStoryboard *main=[UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    ScoreShowViewController *Score      = [main instantiateViewControllerWithIdentifier:@"ScoreData"];
-    AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    [tempAppDelegate.mainNavigationController pushViewController:Score animated:YES];
+    [Config pushViewController:@"ScoreData"];
 }
 #pragma - 其他
 -(void)setTitle{

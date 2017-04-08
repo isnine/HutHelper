@@ -25,7 +25,7 @@
     BOOL scrollToToping;
     int num;
 }
-- (instancetype)initWithFrame:(CGRect)frame style:(UITableViewStyle)style{
+- (instancetype)initWithFrame:(CGRect)frame style:(UITableViewStyle)style withSay:(NSDictionary *)JSONDic withSayLike:(NSDictionary *)LikesDic{
     self = [super initWithFrame:frame style:style];
     if (self) {
         self.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -33,10 +33,9 @@
         self.delegate = self;
         datas = [[NSMutableArray alloc] init];
         needLoadArr = [[NSMutableArray alloc] init];
-        
-        NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-        NSDictionary *JSONDic=[defaults objectForKey:@"Say"];
-        NSDictionary *LikesDic=[defaults objectForKey:@"SayLikes"];
+
+//        NSDictionary *JSONDic=[Config getSay];
+//        NSDictionary *LikesDic=[Config getSayLike];
         [self loadData:JSONDic];
         [self loadLikesData:LikesDic];
         num=1;
@@ -44,11 +43,15 @@
     }
     self.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(reload)];
     self.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(load)];
+    
     return self;
 }
 -(void)HiddenMJ{
     self.mj_footer.hidden = YES;
     self.mj_header.hidden = YES;
+}
+-(void)beginload{
+    [self.mj_header beginRefreshing];
 }
 - (void)drawCell:(MomentsCell *)cell withIndexPath:(NSIndexPath *)indexPath{
     MomentsModel *data = [datas objectAtIndex:indexPath.section];
@@ -127,12 +130,13 @@
                  NSDictionary *Say_Data=[Say_All objectForKey:@"data"];
                  NSDictionary *Say_content=[Say_Data objectForKey:@"posts"];//加载该页数据
                  if (Say_content) {
+                     [Config saveSay:Say_content];
                      [manager GET:likesDataString parameters:nil progress:nil
                           success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                               NSDictionary *sayLikesAll = [NSDictionary dictionaryWithDictionary:responseObject];
+                              [Config saveSayLikes:responseObject];
                               [self reLoadData:Say_content];
                               [self loadLikesData:sayLikesAll];
-                              [MBProgressHUD showSuccess:@"刷新成功"];
                               [self.mj_header endRefreshing];
                               [self reloadData];
                           } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {

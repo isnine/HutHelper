@@ -73,10 +73,7 @@
                          //点击按钮的响应事件；
                      }]];
                      [alert addAction:[UIAlertAction actionWithTitle:@"修改密码" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                         UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-                         ResetPassWordViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Login2"];
-                         AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-                         [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:YES];
+                          [Config pushViewController:@"Login2"];
                      }]];
                      //弹出提示框；
                      [self presentViewController:alert animated:true completion:nil];
@@ -112,18 +109,9 @@
     
 }
 - (IBAction)resetpassword:(id)sender {
-    UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    ResetPassWordViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Login2"];
-    AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:YES];
+    [Config pushViewController:@"Login2"];
 }
 
--(void)sein{
-    UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    ResetPassWordViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Login2"];
-    AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:NO];
-}
 
 - (void)viewWillAppear:(BOOL)animated {
     self.navigationController.navigationBarHidden = YES;

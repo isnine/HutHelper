@@ -133,10 +133,7 @@
         [defaults setObject:array forKey:@"Notice"];//通知列表
         [defaults setObject:noticeDictionary forKey:@"NoticeShow"];//通知详情
         [defaults synchronize];
-        UIStoryboard *main=[UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        NoticeViewController *View      = [main instantiateViewControllerWithIdentifier:@"NoticeShow"];//跳转通知详情界面
-        AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-        [tempAppDelegate.mainNavigationController pushViewController:View animated:YES];
+        [Config pushViewController:@"NoticeShow"];
         [UMessage setAutoAlert:NO];
         //必须加这句代码
         [UMessage didReceiveRemoteNotification:userInfo];
@@ -176,10 +173,7 @@
         [defaults setObject:array forKey:@"Notice"];//通知列表
         [defaults setObject:noticeDictionary forKey:@"NoticeShow"];//通知详情
         [defaults synchronize];
-        UIStoryboard *main=[UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        NoticeViewController *View      = [main instantiateViewControllerWithIdentifier:@"NoticeShow"];//跳转通知详情界面
-        AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-        [tempAppDelegate.mainNavigationController pushViewController:View animated:YES];
+        [Config pushViewController:@"NoticeShow"];
         [UMessage didReceiveRemoteNotification:userInfo];
     }else{
         //应用处于后台时的本地推送接受

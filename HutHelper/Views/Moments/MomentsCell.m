@@ -9,12 +9,12 @@
 #import "MomentsCell.h"
 #import "MomentsModel.h"
 #import "CommentsModel.h"
- 
+
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "UILabel+LXAdd.h"
 #import "MBProgressHUD+MJ.h"
 #import "MJRefresh.h"
- 
+
 #import "User.h"
 #import "AFNetworking.h"
 #import "LikesModel.h"
@@ -217,94 +217,88 @@
     if (_data.pics.count==0) {
         return;
     }
-    if (_data.pics.count==1) {
-        photoImg1=[[UIImageView alloc] init];
-        photoImg1.frame=CGRectMake(SYReal(20),SYReal(70)+_data.textHeight,_data.photoHeight*1.77, _data.photoHeight);
-        [photoImg1 sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:API_IMG,_data.pics[0]]]
-                     placeholderImage:[UIImage imageNamed:@"load_img"]];
-        [self.contentView addSubview:photoImg1];
-        UITapGestureRecognizer *tapGestureRecognizer1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scanBigImageClick:)];
-        [photoImg1 addGestureRecognizer:tapGestureRecognizer1];
-        [photoImg1 setUserInteractionEnabled:YES];
-        
-    }else if (_data.pics.count==2){
-        photoImg1=[[UIImageView alloc] init];
-        photoImg1.frame=CGRectMake(SYReal(20),SYReal(70)+_data.textHeight,SYReal(184), _data.photoHeight);
-        [photoImg1 sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:API_IMG,_data.pics[0]]]
-                     placeholderImage:[UIImage imageNamed:@"load_img"]];
-        [self.contentView addSubview:photoImg1];
-        photoImg2=[[UIImageView alloc] init];
-        photoImg2.frame=CGRectMake(SYReal(206),SYReal(70)+_data.textHeight,SYReal(184), _data.photoHeight);
-        [photoImg2 sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:API_IMG,_data.pics[1]]]
-                     placeholderImage:[UIImage imageNamed:@"load_img"]];
-        [self.contentView addSubview:photoImg2];
-        UITapGestureRecognizer *tapGestureRecognizer1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scanBigImageClick:)];
-        [photoImg1 addGestureRecognizer:tapGestureRecognizer1];
-        [photoImg1 setUserInteractionEnabled:YES];
-        UITapGestureRecognizer *tapGestureRecognizer2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scanBigImageClick:)];
-        [photoImg2 addGestureRecognizer:tapGestureRecognizer2];
-        [photoImg2 setUserInteractionEnabled:YES];
-        
-    }else if (_data.pics.count==3){
-        photoImg1=[[UIImageView alloc] init];
-        photoImg1.frame=CGRectMake(SYReal(20),SYReal(70)+_data.textHeight,SYReal(184), _data.photoHeight/2);
-        [photoImg1 sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:API_IMG,_data.pics[0]]]
-                     placeholderImage:[UIImage imageNamed:@"load_img"]];
-        [self.contentView addSubview:photoImg1];
-        photoImg2=[[UIImageView alloc] init];
-        photoImg2.frame=CGRectMake(SYReal(206),SYReal(70)+_data.textHeight,SYReal(184), _data.photoHeight/2);
-        [photoImg2 sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:API_IMG,_data.pics[1]]]
-                     placeholderImage:[UIImage imageNamed:@"load_img"]];
-        [self.contentView addSubview:photoImg2];
-        photoImg3=[[UIImageView alloc] init];
-        photoImg3.frame=CGRectMake(SYReal(20),SYReal(70)+_data.textHeight+_data.photoHeight/2,SYReal(184), _data.photoHeight/2);
-        [photoImg3 sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:API_IMG,_data.pics[2]]]
-                     placeholderImage:[UIImage imageNamed:@"load_img"]];
-        [self.contentView addSubview:photoImg3];
-        
-        UITapGestureRecognizer *tapGestureRecognizer1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scanBigImageClick:)];
-        [photoImg1 addGestureRecognizer:tapGestureRecognizer1];
-        [photoImg1 setUserInteractionEnabled:YES];
-        UITapGestureRecognizer *tapGestureRecognizer2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scanBigImageClick:)];
-        [photoImg2 addGestureRecognizer:tapGestureRecognizer2];
-        [photoImg2 setUserInteractionEnabled:YES];
-        UITapGestureRecognizer *tapGestureRecognizer3 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scanBigImageClick:)];
-        [photoImg3 addGestureRecognizer:tapGestureRecognizer3];
-        [photoImg3 setUserInteractionEnabled:YES];
-    }else if (_data.pics.count==4){
-        photoImg1=[[UIImageView alloc] init];
-        photoImg1.frame=CGRectMake(SYReal(20),SYReal(70)+_data.textHeight,SYReal(184), _data.photoHeight/2);
-        [photoImg1 sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:API_IMG,_data.pics[0]]]
-                     placeholderImage:[UIImage imageNamed:@"load_img"]];
-        [self.contentView addSubview:photoImg1];
-        photoImg2=[[UIImageView alloc] init];
-        photoImg2.frame=CGRectMake(SYReal(206),SYReal(70)+_data.textHeight,SYReal(184), _data.photoHeight/2);
-        [photoImg2 sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:API_IMG,_data.pics[1]]]
-                     placeholderImage:[UIImage imageNamed:@"load_img"]];
-        [self.contentView addSubview:photoImg2];
-        photoImg3=[[UIImageView alloc] init];
-        photoImg3.frame=CGRectMake(SYReal(20),SYReal(70)+_data.textHeight+_data.photoHeight/2,SYReal(184), _data.photoHeight/2);
-        [photoImg3 sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:API_IMG,_data.pics[2]]]
-                     placeholderImage:[UIImage imageNamed:@"load_img"]];
-        [self.contentView addSubview:photoImg3];
-        photoImg4=[[UIImageView alloc] init];
-        photoImg4.frame=CGRectMake(SYReal(206),SYReal(70)+_data.textHeight+_data.photoHeight/2,SYReal(184), _data.photoHeight/2);
-        [photoImg4 sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:API_IMG,_data.pics[3]]]
-                     placeholderImage:[UIImage imageNamed:@"load_img"]];
-        [self.contentView addSubview:photoImg4];
-        UITapGestureRecognizer *tapGestureRecognizer1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scanBigImageClick:)];
-        [photoImg1 addGestureRecognizer:tapGestureRecognizer1];
-        [photoImg1 setUserInteractionEnabled:YES];
-        UITapGestureRecognizer *tapGestureRecognizer2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scanBigImageClick:)];
-        [photoImg2 addGestureRecognizer:tapGestureRecognizer2];
-        [photoImg2 setUserInteractionEnabled:YES];
-        UITapGestureRecognizer *tapGestureRecognizer3 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scanBigImageClick:)];
-        [photoImg3 addGestureRecognizer:tapGestureRecognizer3];
-        [photoImg3 setUserInteractionEnabled:YES];
-        UITapGestureRecognizer *tapGestureRecognizer4 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scanBigImageClick:)];
-        [photoImg4 addGestureRecognizer:tapGestureRecognizer4];
-        [photoImg4 setUserInteractionEnabled:YES];
+    photoImg1=[[UIImageView alloc] init];
+    photoImg1.contentMode =UIViewContentModeScaleAspectFill;
+    photoImg1.clipsToBounds = YES;
+    photoImg2=[[UIImageView alloc] init];
+    photoImg2.contentMode =UIViewContentModeScaleAspectFill;
+    photoImg2.clipsToBounds = YES;
+    photoImg3=[[UIImageView alloc] init];
+    photoImg3.contentMode =UIViewContentModeScaleAspectFill;
+    photoImg3.clipsToBounds = YES;
+    photoImg4=[[UIImageView alloc] init];
+    photoImg4.contentMode =UIViewContentModeScaleAspectFill;
+    photoImg4.clipsToBounds = YES;
+    UITapGestureRecognizer *tapGestureRecognizer1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scanBigImageClick:)];
+    [photoImg1 addGestureRecognizer:tapGestureRecognizer1];
+    [photoImg1 setUserInteractionEnabled:YES];
+    UITapGestureRecognizer *tapGestureRecognizer2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scanBigImageClick:)];
+    [photoImg2 addGestureRecognizer:tapGestureRecognizer2];
+    [photoImg2 setUserInteractionEnabled:YES];
+    UITapGestureRecognizer *tapGestureRecognizer3 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scanBigImageClick:)];
+    [photoImg3 addGestureRecognizer:tapGestureRecognizer3];
+    [photoImg3 setUserInteractionEnabled:YES];
+    UITapGestureRecognizer *tapGestureRecognizer4 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scanBigImageClick:)];
+    [photoImg4 addGestureRecognizer:tapGestureRecognizer4];
+    [photoImg4 setUserInteractionEnabled:YES];
+    switch (_data.pics.count) {
+        case 1:{
+            photoImg1.frame=CGRectMake(SYReal(20),SYReal(70)+_data.textHeight,_data.photoHeight*1.77, _data.photoHeight);
+            [photoImg1 sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:API_IMG,_data.pics[0]]]
+                         placeholderImage:[UIImage imageNamed:@"load_img"]];
+            [self.contentView addSubview:photoImg1];
+            break;
+        }
+        case 2:{
+            photoImg1.frame=CGRectMake(SYReal(20),SYReal(70)+_data.textHeight,SYReal(184), _data.photoHeight);
+            [photoImg1 sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:API_IMG,_data.pics[0]]]
+                         placeholderImage:[UIImage imageNamed:@"load_img"]];
+            [self.contentView addSubview:photoImg1];
+            photoImg2.frame=CGRectMake(SYReal(206),SYReal(70)+_data.textHeight,SYReal(184), _data.photoHeight);
+            [photoImg2 sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:API_IMG,_data.pics[1]]]
+                         placeholderImage:[UIImage imageNamed:@"load_img"]];
+            [self.contentView addSubview:photoImg2];
+            break;
+        }
+        case 3:{
+            photoImg1.frame=CGRectMake(SYReal(20),SYReal(70)+_data.textHeight,SYReal(184), _data.photoHeight/2);
+            [photoImg1 sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:API_IMG,_data.pics[0]]]
+                         placeholderImage:[UIImage imageNamed:@"load_img"]];
+            [self.contentView addSubview:photoImg1];
+            photoImg2.frame=CGRectMake(SYReal(206),SYReal(70)+_data.textHeight,SYReal(184), _data.photoHeight/2);
+            [photoImg2 sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:API_IMG,_data.pics[1]]]
+                         placeholderImage:[UIImage imageNamed:@"load_img"]];
+            [self.contentView addSubview:photoImg2];
+            photoImg3.frame=CGRectMake(SYReal(20),SYReal(70)+_data.textHeight+_data.photoHeight/2,SYReal(184), _data.photoHeight/2);
+            [photoImg3 sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:API_IMG,_data.pics[2]]]
+                         placeholderImage:[UIImage imageNamed:@"load_img"]];
+            [self.contentView addSubview:photoImg3];
+            
+            break;
+        }
+        case 4:{
+            photoImg1.frame=CGRectMake(SYReal(20),SYReal(70)+_data.textHeight,SYReal(184), _data.photoHeight/2);
+            [photoImg1 sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:API_IMG,_data.pics[0]]]
+                         placeholderImage:[UIImage imageNamed:@"load_img"]];
+            [self.contentView addSubview:photoImg1];
+            photoImg2.frame=CGRectMake(SYReal(206),SYReal(70)+_data.textHeight,SYReal(184), _data.photoHeight/2);
+            [photoImg2 sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:API_IMG,_data.pics[1]]]
+                         placeholderImage:[UIImage imageNamed:@"load_img"]];
+            [self.contentView addSubview:photoImg2];
+            photoImg3.frame=CGRectMake(SYReal(20),SYReal(70)+_data.textHeight+_data.photoHeight/2,SYReal(184), _data.photoHeight/2);
+            [photoImg3 sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:API_IMG,_data.pics[2]]]
+                         placeholderImage:[UIImage imageNamed:@"load_img"]];
+            [self.contentView addSubview:photoImg3];
+            photoImg4.frame=CGRectMake(SYReal(206),SYReal(70)+_data.textHeight+_data.photoHeight/2,SYReal(184), _data.photoHeight/2);
+            [photoImg4 sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:API_IMG,_data.pics[3]]]
+                         placeholderImage:[UIImage imageNamed:@"load_img"]];
+            [self.contentView addSubview:photoImg4];
+            break;
+        }
+        default:
+            break;
     }
+    
 }
 #pragma mark - 按钮事件
 -(void)btnAvatar{
@@ -329,7 +323,7 @@
                  NSDictionary *Say_Data=[Say_All objectForKey:@"data"];
                  NSArray *Say_content=[Say_Data objectForKey:@"posts"];//加载该页数据
                  if (Say_content.count!=0) {
-                     [defaults setObject:Say_content forKey:@"Say"];
+                     [defaults setObject:Say_content forKey:@"otherSay"];
                      [defaults synchronize];
                      [Config setIs:1];
                      MomentsViewController *Say      = [[MomentsViewController alloc] init];
@@ -368,7 +362,6 @@
         NSDictionary *params = @{
                                  @"comment" : contentStr
                                  };
-        //NSLog(@"评论请求地址%@",Url_String);
         [MBProgressHUD showMessage:@"发表中" toView:self.contentView];
         [manager POST:Url_String parameters:params success:^(NSURLSessionDataTask *task, id responseObject) {
             NSDictionary *response = [NSDictionary dictionaryWithDictionary:responseObject];

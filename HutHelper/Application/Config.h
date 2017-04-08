@@ -37,6 +37,11 @@
 +(NSDictionary*)getVedio;
 +(NSString*)getVedio480p;
 +(NSString*)getVedio1080p;
++(NSDictionary*)getSay;
++(NSDictionary*)getSayLike;
++(NSArray*)getHand;
++(NSArray*)getOtherHand;
++(NSData*)getExam;
 #pragma mark - 获得用户数据
 +(User*)getUser;
 +(NSString*)getStudentKH;

@@ -8,7 +8,10 @@
 
 #import "VedioTableViewController.h"
 #import "VedioTableViewCell.h"
+#import "MBProgressHUD+MJ.h"
 #import "VedioModel.h"
+#import "MJRefresh.h"
+#import "APIRequest.h"
 @interface VedioTableViewController ()
 
 @end
@@ -26,14 +29,14 @@
     
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor]}];
     NSDictionary *Dic=[Config getVedio];
-    [self loadData:Dic];
+    [self loadData:Dic[@"links"]];
+    [Config saveVedio480p:Dic[@"480P"]];
+    [Config saveVedio1080p:Dic[@"1080P"]];
     
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(reload)];
+    [self.tableView.mj_header beginRefreshing];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 #pragma mark - Table view data source
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{  //多少块
@@ -48,7 +51,7 @@
     if (indexPath.section==0) {
         return SYReal(270);
     }else{
-    return SYReal(173);
+        return SYReal(173);
     }
 }
 
@@ -97,5 +100,17 @@
         VedioModel *momentsModel=[[VedioModel alloc]initWithDic:eachDic];
         [datas addObject:momentsModel];
     }
+}
+-(void)reload{
+    [Config setNoSharedCache];
+    [APIRequest GET:API_VEDIO_SHOW parameters:nil success:^(id responseObject) {
+        [Config saveVedio:responseObject];
+        [self loadData:responseObject[@"links"]];
+        [self.tableView reloadData];
+        [self.tableView.mj_header endRefreshing];
+    }failure:^(NSError *error) {
+        [self.tableView.mj_header endRefreshing];
+        [MBProgressHUD showError:@"网络错误"];
+    }];
 }
 @end

@@ -1,5 +1,5 @@
 //
-//  ExamNewViewController.h
+//  ExamViewController.h
 //  HutHelper
 //
 //  Created by nine on 2017/1/7.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ExamViewController : UIViewController
+@interface ExamViewController : UITableViewController
 
 @end

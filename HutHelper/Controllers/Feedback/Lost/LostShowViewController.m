@@ -426,10 +426,7 @@
     return _items;
 }
 -(void)addLost{
-        UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        LostAddViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"AddLosta"];
-        AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-        [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:YES];
+     [Config pushViewController:@"AddLosta"];
 }
 -(void)myLost{
     /**设置不缓存*/
@@ -458,10 +455,7 @@
                      [defaults synchronize];
                      HideAllHUD
                      [Config setIs:1];
-                     UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-                     LostShowViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"LostShow"];
-                     AppDelegate *tempAppDelegate= (AppDelegate *)[[UIApplication sharedApplication] delegate];
-                     [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:NO];
+                     [Config pushViewController:@"LostShow"];
                  }
                  else{
                      HideAllHUD

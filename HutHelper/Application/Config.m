@@ -76,18 +76,6 @@ static int Is ;
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     return [defaults objectForKey:@"remember_code_app"];
 }
-+(NSDictionary*)getVedio{
-    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    return [defaults objectForKey:@"Vedio"];
-}
-+(NSString*)getVedio480p{
-    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    return [defaults objectForKey:@"Vedio480p"];
-}
-+(NSString*)getVedio1080p{
-    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    return [defaults objectForKey:@"Vedio1080p"];
-}
 #pragma mark - 持续化存储
 +(void)saveUser:(NSDictionary*)userData{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
@@ -178,6 +166,39 @@ static int Is ;
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     return [defaults objectForKey:@"kCourseXp"];
 }
++(NSDictionary*)getSay{
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    return [defaults objectForKey:@"Say"];
+}
++(NSDictionary*)getSayLike{
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    return [defaults objectForKey:@"SayLikes"];
+}
++(NSData*)getExam{
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    return [defaults objectForKey:@"Exam"];
+}
++(NSArray*)getHand{
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    return [defaults objectForKey:@"Hand"];
+}
++(NSArray*)getOtherHand{
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    return [defaults objectForKey:@"otherHand"];
+}
++(NSDictionary*)getVedio{
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    return [defaults objectForKey:@"Vedio"];
+}
++(NSString*)getVedio480p{
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    return [defaults objectForKey:@"Vedio480p"];
+}
++(NSString*)getVedio1080p{
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    return [defaults objectForKey:@"Vedio1080p"];
+}
+
 #pragma mark - 版本信息
 +(void)saveCurrentVersion:(NSString*)currentVersion{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
@@ -196,7 +217,7 @@ static int Is ;
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     NSDictionary *noticeDictionary=@{@"time":@"2017-03-17 24:00",
                                      @"title":@"工大助手",
-                                     @"body":@"工大助手V1.9.9更新日志\n\n- 新增了校园说说点赞功能 \n- 修复了Widget时间问题 \n- 修改了校园说说配色\n- 修改了校园说说相同课程相同颜色  \n- 新增了切换用户提示语\n\n如果您对App有任何建议或者发现了Bug\n可以在侧栏-反馈中告诉我们，我向您保证每个Bug都会尽快修复，每个意见都会得到回复，另外在AppStore中求个好评🙏"
+                                     @"body":@"工大助手V2.0.0更新日志\n\n- 新增了视频专栏功能 \n- 修复了Widget时间问题 \n- 修改了校园说说配色\n- 修改了校园说说相同课程相同颜色  \n- 新增了切换用户提示语\n\n如果您对App有任何建议或者发现了Bug\n可以在侧栏-反馈中告诉我们，我向您保证每个Bug都会尽快修复，每个意见都会得到回复，另外在AppStore中求个好评🙏"
                                      };
     
     NSDictionary *noticeDictionary2=@{@"time":@"2017-02-20 08:00",
