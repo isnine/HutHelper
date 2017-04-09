@@ -38,7 +38,7 @@ extern NSString *const  UMSocialShareDataTypeIllegalMessage;
 #pragma mark - 子类需要重载的类
 +(void)load;
 +(NSArray*) socialPlatformTypes;
-+ (UMSocialHandler *)defaultManager;
++ (instancetype)defaultManager;
 
 #pragma mark -
 
