@@ -235,7 +235,6 @@ static int Is ;
                                                                 diskPath:nil];
     [NSURLCache setSharedURLCache:sharedCache];
 }
-/**保存和移除Umeng标签和别名*/
 +(void)saveUmeng{
     [MobClick profileSignInWithPUID:[self getUser].studentKH];
     [UMessage addTag:[self getUser].class_name

@@ -6,5 +6,9 @@
 	<array>
 		<string>group.HutHelper</string>
 	</array>
+	<key>keychain-access-groups</key>
+	<array>
+		<string>$(AppIdentifierPrefix)name.wxz.HutHelper.Extend</string>
+	</array>
 </dict>
 </plist>

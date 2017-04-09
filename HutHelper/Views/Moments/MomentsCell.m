@@ -305,11 +305,7 @@
     if ([Config getIs]==1) {
         return;
     }
-    NSURLCache *sharedCache = [[NSURLCache alloc] initWithMemoryCapacity:0
-                                                            diskCapacity:0
-                                                                diskPath:nil];
-    [NSURLCache setSharedURLCache:sharedCache];
-    
+    [Config setNoSharedCache];
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     NSString *Url_String=[NSString stringWithFormat:API_MOMENTS_USER,_data.user_id];
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
@@ -384,10 +380,7 @@
 }
 
 -(void)btnLikes{
-    NSURLCache *sharedCache = [[NSURLCache alloc] initWithMemoryCapacity:0
-                                                            diskCapacity:0
-                                                                diskPath:nil];
-    [NSURLCache setSharedURLCache:sharedCache];
+    [Config setNoSharedCache];
     
     NSString *Url_String=[NSString stringWithFormat:API_MOMENTS_LIKES_CREATE,Config.getStudentKH,Config.getRememberCodeApp,_data.moments_id];
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];

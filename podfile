@@ -1,4 +1,4 @@
-platform:ios,'8.0'
+platform:ios,'9.0'
 target "HutHelper" do
     pod 'ASIHTTPRequest'
     pod 'MBProgressHUD', '~> 1.0.0'

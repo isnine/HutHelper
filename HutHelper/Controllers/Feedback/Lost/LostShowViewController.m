@@ -430,10 +430,7 @@
 }
 -(void)myLost{
     /**设置不缓存*/
-    NSURLCache *sharedCache = [[NSURLCache alloc] initWithMemoryCapacity:0
-                                                            diskCapacity:0
-                                                                diskPath:nil];
-    [NSURLCache setSharedURLCache:sharedCache];
+    [Config setNoSharedCache];
     [MBProgressHUD showMessage:@"加载中" toView:self.view];
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     /**拼接地址*/

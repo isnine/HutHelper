@@ -794,9 +794,9 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
 - (UIButton *)failBtn {
     if (!_failBtn) {
         _failBtn = [UIButton buttonWithType:UIButtonTypeSystem];
-        [_failBtn setTitle:@"加载失败,点击重试" forState:UIControlStateNormal];
+        [_failBtn setTitle:@"加载失败，超清需连学校wifi" forState:UIControlStateNormal];
         [_failBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        _failBtn.titleLabel.font = [UIFont systemFontOfSize:14.0];
+        _failBtn.titleLabel.font = [UIFont systemFontOfSize:9.0];
         _failBtn.backgroundColor = RGBA(0, 0, 0, 0.7);
         [_failBtn addTarget:self action:@selector(failBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     }

@@ -14,7 +14,9 @@
 @property (nonatomic, strong) ZFPlayerModel *playerModel;
 @end
 
-@implementation VedioPlayViewController
+@implementation VedioPlayViewController{
+    int sign;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -27,14 +29,13 @@
     [self.view addSubview:self.playerFatherView];
     self.navigationItem.title=_name;
     [self.playerView autoPlayTheVideo];
+    sign=1;
     [self draw];
-    
-    
 }
 -(void)draw{
     int witgh=0;
     int height=0;
-    for(int i=0;i<_listUrl.count;i++){
+    for(int i=1;i<=_listUrl.count;i++){
         UIButton *button= [UIButton buttonWithType:UIButtonTypeRoundedRect];
         button.tag = i;
         if (SYReal(60)+witgh>DeviceMaxWidth) {
@@ -42,24 +43,32 @@
             witgh=0;
         }
         [button setFrame:CGRectMake(SYReal(10)+witgh,SYReal(120)+DeviceMaxWidth*9/16+height, SYReal(50), SYReal(50))];
-        [button setTitle:[NSString stringWithFormat:@"%d",i+1] forState:UIControlStateNormal];
+        [button setTitle:[NSString stringWithFormat:@"%d",i] forState:UIControlStateNormal];
         button.titleLabel.font=[UIFont systemFontOfSize: 15.0];
         button.backgroundColor=[UIColor colorWithRed:242/255.0 green:244/255.0 blue:246/255.0 alpha:1.0];
-        [button setTitleColor:[UIColor blackColor]forState:UIControlStateNormal];
         [button addTarget:self action:@selector(btnNewVedio:) forControlEvents:UIControlEventTouchUpInside];
-        
+        if (i==sign) {
+            [button setTitleColor:RGB(255, 91, 0, 1) forState:UIControlStateNormal];
+        }else{
+            [button setTitleColor:[UIColor blackColor]forState:UIControlStateNormal];
+        }
         [self.view addSubview:button];
         witgh+=SYReal(65);
     }
 }
 
 -(void)btnNewVedio:(UIButton *)button{
+    [button setTitleColor:RGB(255, 91, 0, 1) forState:UIControlStateNormal];
     int i=(short)button.tag;
-    self.playerModel.title            = [_listUrl[i] objectForKey:@"title"];;
-    self.playerModel.videoURL         = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",[Config getVedio480p],[_listUrl[i] objectForKey:@"url"]]];
-    NSLog(@"%@",[NSString stringWithFormat:@"%@%@",[Config getVedio480p],[_listUrl[i] objectForKey:@"url"]]);
+    self.playerModel.title            = [_listUrl[i-1] objectForKey:@"title"];;
+    self.playerModel.videoURL         = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",[Config getVedio480p],[_listUrl[i-1] objectForKey:@"url"]]];
+    NSLog(@"%@",[NSString stringWithFormat:@"%@%@",[Config getVedio480p],[_listUrl[i-1] objectForKey:@"url"]]);
     _playerModel.placeholderImage = [UIImage imageNamed:@"loading_bgView1"];
     [self.playerView resetToPlayNewVideo:self.playerModel];
+    
+    UIButton *myButton1 = (UIButton *)[self.view viewWithTag:sign];//将上次点击的按钮变为黑色
+    [myButton1 setTitleColor:[UIColor blackColor]forState:UIControlStateNormal];
+    sign=i;//标记这次点击的按钮
 }
 
 #pragma mark - Getter

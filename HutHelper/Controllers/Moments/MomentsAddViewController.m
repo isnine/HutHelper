@@ -225,10 +225,7 @@
 }
 
 -(void)reload{
-    NSURLCache *sharedCache = [[NSURLCache alloc] initWithMemoryCapacity:0
-                                                            diskCapacity:0
-                                                                diskPath:nil];
-    [NSURLCache setSharedURLCache:sharedCache];
+    [Config setNoSharedCache];
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     /**拼接地址*/
     NSString *Url_String=[NSString stringWithFormat:API_MOMENTS,1];

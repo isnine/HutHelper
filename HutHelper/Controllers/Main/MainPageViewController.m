@@ -502,19 +502,14 @@ int class_error_;
     NSLog(@"当前版本%@",currentVersion);
     NSLog(@"上个版本%@",lastRunKey);
     if (lastRunKey==NULL) {
-        NSString *appDomain       = [[NSBundle mainBundle] bundleIdentifier];
-        [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:appDomain];
+        [Config removeUserDefaults];
         [defaults setObject:currentVersion forKey:@"last_run_version_key"];
         NSLog(@"没有记录");
-        
-    }
-    //    else if ([lastRunKey isEqualToString:@"1.9.5"]||[lastRunKey isEqualToString:@"1.9.6"]||[lastRunKey isEqualToString:@"1.9.7"]){
-    //        [defaults setObject:currentVersion forKey:@"last_run_version_key"];
-    //        [Config addNotice];
-    //    }
-    else if (![lastRunKey isEqualToString:currentVersion]) {
-        NSString *appDomain       = [[NSBundle mainBundle] bundleIdentifier];
-        [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:appDomain];
+    }else if ([lastRunKey isEqualToString:@"1.9.9"]){
+        [defaults setObject:currentVersion forKey:@"last_run_version_key"];
+        [Config addNotice];
+    }else if (![lastRunKey isEqualToString:currentVersion]) {
+        [Config removeUserDefaults];
         [defaults setObject:currentVersion forKey:@"last_run_version_key"];
         NSLog(@"记录不匹配");
     }
