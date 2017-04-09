@@ -13,7 +13,7 @@
 #import "UMessage.h"
 #import "UMMobClick/MobClick.h"
 #import <UMSocialCore/UMSocialCore.h>
- 
+#import <JSPatchPlatform/JSPatch.h>
 #import "iVersion.h"
 @interface AppDelegate ()
 
@@ -62,7 +62,11 @@
     [[UMSocialManager defaultManager] openLog:NO]; //打开调试日志
     [[UMSocialManager defaultManager] setUmSocialAppkey:APPKEY_UMESSAGE];//设置友盟appkey
     [self configUSharePlatforms];
-    
+    /*热更新**/
+    [JSPatch startWithAppKey:@"bd9208bd34ab8197"];
+    [JSPatch setupDevelopment];
+    [JSPatch setupRSAPublicKey:@"-----BEGIN PUBLIC KEY-----\nMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCi/XcpS7/lnAf0YEta273pubUy\niZGGy+xNOL2cV4XLpV0OmhCWunAdBuFSV7nn2HWcZWsTuRMt1gFUbO5gtFw6m2JH\niGvfK2YlQvRo91lGsbczad3SCe738lq6MiYNjyaoiCAW9U9+WxvX8DVUxzNhrlba\nwH1UzhSy5A8zWi8bMwIDAQAB\n-----END PUBLIC KEY-----"];
+    [JSPatch sync];
     return YES;
 }
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
@@ -84,10 +88,6 @@
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
-    /*热更新**/
-//    [JSPatch startWithAppKey:@"bd9208bd34ab8197"];
-//    [JSPatch setupDevelopment];
-//    [JSPatch sync];
 }
 - (void)configUSharePlatforms
 {

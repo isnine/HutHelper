@@ -121,6 +121,9 @@
 		3A98CC1D1E7CFDF900CABD0D /* language.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3A98CC191E7CFDF900CABD0D /* language.strings */; };
 		3A98CC251E7CFF0200CABD0D /* Math.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A98CC231E7CFF0200CABD0D /* Math.m */; };
 		3AD443EB1E97CF5600720F42 /* VedioTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD443EA1E97CF5600720F42 /* VedioTableViewCell.m */; };
+		3AF72C971E9A239800093A39 /* JSPatchPlatform.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AF72C961E9A239800093A39 /* JSPatchPlatform.framework */; };
+		3AF72C9A1E9A23F000093A39 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AF72C991E9A23F000093A39 /* JavaScriptCore.framework */; };
+		3AF72C9B1E9A23F900093A39 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A6FF7C61DB3152C004CFBE8 /* libz.tbd */; };
 		3AF73BF11E7D12610086417E /* APIRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF73BF01E7D12610086417E /* APIRequest.m */; };
 		DF4C1EB183B351F157BF18CD /* libPods-HutHelper.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CAE9EAE0009084B77EC3CAD6 /* libPods-HutHelper.a */; };
 /* End PBXBuildFile section */
@@ -364,6 +367,8 @@
 		3A98CC231E7CFF0200CABD0D /* Math.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Math.m; sourceTree = "<group>"; };
 		3AD443E91E97CF5600720F42 /* VedioTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VedioTableViewCell.h; sourceTree = "<group>"; };
 		3AD443EA1E97CF5600720F42 /* VedioTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VedioTableViewCell.m; sourceTree = "<group>"; };
+		3AF72C961E9A239800093A39 /* JSPatchPlatform.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JSPatchPlatform.framework; sourceTree = "<group>"; };
+		3AF72C991E9A23F000093A39 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		3AF73BEF1E7D12610086417E /* APIRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIRequest.h; sourceTree = "<group>"; };
 		3AF73BF01E7D12610086417E /* APIRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIRequest.m; sourceTree = "<group>"; };
 		A8DF4B266A6C75237AD1C11E /* Pods-HutHelper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HutHelper.release.xcconfig"; path = "Pods/Target Support Files/Pods-HutHelper/Pods-HutHelper.release.xcconfig"; sourceTree = "<group>"; };
@@ -383,9 +388,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3AF72C9B1E9A23F900093A39 /* libz.tbd in Frameworks */,
+				3AF72C9A1E9A23F000093A39 /* JavaScriptCore.framework in Frameworks */,
 				3A4D30191E8D2E4600901E3B /* CoreGraphics.framework in Frameworks */,
 				3A8BACFD1DDDBDDB001C78B8 /* ImageIO.framework in Frameworks */,
 				3A8BACF91DDDBD71001C78B8 /* libsqlite3.tbd in Frameworks */,
+				3AF72C971E9A239800093A39 /* JSPatchPlatform.framework in Frameworks */,
 				3A98CC0C1E7CFA9C00CABD0D /* libUMessage_Sdk_1.4.0.a in Frameworks */,
 				DF4C1EB183B351F157BF18CD /* libPods-HutHelper.a in Frameworks */,
 			);
@@ -767,6 +775,7 @@
 		3A7D3CA81DB0A6CB00355E7A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3AF72C991E9A23F000093A39 /* JavaScriptCore.framework */,
 				3A4D30181E8D2E4600901E3B /* CoreGraphics.framework */,
 				3A8BACFC1DDDBDDB001C78B8 /* ImageIO.framework */,
 				3A8BACFA1DDDBD81001C78B8 /* libc++.tbd */,
@@ -898,6 +907,7 @@
 		3A98CBCB1E7CFA9C00CABD0D /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				3AF72C951E9A239800093A39 /* JSPATCH */,
 				3A532CA41E910C13003CD5A8 /* ZFPlayer */,
 				3A98CBCC1E7CFA9C00CABD0D /* Commit */,
 				3A98CBD51E7CFA9C00CABD0D /* GWPCourseListView */,
@@ -1053,6 +1063,14 @@
 				3AD443EA1E97CF5600720F42 /* VedioTableViewCell.m */,
 			);
 			path = Vedio;
+			sourceTree = "<group>";
+		};
+		3AF72C951E9A239800093A39 /* JSPATCH */ = {
+			isa = PBXGroup;
+			children = (
+				3AF72C961E9A239800093A39 /* JSPatchPlatform.framework */,
+			);
+			path = JSPATCH;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1509,6 +1527,7 @@
 					"$(PROJECT_DIR)/HutHelper/Lib/UMSocial/SocialLibraries/QQ",
 					"$(PROJECT_DIR)/HutHelper/Lib/UMSocial/UMSocialSDK",
 					"$(PROJECT_DIR)/HutHelper/Vendor",
+					"$(PROJECT_DIR)/HutHelper/Vendor/JSPATCH",
 				);
 				GCC_OPTIMIZATION_LEVEL = s;
 				GCC_PREFIX_HEADER = "HutHelper/Supporting Files/HutHelper-Prefix.pch";
@@ -1555,6 +1574,7 @@
 					"$(PROJECT_DIR)/HutHelper/Lib/UMSocial/SocialLibraries/QQ",
 					"$(PROJECT_DIR)/HutHelper/Lib/UMSocial/UMSocialSDK",
 					"$(PROJECT_DIR)/HutHelper/Vendor",
+					"$(PROJECT_DIR)/HutHelper/Vendor/JSPATCH",
 				);
 				GCC_OPTIMIZATION_LEVEL = s;
 				GCC_PREFIX_HEADER = "HutHelper/Supporting Files/HutHelper-Prefix.pch";

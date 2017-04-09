@@ -49,13 +49,10 @@
     [self addSubview:sep];
     sep.backgroundColor = RGB(0, 0, 0, 0.07);
     self.sepLine = sep;
-    
     self.backgroundColor = [UIColor clearColor];
     self.textLabel.textAlignment = NSTextAlignmentCenter;
     self.textLabel.font = [UIFont systemFontOfSize:12];
     self.textLabel.numberOfLines = 0;
-    self.backgroundColor = [UIColor clearColor];
-    
 }
 
 - (void)setCourse:(id<Course>)course{
