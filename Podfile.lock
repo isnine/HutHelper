@@ -30,9 +30,6 @@ PODS:
   - DJRefresh (1.0.5)
   - DTKDropdownMenu (0.0.4):
     - Masonry (~> 0.6)
-  - JSPatch (1.1.3):
-    - JSPatch/Core (= 1.1.3)
-  - JSPatch/Core (1.1.3)
   - LGPlusButtonsView (1.1.1)
   - Masonry (0.6.4)
   - MBProgressHUD (1.0.0)
@@ -62,7 +59,6 @@ DEPENDENCIES:
   - ASIHTTPRequest
   - DJRefresh (~> 1.0.5)
   - DTKDropdownMenu (~> 0.0.4)
-  - JSPatch
   - LGPlusButtonsView (~> 1.1.0)
   - MBProgressHUD (~> 1.0.0)
   - MJRefresh
@@ -81,7 +77,6 @@ SPEC CHECKSUMS:
   ASIHTTPRequest: ec013992946676b7978dcbde6396d57312d21db4
   DJRefresh: 32b3776546004faddddc28035442ba15e07c5f1b
   DTKDropdownMenu: 3a3d8afc4f70fab50a5a8131aadc8b383ef54891
-  JSPatch: 02cfed591cb907bbfe80a346666e5a35fc2d349d
   LGPlusButtonsView: 57878cd3d461d0ee2042f5b7b25d1c017e22a084
   Masonry: 281802d04d787ea2973179ee8bcb50500579ede2
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
@@ -94,6 +89,6 @@ SPEC CHECKSUMS:
   UMengUShare: 7756e2e46ceba04e3000fb2c9b1d3f61784ca2ff
   YCXMenu: 6003bcd20d8ac72e3eb3c442c97ed21948c6dc1f
 
-PODFILE CHECKSUM: 81bce308f612c44d3bb6a606626559ca735cc0ae
+PODFILE CHECKSUM: f98a3de4f3d58e3b16a66499822fa09a0188032d
 
 COCOAPODS: 1.2.0

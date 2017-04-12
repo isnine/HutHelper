@@ -24,11 +24,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>JSPatch.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>LGPlusButtonsView.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -87,7 +82,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>304D39EE3FBB67A8EBD369C76212976D</key>
+		<key>1232D22D1DA6BECEE33038EE958E4964</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -97,27 +92,27 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>408564DDE17598158539F89AB539AC6C</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>586F2DFA9BDCC6675C2546793A69E5CC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>625A8A2CB64874E3A94CBE2A8B46298C</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>642E44C7B54FB8EC1DB778DCC546F0A3</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>71045D231DDFBEAA6A91239FEA8D5BB7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>75BC7E35D1F588DF49869E662C2416D2</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8AFCB3E3901C6E47F40763F6E5A5B376</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8E254E95E5DC742C3F029353E6C08BE5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -142,17 +137,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C90023B090681EB3805A7E0A77956915</key>
+		<key>D5C339C8A8C7BD39EEDC3CE5A790B251</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>F0EA78F8F3362DEBC9840500226DA5E7</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>FB1B608CA194B526EEF0EC7ADC16F3B0</key>
 		<dict>
 			<key>primary</key>
 			<true/>

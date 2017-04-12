@@ -106,6 +106,20 @@
     LostShowTimeTableViewCell *cellTime=[LostShowTimeTableViewCell tableViewCell];
     NSArray *photo=[_lostData[indexPath.section] objectForKey:@"pics"];
     tableView.separatorStyle = NO;
+    cellPhoto.Img11.contentMode =UIViewContentModeScaleAspectFill;
+    cellPhoto.Img11.clipsToBounds = YES;
+    cellPhoto.Img21.contentMode =UIViewContentModeScaleAspectFill;
+    cellPhoto.Img21.clipsToBounds = YES;
+    cellPhoto.Img22.contentMode =UIViewContentModeScaleAspectFill;
+    cellPhoto.Img22.clipsToBounds = YES;
+    cellPhoto.Img41.contentMode =UIViewContentModeScaleAspectFill;
+    cellPhoto.Img41.clipsToBounds = YES;
+    cellPhoto.Img42.contentMode =UIViewContentModeScaleAspectFill;
+    cellPhoto.Img42.clipsToBounds = YES;
+    cellPhoto.Img43.contentMode =UIViewContentModeScaleAspectFill;
+    cellPhoto.Img43.clipsToBounds = YES;
+    cellPhoto.Img44.contentMode =UIViewContentModeScaleAspectFill;
+    cellPhoto.Img44.clipsToBounds = YES;
     if (indexPath.row==0){//信息
         cell.tit.text=[self getTit:(short)indexPath.section];
         cell.locate.text=[self getLocate:(short)indexPath.section];
