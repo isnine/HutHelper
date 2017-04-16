@@ -127,6 +127,11 @@ static int Is ;
     [defaults setObject:scoreData forKey:@"Score"];
     [defaults synchronize];
 }
++(void)saveScoreRank:(NSArray*)examRank{
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    [defaults setObject:examRank forKey:@"ScoreRank"];
+    [defaults synchronize];
+}
 +(void)saveExam:(NSData*)examData{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     [defaults setObject:examData forKey:@"Exam"];
@@ -169,7 +174,7 @@ static int Is ;
 +(NSDictionary*)getSay{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     return [defaults objectForKey:@"Say"];
-}
+ }
 +(NSDictionary*)getSayLike{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     return [defaults objectForKey:@"SayLikes"];
@@ -177,6 +182,10 @@ static int Is ;
 +(NSData*)getExam{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     return [defaults objectForKey:@"Exam"];
+}
++(NSArray*)getScoreRank{
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    return [defaults objectForKey:@"ScoreRank"];
 }
 +(NSArray*)getHand{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];

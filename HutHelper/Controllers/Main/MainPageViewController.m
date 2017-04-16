@@ -93,9 +93,11 @@ int class_error_;
                 }
             }else if([msg isEqualToString:@"令牌错误"]){
                 [MBProgressHUD showError:@"登录过期,请重新登录"];
+                 HideAllHUD
             }
             else{
                 [MBProgressHUD showError:msg];
+                 HideAllHUD
             }
         } failure:^(NSError *error) {
             HideAllHUD
@@ -237,18 +239,29 @@ int class_error_;
 } //二手市场
 - (IBAction)Score:(id)sender {
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    NSData* scoreData           = [defaults objectForKey:@"Score"];
-    if(!scoreData){
+    if((![defaults objectForKey:@"Score"])||(![defaults objectForKey:@"ScoreRank"])){
         [MBProgressHUD showMessage:@"查询中" toView:self.view];
         NSString *shaString=[Math sha1:[NSString stringWithFormat:@"%@%@%@",Config.getStudentKH,Config.getRememberCodeApp,@"f$Z@%"]];
         NSString *urlString=[NSString stringWithFormat:API_SCORES,Config.getStudentKH,Config.getRememberCodeApp,shaString];
-        /**设置超时*/
         [APIRequest GET:urlString parameters:nil success:^(id responseObject){
             NSData *scoreData =    [NSJSONSerialization dataWithJSONObject:responseObject options:NSJSONWritingPrettyPrinted error:nil];
             NSString *msg=responseObject[@"msg"];
             if([msg isEqualToString:@"ok"]){
                 [Config saveScore:scoreData];
-                [Config pushViewController:@"ScoreShow"];
+                NSString *urlRankString=[NSString stringWithFormat:API_RANK,Config.getStudentKH,Config.getRememberCodeApp];
+                [APIRequest GET:urlRankString parameters:nil success:^(id responseObject) {
+                    if ([responseObject[@"msg"]isEqualToString:@"ok"]) {
+                        [Config saveScoreRank:responseObject[@"data"]];
+                        [Config pushViewController:@"ScoreShow"];
+                    }else{
+                        [MBProgressHUD showError:@"排名查询错误"];
+                        [Config pushViewController:@"ScoreShow"];
+                    }
+                } failure:^(NSError *error) {
+                    [MBProgressHUD showError:@"排名查询错误"];
+                    [Config pushViewController:@"ScoreShow"];
+                }];
+                
             }else if([msg isEqualToString:@"令牌错误"]){
                 [MBProgressHUD showError:@"登录过期,请重新登录"];
             }else{

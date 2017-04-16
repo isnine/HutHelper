@@ -764,10 +764,8 @@ NSString *show_xp;
         }
         if (selects[checksum]==0) {//第一次配色，设置颜色
             selects[checksum]=selectss++;
-            NSLog(@"第一次颜色%d，%d:%@",selects[checksum],checksum,[course.courseName substringToIndex:range.location]);
             return lightColorArr[selects[checksum]];
         }else{//第二次配色，取之前颜色
-            NSLog(@"相同颜色%d，%d:%@",selects[checksum],checksum,[course.courseName substringToIndex:range.location]);
             return lightColorArr[selects[checksum]];
         }
     }

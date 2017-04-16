@@ -25,6 +25,7 @@
 +(void)saveSayLikes:(NSDictionary*)sayLikesData;
 +(void)saveHand:(NSArray*)handData;
 +(void)saveScore:(NSData*)scoreData;
++(void)saveScoreRank:(NSArray*)examRank;
 +(void)saveExam:(NSData*)examData;
 +(void)saveLost:(NSArray*)lostData;
 +(void)saveNowWeek:(int)nowWeek;
@@ -42,6 +43,7 @@
 +(NSArray*)getHand;
 +(NSArray*)getOtherHand;
 +(NSData*)getExam;
++(NSArray*)getScoreRank;
 #pragma mark - 获得用户数据
 +(User*)getUser;
 +(NSString*)getStudentKH;

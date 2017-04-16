@@ -390,7 +390,6 @@
     [manager GET:Url_String parameters:nil progress:nil
          success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
              NSDictionary *Say_All = [NSDictionary dictionaryWithDictionary:responseObject];
-             NSLog(@"%@",Say_All);
              if ([[Say_All objectForKey:@"msg"]isEqualToString:@"成功点赞"]) {
                  likesImage.image=[UIImage imageNamed:@"tweet_btn_liked"];
                  likesNumLabel.text=[NSString stringWithFormat:@"%d",[_data.likes intValue]+1];

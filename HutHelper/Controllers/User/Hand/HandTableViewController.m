@@ -56,7 +56,6 @@
     self.navigationItem.backBarButtonItem = item;
     [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:0/255.0 green:224/255.0 blue:208/255.0 alpha:1]];
     _num=1;
-    NSLog(@"%@",_Hand_content[1]);
 }
 
 - (void)didReceiveMemoryWarning {
@@ -132,7 +131,6 @@
     /**拼接地址*/
     NSString *Url_String=[NSString stringWithFormat:API_GOODS_USER,Config.getStudentKH,Config.getRememberCodeApp];
     /**设置9秒超时*/
-    NSLog(@"%@",Url_String);
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
     manager.requestSerializer.timeoutInterval = 5.f;

@@ -171,7 +171,6 @@
                                     HideAllHUD
                                     [MBProgressHUD showSuccess:@"发布成功"];
                                     [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:([self.navigationController.viewControllers count] -2)] animated:YES];  //返回Home
-                                    NSLog(@"%@",responseObject);
                                     
                                 }
                                 else if ([Msg isEqualToString:@"令牌错误"]){

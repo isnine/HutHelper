@@ -48,7 +48,6 @@
     NSMutableArray *classSolution=[[NSMutableArray alloc]init];
     if ([defaults objectForKey:@"kCourse"]!=NULL) {
         NSArray *array          = [defaults objectForKey:@"kCourse"];
-        NSLog(@"%@",array[1]);
         for (int i= 0; i<=(array.count-1); i++) {
             NSDictionary *dict1       = array[i];
             NSString *name       = [dict1 objectForKey:@"name"];//课名

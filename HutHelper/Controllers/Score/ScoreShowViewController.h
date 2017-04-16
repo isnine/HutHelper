@@ -11,6 +11,8 @@
 @interface ScoreShowViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UILabel *Wtg;
 @property (weak, nonatomic) IBOutlet UILabel *Zjd;
+@property (weak, nonatomic) IBOutlet UILabel *Rank;
+
 @property (weak, nonatomic) IBOutlet UILabel *D11;
 @property (weak, nonatomic) IBOutlet UILabel *D12;
 @property (weak, nonatomic) IBOutlet UILabel *D21;
@@ -28,6 +30,15 @@
 @property (weak, nonatomic) IBOutlet UILabel *T32;
 @property (weak, nonatomic) IBOutlet UILabel *T41;
 @property (weak, nonatomic) IBOutlet UILabel *T42;
+
+@property (weak, nonatomic) IBOutlet UILabel *R11;
+@property (weak, nonatomic) IBOutlet UILabel *R12;
+@property (weak, nonatomic) IBOutlet UILabel *R21;
+@property (weak, nonatomic) IBOutlet UILabel *R22;
+@property (weak, nonatomic) IBOutlet UILabel *R31;
+@property (weak, nonatomic) IBOutlet UILabel *R32;
+@property (weak, nonatomic) IBOutlet UILabel *R41;
+@property (weak, nonatomic) IBOutlet UILabel *R42;
 
 @property (weak, nonatomic) IBOutlet UILabel *Scale;
 @property (weak, nonatomic) IBOutlet UIImageView *P11;

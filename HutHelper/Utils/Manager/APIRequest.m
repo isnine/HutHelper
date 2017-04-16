@@ -16,6 +16,7 @@
     NSLog(@"请求地址:%@",URLString);
     /**设置超时*/
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    ((AFJSONResponseSerializer *)manager.responseSerializer).removesKeysWithNullValues = YES;
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
     manager.requestSerializer.timeoutInterval = GET_TIMEOUT;
     [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
@@ -33,6 +34,7 @@
 + (void)POST:(NSString *)URLString parameters:(id)parameters success:(void (^)(id))success failure:(void (^)(NSError *))failure
 {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    ((AFJSONResponseSerializer *)manager.responseSerializer).removesKeysWithNullValues = YES;
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
     manager.requestSerializer.timeoutInterval = POST_TIMEOUT;
     [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
