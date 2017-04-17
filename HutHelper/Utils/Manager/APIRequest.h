@@ -21,6 +21,12 @@
  parameters:(id)parameters
     success:(void (^)(id responseObject))success
     failure:(void (^)(NSError *error))failure;
+
++ (void)GET:(NSString *)URLString
+ parameters:(id)parameters
+    timeout:(double)time
+    success:(void (^)(id responseObject))success
+    failure:(void (^)(NSError *error))failure;
 /**
  *  发送post请求
  *

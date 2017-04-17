@@ -245,13 +245,13 @@ int class_error_;
         [MBProgressHUD showMessage:@"查询中" toView:self.view];
         NSString *shaString=[Math sha1:[NSString stringWithFormat:@"%@%@%@",Config.getStudentKH,Config.getRememberCodeApp,@"f$Z@%"]];
         NSString *urlString=[NSString stringWithFormat:API_SCORES,Config.getStudentKH,Config.getRememberCodeApp,shaString];
-        [APIRequest GET:urlString parameters:nil success:^(id responseObject){
+        [APIRequest GET:urlString parameters:nil timeout:8.0 success:^(id responseObject){
             NSData *scoreData =    [NSJSONSerialization dataWithJSONObject:responseObject options:NSJSONWritingPrettyPrinted error:nil];
             NSString *msg=responseObject[@"msg"];
             if([msg isEqualToString:@"ok"]){
                 [Config saveScore:scoreData];
                 NSString *urlRankString=[NSString stringWithFormat:API_RANK,Config.getStudentKH,Config.getRememberCodeApp];
-                [APIRequest GET:urlRankString parameters:nil success:^(id responseObject) {
+                [APIRequest GET:urlRankString parameters:nil timeout:8.0 success:^(id responseObject) {
                     if ([responseObject[@"msg"]isEqualToString:@"ok"]) {
                         [Config saveScoreRank:responseObject[@"data"]];
                         [Config pushViewController:@"ScoreShow"];
@@ -261,7 +261,7 @@ int class_error_;
                         HideAllHUD
                     }
                 } failure:^(NSError *error) {
-                    [MBProgressHUD showError:@"排名查询错误"];
+                    [MBProgressHUD showError:@"网络超时，请检查网络并重试"];
                     HideAllHUD
                 }];
                 
@@ -524,7 +524,7 @@ int class_error_;
         [Config removeUserDefaults];
         [defaults setObject:currentVersion forKey:@"last_run_version_key"];
         NSLog(@"没有记录");
-    }else if ([lastRunKey isEqualToString:@"1.9.9"]){
+    }else if ([lastRunKey isEqualToString:@"1.9.9"]||[lastRunKey isEqualToString:@"2.0.0"]){
         [defaults setObject:currentVersion forKey:@"last_run_version_key"];
         [Config addNotice];
     }else if (![lastRunKey isEqualToString:currentVersion]) {

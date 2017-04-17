@@ -14,12 +14,24 @@
 #define POST_TIMEOUT 10.f
 + (void)GET:(NSString *)URLString parameters:(id)parameters success:(void (^)(id))success failure:(void (^)(NSError *))failure
 {
+    [self GET:URLString parameters:parameters timeout:GET_TIMEOUT success:^(id responseObject) {
+        if (success) {
+            success(responseObject);
+        }
+    } failure:^(NSError *error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+}
+
++ (void)GET:(NSString *)URLString parameters:(id)parameters timeout:(double)time success:(void (^)(id))success failure:(void (^)(NSError *))failure
+{
     NSLog(@"请求地址:%@",URLString);
-    /**设置超时*/
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     ((AFJSONResponseSerializer *)manager.responseSerializer).removesKeysWithNullValues = YES;
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
-    manager.requestSerializer.timeoutInterval = GET_TIMEOUT;
+    manager.requestSerializer.timeoutInterval = time;
     [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
     [manager GET:URLString parameters:parameters progress:nil
          success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -32,6 +44,7 @@
              }
          }];
 }
+
 + (void)POST:(NSString *)URLString parameters:(id)parameters success:(void (^)(id))success failure:(void (^)(NSError *))failure
 {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];

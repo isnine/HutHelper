@@ -16,7 +16,7 @@
 /**成绩查询*/
 #define API_SCORES @"http://218.75.197.121:8888/api/v1/get/scores/%@/%@/%@"
 #define API_EXAM @"http://218.75.197.124:84/api/exam/%@/key/%@"
-#define API_RANK @"http://172.16.10.210/api/v1/get/ranking/%@/%@"
+#define API_RANK @"http://218.75.197.121:8888/api/v1/get/ranking/%@/%@"
 
 /**登录界面*/
 #define API_LOGIN @"http://218.75.197.121:8888/api/v1/get/login/%@/%@/1"
