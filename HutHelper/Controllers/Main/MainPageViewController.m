@@ -33,6 +33,8 @@
 #import "APIRequest.h"
 #import "VedioPlayViewController.h"
 #define vBackBarButtonItemName  @"backArrow.png"    //导航条返回默认图片名
+#define ERROR_MSG_INVALID @"登录过期,请重新登录"
+
 @interface MainPageViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *Scontent;
 @property (weak, nonatomic) IBOutlet UILabel *Time;
@@ -92,7 +94,7 @@ int class_error_;
                     }];
                 }
             }else if([msg isEqualToString:@"令牌错误"]){
-                [MBProgressHUD showError:@"登录过期,请重新登录"];
+                [MBProgressHUD showError:ERROR_MSG_INVALID];
                  HideAllHUD
             }
             else{
@@ -144,7 +146,7 @@ int class_error_;
                     }];
                 }
             }else if([msg isEqualToString:@"令牌错误"]){
-                [MBProgressHUD showError:@"登录过期,请重新登录"];
+                [MBProgressHUD showError:ERROR_MSG_INVALID];
             }
             else{
                 [MBProgressHUD showError:msg];
@@ -253,27 +255,31 @@ int class_error_;
                     if ([responseObject[@"msg"]isEqualToString:@"ok"]) {
                         [Config saveScoreRank:responseObject[@"data"]];
                         [Config pushViewController:@"ScoreShow"];
+                        HideAllHUD
                     }else{
                         [MBProgressHUD showError:@"排名查询错误"];
-                        [Config pushViewController:@"ScoreShow"];
+                        HideAllHUD
                     }
                 } failure:^(NSError *error) {
                     [MBProgressHUD showError:@"排名查询错误"];
-                    [Config pushViewController:@"ScoreShow"];
+                    HideAllHUD
                 }];
                 
             }else if([msg isEqualToString:@"令牌错误"]){
-                [MBProgressHUD showError:@"登录过期,请重新登录"];
+                [MBProgressHUD showError:ERROR_MSG_INVALID];
+                HideAllHUD
             }else{
                 [MBProgressHUD showError:msg];
+                HideAllHUD
             }
-            HideAllHUD
+            
         }failure:^(NSError *error){
             [MBProgressHUD showError:@"网络超时，请检查网络并重试"];
             HideAllHUD
         }];
     }else{
         [Config pushViewController:@"ScoreShow"];
+
     }
 } //成绩查询
 - (IBAction)Library:(id)sender {

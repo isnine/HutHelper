@@ -8,6 +8,7 @@
 
 #import "APIRequest.h"
 #import "AFNetworking.h"
+#import "MBProgressHUD+MJ.h"
 @implementation APIRequest
 #define GET_TIMEOUT 6.f
 #define POST_TIMEOUT 10.f

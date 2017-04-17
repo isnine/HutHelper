@@ -15,8 +15,7 @@
 #import "User.h"
 #import "AFNetworking.h"
 #import "MBProgressHUD+MJ.h"
-  
- 
+#import "ScoreRank.h"
 #define ColorWithRGB(r,g,b) [UIColor colorWithRed:r/255. green:g/255. blue:b/255. alpha:1]
 @interface ScoreDataViewController ()
 @property (nonatomic,copy) NSArray      *scoreData;
@@ -212,31 +211,31 @@
         _GradeString=[Score getGradeName:@"大四下学期"];
         [self.tableView reloadData];
     }];
-
     
-    switch (grade) {
-        case 11:
+    ScoreRank *scoreRank=[[ScoreRank alloc]initWithArray:[Config getScoreRank]];
+    switch (scoreRank.termMutableArray.count) {
+        case 1:
             menuView = [DTKDropdownMenuView dropdownMenuViewForNavbarTitleViewWithFrame:CGRectMake(123.0, 0, 200.f, 44.f) dropdownItems:@[item0,item11]];
             break;
-        case 12:
+        case 2:
             menuView = [DTKDropdownMenuView dropdownMenuViewForNavbarTitleViewWithFrame:CGRectMake(123.0, 0, 200.f, 44.f) dropdownItems:@[item0,item11,item12]];
             break;
-        case 21:
+        case 3:
             menuView = [DTKDropdownMenuView dropdownMenuViewForNavbarTitleViewWithFrame:CGRectMake(123.0, 0, 200.f, 44.f) dropdownItems:@[item0,item11,item12,item21]];
             break;
-        case 22:
+        case 4:
             menuView = [DTKDropdownMenuView dropdownMenuViewForNavbarTitleViewWithFrame:CGRectMake(123.0, 0, 200.f, 44.f) dropdownItems:@[item0,item11,item12,item21,item22]];
             break;
-        case 31:
+        case 5:
             menuView = [DTKDropdownMenuView dropdownMenuViewForNavbarTitleViewWithFrame:CGRectMake(123.0, 0, 200.f, 44.f) dropdownItems:@[item0,item11,item12,item21,item22,item31]];
             break;
-        case 32:
+        case 6:
             menuView = [DTKDropdownMenuView dropdownMenuViewForNavbarTitleViewWithFrame:CGRectMake(123.0, 0, 200.f, 44.f) dropdownItems:@[item0,item11,item12,item21,item22,item31,item32]];
             break;
-        case 41:
+        case 7:
             menuView = [DTKDropdownMenuView dropdownMenuViewForNavbarTitleViewWithFrame:CGRectMake(123.0, 0, 200.f, 44.f) dropdownItems:@[item0,item11,item12,item21,item22,item31,item32,item41]];
             break;
-        case 42:
+        case 8:
             menuView = [DTKDropdownMenuView dropdownMenuViewForNavbarTitleViewWithFrame:CGRectMake(123.0, 0, 200.f, 44.f) dropdownItems:@[item0,item11,item12,item21,item22,item31,item32,item41,item42]];
             break;
     }

@@ -328,18 +328,18 @@
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     int grade=[[defaults objectForKey:@"sourceGrade"] intValue];
     switch (grade) {
-        case 11:
+        case 1:
             if ([Name isEqualToString:@"大一上学期"])
                 return @"2016-2017第1学期";
             
             break;
-        case 12:
+        case 2:
             if ([Name isEqualToString:@"大一上学期"])
                 return @"2016-2017第1学期";
             else if ([Name isEqualToString:@"大一下学期"])
                 return @"2016-2017第2学期";
             break;
-        case 21:
+        case 3:
             if ([Name isEqualToString:@"大一上学期"])
                 return @"2015-2016第1学期";
             else if ([Name isEqualToString:@"大一下学期"])
@@ -347,7 +347,7 @@
             else if ([Name isEqualToString:@"大二上学期"])
                 return @"2016-2017第1学期";
             break;
-        case 22:
+        case 4:
             if ([Name isEqualToString:@"大一上学期"])
                 return @"2015-2016第1学期";
             else if ([Name isEqualToString:@"大一下学期"])
@@ -357,7 +357,7 @@
             else if ([Name isEqualToString:@"大二下学期"])
                 return @"2016-2017第2学期";
             break;
-        case 31:
+        case 5:
             if ([Name isEqualToString:@"大一上学期"])
                 return @"2014-2015第1学期";
             else if ([Name isEqualToString:@"大一下学期"])
@@ -369,7 +369,7 @@
             else if ([Name isEqualToString:@"大三上学期"])
                 return @"2016-2017第1学期";
             break;
-        case 32:
+        case 6:
             if ([Name isEqualToString:@"大一上学期"])
                 return @"2014-2015第1学期";
             else if ([Name isEqualToString:@"大一下学期"])
@@ -383,7 +383,7 @@
             else if ([Name isEqualToString:@"大三下学期"])
                 return @"2016-2017第2学期";
             break;
-        case 41:
+        case 7:
             if ([Name isEqualToString:@"大一上学期"])
                 return @"2013-2014第1学期";
             else if ([Name isEqualToString:@"大一下学期"])
@@ -399,7 +399,7 @@
             else if ([Name isEqualToString:@"大四上学期"])
                 return @"2016-2017第1学期";
             break;
-        case 42:
+        case 8:
             if ([Name isEqualToString:@"大一上学期"])
                 return @"2013-2014第1学期";
             else if ([Name isEqualToString:@"大一下学期"])
