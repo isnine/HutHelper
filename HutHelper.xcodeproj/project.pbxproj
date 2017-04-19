@@ -121,6 +121,9 @@
 		3A98CC1D1E7CFDF900CABD0D /* language.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3A98CC191E7CFDF900CABD0D /* language.strings */; };
 		3A98CC251E7CFF0200CABD0D /* Math.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A98CC231E7CFF0200CABD0D /* Math.m */; };
 		3AAB90991EA393A000C35137 /* ScoreRank.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AAB90981EA393A000C35137 /* ScoreRank.m */; };
+		3ACF3D081EA731E800FBEC57 /* CourseXpTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ACF3D071EA731E800FBEC57 /* CourseXpTableViewController.m */; };
+		3ACF3D0B1EA7320400FBEC57 /* CourseXpTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ACF3D0A1EA7320400FBEC57 /* CourseXpTableViewCell.m */; };
+		3ACF3D0E1EA7497C00FBEC57 /* CourseXp.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ACF3D0D1EA7497C00FBEC57 /* CourseXp.m */; };
 		3AD443EB1E97CF5600720F42 /* VedioTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD443EA1E97CF5600720F42 /* VedioTableViewCell.m */; };
 		3AF72C971E9A239800093A39 /* JSPatchPlatform.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AF72C961E9A239800093A39 /* JSPatchPlatform.framework */; };
 		3AF72C9A1E9A23F000093A39 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AF72C991E9A23F000093A39 /* JavaScriptCore.framework */; };
@@ -368,6 +371,12 @@
 		3A98CC231E7CFF0200CABD0D /* Math.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Math.m; sourceTree = "<group>"; };
 		3AAB90971EA393A000C35137 /* ScoreRank.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreRank.h; sourceTree = "<group>"; };
 		3AAB90981EA393A000C35137 /* ScoreRank.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScoreRank.m; sourceTree = "<group>"; };
+		3ACF3D061EA731E800FBEC57 /* CourseXpTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseXpTableViewController.h; sourceTree = "<group>"; };
+		3ACF3D071EA731E800FBEC57 /* CourseXpTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseXpTableViewController.m; sourceTree = "<group>"; };
+		3ACF3D091EA7320400FBEC57 /* CourseXpTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseXpTableViewCell.h; sourceTree = "<group>"; };
+		3ACF3D0A1EA7320400FBEC57 /* CourseXpTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseXpTableViewCell.m; sourceTree = "<group>"; };
+		3ACF3D0C1EA7497C00FBEC57 /* CourseXp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseXp.h; sourceTree = "<group>"; };
+		3ACF3D0D1EA7497C00FBEC57 /* CourseXp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseXp.m; sourceTree = "<group>"; };
 		3AD443E91E97CF5600720F42 /* VedioTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VedioTableViewCell.h; sourceTree = "<group>"; };
 		3AD443EA1E97CF5600720F42 /* VedioTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VedioTableViewCell.m; sourceTree = "<group>"; };
 		3AF72C961E9A239800093A39 /* JSPatchPlatform.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JSPatchPlatform.framework; sourceTree = "<group>"; };
@@ -654,6 +663,7 @@
 		3A796B9E1E534C1B00794043 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				3ACF3D051EA731A300FBEC57 /* CourseXp */,
 				3A532CD41E91212A003CD5A8 /* Vedio */,
 				3A796BD91E534C1B00794043 /* Main */,
 				3A4D2FE21E8D245F00901E3B /* Hand */,
@@ -843,6 +853,8 @@
 				3A1CEC321E93D71A002D8583 /* VedioModel.m */,
 				3AAB90971EA393A000C35137 /* ScoreRank.h */,
 				3AAB90981EA393A000C35137 /* ScoreRank.m */,
+				3ACF3D0C1EA7497C00FBEC57 /* CourseXp.h */,
+				3ACF3D0D1EA7497C00FBEC57 /* CourseXp.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1059,6 +1071,17 @@
 				3AF73BF01E7D12610086417E /* APIRequest.m */,
 			);
 			path = Manager;
+			sourceTree = "<group>";
+		};
+		3ACF3D051EA731A300FBEC57 /* CourseXp */ = {
+			isa = PBXGroup;
+			children = (
+				3ACF3D061EA731E800FBEC57 /* CourseXpTableViewController.h */,
+				3ACF3D071EA731E800FBEC57 /* CourseXpTableViewController.m */,
+				3ACF3D091EA7320400FBEC57 /* CourseXpTableViewCell.h */,
+				3ACF3D0A1EA7320400FBEC57 /* CourseXpTableViewCell.m */,
+			);
+			path = CourseXp;
 			sourceTree = "<group>";
 		};
 		3AD443E81E97CF5600720F42 /* Vedio */ = {
@@ -1296,6 +1319,7 @@
 				3A98CB5F1E7CF7AA00CABD0D /* MomentsModel.m in Sources */,
 				3A796C531E534C1B00794043 /* UsernameViewController.m in Sources */,
 				3A4D2FDE1E8D237500901E3B /* PowerViewController.m in Sources */,
+				3ACF3D0B1EA7320400FBEC57 /* CourseXpTableViewCell.m in Sources */,
 				3A98CB741E7CF82F00CABD0D /* UILabel+LXAdd.m in Sources */,
 				3A532CD21E910C13003CD5A8 /* ZFPlayerModel.m in Sources */,
 				3A98CBFF1E7CFA9C00CABD0D /* FORGestureTrack.m in Sources */,
@@ -1326,6 +1350,7 @@
 				3AAB90991EA393A000C35137 /* ScoreRank.m in Sources */,
 				3A06D9AE1E8CE8A700066DD1 /* AppDelegate.m in Sources */,
 				3A4D2FCD1E8D226000901E3B /* LostShowTimeTableViewCell.m in Sources */,
+				3ACF3D081EA731E800FBEC57 /* CourseXpTableViewController.m in Sources */,
 				3A1CEC331E93D71A002D8583 /* VedioModel.m in Sources */,
 				3A98CB601E7CF7AA00CABD0D /* Score.m in Sources */,
 				3A98CC031E7CFA9C00CABD0D /* iVersion.m in Sources */,
@@ -1340,6 +1365,7 @@
 				3A4D2FDB1E8D237500901E3B /* DayViewController.m in Sources */,
 				3A796C301E534C1B00794043 /* ResetPassWordViewController.m in Sources */,
 				3A532CCB1E910C13003CD5A8 /* UIView+CustomControlView.m in Sources */,
+				3ACF3D0E1EA7497C00FBEC57 /* CourseXp.m in Sources */,
 				3A96DEE51E94B384006C2CC8 /* VedioPlayViewController.m in Sources */,
 				3A98CC1C1E7CFDF900CABD0D /* main.m in Sources */,
 				3A532CD11E910C13003CD5A8 /* ZFPlayerControlView.m in Sources */,

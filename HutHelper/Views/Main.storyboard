@@ -271,6 +271,9 @@
                                 <rect key="frame" x="37" y="594" width="52" height="46"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <state key="normal" backgroundImage="shiyan"/>
+                                <connections>
+                                    <segue destination="9aM-ew-N5v" kind="push" id="eTH-WL-rYB"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="12月11日 星期日" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sIx-oZ-tKy">
                                 <rect key="frame" x="17" y="193" width="151" height="23"/>
@@ -864,6 +867,35 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uxp-iG-VUL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="310" y="-253"/>
+        </scene>
+        <!--Course Xp Table View Controller-->
+        <scene sceneID="OEY-Km-jDv">
+            <objects>
+                <tableViewController storyboardIdentifier="ClassXp" id="9aM-ew-N5v" customClass="CourseXpTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="OZO-8Q-KDH">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="xQf-d1-IeD">
+                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xQf-d1-IeD" id="JhL-9J-Svu">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="9aM-ew-N5v" id="hzQ-XL-lUW"/>
+                            <outlet property="delegate" destination="9aM-ew-N5v" id="jSK-np-tJX"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="JYY-5F-0cw"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="n7h-i3-oPz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1139" y="-254"/>
         </scene>
         <!--Power View Controller-->
         <scene sceneID="ae8-uL-zO1">
