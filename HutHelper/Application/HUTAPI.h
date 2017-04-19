@@ -13,9 +13,10 @@
 /**课表查询*/
 #define API_CLASS @"http://218.75.197.121:8888/api/v1/get/lessons/%@/%@"
 #define API_CLASSXP @"http://218.75.197.121:8888/api/v1/get/lessonsexp/%@/%@"
+/**考试查询*/
+#define API_EXAM @"http://218.75.197.122:84/api/exam/%@/key/%@"
 /**成绩查询*/
 #define API_SCORES @"http://218.75.197.121:8888/api/v1/get/scores/%@/%@/%@"
-#define API_EXAM @"http://218.75.197.124:84/api/exam/%@/key/%@"
 #define API_RANK @"http://218.75.197.121:8888/api/v1/get/ranking/%@/%@"
 
 /**登录界面*/

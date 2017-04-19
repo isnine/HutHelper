@@ -132,12 +132,12 @@ int class_error_;
                             NSArray *arrayCourseXp= responseObject[@"data"];
                             [Config saveCourseXp:arrayCourseXp];
                             [Config saveWidgetCourseXp:arrayCourseXp];
-//                            [Config setIs:1];
-                            [Config pushViewController:@"ClassXp"];
+                            [Config setIs:1];
+                            [Config pushViewController:@"Class"];
                             HideAllHUD
                         }
                         else{
-                            [Config pushViewController:@"ClassXp"];
+                            [Config pushViewController:@"Class"];
                             [MBProgressHUD showError:msg];
                             HideAllHUD
                         }
@@ -157,8 +157,8 @@ int class_error_;
             [MBProgressHUD showError:@"网络超时，平时课表查询失败"];
         }];
     }else{
-//        [Config setIs:1];
-        [Config pushViewController:@"ClassXp"];
+       [Config setIs:1];
+        [Config pushViewController:@"Class"];
     }
 } //实验课表
 - (IBAction)HomeWork:(id)sender {
@@ -524,7 +524,7 @@ int class_error_;
         [Config removeUserDefaults];
         [defaults setObject:currentVersion forKey:@"last_run_version_key"];
         NSLog(@"没有记录");
-    }else if ([lastRunKey isEqualToString:@"1.9.9"]||[lastRunKey isEqualToString:@"2.0.0"]){
+    }else if ([lastRunKey isEqualToString:@"1.9.9"]||[lastRunKey isEqualToString:@"2.0.0"]||[lastRunKey isEqualToString:@"2.1.0"]){
         [defaults setObject:currentVersion forKey:@"last_run_version_key"];
         [Config addNotice];
     }else if (![lastRunKey isEqualToString:currentVersion]) {

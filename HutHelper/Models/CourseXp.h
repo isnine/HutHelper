@@ -9,5 +9,5 @@
 #import <Foundation/Foundation.h>
 
 @interface CourseXp : NSObject
--(instancetype)initWithDic:(NSDictionary*)dic；
+-(instancetype)initWithDic:(NSDictionary*)dic;
 @end
