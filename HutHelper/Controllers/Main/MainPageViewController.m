@@ -133,11 +133,11 @@ int class_error_;
                             [Config saveCourseXp:arrayCourseXp];
                             [Config saveWidgetCourseXp:arrayCourseXp];
                             [Config setIs:1];
-                            [Config pushViewController:@"Class"];
+                            [Config pushViewController:@"ClassXp"];
                             HideAllHUD
                         }
                         else{
-                            [Config pushViewController:@"Class"];
+                            [Config pushViewController:@"ClassXp"];
                             [MBProgressHUD showError:msg];
                             HideAllHUD
                         }
@@ -158,7 +158,7 @@ int class_error_;
         }];
     }else{
        [Config setIs:1];
-        [Config pushViewController:@"Class"];
+        [Config pushViewController:@"ClassXp"];
     }
 } //实验课表
 - (IBAction)HomeWork:(id)sender {

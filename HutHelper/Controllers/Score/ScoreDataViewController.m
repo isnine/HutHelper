@@ -67,6 +67,7 @@
     cell.Class.text=[self getClass:(short)indexPath.section];
     cell.Time.text=[self getTime:(short)indexPath.section];
     cell.Xf.text=[self getJd:(short)indexPath.section];
+    cell.userInteractionEnabled=NO;
     return cell;
 }
 -(void)getScoreData{

@@ -122,9 +122,9 @@
 		3A98CC251E7CFF0200CABD0D /* Math.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A98CC231E7CFF0200CABD0D /* Math.m */; };
 		3AAB90991EA393A000C35137 /* ScoreRank.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AAB90981EA393A000C35137 /* ScoreRank.m */; };
 		3ACF3D081EA731E800FBEC57 /* CourseXpTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ACF3D071EA731E800FBEC57 /* CourseXpTableViewController.m */; };
-		3ACF3D0B1EA7320400FBEC57 /* CourseXpTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ACF3D0A1EA7320400FBEC57 /* CourseXpTableViewCell.m */; };
 		3ACF3D0E1EA7497C00FBEC57 /* CourseXp.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ACF3D0D1EA7497C00FBEC57 /* CourseXp.m */; };
 		3AD443EB1E97CF5600720F42 /* VedioTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD443EA1E97CF5600720F42 /* VedioTableViewCell.m */; };
+		3AE52B871EA8F0EB00705269 /* CourseXpTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AE52B861EA8F0EB00705269 /* CourseXpTableViewCell.m */; };
 		3AF72C971E9A239800093A39 /* JSPatchPlatform.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AF72C961E9A239800093A39 /* JSPatchPlatform.framework */; };
 		3AF72C9A1E9A23F000093A39 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AF72C991E9A23F000093A39 /* JavaScriptCore.framework */; };
 		3AF72C9B1E9A23F900093A39 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A6FF7C61DB3152C004CFBE8 /* libz.tbd */; };
@@ -373,12 +373,12 @@
 		3AAB90981EA393A000C35137 /* ScoreRank.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScoreRank.m; sourceTree = "<group>"; };
 		3ACF3D061EA731E800FBEC57 /* CourseXpTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseXpTableViewController.h; sourceTree = "<group>"; };
 		3ACF3D071EA731E800FBEC57 /* CourseXpTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseXpTableViewController.m; sourceTree = "<group>"; };
-		3ACF3D091EA7320400FBEC57 /* CourseXpTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseXpTableViewCell.h; sourceTree = "<group>"; };
-		3ACF3D0A1EA7320400FBEC57 /* CourseXpTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseXpTableViewCell.m; sourceTree = "<group>"; };
 		3ACF3D0C1EA7497C00FBEC57 /* CourseXp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseXp.h; sourceTree = "<group>"; };
 		3ACF3D0D1EA7497C00FBEC57 /* CourseXp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseXp.m; sourceTree = "<group>"; };
 		3AD443E91E97CF5600720F42 /* VedioTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VedioTableViewCell.h; sourceTree = "<group>"; };
 		3AD443EA1E97CF5600720F42 /* VedioTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VedioTableViewCell.m; sourceTree = "<group>"; };
+		3AE52B851EA8F0EB00705269 /* CourseXpTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseXpTableViewCell.h; sourceTree = "<group>"; };
+		3AE52B861EA8F0EB00705269 /* CourseXpTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseXpTableViewCell.m; sourceTree = "<group>"; };
 		3AF72C961E9A239800093A39 /* JSPatchPlatform.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JSPatchPlatform.framework; sourceTree = "<group>"; };
 		3AF72C991E9A23F000093A39 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		3AF73BEF1E7D12610086417E /* APIRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIRequest.h; sourceTree = "<group>"; };
@@ -770,6 +770,7 @@
 		3A796C661E534DAE00794043 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				3AE52B841EA8F0EB00705269 /* CourseXp */,
 				3A4D300B1E8D297200901E3B /* Main */,
 				3A4D2FBA1E8D20E900901E3B /* Hand */,
 				3AD443E81E97CF5600720F42 /* Vedio */,
@@ -1078,8 +1079,6 @@
 			children = (
 				3ACF3D061EA731E800FBEC57 /* CourseXpTableViewController.h */,
 				3ACF3D071EA731E800FBEC57 /* CourseXpTableViewController.m */,
-				3ACF3D091EA7320400FBEC57 /* CourseXpTableViewCell.h */,
-				3ACF3D0A1EA7320400FBEC57 /* CourseXpTableViewCell.m */,
 			);
 			path = CourseXp;
 			sourceTree = "<group>";
@@ -1091,6 +1090,15 @@
 				3AD443EA1E97CF5600720F42 /* VedioTableViewCell.m */,
 			);
 			path = Vedio;
+			sourceTree = "<group>";
+		};
+		3AE52B841EA8F0EB00705269 /* CourseXp */ = {
+			isa = PBXGroup;
+			children = (
+				3AE52B851EA8F0EB00705269 /* CourseXpTableViewCell.h */,
+				3AE52B861EA8F0EB00705269 /* CourseXpTableViewCell.m */,
+			);
+			path = CourseXp;
 			sourceTree = "<group>";
 		};
 		3AF72C951E9A239800093A39 /* JSPATCH */ = {
@@ -1319,7 +1327,6 @@
 				3A98CB5F1E7CF7AA00CABD0D /* MomentsModel.m in Sources */,
 				3A796C531E534C1B00794043 /* UsernameViewController.m in Sources */,
 				3A4D2FDE1E8D237500901E3B /* PowerViewController.m in Sources */,
-				3ACF3D0B1EA7320400FBEC57 /* CourseXpTableViewCell.m in Sources */,
 				3A98CB741E7CF82F00CABD0D /* UILabel+LXAdd.m in Sources */,
 				3A532CD21E910C13003CD5A8 /* ZFPlayerModel.m in Sources */,
 				3A98CBFF1E7CFA9C00CABD0D /* FORGestureTrack.m in Sources */,
@@ -1358,6 +1365,7 @@
 				3A796C3A1E534C1B00794043 /* MainPageViewController.m in Sources */,
 				3A4D2FDC1E8D237500901E3B /* HomeWorkViewController.m in Sources */,
 				3A796C4E1E534C1B00794043 /* ScoreDataViewController.m in Sources */,
+				3AE52B871EA8F0EB00705269 /* CourseXpTableViewCell.m in Sources */,
 				3A31E1E51E6BC5040056565A /* MomentsViewController.m in Sources */,
 				3A98CB5D1E7CF7AA00CABD0D /* CommentsModel.m in Sources */,
 				3A796C1F1E534C1B00794043 /* CourseViewController.m in Sources */,

@@ -184,6 +184,7 @@ int datediff(int y1,int m1,int d1,int y2,int m2,int d2)
     else{
         isset=@"-";
     }
+    cell.userInteractionEnabled=NO;
     cell.Label_ExamName.text=CourseName;
     cell.Label_ExamRoom.text=RoomName;
     cell.Label_ExamTime.text=Exam_Time;

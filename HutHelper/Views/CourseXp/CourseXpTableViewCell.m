@@ -42,14 +42,14 @@ static const int kTopCourseLocation = kTopBackgroundImageView3+10;
     courseName.textColor=RGB(190, 190, 190, 1);
     [self addSubview:courseName];
     //课程名称数据
-    UILabel *courseNameData=[[UILabel alloc]initWithFrame:CGRectMake(SYReal(kLeftLabel), SYReal(kTopCourseNameDataLabel), SYReal(230), SYReal(20))];
+    UILabel *courseNameData=[[UILabel alloc]initWithFrame:CGRectMake(SYReal(kLeftLabel), SYReal(kTopCourseNameDataLabel), SYReal(350), SYReal(20))];
     courseNameData.text=_data.lesson;
+    courseNameData.textColor=RGB(115, 221, 221, 1);
     courseNameData.font=[UIFont systemFontOfSize:15];
     [self addSubview:courseNameData];
     //课程具体名称数据
     UILabel *objData=[[UILabel alloc]initWithFrame:CGRectMake(SYReal(kLeftLabel), SYReal(kTopObjLabel), SYReal(230), SYReal(20))];
     objData.text=_data.obj;
-    objData.textColor=RGB(115, 221, 221, 1);
     objData.font=[UIFont systemFontOfSize:15];
     [self addSubview:objData];
     //灰色背景
