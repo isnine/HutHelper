@@ -43,7 +43,6 @@
     }
     self.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(reload)];
     self.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(load)];
-    
     return self;
 }
 -(void)HiddenMJ{

@@ -64,7 +64,7 @@ static const int kTopCourseLocation = kTopBackgroundImageView3+10;
     [self addSubview:courseTime];
     //课程时间数据
     UILabel *courseTimeData=[[UILabel alloc]initWithFrame:CGRectMake(SYReal(kLeftShowLabel), SYReal(kTopCourseTimeLabel), SYReal(kLengthShowLabel), SYReal(20))];
-    courseTimeData.text=[NSString stringWithFormat:@"%@周-星期%@ %@",_data.weeks_no,_data.week,_data.real_time];
+    courseTimeData.text=[NSString stringWithFormat:@"%@周-星期%@ %@",_data.weeks_no,[Math transforDay:[_data.week intValue]],_data.real_time];
     courseTimeData.textAlignment = NSTextAlignmentRight;
     courseTimeData.font=[UIFont systemFontOfSize:15];
     [self addSubview:courseTimeData];
@@ -100,6 +100,13 @@ static const int kTopCourseLocation = kTopBackgroundImageView3+10;
     courseLocationData.textAlignment = NSTextAlignmentRight;
     courseLocationData.font=[UIFont systemFontOfSize:15];
     [self addSubview:courseLocationData];
-    
+    //完成标志
+    if (([Math getWeek]>[_data.weeks_no intValue])
+        ||(([Math getWeek]==[_data.weeks_no intValue])
+        &&([Math getWeekDay]>[_data.week intValue]))) {
+        UIImageView *finishImage=[[UIImageView alloc]initWithFrame:CGRectMake(SYReal(360), SYReal(0), SYReal(50), SYReal(50))];
+        finishImage.image=[UIImage imageNamed:@"finish"];
+        [self addSubview:finishImage];
+    }
 }
 @end

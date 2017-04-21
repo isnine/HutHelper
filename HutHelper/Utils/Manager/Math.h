@@ -21,5 +21,6 @@
 + (int) getWeekDay;
 
 + (BOOL)IfWeeks:(int)nowweek  dsz:(int)dsz  qsz:(int)qsz jsz:(int)jsz;
-
+/**字符串*/
++(NSString*)transforDay:(int)day;
 @end

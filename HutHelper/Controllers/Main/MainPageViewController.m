@@ -59,9 +59,7 @@ int class_error_;
 }
 #pragma mark - 各按钮事件
 - (IBAction)ClassFind:(id)sender {  //课表界面
-    NSArray *Class                            = [Config getCourse];
-    NSArray *ClassXP                            = [Config getCourseXp];
-    if((!Class)&&(!ClassXP)){
+    if(([Config getCourse]==nil)||([Config getCourseXp]==nil)){
         [MBProgressHUD showMessage:@"查询中" toView:self.view];
         NSString *urlString=[NSString stringWithFormat:API_CLASS,Config.getStudentKH,Config.getRememberCodeApp];
         NSString *urlXpString=[NSString stringWithFormat:API_CLASSXP,Config.getStudentKH,Config.getRememberCodeApp];
@@ -95,11 +93,11 @@ int class_error_;
                 }
             }else if([msg isEqualToString:@"令牌错误"]){
                 [MBProgressHUD showError:ERROR_MSG_INVALID];
-                 HideAllHUD
+                HideAllHUD
             }
             else{
                 [MBProgressHUD showError:msg];
-                 HideAllHUD
+                HideAllHUD
             }
         } failure:^(NSError *error) {
             HideAllHUD
@@ -110,10 +108,8 @@ int class_error_;
         [Config pushViewController:@"Class"];
     }
 } //课程表
-- (IBAction)ClassXPFind:(id)sender {  //课表界面
-    NSArray *Class                            = [Config getCourse];
-    NSArray *ClassXP                            = [Config getCourseXp];
-    if((!Class)&&(!ClassXP)){
+- (IBAction)ClassXPFind:(id)sender {  //实验课表
+    if(([Config getCourse]==nil)||([Config getCourseXp]==nil)){
         [MBProgressHUD showMessage:@"查询中" toView:self.view];
         NSString *urlString=[NSString stringWithFormat:API_CLASS,Config.getStudentKH,Config.getRememberCodeApp];
         NSString *urlXpString=[NSString stringWithFormat:API_CLASSXP,Config.getStudentKH,Config.getRememberCodeApp];
@@ -132,34 +128,35 @@ int class_error_;
                             NSArray *arrayCourseXp= responseObject[@"data"];
                             [Config saveCourseXp:arrayCourseXp];
                             [Config saveWidgetCourseXp:arrayCourseXp];
-                            [Config setIs:1];
                             [Config pushViewController:@"ClassXp"];
-                            HideAllHUD
                         }
                         else{
                             [Config pushViewController:@"ClassXp"];
                             [MBProgressHUD showError:msg];
-                            HideAllHUD
                         }
+                        HideAllHUD
                     } failure:^(NSError *error) {
                         [MBProgressHUD showError:@"网络超时，实验课表查询失败"];
+                        HideAllHUD
                     }];
                 }
             }else if([msg isEqualToString:@"令牌错误"]){
                 [MBProgressHUD showError:ERROR_MSG_INVALID];
+                HideAllHUD
             }
             else{
                 [MBProgressHUD showError:msg];
+                HideAllHUD
             }
-            
         } failure:^(NSError *error) {
             HideAllHUD
             [MBProgressHUD showError:@"网络超时，平时课表查询失败"];
         }];
     }else{
-       [Config setIs:1];
         [Config pushViewController:@"ClassXp"];
     }
+    
+
 } //实验课表
 - (IBAction)HomeWork:(id)sender {
     [Config pushViewController:@"HomeWork"];
@@ -169,7 +166,7 @@ int class_error_;
 } //电费查询
 - (IBAction)SchoolSay:(id)sender {
     [Config setNoSharedCache];
-    if ([Config getSay]) {
+    if ([Config getSay]!=nil) {
         [Config setIs:0];
         MomentsViewController *Say      = [[MomentsViewController alloc] init];
         AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -216,7 +213,7 @@ int class_error_;
 } //校园说说
 - (IBAction)SchoolHand:(id)sender {
     [Config setNoSharedCache];
-    if ([Config getHand]) {
+    if ([Config getHand]!=nil) {
         [Config setIs:0];
         HandTableViewController *hand=[[HandTableViewController alloc]init];
         AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -235,7 +232,7 @@ int class_error_;
         [tempAppDelegate.mainNavigationController pushViewController:hand animated:YES];
         HideAllHUD
     }failure:^(NSError *error){
-        [MBProgressHUD showError:@"网络超时，请检查网络并重试"];
+        [MBProgressHUD showError:@"网络超时"];
         HideAllHUD
     }];
 } //二手市场
@@ -261,7 +258,7 @@ int class_error_;
                         HideAllHUD
                     }
                 } failure:^(NSError *error) {
-                    [MBProgressHUD showError:@"网络超时，请检查网络并重试"];
+                    [MBProgressHUD showError:@"网络超时"];
                     HideAllHUD
                 }];
                 
@@ -274,19 +271,19 @@ int class_error_;
             }
             
         }failure:^(NSError *error){
-            [MBProgressHUD showError:@"网络超时，请检查网络并重试"];
+            [MBProgressHUD showError:@"网络超时"];
             HideAllHUD
         }];
     }else{
         [Config pushViewController:@"ScoreShow"];
-
+        
     }
 } //成绩查询
 - (IBAction)Library:(id)sender {
     [Config pushViewController:@"Library"];
 } //图书馆
 - (IBAction)Exam:(id)sender {
-    if ([Config getExam]) {
+    if ([Config getExam]!=nil) {
         [Config pushViewController:@"Exam"];
         return;
     }
@@ -342,7 +339,7 @@ int class_error_;
         }
         HideAllHUD
     } failure:^(NSError *error) {
-        [MBProgressHUD showError:@"网络超时，请检查网络并重试"];
+        [MBProgressHUD showError:@"网络超时"];
         HideAllHUD
     }];
 }  //失物招领
@@ -361,7 +358,7 @@ int class_error_;
         [Config pushViewController:@"Vedio"];
         HideAllHUD
     }failure:^(NSError *error) {
-        [MBProgressHUD showError:@"网络超时，请检查网络并重试"];
+        [MBProgressHUD showError:@"网络超时"];
         HideAllHUD
     }];
     

@@ -160,7 +160,7 @@
                  [MBProgressHUD showError:@"您没有发布的商品"];
              }
          } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-             [MBProgressHUD showError:@"网络超时，请检查网络并重试"];
+             [MBProgressHUD showError:@"网络超时"];
              HideAllHUD
          }];
 }

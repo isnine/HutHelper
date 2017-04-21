@@ -478,7 +478,7 @@
                  [MBProgressHUD showError:[Say_All objectForKey:[Say_All objectForKey:@"msg"]]];
              }             HideAllHUD
          } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-             [MBProgressHUD showError:@"网络超时，请检查网络并重试"];
+             [MBProgressHUD showError:@"网络超时"];
              HideAllHUD
          }];
 }
