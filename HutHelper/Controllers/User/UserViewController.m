@@ -148,17 +148,25 @@ NSData* data;
 
 #pragma mark -
 #pragma mark - tableView protocal methods
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 6;
+}
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 1;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row == 0) {
+    if (indexPath.section == 0) {
         return 183.f;
     }
-    return 85.f;
+    return 86.f;
 }
-
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    if (section==1) {
+        return 15;
+    }
+    return 1;
+}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *TrueName=Config.getTrueName; //真实姓名
@@ -169,34 +177,34 @@ NSData* data;
     if(sex ==NULL){
         sex=@"";
     }
-    if (indexPath.row == 0) {
+    if (indexPath.section == 0) {
         UserInfoCell *cell = [tableView dequeueReusableCellWithIdentifier:kUserInfoCellId];
         if (!cell) {
             cell = [[UserInfoCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kUserInfoCellId];
         }
         return cell;
     }
-    if(indexPath.row == 1){
+    if(indexPath.section == 1){
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"reUse" forIndexPath:indexPath];
         cell.textLabel.text = [NSString stringWithFormat:@"姓名:%@", TrueName];
         return cell;
     }
-    if(indexPath.row == 2){
+    if(indexPath.section == 2){
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"reUse" forIndexPath:indexPath];
         cell.textLabel.text = [NSString stringWithFormat:@"性别:%@", sex];
         return cell;
     }
-    if(indexPath.row == 3){
+    if(indexPath.section == 3){
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"reUse" forIndexPath:indexPath];
         cell.textLabel.text = [NSString stringWithFormat:@"学号:%@", studentKH];
         return cell;
     }
-    if(indexPath.row == 4){
+    if(indexPath.section == 4){
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"reUse" forIndexPath:indexPath];
         cell.textLabel.text = [NSString stringWithFormat:@"学院:%@", dep_name];
         return cell;
     }
-    if(indexPath.row == 5){
+    if(indexPath.section == 5){
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"reUse" forIndexPath:indexPath];
         cell.textLabel.text = [NSString stringWithFormat:@"班级:%@", class_name];
         return cell;

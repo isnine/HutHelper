@@ -226,7 +226,7 @@ static int Is ;
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     NSDictionary *noticeDictionary=@{@"time":@"2017-03-17 24:00",
                                      @"title":@"工大助手",
-                                     @"body":@"工大助手V2.1.1更新日志\n\n- 紧急修复了考试计划 \n\n如果您对App有任何建议或者发现了Bug\n可以在侧栏-反馈中告诉我们，我向您保证每个Bug都会尽快修复，每个意见都会得到回复，另外在AppStore中求个好评🙏"
+                                     @"body":@"工大助手V2.1.1更新日志\n\n- 修复了考试计划\n- 修改了实验课表界面 \n\n如果您对App有任何建议或者发现了Bug\n可以在侧栏-反馈中告诉我们，我向您保证每个Bug都会尽快修复，每个意见都会得到回复，另外在AppStore中求个好评🙏"
                                      };
     
     NSDictionary *noticeDictionary2=@{@"time":@"2017-02-20 08:00",
