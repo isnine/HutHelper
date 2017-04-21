@@ -90,7 +90,7 @@ static const int kTopCourseLocation = kTopBackgroundImageView3+10;
     [self addSubview:background3];
     //地点
     UILabel *courseLocation=[[UILabel alloc]initWithFrame:CGRectMake(SYReal(kLeftLabel), SYReal(kTopCourseLocation), SYReal(80), SYReal(20))];
-    courseLocation.text=@"教师";
+    courseLocation.text=@"教室";
     courseLocation.font=[UIFont systemFontOfSize:kTextSizeLabel];
     courseLocation.textColor=RGB(190, 190, 190, 1);
     [self addSubview:courseLocation];

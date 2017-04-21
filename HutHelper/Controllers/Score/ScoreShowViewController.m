@@ -166,12 +166,12 @@
         [self setRanks:_scoreRank.yearMutableArray];
         self.Rank.text=_scoreRank.rank;
     }];
-    item2 = [DTKDropdownItem itemWithTitle:@"学期年级成绩" callBack:^(NSUInteger index, id info) {
+    item2 = [DTKDropdownItem itemWithTitle:@"学期专业成绩" callBack:^(NSUInteger index, id info) {
         [self clearView];
         [self setRanks:_scoreGradeRank.termMutableArray];
         self.Rank.text=_scoreGradeRank.rank;
     }];
-    item3 = [DTKDropdownItem itemWithTitle:@"学年年级成绩" callBack:^(NSUInteger index, id info) {
+    item3 = [DTKDropdownItem itemWithTitle:@"学年专业成绩" callBack:^(NSUInteger index, id info) {
         [self clearView];
         [self setRanks:_scoreGradeRank.yearMutableArray];
         self.Rank.text=_scoreGradeRank.rank;
