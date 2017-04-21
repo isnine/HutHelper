@@ -213,28 +213,28 @@
         [self.tableView reloadData];
     }];
     
-    ScoreRank *scoreRank=[[ScoreRank alloc]initWithArray:[Config getScoreRank]];
+    ScoreRank *scoreRank=[[ScoreRank alloc]initWithArray:[Config getScoreRank][@"data"]];
     switch (scoreRank.termMutableArray.count) {
         case 1:
             menuView = [DTKDropdownMenuView dropdownMenuViewForNavbarTitleViewWithFrame:CGRectMake(123.0, 0, 200.f, 44.f) dropdownItems:@[item0,item11]];
             break;
         case 2:
-            menuView = [DTKDropdownMenuView dropdownMenuViewForNavbarTitleViewWithFrame:CGRectMake(123.0, 0, 200.f, 44.f) dropdownItems:@[item0,item11,item12]];
+            menuView = [DTKDropdownMenuView dropdownMenuViewForNavbarTitleViewWithFrame:CGRectMake(123.0, 0, 200.f, 44.f) dropdownItems:@[item0,item11,item12] ];
             break;
         case 3:
-            menuView = [DTKDropdownMenuView dropdownMenuViewForNavbarTitleViewWithFrame:CGRectMake(123.0, 0, 200.f, 44.f) dropdownItems:@[item0,item11,item12,item21]];
+            menuView = [DTKDropdownMenuView dropdownMenuViewForNavbarTitleViewWithFrame:CGRectMake(123.0, 0, 200.f, 44.f) dropdownItems:@[item0,item11,item12,item21] ];
             break;
         case 4:
-            menuView = [DTKDropdownMenuView dropdownMenuViewForNavbarTitleViewWithFrame:CGRectMake(123.0, 0, 200.f, 44.f) dropdownItems:@[item0,item11,item12,item21,item22]];
+            menuView = [DTKDropdownMenuView dropdownMenuViewForNavbarTitleViewWithFrame:CGRectMake(123.0, 0, 200.f, 44.f) dropdownItems:@[item0,item11,item12,item21,item22] ];
             break;
         case 5:
-            menuView = [DTKDropdownMenuView dropdownMenuViewForNavbarTitleViewWithFrame:CGRectMake(123.0, 0, 200.f, 44.f) dropdownItems:@[item0,item11,item12,item21,item22,item31]];
+            menuView = [DTKDropdownMenuView dropdownMenuViewForNavbarTitleViewWithFrame:CGRectMake(123.0, 0, 200.f, 44.f) dropdownItems:@[item0,item11,item12,item21,item22,item31] ];
             break;
         case 6:
-            menuView = [DTKDropdownMenuView dropdownMenuViewForNavbarTitleViewWithFrame:CGRectMake(123.0, 0, 200.f, 44.f) dropdownItems:@[item0,item11,item12,item21,item22,item31,item32]];
+            menuView = [DTKDropdownMenuView dropdownMenuViewForNavbarTitleViewWithFrame:CGRectMake(123.0, 0, 200.f, 44.f) dropdownItems:@[item0,item11,item12,item21,item22,item31,item32] ];
             break;
         case 7:
-            menuView = [DTKDropdownMenuView dropdownMenuViewForNavbarTitleViewWithFrame:CGRectMake(123.0, 0, 200.f, 44.f) dropdownItems:@[item0,item11,item12,item21,item22,item31,item32,item41]];
+            menuView = [DTKDropdownMenuView dropdownMenuViewForNavbarTitleViewWithFrame:CGRectMake(123.0, 0, 200.f, 44.f) dropdownItems:@[item0,item11,item12,item21,item22,item31,item32,item41] ];
             break;
         case 8:
             menuView = [DTKDropdownMenuView dropdownMenuViewForNavbarTitleViewWithFrame:CGRectMake(123.0, 0, 200.f, 44.f) dropdownItems:@[item0,item11,item12,item21,item22,item31,item32,item41,item42]];
@@ -250,6 +250,7 @@
     menuView.selectedIndex = 0;
     menuView.cellSeparatorColor = [UIColor whiteColor];
     menuView.titleColor=ColorWithRGB(0.f, 0.f, 0.f);//标题颜色
+    [menuView setArrow];
     self.navigationItem.titleView = menuView;
     
 }

@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface CourseXpTableViewController : UITableViewController
-@property (nonatomic, strong) UISwipeGestureRecognizer *leftSwipeGestureRecognizer;
+
 @end

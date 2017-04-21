@@ -156,7 +156,7 @@ int class_error_;
         [Config pushViewController:@"ClassXp"];
     }
     
-
+    
 } //实验课表
 - (IBAction)HomeWork:(id)sender {
     [Config pushViewController:@"HomeWork"];
@@ -250,7 +250,7 @@ int class_error_;
                 NSString *urlRankString=[NSString stringWithFormat:API_RANK,Config.getStudentKH,Config.getRememberCodeApp];
                 [APIRequest GET:urlRankString parameters:nil timeout:8.0 success:^(id responseObject) {
                     if ([responseObject[@"msg"]isEqualToString:@"ok"]) {
-                        [Config saveScoreRank:responseObject[@"data"]];
+                        [Config saveScoreRank:responseObject];
                         [Config pushViewController:@"ScoreShow"];
                         HideAllHUD
                     }else{
@@ -363,7 +363,6 @@ int class_error_;
     }];
     
 } //视频专栏
-
 #pragma mark - 其他方法
 - (void)SetTimeLabel{
     NSDate *now                               = [NSDate date];
@@ -522,6 +521,7 @@ int class_error_;
         [defaults setObject:currentVersion forKey:@"last_run_version_key"];
         NSLog(@"没有记录");
     }else if ([lastRunKey isEqualToString:@"1.9.9"]||[lastRunKey isEqualToString:@"2.0.0"]||[lastRunKey isEqualToString:@"2.1.0"]){
+        [Config removeUserDefaults:@"ScoreRank"];
         [defaults setObject:currentVersion forKey:@"last_run_version_key"];
         [Config addNotice];
     }else if (![lastRunKey isEqualToString:currentVersion]) {
@@ -529,9 +529,5 @@ int class_error_;
         [defaults setObject:currentVersion forKey:@"last_run_version_key"];
         NSLog(@"记录不匹配");
     }
-    
-    
-    
-    
 }
 @end

@@ -12,22 +12,38 @@
 #import "AppDelegate.h"
 #import "Score.h"
 #import "ScoreRank.h"
+#import "DTKDropdownMenuView.h"
 @interface ScoreShowViewController ()
-@property (nonatomic,copy)NSMutableArray *termMutableArray;
+@property (nonatomic,copy)NSMutableArray *rankArray;
 @property (nonatomic,copy)NSMutableArray *yearMutableArray;
 @property (nonatomic,copy)ScoreRank *scoreRank;
+@property (nonatomic,copy)ScoreRank *scoreGradeRank;
 @end
 
-@implementation ScoreShowViewController
+@implementation ScoreShowViewController{
+    int numberView;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    numberView=0;
     //设置标题
     [self setTitle];
+    [self addTitleMenu];
     [self setOther];
-    //[self setJd];
     [self setScale];
-   [self setRank];
+    [self setRanks:_scoreRank.termMutableArray];
+    //左滑手势
+    UISwipeGestureRecognizer* leftSwipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipes:)];
+    leftSwipeGestureRecognizer.direction = UISwipeGestureRecognizerDirectionLeft;
+    [self.view addGestureRecognizer:leftSwipeGestureRecognizer];
+}
+
+- (void)handleSwipes:(UISwipeGestureRecognizer *)sender
+{
+    if (sender.direction == UISwipeGestureRecognizerDirectionLeft) {
+        [Config pushViewController:@"ScoreData"];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -63,46 +79,66 @@
 }
 -(void)setOther{
     Score *score=[[Score alloc]init];
-    _scoreRank=[[ScoreRank alloc]initWithArray:[Config getScoreRank]];
+    _scoreRank=[[ScoreRank alloc]initWithArray:[[Config getScoreRank] objectForKey:@"data"]];
+    _scoreGradeRank=[[ScoreRank alloc]initWithArray:[[Config getScoreRank] objectForKey:@"ndata"]];
     self.Wtg.text=[NSString stringWithFormat:@"%d",[score getWtg]];
     self.Zjd.text=[NSString stringWithFormat:@"%.2lf",[score getZxf]];
     self.Rank.text=_scoreRank.rank;
 }
 
--(void)setRank{
-    for (int i=0; i<_scoreRank.termMutableArray.count;i++) {
-        ScoreRank *scoreRank=_scoreRank.termMutableArray[i];
+-(void)setRanks:(NSMutableArray*)rankMutableArray{
+    for (int i=0; i<rankMutableArray.count;i++) {
+        ScoreRank *scoreRank=rankMutableArray[i];
         //学期
-        UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(SYReal(35),SYReal(317+i*26),SYReal(200),SYReal(22))];
-        label.font=[UIFont systemFontOfSize: 10.0];
-        label.text=[NSString stringWithFormat:@"%@第%@学期",scoreRank.year,scoreRank.term];
-        label.textColor=[UIColor whiteColor];
-        [self.view addSubview:label];
+        _label=[[UILabel alloc]initWithFrame:CGRectMake(SYReal(35),SYReal(317+i*26),SYReal(200),SYReal(22))];
+        _label.font=[UIFont systemFontOfSize: 10.0];
+        if (scoreRank.term) {
+            _label.text=[NSString stringWithFormat:@"%@第%@学期",scoreRank.year,scoreRank.term];
+        }else{
+            _label.text=[NSString stringWithFormat:@"%@学年",scoreRank.year];
+        }
+        _label.textColor=[UIColor whiteColor];
+        _label.tag=200;
+        [self.view addSubview:_label];
         //绩点条
-        UIImageView *imageView=[[UIImageView alloc]initWithFrame:CGRectMake(SYReal(150), SYReal(317+i*26), SYReal(180), SYReal(22))];
-        imageView.image=[self scaleImage:[UIImage imageNamed:@"Score_jd"] toScale:[scoreRank.GPA doubleValue]/5.0];
-        imageView.contentMode =UIViewContentModeLeft;
-        imageView.clipsToBounds = YES;
-        imageView.alpha=0.7;
-        [self.view addSubview:imageView];
+        _imageView=[[UIImageView alloc]initWithFrame:CGRectMake(SYReal(150), SYReal(317+i*26), SYReal(180), SYReal(22))];
+        _imageView.image=[self scaleImage:[UIImage imageNamed:@"Score_jd"] toScale:[scoreRank.GPA doubleValue]/5.0];
+        _imageView.contentMode =UIViewContentModeLeft;
+        _imageView.clipsToBounds = YES;
+        _imageView.alpha=0.7;
+        _imageView.tag=200;
+        [self.view addSubview:_imageView];
         //绩点
-        UILabel *labelGPA=[[UILabel alloc]initWithFrame:CGRectMake(SYReal(301),SYReal(317+i*26),SYReal(71),SYReal(22))];
-        labelGPA.font=[UIFont systemFontOfSize: 13.0];
-        labelGPA.text=scoreRank.GPA;
-        labelGPA.textColor=[UIColor whiteColor];
-        labelGPA.textAlignment = NSTextAlignmentRight;
-        [self.view addSubview:labelGPA];
+        _labelGPA=[[UILabel alloc]initWithFrame:CGRectMake(SYReal(301),SYReal(317+i*26),SYReal(71),SYReal(22))];
+        _labelGPA.font=[UIFont systemFontOfSize: 13.0];
+        _labelGPA.text=scoreRank.GPA;
+        _labelGPA.textColor=[UIColor whiteColor];
+        _labelGPA.textAlignment = NSTextAlignmentRight;
+        _labelGPA.tag=200;
+        [self.view addSubview:_labelGPA];
         //排名
-        UILabel *labelRank=[[UILabel alloc]initWithFrame:CGRectMake(SYReal(336),SYReal(317+i*26),SYReal(71),SYReal(22))];
-        labelRank.font=[UIFont systemFontOfSize: 13.0];
-        labelRank.text=scoreRank.rank;
-        labelRank.textColor=[UIColor whiteColor];
-        labelRank.textAlignment = NSTextAlignmentRight;
-        [self.view addSubview:labelRank];
+        _labelRank=[[UILabel alloc]initWithFrame:CGRectMake(SYReal(336),SYReal(317+i*26),SYReal(71),SYReal(22))];
+        _labelRank.font=[UIFont systemFontOfSize: 13.0];
+        _labelRank.text=scoreRank.rank;
+        _labelRank.textColor=[UIColor whiteColor];
+        _labelRank.textAlignment = NSTextAlignmentRight;
+        _labelRank.tag=200;
+        [self.view addSubview:_labelRank];
         
         NSUserDefaults *defalut=[NSUserDefaults standardUserDefaults];
         [defalut setInteger:i+1 forKey:@"sourceGrade"];
         [defalut synchronize];
+    }
+}
+-(void)clearView{
+    for(id tmpView in [self.view subviews])
+    {
+        UIView *imgView = (UIView *)tmpView;
+        if(imgView.tag == 200 )   //判断是否满足自己要删除的子视图的条件
+        {
+            [imgView removeFromSuperview]; //删除子视图
+        }
+        
     }
 }
 -(void)setScale{
@@ -116,5 +152,40 @@
     UIGraphicsEndImageContext();
     return scaledImage;
 }
-
+- (void)addTitleMenu
+{
+    DTKDropdownItem *item0 = [DTKDropdownItem itemWithTitle:@"学期班级成绩" callBack:^(NSUInteger index, id info) {
+        [self clearView];
+        [self setRanks:_scoreRank.termMutableArray];
+        self.Rank.text=_scoreRank.rank;
+    }];
+    DTKDropdownItem *item1,*item2,*item3;
+    DTKDropdownMenuView *menuView;
+    item1 = [DTKDropdownItem itemWithTitle:@"学年班级成绩" callBack:^(NSUInteger index, id info) {
+        [self clearView];
+        [self setRanks:_scoreRank.yearMutableArray];
+        self.Rank.text=_scoreRank.rank;
+    }];
+    item2 = [DTKDropdownItem itemWithTitle:@"学期年级成绩" callBack:^(NSUInteger index, id info) {
+        [self clearView];
+        [self setRanks:_scoreGradeRank.termMutableArray];
+        self.Rank.text=_scoreGradeRank.rank;
+    }];
+    item3 = [DTKDropdownItem itemWithTitle:@"学年年级成绩" callBack:^(NSUInteger index, id info) {
+        [self clearView];
+        [self setRanks:_scoreGradeRank.yearMutableArray];
+        self.Rank.text=_scoreGradeRank.rank;
+    }];
+    
+    menuView = [DTKDropdownMenuView dropdownMenuViewForNavbarTitleViewWithFrame:CGRectMake(123.0, 0, 200.f, 44.f) dropdownItems:@[item0,item1,item2,item3]];
+    menuView.currentNav = self.navigationController;
+    menuView.dropWidth = 150.f;
+    menuView.textColor = [UIColor blackColor];
+    menuView.textFont = [UIFont systemFontOfSize:14.f];
+    menuView.animationDuration = 0.2f;
+    menuView.selectedIndex = 0;
+    menuView.titleColor=RGB(233, 233, 233, 1);
+    self.navigationItem.titleView = menuView;
+    
+}
 @end

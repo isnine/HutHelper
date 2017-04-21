@@ -8,7 +8,6 @@
 
 #import "DTKDropdownMenuView.h"
 #import "Masonry.h"
-
 /**__weak  */
 #define menuWeakSelf(menuWeakSelf)  __weak __typeof(&*self)menuWeakSelf = self;
 // 图片路径
@@ -396,6 +395,9 @@ UITableViewDataSource
 }
 
 #pragma mark - setter
+-(void)setArrow{
+    _arrowImageView.image=[UIImage imageNamed:DTKMenuSrcName(@"arrow_down_black_icon.png")]?:[UIImage imageNamed:DTKMenuFrameworkSrcName(@"arrow_down_black_icon.png")];
+}
 - (void)setCellColor:(UIColor *)cellColor
 {
     if (_tableViewTopArrow) {

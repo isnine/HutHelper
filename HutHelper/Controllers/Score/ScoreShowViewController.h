@@ -14,6 +14,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *Rank;
 @property (weak, nonatomic) IBOutlet UILabel *Scale;
 
-
+@property (nonatomic,strong) IBOutlet UILabel *label;
+@property (nonatomic,strong) IBOutlet UIImageView *imageView;
+@property (nonatomic,strong) IBOutlet UILabel *labelGPA;
+@property (nonatomic,strong) IBOutlet UILabel *labelRank;
 
 @end

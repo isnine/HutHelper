@@ -32,9 +32,9 @@
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(reload)];
     [self.tableView.mj_header beginRefreshing];
     //左滑手势
-    self.leftSwipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipes:)];
-    self.leftSwipeGestureRecognizer.direction = UISwipeGestureRecognizerDirectionLeft;
-    [self.view addGestureRecognizer:self.leftSwipeGestureRecognizer];
+    UISwipeGestureRecognizer* leftSwipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipes:)];
+    leftSwipeGestureRecognizer.direction = UISwipeGestureRecognizerDirectionLeft;
+    [self.view addGestureRecognizer:leftSwipeGestureRecognizer];
 }
 
 - (void)handleSwipes:(UISwipeGestureRecognizer *)sender

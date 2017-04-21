@@ -19,18 +19,17 @@ typedef enum : NSUInteger {
 @interface DTKDropdownMenuView : UIView
 
 + (instancetype)dropdownMenuViewWithType:(DTKDropDownType)dropDownType frame:(CGRect)frame dropdownItems:(NSArray *)dropdownItems icon:(NSString *)icon;
++ (instancetype)dropdownMenuViewForNavbarTitleViewWithFrame:(CGRect )frame dropdownItems:(NSArray *)dropdownItems isBlack:(BOOL)isBlackColor;
 + (instancetype)dropdownMenuViewForNavbarTitleViewWithFrame:(CGRect )frame dropdownItems:(NSArray *)dropdownItems;
 
 /// 当前Nav导航栏  
 @property(weak ,nonatomic) UINavigationController *currentNav;
-
 /// 当前选中index 默认是0
 @property (assign ,nonatomic) NSUInteger selectedIndex;
 /// titleColor 标题字体颜色  默认 白色
 @property (strong, nonatomic) UIColor *titleColor;
 /// titleFont  标题字体  默认 system 17
 @property (strong, nonatomic) UIFont  *titleFont;
-
 /// 下拉菜单的宽度  默认80.f
 @property (assign, nonatomic) CGFloat dropWidth;
 /// 下拉菜单 cell 颜色  默认 白色
@@ -49,10 +48,11 @@ typedef enum : NSUInteger {
 @property (assign, nonatomic) CGFloat animationDuration;
 /// 下拉菜单 cell 是否显示选中按钮  默认 NO
 @property (assign, nonatomic) BOOL    showAccessoryCheckmark;
-
 /// 默认幕布透明度 opacity 默认 0.3f
 @property (assign, nonatomic) CGFloat backgroundAlpha;
-
+/**下拉ico颜色*/
+@property (assign, nonatomic) BOOL    isBlackColor;
+-(void)setArrow;
 @end
 
 @interface DTKDropdownItem : NSObject
@@ -63,12 +63,12 @@ typedef enum : NSUInteger {
 /// icon
 @property (copy, nonatomic) NSString *iconName;
 /// selected
-@property (assign, nonatomic)  BOOL isSelected;
 /// info 自定义参数
 @property (strong, nonatomic) id info;
 
 + (instancetype)itemWithTitle:(NSString *)title iconName:(NSString *)iconName callBack:(dropMenuCallBack)callBack;
 + (instancetype)itemWithTitle:(NSString *)title callBack:(dropMenuCallBack)callBack;
+
 + (instancetype)Item;
 
 @end

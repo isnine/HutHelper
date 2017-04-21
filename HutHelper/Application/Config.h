@@ -25,7 +25,7 @@
 +(void)saveSayLikes:(NSDictionary*)sayLikesData;
 +(void)saveHand:(NSArray*)handData;
 +(void)saveScore:(NSData*)scoreData;
-+(void)saveScoreRank:(NSArray*)examRank;
++(void)saveScoreRank:(NSDictionary*)examRank;
 +(void)saveExam:(NSData*)examData;
 +(void)saveLost:(NSArray*)lostData;
 +(void)saveNowWeek:(int)nowWeek;
@@ -43,7 +43,7 @@
 +(NSArray*)getHand;
 +(NSArray*)getOtherHand;
 +(NSData*)getExam;
-+(NSArray*)getScoreRank;
++(NSDictionary*)getScoreRank;
 #pragma mark - 获得用户数据
 +(User*)getUser;
 +(NSString*)getStudentKH;
@@ -61,6 +61,7 @@
 #pragma mark - 设置
 +(void)saveUmeng;
 +(void)removeUmeng;
++(void)removeUserDefaults:(NSString*)key;
 +(void)removeUserDefaults;
 +(void)setNoSharedCache;
 +(void)pushViewController:(NSString*)controller;
