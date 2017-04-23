@@ -93,11 +93,12 @@
     /**头像图片*/
     cornerImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0,SYReal(37),SYReal(37))];
     cornerImage.center = avatarButton.center;
-    [cornerImage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:API_IMG,_data.head_pic_thumb]] placeholderImage:[self circleImage:[UIImage imageNamed:@"img_defalut"]] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-        if (![[NSString stringWithFormat:API_IMG,_data.head_pic_thumb] isEqualToString:INDEX]) {
-            cornerImage.image=[self circleImage:image];
-        }
-    }];
+    [cornerImage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:API_IMG,_data.head_pic_thumb]]
+                   placeholderImage:[self circleImage:[UIImage imageNamed:@"img_defalut"]]
+                          completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL){
+                              if (![[NSString stringWithFormat:API_IMG,_data.head_pic_thumb] isEqualToString:INDEX]) {
+                                  cornerImage.image=[self circleImage:image];
+                              }}];
     [self.contentView addSubview:cornerImage];
     /**说说内容*/
     contentLabel = [[UILabel alloc] init];
