@@ -64,7 +64,7 @@
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 7;
+    return 8;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -104,6 +104,10 @@
         return itemCell;
     } else if (indexPath.row == 5) {
         itemCell.Text.text                = @"反馈";
+        itemCell.Img.image=[UIImage imageNamed:@"feedback"];
+        return itemCell;
+    } else if (indexPath.row == 6) {
+        itemCell.Text.text                = @"私信";
         itemCell.Img.image=[UIImage imageNamed:@"feedback"];
         return itemCell;
     }else{
@@ -166,6 +170,11 @@
     }
     if (indexPath.row == 5) {  //反馈
         [Config pushViewController:@"Feedback"];
+    }
+    if (indexPath.row == 6) {  //反馈
+        UIViewController *im=[[UIStoryboard storyboardWithName:@"IM" bundle:nil]instantiateViewControllerWithIdentifier:@"Main"];
+        [tempAppDelegate.mainNavigationController pushViewController:im animated:YES];
+      //  [Config pushViewController:@"Feedback"];
     }
     
 }

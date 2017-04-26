@@ -15,13 +15,19 @@
 #import <UMSocialCore/UMSocialCore.h>
 #import <JSPatchPlatform/JSPatch.h>
 #import "iVersion.h"
-@interface AppDelegate ()
-
+#import <BmobIMSDK/BmobIMSDK.h>
+#import <BmobSDK/Bmob.h>
+@interface AppDelegate ()<BmobIMDelegate>{
+    
+}
+@property (strong, nonatomic) BmobIM *sharedIM;
+@property (copy  , nonatomic) NSString *userId;
+@property (copy  , nonatomic) NSString *token;
 @end
 
 @implementation AppDelegate
 
-
+#define kAppKey @"bb96c4df7fd649cc2eec6357242f9cc4"
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     /**友盟推送*/
@@ -48,7 +54,7 @@
     [MobClick setAppVersion:version];
     [MobClick startWithConfigure:UMConfigInstance];//配置以上参数后调用此方法初始化SDK！
     /**设置初始界面*/
- //   self.window                      = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    //   self.window                      = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor      = [UIColor whiteColor];//设置通用背景颜色
     [self.window makeKeyAndVisible];
     MainPageViewController *mainVC   = [[MainPageViewController alloc] initWithNibName:@"MainViewController" bundle:nil];
@@ -67,6 +73,21 @@
     [JSPatch setupDevelopment];
     [JSPatch setupRSAPublicKey:@"-----BEGIN PUBLIC KEY-----\nMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCi/XcpS7/lnAf0YEta273pubUy\niZGGy+xNOL2cV4XLpV0OmhCWunAdBuFSV7nn2HWcZWsTuRMt1gFUbO5gtFw6m2JH\niGvfK2YlQvRo91lGsbczad3SCe738lq6MiYNjyaoiCAW9U9+WxvX8DVUxzNhrlba\nwH1UzhSy5A8zWi8bMwIDAQAB\n-----END PUBLIC KEY-----"];
     [JSPatch sync];
+    /*IM**/
+    [Bmob registerWithAppKey:kAppKey];
+    self.sharedIM = [BmobIM sharedBmobIM];
+    [self.sharedIM registerWithAppKey:kAppKey];
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+    self.token = @"";
+    BmobUser *user = [BmobUser getCurrentUser];
+    if (user) {
+        self.userId = user.objectId;
+        [self connectToServer];
+    }else{
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userLogin:) name:@"Login" object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userLogout:) name:@"Logout" object:nil];
+    }
+    self.sharedIM.delegate = self;
     return YES;
 }
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
@@ -82,9 +103,15 @@
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
+    if ([self.sharedIM isConnected]) {
+        [self.sharedIM disconnect];
+    }
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
+    if (self.userId && self.userId.length > 0) {
+        [self connectToServer];
+    }
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
@@ -184,4 +211,20 @@
 {
     [iVersion sharedInstance].appStoreID = 1164848835;
 }
+
+-(void)userLogin:(NSNotification *)noti{
+    NSString *userId = noti.object;
+    self.userId = userId;
+    [self connectToServer];
+}
+-(void)userLogout:(NSNotification *)noti{
+    [self.sharedIM disconnect];
+}
+
+-(void)connectToServer{
+    [self.sharedIM setupBelongId:self.userId];
+    [self.sharedIM setupDeviceToken:self.token];
+    [self.sharedIM connect];
+}
+
 @end
