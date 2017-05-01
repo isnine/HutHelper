@@ -20,10 +20,8 @@
  */
 +(void)loadUsersWithDate:(NSDate *)date completion:(BmobObjectArrayResultBlock)block{
     BmobQuery *query = [BmobQuery queryForUser];
-    
     NSMutableArray *idArray = [NSMutableArray array];
     [idArray addObject:[BmobUser getCurrentUser].objectId];
-    
     [query whereKey:@"objectId" notContainedIn:idArray];
     query.limit = 20;
 //    [query whereKey:@"createdAt" lessThanOrEqualTo:date];
@@ -49,7 +47,12 @@
     BmobQuery *query = [BmobQuery queryForUser];
     [query whereKey:@"objectId" notEqualTo:[BmobUser getCurrentUser].objectId];
     [query whereKey:@"createdAt" lessThanOrEqualTo:date];
-    [query whereKey:@"username" matchesWithRegex:keyword];
+    
+    NSMutableArray *idArray = [NSMutableArray array];
+    [idArray addObject:keyword];
+    [query whereKey:@"username" containedIn:idArray];
+   // [query whereKey:@"TrueName" containedIn:idArray];
+    
     query.limit = 20;
     [query findObjectsInBackgroundWithBlock:^(NSArray *array1, NSError *error) {
         if (error) {

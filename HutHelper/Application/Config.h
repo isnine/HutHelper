@@ -64,5 +64,6 @@
 +(void)removeUserDefaults:(NSString*)key;
 +(void)removeUserDefaults;
 +(void)setNoSharedCache;
++(void)removeBmob;
 +(void)pushViewController:(NSString*)controller;
 @end

@@ -12,6 +12,8 @@
 #import "AppDelegate.h"
 #import "UMessage.h"
 #import "UMMobClick/MobClick.h"
+#import <BmobSDK/Bmob.h>
+#import <BmobIMSDK/BmobIMSDK.h>
 static int Is ;
 
 @implementation Config
@@ -271,5 +273,11 @@ static int Is ;
 }
 +(void)removeUserDefaults:(NSString*)key{
    [[NSUserDefaults standardUserDefaults] removeObjectForKey:key];
+}
++(void)removeBmob{
+    if ([BmobUser getCurrentUser]) {
+        [BmobUser logout];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"Logout" object:nil];
+    }
 }
 @end

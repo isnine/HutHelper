@@ -63,14 +63,15 @@
                                              NSLog(@"登录成功");
                                              if ([BmobUser getCurrentUser]) {
                                                  NSLog(@"get完毕");
-              
-
                                                  [UserService loadUsersWithDate:[NSDate date] completion:^(NSArray *array, NSError *error) {
                                                      if (error) {
                                                          NSLog(@"搜索错误");
                                                      }else{
                                                          if (array && array.count > 0) {
+                                                            //NSArray *arrays = [[BmobIM sharedBmobIM] queryRecentConversation];
                                                              [self.dataArray setArray:array];
+                                                          
+                                                             NSLog(@"%@",array[0]);
                                                              [self sendMessage];
                                                          }
                                                        
