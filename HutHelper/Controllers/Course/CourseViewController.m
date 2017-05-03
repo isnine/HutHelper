@@ -20,6 +20,7 @@
  
 #import "YCXMenu.h"
 #import "NSData+CRC32.h"
+#import "Config.h"
 @interface CourseViewController ()<GWPCourseListViewDataSource, GWPCourseListViewDelegate>
 @property (weak, nonatomic) IBOutlet GWPCourseListView *courseListView;
 @property (nonatomic, strong) NSMutableArray<CourseModel*> *courseArr;
@@ -671,9 +672,9 @@ NSString *show_xp;
     /**拼接地址*/
     [MBProgressHUD showMessage:@"刷新中" toView:self.view];
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    NSString *Url_String=[NSString stringWithFormat:API_CLASS,Config.getStudentKH,Config.getRememberCodeApp];
+    NSString *Url_String=[NSString stringWithFormat:Config.getApiClass,Config.getStudentKH,Config.getRememberCodeApp];
     NSLog(@"平时课表地址:%@",Url_String);
-    NSString *UrlXP_String=[NSString stringWithFormat:API_CLASSXP,Config.getStudentKH,Config.getRememberCodeApp];
+    NSString *UrlXP_String=[NSString stringWithFormat:Config.getApiClass,Config.getStudentKH,Config.getRememberCodeAppXP];
     NSLog(@"实验课表地址:%@",UrlXP_String);
     /**设置9秒超时*/
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];

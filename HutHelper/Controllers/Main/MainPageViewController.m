@@ -32,6 +32,7 @@
 #import "MomentsViewController.h"
 #import "APIRequest.h"
 #import "VedioPlayViewController.h"
+
 #define vBackBarButtonItemName  @"backArrow.png"    //导航条返回默认图片名
 #define ERROR_MSG_INVALID @"登录过期,请重新登录"
 
@@ -61,8 +62,8 @@ int class_error_;
 - (IBAction)ClassFind:(id)sender {  //课表界面
     if(([Config getCourse]==nil)||([Config getCourseXp]==nil)){
         [MBProgressHUD showMessage:@"查询中" toView:self.view];
-        NSString *urlString=[NSString stringWithFormat:API_CLASS,Config.getStudentKH,Config.getRememberCodeApp];
-        NSString *urlXpString=[NSString stringWithFormat:API_CLASSXP,Config.getStudentKH,Config.getRememberCodeApp];
+        NSString *urlString=[NSString stringWithFormat:Config.getApiClass,Config.getStudentKH,Config.getRememberCodeApp];
+        NSString *urlXpString=[NSString stringWithFormat:Config.getApiClass,Config.getStudentKH,Config.getRememberCodeAppXP];
         /**平时课表*/
         [APIRequest GET:urlString parameters:nil success:^(id responseObject) {
             NSString *msg=responseObject[@"msg"];
@@ -111,8 +112,8 @@ int class_error_;
 - (IBAction)ClassXPFind:(id)sender {  //实验课表
     if(([Config getCourse]==nil)||([Config getCourseXp]==nil)){
         [MBProgressHUD showMessage:@"查询中" toView:self.view];
-        NSString *urlString=[NSString stringWithFormat:API_CLASS,Config.getStudentKH,Config.getRememberCodeApp];
-        NSString *urlXpString=[NSString stringWithFormat:API_CLASSXP,Config.getStudentKH,Config.getRememberCodeApp];
+        NSString *urlString=[NSString stringWithFormat:Config.getApiClass,Config.getStudentKH,Config.getRememberCodeApp];
+        NSString *urlXpString=[NSString stringWithFormat:Config.getApiClass,Config.getStudentKH,Config.getRememberCodeAppXP];
         /**平时课表*/
         [APIRequest GET:urlString parameters:nil success:^(id responseObject) {
             NSString *msg=responseObject[@"msg"];

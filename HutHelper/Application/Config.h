@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+
 @class User;
 @interface Config : NSObject
 
@@ -58,14 +59,7 @@
 +(NSString*)getUserId;
 +(NSString*)getRememberCodeApp;
 
-#pragma mark - 设置
 +(void)saveUmeng;
-+(void)removeUmeng;
-+(void)removeUserDefaults:(NSString*)key;
-+(void)removeUserDefaults;
-+(void)setNoSharedCache;
-+(void)removeBmob;
-+(void)pushViewController:(NSString*)controller;
 
 @end
 

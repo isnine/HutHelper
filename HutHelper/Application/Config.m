@@ -9,11 +9,8 @@
 
 #import "User.h"
 #import "Config.h"
-#import "AppDelegate.h"
 #import "UMessage.h"
 #import "UMMobClick/MobClick.h"
-#import <BmobSDK/Bmob.h>
-#import <BmobIMSDK/BmobIMSDK.h>
 static int Is ;
 
 @implementation Config
@@ -216,13 +213,6 @@ static int Is ;
     [defaults setObject:currentVersion forKey:@"last_run_version_key"];
     [defaults synchronize];
 }
-#pragma mark - 界面
-+(void)pushViewController:(NSString*)controller{
-    UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    UIViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:controller];
-    AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:YES];
-}
 #pragma mark - 通知
 +(void)addNotice{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
@@ -239,13 +229,6 @@ static int Is ;
     [defaults setObject:array forKey:@"Notice"];//通知列表
     [defaults synchronize];
 }
-#pragma mark - 设置
-+(void)setNoSharedCache{
-    NSURLCache *sharedCache = [[NSURLCache alloc] initWithMemoryCapacity:0
-                                                            diskCapacity:0
-                                                                diskPath:nil];
-    [NSURLCache setSharedURLCache:sharedCache];
-}
 +(void)saveUmeng{
     [MobClick profileSignInWithPUID:[self getUser].studentKH];
     [UMessage addTag:[self getUser].class_name
@@ -260,25 +243,6 @@ static int Is ;
         NSLog(@"学号信息保存成功/n");
     }];
 }
-+(void)removeUmeng{
-    [UMessage removeAllTags:^(id responseObject, NSInteger remain, NSError *error) {//删除友盟标签缓存
-    }];
-    [UMessage removeAlias:[Config getStudentKH] type:kUMessageAliasTypeSina response:^(id responseObject, NSError *error) {
-    }];
-}
-/**删除本地数据缓存*/
-+(void)removeUserDefaults{
-    NSString *appDomain       = [[NSBundle mainBundle] bundleIdentifier];
-    [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:appDomain];
-}
-+(void)removeUserDefaults:(NSString*)key{
-   [[NSUserDefaults standardUserDefaults] removeObjectForKey:key];
-}
-+(void)removeBmob{
-    if ([BmobUser getCurrentUser]) {
-        [BmobUser logout];
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"Logout" object:nil];
-    }
-}
+
 @end
 

@@ -6,9 +6,10 @@
 //  Copyright © 2017年 nine. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "Config.h"
 
-@interface Config(Api)
+@interface Config (Api)
++(NSString*)getApiVedioShow;
 +(NSString*)getApiClass;
 +(NSString*)getApiClassXP;
 +(NSString*)getApiExam;
@@ -42,7 +43,8 @@
 +(NSString*)getApiMomentsLikesCreate;
 +(NSString*)getApiMomentsLikesShow;
 
-+(NSString*)getApiVedioShow;
+
 +(NSString*)getApiFeedback;
 +(NSString*)getApiImg;
+
 @end

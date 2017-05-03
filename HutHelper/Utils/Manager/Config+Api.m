@@ -6,9 +6,9 @@
 //  Copyright © 2017年 nine. All rights reserved.
 //
 
-#import "Config.h"
+#import "Config+Api.h"
 
-@implementation Config(Api)
+@implementation Config (Api)
 +(NSString*)getApiClass{
     return @"http://218.75.197.121:8888/api/v1/get/lessons";
 }
