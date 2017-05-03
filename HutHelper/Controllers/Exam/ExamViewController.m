@@ -208,7 +208,7 @@ int datediff(int y1,int m1,int d1,int y2,int m2,int d2)
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     NSString *ss=[Config.getStudentKH stringByAppendingString:@"apiforapp!"];
     ss=[ss MMD5];
-    NSString *Url_String=[NSString stringWithFormat:API_EXAM,Config.getStudentKH,ss];
+    NSString *Url_String=[NSString stringWithFormat:@"%@/%@/key/%@",Config.getApiExam,Config.getStudentKH,ss];
     NSLog(@"考试地址:%@",Url_String);
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     /**设置4秒超时*/

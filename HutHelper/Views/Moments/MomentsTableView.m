@@ -114,8 +114,8 @@
 #pragma mark - 加载方法
 -(void)reload{
     /**拼接地址*/
-    NSString *Url_String=[NSString stringWithFormat:API_MOMENTS,1];
-    NSString *likesDataString=[NSString stringWithFormat:API_MOMENTS_LIKES_SHOW,Config.getStudentKH,Config.getRememberCodeApp];
+    NSString *Url_String=[NSString stringWithFormat:@"%@/%d",Config.getApiMoments,1];
+    NSString *likesDataString=[NSString stringWithFormat:@"%@/%@/%@",Config.getApiMomentsLikesShow,Config.getStudentKH,Config.getRememberCodeApp];
     /**设置9秒超时*/
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
@@ -158,7 +158,7 @@
 -(void)load{
     num++;
     /**拼接地址*/
-    NSString *Url_String=[NSString stringWithFormat:API_MOMENTS,num];
+    NSString *Url_String=[NSString stringWithFormat:@"%@/%d",Config.getApiMoments,num];
     /**设置9秒超时*/
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];

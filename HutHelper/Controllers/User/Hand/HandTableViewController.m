@@ -129,7 +129,7 @@
     [MBProgressHUD showMessage:@"加载中" toView:self.view];
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     /**拼接地址*/
-    NSString *Url_String=[NSString stringWithFormat:API_GOODS_USER,Config.getStudentKH,Config.getRememberCodeApp];
+    NSString *Url_String=[NSString stringWithFormat:@"%@/%@/%@/1",Config.getApiGoodsUser,Config.getStudentKH,Config.getRememberCodeApp];
     /**设置9秒超时*/
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
@@ -220,11 +220,11 @@
 }
 -(NSString*)getPhoto:(int)i{
     NSString *photo=[_Hand_content[i] objectForKey:@"image"];
-    NSString *Url=[NSString stringWithFormat:API_IMG,photo];
+    NSString *Url=[NSString stringWithFormat:@"%@/%@",Config.getApiImg,photo];
     return Url;
 }
 -(UIImage*)getImg:(int)i{
-        NSString *Url=[NSString stringWithFormat:API_IMG,[_Hand_content[i] objectForKey:@"image"]];
+        NSString *Url=[NSString stringWithFormat:@"%@/%@",Config.getApiImg,[_Hand_content[i] objectForKey:@"image"]];
         NSURL *imageUrl = [NSURL URLWithString:Url];
         return [UIImage imageWithData:[NSData dataWithContentsOfURL:imageUrl]];
 }
@@ -245,7 +245,7 @@
     [Config setNoSharedCache];
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     /**拼接地址*/
-    NSString *Url_String=[NSString stringWithFormat:API_GOODS,_num];
+    NSString *Url_String=[NSString stringWithFormat: @"%@/%d",Config.getApiGoods,_num];
     /**设置9秒超时*/
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
@@ -273,7 +273,7 @@
         [Config setNoSharedCache];
         NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
         /**拼接地址*/
-        NSString *Url_String=[NSString stringWithFormat:API_GOODS,_num];
+        NSString *Url_String=[NSString stringWithFormat: @"%@/%d",Config.getApiGoods,_num];
         /**设置9秒超时*/
         AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
         [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];

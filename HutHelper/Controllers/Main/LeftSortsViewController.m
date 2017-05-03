@@ -234,12 +234,12 @@
 
 -(NSString*)getHeadUrl{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    return [NSString stringWithFormat:API_IMG,Config.getHeadPicThumb];
+    return [NSString stringWithFormat:@"%@/%@",Config.getApiImg,Config.getHeadPicThumb];
 }
 -(void)downHead{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     SDWebImageManager *manager = [SDWebImageManager sharedManager];
-    NSString *image_url=[NSString stringWithFormat:API_IMG,Config.getHeadPicThumb];
+    NSString *image_url=[NSString stringWithFormat:@"%@/%@",Config.getApiImg,Config.getHeadPicThumb];
     NSURL *url                   = [NSURL URLWithString: image_url];//接口地址
     [manager downloadImageWithURL:url options:SDWebImageRetryFailed progress:^(NSInteger receivedSize, NSInteger expectedSize) {
     } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
@@ -269,7 +269,7 @@
 }
 -(UIImage*)getImg{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults]; //得到用户数据
-    NSString *Url=[NSString stringWithFormat:API_IMG,Config.getHeadPicThumb];
+    NSString *Url=[NSString stringWithFormat:@"%@/%@",Config.getApiImg,Config.getHeadPicThumb];
     if ((!Config.getHeadPicThumb)||[Config.getHeadPicThumb isEqualToString:@""]) {
         return [self circleImage:[UIImage imageNamed:@"img_defalut"]];
     }else if ([defaults objectForKey:@"head_img"]!=NULL){
