@@ -66,4 +66,7 @@
 +(void)setNoSharedCache;
 +(void)removeBmob;
 +(void)pushViewController:(NSString*)controller;
+
 @end
+
+

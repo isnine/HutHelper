@@ -70,6 +70,7 @@
 		3A532CD21E910C13003CD5A8 /* ZFPlayerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A532CC21E910C13003CD5A8 /* ZFPlayerModel.m */; };
 		3A532CD31E910C13003CD5A8 /* ZFPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A532CC41E910C13003CD5A8 /* ZFPlayerView.m */; };
 		3A532CDD1E9121C5003CD5A8 /* VedioTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A532CDC1E9121C5003CD5A8 /* VedioTableViewController.m */; };
+		3A73D7931EB99B7200936C02 /* Config+Api.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A73D7921EB99B7200936C02 /* Config+Api.m */; };
 		3A796C1F1E534C1B00794043 /* CourseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A796BA41E534C1B00794043 /* CourseViewController.m */; };
 		3A796C251E534C1B00794043 /* FeedbackResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A796BB21E534C1B00794043 /* FeedbackResultViewController.m */; };
 		3A796C261E534C1B00794043 /* FeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A796BB41E534C1B00794043 /* FeedbackViewController.m */; };
@@ -320,6 +321,8 @@
 		3A6FF7C41DB3151E004CFBE8 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		3A6FF7C61DB3152C004CFBE8 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		3A6FF7C81DB31544004CFBE8 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		3A73D7911EB99B7200936C02 /* Config+Api.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Config+Api.h"; sourceTree = "<group>"; };
+		3A73D7921EB99B7200936C02 /* Config+Api.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Config+Api.m"; sourceTree = "<group>"; };
 		3A796BA31E534C1B00794043 /* CourseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseViewController.h; sourceTree = "<group>"; };
 		3A796BA41E534C1B00794043 /* CourseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseViewController.m; sourceTree = "<group>"; };
 		3A796BB11E534C1B00794043 /* FeedbackResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedbackResultViewController.h; sourceTree = "<group>"; };
@@ -1211,6 +1214,8 @@
 				3A98CC231E7CFF0200CABD0D /* Math.m */,
 				3AF73BEF1E7D12610086417E /* APIRequest.h */,
 				3AF73BF01E7D12610086417E /* APIRequest.m */,
+				3A73D7911EB99B7200936C02 /* Config+Api.h */,
+				3A73D7921EB99B7200936C02 /* Config+Api.m */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -1662,6 +1667,7 @@
 				3A98CB711E7CF82F00CABD0D /* UINavigationBar+Awesome.m in Sources */,
 				3A796C261E534C1B00794043 /* FeedbackViewController.m in Sources */,
 				3AE01BDE1EB0E94400D5B7EF /* UUProgressHUD.m in Sources */,
+				3A73D7931EB99B7200936C02 /* Config+Api.m in Sources */,
 				3A796C3C1E534C1B00794043 /* NoticeShowViewController.m in Sources */,
 				3A98CC001E7CFA9C00CABD0D /* UUInputAccessoryView.m in Sources */,
 				3ACD1C611EB753B4001EA0D4 /* ContactsViewController.m in Sources */,
