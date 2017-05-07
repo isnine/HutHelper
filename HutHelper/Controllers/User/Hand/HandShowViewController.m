@@ -143,7 +143,7 @@
 }
 -(NSString*)getimg:(int)i{
     NSArray *img=[_Hand_show objectForKey:@"pics"];
-    NSString *Url_String=[NSString stringWithFormat:@"%@/%@",@"http://218.75.197.121:8888",img[i]];
+    NSString *Url_String=[NSString stringWithFormat:@"%@/%@",@"http://www.hugongda.com:8888 ",img[i]];
     return Url_String;
 }
 -(NSString*)getcontact{

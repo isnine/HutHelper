@@ -47,5 +47,5 @@
 +(NSString*)getApiFeedback;
 +(NSString*)getApiImg;
 
-+(NSString*)getApiIndex;
++(NSString*)apiIndex;
 @end

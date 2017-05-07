@@ -93,7 +93,7 @@
 
 
 -(void)postsay{
-    NSString *Url_String=[NSString stringWithFormat:@"%@/%@/%@",Config.getApiMomentsCreate,Config.getStudentKH,Config.getRememberCodeApp];
+    NSString *Url_String=Config.getApiMomentsCreate;
     NSLog(@"说说发生请求地址%@",Url_String);
     if (_selectedPhotos.count!=0) {
         

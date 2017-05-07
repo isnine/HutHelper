@@ -448,7 +448,7 @@
     [MBProgressHUD showMessage:@"加载中" toView:self.view];
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     /**拼接地址*/
-    NSString *Url_String=[NSString stringWithFormat:@"%@/%@",Config.getApiLostUser,Config.getUserId];
+    NSString *Url_String=Config.getApiLostUser;
     /**设置9秒超时*/
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];

@@ -103,7 +103,7 @@
 //    return YES;
 //}
 -(void)PostHand{
-    NSString *Url_String=[NSString stringWithFormat:@"%@/%@/%@",Config.getApiGoodsCreate,Config.getStudentKH,Config.getRememberCodeApp];
+    NSString *Url_String=Config.getApiGoodsCreate;
     
     NSLog(@"二手发布请求地址%@",Url_String);
     if (_selectedPhotos.count!=0) {

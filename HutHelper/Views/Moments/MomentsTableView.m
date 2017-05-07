@@ -115,7 +115,7 @@
 -(void)reload{
     /**拼接地址*/
     NSString *Url_String=[NSString stringWithFormat:@"%@/%d",Config.getApiMoments,1];
-    NSString *likesDataString=[NSString stringWithFormat:@"%@/%@/%@",Config.getApiMomentsLikesShow,Config.getStudentKH,Config.getRememberCodeApp];
+    NSString *likesDataString=Config.getApiMomentsLikesShow;
     /**设置9秒超时*/
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];

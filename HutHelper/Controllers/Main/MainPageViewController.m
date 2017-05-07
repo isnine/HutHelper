@@ -62,8 +62,8 @@ int class_error_;
 - (IBAction)ClassFind:(id)sender {  //课表界面
     if(([Config getCourse]==nil)||([Config getCourseXp]==nil)){
         [MBProgressHUD showMessage:@"查询中" toView:self.view];
-        NSString *urlString=[NSString stringWithFormat:@"%@/%@/%@",Config.getApiClass,Config.getStudentKH,Config.getRememberCodeApp];
-        NSString *urlXpString=[NSString stringWithFormat:@"%@/%@/%@",Config.getApiClassXP,Config.getStudentKH,Config.getRememberCodeApp];
+        NSString *urlString=Config.getApiClass;
+        NSString *urlXpString=Config.getApiClassXP;
         /**平时课表*/
         [APIRequest GET:urlString parameters:nil success:^(id responseObject) {
             NSString *msg=responseObject[@"msg"];
@@ -112,8 +112,8 @@ int class_error_;
 - (IBAction)ClassXPFind:(id)sender {  //实验课表
     if(([Config getCourse]==nil)||([Config getCourseXp]==nil)){
         [MBProgressHUD showMessage:@"查询中" toView:self.view];
-        NSString *urlString=[NSString stringWithFormat:@"%@/%@/%@",Config.getApiClass,Config.getStudentKH,Config.getRememberCodeApp];
-        NSString *urlXpString=[NSString stringWithFormat:@"%@/%@/%@",Config.getApiClassXP,Config.getStudentKH,Config.getRememberCodeApp];
+        NSString *urlString=Config.getApiClass;
+        NSString *urlXpString=Config.getApiClassXP;
         /**平时课表*/
         [APIRequest GET:urlString parameters:nil success:^(id responseObject) {
             NSString *msg=responseObject[@"msg"];
@@ -241,14 +241,14 @@ int class_error_;
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     if((![defaults objectForKey:@"Score"])||(![defaults objectForKey:@"ScoreRank"])){
         [MBProgressHUD showMessage:@"查询中" toView:self.view];
-        NSString *shaString=[Math sha1:[NSString stringWithFormat:@"%@%@%@",Config.getStudentKH,Config.getRememberCodeApp,@"f$Z@%"]];
-        NSString *urlString=[NSString stringWithFormat:@"%@/%@/%@/%@",Config.getApiScores,Config.getStudentKH,Config.getRememberCodeApp,shaString];
+        
+        NSString *urlString=Config.getApiScores;
         [APIRequest GET:urlString parameters:nil timeout:8.0 success:^(id responseObject){
             NSData *scoreData =    [NSJSONSerialization dataWithJSONObject:responseObject options:NSJSONWritingPrettyPrinted error:nil];
             NSString *msg=responseObject[@"msg"];
             if([msg isEqualToString:@"ok"]){
                 [Config saveScore:scoreData];
-                NSString *urlRankString=[NSString stringWithFormat:@"%@/%@/%@",Config.getApiRank,Config.getStudentKH,Config.getRememberCodeApp];
+                NSString *urlRankString=Config.getApiRank;
                 [APIRequest GET:urlRankString parameters:nil timeout:8.0 success:^(id responseObject) {
                     if ([responseObject[@"msg"]isEqualToString:@"ok"]) {
                         [Config saveScoreRank:responseObject];
@@ -289,7 +289,7 @@ int class_error_;
         return;
     }
     [MBProgressHUD showMessage:@"查询中" toView:self.view];
-    NSString *urlString=[NSString stringWithFormat:@"%@/%@/key/%@",Config.getApiExam,Config.getStudentKH,[Math md5:[Config.getStudentKH stringByAppendingString:@"apiforapp!"]]];
+    NSString *urlString=Config.getApiExam;
     [APIRequest GET:urlString parameters:nil success:^(id responseObject) {
         NSData *Exam_data =    [NSJSONSerialization dataWithJSONObject:responseObject options:NSJSONWritingPrettyPrinted error:nil];
         if([responseObject[@"status"] isEqualToString:@"success"]){

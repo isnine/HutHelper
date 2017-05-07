@@ -9,7 +9,7 @@
 #ifndef HUTAPI_h
 #define HUTAPI_h
 
-#define INDEX @"http://218.75.197.121:8888/"
+#define INDEX @"http://www.hugongda.com:8888 /"
 
 /**AppKey*/
 #define APPKEY_UMESSAGE @"57fe13d867e58e0e59000ca1"

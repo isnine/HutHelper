@@ -109,7 +109,7 @@ NSData* data;
     
     
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    NSString *url_String=[NSString stringWithFormat:@"%@/%@/%@",Config.getApiProfileAvatar,Config.getStudentKH,Config.getRememberCodeApp];
+    NSString *url_String=Config.getApiProfileAvatar;
     
     NSURL* url = [NSURL URLWithString:url_String];//请求url
     // UIImage* img = [UIImage imageNamed:@"header.jpg"];

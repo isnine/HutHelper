@@ -14,31 +14,13 @@
 #import "MBProgressHUD+MJ.h"
 #import "ExamCell.h"
 #import "JSONKit.h"
-#include <stdio.h>
-#include <time.h>
-#import<CommonCrypto/CommonDigest.h>
 #import "MJRefresh.h"
 @interface ExamViewController ()
 
 @property (nonatomic, retain) NSMutableArray *array;
 @property (nonatomic, retain) NSMutableArray *arraycx;
 @end
-@implementation NSString (MMD5)
-- (id)MMD5
-{
-    const char *cStr           = [self UTF8String];
-    unsigned char digest[16];
-    unsigned int x=(int)strlen(cStr) ;
-    CC_MD5( cStr, x, digest );
-    // This is the md5 call
-    NSMutableString *output    = [NSMutableString stringWithCapacity:CC_MD5_DIGEST_LENGTH * 2];
-    
-    for(int i                  = 0; i < CC_MD5_DIGEST_LENGTH; i++)
-        [output appendFormat:@"%02x", digest[i]];
-    
-    return  output;
-}
-@end
+
 @implementation ExamViewController
 
 int datediff(int y1,int m1,int d1,int y2,int m2,int d2)
@@ -205,10 +187,7 @@ int datediff(int y1,int m1,int d1,int y2,int m2,int d2)
 }
 -(void)reloadexam{
     /**拼接地址*/
-    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    NSString *ss=[Config.getStudentKH stringByAppendingString:@"apiforapp!"];
-    ss=[ss MMD5];
-    NSString *Url_String=[NSString stringWithFormat:@"%@/%@/key/%@",Config.getApiExam,Config.getStudentKH,ss];
+    NSString *Url_String=Config.getApiExam;
     NSLog(@"考试地址:%@",Url_String);
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     /**设置4秒超时*/

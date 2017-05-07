@@ -73,7 +73,7 @@
 }
 
 -(void)post{
-    NSString *Url_String=[NSString stringWithFormat:@"%@/%@/%@",Config.getApiLostCreate,Config.getStudentKH,Config.getRememberCodeApp];
+    NSString *Url_String=Config.getApiLostCreate;
     NSLog(@"失物发生请求地址%@",Url_String);
     if (_selectedPhotos.count!=0) {
         _responstring=@"";
