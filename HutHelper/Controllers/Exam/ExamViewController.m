@@ -46,7 +46,7 @@ int datediff(int y1,int m1,int d1,int y2,int m2,int d2)
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.title = @"考试查询";
+    self.navigationItem.title = @"考试计划";
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor]}];
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(reloadexam)];
     //获得考试信息
@@ -182,6 +182,7 @@ int datediff(int y1,int m1,int d1,int y2,int m2,int d2)
     NSData *jsonData=[defaults objectForKey:@"Exam"];
     NSDictionary *User_All     = [jsonData objectFromJSONData];//数据 -> 字典
     NSDictionary *Class_Data=[User_All objectForKey:@"res"];
+    [Config saveWidgetExam:Class_Data];
     _array  = [Class_Data objectForKey:@"exam"];
     _arraycx = [Class_Data objectForKey:@"cxexam"];
 }

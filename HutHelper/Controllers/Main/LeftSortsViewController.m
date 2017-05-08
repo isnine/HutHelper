@@ -107,8 +107,6 @@
     } else{
         return itemCell;
     }
-    
-    
 }
 
 //-(NSInteger)tableView:(UITableView *)tableView indentationLevelForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -199,8 +197,6 @@
         }
     }];
 }
-
-
 
 - (void)shareWebPageToPlatformType:(UMSocialPlatformType)platformType
 {

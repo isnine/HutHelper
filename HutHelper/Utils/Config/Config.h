@@ -28,6 +28,7 @@
 +(void)saveScore:(NSData*)scoreData;
 +(void)saveScoreRank:(NSDictionary*)examRank;
 +(void)saveExam:(NSData*)examData;
++(void)saveWidgetExam:(NSDictionary*)examDic;
 +(void)saveLost:(NSArray*)lostData;
 +(void)saveNowWeek:(int)nowWeek;
 +(void)saveVedio:(NSDictionary*)vedioData;

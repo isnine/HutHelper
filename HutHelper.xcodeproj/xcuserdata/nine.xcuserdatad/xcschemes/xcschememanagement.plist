@@ -4,10 +4,15 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Extend.xcscheme</key>
+		<key>ExamTime.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>17</integer>
+		</dict>
+		<key>Extend.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
 		</dict>
 		<key>HutHelper.xcscheme</key>
 		<dict>
@@ -40,6 +45,11 @@
 			<true/>
 		</dict>
 		<key>3A85677A1DA908AA00EBD44A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>3AFA4F871EC0675700CB7DA2</key>
 		<dict>
 			<key>primary</key>
 			<true/>

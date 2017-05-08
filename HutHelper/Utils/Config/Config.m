@@ -136,6 +136,11 @@ static int Is ;
     [defaults setObject:examData forKey:@"Exam"];
     [defaults synchronize];
 }
++(void)saveWidgetExam:(NSDictionary*)examDic{
+    NSUserDefaults *shared = [[NSUserDefaults alloc] initWithSuiteName:@"group.HutHelper"];
+    [shared setObject:examDic forKey:@"Exam"];
+    [shared synchronize];
+}
 +(void)saveLost:(NSArray*)lostData{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     [defaults setObject:lostData forKey:@"Lost"];

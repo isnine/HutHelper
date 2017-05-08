@@ -178,6 +178,11 @@
 		3AFA4F7F1EC04C6100CB7DA2 /* CourseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AFA4F7C1EC04C6100CB7DA2 /* CourseModel.m */; };
 		3AFA4F801EC04C6100CB7DA2 /* CourseXp.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AFA4F7E1EC04C6100CB7DA2 /* CourseXp.m */; };
 		3AFA4F831EC0504500CB7DA2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AFA4F821EC0504500CB7DA2 /* AppDelegate.m */; };
+		3AFA4F891EC0675700CB7DA2 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A2FF4E91E50179700B07EB6 /* NotificationCenter.framework */; };
+		3AFA4F8D1EC0675700CB7DA2 /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AFA4F8C1EC0675700CB7DA2 /* TodayViewController.m */; };
+		3AFA4F901EC0675700CB7DA2 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AFA4F8E1EC0675700CB7DA2 /* MainInterface.storyboard */; };
+		3AFA4F941EC0675700CB7DA2 /* ExamTime.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 3AFA4F881EC0675700CB7DA2 /* ExamTime.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		3AFA4F9B1EC08CB100CB7DA2 /* Exam.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AFA4F9A1EC08CB100CB7DA2 /* Exam.m */; };
 		DF4C1EB183B351F157BF18CD /* libPods-HutHelper.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CAE9EAE0009084B77EC3CAD6 /* libPods-HutHelper.a */; };
 /* End PBXBuildFile section */
 
@@ -189,6 +194,13 @@
 			remoteGlobalIDString = 3A2FF4E71E50179700B07EB6;
 			remoteInfo = Extend;
 		};
+		3AFA4F921EC0675700CB7DA2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3A8567731DA908AA00EBD44A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3AFA4F871EC0675700CB7DA2;
+			remoteInfo = ExamTime;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -198,6 +210,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				3AFA4F941EC0675700CB7DA2 /* ExamTime.appex in Embed App Extensions */,
 				3A2FF4F51E50179700B07EB6 /* Extend.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
@@ -521,6 +534,14 @@
 		3AFA4F7E1EC04C6100CB7DA2 /* CourseXp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseXp.m; sourceTree = "<group>"; };
 		3AFA4F811EC0504500CB7DA2 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3AFA4F821EC0504500CB7DA2 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		3AFA4F881EC0675700CB7DA2 /* ExamTime.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ExamTime.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		3AFA4F8B1EC0675700CB7DA2 /* TodayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TodayViewController.h; sourceTree = "<group>"; };
+		3AFA4F8C1EC0675700CB7DA2 /* TodayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodayViewController.m; sourceTree = "<group>"; };
+		3AFA4F8F1EC0675700CB7DA2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		3AFA4F911EC0675700CB7DA2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3AFA4F981EC06BE300CB7DA2 /* ExamTime.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ExamTime.entitlements; sourceTree = "<group>"; };
+		3AFA4F991EC08CB100CB7DA2 /* Exam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Exam.h; sourceTree = "<group>"; };
+		3AFA4F9A1EC08CB100CB7DA2 /* Exam.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Exam.m; sourceTree = "<group>"; };
 		A8DF4B266A6C75237AD1C11E /* Pods-HutHelper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HutHelper.release.xcconfig"; path = "Pods/Target Support Files/Pods-HutHelper/Pods-HutHelper.release.xcconfig"; sourceTree = "<group>"; };
 		CAE9EAE0009084B77EC3CAD6 /* libPods-HutHelper.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HutHelper.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -552,6 +573,14 @@
 				3A98CC0C1E7CFA9C00CABD0D /* libUMessage_Sdk_1.4.0.a in Frameworks */,
 				3AE01BD91EB0E94400D5B7EF /* libopencore-amrwb.a in Frameworks */,
 				DF4C1EB183B351F157BF18CD /* libPods-HutHelper.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3AFA4F851EC0675700CB7DA2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3AFA4F891EC0675700CB7DA2 /* NotificationCenter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -945,6 +974,7 @@
 			children = (
 				3A85677D1DA908AA00EBD44A /* HutHelper */,
 				3A2FF4EB1E50179700B07EB6 /* Extend */,
+				3AFA4F8A1EC0675700CB7DA2 /* ExamTime */,
 				3A85677C1DA908AA00EBD44A /* Products */,
 				3A7D3CA81DB0A6CB00355E7A /* Frameworks */,
 				12486D9D0B1F337F5979987B /* Pods */,
@@ -956,6 +986,7 @@
 			children = (
 				3A85677B1DA908AA00EBD44A /* HutHelper.app */,
 				3A2FF4E81E50179700B07EB6 /* Extend.appex */,
+				3AFA4F881EC0675700CB7DA2 /* ExamTime.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1408,6 +1439,20 @@
 			path = Course;
 			sourceTree = "<group>";
 		};
+		3AFA4F8A1EC0675700CB7DA2 /* ExamTime */ = {
+			isa = PBXGroup;
+			children = (
+				3AFA4F981EC06BE300CB7DA2 /* ExamTime.entitlements */,
+				3AFA4F8B1EC0675700CB7DA2 /* TodayViewController.h */,
+				3AFA4F8C1EC0675700CB7DA2 /* TodayViewController.m */,
+				3AFA4F8E1EC0675700CB7DA2 /* MainInterface.storyboard */,
+				3AFA4F911EC0675700CB7DA2 /* Info.plist */,
+				3AFA4F991EC08CB100CB7DA2 /* Exam.h */,
+				3AFA4F9A1EC08CB100CB7DA2 /* Exam.m */,
+			);
+			path = ExamTime;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1444,11 +1489,29 @@
 			);
 			dependencies = (
 				3A2FF4F41E50179700B07EB6 /* PBXTargetDependency */,
+				3AFA4F931EC0675700CB7DA2 /* PBXTargetDependency */,
 			);
 			name = HutHelper;
 			productName = HutHelper;
 			productReference = 3A85677B1DA908AA00EBD44A /* HutHelper.app */;
 			productType = "com.apple.product-type.application";
+		};
+		3AFA4F871EC0675700CB7DA2 /* ExamTime */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3AFA4F951EC0675700CB7DA2 /* Build configuration list for PBXNativeTarget "ExamTime" */;
+			buildPhases = (
+				3AFA4F841EC0675700CB7DA2 /* Sources */,
+				3AFA4F851EC0675700CB7DA2 /* Frameworks */,
+				3AFA4F861EC0675700CB7DA2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ExamTime;
+			productName = ExamTime;
+			productReference = 3AFA4F881EC0675700CB7DA2 /* ExamTime.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -1486,6 +1549,16 @@
 							};
 						};
 					};
+					3AFA4F871EC0675700CB7DA2 = {
+						CreatedOnToolsVersion = 8.3;
+						DevelopmentTeam = JW2LR94V6G;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
+					};
 				};
 			};
 			buildConfigurationList = 3A8567761DA908AA00EBD44A /* Build configuration list for PBXProject "HutHelper" */;
@@ -1504,6 +1577,7 @@
 			targets = (
 				3A85677A1DA908AA00EBD44A /* HutHelper */,
 				3A2FF4E71E50179700B07EB6 /* Extend */,
+				3AFA4F871EC0675700CB7DA2 /* ExamTime */,
 			);
 		};
 /* End PBXProject section */
@@ -1549,6 +1623,14 @@
 				3ACD1C481EB75371001EA0D4 /* ChatBottomContentView.xib in Resources */,
 				3A4D2FF41E8D24C100901E3B /* NoticeTableViewCell.xib in Resources */,
 				3A06D9B61E8CEDE400066DD1 /* ExamCell.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3AFA4F861EC0675700CB7DA2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3AFA4F901EC0675700CB7DA2 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1744,6 +1826,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		3AFA4F841EC0675700CB7DA2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3AFA4F9B1EC08CB100CB7DA2 /* Exam.m in Sources */,
+				3AFA4F8D1EC0675700CB7DA2 /* TodayViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -1751,6 +1842,11 @@
 			isa = PBXTargetDependency;
 			target = 3A2FF4E71E50179700B07EB6 /* Extend */;
 			targetProxy = 3A2FF4F31E50179700B07EB6 /* PBXContainerItemProxy */;
+		};
+		3AFA4F931EC0675700CB7DA2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3AFA4F871EC0675700CB7DA2 /* ExamTime */;
+			targetProxy = 3AFA4F921EC0675700CB7DA2 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1763,6 +1859,14 @@
 			name = language.strings;
 			sourceTree = "<group>";
 		};
+		3AFA4F8E1EC0675700CB7DA2 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3AFA4F8F1EC0675700CB7DA2 /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -1772,6 +1876,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CODE_SIGN_ENTITLEMENTS = Extend/Extend.entitlements;
 				DEVELOPMENT_TEAM = JW2LR94V6G;
+				GCC_PREFIX_HEADER = "HutHelper/Supporting Files/HutHelper-Prefix.pch";
 				INFOPLIST_FILE = Extend/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
@@ -1787,6 +1892,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CODE_SIGN_ENTITLEMENTS = Extend/Extend.entitlements;
 				DEVELOPMENT_TEAM = JW2LR94V6G;
+				GCC_PREFIX_HEADER = "HutHelper/Supporting Files/HutHelper-Prefix.pch";
 				INFOPLIST_FILE = Extend/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
@@ -1989,6 +2095,38 @@
 			};
 			name = Release;
 		};
+		3AFA4F961EC0675700CB7DA2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = ExamTime/ExamTime.entitlements;
+				DEVELOPMENT_TEAM = JW2LR94V6G;
+				GCC_PREFIX_HEADER = "HutHelper/Supporting Files/HutHelper-Prefix.pch";
+				INFOPLIST_FILE = ExamTime/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = name.wxz.HutHelper.ExamTime;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		3AFA4F971EC0675700CB7DA2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = ExamTime/ExamTime.entitlements;
+				DEVELOPMENT_TEAM = JW2LR94V6G;
+				GCC_PREFIX_HEADER = "HutHelper/Supporting Files/HutHelper-Prefix.pch";
+				INFOPLIST_FILE = ExamTime/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = name.wxz.HutHelper.ExamTime;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -2018,6 +2156,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		3AFA4F951EC0675700CB7DA2 /* Build configuration list for PBXNativeTarget "ExamTime" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3AFA4F961EC0675700CB7DA2 /* Debug */,
+				3AFA4F971EC0675700CB7DA2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
