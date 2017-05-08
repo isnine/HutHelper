@@ -9,20 +9,32 @@
 #ifndef HutHelper_Prefix_pch
 #define HutHelper_Prefix_pch
 
-#import "HUTAPI.h"
 #import "Config.h"
+#import "Config+Api.h"
+#import "Config+Set.h"
 #import "Math.h"
+
 /**常用宏*/
 #define HideAllHUD  [MBProgressHUD hideHUDForView:self.view animated:YES];
 #define DeviceMaxHeight ([UIScreen mainScreen].bounds.size.height)
 #define DeviceMaxWidth ([UIScreen mainScreen].bounds.size.width)
 #define SYReal(value) ((value)/414.0f*[UIScreen mainScreen].bounds.size.width)
 #define RGB(r,g,b,a) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:(a)]
-/**release时隐藏NSLOG*/
+/**提示语*/
+#define MsgINVALID  @"登录过期,请重新登录"
+/**NSLOG*/
 #ifdef DEBUG
 #define NSLog(...) NSLog(__VA_ARGS__)
 #else
 # define NSLog(...)
 #endif
-
+/**AppKey*/
+#define APPKEY_UMESSAGE @"57fe13d867e58e0e59000ca1"
+#define APPKEY_QQ_SECRET @"y7n6BRLtnH9mrFT3"
+#define APPKEY_SINA_SECRET @"ba2997aaab6a1602406fc94247dc072d"
+#define APPKEY_WECHAT_SECRET @"8bb26c6a577e61f0bbee160dde7e79af"
+#define APPKEY_BMOB @"bb96c4df7fd649cc2eec6357242f9cc4"
+#define APPKEY_JSPATCH @"bd9208bd34ab8197"
+#define APPSTORE_ID 1164848835
+#define RSA_JSPATCH @"-----BEGIN PUBLIC KEY-----\nMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCi/XcpS7/lnAf0YEta273pubUy\niZGGy+xNOL2cV4XLpV0OmhCWunAdBuFSV7nn2HWcZWsTuRMt1gFUbO5gtFw6m2JH\niGvfK2YlQvRo91lGsbczad3SCe738lq6MiYNjyaoiCAW9U9+WxvX8DVUxzNhrlba\nwH1UzhSy5A8zWi8bMwIDAQAB\n-----END PUBLIC KEY-----"
 #endif /* HutHelper_Prefix_pch */

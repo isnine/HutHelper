@@ -96,7 +96,7 @@
     [cornerImage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/%@",Config.getApiImg,_data.head_pic_thumb]]
                    placeholderImage:[self circleImage:[UIImage imageNamed:@"img_defalut"]]
                           completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL){
-                              if (![[NSString stringWithFormat:@"%@/%@",Config.getApiImg,_data.head_pic_thumb] isEqualToString:INDEX]) {
+                              if (![[NSString stringWithFormat:@"%@/%@",Config.getApiImg,_data.head_pic_thumb] isEqualToString:Config.getApiImg]) {
                                   cornerImage.image=[self circleImage:image];
                               }}];
     [self.contentView addSubview:cornerImage];

@@ -17,7 +17,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2.2.0</string>
+	<string>2.2.1</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -298,8 +298,12 @@
 			</dict>
 		</dict>
 	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>我们需要您同意才能使用相机</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>我们需要您同意才能使用麦克风</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>选择你的头像</string>
+	<string>我们需要您同意才能访问相册</string>
 	<key>UILaunchStoryboardName</key>
 	<string>Launch Screen</string>
 	<key>UIMainStoryboardFile</key>

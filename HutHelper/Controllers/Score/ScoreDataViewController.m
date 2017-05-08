@@ -16,6 +16,7 @@
 #import "AFNetworking.h"
 #import "MBProgressHUD+MJ.h"
 #import "ScoreRank.h"
+#import "NSString+Common.h"
 #define ColorWithRGB(r,g,b) [UIColor colorWithRed:r/255. green:g/255. blue:b/255. alpha:1]
 @interface ScoreDataViewController ()
 @property (nonatomic,copy) NSArray      *scoreData;
@@ -269,7 +270,7 @@
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     NSString *SHA_String=[Config.getStudentKH stringByAppendingString:Config.getRememberCodeApp];
     SHA_String=[SHA_String stringByAppendingString:@"f$Z@%"];
-    SHA_String=[Math sha1:SHA_String];
+    SHA_String=[SHA_String sha1Str];
     NSString *Url_String=[NSString stringWithFormat:@"%@/%@/%@/%@",Config.getApiScores,Config.getStudentKH,Config.getRememberCodeApp,SHA_String];
     NSLog(@"成绩查询地址:%@",Url_String);
     /**设置5秒超时*/

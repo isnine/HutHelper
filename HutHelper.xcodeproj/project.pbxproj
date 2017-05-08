@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3A06D9AE1E8CE8A700066DD1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A06D9AA1E8CE8A700066DD1 /* AppDelegate.m */; };
-		3A06D9AF1E8CE8A700066DD1 /* Config.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A06D9AC1E8CE8A700066DD1 /* Config.m */; };
 		3A06D9B51E8CEDE400066DD1 /* ExamCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A06D9B31E8CEDE400066DD1 /* ExamCell.m */; };
 		3A06D9B61E8CEDE400066DD1 /* ExamCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A06D9B41E8CEDE400066DD1 /* ExamCell.xib */; };
 		3A1CEC331E93D71A002D8583 /* VedioModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A1CEC321E93D71A002D8583 /* VedioModel.m */; };
@@ -70,8 +68,6 @@
 		3A532CD21E910C13003CD5A8 /* ZFPlayerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A532CC21E910C13003CD5A8 /* ZFPlayerModel.m */; };
 		3A532CD31E910C13003CD5A8 /* ZFPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A532CC41E910C13003CD5A8 /* ZFPlayerView.m */; };
 		3A532CDD1E9121C5003CD5A8 /* VedioTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A532CDC1E9121C5003CD5A8 /* VedioTableViewController.m */; };
-		3A73D7961EB9C7B800936C02 /* Config+Api.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A73D7951EB9C7B800936C02 /* Config+Api.m */; };
-		3A73D7991EB9C7FE00936C02 /* Config+Set.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A73D7981EB9C7FE00936C02 /* Config+Set.m */; };
 		3A796C1F1E534C1B00794043 /* CourseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A796BA41E534C1B00794043 /* CourseViewController.m */; };
 		3A796C251E534C1B00794043 /* FeedbackResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A796BB21E534C1B00794043 /* FeedbackResultViewController.m */; };
 		3A796C261E534C1B00794043 /* FeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A796BB41E534C1B00794043 /* FeedbackViewController.m */; };
@@ -91,17 +87,13 @@
 		3A8BACF91DDDBD71001C78B8 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A8BACF81DDDBD71001C78B8 /* libsqlite3.tbd */; };
 		3A8BACFD1DDDBDDB001C78B8 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A8BACFC1DDDBDDB001C78B8 /* ImageIO.framework */; };
 		3A96DEE51E94B384006C2CC8 /* VedioPlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A96DEE41E94B384006C2CC8 /* VedioPlayViewController.m */; };
-		3A98CB5B1E7CF7AA00CABD0D /* CourseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A98CB491E7CF7A900CABD0D /* CourseModel.m */; };
 		3A98CB5D1E7CF7AA00CABD0D /* CommentsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A98CB4F1E7CF7A900CABD0D /* CommentsModel.m */; };
 		3A98CB5E1E7CF7AA00CABD0D /* LikesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A98CB511E7CF7A900CABD0D /* LikesModel.m */; };
 		3A98CB5F1E7CF7AA00CABD0D /* MomentsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A98CB531E7CF7A900CABD0D /* MomentsModel.m */; };
 		3A98CB601E7CF7AA00CABD0D /* Score.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A98CB561E7CF7A900CABD0D /* Score.m */; };
 		3A98CB611E7CF7AA00CABD0D /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A98CB591E7CF7A900CABD0D /* User.m */; };
-		3A98CB701E7CF82F00CABD0D /* NSData+CRC32.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A98CB651E7CF82F00CABD0D /* NSData+CRC32.m */; };
-		3A98CB711E7CF82F00CABD0D /* UINavigationBar+Awesome.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A98CB681E7CF82F00CABD0D /* UINavigationBar+Awesome.m */; };
 		3A98CB721E7CF82F00CABD0D /* MBProgressHUD+MJ.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A98CB6B1E7CF82F00CABD0D /* MBProgressHUD+MJ.m */; };
 		3A98CB731E7CF82F00CABD0D /* MBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3A98CB6C1E7CF82F00CABD0D /* MBProgressHUD.bundle */; };
-		3A98CB741E7CF82F00CABD0D /* UILabel+LXAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A98CB6F1E7CF82F00CABD0D /* UILabel+LXAdd.m */; };
 		3A98CBFE1E7CFA9C00CABD0D /* FORGesture.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A98CBCF1E7CFA9C00CABD0D /* FORGesture.m */; };
 		3A98CBFF1E7CFA9C00CABD0D /* FORGestureTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A98CBD11E7CFA9C00CABD0D /* FORGestureTrack.m */; };
 		3A98CC001E7CFA9C00CABD0D /* UUInputAccessoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A98CBD41E7CFA9C00CABD0D /* UUInputAccessoryView.m */; };
@@ -118,10 +110,6 @@
 		3A98CC0D1E7CFA9C00CABD0D /* XWScanImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A98CBF31E7CFA9C00CABD0D /* XWScanImage.m */; };
 		3A98CC0E1E7CFA9C00CABD0D /* YYFPSLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A98CBF61E7CFA9C00CABD0D /* YYFPSLabel.m */; };
 		3A98CC0F1E7CFA9C00CABD0D /* YYWeakProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A98CBF81E7CFA9C00CABD0D /* YYWeakProxy.m */; };
-		3A98CC1B1E7CFDF900CABD0D /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3A98CC171E7CFDF900CABD0D /* Info.plist */; };
-		3A98CC1C1E7CFDF900CABD0D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A98CC181E7CFDF900CABD0D /* main.m */; };
-		3A98CC1D1E7CFDF900CABD0D /* language.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3A98CC191E7CFDF900CABD0D /* language.strings */; };
-		3A98CC251E7CFF0200CABD0D /* Math.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A98CC231E7CFF0200CABD0D /* Math.m */; };
 		3AAB90991EA393A000C35137 /* ScoreRank.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AAB90981EA393A000C35137 /* ScoreRank.m */; };
 		3ACD1C271EB7313E001EA0D4 /* Recent.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3ACD1C221EB7313E001EA0D4 /* Recent.storyboard */; };
 		3ACD1C281EB7313E001EA0D4 /* RecentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ACD1C241EB7313E001EA0D4 /* RecentTableViewCell.m */; };
@@ -150,7 +138,6 @@
 		3ACD1C6B1EB75452001EA0D4 /* UserInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ACD1C691EB75452001EA0D4 /* UserInfoTableViewCell.m */; };
 		3ACD1C6C1EB75452001EA0D4 /* UserInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3ACD1C6A1EB75452001EA0D4 /* UserInfoTableViewCell.xib */; };
 		3ACF3D081EA731E800FBEC57 /* CourseXpTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ACF3D071EA731E800FBEC57 /* CourseXpTableViewController.m */; };
-		3ACF3D0E1EA7497C00FBEC57 /* CourseXp.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ACF3D0D1EA7497C00FBEC57 /* CourseXp.m */; };
 		3AD443EB1E97CF5600720F42 /* VedioTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD443EA1E97CF5600720F42 /* VedioTableViewCell.m */; };
 		3AE01BA71EB0D20400D5B7EF /* BmobIMSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AE01BA61EB0D20400D5B7EF /* BmobIMSDK.framework */; };
 		3AE01BA81EB0D23700D5B7EF /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A8BACF61DDDBD5D001C78B8 /* SystemConfiguration.framework */; };
@@ -177,6 +164,20 @@
 		3AF72C9A1E9A23F000093A39 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AF72C991E9A23F000093A39 /* JavaScriptCore.framework */; };
 		3AF72C9B1E9A23F900093A39 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A6FF7C61DB3152C004CFBE8 /* libz.tbd */; };
 		3AF73BF11E7D12610086417E /* APIRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF73BF01E7D12610086417E /* APIRequest.m */; };
+		3AFA4F591EC0440F00CB7DA2 /* Config+Api.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AFA4F561EC0440F00CB7DA2 /* Config+Api.m */; };
+		3AFA4F5A1EC0440F00CB7DA2 /* Config+Set.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AFA4F581EC0440F00CB7DA2 /* Config+Set.m */; };
+		3AFA4F5D1EC0442C00CB7DA2 /* Config.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AFA4F5C1EC0442C00CB7DA2 /* Config.m */; };
+		3AFA4F631EC0485400CB7DA2 /* NSData+CRC32.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AFA4F621EC0485400CB7DA2 /* NSData+CRC32.m */; };
+		3AFA4F661EC0488200CB7DA2 /* UILabel+LXAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AFA4F651EC0488200CB7DA2 /* UILabel+LXAdd.m */; };
+		3AFA4F691EC0489900CB7DA2 /* NSString+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AFA4F681EC0489900CB7DA2 /* NSString+Common.m */; };
+		3AFA4F6C1EC049F600CB7DA2 /* Math.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AFA4F6B1EC049F600CB7DA2 /* Math.m */; };
+		3AFA4F6F1EC04A4B00CB7DA2 /* UINavigationBar+Awesome.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AFA4F6E1EC04A4B00CB7DA2 /* UINavigationBar+Awesome.m */; };
+		3AFA4F771EC04C0E00CB7DA2 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3AFA4F731EC04C0E00CB7DA2 /* Info.plist */; };
+		3AFA4F781EC04C0E00CB7DA2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AFA4F741EC04C0E00CB7DA2 /* main.m */; };
+		3AFA4F791EC04C0E00CB7DA2 /* language.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3AFA4F751EC04C0E00CB7DA2 /* language.strings */; };
+		3AFA4F7F1EC04C6100CB7DA2 /* CourseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AFA4F7C1EC04C6100CB7DA2 /* CourseModel.m */; };
+		3AFA4F801EC04C6100CB7DA2 /* CourseXp.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AFA4F7E1EC04C6100CB7DA2 /* CourseXp.m */; };
+		3AFA4F831EC0504500CB7DA2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AFA4F821EC0504500CB7DA2 /* AppDelegate.m */; };
 		DF4C1EB183B351F157BF18CD /* libPods-HutHelper.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CAE9EAE0009084B77EC3CAD6 /* libPods-HutHelper.a */; };
 /* End PBXBuildFile section */
 
@@ -206,11 +207,6 @@
 
 /* Begin PBXFileReference section */
 		0BEA75F30B57DEF614969189 /* Pods-HutHelper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HutHelper.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HutHelper/Pods-HutHelper.debug.xcconfig"; sourceTree = "<group>"; };
-		3A06D9A91E8CE8A700066DD1 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		3A06D9AA1E8CE8A700066DD1 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		3A06D9AB1E8CE8A700066DD1 /* Config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
-		3A06D9AC1E8CE8A700066DD1 /* Config.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Config.m; sourceTree = "<group>"; };
-		3A06D9AD1E8CE8A700066DD1 /* HUTAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUTAPI.h; sourceTree = "<group>"; };
 		3A06D9B21E8CEDE400066DD1 /* ExamCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExamCell.h; sourceTree = "<group>"; };
 		3A06D9B31E8CEDE400066DD1 /* ExamCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExamCell.m; sourceTree = "<group>"; };
 		3A06D9B41E8CEDE400066DD1 /* ExamCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExamCell.xib; sourceTree = "<group>"; };
@@ -322,10 +318,6 @@
 		3A6FF7C41DB3151E004CFBE8 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		3A6FF7C61DB3152C004CFBE8 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		3A6FF7C81DB31544004CFBE8 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
-		3A73D7941EB9C7B800936C02 /* Config+Api.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Config+Api.h"; sourceTree = "<group>"; };
-		3A73D7951EB9C7B800936C02 /* Config+Api.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Config+Api.m"; sourceTree = "<group>"; };
-		3A73D7971EB9C7FE00936C02 /* Config+Set.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Config+Set.h"; sourceTree = "<group>"; };
-		3A73D7981EB9C7FE00936C02 /* Config+Set.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Config+Set.m"; sourceTree = "<group>"; };
 		3A796BA31E534C1B00794043 /* CourseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseViewController.h; sourceTree = "<group>"; };
 		3A796BA41E534C1B00794043 /* CourseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseViewController.m; sourceTree = "<group>"; };
 		3A796BB11E534C1B00794043 /* FeedbackResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedbackResultViewController.h; sourceTree = "<group>"; };
@@ -363,8 +355,6 @@
 		3A8BACFC1DDDBDDB001C78B8 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		3A96DEE31E94B384006C2CC8 /* VedioPlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VedioPlayViewController.h; sourceTree = "<group>"; };
 		3A96DEE41E94B384006C2CC8 /* VedioPlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VedioPlayViewController.m; sourceTree = "<group>"; };
-		3A98CB481E7CF7A900CABD0D /* CourseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CourseModel.h; path = Course/CourseModel.h; sourceTree = "<group>"; };
-		3A98CB491E7CF7A900CABD0D /* CourseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CourseModel.m; path = Course/CourseModel.m; sourceTree = "<group>"; };
 		3A98CB4E1E7CF7A900CABD0D /* CommentsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentsModel.h; sourceTree = "<group>"; };
 		3A98CB4F1E7CF7A900CABD0D /* CommentsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentsModel.m; sourceTree = "<group>"; };
 		3A98CB501E7CF7A900CABD0D /* LikesModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LikesModel.h; sourceTree = "<group>"; };
@@ -375,15 +365,9 @@
 		3A98CB561E7CF7A900CABD0D /* Score.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Score.m; path = Score/Score.m; sourceTree = "<group>"; };
 		3A98CB581E7CF7A900CABD0D /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = User.h; path = User/User.h; sourceTree = "<group>"; };
 		3A98CB591E7CF7A900CABD0D /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = User.m; path = User/User.m; sourceTree = "<group>"; };
-		3A98CB641E7CF82F00CABD0D /* NSData+CRC32.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+CRC32.h"; sourceTree = "<group>"; };
-		3A98CB651E7CF82F00CABD0D /* NSData+CRC32.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+CRC32.m"; sourceTree = "<group>"; };
-		3A98CB671E7CF82F00CABD0D /* UINavigationBar+Awesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+Awesome.h"; sourceTree = "<group>"; };
-		3A98CB681E7CF82F00CABD0D /* UINavigationBar+Awesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+Awesome.m"; sourceTree = "<group>"; };
 		3A98CB6A1E7CF82F00CABD0D /* MBProgressHUD+MJ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+MJ.h"; sourceTree = "<group>"; };
 		3A98CB6B1E7CF82F00CABD0D /* MBProgressHUD+MJ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+MJ.m"; sourceTree = "<group>"; };
 		3A98CB6C1E7CF82F00CABD0D /* MBProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MBProgressHUD.bundle; sourceTree = "<group>"; };
-		3A98CB6E1E7CF82F00CABD0D /* UILabel+LXAdd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+LXAdd.h"; sourceTree = "<group>"; };
-		3A98CB6F1E7CF82F00CABD0D /* UILabel+LXAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+LXAdd.m"; sourceTree = "<group>"; };
 		3A98CBCE1E7CFA9C00CABD0D /* FORGesture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FORGesture.h; sourceTree = "<group>"; };
 		3A98CBCF1E7CFA9C00CABD0D /* FORGesture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORGesture.m; sourceTree = "<group>"; };
 		3A98CBD01E7CFA9C00CABD0D /* FORGestureTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FORGestureTrack.h; sourceTree = "<group>"; };
@@ -414,13 +398,6 @@
 		3A98CBF61E7CFA9C00CABD0D /* YYFPSLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYFPSLabel.m; sourceTree = "<group>"; };
 		3A98CBF71E7CFA9C00CABD0D /* YYWeakProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYWeakProxy.h; sourceTree = "<group>"; };
 		3A98CBF81E7CFA9C00CABD0D /* YYWeakProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYWeakProxy.m; sourceTree = "<group>"; };
-		3A98CC151E7CFDF900CABD0D /* HutHelper-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HutHelper-Prefix.pch"; sourceTree = "<group>"; };
-		3A98CC161E7CFDF900CABD0D /* HutHelper.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = HutHelper.entitlements; sourceTree = "<group>"; };
-		3A98CC171E7CFDF900CABD0D /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3A98CC181E7CFDF900CABD0D /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		3A98CC1A1E7CFDF900CABD0D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/language.strings"; sourceTree = "<group>"; };
-		3A98CC221E7CFF0200CABD0D /* Math.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = Math.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		3A98CC231E7CFF0200CABD0D /* Math.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Math.m; sourceTree = "<group>"; };
 		3AAB90971EA393A000C35137 /* ScoreRank.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreRank.h; sourceTree = "<group>"; };
 		3AAB90981EA393A000C35137 /* ScoreRank.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScoreRank.m; sourceTree = "<group>"; };
 		3ACD1C221EB7313E001EA0D4 /* Recent.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Recent.storyboard; sourceTree = "<group>"; };
@@ -472,8 +449,6 @@
 		3ACD1C6A1EB75452001EA0D4 /* UserInfoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserInfoTableViewCell.xib; sourceTree = "<group>"; };
 		3ACF3D061EA731E800FBEC57 /* CourseXpTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseXpTableViewController.h; sourceTree = "<group>"; };
 		3ACF3D071EA731E800FBEC57 /* CourseXpTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseXpTableViewController.m; sourceTree = "<group>"; };
-		3ACF3D0C1EA7497C00FBEC57 /* CourseXp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseXp.h; sourceTree = "<group>"; };
-		3ACF3D0D1EA7497C00FBEC57 /* CourseXp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseXp.m; sourceTree = "<group>"; };
 		3AD443E91E97CF5600720F42 /* VedioTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VedioTableViewCell.h; sourceTree = "<group>"; };
 		3AD443EA1E97CF5600720F42 /* VedioTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VedioTableViewCell.m; sourceTree = "<group>"; };
 		3AE01BA61EB0D20400D5B7EF /* BmobIMSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BmobIMSDK.framework; sourceTree = "<group>"; };
@@ -519,6 +494,33 @@
 		3AF72C991E9A23F000093A39 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		3AF73BEF1E7D12610086417E /* APIRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIRequest.h; sourceTree = "<group>"; };
 		3AF73BF01E7D12610086417E /* APIRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIRequest.m; sourceTree = "<group>"; };
+		3AFA4F551EC0440F00CB7DA2 /* Config+Api.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Config+Api.h"; sourceTree = "<group>"; };
+		3AFA4F561EC0440F00CB7DA2 /* Config+Api.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Config+Api.m"; sourceTree = "<group>"; };
+		3AFA4F571EC0440F00CB7DA2 /* Config+Set.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Config+Set.h"; sourceTree = "<group>"; };
+		3AFA4F581EC0440F00CB7DA2 /* Config+Set.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Config+Set.m"; sourceTree = "<group>"; };
+		3AFA4F5B1EC0442C00CB7DA2 /* Config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
+		3AFA4F5C1EC0442C00CB7DA2 /* Config.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Config.m; sourceTree = "<group>"; };
+		3AFA4F611EC0485400CB7DA2 /* NSData+CRC32.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+CRC32.h"; sourceTree = "<group>"; };
+		3AFA4F621EC0485400CB7DA2 /* NSData+CRC32.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+CRC32.m"; sourceTree = "<group>"; };
+		3AFA4F641EC0488200CB7DA2 /* UILabel+LXAdd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+LXAdd.h"; sourceTree = "<group>"; };
+		3AFA4F651EC0488200CB7DA2 /* UILabel+LXAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+LXAdd.m"; sourceTree = "<group>"; };
+		3AFA4F671EC0489900CB7DA2 /* NSString+Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Common.h"; sourceTree = "<group>"; };
+		3AFA4F681EC0489900CB7DA2 /* NSString+Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Common.m"; sourceTree = "<group>"; };
+		3AFA4F6A1EC049F600CB7DA2 /* Math.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Math.h; sourceTree = "<group>"; };
+		3AFA4F6B1EC049F600CB7DA2 /* Math.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Math.m; sourceTree = "<group>"; };
+		3AFA4F6D1EC04A4B00CB7DA2 /* UINavigationBar+Awesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+Awesome.h"; sourceTree = "<group>"; };
+		3AFA4F6E1EC04A4B00CB7DA2 /* UINavigationBar+Awesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+Awesome.m"; sourceTree = "<group>"; };
+		3AFA4F711EC04C0E00CB7DA2 /* HutHelper-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HutHelper-Prefix.pch"; sourceTree = "<group>"; };
+		3AFA4F721EC04C0E00CB7DA2 /* HutHelper.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = HutHelper.entitlements; sourceTree = "<group>"; };
+		3AFA4F731EC04C0E00CB7DA2 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3AFA4F741EC04C0E00CB7DA2 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		3AFA4F761EC04C0E00CB7DA2 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/language.strings"; sourceTree = "<group>"; };
+		3AFA4F7B1EC04C6100CB7DA2 /* CourseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseModel.h; sourceTree = "<group>"; };
+		3AFA4F7C1EC04C6100CB7DA2 /* CourseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseModel.m; sourceTree = "<group>"; };
+		3AFA4F7D1EC04C6100CB7DA2 /* CourseXp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseXp.h; sourceTree = "<group>"; };
+		3AFA4F7E1EC04C6100CB7DA2 /* CourseXp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseXp.m; sourceTree = "<group>"; };
+		3AFA4F811EC0504500CB7DA2 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		3AFA4F821EC0504500CB7DA2 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		A8DF4B266A6C75237AD1C11E /* Pods-HutHelper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HutHelper.release.xcconfig"; path = "Pods/Target Support Files/Pods-HutHelper/Pods-HutHelper.release.xcconfig"; sourceTree = "<group>"; };
 		CAE9EAE0009084B77EC3CAD6 /* libPods-HutHelper.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HutHelper.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -563,18 +565,6 @@
 				A8DF4B266A6C75237AD1C11E /* Pods-HutHelper.release.xcconfig */,
 			);
 			name = Pods;
-			sourceTree = "<group>";
-		};
-		3A06D9A81E8CE8A700066DD1 /* Application */ = {
-			isa = PBXGroup;
-			children = (
-				3A06D9A91E8CE8A700066DD1 /* AppDelegate.h */,
-				3A06D9AA1E8CE8A700066DD1 /* AppDelegate.m */,
-				3A06D9AB1E8CE8A700066DD1 /* Config.h */,
-				3A06D9AC1E8CE8A700066DD1 /* Config.m */,
-				3A06D9AD1E8CE8A700066DD1 /* HUTAPI.h */,
-			);
-			path = Application;
 			sourceTree = "<group>";
 		};
 		3A06D9B11E8CEDE400066DD1 /* Exam */ = {
@@ -973,13 +963,14 @@
 		3A85677D1DA908AA00EBD44A /* HutHelper */ = {
 			isa = PBXGroup;
 			children = (
-				3A06D9A81E8CE8A700066DD1 /* Application */,
+				3AFA4F811EC0504500CB7DA2 /* AppDelegate.h */,
+				3AFA4F821EC0504500CB7DA2 /* AppDelegate.m */,
 				3A796B9E1E534C1B00794043 /* Controllers */,
 				3A796C661E534DAE00794043 /* Views */,
 				3A98CB441E7CF7A900CABD0D /* Models */,
 				3A98CBCB1E7CFA9C00CABD0D /* Vendor */,
 				3A98CB621E7CF82F00CABD0D /* Utils */,
-				3A98CC141E7CFDF900CABD0D /* Supporting Files */,
+				3AFA4F701EC04C0E00CB7DA2 /* Supporting Files */,
 				3A85678A1DA908AA00EBD44A /* Assets.xcassets */,
 			);
 			path = HutHelper;
@@ -988,19 +979,16 @@
 		3A98CB441E7CF7A900CABD0D /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				3AFA4F7A1EC04C6100CB7DA2 /* Course */,
 				3A98CB4D1E7CF7A900CABD0D /* Moments */,
 				3A98CB581E7CF7A900CABD0D /* User.h */,
 				3A98CB591E7CF7A900CABD0D /* User.m */,
 				3A98CB551E7CF7A900CABD0D /* Score.h */,
 				3A98CB561E7CF7A900CABD0D /* Score.m */,
-				3A98CB481E7CF7A900CABD0D /* CourseModel.h */,
-				3A98CB491E7CF7A900CABD0D /* CourseModel.m */,
 				3A1CEC311E93D71A002D8583 /* VedioModel.h */,
 				3A1CEC321E93D71A002D8583 /* VedioModel.m */,
 				3AAB90971EA393A000C35137 /* ScoreRank.h */,
 				3AAB90981EA393A000C35137 /* ScoreRank.m */,
-				3ACF3D0C1EA7497C00FBEC57 /* CourseXp.h */,
-				3ACF3D0D1EA7497C00FBEC57 /* CourseXp.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1021,32 +1009,22 @@
 		3A98CB621E7CF82F00CABD0D /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				3AFA4F541EC043FD00CB7DA2 /* Config */,
 				3AE01BB31EB0E94400D5B7EF /* IM */,
 				3A98CC1E1E7CFF0200CABD0D /* Manager */,
-				3A98CB631E7CF82F00CABD0D /* CRC32 */,
-				3A98CB661E7CF82F00CABD0D /* LTNavigationBar */,
 				3A98CB691E7CF82F00CABD0D /* MBProgressHUD+MJ */,
-				3A98CB6D1E7CF82F00CABD0D /* UILabel+LXAdd */,
+				3AFA4F6D1EC04A4B00CB7DA2 /* UINavigationBar+Awesome.h */,
+				3AFA4F6E1EC04A4B00CB7DA2 /* UINavigationBar+Awesome.m */,
+				3AFA4F671EC0489900CB7DA2 /* NSString+Common.h */,
+				3AFA4F681EC0489900CB7DA2 /* NSString+Common.m */,
+				3AFA4F611EC0485400CB7DA2 /* NSData+CRC32.h */,
+				3AFA4F621EC0485400CB7DA2 /* NSData+CRC32.m */,
+				3AFA4F641EC0488200CB7DA2 /* UILabel+LXAdd.h */,
+				3AFA4F651EC0488200CB7DA2 /* UILabel+LXAdd.m */,
+				3AFA4F6A1EC049F600CB7DA2 /* Math.h */,
+				3AFA4F6B1EC049F600CB7DA2 /* Math.m */,
 			);
 			path = Utils;
-			sourceTree = "<group>";
-		};
-		3A98CB631E7CF82F00CABD0D /* CRC32 */ = {
-			isa = PBXGroup;
-			children = (
-				3A98CB641E7CF82F00CABD0D /* NSData+CRC32.h */,
-				3A98CB651E7CF82F00CABD0D /* NSData+CRC32.m */,
-			);
-			path = CRC32;
-			sourceTree = "<group>";
-		};
-		3A98CB661E7CF82F00CABD0D /* LTNavigationBar */ = {
-			isa = PBXGroup;
-			children = (
-				3A98CB671E7CF82F00CABD0D /* UINavigationBar+Awesome.h */,
-				3A98CB681E7CF82F00CABD0D /* UINavigationBar+Awesome.m */,
-			);
-			path = LTNavigationBar;
 			sourceTree = "<group>";
 		};
 		3A98CB691E7CF82F00CABD0D /* MBProgressHUD+MJ */ = {
@@ -1057,15 +1035,6 @@
 				3A98CB6C1E7CF82F00CABD0D /* MBProgressHUD.bundle */,
 			);
 			path = "MBProgressHUD+MJ";
-			sourceTree = "<group>";
-		};
-		3A98CB6D1E7CF82F00CABD0D /* UILabel+LXAdd */ = {
-			isa = PBXGroup;
-			children = (
-				3A98CB6E1E7CF82F00CABD0D /* UILabel+LXAdd.h */,
-				3A98CB6F1E7CF82F00CABD0D /* UILabel+LXAdd.m */,
-			);
-			path = "UILabel+LXAdd";
 			sourceTree = "<group>";
 		};
 		3A98CBCB1E7CFA9C00CABD0D /* Vendor */ = {
@@ -1197,30 +1166,11 @@
 			path = XWScanImage/YYFPSLabel;
 			sourceTree = "<group>";
 		};
-		3A98CC141E7CFDF900CABD0D /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				3A98CC151E7CFDF900CABD0D /* HutHelper-Prefix.pch */,
-				3A98CC161E7CFDF900CABD0D /* HutHelper.entitlements */,
-				3A98CC171E7CFDF900CABD0D /* Info.plist */,
-				3A98CC181E7CFDF900CABD0D /* main.m */,
-				3A98CC191E7CFDF900CABD0D /* language.strings */,
-			);
-			name = "Supporting Files";
-			path = "Utils/Supporting Files";
-			sourceTree = "<group>";
-		};
 		3A98CC1E1E7CFF0200CABD0D /* Manager */ = {
 			isa = PBXGroup;
 			children = (
-				3A98CC221E7CFF0200CABD0D /* Math.h */,
-				3A98CC231E7CFF0200CABD0D /* Math.m */,
 				3AF73BEF1E7D12610086417E /* APIRequest.h */,
 				3AF73BF01E7D12610086417E /* APIRequest.m */,
-				3A73D7941EB9C7B800936C02 /* Config+Api.h */,
-				3A73D7951EB9C7B800936C02 /* Config+Api.m */,
-				3A73D7971EB9C7FE00936C02 /* Config+Set.h */,
-				3A73D7981EB9C7FE00936C02 /* Config+Set.m */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -1422,6 +1372,42 @@
 			path = JSPATCH;
 			sourceTree = "<group>";
 		};
+		3AFA4F541EC043FD00CB7DA2 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				3AFA4F5B1EC0442C00CB7DA2 /* Config.h */,
+				3AFA4F5C1EC0442C00CB7DA2 /* Config.m */,
+				3AFA4F551EC0440F00CB7DA2 /* Config+Api.h */,
+				3AFA4F561EC0440F00CB7DA2 /* Config+Api.m */,
+				3AFA4F571EC0440F00CB7DA2 /* Config+Set.h */,
+				3AFA4F581EC0440F00CB7DA2 /* Config+Set.m */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		3AFA4F701EC04C0E00CB7DA2 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3AFA4F711EC04C0E00CB7DA2 /* HutHelper-Prefix.pch */,
+				3AFA4F721EC04C0E00CB7DA2 /* HutHelper.entitlements */,
+				3AFA4F731EC04C0E00CB7DA2 /* Info.plist */,
+				3AFA4F741EC04C0E00CB7DA2 /* main.m */,
+				3AFA4F751EC04C0E00CB7DA2 /* language.strings */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3AFA4F7A1EC04C6100CB7DA2 /* Course */ = {
+			isa = PBXGroup;
+			children = (
+				3AFA4F7B1EC04C6100CB7DA2 /* CourseModel.h */,
+				3AFA4F7C1EC04C6100CB7DA2 /* CourseModel.m */,
+				3AFA4F7D1EC04C6100CB7DA2 /* CourseXp.h */,
+				3AFA4F7E1EC04C6100CB7DA2 /* CourseXp.m */,
+			);
+			path = Course;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1537,12 +1523,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A4D2FFF1E8D273600901E3B /* LoginViewController.xib in Resources */,
-				3A98CC1D1E7CFDF900CABD0D /* language.strings in Resources */,
 				3A4D2FCC1E8D226000901E3B /* LostShowTableViewCell.xib in Resources */,
 				3ACD1C4A1EB75371001EA0D4 /* ChatBottomControlView.xib in Resources */,
 				3A796C6C1E534DAE00794043 /* Launch Screen.storyboard in Resources */,
 				3A98CC041E7CFA9C00CABD0D /* header@2x.jpg in Resources */,
-				3A98CC1B1E7CFDF900CABD0D /* Info.plist in Resources */,
 				3ACD1C601EB753B4001EA0D4 /* Contacts.storyboard in Resources */,
 				3A4D2FBD1E8D20E900901E3B /* HandTableViewCell.xib in Resources */,
 				3A532CD01E910C13003CD5A8 /* ZFPlayer.bundle in Resources */,
@@ -1550,9 +1534,11 @@
 				3A4D30161E8D297200901E3B /* LeftUserTableViewCell.xib in Resources */,
 				3AE01BAF1EB0D64700D5B7EF /* IM.storyboard in Resources */,
 				3A4D2FCE1E8D226000901E3B /* LostShowTimeTableViewCell.xib in Resources */,
+				3AFA4F771EC04C0E00CB7DA2 /* Info.plist in Resources */,
 				3A4D2FFA1E8D24E200901E3B /* ScoreTableViewCell.xib in Resources */,
 				3ACD1C271EB7313E001EA0D4 /* Recent.storyboard in Resources */,
 				3ACD1C6C1EB75452001EA0D4 /* UserInfoTableViewCell.xib in Resources */,
+				3AFA4F791EC04C0E00CB7DA2 /* language.strings in Resources */,
 				3A796C6D1E534DAE00794043 /* Main.storyboard in Resources */,
 				3A4D2FCA1E8D226000901E3B /* LostShowPhotoTableViewCell.xib in Resources */,
 				3A4D30141E8D297200901E3B /* LeftItemTableViewCell.xib in Resources */,
@@ -1637,24 +1623,24 @@
 				3A98CB5E1E7CF7AA00CABD0D /* LikesModel.m in Sources */,
 				3AD443EB1E97CF5600720F42 /* VedioTableViewCell.m in Sources */,
 				3AE01BD41EB0E94400D5B7EF /* AppManager.m in Sources */,
+				3AFA4F5D1EC0442C00CB7DA2 /* Config.m in Sources */,
 				3A532CCA1E910C13003CD5A8 /* UITabBarController+ZFPlayerRotation.m in Sources */,
 				3ACD1C461EB75371001EA0D4 /* AudioTableViewCell.m in Sources */,
 				3A98CC071E7CFA9C00CABD0D /* JSHeaderView.m in Sources */,
 				3A98CB611E7CF7AA00CABD0D /* User.m in Sources */,
 				3A4D2FEB1E8D245F00901E3B /* HandAddViewController.m in Sources */,
 				3A4D2FF91E8D24E200901E3B /* ScoreTableViewCell.m in Sources */,
-				3A06D9AF1E8CE8A700066DD1 /* Config.m in Sources */,
 				3ACD1C4F1EB75371001EA0D4 /* LocationTableViewCell.m in Sources */,
 				3A796C251E534C1B00794043 /* FeedbackResultViewController.m in Sources */,
 				3A98CC0D1E7CFA9C00CABD0D /* XWScanImage.m in Sources */,
 				3A98CB5F1E7CF7AA00CABD0D /* MomentsModel.m in Sources */,
+				3AFA4F591EC0440F00CB7DA2 /* Config+Api.m in Sources */,
 				3ACD1C491EB75371001EA0D4 /* ChatBottomControlView.m in Sources */,
+				3AFA4F831EC0504500CB7DA2 /* AppDelegate.m in Sources */,
 				3A796C531E534C1B00794043 /* UsernameViewController.m in Sources */,
-				3A73D7991EB9C7FE00936C02 /* Config+Set.m in Sources */,
 				3ACD1C4E1EB75371001EA0D4 /* LocationChatView.m in Sources */,
 				3ACD1C641EB753B4001EA0D4 /* IMUserViewController.m in Sources */,
 				3A4D2FDE1E8D237500901E3B /* PowerViewController.m in Sources */,
-				3A98CB741E7CF82F00CABD0D /* UILabel+LXAdd.m in Sources */,
 				3A532CD21E910C13003CD5A8 /* ZFPlayerModel.m in Sources */,
 				3A98CBFF1E7CFA9C00CABD0D /* FORGestureTrack.m in Sources */,
 				3A4D2FF31E8D24C100901E3B /* NoticeTableViewCell.m in Sources */,
@@ -1662,6 +1648,7 @@
 				3A532CC61E910C13003CD5A8 /* ASValueTrackingSlider.m in Sources */,
 				3A98CC0A1E7CFA9C00CABD0D /* LeftSlideViewController.m in Sources */,
 				3A796C3F1E534C1B00794043 /* NoticeViewController.m in Sources */,
+				3AFA4F6F1EC04A4B00CB7DA2 /* UINavigationBar+Awesome.m in Sources */,
 				3A98CC091E7CFA9C00CABD0D /* JSONKit.m in Sources */,
 				3A532CDD1E9121C5003CD5A8 /* VedioTableViewController.m in Sources */,
 				3A4D2FC91E8D226000901E3B /* LostShowPhotoTableViewCell.m in Sources */,
@@ -1670,10 +1657,10 @@
 				3A98CC0B1E7CFA9C00CABD0D /* UIView_extra.m in Sources */,
 				3AE01BD31EB0E94400D5B7EF /* amrFileCodec.m in Sources */,
 				3A4D2FEE1E8D245F00901E3B /* HandTableViewController.m in Sources */,
-				3A98CB711E7CF82F00CABD0D /* UINavigationBar+Awesome.m in Sources */,
+				3AFA4F781EC04C0E00CB7DA2 /* main.m in Sources */,
 				3A796C261E534C1B00794043 /* FeedbackViewController.m in Sources */,
+				3AFA4F7F1EC04C6100CB7DA2 /* CourseModel.m in Sources */,
 				3AE01BDE1EB0E94400D5B7EF /* UUProgressHUD.m in Sources */,
-				3A73D7961EB9C7B800936C02 /* Config+Api.m in Sources */,
 				3A796C3C1E534C1B00794043 /* NoticeShowViewController.m in Sources */,
 				3A98CC001E7CFA9C00CABD0D /* UUInputAccessoryView.m in Sources */,
 				3ACD1C611EB753B4001EA0D4 /* ContactsViewController.m in Sources */,
@@ -1688,16 +1675,18 @@
 				3A4D2FE11E8D23F800901E3B /* AboutViewController.m in Sources */,
 				3AE01BDA1EB0E94400D5B7EF /* RecordAudio.m in Sources */,
 				3AE01BB21EB0D67000D5B7EF /* IMViewController.m in Sources */,
+				3AFA4F5A1EC0440F00CB7DA2 /* Config+Set.m in Sources */,
 				3AE01BD61EB0E94400D5B7EF /* BmobIMUserInfo+BmobUser.m in Sources */,
 				3ACD1C4D1EB75371001EA0D4 /* ImageChatView.m in Sources */,
+				3AFA4F691EC0489900CB7DA2 /* NSString+Common.m in Sources */,
 				3A796C2F1E534C1B00794043 /* LoginViewController.m in Sources */,
 				3A4D30151E8D297200901E3B /* LeftUserTableViewCell.m in Sources */,
+				3AFA4F801EC04C6100CB7DA2 /* CourseXp.m in Sources */,
 				3ACD1C4C1EB75371001EA0D4 /* ImageChatTableViewCell.m in Sources */,
 				3A796C541E534C1B00794043 /* UserViewController.m in Sources */,
 				3ACD1C291EB7313E001EA0D4 /* RecentViewController.m in Sources */,
 				3ACD1C521EB75371001EA0D4 /* TextChatView.m in Sources */,
 				3AAB90991EA393A000C35137 /* ScoreRank.m in Sources */,
-				3A06D9AE1E8CE8A700066DD1 /* AppDelegate.m in Sources */,
 				3A4D2FCD1E8D226000901E3B /* LostShowTimeTableViewCell.m in Sources */,
 				3ACF3D081EA731E800FBEC57 /* CourseXpTableViewController.m in Sources */,
 				3A1CEC331E93D71A002D8583 /* VedioModel.m in Sources */,
@@ -1707,7 +1696,9 @@
 				3A98CC031E7CFA9C00CABD0D /* iVersion.m in Sources */,
 				3A4D2FFD1E8D251500901E3B /* CourseSetViewController.m in Sources */,
 				3A796C3A1E534C1B00794043 /* MainPageViewController.m in Sources */,
+				3AFA4F631EC0485400CB7DA2 /* NSData+CRC32.m in Sources */,
 				3A4D2FDC1E8D237500901E3B /* HomeWorkViewController.m in Sources */,
+				3AFA4F6C1EC049F600CB7DA2 /* Math.m in Sources */,
 				3A796C4E1E534C1B00794043 /* ScoreDataViewController.m in Sources */,
 				3AE52B871EA8F0EB00705269 /* CourseXpTableViewCell.m in Sources */,
 				3A31E1E51E6BC5040056565A /* MomentsViewController.m in Sources */,
@@ -1720,19 +1711,16 @@
 				3ACD1C501EB75371001EA0D4 /* SystemTableViewCell.m in Sources */,
 				3A796C301E534C1B00794043 /* ResetPassWordViewController.m in Sources */,
 				3A532CCB1E910C13003CD5A8 /* UIView+CustomControlView.m in Sources */,
-				3ACF3D0E1EA7497C00FBEC57 /* CourseXp.m in Sources */,
 				3A96DEE51E94B384006C2CC8 /* VedioPlayViewController.m in Sources */,
-				3A98CC1C1E7CFDF900CABD0D /* main.m in Sources */,
 				3ACD1C671EB7542C001EA0D4 /* BaseViewController.m in Sources */,
 				3A532CD11E910C13003CD5A8 /* ZFPlayerControlView.m in Sources */,
-				3A98CB5B1E7CF7AA00CABD0D /* CourseModel.m in Sources */,
 				3ACD1C621EB753B4001EA0D4 /* SystemMessageViewController.m in Sources */,
 				3A4D2FED1E8D245F00901E3B /* HandTableViewCell.m in Sources */,
 				3A532CC51E910C13003CD5A8 /* ASValuePopUpView.m in Sources */,
 				3A98CC011E7CFA9C00CABD0D /* GWPCourseListView.m in Sources */,
 				3A4D300A1E8D28AA00901E3B /* LostShowViewController.m in Sources */,
 				3AE01BE41EB0E9DD00D5B7EF /* SysMessage.m in Sources */,
-				3A98CB701E7CF82F00CABD0D /* NSData+CRC32.m in Sources */,
+				3AFA4F661EC0488200CB7DA2 /* UILabel+LXAdd.m in Sources */,
 				3A4D2FDD1E8D237500901E3B /* LibraryViewController.m in Sources */,
 				3A532CC81E910C13003CD5A8 /* UIImageView+ZFCache.m in Sources */,
 				3A532CCC1E910C13003CD5A8 /* UIViewController+ZFPlayerRotation.m in Sources */,
@@ -1752,7 +1740,6 @@
 				3A98CC0E1E7CFA9C00CABD0D /* YYFPSLabel.m in Sources */,
 				3A31E1E81E6BE68C0056565A /* MomentsAddViewController.m in Sources */,
 				3A98CC0F1E7CFA9C00CABD0D /* YYWeakProxy.m in Sources */,
-				3A98CC251E7CFF0200CABD0D /* Math.m in Sources */,
 				3AF73BF11E7D12610086417E /* APIRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1768,10 +1755,10 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		3A98CC191E7CFDF900CABD0D /* language.strings */ = {
+		3AFA4F751EC04C0E00CB7DA2 /* language.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				3A98CC1A1E7CFDF900CABD0D /* zh-Hans */,
+				3AFA4F761EC04C0E00CB7DA2 /* zh-Hans */,
 			);
 			name = language.strings;
 			sourceTree = "<group>";
@@ -1926,8 +1913,8 @@
 					"$(PROJECT_DIR)/HutHelper/Vendor/XWScanImage/BmobIM",
 				);
 				GCC_OPTIMIZATION_LEVEL = s;
-				GCC_PREFIX_HEADER = "HutHelper/Utils/Supporting Files/HutHelper-Prefix.pch";
-				INFOPLIST_FILE = "HutHelper/Utils/Supporting Files/Info.plist";
+				GCC_PREFIX_HEADER = "HutHelper/Supporting Files/HutHelper-Prefix.pch";
+				INFOPLIST_FILE = "HutHelper/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
@@ -1975,8 +1962,8 @@
 					"$(PROJECT_DIR)/HutHelper/Vendor/XWScanImage/BmobIM",
 				);
 				GCC_OPTIMIZATION_LEVEL = s;
-				GCC_PREFIX_HEADER = "HutHelper/Utils/Supporting Files/HutHelper-Prefix.pch";
-				INFOPLIST_FILE = "HutHelper/Utils/Supporting Files/Info.plist";
+				GCC_PREFIX_HEADER = "HutHelper/Supporting Files/HutHelper-Prefix.pch";
+				INFOPLIST_FILE = "HutHelper/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (

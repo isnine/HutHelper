@@ -8,24 +8,18 @@
 
 #import "LeftSortsViewController.h"
 #import "AppDelegate.h"
-
 #import "HomeWorkViewController.h"
-
 #import "CourseViewController.h"
 #import "CourseSetViewController.h"
-
 #import "AboutViewController.h"
-
 #import "FeedbackViewController.h"
 #import "UMessage.h"
 #import <UShareUI/UShareUI.h>
 #import <UMSocialCore/UMSocialCore.h>
 #import "LoginViewController.h"
- 
-
 #import "LeftUserTableViewCell.h"
 #import "LeftItemTableViewCell.h"
- #import "RecentViewController.h"
+#import "RecentViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 @interface LeftSortsViewController () <UITableViewDelegate,UITableViewDataSource>
 
@@ -181,7 +175,6 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
     return SYReal(130);
-    
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
@@ -197,7 +190,6 @@
     UMSocialMessageObject *messageObject = [UMSocialMessageObject messageObject];
     //设置文本
     messageObject.text = @"工大助手";
-    
     //调用分享接口
     [[UMSocialManager defaultManager] shareToPlatform:platformType messageObject:messageObject currentViewController:self completion:^(id data, NSError *error) {
         if (error) {
@@ -244,7 +236,7 @@
     [manager downloadImageWithURL:url options:SDWebImageRetryFailed progress:^(NSInteger receivedSize, NSInteger expectedSize) {
     } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
         NSData *data = UIImagePNGRepresentation(image);
-        if (data!=NULL&&![image_url isEqualToString:INDEX]) {
+        if (data!=NULL&&![image_url isEqualToString:Config.getApiImg]) {
             [defaults setObject:data forKey:@"head_img"];
             [defaults synchronize];
         }
