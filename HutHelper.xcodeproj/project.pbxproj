@@ -17,7 +17,6 @@
 		3A31E1E81E6BE68C0056565A /* MomentsAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A31E1E71E6BE68C0056565A /* MomentsAddViewController.m */; };
 		3A31E1EB1E6BE6E20056565A /* MomentsTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A31E1EA1E6BE6E20056565A /* MomentsTableView.m */; };
 		3A4049091E6A6C730038F207 /* MomentsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A4049081E6A6C730038F207 /* MomentsCell.m */; };
-		3A42785A1EC17994000D94AB /* Rectangle.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A4278591EC17994000D94AB /* Rectangle.m */; };
 		3A4D2FBD1E8D20E900901E3B /* HandTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A4D2FBB1E8D20E900901E3B /* HandTableViewCell.xib */; };
 		3A4D2FBE1E8D20E900901E3B /* HandTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A4D2FBC1E8D20E900901E3B /* HandTableViewController.xib */; };
 		3A4D2FC91E8D226000901E3B /* LostShowPhotoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A4D2FC11E8D226000901E3B /* LostShowPhotoTableViewCell.m */; };
@@ -180,10 +179,12 @@
 		3AFA4F801EC04C6100CB7DA2 /* CourseXp.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AFA4F7E1EC04C6100CB7DA2 /* CourseXp.m */; };
 		3AFA4F831EC0504500CB7DA2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AFA4F821EC0504500CB7DA2 /* AppDelegate.m */; };
 		3AFA4F891EC0675700CB7DA2 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A2FF4E91E50179700B07EB6 /* NotificationCenter.framework */; };
-		3AFA4F8D1EC0675700CB7DA2 /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AFA4F8C1EC0675700CB7DA2 /* TodayViewController.m */; };
 		3AFA4F901EC0675700CB7DA2 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AFA4F8E1EC0675700CB7DA2 /* MainInterface.storyboard */; };
 		3AFA4F941EC0675700CB7DA2 /* ExamTime.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 3AFA4F881EC0675700CB7DA2 /* ExamTime.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		3AFA4F9B1EC08CB100CB7DA2 /* Exam.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AFA4F9A1EC08CB100CB7DA2 /* Exam.m */; };
+		3AFA4F9E1EC1A39800CB7DA2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3AFA4F9D1EC1A39800CB7DA2 /* Assets.xcassets */; };
+		3AFA4FA81EC1B82100CB7DA2 /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AFA4FA11EC1B82100CB7DA2 /* TodayViewController.m */; };
+		3AFA4FA91EC1B82100CB7DA2 /* Exam.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AFA4FA41EC1B82100CB7DA2 /* Exam.m */; };
+		3AFA4FAA1EC1B82100CB7DA2 /* Rectangle.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AFA4FA71EC1B82100CB7DA2 /* Rectangle.m */; };
 		DF4C1EB183B351F157BF18CD /* libPods-HutHelper.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CAE9EAE0009084B77EC3CAD6 /* libPods-HutHelper.a */; };
 /* End PBXBuildFile section */
 
@@ -239,8 +240,6 @@
 		3A31E1EA1E6BE6E20056565A /* MomentsTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MomentsTableView.m; sourceTree = "<group>"; };
 		3A4049071E6A6C730038F207 /* MomentsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MomentsCell.h; sourceTree = "<group>"; };
 		3A4049081E6A6C730038F207 /* MomentsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MomentsCell.m; sourceTree = "<group>"; };
-		3A4278581EC17994000D94AB /* Rectangle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Rectangle.h; sourceTree = "<group>"; };
-		3A4278591EC17994000D94AB /* Rectangle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Rectangle.m; sourceTree = "<group>"; };
 		3A4D2FBB1E8D20E900901E3B /* HandTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HandTableViewCell.xib; sourceTree = "<group>"; };
 		3A4D2FBC1E8D20E900901E3B /* HandTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HandTableViewController.xib; sourceTree = "<group>"; };
 		3A4D2FC01E8D226000901E3B /* LostShowPhotoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LostShowPhotoTableViewCell.h; sourceTree = "<group>"; };
@@ -538,13 +537,16 @@
 		3AFA4F811EC0504500CB7DA2 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3AFA4F821EC0504500CB7DA2 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		3AFA4F881EC0675700CB7DA2 /* ExamTime.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ExamTime.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		3AFA4F8B1EC0675700CB7DA2 /* TodayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TodayViewController.h; sourceTree = "<group>"; };
-		3AFA4F8C1EC0675700CB7DA2 /* TodayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodayViewController.m; sourceTree = "<group>"; };
 		3AFA4F8F1EC0675700CB7DA2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		3AFA4F911EC0675700CB7DA2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3AFA4F981EC06BE300CB7DA2 /* ExamTime.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ExamTime.entitlements; sourceTree = "<group>"; };
-		3AFA4F991EC08CB100CB7DA2 /* Exam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Exam.h; sourceTree = "<group>"; };
-		3AFA4F9A1EC08CB100CB7DA2 /* Exam.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Exam.m; sourceTree = "<group>"; };
+		3AFA4F9D1EC1A39800CB7DA2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3AFA4FA01EC1B82100CB7DA2 /* TodayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TodayViewController.h; sourceTree = "<group>"; };
+		3AFA4FA11EC1B82100CB7DA2 /* TodayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TodayViewController.m; sourceTree = "<group>"; };
+		3AFA4FA31EC1B82100CB7DA2 /* Exam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Exam.h; sourceTree = "<group>"; };
+		3AFA4FA41EC1B82100CB7DA2 /* Exam.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Exam.m; sourceTree = "<group>"; };
+		3AFA4FA61EC1B82100CB7DA2 /* Rectangle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Rectangle.h; sourceTree = "<group>"; };
+		3AFA4FA71EC1B82100CB7DA2 /* Rectangle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Rectangle.m; sourceTree = "<group>"; };
 		A8DF4B266A6C75237AD1C11E /* Pods-HutHelper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HutHelper.release.xcconfig"; path = "Pods/Target Support Files/Pods-HutHelper/Pods-HutHelper.release.xcconfig"; sourceTree = "<group>"; };
 		CAE9EAE0009084B77EC3CAD6 /* libPods-HutHelper.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HutHelper.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -1445,17 +1447,42 @@
 		3AFA4F8A1EC0675700CB7DA2 /* ExamTime */ = {
 			isa = PBXGroup;
 			children = (
+				3AFA4F9F1EC1B82100CB7DA2 /* Controllers */,
+				3AFA4FA21EC1B82100CB7DA2 /* Models */,
+				3AFA4FA51EC1B82100CB7DA2 /* Views */,
 				3AFA4F981EC06BE300CB7DA2 /* ExamTime.entitlements */,
-				3AFA4F8B1EC0675700CB7DA2 /* TodayViewController.h */,
-				3AFA4F8C1EC0675700CB7DA2 /* TodayViewController.m */,
 				3AFA4F8E1EC0675700CB7DA2 /* MainInterface.storyboard */,
 				3AFA4F911EC0675700CB7DA2 /* Info.plist */,
-				3AFA4F991EC08CB100CB7DA2 /* Exam.h */,
-				3AFA4F9A1EC08CB100CB7DA2 /* Exam.m */,
-				3A4278581EC17994000D94AB /* Rectangle.h */,
-				3A4278591EC17994000D94AB /* Rectangle.m */,
+				3AFA4F9D1EC1A39800CB7DA2 /* Assets.xcassets */,
 			);
 			path = ExamTime;
+			sourceTree = "<group>";
+		};
+		3AFA4F9F1EC1B82100CB7DA2 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				3AFA4FA01EC1B82100CB7DA2 /* TodayViewController.h */,
+				3AFA4FA11EC1B82100CB7DA2 /* TodayViewController.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		3AFA4FA21EC1B82100CB7DA2 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				3AFA4FA31EC1B82100CB7DA2 /* Exam.h */,
+				3AFA4FA41EC1B82100CB7DA2 /* Exam.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		3AFA4FA51EC1B82100CB7DA2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3AFA4FA61EC1B82100CB7DA2 /* Rectangle.h */,
+				3AFA4FA71EC1B82100CB7DA2 /* Rectangle.m */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1635,6 +1662,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3AFA4F9E1EC1A39800CB7DA2 /* Assets.xcassets in Resources */,
 				3AFA4F901EC0675700CB7DA2 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1835,9 +1863,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3AFA4F9B1EC08CB100CB7DA2 /* Exam.m in Sources */,
-				3AFA4F8D1EC0675700CB7DA2 /* TodayViewController.m in Sources */,
-				3A42785A1EC17994000D94AB /* Rectangle.m in Sources */,
+				3AFA4FA91EC1B82100CB7DA2 /* Exam.m in Sources */,
+				3AFA4FA81EC1B82100CB7DA2 /* TodayViewController.m in Sources */,
+				3AFA4FAA1EC1B82100CB7DA2 /* Rectangle.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

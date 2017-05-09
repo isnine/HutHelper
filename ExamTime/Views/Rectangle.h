@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface Rectangle : UIView
-- (void)drawRect:(CGRect)rect;
-- (id)initWithFrame:(CGRect)frame;
+@property(nonatomic,copy)NSString *day;
+- (id)initWithFrame:(CGRect)frame withDay:(NSString*)day;
 @end

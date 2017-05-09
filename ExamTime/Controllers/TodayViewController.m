@@ -19,46 +19,71 @@
 
 @implementation TodayViewController
 static const int kLabelLeft=20;//距左
-static const int kLabel_CourseName_Top=23;//距上
 - (void)viewDidLoad {
     [super viewDidLoad];
     _arrayExam=[[NSMutableArray alloc]init];
-    [self addExam];
-    [self showLabel];
+    NSUserDefaults *defaults=[[NSUserDefaults alloc] initWithSuiteName:@"group.HutHelper"];
+    if (defaults&&([defaults objectForKey:@"Exam"]!=NULL)) {
+        [self addExam];
+        [self showLabel:(23) withArray:0];
+    }else{
+        UILabel *notice=[[UILabel alloc]initWithFrame:CGRectMake((10),(30),SYReal(370), (20))];
+        notice.text=@"没有考试数据";
+        notice.textColor=[UIColor darkGrayColor];
+        notice.textAlignment = NSTextAlignmentCenter;
+        notice.font =[UIFont systemFontOfSize:SYReal(21)];
+        [self.view addSubview:notice];
+        UILabel *notice2=[[UILabel alloc]initWithFrame:CGRectMake((10),(60),SYReal(370), (20))];
+        notice2.textAlignment = NSTextAlignmentCenter;
+        notice2.textColor=[UIColor darkGrayColor];
+        notice2.text=@"打开工大助手的考试计划来获取数据";
+        notice2.font =[UIFont systemFontOfSize:SYReal(19)];
+        [self.view addSubview:notice2];
+    }
 }
 -(void)addExam{
     NSUserDefaults *defaults=[[NSUserDefaults alloc] initWithSuiteName:@"group.HutHelper"];
-    if (defaults&&([defaults objectForKey:@"kCourse"]!=NULL)) {
+    if (defaults&&([defaults objectForKey:@"Exam"]!=NULL)) {
         NSDictionary *Class_Data=[defaults objectForKey:@"Exam"];
         [self loadData:[Class_Data objectForKey:@"exam"]];
         [self loadCXData:[Class_Data objectForKey:@"cxexam"]];
-        
-        NSLog(@"%@",_arrayExam[0]);
     }
 }
--(void)showLabel{
-    Exam *exam=_arrayExam[0];
+-(void)showLabel:(int)kLabel_CourseName_Top withArray:(int)num{
+    Exam *exam=_arrayExam[num];
     /**课程名称*/
-    UILabel *courseName=[[UILabel alloc]initWithFrame:CGRectMake(SYReal(kLabelLeft),SYReal(kLabel_CourseName_Top), SYReal(374), SYReal(20))];
+    UILabel *courseName=[[UILabel alloc]initWithFrame:CGRectMake((kLabelLeft),(kLabel_CourseName_Top),SYReal(300), (20))];
     courseName.text=exam.CourseName;
     courseName.font =[UIFont boldSystemFontOfSize:16];
     [self.view addSubview:courseName];
     /**课程时间*/
-    UILabel *courseTime=[[UILabel alloc]initWithFrame:CGRectMake(SYReal(kLabelLeft+15),SYReal(kLabel_CourseName_Top+23), SYReal(394), SYReal(20))];
+    UIImageView *icoTime=[[UIImageView alloc]initWithFrame:CGRectMake((kLabelLeft),(kLabel_CourseName_Top+27), (13), (13))];
+    icoTime.image=[UIImage imageNamed:@"ico_widget_time"];
+    [self.view addSubview:icoTime];
+    UILabel *courseTime=[[UILabel alloc]initWithFrame:CGRectMake((kLabelLeft+15),(kLabel_CourseName_Top+23), (394), (20))];
     courseTime.text=exam.Starttime;
     courseTime.font =[UIFont systemFontOfSize:13];
     [self.view addSubview:courseTime];
     /**课程地点*/
-    UILabel *courseRoom=[[UILabel alloc]initWithFrame:CGRectMake(SYReal(kLabelLeft+15),SYReal(kLabel_CourseName_Top+46), SYReal(394), SYReal(20))];
+    UIImageView *icoLocation=[[UIImageView alloc]initWithFrame:CGRectMake((kLabelLeft),(kLabel_CourseName_Top+49), (13), (13))];
+    icoLocation.image=[UIImage imageNamed:@"ico_widget_location"];
+    [self.view addSubview:icoLocation];
+    
+    UILabel *courseRoom=[[UILabel alloc]initWithFrame:CGRectMake((kLabelLeft+15),(kLabel_CourseName_Top+46), (394), (20))];
     courseRoom.text=exam.RoomName;
     courseRoom.font =[UIFont systemFontOfSize:13];
     [self.view addSubview:courseRoom];
+    /**矩形框*/
+    Rectangle *rectangle;
+    if ([exam.Starttime isEqualToString:@"-"]){
+        rectangle=[[Rectangle alloc]initWithFrame:CGRectMake(SYReal(330),(kLabel_CourseName_Top),SYReal(50), SYReal(65)) withDay:@"-"];
+    }else{
+        rectangle=[[Rectangle alloc]initWithFrame:CGRectMake(SYReal(330),(kLabel_CourseName_Top),SYReal(50), SYReal(65)) withDay:[self getTimeString:[self getTime:exam.Starttime]]];
+    }
     
-    Rectangle *a=[[Rectangle alloc]initWithFrame:CGRectMake(50, 50, 100, 100)];
-    [self.view addSubview:a];
-
-    
+    [self.view addSubview:rectangle];
 }
+#pragma mark - 添加数据
 -(void)loadData:(NSMutableArray*)array{
     for (NSDictionary *Dic in array) {
         Exam *exam=[[Exam alloc]initWithDic:Dic];
@@ -75,11 +100,10 @@ static const int kLabel_CourseName_Top=23;//距上
         }
     }
 }
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.extensionContext.widgetLargestAvailableDisplayMode = NCWidgetDisplayModeExpanded;
 }
-
 - (void)widgetPerformUpdateWithCompletionHandler:(void (^)(NCUpdateResult))completionHandler {
     // Perform any setup necessary in order to update the view.
     
@@ -89,6 +113,24 @@ static const int kLabel_CourseName_Top=23;//距上
     
     completionHandler(NCUpdateResultNewData);
 }
+- (void)widgetActiveDisplayModeDidChange:(NCWidgetDisplayMode)activeDisplayMode withMaximumSize:(CGSize)maxSize {
+    if (activeDisplayMode == NCWidgetDisplayModeCompact) {
+        self.preferredContentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width,(110));
+    }else{
+        if (_arrayExam.count>=3) {
+            self.preferredContentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width,(280));
+            [self showLabel:(115) withArray:1];
+            [self showLabel:(200) withArray:2];
+        }else if(_arrayExam.count==2){
+            self.preferredContentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width,(190));
+            [self showLabel:(115) withArray:1];
+        }else{
+            
+        }
+    }
+    
+}
+#pragma mark - 计算倒计时
 int datediff(int y1,int m1,int d1,int y2,int m2,int d2)
 {
     struct tm ptr1;
@@ -125,51 +167,10 @@ int datediff(int y1,int m1,int d1,int y2,int m2,int d2)
 }
 -(NSString*)getTimeString:(int)Time{
     if (Time>0&&Time<500) {
-        return [[NSString alloc]initWithFormat:@"倒计时%d天",Time];
-    }
-    else if (Time<0){
-        return @"已结束";
-    }
-    else if (Time==0){
-        return @"今天考试";
+        return [[NSString alloc]initWithFormat:@"%d",Time];
     }else{
         return @"-";
     }
 }
-- (void)drawRect:(CGRect)rect
-{
-    CGFloat width = rect.size.width;
-    CGFloat height = rect.size.height;
-    // 简便起见，这里把圆角半径设置为长和宽平均值的1/10
-    CGFloat radius = (width + height) * 0.05;
-    
-    // 获取CGContext，注意UIKit里用的是一个专门的函数
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    // 移动到初始点
-    CGContextMoveToPoint(context, radius, 0);
-    
-    // 绘制第1条线和第1个1/4圆弧
-    CGContextAddLineToPoint(context, width - radius, 0);
-    CGContextAddArc(context, width - radius, radius, radius, -0.5 * M_PI, 0.0, 0);
-    
-    // 绘制第2条线和第2个1/4圆弧
-    CGContextAddLineToPoint(context, width, height - radius);
-    CGContextAddArc(context, width - radius, height - radius, radius, 0.0, 0.5 * M_PI, 0);
-    
-    // 绘制第3条线和第3个1/4圆弧
-    CGContextAddLineToPoint(context, radius, height);
-    CGContextAddArc(context, radius, height - radius, radius, 0.5 * M_PI, M_PI, 0);
-    
-    // 绘制第4条线和第4个1/4圆弧
-    CGContextAddLineToPoint(context, 0, radius);
-    CGContextAddArc(context, radius, radius, radius, M_PI, 1.5 * M_PI, 0);
-    
-    // 闭合路径
-    CGContextClosePath(context);
-    // 填充半透明黑色
-    CGContextSetRGBFillColor(context, 0.0, 0.0, 0.0, 0.5);
-    CGContextDrawPath(context, kCGPathFill);
-}
-
 
 @end
