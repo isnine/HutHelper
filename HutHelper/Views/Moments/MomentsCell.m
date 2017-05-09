@@ -22,6 +22,7 @@
 #import "UUInputAccessoryView.h"
 #import "MomentsViewController.h"
 #import "XWScanImage.h"
+#import "MomentsTableView.h"
 @interface MomentsCell ()
 @end
 
@@ -93,12 +94,13 @@
     /**头像图片*/
     cornerImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0,SYReal(37),SYReal(37))];
     cornerImage.center = avatarButton.center;
-    [cornerImage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:API_IMG,_data.head_pic_thumb]]
+    [cornerImage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",Config.getApiImg,_data.head_pic_thumb]]
                    placeholderImage:[self circleImage:[UIImage imageNamed:@"img_defalut"]]
                           completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL){
-                              if (![[NSString stringWithFormat:API_IMG,_data.head_pic_thumb] isEqualToString:INDEX]) {
+                              if (![[NSString stringWithFormat:@"%@%@",Config.getApiImg,_data.head_pic_thumb] isEqualToString:Config.getApiImg]) {
                                   cornerImage.image=[self circleImage:image];
                               }}];
+    
     [self.contentView addSubview:cornerImage];
     /**说说内容*/
     contentLabel = [[UILabel alloc] init];
@@ -245,33 +247,33 @@
     switch (_data.pics.count) {
         case 1:{
             photoImg1.frame=CGRectMake(SYReal(20),SYReal(70)+_data.textHeight,_data.photoHeight*1.77, _data.photoHeight);
-            [photoImg1 sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:API_IMG,_data.pics[0]]]
+            [photoImg1 sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/%@",Config.getApiImg,_data.pics[0]]]
                          placeholderImage:[UIImage imageNamed:@"load_img"]];
             [self.contentView addSubview:photoImg1];
             break;
         }
         case 2:{
             photoImg1.frame=CGRectMake(SYReal(20),SYReal(70)+_data.textHeight,SYReal(184), _data.photoHeight);
-            [photoImg1 sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:API_IMG,_data.pics[0]]]
+            [photoImg1 sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/%@",Config.getApiImg,_data.pics[0]]]
                          placeholderImage:[UIImage imageNamed:@"load_img"]];
             [self.contentView addSubview:photoImg1];
             photoImg2.frame=CGRectMake(SYReal(206),SYReal(70)+_data.textHeight,SYReal(184), _data.photoHeight);
-            [photoImg2 sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:API_IMG,_data.pics[1]]]
+            [photoImg2 sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/%@",Config.getApiImg,_data.pics[1]]]
                          placeholderImage:[UIImage imageNamed:@"load_img"]];
             [self.contentView addSubview:photoImg2];
             break;
         }
         case 3:{
             photoImg1.frame=CGRectMake(SYReal(20),SYReal(70)+_data.textHeight,SYReal(184), _data.photoHeight/2);
-            [photoImg1 sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:API_IMG,_data.pics[0]]]
+            [photoImg1 sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/%@",Config.getApiImg,_data.pics[0]]]
                          placeholderImage:[UIImage imageNamed:@"load_img"]];
             [self.contentView addSubview:photoImg1];
             photoImg2.frame=CGRectMake(SYReal(206),SYReal(70)+_data.textHeight,SYReal(184), _data.photoHeight/2);
-            [photoImg2 sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:API_IMG,_data.pics[1]]]
+            [photoImg2 sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/%@",Config.getApiImg,_data.pics[1]]]
                          placeholderImage:[UIImage imageNamed:@"load_img"]];
             [self.contentView addSubview:photoImg2];
             photoImg3.frame=CGRectMake(SYReal(20),SYReal(70)+_data.textHeight+_data.photoHeight/2,SYReal(184), _data.photoHeight/2);
-            [photoImg3 sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:API_IMG,_data.pics[2]]]
+            [photoImg3 sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/%@",Config.getApiImg,_data.pics[2]]]
                          placeholderImage:[UIImage imageNamed:@"load_img"]];
             [self.contentView addSubview:photoImg3];
             
@@ -279,19 +281,19 @@
         }
         case 4:{
             photoImg1.frame=CGRectMake(SYReal(20),SYReal(70)+_data.textHeight,SYReal(184), _data.photoHeight/2);
-            [photoImg1 sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:API_IMG,_data.pics[0]]]
+            [photoImg1 sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/%@",Config.getApiImg,_data.pics[0]]]
                          placeholderImage:[UIImage imageNamed:@"load_img"]];
             [self.contentView addSubview:photoImg1];
             photoImg2.frame=CGRectMake(SYReal(206),SYReal(70)+_data.textHeight,SYReal(184), _data.photoHeight/2);
-            [photoImg2 sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:API_IMG,_data.pics[1]]]
+            [photoImg2 sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/%@",Config.getApiImg,_data.pics[1]]]
                          placeholderImage:[UIImage imageNamed:@"load_img"]];
             [self.contentView addSubview:photoImg2];
             photoImg3.frame=CGRectMake(SYReal(20),SYReal(70)+_data.textHeight+_data.photoHeight/2,SYReal(184), _data.photoHeight/2);
-            [photoImg3 sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:API_IMG,_data.pics[2]]]
+            [photoImg3 sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/%@",Config.getApiImg,_data.pics[2]]]
                          placeholderImage:[UIImage imageNamed:@"load_img"]];
             [self.contentView addSubview:photoImg3];
             photoImg4.frame=CGRectMake(SYReal(206),SYReal(70)+_data.textHeight+_data.photoHeight/2,SYReal(184), _data.photoHeight/2);
-            [photoImg4 sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:API_IMG,_data.pics[3]]]
+            [photoImg4 sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/%@",Config.getApiImg,_data.pics[3]]]
                          placeholderImage:[UIImage imageNamed:@"load_img"]];
             [self.contentView addSubview:photoImg4];
             break;
@@ -308,7 +310,7 @@
     }
     [Config setNoSharedCache];
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    NSString *Url_String=[NSString stringWithFormat:API_MOMENTS_USER,_data.user_id];
+    NSString *Url_String=[NSString stringWithFormat:@"%@/%@",Config.getApiMomentsUser,_data.user_id];
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
     manager.requestSerializer.timeoutInterval = 5.f;
@@ -341,7 +343,7 @@
 }
 -(void)btnComment{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    NSString *Url_String=[NSString stringWithFormat:API_MOMENTS_CREATE_COMMENT,Config.getStudentKH,Config.getRememberCodeApp,_data.moments_id];
+    NSString *Url_String=[NSString stringWithFormat:@"%@/%@/%@/%@",Config.getApiMomentsCreateComment,Config.getStudentKH,Config.getRememberCodeApp,_data.moments_id];
     [UUInputAccessoryView showKeyboardConfige:^(UUInputConfiger * _Nonnull configer) {
         configer.keyboardType = UIKeyboardTypeDefault;
         configer.content = @"";
@@ -364,6 +366,7 @@
             NSDictionary *response = [NSDictionary dictionaryWithDictionary:responseObject];
             NSString *Msg=[response objectForKey:@"msg"];
             if ([Msg isEqualToString:@"ok"])   {
+                _momentsTable.reload;
                 [MBProgressHUD hideHUDForView:self.contentView animated:YES];
                 [MBProgressHUD showSuccess:@"评论成功"];
             }
@@ -383,7 +386,7 @@
 -(void)btnLikes{
     [Config setNoSharedCache];
     
-    NSString *Url_String=[NSString stringWithFormat:API_MOMENTS_LIKES_CREATE,Config.getStudentKH,Config.getRememberCodeApp,_data.moments_id];
+    NSString *Url_String=[NSString stringWithFormat:@"%@/%@/%@/%@",Config.getApiMomentsLikesCreate,Config.getStudentKH,Config.getRememberCodeApp,_data.moments_id];
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
     manager.requestSerializer.timeoutInterval = 5.f;
@@ -410,7 +413,7 @@
 }
 -(void)btnDeleteComment{
     CommentsModel *commentsModel=_data.commentsModelArray[comments_i];
-    NSString *Url_String=[NSString stringWithFormat:API_MOMENTS_COMMENT_DELETE,Config.getStudentKH,Config.getRememberCodeApp,commentsModel.comment_id];
+    NSString *Url_String=[NSString stringWithFormat:@"%@/%@/%@/%@",Config.getApiMomentsCommentDelete,Config.getStudentKH,Config.getRememberCodeApp,commentsModel.comment_id];
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
     manager.requestSerializer.timeoutInterval = 3.f;
@@ -420,7 +423,8 @@
          success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
              NSDictionary *Say_All = [NSDictionary dictionaryWithDictionary:responseObject];
              if ([[Say_All objectForKey:@"msg"]isEqualToString:@"ok"]) {
-                 [MBProgressHUD showSuccess:@"删除成功,请重新刷新"];
+                 [MBProgressHUD showSuccess:@"删除成功"];
+                 _momentsTable.reload;
              }
              else{
                  [MBProgressHUD showError:[Say_All objectForKey:@"msg"]];
@@ -433,7 +437,7 @@
     
 }
 -(void)btnDeleteSay{
-    NSString *Url_String=[NSString stringWithFormat:API_MOMENTS_DELETE,Config.getStudentKH,Config.getRememberCodeApp,_data.moments_id];
+    NSString *Url_String=[NSString stringWithFormat:@"%@/%@/%@/%@",Config.getApiMomentsDelete,Config.getStudentKH,Config.getRememberCodeApp,_data.moments_id];
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
     manager.requestSerializer.timeoutInterval = 3.f;
@@ -443,7 +447,8 @@
          success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
              NSDictionary *Say_All = [NSDictionary dictionaryWithDictionary:responseObject];
              if ([[Say_All objectForKey:@"msg"]isEqualToString:@"ok"]) {
-                 [MBProgressHUD showSuccess:@"删除成功,请重新刷新"];
+                 [MBProgressHUD showSuccess:@"删除成功"];
+                 _momentsTable.reload;
              }
              else{
                  [MBProgressHUD showError:[Say_All objectForKey:@"msg"]];

@@ -10,7 +10,7 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "UMMobClick/MobClick.h"
 #import "XWScanImage.h"
- 
+#import "Config.h"
 @interface HandShowViewController ()
 @property (weak, nonatomic) IBOutlet UITextView *Content;
 @property (weak, nonatomic) IBOutlet UIImageView *Img1;
@@ -143,7 +143,7 @@
 }
 -(NSString*)getimg:(int)i{
     NSArray *img=[_Hand_show objectForKey:@"pics"];
-    NSString *Url_String=[NSString stringWithFormat:API_IMG,img[i]];
+    NSString *Url_String=[NSString stringWithFormat:@"%@/%@",@"http://www.hugongda.com:8888",img[i]];
     return Url_String;
 }
 -(NSString*)getcontact{

@@ -29,7 +29,7 @@
 - (IBAction)Add:(id)sender {
     [MBProgressHUD showMessage:@"修改中" toView:self.view];
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    NSString *Url_String=[NSString stringWithFormat:API_PROFILE_USER,Config.getStudentKH,Config.getRememberCodeApp];
+    NSString *Url_String=Config.getApiProfileUser;
     NSURL * url  = [NSURL URLWithString:Url_String];
     NSString *str=@"username=";
     str=[str stringByAppendingString:_Username.text];

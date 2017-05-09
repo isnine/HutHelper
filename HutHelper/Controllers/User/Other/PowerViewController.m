@@ -49,7 +49,8 @@
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     NSString *Build_String    = _Building.text;
     NSString *Room_String     = _Room.text;
-    NSString *Url_String=[NSString stringWithFormat:API_POWER,Build_String,Room_String];
+    NSString *Url_String=[NSString stringWithFormat:@"%@/%@/%@",Config.getApiPower,Build_String,Room_String];
+    NSLog(@"%@",Url_String);
     NSURL *url                = [NSURL URLWithString: Url_String];//接口地址
     NSError *error            = nil;
     NSString *jsonString      = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:&error];//Url -> String

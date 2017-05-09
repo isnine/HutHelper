@@ -28,6 +28,7 @@
 - (instancetype)initWithFrame:(CGRect)frame style:(UITableViewStyle)style withSay:(NSDictionary *)JSONDic withSayLike:(NSDictionary *)LikesDic{
     self = [super initWithFrame:frame style:style];
     if (self) {
+        
         self.separatorStyle = UITableViewCellSeparatorStyleNone;
         self.dataSource = self;
         self.delegate = self;
@@ -56,6 +57,7 @@
     MomentsModel *data = [datas objectAtIndex:indexPath.section];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.LikesData = likeDatas;
+    cell.momentsTable=self;
     cell.data = data;
     [cell draw];
     [cell loadPhoto];
@@ -114,8 +116,8 @@
 #pragma mark - 加载方法
 -(void)reload{
     /**拼接地址*/
-    NSString *Url_String=[NSString stringWithFormat:API_MOMENTS,1];
-    NSString *likesDataString=[NSString stringWithFormat:API_MOMENTS_LIKES_SHOW,Config.getStudentKH,Config.getRememberCodeApp];
+    NSString *Url_String=[NSString stringWithFormat:@"%@/%d",Config.getApiMoments,1];
+    NSString *likesDataString=Config.getApiMomentsLikesShow;
     /**设置9秒超时*/
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
@@ -158,7 +160,7 @@
 -(void)load{
     num++;
     /**拼接地址*/
-    NSString *Url_String=[NSString stringWithFormat:API_MOMENTS,num];
+    NSString *Url_String=[NSString stringWithFormat:@"%@/%d",Config.getApiMoments,num];
     /**设置9秒超时*/
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];

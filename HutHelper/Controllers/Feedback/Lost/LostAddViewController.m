@@ -73,7 +73,7 @@
 }
 
 -(void)post{
-    NSString *Url_String=[NSString stringWithFormat:API_LOSES_CREATE,Config.getStudentKH,Config.getRememberCodeApp];
+    NSString *Url_String=Config.getApiLostCreate;
     NSLog(@"失物发生请求地址%@",Url_String);
     if (_selectedPhotos.count!=0) {
         _responstring=@"";
@@ -90,7 +90,7 @@
             //formData: 专门用于拼接需要上传的数据,在此位置生成一个要上传的数据体
             for (int i = 0; i < _selectedPhotos.count; i++) {
                 UIImage *image = _selectedPhotos[i];
-                [manager POST:API_LOSES_IMG_UPLOAD parameters:dict constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+                [manager POST:Config.getApiLostImgUpload parameters:dict constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
                     NSData *imageData = UIImageJPEGRepresentation(image, 0.5);
                     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
                     [formatter setDateFormat:@"yyyyMMddHHmmss"];

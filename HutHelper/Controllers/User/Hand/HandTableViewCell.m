@@ -42,7 +42,7 @@
 - (IBAction)Buuton1:(id)sender {
     
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    NSString *Url_String=[NSString stringWithFormat:API_GOODS_SHOW,Config.getStudentKH,Config.getRememberCodeApp,[self getid:(short)([self getIndexPath].section+1)*2-1]];
+    NSString *Url_String=[NSString stringWithFormat:@"%@/%@/%@/%@",Config.getApiGoodsShow,Config.getStudentKH,Config.getRememberCodeApp,[self getid:(short)([self getIndexPath].section+1)*2-1]];
     NSLog(@"商品查询地址:%@",Url_String);
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
@@ -75,7 +75,7 @@
 }
 - (IBAction)Button2:(id)sender {
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    NSString *Url_String=[NSString stringWithFormat:API_GOODS_SHOW,Config.getStudentKH,Config.getRememberCodeApp,[self getid:(short)([self getIndexPath].section+1)*2]];
+    NSString *Url_String=[NSString stringWithFormat:@"%@/%@/%@/%@",Config.getApiGoodsShow,Config.getStudentKH,Config.getRememberCodeApp,[self getid:(short)([self getIndexPath].section+1)*2]];
     NSLog(@"商品查询地址:%@",Url_String);
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];

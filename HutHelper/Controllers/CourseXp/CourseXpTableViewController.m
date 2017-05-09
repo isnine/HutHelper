@@ -90,7 +90,7 @@
     [cell draw];
 }
 -(void)reload{
-    NSString *urlXpString=[NSString stringWithFormat:API_CLASSXP,Config.getStudentKH,Config.getRememberCodeApp];
+    NSString *urlXpString=Config.getApiClassXP;
     [APIRequest GET:urlXpString parameters:nil success:^(id responseObject) {
         NSString *msg=responseObject[@"msg"];
         if ([msg isEqualToString:@"ok"]) {

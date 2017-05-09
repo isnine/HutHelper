@@ -12,6 +12,7 @@
 #import "VedioModel.h"
 #import "MJRefresh.h"
 #import "APIRequest.h"
+#import "Config+Api.h"
 @interface VedioTableViewController ()
 
 @end
@@ -103,7 +104,7 @@
 }
 -(void)reload{
     [Config setNoSharedCache];
-    [APIRequest GET:API_VEDIO_SHOW parameters:nil success:^(id responseObject) {
+    [APIRequest GET:Config.getApiVedioShow parameters:nil success:^(id responseObject) {
         [Config saveVedio:responseObject];
         [self loadData:responseObject[@"links"]];
         [self.tableView reloadData];

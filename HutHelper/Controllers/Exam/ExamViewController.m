@@ -14,31 +14,13 @@
 #import "MBProgressHUD+MJ.h"
 #import "ExamCell.h"
 #import "JSONKit.h"
-#include <stdio.h>
-#include <time.h>
-#import<CommonCrypto/CommonDigest.h>
 #import "MJRefresh.h"
 @interface ExamViewController ()
 
 @property (nonatomic, retain) NSMutableArray *array;
 @property (nonatomic, retain) NSMutableArray *arraycx;
 @end
-@implementation NSString (MMD5)
-- (id)MMD5
-{
-    const char *cStr           = [self UTF8String];
-    unsigned char digest[16];
-    unsigned int x=(int)strlen(cStr) ;
-    CC_MD5( cStr, x, digest );
-    // This is the md5 call
-    NSMutableString *output    = [NSMutableString stringWithCapacity:CC_MD5_DIGEST_LENGTH * 2];
-    
-    for(int i                  = 0; i < CC_MD5_DIGEST_LENGTH; i++)
-        [output appendFormat:@"%02x", digest[i]];
-    
-    return  output;
-}
-@end
+
 @implementation ExamViewController
 
 int datediff(int y1,int m1,int d1,int y2,int m2,int d2)
@@ -64,7 +46,7 @@ int datediff(int y1,int m1,int d1,int y2,int m2,int d2)
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.title = @"考试查询";
+    self.navigationItem.title = @"考试计划";
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor]}];
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(reloadexam)];
     //获得考试信息
@@ -200,15 +182,14 @@ int datediff(int y1,int m1,int d1,int y2,int m2,int d2)
     NSData *jsonData=[defaults objectForKey:@"Exam"];
     NSDictionary *User_All     = [jsonData objectFromJSONData];//数据 -> 字典
     NSDictionary *Class_Data=[User_All objectForKey:@"res"];
+    [Config saveWidgetExam:Class_Data];
     _array  = [Class_Data objectForKey:@"exam"];
     _arraycx = [Class_Data objectForKey:@"cxexam"];
 }
 -(void)reloadexam{
     /**拼接地址*/
-    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    NSString *ss=[Config.getStudentKH stringByAppendingString:@"apiforapp!"];
-    ss=[ss MMD5];
-    NSString *Url_String=[NSString stringWithFormat:API_EXAM,Config.getStudentKH,ss];
+    NSString *Url_String=Config.getApiExam;
+    [Config setNoSharedCache];
     NSLog(@"考试地址:%@",Url_String);
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     /**设置4秒超时*/

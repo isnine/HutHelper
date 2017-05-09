@@ -240,7 +240,7 @@
 -(void)reload{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     /**拼接地址*/
-    NSString *Url_String=[NSString stringWithFormat:API_LOST,_num];
+    NSString *Url_String=[NSString stringWithFormat:@"%@/%d",Config.getApiLost,_num];
     /**设置9秒超时*/
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
@@ -279,7 +279,7 @@
     _num++;
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     /**拼接地址*/
-    NSString *Url_String=[NSString stringWithFormat:API_LOST,_num];
+    NSString *Url_String=[NSString stringWithFormat:@"%@/%d",Config.getApiLost,_num];
     /**设置9秒超时*/
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
@@ -372,7 +372,7 @@
 }
 -(NSString*)getPhoto:(int)i with:(int)j{
     NSArray *photo=[_lostData[i] objectForKey:@"pics"];
-    NSString *Url=[NSString stringWithFormat:API_IMG,photo[j]];
+    NSString *Url=[NSString stringWithFormat:@"%@/%@",Config.getApiImg,photo[j]];
     NSLog(@"请求地址%@",Url);
     return Url;
 }
@@ -448,7 +448,7 @@
     [MBProgressHUD showMessage:@"加载中" toView:self.view];
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     /**拼接地址*/
-    NSString *Url_String=[NSString stringWithFormat:API_LOST_USER,Config.getUserId];
+    NSString *Url_String=Config.getApiLostUser;
     /**设置9秒超时*/
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];

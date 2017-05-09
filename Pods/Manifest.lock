@@ -27,6 +27,7 @@ PODS:
     - Reachability
   - ASIHTTPRequest/S3 (1.8.2):
     - ASIHTTPRequest/Core
+  - BmobSDK (1.6.9)
   - DJRefresh (1.0.5)
   - DTKDropdownMenu (0.0.4):
     - Masonry (~> 0.6)
@@ -57,6 +58,7 @@ PODS:
 DEPENDENCIES:
   - AFNetworking (~> 3.0)
   - ASIHTTPRequest
+  - BmobSDK (~> 1.6.9)
   - DJRefresh (~> 1.0.5)
   - DTKDropdownMenu (~> 0.0.4)
   - LGPlusButtonsView (~> 1.1.0)
@@ -75,6 +77,7 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   ASIHTTPRequest: ec013992946676b7978dcbde6396d57312d21db4
+  BmobSDK: 448108f71e28947d0752cd81e242bb685a3ef6ca
   DJRefresh: 32b3776546004faddddc28035442ba15e07c5f1b
   DTKDropdownMenu: 3a3d8afc4f70fab50a5a8131aadc8b383ef54891
   LGPlusButtonsView: 57878cd3d461d0ee2042f5b7b25d1c017e22a084
@@ -89,6 +92,6 @@ SPEC CHECKSUMS:
   UMengUShare: 7756e2e46ceba04e3000fb2c9b1d3f61784ca2ff
   YCXMenu: 6003bcd20d8ac72e3eb3c442c97ed21948c6dc1f
 
-PODFILE CHECKSUM: f98a3de4f3d58e3b16a66499822fa09a0188032d
+PODFILE CHECKSUM: 1d26c0a4090aeaaeaccd8b3902cba2c5b34f979f
 
 COCOAPODS: 1.2.0

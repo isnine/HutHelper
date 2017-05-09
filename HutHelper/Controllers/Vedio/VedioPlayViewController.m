@@ -80,7 +80,7 @@
         _playerModel.videoURL         = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",[Config getVedio480p],[_listUrl[0] objectForKey:@"url"]]];
              NSLog(@"网络地址%@",[_listUrl[0] objectForKey:@"url"]);
         _playerModel.placeholderImage = [UIImage imageNamed:@"loading_bgView1"];
-        // _playerModel.placeholderImageURLString = [NSString stringWithFormat:API_IMG,_img];
+        // _playerModel.placeholderImageURLString = [NSString stringWithFormat:@"%@/%@",Config.getApiImg,_img];
         _playerModel.fatherView       = self.playerFatherView;
 //        NSLog(@"%@",[NSString stringWithFormat:@"%@%@",[Config getVedio1080p],[_listUrl[0] objectForKey:@"url"]]);
         _playerModel.resolutionDic = @{

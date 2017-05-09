@@ -103,7 +103,7 @@
 //    return YES;
 //}
 -(void)PostHand{
-    NSString *Url_String=[NSString stringWithFormat:API_GOODS_CREATE,Config.getStudentKH,Config.getRememberCodeApp];
+    NSString *Url_String=Config.getApiGoodsCreate;
     
     NSLog(@"二手发布请求地址%@",Url_String);
     if (_selectedPhotos.count!=0) {
@@ -124,7 +124,7 @@
             //formData: 专门用于拼接需要上传的数据,在此位置生成一个要上传的数据体
             for (int i = 0; i < _selectedPhotos.count; i++) {
                 UIImage *image = _selectedPhotos[i];
-                [manager POST:API_GOODS_IMG_UPLOAD parameters:dict constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+                [manager POST:Config.getApiGoodsImgUpload parameters:dict constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
                     NSData *imageData = UIImageJPEGRepresentation(image, 0.5);
                     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
                     [formatter setDateFormat:@"yyyyMMddHHmmss"];

@@ -8,24 +8,18 @@
 
 #import "LeftSortsViewController.h"
 #import "AppDelegate.h"
-
 #import "HomeWorkViewController.h"
-
 #import "CourseViewController.h"
 #import "CourseSetViewController.h"
-
 #import "AboutViewController.h"
-
 #import "FeedbackViewController.h"
 #import "UMessage.h"
 #import <UShareUI/UShareUI.h>
 #import <UMSocialCore/UMSocialCore.h>
 #import "LoginViewController.h"
- 
-
 #import "LeftUserTableViewCell.h"
 #import "LeftItemTableViewCell.h"
- 
+#import "RecentViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 @interface LeftSortsViewController () <UITableViewDelegate,UITableViewDataSource>
 
@@ -64,7 +58,7 @@
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 7;
+    return 8;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -90,7 +84,7 @@
         }
         userCell.Head.image=[self getImg];
         return userCell;
-    } else if (indexPath.row == 2) {
+    }else if (indexPath.row == 2) {
         itemCell.Text.text              = @"分享应用";
         itemCell.Img.image=[UIImage imageNamed:@"shares"];
         return itemCell;
@@ -106,11 +100,14 @@
         itemCell.Text.text                = @"反馈";
         itemCell.Img.image=[UIImage imageNamed:@"feedback"];
         return itemCell;
-    }else{
+    } else{
         return itemCell;
     }
-    
-    
+//    else if (indexPath.row == 2) {
+//        itemCell.Text.text                = @"私信";
+//        itemCell.Img.image=[UIImage imageNamed:@"im"];
+//        return itemCell;
+//    }
 }
 
 //-(NSInteger)tableView:(UITableView *)tableView indentationLevelForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -133,12 +130,14 @@
     if (! cell) {
         cell                = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:Identifier];
     }
-    
     if (indexPath.row == 0) { //个人界面
         [self.tableview reloadData];
         [Config pushViewController:@"User"];
     }
-    
+//    if (indexPath.row == 2) {  //私信
+//        UIViewController *rnc = [[UIStoryboard storyboardWithName:@"Contacts" bundle:nil] instantiateViewControllerWithIdentifier:@"Main"];
+//        [tempAppDelegate.mainNavigationController pushViewController:rnc animated:YES];
+//    }
     if (indexPath.row == 2) {  //分享
         [UMSocialUIManager setPreDefinePlatforms:@[@(UMSocialPlatformType_WechatSession),@(UMSocialPlatformType_QQ),@(UMSocialPlatformType_Qzone),@(UMSocialPlatformType_Sina)]];
         [UMSocialUIManager showShareMenuViewInWindowWithPlatformSelectionBlock:^(UMSocialPlatformType platformType, NSDictionary *userInfo) {
@@ -157,6 +156,7 @@
             AppDelegate *tempAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
             LoginViewController *firstlogin                = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
             [tempAppDelegate.mainNavigationController pushViewController:firstlogin animated:YES];
+            [Config removeBmob];
         }]];
         [self presentViewController:alert animated:true completion:nil];
     
@@ -167,13 +167,13 @@
     if (indexPath.row == 5) {  //反馈
         [Config pushViewController:@"Feedback"];
     }
+
     
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
     return SYReal(130);
-    
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
@@ -189,7 +189,6 @@
     UMSocialMessageObject *messageObject = [UMSocialMessageObject messageObject];
     //设置文本
     messageObject.text = @"工大助手";
-    
     //调用分享接口
     [[UMSocialManager defaultManager] shareToPlatform:platformType messageObject:messageObject currentViewController:self completion:^(id data, NSError *error) {
         if (error) {
@@ -199,8 +198,6 @@
         }
     }];
 }
-
-
 
 - (void)shareWebPageToPlatformType:(UMSocialPlatformType)platformType
 {
@@ -226,17 +223,17 @@
 
 -(NSString*)getHeadUrl{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    return [NSString stringWithFormat:API_IMG,Config.getHeadPicThumb];
+    return [NSString stringWithFormat:@"%@/%@",Config.getApiImg,Config.getHeadPicThumb];
 }
 -(void)downHead{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     SDWebImageManager *manager = [SDWebImageManager sharedManager];
-    NSString *image_url=[NSString stringWithFormat:API_IMG,Config.getHeadPicThumb];
+    NSString *image_url=[NSString stringWithFormat:@"%@/%@",Config.getApiImg,Config.getHeadPicThumb];
     NSURL *url                   = [NSURL URLWithString: image_url];//接口地址
     [manager downloadImageWithURL:url options:SDWebImageRetryFailed progress:^(NSInteger receivedSize, NSInteger expectedSize) {
     } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
         NSData *data = UIImagePNGRepresentation(image);
-        if (data!=NULL&&![image_url isEqualToString:INDEX]) {
+        if (data!=NULL&&![image_url isEqualToString:Config.getApiImg]) {
             [defaults setObject:data forKey:@"head_img"];
             [defaults synchronize];
         }
@@ -261,7 +258,7 @@
 }
 -(UIImage*)getImg{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults]; //得到用户数据
-    NSString *Url=[NSString stringWithFormat:API_IMG,Config.getHeadPicThumb];
+    NSString *Url=[NSString stringWithFormat:@"%@/%@",Config.getApiImg,Config.getHeadPicThumb];
     if ((!Config.getHeadPicThumb)||[Config.getHeadPicThumb isEqualToString:@""]) {
         return [self circleImage:[UIImage imageNamed:@"img_defalut"]];
     }else if ([defaults objectForKey:@"head_img"]!=NULL){

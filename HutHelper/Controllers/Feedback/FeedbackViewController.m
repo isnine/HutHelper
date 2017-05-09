@@ -65,7 +65,7 @@
         [MBProgressHUD showError:@"联系方式与反馈内容不能为空"];
     }
     else{
-        NSURL * url                        = [NSURL URLWithString:API_FEEDBACK];
+        NSURL * url                        = [NSURL URLWithString:Config.getApiFeedback];
         NSString *str1=@"email=";
         NSString *Mail_String              = _Mail.text;
         NSString *str2=@"&content=";

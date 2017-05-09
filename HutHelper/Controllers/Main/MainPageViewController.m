@@ -32,6 +32,7 @@
 #import "MomentsViewController.h"
 #import "APIRequest.h"
 #import "VedioPlayViewController.h"
+
 #define vBackBarButtonItemName  @"backArrow.png"    //导航条返回默认图片名
 #define ERROR_MSG_INVALID @"登录过期,请重新登录"
 
@@ -61,8 +62,8 @@ int class_error_;
 - (IBAction)ClassFind:(id)sender {  //课表界面
     if(([Config getCourse]==nil)||([Config getCourseXp]==nil)){
         [MBProgressHUD showMessage:@"查询中" toView:self.view];
-        NSString *urlString=[NSString stringWithFormat:API_CLASS,Config.getStudentKH,Config.getRememberCodeApp];
-        NSString *urlXpString=[NSString stringWithFormat:API_CLASSXP,Config.getStudentKH,Config.getRememberCodeApp];
+        NSString *urlString=Config.getApiClass;
+        NSString *urlXpString=Config.getApiClassXP;
         /**平时课表*/
         [APIRequest GET:urlString parameters:nil success:^(id responseObject) {
             NSString *msg=responseObject[@"msg"];
@@ -111,8 +112,8 @@ int class_error_;
 - (IBAction)ClassXPFind:(id)sender {  //实验课表
     if(([Config getCourse]==nil)||([Config getCourseXp]==nil)){
         [MBProgressHUD showMessage:@"查询中" toView:self.view];
-        NSString *urlString=[NSString stringWithFormat:API_CLASS,Config.getStudentKH,Config.getRememberCodeApp];
-        NSString *urlXpString=[NSString stringWithFormat:API_CLASSXP,Config.getStudentKH,Config.getRememberCodeApp];
+        NSString *urlString=Config.getApiClass;
+        NSString *urlXpString=Config.getApiClassXP;
         /**平时课表*/
         [APIRequest GET:urlString parameters:nil success:^(id responseObject) {
             NSString *msg=responseObject[@"msg"];
@@ -175,8 +176,8 @@ int class_error_;
     }
     
     [MBProgressHUD showMessage:@"加载中" toView:self.view];
-    NSString *urlString=[NSString stringWithFormat:API_MOMENTS,1];
-    NSString *urlLikesString=[NSString stringWithFormat:API_MOMENTS_LIKES_SHOW,Config.getStudentKH,Config.getRememberCodeApp];
+    NSString *urlString=[NSString stringWithFormat:@"%@/%d",Config.getApiMoments,1];
+    NSString *urlLikesString=[NSString stringWithFormat:@"%@/%@/%@",Config.getApiMomentsLikesShow,Config.getStudentKH,Config.getRememberCodeApp];
     [APIRequest GET:urlString parameters:nil success:^(id responseObject){
         if ([responseObject[@"msg"]isEqualToString:@"ok"]) {
             NSDictionary *sayData=responseObject[@"data"];
@@ -221,7 +222,7 @@ int class_error_;
         return;
     }
     [MBProgressHUD showMessage:@"加载中" toView:self.view];
-    NSString *urlString=[NSString stringWithFormat:API_GOODS,1];
+    NSString *urlString=[NSString stringWithFormat: @"%@/%d",Config.getApiGoods,1];
     [APIRequest GET:urlString parameters:nil success:^(id responseObject){
         NSDictionary *dic1 = [NSDictionary dictionaryWithObject:responseObject forKey:@""];
         NSArray *handArray           =dic1[@""];
@@ -240,14 +241,14 @@ int class_error_;
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     if((![defaults objectForKey:@"Score"])||(![defaults objectForKey:@"ScoreRank"])){
         [MBProgressHUD showMessage:@"查询中" toView:self.view];
-        NSString *shaString=[Math sha1:[NSString stringWithFormat:@"%@%@%@",Config.getStudentKH,Config.getRememberCodeApp,@"f$Z@%"]];
-        NSString *urlString=[NSString stringWithFormat:API_SCORES,Config.getStudentKH,Config.getRememberCodeApp,shaString];
+        
+        NSString *urlString=Config.getApiScores;
         [APIRequest GET:urlString parameters:nil timeout:8.0 success:^(id responseObject){
             NSData *scoreData =    [NSJSONSerialization dataWithJSONObject:responseObject options:NSJSONWritingPrettyPrinted error:nil];
             NSString *msg=responseObject[@"msg"];
             if([msg isEqualToString:@"ok"]){
                 [Config saveScore:scoreData];
-                NSString *urlRankString=[NSString stringWithFormat:API_RANK,Config.getStudentKH,Config.getRememberCodeApp];
+                NSString *urlRankString=Config.getApiRank;
                 [APIRequest GET:urlRankString parameters:nil timeout:8.0 success:^(id responseObject) {
                     if ([responseObject[@"msg"]isEqualToString:@"ok"]) {
                         [Config saveScoreRank:responseObject];
@@ -288,7 +289,7 @@ int class_error_;
         return;
     }
     [MBProgressHUD showMessage:@"查询中" toView:self.view];
-    NSString *urlString=[NSString stringWithFormat:API_EXAM,Config.getStudentKH,[Math md5:[Config.getStudentKH stringByAppendingString:@"apiforapp!"]]];
+    NSString *urlString=Config.getApiExam;
     [APIRequest GET:urlString parameters:nil success:^(id responseObject) {
         NSData *Exam_data =    [NSJSONSerialization dataWithJSONObject:responseObject options:NSJSONWritingPrettyPrinted error:nil];
         if([responseObject[@"status"] isEqualToString:@"success"]){
@@ -324,7 +325,7 @@ int class_error_;
 - (IBAction)Lost:(id)sender {
     [Config setNoSharedCache];
     [MBProgressHUD showMessage:@"加载中" toView:self.view];
-    NSString *urlString=[NSString stringWithFormat:API_LOST,1];
+    NSString *urlString=[NSString stringWithFormat:@"%@/%d",Config.getApiLost,1];
     [APIRequest GET:urlString parameters:nil success:^(id responseObject) {
         if ([responseObject[@"msg"]isEqualToString:@"ok"]) {
             NSArray *sayContent=responseObject[@"data"][@"posts"];//加载该页数据
@@ -353,7 +354,7 @@ int class_error_;
         return;
     }
     [MBProgressHUD showMessage:@"加载中" toView:self.view];
-    [APIRequest GET:API_VEDIO_SHOW parameters:nil success:^(id responseObject) {
+    [APIRequest GET:Config.getApiVedioShow parameters:nil success:^(id responseObject) {
         [Config saveVedio:responseObject];
         [Config pushViewController:@"Vedio"];
         HideAllHUD
@@ -520,7 +521,7 @@ int class_error_;
         [Config removeUserDefaults];
         [defaults setObject:currentVersion forKey:@"last_run_version_key"];
         NSLog(@"没有记录");
-    }else if ([lastRunKey isEqualToString:@"1.9.9"]||[lastRunKey isEqualToString:@"2.0.0"]||[lastRunKey isEqualToString:@"2.1.0"]){
+    }else if ([lastRunKey isEqualToString:@"1.9.9"]||[lastRunKey isEqualToString:@"2.0.0"]||[lastRunKey isEqualToString:@"2.1.0"]||[lastRunKey isEqualToString:@"2.2.0"]){
         [Config removeUserDefaults:@"ScoreRank"];
         [defaults setObject:currentVersion forKey:@"last_run_version_key"];
         [Config addNotice];

@@ -38,7 +38,7 @@
     NSString *Password_String =[NSString stringWithFormat:@"%@",_Password.text];
     /**请求地址*/
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    NSString *Url_String=[NSString stringWithFormat:API_LOGIN,UserName_String,Password_String];
+    NSString *Url_String=[NSString stringWithFormat:@"%@/%@/%@/1",Config.getApiLogin,UserName_String,Password_String];
     NSLog(@"登录地址:%@",Url_String);
     /**请求*/
     [MBProgressHUD showMessage:@"登录中" toView:self.view];

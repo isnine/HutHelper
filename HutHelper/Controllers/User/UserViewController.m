@@ -109,7 +109,7 @@ NSData* data;
     
     
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    NSString *url_String=[NSString stringWithFormat:API_PROFILE_AVATAR,Config.getStudentKH,Config.getRememberCodeApp];
+    NSString *url_String=Config.getApiProfileAvatar;
     
     NSURL* url = [NSURL URLWithString:url_String];//请求url
     // UIImage* img = [UIImage imageNamed:@"header.jpg"];
@@ -238,7 +238,7 @@ NSData* data;
 
 -(UIImage*)getImg{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults]; //得到用户数据
-    NSString *Url=[NSString stringWithFormat:API_IMG,Config.getHeadPicThumb];
+    NSString *Url=[NSString stringWithFormat:@"%@/%@",Config.getApiImg,Config.getHeadPicThumb];
     if ((!Config.getHeadPicThumb)||[Config.getHeadPicThumb isEqualToString:@""]) {
         return [UIImage imageNamed:@"header.jpg"];
     }

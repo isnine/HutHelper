@@ -25,7 +25,7 @@
     [super viewDidLoad];
     self.navigationItem.title = @"网上作业";
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor]}];
-    NSString *Url_String=[NSString stringWithFormat:API_HOMEWORK,Config.getStudentKH,Config.getRememberCodeApp];
+    NSString *Url_String=Config.getApiHomeWork;
     NSURL *url                = [[NSURL alloc]initWithString:Url_String];
     _views.delegate=self;
     [_views loadRequest:[NSURLRequest requestWithURL:url]];
