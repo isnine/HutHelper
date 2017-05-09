@@ -22,6 +22,7 @@
 #import "UUInputAccessoryView.h"
 #import "MomentsViewController.h"
 #import "XWScanImage.h"
+#import "MomentsTableView.h"
 @interface MomentsCell ()
 @end
 
@@ -93,12 +94,13 @@
     /**头像图片*/
     cornerImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0,SYReal(37),SYReal(37))];
     cornerImage.center = avatarButton.center;
-    [cornerImage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/%@",Config.getApiImg,_data.head_pic_thumb]]
+    [cornerImage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",Config.getApiImg,_data.head_pic_thumb]]
                    placeholderImage:[self circleImage:[UIImage imageNamed:@"img_defalut"]]
                           completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL){
-                              if (![[NSString stringWithFormat:@"%@/%@",Config.getApiImg,_data.head_pic_thumb] isEqualToString:Config.getApiImg]) {
+                              if (![[NSString stringWithFormat:@"%@%@",Config.getApiImg,_data.head_pic_thumb] isEqualToString:Config.getApiImg]) {
                                   cornerImage.image=[self circleImage:image];
                               }}];
+    
     [self.contentView addSubview:cornerImage];
     /**说说内容*/
     contentLabel = [[UILabel alloc] init];
@@ -364,6 +366,7 @@
             NSDictionary *response = [NSDictionary dictionaryWithDictionary:responseObject];
             NSString *Msg=[response objectForKey:@"msg"];
             if ([Msg isEqualToString:@"ok"])   {
+                _momentsTable.reload;
                 [MBProgressHUD hideHUDForView:self.contentView animated:YES];
                 [MBProgressHUD showSuccess:@"评论成功"];
             }
@@ -420,7 +423,8 @@
          success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
              NSDictionary *Say_All = [NSDictionary dictionaryWithDictionary:responseObject];
              if ([[Say_All objectForKey:@"msg"]isEqualToString:@"ok"]) {
-                 [MBProgressHUD showSuccess:@"删除成功,请重新刷新"];
+                 [MBProgressHUD showSuccess:@"删除成功"];
+                 _momentsTable.reload;
              }
              else{
                  [MBProgressHUD showError:[Say_All objectForKey:@"msg"]];
@@ -443,7 +447,8 @@
          success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
              NSDictionary *Say_All = [NSDictionary dictionaryWithDictionary:responseObject];
              if ([[Say_All objectForKey:@"msg"]isEqualToString:@"ok"]) {
-                 [MBProgressHUD showSuccess:@"删除成功,请重新刷新"];
+                 [MBProgressHUD showSuccess:@"删除成功"];
+                 _momentsTable.reload;
              }
              else{
                  [MBProgressHUD showError:[Say_All objectForKey:@"msg"]];

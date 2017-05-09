@@ -189,6 +189,7 @@ int datediff(int y1,int m1,int d1,int y2,int m2,int d2)
 -(void)reloadexam{
     /**拼接地址*/
     NSString *Url_String=Config.getApiExam;
+    [Config setNoSharedCache];
     NSLog(@"考试地址:%@",Url_String);
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     /**设置4秒超时*/

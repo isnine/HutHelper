@@ -13,7 +13,6 @@
 #import "MBProgressHUD+MJ.h"
 #import "ASIHTTPRequest.h"
 #import "ASIFormDataRequest.h"
- 
 @interface MomentsAddViewController ()<TZImagePickerControllerDelegate,UICollectionViewDataSource,UICollectionViewDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,UIAlertViewDelegate,UINavigationControllerDelegate> {
     NSMutableArray *_selectedPhotos;
     NSMutableArray *_selectedAssets;

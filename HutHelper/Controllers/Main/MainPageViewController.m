@@ -521,7 +521,7 @@ int class_error_;
         [Config removeUserDefaults];
         [defaults setObject:currentVersion forKey:@"last_run_version_key"];
         NSLog(@"没有记录");
-    }else if ([lastRunKey isEqualToString:@"1.9.9"]||[lastRunKey isEqualToString:@"2.0.0"]||[lastRunKey isEqualToString:@"2.1.0"]){
+    }else if ([lastRunKey isEqualToString:@"1.9.9"]||[lastRunKey isEqualToString:@"2.0.0"]||[lastRunKey isEqualToString:@"2.1.0"]||[lastRunKey isEqualToString:@"2.2.0"]){
         [Config removeUserDefaults:@"ScoreRank"];
         [defaults setObject:currentVersion forKey:@"last_run_version_key"];
         [Config addNotice];

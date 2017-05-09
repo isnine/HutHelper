@@ -23,9 +23,11 @@
 
 @class MomentsModel;
 @class LikesModel;
+@class MomentsTableView;
 @interface MomentsCell : UITableViewCell
 @property (nonatomic, weak) MomentsModel *data;
 @property (nonatomic, weak) LikesModel *likesData;
+@property (nonatomic, strong) MomentsTableView *momentsTable;
 - (void)draw;
 -(void)loadPhoto;
 @end

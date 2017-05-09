@@ -28,6 +28,7 @@
 - (instancetype)initWithFrame:(CGRect)frame style:(UITableViewStyle)style withSay:(NSDictionary *)JSONDic withSayLike:(NSDictionary *)LikesDic{
     self = [super initWithFrame:frame style:style];
     if (self) {
+        
         self.separatorStyle = UITableViewCellSeparatorStyleNone;
         self.dataSource = self;
         self.delegate = self;
@@ -56,6 +57,7 @@
     MomentsModel *data = [datas objectAtIndex:indexPath.section];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.LikesData = likeDatas;
+    cell.momentsTable=self;
     cell.data = data;
     [cell draw];
     [cell loadPhoto];

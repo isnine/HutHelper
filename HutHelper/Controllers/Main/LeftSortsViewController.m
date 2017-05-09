@@ -84,29 +84,30 @@
         }
         userCell.Head.image=[self getImg];
         return userCell;
-    } else if (indexPath.row == 2) {
-        itemCell.Text.text                = @"私信";
-        itemCell.Img.image=[UIImage imageNamed:@"im"];
-        return itemCell;
-    }else if (indexPath.row == 3) {
+    }else if (indexPath.row == 2) {
         itemCell.Text.text              = @"分享应用";
         itemCell.Img.image=[UIImage imageNamed:@"shares"];
         return itemCell;
-    } else if (indexPath.row == 4) {
+    } else if (indexPath.row == 3) {
         itemCell.Text.text                = @"切换用户";
         itemCell.Img.image=[UIImage imageNamed:@"sign-out"];
         return itemCell;
-    } else if (indexPath.row == 5) {
+    } else if (indexPath.row == 4) {
         itemCell.Text.text                = @"关于";
         itemCell.Img.image=[UIImage imageNamed:@"about"];
         return itemCell;
-    } else if (indexPath.row == 6) {
+    } else if (indexPath.row == 5) {
         itemCell.Text.text                = @"反馈";
         itemCell.Img.image=[UIImage imageNamed:@"feedback"];
         return itemCell;
     } else{
         return itemCell;
     }
+//    else if (indexPath.row == 2) {
+//        itemCell.Text.text                = @"私信";
+//        itemCell.Img.image=[UIImage imageNamed:@"im"];
+//        return itemCell;
+//    }
 }
 
 //-(NSInteger)tableView:(UITableView *)tableView indentationLevelForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -133,18 +134,18 @@
         [self.tableview reloadData];
         [Config pushViewController:@"User"];
     }
-    if (indexPath.row == 2) {  //私信
-        UIViewController *rnc = [[UIStoryboard storyboardWithName:@"Contacts" bundle:nil] instantiateViewControllerWithIdentifier:@"Main"];
-        [tempAppDelegate.mainNavigationController pushViewController:rnc animated:YES];
-    }
-    if (indexPath.row == 3) {  //分享
+//    if (indexPath.row == 2) {  //私信
+//        UIViewController *rnc = [[UIStoryboard storyboardWithName:@"Contacts" bundle:nil] instantiateViewControllerWithIdentifier:@"Main"];
+//        [tempAppDelegate.mainNavigationController pushViewController:rnc animated:YES];
+//    }
+    if (indexPath.row == 2) {  //分享
         [UMSocialUIManager setPreDefinePlatforms:@[@(UMSocialPlatformType_WechatSession),@(UMSocialPlatformType_QQ),@(UMSocialPlatformType_Qzone),@(UMSocialPlatformType_Sina)]];
         [UMSocialUIManager showShareMenuViewInWindowWithPlatformSelectionBlock:^(UMSocialPlatformType platformType, NSDictionary *userInfo) {
             [self shareWebPageToPlatformType:platformType];
         }];
     }
     
-    if (indexPath.row == 4) {  //切换用户
+    if (indexPath.row == 3) {  //切换用户
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"切换用户" message:@"是否要退出当前账号" preferredStyle:  UIAlertControllerStyleAlert];
         [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
 
@@ -160,10 +161,10 @@
         [self presentViewController:alert animated:true completion:nil];
     
     }
-    if (indexPath.row == 5) {  //关于
+    if (indexPath.row == 4) {  //关于
         [Config pushViewController:@"About"];
     }
-    if (indexPath.row == 6) {  //反馈
+    if (indexPath.row == 5) {  //反馈
         [Config pushViewController:@"Feedback"];
     }
 
