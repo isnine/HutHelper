@@ -17,6 +17,7 @@
 		3A31E1E81E6BE68C0056565A /* MomentsAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A31E1E71E6BE68C0056565A /* MomentsAddViewController.m */; };
 		3A31E1EB1E6BE6E20056565A /* MomentsTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A31E1EA1E6BE6E20056565A /* MomentsTableView.m */; };
 		3A4049091E6A6C730038F207 /* MomentsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A4049081E6A6C730038F207 /* MomentsCell.m */; };
+		3A42785A1EC17994000D94AB /* Rectangle.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A4278591EC17994000D94AB /* Rectangle.m */; };
 		3A4D2FBD1E8D20E900901E3B /* HandTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A4D2FBB1E8D20E900901E3B /* HandTableViewCell.xib */; };
 		3A4D2FBE1E8D20E900901E3B /* HandTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A4D2FBC1E8D20E900901E3B /* HandTableViewController.xib */; };
 		3A4D2FC91E8D226000901E3B /* LostShowPhotoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A4D2FC11E8D226000901E3B /* LostShowPhotoTableViewCell.m */; };
@@ -238,6 +239,8 @@
 		3A31E1EA1E6BE6E20056565A /* MomentsTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MomentsTableView.m; sourceTree = "<group>"; };
 		3A4049071E6A6C730038F207 /* MomentsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MomentsCell.h; sourceTree = "<group>"; };
 		3A4049081E6A6C730038F207 /* MomentsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MomentsCell.m; sourceTree = "<group>"; };
+		3A4278581EC17994000D94AB /* Rectangle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Rectangle.h; sourceTree = "<group>"; };
+		3A4278591EC17994000D94AB /* Rectangle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Rectangle.m; sourceTree = "<group>"; };
 		3A4D2FBB1E8D20E900901E3B /* HandTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HandTableViewCell.xib; sourceTree = "<group>"; };
 		3A4D2FBC1E8D20E900901E3B /* HandTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HandTableViewController.xib; sourceTree = "<group>"; };
 		3A4D2FC01E8D226000901E3B /* LostShowPhotoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LostShowPhotoTableViewCell.h; sourceTree = "<group>"; };
@@ -1449,6 +1452,8 @@
 				3AFA4F911EC0675700CB7DA2 /* Info.plist */,
 				3AFA4F991EC08CB100CB7DA2 /* Exam.h */,
 				3AFA4F9A1EC08CB100CB7DA2 /* Exam.m */,
+				3A4278581EC17994000D94AB /* Rectangle.h */,
+				3A4278591EC17994000D94AB /* Rectangle.m */,
 			);
 			path = ExamTime;
 			sourceTree = "<group>";
@@ -1832,6 +1837,7 @@
 			files = (
 				3AFA4F9B1EC08CB100CB7DA2 /* Exam.m in Sources */,
 				3AFA4F8D1EC0675700CB7DA2 /* TodayViewController.m in Sources */,
+				3A42785A1EC17994000D94AB /* Rectangle.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2164,6 +2170,7 @@
 				3AFA4F971EC0675700CB7DA2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

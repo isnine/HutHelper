@@ -13,6 +13,7 @@
 @property(nonatomic,copy)NSString* EndTime;
 @property(nonatomic,copy)NSString* RoomName;
 @property(nonatomic,copy)NSString* Starttime;
-@property(nonatomic,copy)NSString* Week_Num;
 @property(nonatomic,copy)NSString* isset;
+-(instancetype)initWithDic:(NSDictionary*)Dic;
+-(instancetype)initWithCXDic:(NSDictionary*)Dic;
 @end
