@@ -223,7 +223,7 @@ static int Is ;
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     NSDictionary *noticeDictionary=@{@"time":@"2017-05-19 24:00",
                                      @"title":@"工大助手",
-                                     @"body":@"工大助手V2.3.0更新日志\n\n- 新增了考试倒计时Widget\n- 适配了iphone5/5s等机型\n- 修复了反馈界面无法关闭键盘的问题\n\n如果您对App有任何建议或者发现了Bug\n可以在侧栏-反馈中告诉我们，我向您保证每个Bug都会尽快修复，每个意见都会得到回复，另外在AppStore中求个好评🙏"
+                                     @"body":@"工大助手V2.3.0更新日志\n\n- 新增了考试倒计时Widget\n- 适配了iphone5/5s等机型\n- 修复了反馈界面无法关闭键盘的问题\n- 修复了考试查询结束时间显示的问题\n- 改进了校园说说的用户体验\n\n如果您对App有任何建议或者发现了Bug\n可以在侧栏-反馈中告诉我们，我向您保证每个Bug都会尽快修复，每个意见都会得到回复，另外在AppStore中求个好评🙏"
                                      };
     
     NSDictionary *noticeDictionary2=@{@"time":@"2017-02-20 08:00",

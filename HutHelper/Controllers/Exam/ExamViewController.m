@@ -86,7 +86,6 @@ int datediff(int y1,int m1,int d1,int y2,int m2,int d2)
     NSString *EndTime           ;
     NSString *Exam_Time;//拆分后的时间
     NSString *Week_Num;
-    int i;
     /**考试数据*/
     if (indexPath.section<_array.count)
         dict1=_array[indexPath.section];
@@ -106,13 +105,16 @@ int datediff(int y1,int m1,int d1,int y2,int m2,int d2)
     if ([EndTime isEqual:[NSNull null]])   EndTime = @"-";
     if ([isset isEqual:[NSNull null]])        isset   = @"-";
     /**添加重修标志*/
-    if (indexPath.section>=_array.count&&indexPath.section<_arraycx.count+_array.count)
-        CourseName=[@"【重修】" stringByAppendingString:CourseName];
+    if (indexPath.section>=_array.count&&indexPath.section<_arraycx.count+_array.count){
+        if (![CourseName isEqualToString:@"尔雅网络课程"]) {
+            CourseName=[@"【重修】" stringByAppendingString:CourseName];
+        }
+    }
     /**计算考试时间*/
-    int Year,Mouth,Day,Hour,Minutes,End_Hour,End_Minutes=0;
+    int Year=0,Mouth=0,Day=0,Hour=0,Minutes = 0,End_Hour=0,End_Minutes=0;
     if (![EndTime isEqual:@"-"]) {
-        End_Hour=[[Starttime substringWithRange:NSMakeRange(11,2)] intValue];
-        End_Minutes=[[Starttime substringWithRange:NSMakeRange(14,2)] intValue];
+        End_Hour=[[EndTime substringWithRange:NSMakeRange(11,2)] intValue];
+        End_Minutes=[[EndTime substringWithRange:NSMakeRange(14,2)] intValue];
     }
     if (![Starttime isEqual:@"-"]) {
         Year=[[Starttime substringWithRange:NSMakeRange(0,4)] intValue];
@@ -122,20 +124,23 @@ int datediff(int y1,int m1,int d1,int y2,int m2,int d2)
         Minutes=[[Starttime substringWithRange:NSMakeRange(14,2)] intValue];
     }
     if (![EndTime isEqual:@"-"]&&![Starttime isEqual:@"-"]) {
-        NSString *String_Minutes,*String_End_Minutes;
-        if (Minutes==0)
+        NSString *String_Minutes;
+        NSString *String_End_Minutes;
+        if (Minutes==0){
             String_Minutes=@"00";
-        else
+        }else{
             String_Minutes=[NSString stringWithFormat:@"%d",Minutes];
-        if (End_Minutes==0)
+        }
+        if (End_Minutes==0){
             String_End_Minutes=@"00";
-        else
+        }else{
             String_End_Minutes=[NSString stringWithFormat:@"%d",End_Minutes];
-        
+        }
         Exam_Time=[NSString stringWithFormat:@"%@周/%d.%d.%d/%d:%@-%d:%@",Week_Num,Year,Mouth,Day,Hour,String_Minutes,End_Hour,String_End_Minutes];
     }
-    else
+    else{
         Exam_Time=@"-";
+    }
     NSLog(@"%@",Exam_Time);
     /**计算倒计时*/
     NSDate *now                               = [NSDate date];

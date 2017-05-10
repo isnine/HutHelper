@@ -160,7 +160,6 @@
 		3AE01BDF1EB0E94400D5B7EF /* ViewUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AE01BD21EB0E94400D5B7EF /* ViewUtil.m */; };
 		3AE01BE41EB0E9DD00D5B7EF /* SysMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AE01BE31EB0E9DD00D5B7EF /* SysMessage.m */; };
 		3AE52B871EA8F0EB00705269 /* CourseXpTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AE52B861EA8F0EB00705269 /* CourseXpTableViewCell.m */; };
-		3AF72C971E9A239800093A39 /* JSPatchPlatform.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AF72C961E9A239800093A39 /* JSPatchPlatform.framework */; };
 		3AF72C9A1E9A23F000093A39 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AF72C991E9A23F000093A39 /* JavaScriptCore.framework */; };
 		3AF72C9B1E9A23F900093A39 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A6FF7C61DB3152C004CFBE8 /* libz.tbd */; };
 		3AF73BF11E7D12610086417E /* APIRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF73BF01E7D12610086417E /* APIRequest.m */; };
@@ -505,7 +504,6 @@
 		3AE01BE31EB0E9DD00D5B7EF /* SysMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SysMessage.m; sourceTree = "<group>"; };
 		3AE52B851EA8F0EB00705269 /* CourseXpTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseXpTableViewCell.h; sourceTree = "<group>"; };
 		3AE52B861EA8F0EB00705269 /* CourseXpTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseXpTableViewCell.m; sourceTree = "<group>"; };
-		3AF72C961E9A239800093A39 /* JSPatchPlatform.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JSPatchPlatform.framework; sourceTree = "<group>"; };
 		3AF72C991E9A23F000093A39 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		3AF73BEF1E7D12610086417E /* APIRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIRequest.h; sourceTree = "<group>"; };
 		3AF73BF01E7D12610086417E /* APIRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIRequest.m; sourceTree = "<group>"; };
@@ -574,7 +572,6 @@
 				3A4D30191E8D2E4600901E3B /* CoreGraphics.framework in Frameworks */,
 				3A8BACFD1DDDBDDB001C78B8 /* ImageIO.framework in Frameworks */,
 				3AE01BD81EB0E94400D5B7EF /* libopencore-amrnb.a in Frameworks */,
-				3AF72C971E9A239800093A39 /* JSPatchPlatform.framework in Frameworks */,
 				3A98CC0C1E7CFA9C00CABD0D /* libUMessage_Sdk_1.4.0.a in Frameworks */,
 				3AE01BD91EB0E94400D5B7EF /* libopencore-amrwb.a in Frameworks */,
 				DF4C1EB183B351F157BF18CD /* libPods-HutHelper.a in Frameworks */,
@@ -1076,7 +1073,6 @@
 		3A98CBCB1E7CFA9C00CABD0D /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
-				3AF72C951E9A239800093A39 /* JSPATCH */,
 				3A532CA41E910C13003CD5A8 /* ZFPlayer */,
 				3A98CBCC1E7CFA9C00CABD0D /* Commit */,
 				3A98CBD51E7CFA9C00CABD0D /* GWPCourseListView */,
@@ -1398,14 +1394,6 @@
 				3AE52B861EA8F0EB00705269 /* CourseXpTableViewCell.m */,
 			);
 			path = CourseXp;
-			sourceTree = "<group>";
-		};
-		3AF72C951E9A239800093A39 /* JSPATCH */ = {
-			isa = PBXGroup;
-			children = (
-				3AF72C961E9A239800093A39 /* JSPatchPlatform.framework */,
-			);
-			path = JSPATCH;
 			sourceTree = "<group>";
 		};
 		3AFA4F541EC043FD00CB7DA2 /* Config */ = {
@@ -2137,7 +2125,7 @@
 				DEVELOPMENT_TEAM = JW2LR94V6G;
 				GCC_PREFIX_HEADER = "HutHelper/Supporting Files/HutHelper-Prefix.pch";
 				INFOPLIST_FILE = ExamTime/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = name.wxz.HutHelper.ExamTime;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2153,7 +2141,7 @@
 				DEVELOPMENT_TEAM = JW2LR94V6G;
 				GCC_PREFIX_HEADER = "HutHelper/Supporting Files/HutHelper-Prefix.pch";
 				INFOPLIST_FILE = ExamTime/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = name.wxz.HutHelper.ExamTime;
 				PRODUCT_NAME = "$(TARGET_NAME)";
