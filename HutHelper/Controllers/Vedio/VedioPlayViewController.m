@@ -63,6 +63,11 @@
     self.playerModel.title            = [_listUrl[i-1] objectForKey:@"title"];;
     self.playerModel.videoURL         = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",[Config getVedio480p],[_listUrl[i-1] objectForKey:@"url"]]];
     NSLog(@"%@",[NSString stringWithFormat:@"%@%@",[Config getVedio480p],[_listUrl[i-1] objectForKey:@"url"]]);
+    self.playerModel.resolutionDic = @{
+                                       @"480P" : [NSString stringWithFormat:@"%@%@",[Config getVedio480p],[_listUrl[i-1] objectForKey:@"url"]],
+                                       @"720P" : [NSString stringWithFormat:@"%@%@",[Config getVedio720p],[_listUrl[i-1] objectForKey:@"url"]],
+                                       @"1080P" : [NSString stringWithFormat:@"%@%@",[Config getVedio1080p],[_listUrl[i-1] objectForKey:@"url"]]
+                                       };
     _playerModel.placeholderImage = [UIImage imageNamed:@"loading_bgView1"];
     [self.playerView resetToPlayNewVideo:self.playerModel];
     
@@ -84,8 +89,9 @@
         _playerModel.fatherView       = self.playerFatherView;
 //        NSLog(@"%@",[NSString stringWithFormat:@"%@%@",[Config getVedio1080p],[_listUrl[0] objectForKey:@"url"]]);
         _playerModel.resolutionDic = @{
-                                       @"高清" : [NSString stringWithFormat:@"%@%@",[Config getVedio480p],[_listUrl[0] objectForKey:@"url"]],
-                                       @"超清" : [NSString stringWithFormat:@"%@%@",[Config getVedio1080p],[_listUrl[0] objectForKey:@"url"]]
+                                       @"480P" : [NSString stringWithFormat:@"%@%@",[Config getVedio480p],[_listUrl[0] objectForKey:@"url"]],
+                                       @"720P" : [NSString stringWithFormat:@"%@%@",[Config getVedio720p],[_listUrl[0] objectForKey:@"url"]],
+                                       @"1080P" : [NSString stringWithFormat:@"%@%@",[Config getVedio1080p],[_listUrl[0] objectForKey:@"url"]]
                                        };
     }
     return _playerModel;

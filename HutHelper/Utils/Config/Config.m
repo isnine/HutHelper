@@ -161,6 +161,11 @@ static int Is ;
     [defaults setObject:vedioString forKey:@"Vedio480p"];
     [defaults synchronize];
 }
++(void)saveVedio720p:(NSString*)vedioString{
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    [defaults setObject:vedioString forKey:@"Vedio720p"];
+    [defaults synchronize];
+}
 +(void)saveVedio1080p:(NSString*)vedioString{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     [defaults setObject:vedioString forKey:@"Vedio1080p"];
@@ -206,6 +211,10 @@ static int Is ;
 +(NSString*)getVedio480p{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     return [defaults objectForKey:@"Vedio480p"];
+}
++(NSString*)getVedio720p{
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    return [defaults objectForKey:@"Vedio720p"];
 }
 +(NSString*)getVedio1080p{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];

@@ -33,12 +33,14 @@
 +(void)saveNowWeek:(int)nowWeek;
 +(void)saveVedio:(NSDictionary*)vedioData;
 +(void)saveVedio480p:(NSString*)vedioString;
++(void)saveVedio720p:(NSString*)vedioString;
 +(void)saveVedio1080p:(NSString*)vedioString;
 #pragma mark - 获得存储数据
 +(NSArray*)getCourse;
 +(NSArray*)getCourseXp;
 +(NSDictionary*)getVedio;
 +(NSString*)getVedio480p;
++(NSString*)getVedio720p;
 +(NSString*)getVedio1080p;
 +(NSDictionary*)getSay;
 +(NSDictionary*)getSayLike;

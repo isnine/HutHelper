@@ -32,6 +32,7 @@
     NSDictionary *Dic=[Config getVedio];
     [self loadData:Dic[@"links"]];
     [Config saveVedio480p:Dic[@"480P"]];
+    [Config saveVedio720p:Dic[@"720P"]];
     [Config saveVedio1080p:Dic[@"1080P"]];
     
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(reload)];
