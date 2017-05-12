@@ -15,6 +15,7 @@
 #import "ExamCell.h"
 #import "JSONKit.h"
 #import "MJRefresh.h"
+#import "APIRequest.h"
 @interface ExamViewController ()
 
 @property (nonatomic, retain) NSMutableArray *array;
@@ -55,7 +56,6 @@ int datediff(int y1,int m1,int d1,int y2,int m2,int d2)
 }
 #pragma mark - "设置表格代理"
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    
     return _array.count+_arraycx.count;
 }
 
@@ -192,18 +192,8 @@ int datediff(int y1,int m1,int d1,int y2,int m2,int d2)
     _arraycx = [Class_Data objectForKey:@"cxexam"];
 }
 -(void)reloadexam{
-    /**拼接地址*/
-    NSString *Url_String=Config.getApiExam;
     [Config setNoSharedCache];
-    NSLog(@"考试地址:%@",Url_String);
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    /**设置4秒超时*/
-    [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
-    manager.requestSerializer.timeoutInterval = 4.f;
-    [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
-    /**请求*/
-    [manager GET:Url_String parameters:nil progress:nil
-         success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [APIRequest GET:Config.getApiExam parameters:nil success:^(id responseObject) {
              NSDictionary *Exam_All = [NSDictionary dictionaryWithDictionary:responseObject];
              NSData *Exam_data =    [NSJSONSerialization dataWithJSONObject:Exam_All options:NSJSONWritingPrettyPrinted error:nil];
              NSString *status=[Exam_All objectForKey:@"status"];
@@ -223,7 +213,7 @@ int datediff(int y1,int m1,int d1,int y2,int m2,int d2)
                  
                  [MBProgressHUD showError:@"超时,显示本地数据"];
              }
-         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+         } failure:^(NSError *error) {
              [MBProgressHUD showError:@"网络错误"];
              [self.tableView.mj_header endRefreshing];
          }];

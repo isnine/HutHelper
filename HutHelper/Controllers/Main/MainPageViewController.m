@@ -290,6 +290,7 @@ int class_error_;
     }
     [MBProgressHUD showMessage:@"查询中" toView:self.view];
     NSString *urlString=Config.getApiExam;
+        NSLog(@"%@",urlString);
     [APIRequest GET:urlString parameters:nil success:^(id responseObject) {
         NSData *Exam_data =    [NSJSONSerialization dataWithJSONObject:responseObject options:NSJSONWritingPrettyPrinted error:nil];
         if([responseObject[@"status"] isEqualToString:@"success"]){
