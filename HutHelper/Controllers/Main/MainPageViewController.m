@@ -509,8 +509,7 @@ int class_error_;
     self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:0/255.0 green:224/255.0 blue:208/255.0 alpha:1];
 }
 - (void)isAppFirstRun{
-    NSString *currentVersion = [[[NSBundle mainBundle] infoDictionary]
-                                objectForKey:@"CFBundleShortVersionString"];
+    NSString *currentVersion = Config.getCurrentVersion;
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *lastRunKey = [defaults objectForKey:@"last_run_version_key"];

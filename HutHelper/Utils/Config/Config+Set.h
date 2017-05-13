@@ -15,5 +15,5 @@
 +(void)setNoSharedCache;
 +(void)removeBmob;
 +(void)pushViewController:(NSString*)controller;
-
++(NSString*)getCurrentVersion;
 @end

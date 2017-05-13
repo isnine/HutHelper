@@ -44,4 +44,8 @@
     AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:YES];
 }
++(NSString*)getCurrentVersion{
+   return  [[[NSBundle mainBundle] infoDictionary]
+                                objectForKey:@"CFBundleShortVersionString"];
+}
 @end

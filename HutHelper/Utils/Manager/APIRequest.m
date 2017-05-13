@@ -52,11 +52,14 @@
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
     manager.requestSerializer.timeoutInterval = POST_TIMEOUT;
     [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
-    [manager POST:URLString parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
+     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    [manager POST:URLString parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         if (success) {
             success(responseObject);
         }
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         if (failure) {
             failure(error);
         }
