@@ -239,9 +239,9 @@
 
 -(void)reload{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    /**拼接地址*/
-    NSString *Url_String=[NSString stringWithFormat:@"%@/%d",Config.getApiLost,_num];
-    [APIRequest GET:Url_String parameters:nil success:^(id responseObject) {             NSDictionary *Say_All = [NSDictionary dictionaryWithDictionary:responseObject];
+
+    [APIRequest GET:[Config getApiLost:_num] parameters:nil success:^(id responseObject) {
+        NSDictionary *Say_All = [NSDictionary dictionaryWithDictionary:responseObject];
              if ([[Say_All objectForKey:@"msg"]isEqualToString:@"ok"]) {
                  NSDictionary *Say_Data=[Say_All objectForKey:@"data"];
                  NSArray *Say_content=[Say_Data objectForKey:@"posts"];//加载该页数据
@@ -271,8 +271,7 @@
     _num++;
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     /**拼接地址*/
-    NSString *Url_String=[NSString stringWithFormat:@"%@/%d",Config.getApiLost,_num];
-    [APIRequest GET:Url_String parameters:nil success:^(id responseObject) {
+    [APIRequest GET:[Config getApiLost:_num] parameters:nil success:^(id responseObject) {
              NSDictionary *Say_All = [NSDictionary dictionaryWithDictionary:responseObject];
              if ([[Say_All objectForKey:@"msg"]isEqualToString:@"ok"]) {
                  NSDictionary *Say_Data=[Say_All objectForKey:@"data"];

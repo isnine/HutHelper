@@ -116,9 +116,8 @@
 #pragma mark - 加载方法
 -(void)reload{
     /**拼接地址*/
-    NSString *Url_String=[NSString stringWithFormat:@"%@/%d",Config.getApiMoments,1];
     NSString *likesDataString=Config.getApiMomentsLikesShow;
-    [APIRequest GET:Url_String parameters:nil success:^(id responseObject) {
+    [APIRequest GET:[Config getApiMoments:1] parameters:nil success:^(id responseObject) {
              NSDictionary *Say_All = [NSDictionary dictionaryWithDictionary:responseObject];
              if ([[Say_All objectForKey:@"msg"]isEqualToString:@"ok"]) {
                  NSDictionary *Say_Data=[Say_All objectForKey:@"data"];
@@ -152,8 +151,7 @@
 -(void)load{
     num++;
     /**拼接地址*/
-    NSString *Url_String=[NSString stringWithFormat:@"%@/%d",Config.getApiMoments,num];
-    [APIRequest GET:Url_String parameters:nil success:^(id responseObject) {
+    [APIRequest GET:[Config getApiMoments:num] parameters:nil success:^(id responseObject) {
              NSDictionary *Say_All = [NSDictionary dictionaryWithDictionary:responseObject];
              if ([[Say_All objectForKey:@"msg"]isEqualToString:@"ok"]) {
                  NSDictionary *Say_Data=[Say_All objectForKey:@"data"];

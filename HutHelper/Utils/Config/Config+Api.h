@@ -15,12 +15,12 @@
 +(NSString*)getApiExam;
 +(NSString*)getApiScores;
 +(NSString*)getApiRank;
-+(NSString*)getApiLogin;
++(NSString*)getApiLogin:(NSString*)userName passWord:(NSString*)passWord;
 +(NSString*)getApiLoginReset;
 +(NSString*)getApiProfileUser;
 +(NSString*)getApiProfileAvatar;
 +(NSString*)getApiHomeWork;
-+(NSString*)getApiPower;
++(NSString*)getApiPower:(NSString*)build room:(NSString*)room;
 
 +(NSString*)getApiGoods;
 +(NSString*)getApiGoodsUser;
@@ -28,12 +28,12 @@
 +(NSString*)getApiGoodsImgUpload;
 +(NSString*)getApiGoodsShow;
 
-+(NSString*)getApiLost;
++(NSString*)getApiLost:(int)num;
 +(NSString*)getApiLostUser;
 +(NSString*)getApiLostCreate;
 +(NSString*)getApiLostImgUpload;
 
-+(NSString*)getApiMoments;
++(NSString*)getApiMoments:(int)num;
 +(NSString*)getApiMomentsUser;
 +(NSString*)getApiMomentsCreate;
 +(NSString*)getApiMomentsImgUpload;
@@ -45,6 +45,7 @@
 
 
 +(NSString*)getApiFeedback;
++(NSString*)getApiLibrary;
 +(NSString*)getApiImg;
 
 +(NSString*)apiIndex;

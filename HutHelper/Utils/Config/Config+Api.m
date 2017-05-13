@@ -29,8 +29,8 @@
     return [NSString stringWithFormat:@"%@/api/v1/get/ranking/%@/%@",Config.apiIndex,Config.getStudentKH,Config.getRememberCodeApp];
 }
 #pragma mark - 登录界面
-+(NSString*)getApiLogin{
-    return [NSString stringWithFormat:@"%@/api/v1/get/login",Config.apiIndex];
++(NSString*)getApiLogin:(NSString*)userName passWord:(NSString*)passWord{
+    return [NSString stringWithFormat:@"%@/api/v1/get/login/%@/%@/1",Config.apiIndex,userName,passWord];
 }
 +(NSString*)getApiLoginReset{
     return [NSString stringWithFormat:@"%@/auth/resetPass",Config.apiIndex];
@@ -47,8 +47,8 @@
     return [NSString stringWithFormat:@"%@/api/v1/get/myhomework/%@/%@",Config.apiIndex,Config.getStudentKH,Config.getRememberCodeApp];
 }
 #pragma mark - 电费查询
-+(NSString*)getApiPower{
-    return [NSString stringWithFormat:@"%@/api/v1/get/power",Config.apiIndex];
++(NSString*)getApiPower:(NSString*)build room:(NSString*)room{
+    return [NSString stringWithFormat:@"%@/api/v1/get/power/%@/%@",Config.apiIndex,build,room];
 }
 #pragma mark - 二手市场
 +(NSString*)getApiGoods{
@@ -67,8 +67,8 @@
     return [NSString stringWithFormat:@"%@/api/v1/stuff/detail",Config.apiIndex];
 }
 #pragma mark - 失物招领
-+(NSString*)getApiLost{
-    return [NSString stringWithFormat:@"%@/api/v1/loses/posts",Config.apiIndex];
++(NSString*)getApiLost:(int)num{
+    return [NSString stringWithFormat:@"%@/api/v1/loses/posts/%d",Config.apiIndex,num];
 }
 +(NSString*)getApiLostUser{
     return [NSString stringWithFormat:@"%@/api/v1/loses/posts/page/%@",Config.apiIndex,Config.getUserId];
@@ -80,8 +80,8 @@
     return [NSString stringWithFormat:@"%@/api/v1/loses/upload",Config.apiIndex];
 }
 #pragma mark - 校园说说
-+(NSString*)getApiMoments{
-    return [NSString stringWithFormat:@"%@/api/v1/moments/posts",Config.apiIndex];
++(NSString*)getApiMoments:(int)num{
+    return [NSString stringWithFormat:@"%@/api/v1/moments/posts/%d",Config.apiIndex,num];
 }
 +(NSString*)getApiMomentsUser{
     return [NSString stringWithFormat:@"%@/api/v1/moments/posts/page",Config.apiIndex];
@@ -110,6 +110,10 @@
 #pragma mark - 反馈
 +(NSString*)getApiFeedback{
     return [NSString stringWithFormat:@"%@/home/msg/0",Config.apiIndex];
+}
+#pragma mark - 图书馆
++(NSString*)getApiLibrary{
+    return @"http://218.75.197.121:8889/opac/m/index";
 }
 #pragma mark - 其他
 +(NSString*)getApiImg{

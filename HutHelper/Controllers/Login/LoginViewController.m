@@ -36,12 +36,8 @@
 - (IBAction)Login:(id)sender {
     NSString *UserName_String =[NSString stringWithFormat:@"%@",_UserName.text];
     NSString *Password_String =[NSString stringWithFormat:@"%@",_Password.text];
-    /**请求地址*/
-    NSString *Url_String=[NSString stringWithFormat:@"%@/%@/%@/1",Config.getApiLogin,UserName_String,Password_String];
-    NSLog(@"登录地址:%@",Url_String);
-    /**请求*/
     [MBProgressHUD showMessage:@"登录中" toView:self.view];
-    [APIRequest GET:Url_String parameters:nil success:^(id responseObject) {
+    [APIRequest GET:[Config getApiLogin:UserName_String passWord:Password_String] parameters:nil success:^(id responseObject) {
              NSDictionary *userAll = [NSDictionary dictionaryWithDictionary:responseObject];
              NSDictionary *userData=[userAll objectForKey:@"data"];//All字典 -> Data字典
              NSString *msg=[userAll objectForKey:@"msg"];

@@ -268,12 +268,7 @@
 - (void)reload{
     [MBProgressHUD showMessage:@"查询中" toView:self.view];
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    NSString *SHA_String=[Config.getStudentKH stringByAppendingString:Config.getRememberCodeApp];
-    SHA_String=[SHA_String stringByAppendingString:@"f$Z@%"];
-    SHA_String=[SHA_String sha1Str];
-    NSString *Url_String=[NSString stringWithFormat:@"%@/%@/%@/%@",Config.getApiScores,Config.getStudentKH,Config.getRememberCodeApp,SHA_String];
-    NSLog(@"成绩查询地址:%@",Url_String);
-    [APIRequest GET:Url_String parameters:nil success:^(id responseObject) {
+    [APIRequest GET:Config.getApiScores parameters:nil success:^(id responseObject) {
              NSDictionary *Score_All = [NSDictionary dictionaryWithDictionary:responseObject];
              NSData *Score_Data =    [NSJSONSerialization dataWithJSONObject:Score_All options:NSJSONWritingPrettyPrinted error:nil];
              

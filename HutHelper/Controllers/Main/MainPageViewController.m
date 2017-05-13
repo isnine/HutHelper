@@ -176,9 +176,8 @@ int class_error_;
     }
     
     [MBProgressHUD showMessage:@"加载中" toView:self.view];
-    NSString *urlString=[NSString stringWithFormat:@"%@/%d",Config.getApiMoments,1];
     NSString *urlLikesString=[NSString stringWithFormat:@"%@/%@/%@",Config.getApiMomentsLikesShow,Config.getStudentKH,Config.getRememberCodeApp];
-    [APIRequest GET:urlString parameters:nil success:^(id responseObject){
+    [APIRequest GET:[Config getApiMoments:1] parameters:nil success:^(id responseObject){
         if ([responseObject[@"msg"]isEqualToString:@"ok"]) {
             NSDictionary *sayData=responseObject[@"data"];
             NSDictionary *sayContent=sayData[@"posts"];//加载该页数据
@@ -326,8 +325,7 @@ int class_error_;
 - (IBAction)Lost:(id)sender {
     [Config setNoSharedCache];
     [MBProgressHUD showMessage:@"加载中" toView:self.view];
-    NSString *urlString=[NSString stringWithFormat:@"%@/%d",Config.getApiLost,1];
-    [APIRequest GET:urlString parameters:nil success:^(id responseObject) {
+    [APIRequest GET:[Config getApiLost:1] parameters:nil success:^(id responseObject) {
         if ([responseObject[@"msg"]isEqualToString:@"ok"]) {
             NSArray *sayContent=responseObject[@"data"][@"posts"];//加载该页数据
             if (sayContent) {
