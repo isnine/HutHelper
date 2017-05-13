@@ -43,14 +43,7 @@
     
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     NSString *Url_String=[NSString stringWithFormat:@"%@/%@/%@/%@",Config.getApiGoodsShow,Config.getStudentKH,Config.getRememberCodeApp,[self getid:(short)([self getIndexPath].section+1)*2-1]];
-    NSLog(@"商品查询地址:%@",Url_String);
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
-    manager.requestSerializer.timeoutInterval = 4.f;
-    [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
-    /**请求平时课表*/
-    [manager GET:Url_String parameters:nil progress:nil
-         success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [APIRequest GET:Url_String parameters:nil success:^(id responseObject) {
              NSDictionary *Hand_All = [NSDictionary dictionaryWithDictionary:responseObject];
              NSString *Msg=[Hand_All objectForKey:@"msg"];
              if ([Msg isEqualToString:@"ok"]) {
@@ -66,7 +59,7 @@
              else {
                  [MBProgressHUD showError:@"查询失败"];
              }
-         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        }failure:^(NSError *error) {
              [MBProgressHUD showError:@"网络错误"];
          }];
     
@@ -76,14 +69,7 @@
 - (IBAction)Button2:(id)sender {
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     NSString *Url_String=[NSString stringWithFormat:@"%@/%@/%@/%@",Config.getApiGoodsShow,Config.getStudentKH,Config.getRememberCodeApp,[self getid:(short)([self getIndexPath].section+1)*2]];
-    NSLog(@"商品查询地址:%@",Url_String);
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
-    manager.requestSerializer.timeoutInterval = 4.f;
-    [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
-    /**请求平时课表*/
-    [manager GET:Url_String parameters:nil progress:nil
-         success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [APIRequest GET:Url_String parameters:nil success:^(id responseObject) {
              NSDictionary *Hand_All = [NSDictionary dictionaryWithDictionary:responseObject];
              NSString *Msg=[Hand_All objectForKey:@"msg"];
              if ([Msg isEqualToString:@"ok"]) {
@@ -96,7 +82,7 @@
              else{
                  [MBProgressHUD showError:@"查询失败"];
              }
-         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+         }failure:^(NSError *error) {
              [MBProgressHUD showError:@"网络错误"];
          }];
 }

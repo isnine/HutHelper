@@ -37,19 +37,11 @@
     NSString *UserName_String =[NSString stringWithFormat:@"%@",_UserName.text];
     NSString *Password_String =[NSString stringWithFormat:@"%@",_Password.text];
     /**请求地址*/
-    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     NSString *Url_String=[NSString stringWithFormat:@"%@/%@/%@/1",Config.getApiLogin,UserName_String,Password_String];
     NSLog(@"登录地址:%@",Url_String);
     /**请求*/
     [MBProgressHUD showMessage:@"登录中" toView:self.view];
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    /**设置超时*/
-    ((AFJSONResponseSerializer *)manager.responseSerializer).removesKeysWithNullValues = YES;
-    [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
-    manager.requestSerializer.timeoutInterval = 9.f;
-    [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
-    [manager GET:Url_String parameters:nil progress:nil
-         success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [APIRequest GET:Url_String parameters:nil success:^(id responseObject) {
              NSDictionary *userAll = [NSDictionary dictionaryWithDictionary:responseObject];
              NSDictionary *userData=[userAll objectForKey:@"data"];//All字典 -> Data字典
              NSString *msg=[userAll objectForKey:@"msg"];
@@ -83,7 +75,7 @@
                  HideAllHUD
                 
              }
-         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+         }failure:^(NSError *error) {
              HideAllHUD
              [MBProgressHUD showError:@"网络错误或超时"];
          }];

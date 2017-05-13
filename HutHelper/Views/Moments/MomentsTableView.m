@@ -118,29 +118,21 @@
     /**拼接地址*/
     NSString *Url_String=[NSString stringWithFormat:@"%@/%d",Config.getApiMoments,1];
     NSString *likesDataString=Config.getApiMomentsLikesShow;
-    /**设置9秒超时*/
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
-    manager.requestSerializer.timeoutInterval = 5.f;
-    [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
-    /**请求平时课表*/
-    [manager GET:Url_String parameters:nil progress:nil
-         success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [APIRequest GET:Url_String parameters:nil success:^(id responseObject) {
              NSDictionary *Say_All = [NSDictionary dictionaryWithDictionary:responseObject];
              if ([[Say_All objectForKey:@"msg"]isEqualToString:@"ok"]) {
                  NSDictionary *Say_Data=[Say_All objectForKey:@"data"];
                  NSDictionary *Say_content=[Say_Data objectForKey:@"posts"];//加载该页数据
                  if (Say_content) {
                      [Config saveSay:Say_content];
-                     [manager GET:likesDataString parameters:nil progress:nil
-                          success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                     [APIRequest GET:likesDataString parameters:nil success:^(id responseObject) {
                               NSDictionary *sayLikesAll = [NSDictionary dictionaryWithDictionary:responseObject];
                               [Config saveSayLikes:responseObject];
                               [self reLoadData:Say_content];
                               [self loadLikesData:sayLikesAll];
                               [self.mj_header endRefreshing];
                               [self reloadData];
-                          } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                          }failure:^(NSError *error) {
                           }];
                  }
                  else{
@@ -152,7 +144,7 @@
                  [self.mj_header endRefreshing];
                  [MBProgressHUD showError:[Say_All objectForKey:@"msg"]];
              }
-         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+         }failure:^(NSError *error) {
              [self.mj_header endRefreshing];
              [MBProgressHUD showError:@"网络错误"];
          }];
@@ -161,14 +153,7 @@
     num++;
     /**拼接地址*/
     NSString *Url_String=[NSString stringWithFormat:@"%@/%d",Config.getApiMoments,num];
-    /**设置9秒超时*/
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
-    manager.requestSerializer.timeoutInterval = 5.f;
-    [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
-    /**请求平时课表*/
-    [manager GET:Url_String parameters:nil progress:nil
-         success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [APIRequest GET:Url_String parameters:nil success:^(id responseObject) {
              NSDictionary *Say_All = [NSDictionary dictionaryWithDictionary:responseObject];
              if ([[Say_All objectForKey:@"msg"]isEqualToString:@"ok"]) {
                  NSDictionary *Say_Data=[Say_All objectForKey:@"data"];
@@ -195,7 +180,7 @@
                  num--;
              }
              
-         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+         }failure:^(NSError *error) {
              [self.mj_footer endRefreshing];
              [MBProgressHUD showError:@"网络错误"];
              num--;

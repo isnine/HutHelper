@@ -13,7 +13,7 @@
 #import "Config+Api.h"
 #import "Config+Set.h"
 #import "Math.h"
-
+#import "APIRequest.h"
 /**常用宏*/
 #define HideAllHUD  [MBProgressHUD hideHUDForView:self.view animated:YES];
 #define DeviceMaxHeight ([UIScreen mainScreen].bounds.size.height)

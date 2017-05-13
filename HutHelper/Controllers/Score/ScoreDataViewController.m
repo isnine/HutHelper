@@ -273,14 +273,7 @@
     SHA_String=[SHA_String sha1Str];
     NSString *Url_String=[NSString stringWithFormat:@"%@/%@/%@/%@",Config.getApiScores,Config.getStudentKH,Config.getRememberCodeApp,SHA_String];
     NSLog(@"成绩查询地址:%@",Url_String);
-    /**设置5秒超时*/
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
-    manager.requestSerializer.timeoutInterval = 5.f;
-    [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
-    /**请求*/
-    [manager GET:Url_String parameters:nil progress:nil
-         success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [APIRequest GET:Url_String parameters:nil success:^(id responseObject) {
              NSDictionary *Score_All = [NSDictionary dictionaryWithDictionary:responseObject];
              NSData *Score_Data =    [NSJSONSerialization dataWithJSONObject:Score_All options:NSJSONWritingPrettyPrinted error:nil];
              
@@ -305,7 +298,7 @@
                  HideAllHUD
                  [MBProgressHUD showError:@"请检查网络或者重新登录"];
              }
-         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        }failure:^(NSError *error) {
              HideAllHUD
              [MBProgressHUD showError:@"网络错误"];
          }];

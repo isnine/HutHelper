@@ -15,7 +15,7 @@
 #import "HandShowViewController.h"
 #import "AppDelegate.h"
 #import "HandAddViewController.h"
- 
+
 #import "User.h"
 
 #import "YCXMenu.h"
@@ -74,7 +74,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{///每块的高度
-        return 240;
+    return 240;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
@@ -95,7 +95,7 @@
     if (!cell) {
         cell=[[[NSBundle mainBundle]loadNibNamed:@"HandTableViewCell" owner:self options:nil]lastObject];
     }else{
-            NSLog(@"被重用了%d",indexPath.section);
+        NSLog(@"被重用了%d",indexPath.section);
     }
     cell.price1.text=[self getprize:(short)(indexPath.section+1)*2-1];
     cell.name1.text=[self getName:(short)(indexPath.section+1)*2-1];
@@ -103,7 +103,7 @@
     cell.img1.contentMode =UIViewContentModeScaleAspectFill;
     cell.img1.clipsToBounds = YES;
     [cell.img1 sd_setImageWithURL:[NSURL URLWithString:[self getPhoto:(short)(indexPath.section+1)*2-1]]
-                      placeholderImage:[UIImage imageNamed:@"load_img"]];
+                 placeholderImage:[UIImage imageNamed:@"load_img"]];
     if (_Hand_content.count>(indexPath.section+1)*2) {
         cell.price2.text=[self getprize:(short)(indexPath.section+1)*2];
         cell.name2.text=[self getName:(short)(indexPath.section+1)*2];
@@ -122,47 +122,35 @@
 
 #pragma mark -"其他"
 -(void)addHand{
-     [Config pushViewController:@"Addhand"];
+    [Config pushViewController:@"Addhand"];
 }
 -(void)myHand{
     [Config setNoSharedCache];
     [MBProgressHUD showMessage:@"加载中" toView:self.view];
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    /**拼接地址*/
-    NSString *Url_String=Config.getApiGoodsUser;
-    /**设置9秒超时*/
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
-    manager.requestSerializer.timeoutInterval = 5.f;
-    [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
-    /**请求平时课表*/
-    [manager GET:Url_String parameters:nil progress:nil
-         success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-//             NSMutableArray *data;
-//             NSArray *array;
-//             NSMutableDictionary *dic1=[NSMutableDictionary dictionaryWithDictionary:[NSDictionary dictionaryWithObject:responseObject forKey:@""]];
-             NSDictionary *dic1 = [NSDictionary dictionaryWithObject:responseObject forKey:@""];
-             NSArray *Hand           = [dic1 objectForKey:@""];
-             if (Hand.count!=0) {
-                 NSMutableArray *data=[[NSMutableArray alloc]init];
-                 [data addObject:_Hand_content[0]];
-                 [data addObjectsFromArray:Hand];
-                 NSArray *Hands = [NSArray arrayWithArray:data];
-                 [defaults setObject:Hands forKey:@"otherHand"];
-                 [defaults synchronize];
-                 HideAllHUD
-                 [Config setIs:1];
-                 HandTableViewController *hand=[[HandTableViewController alloc]init];
-                 AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-                 [tempAppDelegate.mainNavigationController pushViewController:hand animated:YES];
-             }else{
-                 HideAllHUD
-                 [MBProgressHUD showError:@"您没有发布的商品"];
-             }
-         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-             [MBProgressHUD showError:@"网络超时"];
-             HideAllHUD
-         }];
+    [APIRequest GET:Config.getApiGoodsUser parameters:nil success:^(id responseObject) {
+        NSDictionary *dic1 = [NSDictionary dictionaryWithObject:responseObject forKey:@""];
+        NSArray *Hand           = [dic1 objectForKey:@""];
+        if (Hand.count!=0) {
+            NSMutableArray *data=[[NSMutableArray alloc]init];
+            [data addObject:_Hand_content[0]];
+            [data addObjectsFromArray:Hand];
+            NSArray *Hands = [NSArray arrayWithArray:data];
+            [defaults setObject:Hands forKey:@"otherHand"];
+            [defaults synchronize];
+            HideAllHUD
+            [Config setIs:1];
+            HandTableViewController *hand=[[HandTableViewController alloc]init];
+            AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+            [tempAppDelegate.mainNavigationController pushViewController:hand animated:YES];
+        }else{
+            HideAllHUD
+            [MBProgressHUD showError:@"您没有发布的商品"];
+        }
+    }failure:^(NSError *error) {
+        [MBProgressHUD showError:@"网络超时"];
+        HideAllHUD
+    }];
 }
 #pragma mark - 菜单
 -(void)menu{
@@ -224,9 +212,9 @@
     return Url;
 }
 -(UIImage*)getImg:(int)i{
-        NSString *Url=[NSString stringWithFormat:@"%@/%@",Config.getApiImg,[_Hand_content[i] objectForKey:@"image"]];
-        NSURL *imageUrl = [NSURL URLWithString:Url];
-        return [UIImage imageWithData:[NSData dataWithContentsOfURL:imageUrl]];
+    NSString *Url=[NSString stringWithFormat:@"%@/%@",Config.getApiImg,[_Hand_content[i] objectForKey:@"image"]];
+    NSURL *imageUrl = [NSURL URLWithString:Url];
+    return [UIImage imageWithData:[NSData dataWithContentsOfURL:imageUrl]];
 }
 -(NSString*)getName:(int)i{
     return [_Hand_content[i] objectForKey:@"title"];
@@ -243,28 +231,19 @@
 
 -(void)reload{
     [Config setNoSharedCache];
-    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    /**拼接地址*/
     NSString *Url_String=[NSString stringWithFormat: @"%@/%d",Config.getApiGoods,_num];
-    /**设置9秒超时*/
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
-    manager.requestSerializer.timeoutInterval = 4.f;
-    [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
-    /**请求平时课表*/
-    [manager GET:Url_String parameters:nil progress:nil
-         success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-             NSDictionary *dic1 = [NSDictionary dictionaryWithObject:responseObject forKey:@""];
-             NSArray *Hand           = [dic1 objectForKey:@""];
-             [Config saveHand:Hand];
-             _Hand_content=Hand;
-             [self.tableView reloadData];
-             [self.tableView.mj_header endRefreshing];
-         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-             [MBProgressHUD showError:@"网络错误"];
-             [self.tableView.mj_header endRefreshing];
-             HideAllHUD
-         }];
+    [APIRequest GET:Url_String parameters:nil success:^(id responseObject) {
+        NSDictionary *dic1 = [NSDictionary dictionaryWithObject:responseObject forKey:@""];
+        NSArray *Hand           = [dic1 objectForKey:@""];
+        [Config saveHand:Hand];
+        _Hand_content=Hand;
+        [self.tableView reloadData];
+        [self.tableView.mj_header endRefreshing];
+    }failure:^(NSError *error) {
+        [MBProgressHUD showError:@"网络错误"];
+        [self.tableView.mj_header endRefreshing];
+        HideAllHUD
+    }];
 }
 
 -(void)load{
@@ -274,36 +253,29 @@
         NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
         /**拼接地址*/
         NSString *Url_String=[NSString stringWithFormat: @"%@/%d",Config.getApiGoods,_num];
-        /**设置9秒超时*/
-        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-        [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
-        manager.requestSerializer.timeoutInterval = 4.f;
-        [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
-        /**请求平时课表*/
-        [manager GET:Url_String parameters:nil progress:nil
-             success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                 NSDictionary *dic1 = [NSDictionary dictionaryWithObject:responseObject forKey:@""];
-                 NSArray *Hand           = [dic1 objectForKey:@""];
-                 [defaults setObject:Hand forKey:@"Hand"];
-                 [defaults synchronize];
-                 _Hand_content=Hand;
-                 NSString *num_string=[NSString stringWithFormat:@"第%d页",_num];
-                 self.navigationItem.title = num_string;
-                 [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
-                 [self.tableView reloadData];
-                 [self.tableView.mj_footer endRefreshing];
-                 self.tableView.mj_header.hidden = YES;
-             } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                 [MBProgressHUD showError:@"网络错误"];
-                 _num--;
-                 [self.tableView.mj_footer endRefreshing];
-                 HideAllHUD
-             }];
+        [APIRequest GET:Url_String parameters:nil success:^(id responseObject) {
+            NSDictionary *dic1 = [NSDictionary dictionaryWithObject:responseObject forKey:@""];
+            NSArray *Hand           = [dic1 objectForKey:@""];
+            [defaults setObject:Hand forKey:@"Hand"];
+            [defaults synchronize];
+            _Hand_content=Hand;
+            NSString *num_string=[NSString stringWithFormat:@"第%d页",_num];
+            self.navigationItem.title = num_string;
+            [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+            [self.tableView reloadData];
+            [self.tableView.mj_footer endRefreshing];
+            self.tableView.mj_header.hidden = YES;
+        }failure:^(NSError *error) {
+            [MBProgressHUD showError:@"网络错误"];
+            _num--;
+            [self.tableView.mj_footer endRefreshing];
+            HideAllHUD
+        }];
     }else{
         [MBProgressHUD showError:@"当前已是最大页数"];
         [self.tableView.mj_footer endRefreshing];
     }
-  
+    
     
 }
 @end

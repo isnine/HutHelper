@@ -311,12 +311,7 @@
     [Config setNoSharedCache];
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     NSString *Url_String=[NSString stringWithFormat:@"%@/%@",Config.getApiMomentsUser,_data.user_id];
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
-    manager.requestSerializer.timeoutInterval = 5.f;
-    [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
-    [manager GET:Url_String parameters:nil progress:nil
-         success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [APIRequest GET:Url_String parameters:nil success:^(id responseObject) {
              NSDictionary *Say_All = [NSDictionary dictionaryWithDictionary:responseObject];
              if ([[Say_All objectForKey:@"msg"]isEqualToString:@"ok"]) {
                  NSDictionary *Say_Data=[Say_All objectForKey:@"data"];
@@ -336,7 +331,7 @@
                  
              }
              
-         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+         }failure:^(NSError *error) {
              
              
          }];
@@ -387,12 +382,7 @@
     [Config setNoSharedCache];
     
     NSString *Url_String=[NSString stringWithFormat:@"%@/%@/%@/%@",Config.getApiMomentsLikesCreate,Config.getStudentKH,Config.getRememberCodeApp,_data.moments_id];
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
-    manager.requestSerializer.timeoutInterval = 5.f;
-    [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
-    [manager GET:Url_String parameters:nil progress:nil
-         success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [APIRequest GET:Url_String parameters:nil success:^(id responseObject) {
              NSDictionary *Say_All = [NSDictionary dictionaryWithDictionary:responseObject];
              if ([[Say_All objectForKey:@"msg"]isEqualToString:@"成功点赞"]) {
                  likesImage.image=[UIImage imageNamed:@"tweet_btn_liked"];
@@ -406,7 +396,7 @@
                  [MBProgressHUD showError:@"登录过期，请重新登录"];
              }
              
-         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        }failure:^(NSError *error) {
              
              
          }];
@@ -438,13 +428,7 @@
 }
 -(void)btnDeleteSay{
     NSString *Url_String=[NSString stringWithFormat:@"%@/%@/%@/%@",Config.getApiMomentsDelete,Config.getStudentKH,Config.getRememberCodeApp,_data.moments_id];
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
-    manager.requestSerializer.timeoutInterval = 3.f;
-    [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
-    /**请求平时课表*/
-    [manager GET:Url_String parameters:nil progress:nil
-         success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+   [APIRequest GET:Url_String parameters:nil success:^(id responseObject) {
              NSDictionary *Say_All = [NSDictionary dictionaryWithDictionary:responseObject];
              if ([[Say_All objectForKey:@"msg"]isEqualToString:@"ok"]) {
                  [MBProgressHUD showSuccess:@"删除成功"];
@@ -454,7 +438,7 @@
                  [MBProgressHUD showError:[Say_All objectForKey:@"msg"]];
              }
              
-         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+         }failure:^(NSError *error) {
              
              [MBProgressHUD showError:@"网络错误"];
          }];

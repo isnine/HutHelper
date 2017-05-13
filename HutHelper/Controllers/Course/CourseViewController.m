@@ -671,19 +671,8 @@ NSString *show_xp;
 - (void)reloadcourse {
     /**拼接地址*/
     [MBProgressHUD showMessage:@"刷新中" toView:self.view];
-    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    NSString *Url_String=Config.getApiClass;
-    NSLog(@"平时课表地址:%@",Url_String);
-    NSString *UrlXP_String=Config.getApiClassXP;
-    NSLog(@"实验课表地址:%@",UrlXP_String);
-    /**设置9秒超时*/
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
-    manager.requestSerializer.timeoutInterval = 9.f;
-    [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
     /**请求平时课表*/
-    [manager GET:Url_String parameters:nil progress:nil
-         success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [APIRequest GET:Config.getApiClass parameters:nil success:^(id responseObject) {
              NSDictionary *Class_All = [NSDictionary dictionaryWithDictionary:responseObject];
              NSString *Msg=[Class_All objectForKey:@"msg"];
              if ([Msg isEqualToString:@"ok"]) {
@@ -691,8 +680,7 @@ NSString *show_xp;
                  [Config saveWidgetCourse:arrayCourse];
                  
                  /**请求实验课表*/
-                 [manager GET:UrlXP_String parameters:nil progress:nil
-                      success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                 [APIRequest GET:Config.getApiClassXP parameters:nil success:^(id responseObject) {
                           NSDictionary *ClassXP_All = [NSDictionary dictionaryWithDictionary:responseObject];
                           NSString *Msg=[ClassXP_All objectForKey:@"msg"];
                           if ([Msg isEqualToString:@"ok"]) {
@@ -707,7 +695,7 @@ NSString *show_xp;
                                   [self addXpCourse];
                               }
                           }
-                      } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                      }failure:^(NSError *error) {
                           HideAllHUD
                           [MBProgressHUD showError:@"网络错误，实验课表查询失败"];
                       }];
@@ -720,7 +708,7 @@ NSString *show_xp;
                  HideAllHUD
                  [MBProgressHUD showError:@"查询失败"];
              }
-         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+         }failure:^(NSError *error) {
              HideAllHUD
              [MBProgressHUD showError:@"网络错误，平时课表查询失败"];
          }];
