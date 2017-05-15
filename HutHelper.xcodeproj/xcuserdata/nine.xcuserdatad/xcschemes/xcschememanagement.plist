@@ -7,7 +7,7 @@
 		<key>ExamTime.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>17</integer>
+			<integer>3</integer>
 		</dict>
 		<key>Extend.xcscheme</key>
 		<dict>
@@ -18,6 +18,11 @@
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
+		</dict>
+		<key>HutHelperUITests.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>19</integer>
 		</dict>
 		<key>Notification Service Extension.xcscheme</key>
 		<dict>
@@ -35,6 +40,11 @@
 			<true/>
 		</dict>
 		<key>3A2FF4E71E50179700B07EB6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>3A6397E71EC9C12300EE4BEA</key>
 		<dict>
 			<key>primary</key>
 			<true/>

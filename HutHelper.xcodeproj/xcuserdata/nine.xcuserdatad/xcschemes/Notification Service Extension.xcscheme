@@ -43,13 +43,23 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "3A6397E71EC9C12300EE4BEA"
+               BuildableName = "HutHelperUITests.xctest"
+               BlueprintName = "HutHelperUITests"
+               ReferencedContainer = "container:HutHelper.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "3A7D3CAE1DB0A7ED00355E7A"
-            BuildableName = "Notification Service Extension.appex"
-            BlueprintName = "Notification Service Extension"
+            BlueprintIdentifier = "3A85677A1DA908AA00EBD44A"
+            BuildableName = "HutHelper.app"
+            BlueprintName = "HutHelper"
             ReferencedContainer = "container:HutHelper.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
