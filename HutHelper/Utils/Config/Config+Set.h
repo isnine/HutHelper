@@ -9,11 +9,11 @@
 #import "Config.h"
 
 @interface Config (Set)
-+(void)removeUmeng;
 +(void)removeUserDefaults:(NSString*)key;
 +(void)removeUserDefaults;
 +(void)setNoSharedCache;
 +(void)removeBmob;
++ (void)isAppFirstRun;
 +(void)pushViewController:(NSString*)controller;
 +(NSString*)getCurrentVersion;
 @end

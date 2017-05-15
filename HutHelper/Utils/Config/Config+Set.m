@@ -18,13 +18,7 @@
                                                                 diskPath:nil];
     [NSURLCache setSharedURLCache:sharedCache];
 }
-+(void)removeUmeng{
-    [UMessage removeAllTags:^(id responseObject, NSInteger remain, NSError *error) {//删除友盟标签缓存
-    }];
-    [UMessage removeAlias:[Config getStudentKH] type:kUMessageAliasTypeSina response:^(id responseObject, NSError *error) {
-    }];
-}
-/**删除本地数据缓存*/
+
 +(void)removeUserDefaults{
     NSString *appDomain       = [[NSBundle mainBundle] bundleIdentifier];
     [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:appDomain];
@@ -44,8 +38,35 @@
     AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:YES];
 }
++ (void)isAppFirstRun{
+    NSString *currentVersion = Config.getCurrentVersion;
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *lastRunKey = [defaults objectForKey:@"last_run_version_key"];
+    NSLog(@"当前版本%@",currentVersion);
+    NSLog(@"上个版本%@",lastRunKey);
+    if (lastRunKey==NULL) {
+        [Config removeUserDefaults];
+        [defaults setObject:currentVersion forKey:@"last_run_version_key"];
+        NSLog(@"没有记录");
+    }else if ([lastRunKey isEqualToString:@"1.9.9"]||
+              [lastRunKey isEqualToString:@"2.0.0"]||
+              [lastRunKey isEqualToString:@"2.1.0"]||
+              [lastRunKey isEqualToString:@"2.2.0"]||
+              [lastRunKey isEqualToString:@"2.3.0"]||
+              [lastRunKey isEqualToString:@"2.3.1"]){
+        [Config removeUserDefaults:@"ScoreRank"];
+        [defaults setObject:currentVersion forKey:@"last_run_version_key"];
+        [Config removeUmeng];
+        [Config addNotice];
+    }else if (![lastRunKey isEqualToString:currentVersion]) {
+        [Config removeUserDefaults];
+        [defaults setObject:currentVersion forKey:@"last_run_version_key"];
+        NSLog(@"记录不匹配");
+    }
+}
 +(NSString*)getCurrentVersion{
    return  [[[NSBundle mainBundle] infoDictionary]
                                 objectForKey:@"CFBundleShortVersionString"];
 }
+
 @end

@@ -16,7 +16,8 @@
 #import "JSONKit.h"
 #import "MJRefresh.h"
 #import "APIRequest.h"
-@interface ExamViewController ()
+#import "UIScrollView+EmptyDataSet.h"
+@interface ExamViewController ()<DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 
 @property (nonatomic, retain) NSMutableArray *array;
 @property (nonatomic, retain) NSMutableArray *arraycx;
@@ -49,11 +50,16 @@ int datediff(int y1,int m1,int d1,int y2,int m2,int d2)
     [super viewDidLoad];
     self.navigationItem.title = @"考试计划";
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor]}];
-    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(reloadexam)];
     //获得考试信息
     [self getexam];
+    self.tableView.emptyDataSetSource = self;
+    self.tableView.emptyDataSetDelegate = self;
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(reloadexam)];
+    // A little trick for removing the cell separators
+    self.tableView.tableFooterView = [UIView new];
     [self.tableView.mj_header beginRefreshing];
 }
+
 #pragma mark - "设置表格代理"
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return _array.count+_arraycx.count;
@@ -187,36 +193,38 @@ int datediff(int y1,int m1,int d1,int y2,int m2,int d2)
     NSData *jsonData=[defaults objectForKey:@"Exam"];
     NSDictionary *User_All     = [jsonData objectFromJSONData];//数据 -> 字典
     NSDictionary *Class_Data=[User_All objectForKey:@"res"];
-    [Config saveWidgetExam:Class_Data];
     _array  = [Class_Data objectForKey:@"exam"];
     _arraycx = [Class_Data objectForKey:@"cxexam"];
 }
 -(void)reloadexam{
     [Config setNoSharedCache];
     [APIRequest GET:Config.getApiExam parameters:nil success:^(id responseObject) {
-             NSDictionary *Exam_All = [NSDictionary dictionaryWithDictionary:responseObject];
-             NSData *Exam_data =    [NSJSONSerialization dataWithJSONObject:Exam_All options:NSJSONWritingPrettyPrinted error:nil];
-             NSString *status=[Exam_All objectForKey:@"status"];
-             if([status isEqualToString:@"success"]){
-                 NSDictionary *Class_Data=[Exam_All objectForKey:@"res"];
-                 NSMutableArray *array             = [Class_Data objectForKey:@"exam"];
-                 [Config saveExam:Exam_data];
-                 if(array.count!=0){
-                     [self.tableView reloadData];
-                     [self.tableView.mj_header endRefreshing];
-                 }
-                 else{
-                     [MBProgressHUD showError:@"计划表上暂无考试"];
-                 }
-             }
-             else{
-                 
-                 [MBProgressHUD showError:@"超时,显示本地数据"];
-             }
-         } failure:^(NSError *error) {
-             [MBProgressHUD showError:@"网络错误"];
-             [self.tableView.mj_header endRefreshing];
-         }];
+        NSDictionary *Exam_All = [NSDictionary dictionaryWithDictionary:responseObject];
+        NSData *Exam_data =    [NSJSONSerialization dataWithJSONObject:Exam_All options:NSJSONWritingPrettyPrinted error:nil];
+        NSString *status=[Exam_All objectForKey:@"status"];
+        if([status isEqualToString:@"success"]){
+            NSDictionary *Class_Data=[Exam_All objectForKey:@"res"];
+            NSMutableArray *array             = [Class_Data objectForKey:@"exam"];
+            [Config saveExam:Exam_data];
+            [Config saveWidgetExam:Class_Data];
+            _array  = [Class_Data objectForKey:@"exam"];
+            _arraycx = [Class_Data objectForKey:@"cxexam"];
+            if(array.count!=0){
+                [self.tableView reloadData];
+                [self.tableView.mj_header endRefreshing];
+            }
+            else{
+                [MBProgressHUD showError:@"计划表上暂无考试"];
+            }
+        }
+        else{
+            
+            [MBProgressHUD showError:@"超时,显示本地数据"];
+        }
+    } failure:^(NSError *error) {
+        [MBProgressHUD showError:@"网络错误"];
+        [self.tableView.mj_header endRefreshing];
+    }];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -229,5 +237,38 @@ int datediff(int y1,int m1,int d1,int y2,int m2,int d2)
     [super viewWillDisappear:animated];
     [MobClick endLogPageView:@"考试计划"];
 }
-
+#pragma mark - 空白状态代理
+- (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView
+{
+    return [UIImage imageNamed:@"ui_tableview_empty"];
+}
+- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView
+{
+    NSString *text = @"暂无相关内容";
+    
+    NSDictionary *attributes = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:16.0f],
+                                 NSForegroundColorAttributeName: [UIColor darkGrayColor]};
+    
+    return [[NSAttributedString alloc] initWithString:text attributes:attributes];
+}
+- (NSAttributedString *)descriptionForEmptyDataSet:(UIScrollView *)scrollView{
+    NSString *text = @"请检查网络并重试";
+    NSMutableParagraphStyle *paragraph = [NSMutableParagraphStyle new];
+    paragraph.lineBreakMode = NSLineBreakByWordWrapping;
+    paragraph.alignment = NSTextAlignmentCenter;
+    NSDictionary *attributes = @{NSFontAttributeName: [UIFont systemFontOfSize:14.0f],
+                                 NSForegroundColorAttributeName: [UIColor lightGrayColor],
+                                 NSParagraphStyleAttributeName: paragraph};
+    return [[NSAttributedString alloc] initWithString:text attributes:attributes];
+}
+- (UIColor *)backgroundColorForEmptyDataSet:(UIScrollView *)scrollView
+{
+    return RGB(238, 239, 240, 1);
+}
+- (BOOL)emptyDataSetShouldAllowScroll:(UIScrollView *)scrollView{
+    return YES;
+}
+- (void)emptyDataSetDidTapView:(UIScrollView *)scrollView{
+    [self.tableView.mj_header beginRefreshing];
+}
 @end

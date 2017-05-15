@@ -63,7 +63,7 @@
 +(NSString*)getRememberCodeApp;
 
 +(void)saveUmeng;
-
++(void)removeUmeng;
 @end
 
 

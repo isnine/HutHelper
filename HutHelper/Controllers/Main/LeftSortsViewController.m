@@ -37,6 +37,7 @@
     
     UITableView *tableview           = [[UITableView alloc] init];
     self.tableview                   = tableview;
+    tableview.tag = 2001;
     tableview.frame                  = self.view.bounds;
     tableview.dataSource             = self;
     tableview.delegate               = self;

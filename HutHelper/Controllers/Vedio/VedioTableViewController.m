@@ -13,7 +13,8 @@
 #import "MJRefresh.h"
 #import "APIRequest.h"
 #import "Config+Api.h"
-@interface VedioTableViewController ()
+#import "UIScrollView+EmptyDataSet.h"
+@interface VedioTableViewController ()<DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 
 @end
 
@@ -34,7 +35,11 @@
     [Config saveVedio480p:Dic[@"480P"]];
     [Config saveVedio720p:Dic[@"720P"]];
     [Config saveVedio1080p:Dic[@"1080P"]];
-    
+    //空白状态
+    self.tableView.emptyDataSetSource = self;
+    self.tableView.emptyDataSetDelegate = self;
+    self.tableView.tableFooterView = [UIView new];
+    //下拉刷新
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(reload)];
     [self.tableView.mj_header beginRefreshing];
 }
@@ -42,6 +47,9 @@
 
 #pragma mark - Table view data source
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{  //多少块
+    if (datas.count==0) {
+        return 0;
+    }
     return (datas.count+2)/2;
 }
 
@@ -79,7 +87,9 @@
             [(UIView*)[cell.contentView.subviews lastObject]removeFromSuperview];
         }
     }
-    [self drawCell:cell withIndexPath:indexPath];
+    if (datas.count>=1) {
+            [self drawCell:cell withIndexPath:indexPath];
+    }
     return cell;
 }
 -(void)drawCell:(VedioTableViewCell*)cell withIndexPath:(NSIndexPath *)indexPath{
@@ -108,11 +118,49 @@
     [APIRequest GET:Config.getApiVedioShow parameters:nil success:^(id responseObject) {
         [Config saveVedio:responseObject];
         [self loadData:responseObject[@"links"]];
+        [Config saveVedio480p:responseObject[@"480P"]];
+        [Config saveVedio720p:responseObject[@"720P"]];
+        [Config saveVedio1080p:responseObject[@"1080P"]];
+        [self loadData:responseObject[@"links"]];
         [self.tableView reloadData];
         [self.tableView.mj_header endRefreshing];
     }failure:^(NSError *error) {
         [self.tableView.mj_header endRefreshing];
         [MBProgressHUD showError:@"网络错误"];
     }];
+}
+#pragma mark - 空白状态代理
+- (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView
+{
+    return [UIImage imageNamed:@"ui_tableview_empty"];
+}
+- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView
+{
+    NSString *text = @"暂无相关内容";
+    
+    NSDictionary *attributes = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:16.0f],
+                                 NSForegroundColorAttributeName: [UIColor darkGrayColor]};
+    
+    return [[NSAttributedString alloc] initWithString:text attributes:attributes];
+}
+- (NSAttributedString *)descriptionForEmptyDataSet:(UIScrollView *)scrollView{
+    NSString *text = @"请检查网络并重试";
+    NSMutableParagraphStyle *paragraph = [NSMutableParagraphStyle new];
+    paragraph.lineBreakMode = NSLineBreakByWordWrapping;
+    paragraph.alignment = NSTextAlignmentCenter;
+    NSDictionary *attributes = @{NSFontAttributeName: [UIFont systemFontOfSize:14.0f],
+                                 NSForegroundColorAttributeName: [UIColor lightGrayColor],
+                                 NSParagraphStyleAttributeName: paragraph};
+    return [[NSAttributedString alloc] initWithString:text attributes:attributes];
+}
+- (UIColor *)backgroundColorForEmptyDataSet:(UIScrollView *)scrollView
+{
+    return RGB(238, 239, 240, 1);
+}
+- (BOOL)emptyDataSetShouldAllowScroll:(UIScrollView *)scrollView{
+    return YES;
+}
+- (void)emptyDataSetDidTapView:(UIScrollView *)scrollView{
+    [self.tableView.mj_header beginRefreshing];
 }
 @end

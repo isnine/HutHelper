@@ -46,9 +46,7 @@
     [UMessage setLogEnabled:NO];//打开日志，方便调试
     /**友盟统计*/
     UMConfigInstance.appKey          = APPKEY_UMESSAGE;
-    UMConfigInstance.eSType          = E_UM_GAME;//仅适用于游戏场景，应用统计不用设置
-    NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
-    [MobClick setAppVersion:version];
+    [MobClick setAppVersion:[Config getCurrentVersion]];
     [MobClick startWithConfigure:UMConfigInstance];//配置以上参数后调用此方法初始化SDK！
     /**设置初始界面*/
     //   self.window                      = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
@@ -58,6 +56,7 @@
     self.mainNavigationController    = [[UINavigationController alloc] initWithRootViewController:mainVC];
     LeftSortsViewController *leftVC  = [[LeftSortsViewController alloc] init];
     self.LeftSlideVC                 = [[LeftSlideViewController alloc] initWithLeftView:leftVC andMainView:self.mainNavigationController];
+    mainVC.leftSortsViewController=leftVC;
     self.window.rootViewController   = self.LeftSlideVC;
     UIColor *ownColor                = [UIColor colorWithRed:255/255.0 green:255/255.0 blue:255/255.0 alpha:1];
     [[UINavigationBar appearance] setBarTintColor: ownColor];  //颜色

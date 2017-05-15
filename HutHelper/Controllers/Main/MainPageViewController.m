@@ -50,7 +50,7 @@ int class_error_;
     /**友盟统计*/
     [self setUMeng];
     /**主界面*/
-    [self isAppFirstRun];
+    [Config isAppFirstRun];
     /**设置第几周*/
     [Config saveNowWeek:[Math getWeek]];
     /**  首次登陆以及判断是否打开课程表 */
@@ -110,53 +110,7 @@ int class_error_;
     }
 } //课程表
 - (IBAction)ClassXPFind:(id)sender {  //实验课表
-    if(([Config getCourse]==nil)||([Config getCourseXp]==nil)){
-        [MBProgressHUD showMessage:@"查询中" toView:self.view];
-        NSString *urlString=Config.getApiClass;
-        NSString *urlXpString=Config.getApiClassXP;
-        /**平时课表*/
-        [APIRequest GET:urlString parameters:nil success:^(id responseObject) {
-            NSString *msg=responseObject[@"msg"];
-            if ([msg isEqualToString:@"ok"]) {
-                NSArray *arrayCourse = responseObject[@"data"];
-                [Config saveCourse:arrayCourse];
-                [Config saveWidgetCourse:arrayCourse];
-                /**实验课表*/
-                {
-                    [APIRequest GET:urlXpString parameters:nil success:^(id responseObject) {
-                        NSString *msg=responseObject[@"msg"];
-                        if ([msg isEqualToString:@"ok"]) {
-                            NSArray *arrayCourseXp= responseObject[@"data"];
-                            [Config saveCourseXp:arrayCourseXp];
-                            [Config saveWidgetCourseXp:arrayCourseXp];
-                            [Config pushViewController:@"ClassXp"];
-                        }
-                        else{
-                            [Config pushViewController:@"ClassXp"];
-                            [MBProgressHUD showError:msg];
-                        }
-                        HideAllHUD
-                    } failure:^(NSError *error) {
-                        [MBProgressHUD showError:@"网络超时，实验课表查询失败"];
-                        HideAllHUD
-                    }];
-                }
-            }else if([msg isEqualToString:@"令牌错误"]){
-                [MBProgressHUD showError:ERROR_MSG_INVALID];
-                HideAllHUD
-            }
-            else{
-                [MBProgressHUD showError:msg];
-                HideAllHUD
-            }
-        } failure:^(NSError *error) {
-            HideAllHUD
-            [MBProgressHUD showError:@"网络超时，平时课表查询失败"];
-        }];
-    }else{
-        [Config pushViewController:@"ClassXp"];
-    }
-    
+     [Config pushViewController:@"ClassXp"];    
     
 } //实验课表
 - (IBAction)HomeWork:(id)sender {
@@ -166,75 +120,16 @@ int class_error_;
     [Config pushViewController:@"Power"];
 } //电费查询
 - (IBAction)SchoolSay:(id)sender {
-    [Config setNoSharedCache];
-    if ([Config getSay]!=nil) {
-        [Config setIs:0];
-        MomentsViewController *Say      = [[MomentsViewController alloc] init];
-        AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-        [tempAppDelegate.mainNavigationController pushViewController:Say animated:YES];
-        return;
-    }
-    
-    [MBProgressHUD showMessage:@"加载中" toView:self.view];
-    NSString *urlLikesString=[NSString stringWithFormat:@"%@/%@/%@",Config.getApiMomentsLikesShow,Config.getStudentKH,Config.getRememberCodeApp];
-    [APIRequest GET:[Config getApiMoments:1] parameters:nil success:^(id responseObject){
-        if ([responseObject[@"msg"]isEqualToString:@"ok"]) {
-            NSDictionary *sayData=responseObject[@"data"];
-            NSDictionary *sayContent=sayData[@"posts"];//加载该页数据
-            if (sayContent) {
-                [Config saveSay:sayContent];
-                [Config setIs:0];
-                /**请求赞列表*/
-                {
-                    [APIRequest GET:urlLikesString parameters:nil success:^(id responseObject){
-                        NSDictionary *likesAll = [NSDictionary dictionaryWithDictionary:responseObject];
-                        [Config saveSayLikes:likesAll];
-                        MomentsViewController *Say      = [[MomentsViewController alloc] init];
-                        AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-                        [tempAppDelegate.mainNavigationController pushViewController:Say animated:YES];
-                        HideAllHUD
-                    } failure:^(NSError *error) {
-                        MomentsViewController *Say      = [[MomentsViewController alloc] init];
-                        AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-                        [tempAppDelegate.mainNavigationController pushViewController:Say animated:YES];
-                        HideAllHUD
-                    }];
-                }
-            }else{
-                [MBProgressHUD showError:@"数据错误"];
-            }
-        }else{
-            [MBProgressHUD showError:responseObject[@"msg"]];
-        }
-    } failure:^(NSError *error) {
-        [MBProgressHUD showError:@"网络超时"];
-        HideAllHUD
-    }];
+    [Config setIs:0];
+    MomentsViewController *Say      = [[MomentsViewController alloc] init];
+    AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [tempAppDelegate.mainNavigationController pushViewController:Say animated:YES];
 } //校园说说
 - (IBAction)SchoolHand:(id)sender {
-    [Config setNoSharedCache];
-    if ([Config getHand]!=nil) {
-        [Config setIs:0];
-        HandTableViewController *hand=[[HandTableViewController alloc]init];
-        AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-        [tempAppDelegate.mainNavigationController pushViewController:hand animated:YES];
-        return;
-    }
-    [MBProgressHUD showMessage:@"加载中" toView:self.view];
-    NSString *urlString=[NSString stringWithFormat: @"%@/%d",Config.getApiGoods,1];
-    [APIRequest GET:urlString parameters:nil success:^(id responseObject){
-        NSDictionary *dic1 = [NSDictionary dictionaryWithObject:responseObject forKey:@""];
-        NSArray *handArray           =dic1[@""];
-        [Config saveHand:handArray];
-        [Config setIs:0];
-        HandTableViewController *hand=[[HandTableViewController alloc]init];
-        AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-        [tempAppDelegate.mainNavigationController pushViewController:hand animated:YES];
-        HideAllHUD
-    }failure:^(NSError *error){
-        [MBProgressHUD showError:@"网络超时"];
-        HideAllHUD
-    }];
+    [Config setIs:0];
+    HandTableViewController *hand=[[HandTableViewController alloc]init];
+    AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [tempAppDelegate.mainNavigationController pushViewController:hand animated:YES];
 } //二手市场
 - (IBAction)Score:(id)sender {
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
@@ -283,41 +178,8 @@ int class_error_;
     [Config pushViewController:@"Library"];
 } //图书馆
 - (IBAction)Exam:(id)sender {
-    if ([Config getExam]!=nil) {
-        [Config pushViewController:@"Exam"];
-        return;
-    }
-    [MBProgressHUD showMessage:@"查询中" toView:self.view];
-    NSString *urlString=Config.getApiExam;
-        NSLog(@"%@",urlString);
-    [APIRequest GET:urlString parameters:nil success:^(id responseObject) {
-        NSData *Exam_data =    [NSJSONSerialization dataWithJSONObject:responseObject options:NSJSONWritingPrettyPrinted error:nil];
-        if([responseObject[@"status"] isEqualToString:@"success"]){
-            NSMutableArray *array             = responseObject[@"res"][@"exam"];
-            [Config saveExam:Exam_data];
-            if(array.count!=0){
-                [Config pushViewController:@"Exam"];
-            } else{
-                [MBProgressHUD showError:@"计划表上暂无考试"];
-            }
-        }else{
-            if ([Config getExam]) {
-                [Config pushViewController:@"Exam"];
-                [MBProgressHUD showError:@"超时,显示本地数据"];
-            }else{
-                [MBProgressHUD showError:responseObject[@"message"]];
-            }
-        }
-        HideAllHUD
-    } failure:^(NSError *error) {
-        if ([Config getExam]) {
-            [Config pushViewController:@"Exam"];
-            [MBProgressHUD showError:@"超时,显示本地数据"];
-        }else{
-            [MBProgressHUD showError:@"网络错误"];
-        }
-        HideAllHUD
-    }];
+     [Config pushViewController:@"Exam"];
+
 } //考试计划
 - (IBAction)Day:(id)sender {
     [Config pushViewController:@"Day"];
@@ -347,21 +209,7 @@ int class_error_;
     [Config pushViewController:@"Notice"];
 } //通知界面
 - (IBAction)Vedio:(id)sender { //视频专栏
-    [Config setNoSharedCache];
-    if ([Config getVedio]) {
-        [Config pushViewController:@"Vedio"];
-        return;
-    }
-    [MBProgressHUD showMessage:@"加载中" toView:self.view];
-    [APIRequest GET:Config.getApiVedioShow parameters:nil success:^(id responseObject) {
-        [Config saveVedio:responseObject];
-        [Config pushViewController:@"Vedio"];
-        HideAllHUD
-    }failure:^(NSError *error) {
-        [MBProgressHUD showError:@"网络超时"];
-        HideAllHUD
-    }];
-    
+    [Config pushViewController:@"Vedio"];
 } //视频专栏
 #pragma mark - 其他方法
 - (void)SetTimeLabel{
@@ -448,6 +296,7 @@ int class_error_;
     self.navigationController.navigationBar.shadowImage=[UIImage new];
     /**设置通知*/
     [self setNotice];
+    [_leftSortsViewController.tableview reloadData];
 }
 #pragma mark - 设置方法
 -(void)setNotice{
@@ -508,25 +357,5 @@ int class_error_;
     
     self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:0/255.0 green:224/255.0 blue:208/255.0 alpha:1];
 }
-- (void)isAppFirstRun{
-    NSString *currentVersion = Config.getCurrentVersion;
-    
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *lastRunKey = [defaults objectForKey:@"last_run_version_key"];
-    NSLog(@"当前版本%@",currentVersion);
-    NSLog(@"上个版本%@",lastRunKey);
-    if (lastRunKey==NULL) {
-        [Config removeUserDefaults];
-        [defaults setObject:currentVersion forKey:@"last_run_version_key"];
-        NSLog(@"没有记录");
-    }else if ([lastRunKey isEqualToString:@"1.9.9"]||[lastRunKey isEqualToString:@"2.0.0"]||[lastRunKey isEqualToString:@"2.1.0"]||[lastRunKey isEqualToString:@"2.2.0"]){
-        [Config removeUserDefaults:@"ScoreRank"];
-        [defaults setObject:currentVersion forKey:@"last_run_version_key"];
-        [Config addNotice];
-    }else if (![lastRunKey isEqualToString:currentVersion]) {
-        [Config removeUserDefaults];
-        [defaults setObject:currentVersion forKey:@"last_run_version_key"];
-        NSLog(@"记录不匹配");
-    }
-}
+
 @end

@@ -17,4 +17,5 @@ target "HutHelper" do
     pod 'YCXMenu', '~> 0.0.11'
     pod  'UITableView+FDTemplateLayoutCell'
     pod 'BmobSDK', '~>1.6.9'
+    pod 'DZNEmptyDataSet'
 end

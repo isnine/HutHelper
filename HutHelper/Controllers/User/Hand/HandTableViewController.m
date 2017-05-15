@@ -15,11 +15,10 @@
 #import "HandShowViewController.h"
 #import "AppDelegate.h"
 #import "HandAddViewController.h"
-
 #import "User.h"
-
 #import "YCXMenu.h"
-@interface HandTableViewController ()
+#import "UIScrollView+EmptyDataSet.h"
+@interface HandTableViewController ()<DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 @property (nonatomic,copy) NSArray      *Hand_content;
 @property (nonatomic , strong) NSMutableArray *items;
 @property int num;
@@ -41,10 +40,13 @@
         [mainAndSearchBtn addTarget:self action:@selector(menu) forControlEvents:UIControlEventTouchUpInside];
         UIBarButtonItem *rightCunstomButtonView = [[UIBarButtonItem alloc] initWithCustomView:rightButtonView];
         self.navigationItem.rightBarButtonItem = rightCunstomButtonView;
+        //空白状态
+        self.tableView.emptyDataSetSource = self;
+        self.tableView.emptyDataSetDelegate = self;
+        self.tableView.tableFooterView = [UIView new];
         //下拉刷新
         self.navigationItem.title=@"二手市场";
         self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(reload)];
-        //上拉加载
         self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(load)];
         [self.tableView.mj_header beginRefreshing];
     }else{
@@ -277,5 +279,40 @@
     }
     
     
+}
+
+#pragma mark - 空白状态代理
+- (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView
+{
+    return [UIImage imageNamed:@"ui_tableview_empty"];
+}
+- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView
+{
+    NSString *text = @"暂无相关内容";
+    
+    NSDictionary *attributes = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:16.0f],
+                                 NSForegroundColorAttributeName: [UIColor darkGrayColor]};
+    
+    return [[NSAttributedString alloc] initWithString:text attributes:attributes];
+}
+- (NSAttributedString *)descriptionForEmptyDataSet:(UIScrollView *)scrollView{
+    NSString *text = @"请检查网络并重试";
+    NSMutableParagraphStyle *paragraph = [NSMutableParagraphStyle new];
+    paragraph.lineBreakMode = NSLineBreakByWordWrapping;
+    paragraph.alignment = NSTextAlignmentCenter;
+    NSDictionary *attributes = @{NSFontAttributeName: [UIFont systemFontOfSize:14.0f],
+                                 NSForegroundColorAttributeName: [UIColor lightGrayColor],
+                                 NSParagraphStyleAttributeName: paragraph};
+    return [[NSAttributedString alloc] initWithString:text attributes:attributes];
+}
+- (UIColor *)backgroundColorForEmptyDataSet:(UIScrollView *)scrollView
+{
+    return RGB(238, 239, 240, 1);
+}
+- (BOOL)emptyDataSetShouldAllowScroll:(UIScrollView *)scrollView{
+    return YES;
+}
+- (void)emptyDataSetDidTapView:(UIScrollView *)scrollView{
+    [self.tableView.mj_header beginRefreshing];
 }
 @end

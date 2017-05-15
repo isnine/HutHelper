@@ -31,6 +31,7 @@ PODS:
   - DJRefresh (1.0.5)
   - DTKDropdownMenu (0.0.4):
     - Masonry (~> 0.6)
+  - DZNEmptyDataSet (1.8.1)
   - LGPlusButtonsView (1.1.1)
   - Masonry (0.6.4)
   - MBProgressHUD (1.0.0)
@@ -61,6 +62,7 @@ DEPENDENCIES:
   - BmobSDK (~> 1.6.9)
   - DJRefresh (~> 1.0.5)
   - DTKDropdownMenu (~> 0.0.4)
+  - DZNEmptyDataSet
   - LGPlusButtonsView (~> 1.1.0)
   - MBProgressHUD (~> 1.0.0)
   - MJRefresh
@@ -80,6 +82,7 @@ SPEC CHECKSUMS:
   BmobSDK: 448108f71e28947d0752cd81e242bb685a3ef6ca
   DJRefresh: 32b3776546004faddddc28035442ba15e07c5f1b
   DTKDropdownMenu: 3a3d8afc4f70fab50a5a8131aadc8b383ef54891
+  DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   LGPlusButtonsView: 57878cd3d461d0ee2042f5b7b25d1c017e22a084
   Masonry: 281802d04d787ea2973179ee8bcb50500579ede2
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
@@ -92,6 +95,6 @@ SPEC CHECKSUMS:
   UMengUShare: 7756e2e46ceba04e3000fb2c9b1d3f61784ca2ff
   YCXMenu: 6003bcd20d8ac72e3eb3c442c97ed21948c6dc1f
 
-PODFILE CHECKSUM: 1d26c0a4090aeaaeaccd8b3902cba2c5b34f979f
+PODFILE CHECKSUM: 64676715f14e7aa10e06706d789362df278fe1c1
 
 COCOAPODS: 1.2.0

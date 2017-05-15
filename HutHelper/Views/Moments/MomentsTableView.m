@@ -14,8 +14,8 @@
 #import "UILabel+LXAdd.h"
 #import "MBProgressHUD+MJ.h"
 #import "MJRefresh.h"
- 
-@interface MomentsTableView() <UITableViewDelegate, UITableViewDataSource>
+#import "UIScrollView+EmptyDataSet.h"
+@interface MomentsTableView() <UITableViewDelegate, UITableViewDataSource,DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 
 @end
 @implementation MomentsTableView{
@@ -34,7 +34,6 @@
         self.delegate = self;
         datas = [[NSMutableArray alloc] init];
         needLoadArr = [[NSMutableArray alloc] init];
-
 //        NSDictionary *JSONDic=[Config getSay];
 //        NSDictionary *LikesDic=[Config getSayLike];
         [self loadData:JSONDic];
@@ -42,6 +41,10 @@
         num=1;
         //        [self reloadData];
     }
+    self.emptyDataSetSource = self;
+    self.emptyDataSetDelegate = self;
+    self.tableFooterView = [UIView new];
+    
     self.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(reload)];
     self.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(load)];
     return self;
@@ -183,5 +186,39 @@
              [MBProgressHUD showError:@"网络错误"];
              num--;
          }];
+}
+#pragma mark - 空白状态代理
+- (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView
+{
+    return [UIImage imageNamed:@"ui_tableview_empty"];
+}
+- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView
+{
+    NSString *text = @"暂无相关内容";
+    
+    NSDictionary *attributes = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:16.0f],
+                                 NSForegroundColorAttributeName: [UIColor darkGrayColor]};
+    
+    return [[NSAttributedString alloc] initWithString:text attributes:attributes];
+}
+- (NSAttributedString *)descriptionForEmptyDataSet:(UIScrollView *)scrollView{
+    NSString *text = @"请检查网络并重试";
+    NSMutableParagraphStyle *paragraph = [NSMutableParagraphStyle new];
+    paragraph.lineBreakMode = NSLineBreakByWordWrapping;
+    paragraph.alignment = NSTextAlignmentCenter;
+    NSDictionary *attributes = @{NSFontAttributeName: [UIFont systemFontOfSize:14.0f],
+                                 NSForegroundColorAttributeName: [UIColor lightGrayColor],
+                                 NSParagraphStyleAttributeName: paragraph};
+    return [[NSAttributedString alloc] initWithString:text attributes:attributes];
+}
+- (UIColor *)backgroundColorForEmptyDataSet:(UIScrollView *)scrollView
+{
+    return RGB(238, 239, 240, 1);
+}
+- (BOOL)emptyDataSetShouldAllowScroll:(UIScrollView *)scrollView{
+    return YES;
+}
+- (void)emptyDataSetDidTapView:(UIScrollView *)scrollView{
+    [self.mj_header beginRefreshing];
 }
 @end
