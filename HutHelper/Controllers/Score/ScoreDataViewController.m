@@ -11,7 +11,7 @@
 #import "DTKDropdownMenuView.h"
 #import "Score.h"
 #import "ScoreShowViewController.h"
-
+#import "MJRefresh.h"
 #import "User.h"
 #import "AFNetworking.h"
 #import "MBProgressHUD+MJ.h"
@@ -29,9 +29,11 @@
     [super viewDidLoad];
     [self addTitleMenu];
     [self getScoreData];
-    [self setTitleButton];
+   // [self setTitleButton];
     self.tableView.dataSource = (id)self;
     self.tableView.delegate=(id)self;
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(reload)];
+    [self.tableView.mj_header beginRefreshing];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -266,37 +268,51 @@
     self.navigationItem.rightBarButtonItem = rightCunstomButtonView;
 }
 - (void)reload{
-    [MBProgressHUD showMessage:@"查询中" toView:self.view];
-    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    [APIRequest GET:Config.getApiScores parameters:nil success:^(id responseObject) {
-             NSDictionary *Score_All = [NSDictionary dictionaryWithDictionary:responseObject];
-             NSData *Score_Data =    [NSJSONSerialization dataWithJSONObject:Score_All options:NSJSONWritingPrettyPrinted error:nil];
-             
-             NSString *Msg=[Score_All objectForKey:@"msg"];
-             if([Msg isEqualToString:@"ok"]){
-                 [defaults setObject:Score_Data forKey:@"Score"];
-                 [defaults synchronize];
-                 if(_GradeString)
-                     [self getScoreData:_GradeString];
-                 else
-                    [self getScoreData];
-                 [self.tableView reloadData];
-                 HideAllHUD
-                 [MBProgressHUD showSuccess:@"刷新成功"];
-                 
-             }
-             else if([Msg isEqualToString:@"令牌错误"]){
-                 HideAllHUD
-                 [MBProgressHUD showError:@"登录过期,请重新登录"];
-             }
-             else{
-                 HideAllHUD
-                 [MBProgressHUD showError:@"请检查网络或者重新登录"];
-             }
-        }failure:^(NSError *error) {
-             HideAllHUD
-             [MBProgressHUD showError:@"网络错误"];
-         }];
+    [Config setNoSharedCache];
+    NSString *urlString=Config.getApiScores;
+    [APIRequest GET:urlString parameters:nil timeout:8.0 success:^(id responseObject){
+        NSData *scoreData =    [NSJSONSerialization dataWithJSONObject:responseObject options:NSJSONWritingPrettyPrinted error:nil];
+        NSString *msg=responseObject[@"msg"];
+        if([msg isEqualToString:@"ok"]){
+            [Config saveScore:scoreData];
+            NSString *urlRankString=Config.getApiRank;
+            [APIRequest GET:urlRankString parameters:nil timeout:8.0 success:^(id responseObject) {
+                if ([responseObject[@"msg"]isEqualToString:@"ok"]) {
+                    [Config saveScoreRank:responseObject];
+                    if(_GradeString)
+                        [self getScoreData:_GradeString];
+                    else
+                        [self getScoreData];
+                    [self.tableView reloadData];
+                    [MBProgressHUD showSuccess:@"刷新成功"];
+                    [self.tableView.mj_header endRefreshing];
+                    HideAllHUD
+                }else{
+                    [MBProgressHUD showError:@"排名查询错误"];
+                    [self.tableView.mj_header endRefreshing];
+                    HideAllHUD
+                }
+            } failure:^(NSError *error) {
+                [MBProgressHUD showError:@"网络超时"];
+                [self.tableView.mj_header endRefreshing];
+                HideAllHUD
+            }];
+            
+        }else if([msg isEqualToString:@"令牌错误"]){
+            [MBProgressHUD showError:@"登录过期,请重新登录"];
+            [self.tableView.mj_header endRefreshing];
+            HideAllHUD
+        }else{
+            [MBProgressHUD showError:msg];
+            [self.tableView.mj_header endRefreshing];
+            HideAllHUD
+        }
+        
+    }failure:^(NSError *error){
+        [MBProgressHUD showError:@"网络超时"];
+        [self.tableView.mj_header endRefreshing];
+        HideAllHUD
+    }];
 }
 
 @end

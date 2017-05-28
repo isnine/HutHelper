@@ -11,6 +11,7 @@
 #import "Config.h"
 #import "UMessage.h"
 #import "UMMobClick/MobClick.h"
+#import <StoreKit/StoreKit.h>
 static int Is ;
 
 @implementation Config
@@ -232,7 +233,7 @@ static int Is ;
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     NSDictionary *noticeDictionary=@{@"time":@"2017-05-15 08:00",
                                      @"title":@"工大助手",
-                                     @"body":@"工大助手V2.3.2更新日志\n\n- 修复了考试计划相关问题\n- 改进了校园说说/考试计划第一次打开时界面\n\n如果您对App有任何建议或者发现了Bug\n可以在侧栏-反馈中告诉我们，我向您保证每个Bug都会尽快修复，每个意见都会得到回复，另外在AppStore中求个好评🙏"
+                                     @"body":@"工大助手V2.4.0更新日志\n\n- 修复了校园说说缓存问题\n- 修改了成绩查询列表为自动刷新"
                                      };
     
     NSDictionary *noticeDictionary1=@{@"time":@"2017-05-15 08:00",
@@ -262,6 +263,14 @@ static int Is ;
     }];
     [UMessage removeAlias:[Config getStudentKH] type:kUMessageAliasTypeSina response:^(id responseObject, NSError *error) {
     }];
+}
++(void)showAppStore{
+    if([SKStoreReviewController respondsToSelector:@selector(requestReview)]){
+        [SKStoreReviewController requestReview];
+    }else{
+        NSString *str = @"https://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=1164848835&pageNumber=0&sortOrdering=2&type=Purple+Software&mt=8";
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
+    }
 }
 @end
 

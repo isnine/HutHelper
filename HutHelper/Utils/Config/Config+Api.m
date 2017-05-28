@@ -101,9 +101,10 @@
 +(NSString*)getApiMomentsCreateComment{
     return [NSString stringWithFormat:@"%@/api/v1/moments/comment",Config.apiIndex];
 }
-+(NSString*)getApiMomentsLikesCreate{
-    return [NSString stringWithFormat:@"%@/api/v1/moments/like",Config.apiIndex];
++(NSString*)getApiMomentsLikesCreate:(NSString*)momentsID{
+    return [NSString stringWithFormat:@"%@/api/v1/moments/like/%@/%@/%@",Config.apiIndex,Config.getStudentKH,Config.getRememberCodeApp,momentsID];
 }
+
 +(NSString*)getApiMomentsLikesShow{
     return [NSString stringWithFormat:@"%@/api/v1/moments/like/%@/%@",Config.apiIndex,Config.getStudentKH,Config.getRememberCodeApp];
 }

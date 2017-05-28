@@ -53,7 +53,8 @@
               [lastRunKey isEqualToString:@"2.1.0"]||
               [lastRunKey isEqualToString:@"2.2.0"]||
               [lastRunKey isEqualToString:@"2.3.0"]||
-              [lastRunKey isEqualToString:@"2.3.1"]){
+              [lastRunKey isEqualToString:@"2.3.1"]||
+              [lastRunKey isEqualToString:@"2.3.2"]){
         [Config removeUserDefaults:@"ScoreRank"];
         [defaults setObject:currentVersion forKey:@"last_run_version_key"];
         [Config removeUmeng];

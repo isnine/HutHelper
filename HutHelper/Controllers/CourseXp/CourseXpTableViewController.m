@@ -95,6 +95,7 @@
 }
 -(void)reload{
     NSString *urlXpString=Config.getApiClassXP;
+    [Config setNoSharedCache];
     [APIRequest GET:urlXpString parameters:nil success:^(id responseObject) {
         NSString *msg=responseObject[@"msg"];
         if ([msg isEqualToString:@"ok"]) {

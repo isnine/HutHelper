@@ -135,7 +135,6 @@ int class_error_;
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     if((![defaults objectForKey:@"Score"])||(![defaults objectForKey:@"ScoreRank"])){
         [MBProgressHUD showMessage:@"查询中" toView:self.view];
-        
         NSString *urlString=Config.getApiScores;
         [APIRequest GET:urlString parameters:nil timeout:8.0 success:^(id responseObject){
             NSData *scoreData =    [NSJSONSerialization dataWithJSONObject:responseObject options:NSJSONWritingPrettyPrinted error:nil];

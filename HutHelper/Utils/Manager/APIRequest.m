@@ -14,6 +14,7 @@
 #define POST_TIMEOUT 10.f
 + (void)GET:(NSString *)URLString parameters:(id)parameters success:(void (^)(id))success failure:(void (^)(NSError *))failure
 {
+    [Config setNoSharedCache];
     [self GET:URLString parameters:parameters timeout:GET_TIMEOUT success:^(id responseObject) {
         if (success) {
             success(responseObject);
@@ -28,6 +29,7 @@
 + (void)GET:(NSString *)URLString parameters:(id)parameters timeout:(double)time success:(void (^)(id))success failure:(void (^)(NSError *))failure
 {
     NSLog(@"请求地址:%@",URLString);
+        [Config setNoSharedCache];
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     ((AFJSONResponseSerializer *)manager.responseSerializer).removesKeysWithNullValues = YES;
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];

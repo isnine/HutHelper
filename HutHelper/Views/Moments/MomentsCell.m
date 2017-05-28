@@ -380,8 +380,7 @@
 
 -(void)btnLikes{
     [Config setNoSharedCache];
-    
-    NSString *Url_String=[NSString stringWithFormat:@"%@/%@/%@/%@",Config.getApiMomentsLikesCreate,Config.getStudentKH,Config.getRememberCodeApp,_data.moments_id];
+    NSString *Url_String=[Config getApiMomentsLikesCreate:_data.moments_id];
     [APIRequest GET:Url_String parameters:nil success:^(id responseObject) {
              NSDictionary *Say_All = [NSDictionary dictionaryWithDictionary:responseObject];
              if ([[Say_All objectForKey:@"msg"]isEqualToString:@"成功点赞"]) {
@@ -395,7 +394,6 @@
              }else if([[Say_All objectForKey:@"msg"]isEqualToString:@"令牌错误"]){
                  [MBProgressHUD showError:@"登录过期，请重新登录"];
              }
-             
         }failure:^(NSError *error) {
              
              

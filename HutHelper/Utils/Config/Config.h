@@ -64,6 +64,8 @@
 
 +(void)saveUmeng;
 +(void)removeUmeng;
+
++(void)showAppStore;
 @end
 
 

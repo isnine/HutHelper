@@ -79,6 +79,9 @@
     _noticeData=[defaults objectForKey:@"Notice"];
 }
 -(NSString*)getTitle:(int)i{
+    if ([[_noticeData[i] objectForKey:@"title"] isEqualToString:@""]) {
+        return @"通知";
+    }
     return [_noticeData[i] objectForKey:@"title"];
 }
 -(NSString*)getTime:(int)i{

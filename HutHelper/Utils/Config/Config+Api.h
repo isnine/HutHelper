@@ -40,7 +40,7 @@
 +(NSString*)getApiMomentsDelete;
 +(NSString*)getApiMomentsCommentDelete;
 +(NSString*)getApiMomentsCreateComment;
-+(NSString*)getApiMomentsLikesCreate;
++(NSString*)getApiMomentsLikesCreate:(NSString*)momentsID;
 +(NSString*)getApiMomentsLikesShow;
 
 

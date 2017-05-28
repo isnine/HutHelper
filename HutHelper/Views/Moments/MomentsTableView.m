@@ -120,6 +120,7 @@
 -(void)reload{
     /**拼接地址*/
     NSString *likesDataString=Config.getApiMomentsLikesShow;
+    [Config setNoSharedCache];
     [APIRequest GET:[Config getApiMoments:1] parameters:nil success:^(id responseObject) {
              NSDictionary *Say_All = [NSDictionary dictionaryWithDictionary:responseObject];
              if ([[Say_All objectForKey:@"msg"]isEqualToString:@"ok"]) {
