@@ -273,7 +273,11 @@ int class_error_;
     UIColor *ownColor                = [UIColor colorWithRed:255/255.0 green:255/255.0 blue:255/255.0 alpha:1];
     [[UINavigationBar appearance] setBarTintColor: ownColor];  //颜色
     [self.navigationController.navigationBar lt_reset];
+    //状态栏恢复黑色
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
+  
 }
+
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -296,14 +300,18 @@ int class_error_;
     /**设置通知*/
     [self setNotice];
     [_leftSortsViewController.tableview reloadData];
+    //状态栏白色
+       [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    
+
 }
 #pragma mark - 设置方法
 -(void)setNotice{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     NSArray *notice=[defaults objectForKey:@"Notice"];
     _body.text=[notice[0] objectForKey:@"body"];
-    _noticetitle.text=[notice[0] objectForKey:@"title"];
-    _noticetime.text=[[notice[0] objectForKey:@"time"] substringWithRange:NSMakeRange(5,5)];
+   // _noticetitle.text=[notice[0] objectForKey:@"title"];
+    //_noticetime.text=[[notice[0] objectForKey:@"time"] substringWithRange:NSMakeRange(5,5)];
 }
 -(void)loadSet{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];

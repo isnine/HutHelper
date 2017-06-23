@@ -56,6 +56,9 @@
     //标题白色 导航返回按钮白色
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    
+    [[UIApplication sharedApplication]setStatusBarStyle:UIStatusBarStyleLightContent];
+    
 }
 - (void)viewWillDisappear:(BOOL)animated
 {
@@ -64,6 +67,7 @@
     //标题栏透明取消
     self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:0/255.0 green:224/255.0 blue:208/255.0 alpha:1];
     [self.navigationController.navigationBar lt_reset];
+    [[UIApplication sharedApplication]setStatusBarStyle:UIStatusBarStyleDefault];
     
 }
 - (IBAction)PushScoreData:(id)sender {

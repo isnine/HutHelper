@@ -87,9 +87,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     _UserName.placeholder=@"学号";
-    [_UserName setValue:[UIColor whiteColor] forKeyPath:@"_placeholderLabel.textColor"];
+    [_UserName setValue:RGB(202,202,202,1) forKeyPath:@"_placeholderLabel.textColor"];
     _Password.placeholder=@"密码";
-    [_Password setValue:[UIColor whiteColor] forKeyPath:@"_placeholderLabel.textColor"];
+    [_Password setValue:RGB(202,202,202,1) forKeyPath:@"_placeholderLabel.textColor"];
     /** 标题栏样式 */
     UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     self.navigationItem.backBarButtonItem = item;
@@ -102,10 +102,11 @@
 
 
 - (void)viewWillAppear:(BOOL)animated {
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     self.navigationController.navigationBarHidden = YES;
-    
 }
-- (void)viewWillDisappear:(BOOL)animated{
+- (void)viewWillDisappear:(BOOL)animated {
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
     self.navigationController.navigationBarHidden = NO;
 }
 - (void)didReceiveMemoryWarning {
