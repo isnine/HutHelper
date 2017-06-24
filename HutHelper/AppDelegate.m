@@ -60,6 +60,9 @@
     self.window.rootViewController   = self.LeftSlideVC;
     UIColor *ownColor                = [UIColor colorWithRed:255/255.0 green:255/255.0 blue:255/255.0 alpha:1];
     [[UINavigationBar appearance] setBarTintColor: ownColor];  //颜色
+    
+    self.mainNavigationController.navigationBar.barTintColor = [UIColor whiteColor];
+    [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:94/255.0 green:199/255.0 blue:217/255.0 alpha:1]];
     /**友盟分享*/
     [[UMSocialManager defaultManager] openLog:NO]; //打开调试日志
     [[UMSocialManager defaultManager] setUmSocialAppkey:APPKEY_UMESSAGE];//设置友盟appkey
@@ -83,6 +86,7 @@
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userLogin:) name:@"Login" object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userLogout:) name:@"Logout" object:nil];
     }
+    
     self.sharedIM.delegate = self;
     return YES;
 }

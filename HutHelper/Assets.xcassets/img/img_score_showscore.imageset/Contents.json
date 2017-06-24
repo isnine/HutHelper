@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "bcg-fenshu.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "new-back.png",
       "scale" : "2x"
     },
     {

@@ -12,5 +12,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *Class;
 @property (weak, nonatomic) IBOutlet UILabel *Time;
 @property (weak, nonatomic) IBOutlet UILabel *Xf;
+@property (weak, nonatomic) IBOutlet UILabel *classNameLabel;
 +(instancetype)tableViewCell;
 @end
