@@ -17,6 +17,7 @@
 #import "MBProgressHUD+MJ.h"
 #import "ScoreRank.h"
 #import "NSString+Common.h"
+
 #define ColorWithRGB(r,g,b) [UIColor colorWithRed:r/255. green:g/255. blue:b/255. alpha:1]
 @interface ScoreDataViewController ()
 @property (nonatomic,copy) NSArray      *scoreData;
@@ -29,11 +30,15 @@
     [super viewDidLoad];
     [self addTitleMenu];
     [self getScoreData];
+    
    // [self setTitleButton];
     self.tableView.dataSource = (id)self;
     self.tableView.delegate=(id)self;
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(reload)];
     [self.tableView.mj_header beginRefreshing];
+    /**让黑线消失的方法*/
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"white"] forBarMetrics:UIBarMetricsDefault];
+    self.navigationController.navigationBar.shadowImage = [[UIImage alloc] init];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -52,11 +57,14 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 115;
+    return SYReal(100);
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 10;
+    if (section==0) {
+        return 0;
+    }
+    return 1;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
@@ -67,7 +75,8 @@
 {
     Score *score=[[Score alloc]init];
     ScoreTableViewCell *cell=[ScoreTableViewCell tableViewCell];
-    cell.Class.text=[self getClass:(short)indexPath.section];
+    cell.Class.text=[self getClassScore:(short)indexPath.section];
+    cell.classNameLabel.text=[self getClassName:(short)indexPath.section];
     cell.Time.text=[self getTime:(short)indexPath.section];
     cell.Xf.text=[self getJd:(short)indexPath.section];
     cell.userInteractionEnabled=NO;
@@ -81,7 +90,7 @@
     Score *score=[[Score alloc]init];
     _scoreData=[score getScore:grade];
 }
--(NSString*)getClass:(int)num{
+-(NSString*)getClassScore:(int)num{
     NSDictionary *dict1        = _scoreData[num];
     NSString *string_name= [dict1 objectForKey:@"KCMC"];//名字
     NSString *string_score= [dict1 objectForKey:@"ZSCJ"];//成绩
@@ -111,7 +120,22 @@
         string_name=[string_name stringByAppendingString:@"*"];
     }
     
-    NSString *result=[NSString stringWithFormat:@"%@/%d",string_name,int_score];
+    NSString *result=[NSString stringWithFormat:@"%d分",int_score];
+    return result;
+}
+-(NSString*)getClassName:(int)num{
+    NSDictionary *dict1        = _scoreData[num];
+    NSString *string_name= [dict1 objectForKey:@"KCMC"];//名字
+    NSString *string_cxbj= [dict1 objectForKey:@"CXBJ"];//重修标记
+    if ([string_cxbj isEqual:[NSNull null]])
+        string_cxbj         = @"NULL";//学期
+
+    
+    if([string_cxbj isEqualToString:@"1"]){
+        string_name=[string_name stringByAppendingString:@"*"];
+    }
+    
+    NSString *result=[NSString stringWithFormat:@"%@",string_name];
     return result;
 }
 -(NSString*)getTime:(int)num{
@@ -159,7 +183,7 @@
     else{
         jd=0.0;
     }
-    NSString *result=[NSString stringWithFormat:@"%@/%.1lf",string_xf,jd];
+    NSString *result=[NSString stringWithFormat:@"学分&绩点:  %.1lf/%.1lf",[string_xf floatValue],jd];
     return result;
 }
 #pragma  mark - 标题设置

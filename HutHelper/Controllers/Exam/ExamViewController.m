@@ -58,6 +58,10 @@ int datediff(int y1,int m1,int d1,int y2,int m2,int d2)
     // A little trick for removing the cell separators
     self.tableView.tableFooterView = [UIView new];
     [self.tableView.mj_header beginRefreshing];
+    
+    /**让黑线消失的方法*/
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"white"] forBarMetrics:UIBarMetricsDefault];
+    self.navigationController.navigationBar.shadowImage = [[UIImage alloc] init];
 }
 
 #pragma mark - "设置表格代理"
@@ -74,7 +78,10 @@ int datediff(int y1,int m1,int d1,int y2,int m2,int d2)
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 15;
+    if (section==0) {
+        return 0;
+    }
+    return 1;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
@@ -142,7 +149,7 @@ int datediff(int y1,int m1,int d1,int y2,int m2,int d2)
         }else{
             String_End_Minutes=[NSString stringWithFormat:@"%d",End_Minutes];
         }
-        Exam_Time=[NSString stringWithFormat:@"%@周/%d.%d.%d/%d:%@-%d:%@",Week_Num,Year,Mouth,Day,Hour,String_Minutes,End_Hour,String_End_Minutes];
+        Exam_Time=[NSString stringWithFormat:@"(周%@ %d:%@-%d:%@)",[Math transforDay:[Math getWeekDay:Year m:Mouth d:Day]],Hour,String_Minutes,End_Hour,String_End_Minutes];
     }
     else{
         Exam_Time=@"-";
@@ -158,7 +165,7 @@ int datediff(int y1,int m1,int d1,int y2,int m2,int d2)
     int day                                   = (short)[dateComponent day];//日
     NSString *lastime;
     if (datediff(year,month,day,Year,Mouth,Day)>0&&datediff(year,month,day,Year,Mouth,Day)<500) {
-        lastime=[[NSString alloc]initWithFormat:@"倒计时%d天",datediff(year,month,day,Year,Mouth,Day)];
+        lastime=[[NSString alloc]initWithFormat:@"剩余%d天",datediff(year,month,day,Year,Mouth,Day)];
     }
     else if (datediff(year,month,day,Year,Mouth,Day)<0){
         lastime=@"已结束";
@@ -178,10 +185,18 @@ int datediff(int y1,int m1,int d1,int y2,int m2,int d2)
         isset=@"-";
     }
     cell.userInteractionEnabled=NO;
+    NSString *mouthString;
+    if (Mouth<10) {
+        mouthString=[NSString stringWithFormat:@"0%d",Mouth];
+    }else{
+        mouthString=[NSString stringWithFormat:@"%d",Mouth];
+    }
+    
+    cell.examDayLabel.text=[NSString stringWithFormat:@"%@月%d日",mouthString,Day];
     cell.Label_ExamName.text=CourseName;
     cell.Label_ExamRoom.text=RoomName;
     cell.Label_ExamTime.text=Exam_Time;
-    cell.Label_ExamIsset.text=isset;
+ //   cell.Label_ExamIsset.text=isset;
     cell.Label_ExamLast.text=lastime;
     
     //  NSLog(@"%@",dict1);

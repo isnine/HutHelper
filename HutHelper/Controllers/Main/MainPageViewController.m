@@ -275,6 +275,7 @@ int class_error_;
     [self.navigationController.navigationBar lt_reset];
     //状态栏恢复黑色
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
+
   
 }
 
@@ -292,7 +293,6 @@ int class_error_;
     int day                                   = (short)[dateComponent day];//日
     [defaults setInteger:[Math getWeek:year m:month d:day] forKey:@"TrueWeek"];
     //判断完毕//
-    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:246/255.0 green:246/255.0 blue:246/255.0 alpha:1.0];
     /**导航栏变为透明*/
     [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:0];
     /**让黑线消失的方法*/
@@ -344,6 +344,7 @@ int class_error_;
                                                                                   error:nil];
 }
 -(void)setTitle{
+    
     /**标题文字*/
     //  self.navigationItem.title                 = @"主界面";
     UIColor *greyColor                        = [UIColor colorWithRed:239/255.0 green:239/255.0 blue:239/255.0 alpha:1];
@@ -355,14 +356,14 @@ int class_error_;
     UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     self.navigationItem.backBarButtonItem = item;
     /**按钮*/
-    [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:0/255.0 green:224/255.0 blue:208/255.0 alpha:1]];
+
     UIButton *menuBtn                         = [UIButton buttonWithType:UIButtonTypeCustom];
     menuBtn.frame                             = CGRectMake(0, 0, 20, 18);
     [menuBtn setBackgroundImage:[UIImage imageNamed:@"menu"] forState:UIControlStateNormal];
     [menuBtn addTarget:self action:@selector(openOrCloseLeftList) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.leftBarButtonItem     = [[UIBarButtonItem alloc] initWithCustomView:menuBtn];
     
-    self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:0/255.0 green:224/255.0 blue:208/255.0 alpha:1];
+
 }
 
 @end
