@@ -68,10 +68,10 @@
     [[UMSocialManager defaultManager] setUmSocialAppkey:APPKEY_UMESSAGE];//设置友盟appkey
     [self configUSharePlatforms];
     /*热更新**/
-//    [JSPatch startWithAppKey:APPKEY_JSPATCH];
-//    [JSPatch setupDevelopment];
-//    [JSPatch setupRSAPublicKey:RSA_JSPATCH];
-//    [JSPatch sync];
+    //    [JSPatch startWithAppKey:APPKEY_JSPATCH];
+    //    [JSPatch setupDevelopment];
+    //    [JSPatch setupRSAPublicKey:RSA_JSPATCH];
+    //    [JSPatch sync];
     /*IM**/
     [Bmob registerWithAppKey:APPKEY_BMOB];
     self.sharedIM = [BmobIM sharedBmobIM];
@@ -88,6 +88,15 @@
     }
     
     self.sharedIM.delegate = self;
+    
+#ifdef DEBUG//因为这个是私有的api，一定要保证上线时的包中不包含这段代码！
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+    id debugClass = NSClassFromString(@"UIDebuggingInformationOverlay");//获得对象
+    [debugClass performSelector:NSSelectorFromString(@"prepareDebuggingOverlay")];//开启调试模式
+#pragma clang diagnostic pop
+#endif
+    
     return YES;
 }
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation

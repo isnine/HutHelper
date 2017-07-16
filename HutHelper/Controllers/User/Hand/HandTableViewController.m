@@ -28,6 +28,7 @@
 @synthesize items = _items;
 - (void)viewDidLoad {
     [super viewDidLoad];
+
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor]}];
     /**加载数据*/
     if ([Config getIs]==0) {
@@ -58,6 +59,9 @@
     self.navigationItem.backBarButtonItem = item;
     [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:94/255.0 green:199/255.0 blue:217/255.0 alpha:1]];
     _num=1;
+    /**让黑线消失的方法*/
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"white"] forBarMetrics:UIBarMetricsDefault];
+    self.navigationController.navigationBar.shadowImage = [[UIImage alloc] init];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -76,7 +80,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{///每块的高度
-    return 240;
+    return SYReal(250);
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
@@ -99,7 +103,7 @@
     }else{
         NSLog(@"被重用了%d",indexPath.section);
     }
-    cell.price1.text=[self getprize:(short)(indexPath.section+1)*2-1];
+    cell.price1.text=[NSString stringWithFormat:@"¥%@",[self getprize:(short)(indexPath.section+1)*2-1]];
     cell.name1.text=[self getName:(short)(indexPath.section+1)*2-1];
     cell.time1.text=[self gettime:(short)(indexPath.section+1)*2-1];
     cell.img1.contentMode =UIViewContentModeScaleAspectFill;
