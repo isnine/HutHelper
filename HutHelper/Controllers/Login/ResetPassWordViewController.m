@@ -27,6 +27,11 @@
     NSURL *url = [[NSURL alloc]initWithString:Url_String];
     [_views loadRequest:[NSURLRequest requestWithURL:url]];
     _views.delegate=self;
+    
+    /**让黑线消失的方法*/
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"white"] forBarMetrics:UIBarMetricsDefault];
+    self.navigationController.navigationBar.shadowImage = [[UIImage alloc] init];
+ 
 }
 
 - (void)didReceiveMemoryWarning {

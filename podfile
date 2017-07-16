@@ -16,6 +16,7 @@ target "HutHelper" do
     pod 'DTKDropdownMenu', '~> 0.0.4'
     pod 'YCXMenu', '~> 0.0.11'
     pod  'UITableView+FDTemplateLayoutCell'
-    pod 'BmobSDK', '~>1.6.9'
     pod 'DZNEmptyDataSet'
+    pod 'RongCloudIM/IMLib', '~> 2.8.3'
+    pod 'RongCloudIM/IMKit', '~> 2.8.3'
 end

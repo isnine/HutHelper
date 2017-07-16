@@ -27,7 +27,6 @@ PODS:
     - Reachability
   - ASIHTTPRequest/S3 (1.8.2):
     - ASIHTTPRequest/Core
-  - BmobSDK (1.6.9)
   - DJRefresh (1.0.5)
   - DTKDropdownMenu (0.0.4):
     - Masonry (~> 0.6)
@@ -37,6 +36,9 @@ PODS:
   - MBProgressHUD (1.0.0)
   - MJRefresh (3.1.12)
   - Reachability (3.2)
+  - RongCloudIM/IMKit (2.8.12):
+    - RongCloudIM/IMLib
+  - RongCloudIM/IMLib (2.8.12)
   - SDWebImage (3.8.2):
     - SDWebImage/Core (= 3.8.2)
   - SDWebImage/Core (3.8.2)
@@ -59,13 +61,14 @@ PODS:
 DEPENDENCIES:
   - AFNetworking (~> 3.0)
   - ASIHTTPRequest
-  - BmobSDK (~> 1.6.9)
   - DJRefresh (~> 1.0.5)
   - DTKDropdownMenu (~> 0.0.4)
   - DZNEmptyDataSet
   - LGPlusButtonsView (~> 1.1.0)
   - MBProgressHUD (~> 1.0.0)
   - MJRefresh
+  - RongCloudIM/IMKit (~> 2.8.3)
+  - RongCloudIM/IMLib (~> 2.8.3)
   - SDWebImage (~> 3.8)
   - TZImagePickerController
   - UITableView+FDTemplateLayoutCell
@@ -79,7 +82,6 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   ASIHTTPRequest: ec013992946676b7978dcbde6396d57312d21db4
-  BmobSDK: 448108f71e28947d0752cd81e242bb685a3ef6ca
   DJRefresh: 32b3776546004faddddc28035442ba15e07c5f1b
   DTKDropdownMenu: 3a3d8afc4f70fab50a5a8131aadc8b383ef54891
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
@@ -88,6 +90,7 @@ SPEC CHECKSUMS:
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
+  RongCloudIM: 13599772038afa20dc62aff70c620b9305e6ac96
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
   TZImagePickerController: 87a138ae5d585225aaa6c8abe2cface0f0ad19dd
   UITableView+FDTemplateLayoutCell: 234e1582bcc4e18461af91155123bb96538ed030
@@ -95,6 +98,6 @@ SPEC CHECKSUMS:
   UMengUShare: 7756e2e46ceba04e3000fb2c9b1d3f61784ca2ff
   YCXMenu: 6003bcd20d8ac72e3eb3c442c97ed21948c6dc1f
 
-PODFILE CHECKSUM: 64676715f14e7aa10e06706d789362df278fe1c1
+PODFILE CHECKSUM: c40f1b0f7de59a9bc6f9076d6d43c216b79d7fba
 
 COCOAPODS: 1.2.0

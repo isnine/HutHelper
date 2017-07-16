@@ -8,8 +8,6 @@
 #import "Config+Set.h"
 #import "UMessage.h"
 #import "UMMobClick/MobClick.h"
-#import <BmobSDK/Bmob.h>
-#import <BmobIMSDK/BmobIMSDK.h>
 #import "AppDelegate.h"
 @implementation Config (Set)
 +(void)setNoSharedCache{
@@ -26,12 +24,7 @@
 +(void)removeUserDefaults:(NSString*)key{
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:key];
 }
-+(void)removeBmob{
-    if ([BmobUser getCurrentUser]) {
-        [BmobUser logout];
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"Logout" object:nil];
-    }
-}
+
 +(void)pushViewController:(NSString*)controller{
     UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UIViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:controller];
@@ -57,7 +50,7 @@
               [lastRunKey isEqualToString:@"2.3.2"]){
         [Config removeUserDefaults:@"ScoreRank"];
         [defaults setObject:currentVersion forKey:@"last_run_version_key"];
-        [Config removeUmeng];
+      
         [Config addNotice];
     }else if (![lastRunKey isEqualToString:currentVersion]) {
         [Config removeUserDefaults];

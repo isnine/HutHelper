@@ -48,5 +48,6 @@
 +(NSString*)getApiLibrary;
 +(NSString*)getApiImg;
 
++(NSString*)getApiCalendar;
 +(NSString*)apiIndex;
 @end

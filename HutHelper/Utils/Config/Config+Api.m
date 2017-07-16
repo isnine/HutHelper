@@ -120,6 +120,9 @@
 +(NSString*)getApiImg{
     return @"http://www.hugongda.com:8888/";
 }
++(NSString*)getApiCalendar{
+    return @"http://www.hugongda.com:8888/api/v1/get/calendar";
+}
 #pragma mark - 视频专栏
 +(NSString*)getApiVedioShow{
     return @"http://vedio.wxz.name/api/vedio.html";

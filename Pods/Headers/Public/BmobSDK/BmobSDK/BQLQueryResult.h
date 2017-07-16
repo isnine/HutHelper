@@ -1,1 +1,0 @@
-../../../../BmobSDK/BmobSDK.framework/Headers/BQLQueryResult.h

@@ -20,4 +20,5 @@
 + (BOOL)IfWeeks:(int)nowweek  dsz:(int)dsz  qsz:(int)qsz jsz:(int)jsz;
 /**字符串*/
 +(NSString*)transforDay:(int)day;
++(int)getDateDiff:(int)y2 m:(int)m2 d:(int)d2;
 @end

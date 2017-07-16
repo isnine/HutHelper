@@ -19,7 +19,6 @@
 #import "LoginViewController.h"
 #import "LeftUserTableViewCell.h"
 #import "LeftItemTableViewCell.h"
-#import "RecentViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 @interface LeftSortsViewController () <UITableViewDelegate,UITableViewDataSource>
 
@@ -157,7 +156,7 @@
             AppDelegate *tempAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
             LoginViewController *firstlogin                = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
             [tempAppDelegate.mainNavigationController pushViewController:firstlogin animated:YES];
-            [Config removeBmob];
+           
         }]];
         [self presentViewController:alert animated:true completion:nil];
     

@@ -12,7 +12,6 @@
 +(void)removeUserDefaults:(NSString*)key;
 +(void)removeUserDefaults;
 +(void)setNoSharedCache;
-+(void)removeBmob;
 + (void)isAppFirstRun;
 +(void)pushViewController:(NSString*)controller;
 +(NSString*)getCurrentVersion;

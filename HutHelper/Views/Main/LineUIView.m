@@ -33,12 +33,6 @@
     // 绘制
     CGContextStrokePath(context);
     
-    CGContextAddArc(context, 40, 15, 3, 0, 2*3.14, 0); //添加一个圆
-     CGContextAddArc(context, 130, 15, 3, 0, 2*3.14, 0); //添加一个圆
-     CGContextAddArc(context, 220, 15, 3, 0, 2*3.14, 0); //添加一个圆
-     CGContextAddArc(context, 310, 15, 3, 0, 2*3.14, 0); //添加一个圆
-    CGContextSetFillColorWithColor(context,  [UIColor whiteColor].CGColor);//填充颜色
-    CGContextDrawPath(context, kCGPathFill);//绘制填充
     // 关闭图像
     CGContextClosePath(context);
     

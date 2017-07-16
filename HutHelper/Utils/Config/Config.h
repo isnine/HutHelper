@@ -35,6 +35,7 @@
 +(void)saveVedio480p:(NSString*)vedioString;
 +(void)saveVedio720p:(NSString*)vedioString;
 +(void)saveVedio1080p:(NSString*)vedioString;
++(void)saveCalendar:(NSArray*)calendarArray;
 #pragma mark - 获得存储数据
 +(NSArray*)getCourse;
 +(NSArray*)getCourseXp;
@@ -48,6 +49,7 @@
 +(NSArray*)getOtherHand;
 +(NSData*)getExam;
 +(NSDictionary*)getScoreRank;
++(NSArray*)getCalendar;
 #pragma mark - 获得用户数据
 +(User*)getUser;
 +(NSString*)getStudentKH;

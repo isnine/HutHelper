@@ -59,9 +59,7 @@
     self.navigationItem.backBarButtonItem = item;
     [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:94/255.0 green:199/255.0 blue:217/255.0 alpha:1]];
     _num=1;
-    /**让黑线消失的方法*/
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"white"] forBarMetrics:UIBarMetricsDefault];
-    self.navigationController.navigationBar.shadowImage = [[UIImage alloc] init];
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -71,7 +69,6 @@
 
 #pragma mark - Table view data source
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{  //多少块
-    
     return _Hand_content.count/2;
 }
 

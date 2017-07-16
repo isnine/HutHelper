@@ -172,6 +172,11 @@ static int Is ;
     [defaults setObject:vedioString forKey:@"Vedio1080p"];
     [defaults synchronize];
 }
++(void)saveCalendar:(NSArray*)calendarArray{
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    [defaults setObject:calendarArray forKey:@"kCalendar"];
+    [defaults synchronize];
+}
 #pragma mark - 获得存储数据
 +(NSArray*)getCourse{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
@@ -221,7 +226,10 @@ static int Is ;
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     return [defaults objectForKey:@"Vedio1080p"];
 }
-
++(NSArray*)getCalendar{
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    return [defaults objectForKey:@"Calendar"];
+}
 #pragma mark - 版本信息
 +(void)saveCurrentVersion:(NSString*)currentVersion{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];

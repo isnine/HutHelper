@@ -15,12 +15,12 @@
 #import <UMSocialCore/UMSocialCore.h>
 //#import <JSPatchPlatform/JSPatch.h>
 #import "iVersion.h"
-#import <BmobIMSDK/BmobIMSDK.h>
-#import <BmobSDK/Bmob.h>
-@interface AppDelegate ()<BmobIMDelegate>{
+#import <RongIMKit/RongIMKit.h>
+
+@interface AppDelegate (){
     
 }
-@property (strong, nonatomic) BmobIM *sharedIM;
+
 @property (copy  , nonatomic) NSString *userId;
 @property (copy  , nonatomic) NSString *token;
 @end
@@ -73,21 +73,9 @@
     //    [JSPatch setupRSAPublicKey:RSA_JSPATCH];
     //    [JSPatch sync];
     /*IM**/
-    [Bmob registerWithAppKey:APPKEY_BMOB];
-    self.sharedIM = [BmobIM sharedBmobIM];
-    [self.sharedIM registerWithAppKey:APPKEY_BMOB];
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
-    self.token = @"";
-    BmobUser *user = [BmobUser getCurrentUser];
-    if (user) {
-        self.userId = user.objectId;
-        [self connectToServer];
-    }else{
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userLogin:) name:@"Login" object:nil];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userLogout:) name:@"Logout" object:nil];
-    }
+    //[[RCIM sharedRCIM] initWithAppKey:@"x18ywvqfxjiyc"];
     
-    self.sharedIM.delegate = self;
+
     
 #ifdef DEBUG//因为这个是私有的api，一定要保证上线时的包中不包含这段代码！
 #pragma clang diagnostic push
@@ -111,17 +99,9 @@
 - (void)applicationWillResignActive:(UIApplication *)application {
 }
 
-- (void)applicationDidEnterBackground:(UIApplication *)application {
-    if ([self.sharedIM isConnected]) {
-        [self.sharedIM disconnect];
-    }
-}
 
-- (void)applicationWillEnterForeground:(UIApplication *)application {
-    if (self.userId && self.userId.length > 0) {
-        [self connectToServer];
-    }
-}
+
+
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
 }
@@ -221,19 +201,7 @@
     [iVersion sharedInstance].appStoreID = APPSTORE_ID;
 }
 
--(void)userLogin:(NSNotification *)noti{
-    NSString *userId = noti.object;
-    self.userId = userId;
-    [self connectToServer];
-}
--(void)userLogout:(NSNotification *)noti{
-    [self.sharedIM disconnect];
-}
 
--(void)connectToServer{
-    [self.sharedIM setupBelongId:self.userId];
-    [self.sharedIM setupDeviceToken:self.token];
-    [self.sharedIM connect];
-}
+
 
 @end

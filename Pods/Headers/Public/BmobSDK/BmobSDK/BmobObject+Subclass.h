@@ -1,1 +1,0 @@
-../../../../BmobSDK/BmobSDK.framework/Headers/BmobObject+Subclass.h

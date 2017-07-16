@@ -98,10 +98,39 @@ int startday                        = 20;
         case 6:
             return @"六";
         case 7:
-            return @"七";
+            return @"日";
         default:
             return @"*";
             break;
     }
+}
+/**返回是两个日期之间天数*/
++(int)getDateDiff:(int)y2 m:(int)m2 d:(int)d2
+{
+    NSDate *now                                  = [NSDate date];
+    NSCalendar *calendar                         = [NSCalendar currentCalendar];
+    NSUInteger unitFlags                         = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay |NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
+    NSDateComponents *dateComponent              = [calendar components:unitFlags fromDate:now];
+    int y                                     = (short)[dateComponent year];//年
+    int m                                    = (short)[dateComponent month];//月
+    int d                                      = (short)[dateComponent day];//日
+    
+    struct tm ptr1;
+    ptr1.tm_sec=10;
+    ptr1.tm_min=10;
+    ptr1.tm_hour=10;
+    ptr1.tm_mday=d;
+    ptr1.tm_mon=m-1;
+    ptr1.tm_year=y-1900;
+    time_t st1=mktime(&ptr1);
+    struct tm ptr2;
+    ptr2.tm_sec=10;
+    ptr2.tm_min=10;
+    ptr2.tm_hour=10;
+    ptr2.tm_mday=d2;
+    ptr2.tm_mon=m2-1;
+    ptr2.tm_year=y2-1900;
+    time_t st2=mktime(&ptr2);
+    return (int)((st2-st1)/3600/24);
 }
 @end
