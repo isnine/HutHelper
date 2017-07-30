@@ -72,6 +72,7 @@
         
         [MBProgressHUD showMessage:@"发送中" toView:self.view];
         [APIRequest POST:Config.getApiFeedback parameters:dic success:^(id responseObject) {
+    
             [Config saveUmeng];
             [Config pushViewController:@"Feedback2"];
             HideAllHUD

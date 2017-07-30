@@ -51,8 +51,8 @@
     return [NSString stringWithFormat:@"%@/api/v1/get/power/%@/%@",Config.apiIndex,build,room];
 }
 #pragma mark - 二手市场
-+(NSString*)getApiGoods{
-    return [NSString stringWithFormat:@"%@/api/v1/stuff/goods",Config.apiIndex];
++(NSString*)getApiGoods:(int)num{
+    return [NSString stringWithFormat:@"%@/api/v1/stuff/goods/%d",Config.apiIndex,num];
 }
 +(NSString*)getApiGoodsUser{
     return [NSString stringWithFormat:@"%@/api/v1/stuff/own1/%@/%@/1",Config.apiIndex,Config.getStudentKH,Config.getRememberCodeApp];
@@ -127,7 +127,15 @@
 +(NSString*)getApiVedioShow{
     return @"http://vedio.wxz.name/api/vedio.html";
 }
+#pragma mark - 私信
++(NSString*)getApiImToken{
+    return [NSString stringWithFormat:@"%@/api/v1/im/getToken",Config.apiIndexHttps];
+}
+
 +(NSString*)apiIndex{
-    return @"http://www.hugongda.com:8888";
+    return @"http://hugongda.com:8888";
+}
++(NSString*)apiIndexHttps{
+    return @"https://hut.wxz.name";
 }
 @end

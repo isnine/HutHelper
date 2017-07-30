@@ -234,8 +234,7 @@
 
 -(void)reload{
     [Config setNoSharedCache];
-    NSString *Url_String=[NSString stringWithFormat: @"%@/%d",Config.getApiGoods,_num];
-    [APIRequest GET:Url_String parameters:nil success:^(id responseObject) {
+    [APIRequest GET:[Config getApiGoods:_num] parameters:nil success:^(id responseObject) {
         NSDictionary *dic1 = [NSDictionary dictionaryWithObject:responseObject forKey:@""];
         NSArray *Hand           = [dic1 objectForKey:@""];
         [Config saveHand:Hand];
@@ -255,8 +254,7 @@
         [Config setNoSharedCache];
         NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
         /**拼接地址*/
-        NSString *Url_String=[NSString stringWithFormat: @"%@/%d",Config.getApiGoods,_num];
-        [APIRequest GET:Url_String parameters:nil success:^(id responseObject) {
+        [APIRequest GET:[Config getApiGoods:_num] parameters:nil success:^(id responseObject) {
             NSDictionary *dic1 = [NSDictionary dictionaryWithObject:responseObject forKey:@""];
             NSArray *Hand           = [dic1 objectForKey:@""];
             [defaults setObject:Hand forKey:@"Hand"];

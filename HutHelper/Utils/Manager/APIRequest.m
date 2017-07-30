@@ -26,7 +26,10 @@
     }];
 }
 
-+ (void)GET:(NSString *)URLString parameters:(id)parameters timeout:(double)time success:(void (^)(id))success failure:(void (^)(NSError *))failure
++ (void)GET:(NSString *)URLString parameters:(id)parameters
+    timeout:(double)time
+    success:(void (^)(id))success
+    failure:(void (^)(NSError *))failure
 {
     NSLog(@"请求地址:%@",URLString);
         [Config setNoSharedCache];
@@ -47,8 +50,11 @@
          }];
 }
 
-+ (void)POST:(NSString *)URLString parameters:(id)parameters success:(void (^)(id))success failure:(void (^)(NSError *))failure
++ (void)POST:(NSString *)URLString parameters:(id)parameters
+     success:(void (^)(id))success
+     failure:(void (^)(NSError *))failure
 {
+    NSLog(@"请求地址:%@",URLString);
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     ((AFJSONResponseSerializer *)manager.responseSerializer).removesKeysWithNullValues = YES;
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];

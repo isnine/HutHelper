@@ -18,6 +18,7 @@
 		3A31E1E81E6BE68C0056565A /* MomentsAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A31E1E71E6BE68C0056565A /* MomentsAddViewController.m */; };
 		3A31E1EB1E6BE6E20056565A /* MomentsTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A31E1EA1E6BE6E20056565A /* MomentsTableView.m */; };
 		3A3545D91F1B53A2009B1A84 /* PointView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A3545D81F1B53A2009B1A84 /* PointView.m */; };
+		3A3FB3811F2CBDE500E74BB0 /* ChatListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A3FB3801F2CBDE500E74BB0 /* ChatListViewController.m */; };
 		3A4049091E6A6C730038F207 /* MomentsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A4049081E6A6C730038F207 /* MomentsCell.m */; };
 		3A4D2FBD1E8D20E900901E3B /* HandTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A4D2FBB1E8D20E900901E3B /* HandTableViewCell.xib */; };
 		3A4D2FBE1E8D20E900901E3B /* HandTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A4D2FBC1E8D20E900901E3B /* HandTableViewController.xib */; };
@@ -120,6 +121,7 @@
 		3AE01BAA1EB0D23F00D5B7EF /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AE01BA91EB0D23F00D5B7EF /* CoreFoundation.framework */; };
 		3AE01BAC1EB0D24900D5B7EF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AE01BAB1EB0D24900D5B7EF /* Foundation.framework */; };
 		3AE52B871EA8F0EB00705269 /* CourseXpTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AE52B861EA8F0EB00705269 /* CourseXpTableViewCell.m */; };
+		3AF152FB1F2DCEC600709F97 /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF152FA1F2DCEC600709F97 /* ChatViewController.m */; };
 		3AF72C9A1E9A23F000093A39 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AF72C991E9A23F000093A39 /* JavaScriptCore.framework */; };
 		3AF72C9B1E9A23F900093A39 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A6FF7C61DB3152C004CFBE8 /* libz.tbd */; };
 		3AF73BF11E7D12610086417E /* APIRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF73BF01E7D12610086417E /* APIRequest.m */; };
@@ -207,6 +209,8 @@
 		3A31E1EA1E6BE6E20056565A /* MomentsTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MomentsTableView.m; sourceTree = "<group>"; };
 		3A3545D71F1B53A2009B1A84 /* PointView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PointView.h; sourceTree = "<group>"; };
 		3A3545D81F1B53A2009B1A84 /* PointView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PointView.m; sourceTree = "<group>"; };
+		3A3FB37F1F2CBDE500E74BB0 /* ChatListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatListViewController.h; sourceTree = "<group>"; };
+		3A3FB3801F2CBDE500E74BB0 /* ChatListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatListViewController.m; sourceTree = "<group>"; };
 		3A4049071E6A6C730038F207 /* MomentsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MomentsCell.h; sourceTree = "<group>"; };
 		3A4049081E6A6C730038F207 /* MomentsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MomentsCell.m; sourceTree = "<group>"; };
 		3A4D2FBB1E8D20E900901E3B /* HandTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HandTableViewCell.xib; sourceTree = "<group>"; };
@@ -396,6 +400,8 @@
 		3AE01BAB1EB0D24900D5B7EF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		3AE52B851EA8F0EB00705269 /* CourseXpTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseXpTableViewCell.h; sourceTree = "<group>"; };
 		3AE52B861EA8F0EB00705269 /* CourseXpTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseXpTableViewCell.m; sourceTree = "<group>"; };
+		3AF152F91F2DCEC600709F97 /* ChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatViewController.h; sourceTree = "<group>"; };
+		3AF152FA1F2DCEC600709F97 /* ChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatViewController.m; sourceTree = "<group>"; };
 		3AF72C991E9A23F000093A39 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		3AF73BEF1E7D12610086417E /* APIRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIRequest.h; sourceTree = "<group>"; };
 		3AF73BF01E7D12610086417E /* APIRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIRequest.m; sourceTree = "<group>"; };
@@ -515,6 +521,17 @@
 				3A2FF4FB1E50202000B07EB6 /* Media.xcassets */,
 			);
 			path = Extend;
+			sourceTree = "<group>";
+		};
+		3A3FB37E1F2CBDAC00E74BB0 /* Im */ = {
+			isa = PBXGroup;
+			children = (
+				3A3FB37F1F2CBDE500E74BB0 /* ChatListViewController.h */,
+				3A3FB3801F2CBDE500E74BB0 /* ChatListViewController.m */,
+				3AF152F91F2DCEC600709F97 /* ChatViewController.h */,
+				3AF152FA1F2DCEC600709F97 /* ChatViewController.m */,
+			);
+			path = Im;
 			sourceTree = "<group>";
 		};
 		3A4048F81E6A663B0038F207 /* Moments */ = {
@@ -735,6 +752,7 @@
 		3A796B9E1E534C1B00794043 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				3A3FB37E1F2CBDAC00E74BB0 /* Im */,
 				3ACF3D051EA731A300FBEC57 /* CourseXp */,
 				3A532CD41E91212A003CD5A8 /* Vedio */,
 				3A796BD91E534C1B00794043 /* Main */,
@@ -1540,6 +1558,7 @@
 				3A98CC081E7CFA9C00CABD0D /* UserInfoCell.m in Sources */,
 				3A98CBFE1E7CFA9C00CABD0D /* FORGesture.m in Sources */,
 				3A98CC0B1E7CFA9C00CABD0D /* UIView_extra.m in Sources */,
+				3AF152FB1F2DCEC600709F97 /* ChatViewController.m in Sources */,
 				3A4D2FEE1E8D245F00901E3B /* HandTableViewController.m in Sources */,
 				3AFA4F781EC04C0E00CB7DA2 /* main.m in Sources */,
 				3A796C261E534C1B00794043 /* FeedbackViewController.m in Sources */,
@@ -1592,6 +1611,7 @@
 				3A98CB721E7CF82F00CABD0D /* MBProgressHUD+MJ.m in Sources */,
 				3A4D30091E8D28AA00901E3B /* LostAddViewController.m in Sources */,
 				3A796C4F1E534C1B00794043 /* ScoreShowViewController.m in Sources */,
+				3A3FB3811F2CBDE500E74BB0 /* ChatListViewController.m in Sources */,
 				3A4D2FCB1E8D226000901E3B /* LostShowTableViewCell.m in Sources */,
 				3A9C28F71F15FD9F00B91876 /* LineUIView.m in Sources */,
 				3A532CCE1E910C13003CD5A8 /* MMMaterialDesignSpinner.m in Sources */,

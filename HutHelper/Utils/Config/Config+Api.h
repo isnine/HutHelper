@@ -22,7 +22,7 @@
 +(NSString*)getApiHomeWork;
 +(NSString*)getApiPower:(NSString*)build room:(NSString*)room;
 
-+(NSString*)getApiGoods;
++(NSString*)getApiGoods:(int)num;
 +(NSString*)getApiGoodsUser;
 +(NSString*)getApiGoodsCreate;
 +(NSString*)getApiGoodsImgUpload;
@@ -47,6 +47,8 @@
 +(NSString*)getApiFeedback;
 +(NSString*)getApiLibrary;
 +(NSString*)getApiImg;
+
++(NSString*)getApiImToken;
 
 +(NSString*)getApiCalendar;
 +(NSString*)apiIndex;

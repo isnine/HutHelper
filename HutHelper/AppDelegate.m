@@ -17,7 +17,7 @@
 #import "iVersion.h"
 #import <RongIMKit/RongIMKit.h>
 
-@interface AppDelegate (){
+@interface AppDelegate ()<RCIMUserInfoDataSource>{
     
 }
 
@@ -45,7 +45,7 @@
     }];
     [UMessage setLogEnabled:NO];//打开日志，方便调试
     /**友盟统计*/
-    UMConfigInstance.appKey          = APPKEY_UMESSAGE;
+    UMConfigInstance.appKey = APPKEY_UMESSAGE;
     [MobClick setAppVersion:[Config getCurrentVersion]];
     [MobClick startWithConfigure:UMConfigInstance];//配置以上参数后调用此方法初始化SDK！
     /**设置初始界面*/
@@ -58,12 +58,11 @@
     self.LeftSlideVC                 = [[LeftSlideViewController alloc] initWithLeftView:leftVC andMainView:self.mainNavigationController];
     mainVC.leftSortsViewController=leftVC;
     self.window.rootViewController   = self.LeftSlideVC;
-    UIColor *ownColor                = [UIColor colorWithRed:255/255.0 green:255/255.0 blue:255/255.0 alpha:1];
-    [[UINavigationBar appearance] setBarTintColor: ownColor];  //颜色
-    
+    //标题栏颜色
     self.mainNavigationController.navigationBar.barTintColor = [UIColor whiteColor];
+    //返回箭头颜色
     [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:94/255.0 green:199/255.0 blue:217/255.0 alpha:1]];
-    /**友盟分享*/
+    //友盟分享
     [[UMSocialManager defaultManager] openLog:NO]; //打开调试日志
     [[UMSocialManager defaultManager] setUmSocialAppkey:APPKEY_UMESSAGE];//设置友盟appkey
     [self configUSharePlatforms];
@@ -73,10 +72,24 @@
     //    [JSPatch setupRSAPublicKey:RSA_JSPATCH];
     //    [JSPatch sync];
     /*IM**/
-    //[[RCIM sharedRCIM] initWithAppKey:@"x18ywvqfxjiyc"];
+    [[RCIM sharedRCIM] initWithAppKey:@"x18ywvqfxjiyc"];
     
 
-    
+    //即时聊天模块登录
+    if ([Config getImToken]) {
+        [[RCIM sharedRCIM] connectWithToken:[Config getImToken]
+                                    success:^(NSString *userId) {
+                                        NSLog(@"登陆成功。当前登录的用户ID：%@", userId);
+                                        dispatch_async(dispatch_get_main_queue(), ^{
+                                            [[RCIM sharedRCIM]setUserInfoDataSource:self];
+                                        });
+                                    } error:^(RCConnectErrorCode status) {
+                                        NSLog(@"登陆的错误码为:%d", status);
+                                    } tokenIncorrect:^{
+                                        
+                                        NSLog(@"token错误");
+                                    }];
+    }
 #ifdef DEBUG//因为这个是私有的api，一定要保证上线时的包中不包含这段代码！
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
@@ -86,6 +99,26 @@
 #endif
     
     return YES;
+}
+- (void)getUserInfoWithUserId:(NSString *)userId
+                   completion:(void (^)(RCUserInfo *userInfo))completion{
+    
+    if ([userId isEqualToString:[Config getUserId]]) {
+        RCUserInfo *userInfo=[[RCUserInfo alloc]init];
+        userInfo.userId=userId;
+        userInfo.name=[Config getTrueName];
+        userInfo.portraitUri=[NSString stringWithFormat:@"%@/%@",Config.getApiImg,Config.getHeadPicThumb];
+        return completion(userInfo);
+    }
+    
+    if ([userId isEqualToString:@"15198"]) {
+        RCUserInfo *userInfo=[[RCUserInfo alloc]init];
+        userInfo.userId=userId;
+        userInfo.name=@"Nine";
+        userInfo.portraitUri=[NSString stringWithFormat:@"%@/%@",Config.getApiImg,Config.getHeadPicThumb];
+        return completion(userInfo);
+    }
+    return completion(nil);
 }
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
@@ -98,10 +131,6 @@
 
 - (void)applicationWillResignActive:(UIApplication *)application {
 }
-
-
-
-
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
 }

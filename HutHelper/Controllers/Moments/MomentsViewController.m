@@ -12,7 +12,7 @@
 #import "AFNetworking.h"
 #import "MBProgressHUD+MJ.h"
 #import "YYFPSLabel.h"
- 
+
 #import "YCXMenu.h"
 #import "User.h"
 #import "AppDelegate.h"
@@ -33,9 +33,9 @@
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor]}];
     UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     self.navigationItem.backBarButtonItem = item;
-       [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:94/255.0 green:199/255.0 blue:217/255.0 alpha:1]];
-       /** FTP */
-//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:[[YYFPSLabel alloc]initWithFrame:CGRectMake(0, 5, 60, 30)]];
+    [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:94/255.0 green:199/255.0 blue:217/255.0 alpha:1]];
+    /** FTP */
+    //    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:[[YYFPSLabel alloc]initWithFrame:CGRectMake(0, 5, 60, 30)]];
     if([Config getIs]==0){
         UIView *rightButtonView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 50)];
         UIButton *mainAndSearchBtn = [[UIButton alloc] initWithFrame:CGRectMake(70, 0, 50, 50)];
@@ -117,32 +117,32 @@
     /**拼接地址*/
     NSString *Url_String=[NSString stringWithFormat:@"%@/%@",Config.getApiMomentsUser,Config.getUserId];
     [APIRequest GET:Url_String parameters:nil success:^(id responseObject) {
-             NSDictionary *Say_All = [NSDictionary dictionaryWithDictionary:responseObject];
-             if ([[Say_All objectForKey:@"msg"]isEqualToString:@"ok"]) {
-                 NSDictionary *Say_Data=[Say_All objectForKey:@"data"];
-                 NSArray *Say_content=[Say_Data objectForKey:@"posts"];//加载该页数据
-                 if (Say_content.count!=0) {
-                     [defaults setObject:Say_content forKey:@"otherSay"];
-                     [defaults synchronize];
-                     HideAllHUD
-                     [Config setIs:1];
-                     MomentsViewController *Say      = [[MomentsViewController alloc] init];
-                     AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-                     [tempAppDelegate.mainNavigationController pushViewController:Say animated:YES];  
-                 }else{
-                     HideAllHUD
-                     [MBProgressHUD showError:@"您没有发布的说说"];
-                 }
-             }
-             else{
-                 HideAllHUD
-                 [MBProgressHUD showError:[Say_All objectForKey:@"msg"]];
-             }
-             HideAllHUD
-         }failure:^(NSError *error) {
-             [MBProgressHUD showError:@"网络超时"];
-             HideAllHUD
-         }];
+        NSDictionary *Say_All = [NSDictionary dictionaryWithDictionary:responseObject];
+        if ([[Say_All objectForKey:@"msg"]isEqualToString:@"ok"]) {
+            NSDictionary *Say_Data=[Say_All objectForKey:@"data"];
+            NSArray *Say_content=[Say_Data objectForKey:@"posts"];//加载该页数据
+            if (Say_content.count!=0) {
+                [defaults setObject:Say_content forKey:@"otherSay"];
+                [defaults synchronize];
+                HideAllHUD
+                [Config setIs:1];
+                MomentsViewController *Say      = [[MomentsViewController alloc] init];
+                AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+                [tempAppDelegate.mainNavigationController pushViewController:Say animated:YES];
+            }else{
+                HideAllHUD
+                [MBProgressHUD showError:@"您没有发布的说说"];
+            }
+        }
+        else{
+            HideAllHUD
+            [MBProgressHUD showError:[Say_All objectForKey:@"msg"]];
+        }
+        HideAllHUD
+    }failure:^(NSError *error) {
+        [MBProgressHUD showError:@"网络超时"];
+        HideAllHUD
+    }];
 }
 -(void)addSay{
     [Config pushViewController:@"AddSay"];

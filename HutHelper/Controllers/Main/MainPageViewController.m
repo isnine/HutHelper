@@ -231,17 +231,17 @@ int class_error_;
     NSCalendar *calendar                      = [NSCalendar currentCalendar];
     NSUInteger unitFlags                      = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay |NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
     NSDateComponents *dateComponent           = [calendar components:unitFlags fromDate:now];
-    _Time.text=[NSString stringWithFormat:@"%d月%d日 星期%@",(short) [dateComponent month],(short)[dateComponent day],[Math transforDay:[Math getWeekDay]]];
+    _Time.text=[NSString stringWithFormat:@"%d月%d日 周%@",(short) [dateComponent month],(short)[dateComponent day],[Math transforDay:[Math getWeekDay]]];
     
     //倒计时
     if ([Config getCalendar]) {
         [self drawCalendar:[Config getCalendar]];
     }
-    [APIRequest GET:[Config getApiCalendar] parameters:nil success:^(id responseObject) {
-        NSArray *calendarArray=responseObject;
-        [Config saveCalendar:calendarArray];
-        [self drawCalendar:calendarArray];
+    [APIRequest GET:[Config getApiCalendar] parameters:nil
+            success:^(id responseObject) {
 
+        [Config saveCalendar:responseObject];
+        [self drawCalendar:responseObject];
     } failure:^(NSError *error) {
         NSLog(@"倒计时加载失败");
     }];
@@ -354,6 +354,7 @@ int class_error_;
     [_leftSortsViewController.tableview reloadData];
     //状态栏白色
        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+
     
 
 }
