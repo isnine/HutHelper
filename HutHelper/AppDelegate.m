@@ -100,26 +100,23 @@
     
     return YES;
 }
+
 - (void)getUserInfoWithUserId:(NSString *)userId
                    completion:(void (^)(RCUserInfo *userInfo))completion{
-    
-    if ([userId isEqualToString:[Config getUserId]]) {
-        RCUserInfo *userInfo=[[RCUserInfo alloc]init];
-        userInfo.userId=userId;
-        userInfo.name=[Config getTrueName];
-        userInfo.portraitUri=[NSString stringWithFormat:@"%@/%@",Config.getApiImg,Config.getHeadPicThumb];
-        return completion(userInfo);
-    }
-    
-    if ([userId isEqualToString:@"15198"]) {
-        RCUserInfo *userInfo=[[RCUserInfo alloc]init];
-        userInfo.userId=userId;
-        userInfo.name=@"Nine";
-        userInfo.portraitUri=[NSString stringWithFormat:@"%@/%@",Config.getApiImg,Config.getHeadPicThumb];
-        return completion(userInfo);
-    }
-    return completion(nil);
+    [APIRequest GET:[Config getApiImUserInfo:userId] parameters:nil
+            success:^(id responseObject) {
+                 RCUserInfo *userInfo=[[RCUserInfo alloc]init];
+                NSLog(@"全局他人:%@",responseObject[@"data"][@"TrueName"]);
+                    userInfo.userId=userId;
+                    userInfo.name=responseObject[@"data"][@"TrueName"];
+                    userInfo.portraitUri=[NSString stringWithFormat:@"%@/%@",Config.getApiImg,responseObject[@"data"][@"head_pic_thumb"]];
+                 return completion(userInfo);
+            } failure:^(NSError *error) {
+                 return completion(nil);
+            }];
+
 }
+ 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
     BOOL result = [[UMSocialManager defaultManager] handleOpenURL:url];

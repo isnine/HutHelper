@@ -132,6 +132,14 @@
     return [NSString stringWithFormat:@"%@/api/v1/im/getToken",Config.apiIndexHttps];
 }
 
++(NSString*)getApiImUserInfo:(NSString*)User_id{
+    return [NSString stringWithFormat:@"%@/api/v2/im/get_studentinfo/%@",Config.apiIndexHttps,User_id];
+}
+
++(NSString*)getApiImStudent{
+    return [NSString stringWithFormat:@"%@/api/v2/Im/get_students",Config.apiIndexHttps];
+}
+
 +(NSString*)apiIndex{
     return @"http://hugongda.com:8888";
 }

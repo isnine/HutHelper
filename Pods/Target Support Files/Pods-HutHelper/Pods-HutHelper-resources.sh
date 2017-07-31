@@ -21,6 +21,9 @@ case "${TARGETED_DEVICE_FAMILY}" in
   3)
     TARGET_DEVICE_ARGS="--target-device tv"
     ;;
+  4)
+    TARGET_DEVICE_ARGS="--target-device watch"
+    ;;
   *)
     TARGET_DEVICE_ARGS="--target-device mac"
     ;;
@@ -80,6 +83,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_resource "DJRefresh/DJRefresh/DJRefresh.bundle"
   install_resource "DTKDropdownMenu/DTKDropdownMenuView/DTKDropdownMenuView.bundle"
   install_resource "MJRefresh/MJRefresh/MJRefresh.bundle"
+  install_resource "PYSearch/PYSearch/PYSearch.bundle"
   install_resource "RongCloudIM/RongCloudIM/RongCloud.bundle"
   install_resource "RongCloudIM/RongCloudIM/en.lproj"
   install_resource "RongCloudIM/RongCloudIM/zh-Hans.lproj"
@@ -93,6 +97,7 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_resource "DJRefresh/DJRefresh/DJRefresh.bundle"
   install_resource "DTKDropdownMenu/DTKDropdownMenuView/DTKDropdownMenuView.bundle"
   install_resource "MJRefresh/MJRefresh/MJRefresh.bundle"
+  install_resource "PYSearch/PYSearch/PYSearch.bundle"
   install_resource "RongCloudIM/RongCloudIM/RongCloud.bundle"
   install_resource "RongCloudIM/RongCloudIM/en.lproj"
   install_resource "RongCloudIM/RongCloudIM/zh-Hans.lproj"

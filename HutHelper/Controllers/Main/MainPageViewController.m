@@ -353,7 +353,7 @@ int class_error_;
     [self setNotice];
     [_leftSortsViewController.tableview reloadData];
     //状态栏白色
-       [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 
     
 

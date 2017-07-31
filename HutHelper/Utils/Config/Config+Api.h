@@ -49,6 +49,8 @@
 +(NSString*)getApiImg;
 
 +(NSString*)getApiImToken;
++(NSString*)getApiImUserInfo:(NSString*)User_id;
++(NSString*)getApiImStudent;
 
 +(NSString*)getApiCalendar;
 +(NSString*)apiIndex;
