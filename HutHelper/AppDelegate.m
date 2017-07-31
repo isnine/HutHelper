@@ -28,7 +28,7 @@
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    /**友盟推送*/
+    //友盟推送
     [UMessage startWithAppkey:APPKEY_UMESSAGE launchOptions:launchOptions];
     [UMessage registerForRemoteNotifications];
     UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
@@ -36,19 +36,17 @@
     UNAuthorizationOptions types10   = UNAuthorizationOptionBadge|UNAuthorizationOptionAlert|UNAuthorizationOptionSound;
     [center requestAuthorizationWithOptions:types10 completionHandler:^(BOOL granted, NSError * _Nullable error) {
         if (granted) {
-            //点击允许
-            //这里可以添加一些自己的逻辑
+
         } else {
-            //点击不允许
-            //这里可以添加一些自己的逻辑
+
         }
     }];
     [UMessage setLogEnabled:NO];//打开日志，方便调试
-    /**友盟统计*/
+    //友盟统计
     UMConfigInstance.appKey = APPKEY_UMESSAGE;
     [MobClick setAppVersion:[Config getCurrentVersion]];
     [MobClick startWithConfigure:UMConfigInstance];//配置以上参数后调用此方法初始化SDK！
-    /**设置初始界面*/
+    //设置初始界面
     //   self.window                      = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor      = [UIColor whiteColor];//设置通用背景颜色
     [self.window makeKeyAndVisible];
@@ -77,6 +75,7 @@
 
     //即时聊天模块登录
     if ([Config getImToken]) {
+        [RCIM sharedRCIM].enableMessageAttachUserInfo=YES;
         [[RCIM sharedRCIM] connectWithToken:[Config getImToken]
                                     success:^(NSString *userId) {
                                         NSLog(@"登陆成功。当前登录的用户ID：%@", userId);
@@ -112,6 +111,7 @@
                     userInfo.portraitUri=[NSString stringWithFormat:@"%@/%@",Config.getApiImg,responseObject[@"data"][@"head_pic_thumb"]];
                  return completion(userInfo);
             } failure:^(NSError *error) {
+                 NSLog(@"全局他人失败");
                  return completion(nil);
             }];
 

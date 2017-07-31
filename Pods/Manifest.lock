@@ -35,7 +35,6 @@ PODS:
   - Masonry (0.6.4)
   - MBProgressHUD (1.0.0)
   - MJRefresh (3.1.12)
-  - PYSearch (0.8.2)
   - Reachability (3.2)
   - RongCloudIM/IMKit (2.8.12):
     - RongCloudIM/IMLib
@@ -68,7 +67,6 @@ DEPENDENCIES:
   - LGPlusButtonsView (~> 1.1.0)
   - MBProgressHUD (~> 1.0.0)
   - MJRefresh
-  - PYSearch
   - RongCloudIM/IMKit (~> 2.8.3)
   - RongCloudIM/IMLib (~> 2.8.3)
   - SDWebImage (~> 3.8)
@@ -91,7 +89,6 @@ SPEC CHECKSUMS:
   Masonry: 281802d04d787ea2973179ee8bcb50500579ede2
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
-  PYSearch: 6abe3721eb6a2f2a77f06a095b734cdb8faf3c81
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   RongCloudIM: 13599772038afa20dc62aff70c620b9305e6ac96
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c

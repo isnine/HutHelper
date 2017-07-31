@@ -61,16 +61,16 @@ int class_error_;
     /**时间Label*/
     [self SetTimeLabel];
     
-//    [[RCIM sharedRCIM] connectWithToken:@"YourTestUserToken"     success:^(NSString *userId) {
-//        NSLog(@"登陆成功。当前登录的用户ID：%@", userId);
-//    } error:^(RCConnectErrorCode status) {
-//        NSLog(@"登陆的错误码为:%d", status);
-//    } tokenIncorrect:^{
-//        //token过期或者不正确。
-//        //如果设置了token有效期并且token过期，请重新请求您的服务器获取新的token
-//        //如果没有设置token有效期却提示token错误，请检查您客户端和服务器的appkey是否匹配，还有检查您获取token的流程。
-//        NSLog(@"token错误");
-//    }];
+    //    [[RCIM sharedRCIM] connectWithToken:@"YourTestUserToken"     success:^(NSString *userId) {
+    //        NSLog(@"登陆成功。当前登录的用户ID：%@", userId);
+    //    } error:^(RCConnectErrorCode status) {
+    //        NSLog(@"登陆的错误码为:%d", status);
+    //    } tokenIncorrect:^{
+    //        //token过期或者不正确。
+    //        //如果设置了token有效期并且token过期，请重新请求您的服务器获取新的token
+    //        //如果没有设置token有效期却提示token错误，请检查您客户端和服务器的appkey是否匹配，还有检查您获取token的流程。
+    //        NSLog(@"token错误");
+    //    }];
 }
 #pragma mark - 各按钮事件
 - (IBAction)ClassFind:(id)sender {  //课表界面
@@ -124,7 +124,7 @@ int class_error_;
     }
 } //课程表
 - (IBAction)ClassXPFind:(id)sender {  //实验课表
-     [Config pushViewController:@"ClassXp"];    
+    [Config pushViewController:@"ClassXp"];
     
 } //实验课表
 - (IBAction)HomeWork:(id)sender {
@@ -191,8 +191,8 @@ int class_error_;
     [Config pushViewController:@"Library"];
 } //图书馆
 - (IBAction)Exam:(id)sender {
-     [Config pushViewController:@"Exam"];
-
+    [Config pushViewController:@"Exam"];
+    
 } //考试计划
 - (IBAction)Day:(id)sender {
     [Config pushViewController:@"Day"];
@@ -239,12 +239,12 @@ int class_error_;
     }
     [APIRequest GET:[Config getApiCalendar] parameters:nil
             success:^(id responseObject) {
-
-        [Config saveCalendar:responseObject];
-        [self drawCalendar:responseObject];
-    } failure:^(NSError *error) {
-        NSLog(@"倒计时加载失败");
-    }];
+                
+                [Config saveCalendar:responseObject];
+                [self drawCalendar:responseObject];
+            } failure:^(NSError *error) {
+                NSLog(@"倒计时加载失败");
+            }];
     
 }
 -(void)drawCalendar:(NSArray*)calendarArray{
@@ -303,7 +303,7 @@ int class_error_;
         NSLog(@"%@",countStr);
         xSum+=xAdd;
     }
-
+    
     
     
 }
@@ -327,8 +327,6 @@ int class_error_;
     [self.navigationController.navigationBar lt_reset];
     //状态栏恢复黑色
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
-
-  
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -354,16 +352,17 @@ int class_error_;
     [_leftSortsViewController.tableview reloadData];
     //状态栏白色
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-
+    //返回栏主题色
+    [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:94/255.0 green:199/255.0 blue:217/255.0 alpha:1]];
     
-
+    
 }
 #pragma mark - 设置方法
 -(void)setNotice{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     NSArray *notice=[defaults objectForKey:@"Notice"];
     _body.text=[notice[0] objectForKey:@"body"];
-   // _noticetitle.text=[notice[0] objectForKey:@"title"];
+    // _noticetitle.text=[notice[0] objectForKey:@"title"];
     //_noticetime.text=[[notice[0] objectForKey:@"time"] substringWithRange:NSMakeRange(5,5)];
 }
 -(void)loadSet{
@@ -397,9 +396,7 @@ int class_error_;
                                                                                   error:nil];
 }
 -(void)setTitle{
-    
     /**标题文字*/
-    //  self.navigationItem.title                 = @"主界面";
     UIColor *greyColor                        = [UIColor colorWithRed:239/255.0 green:239/255.0 blue:239/255.0 alpha:1];
     self.view.backgroundColor                 = greyColor;
     [self.navigationController.navigationBar setTitleTextAttributes:
@@ -409,16 +406,15 @@ int class_error_;
     UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     self.navigationItem.backBarButtonItem = item;
     /**按钮*/
-
     UIButton *menuBtn                         = [UIButton buttonWithType:UIButtonTypeCustom];
     menuBtn.frame                             = CGRectMake(0, 0, 20, 18);
     [menuBtn setBackgroundImage:[UIImage imageNamed:@"menu"] forState:UIControlStateNormal];
     [menuBtn addTarget:self action:@selector(openOrCloseLeftList) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.leftBarButtonItem     = [[UIBarButtonItem alloc] initWithCustomView:menuBtn];
     /**让黑线消失的方法*/
-    UIImageView *navBarHairlineImageView = [self findHairlineImageViewUnder:self.navigationController.navigationBar];
-    navBarHairlineImageView.hidden = YES;
-
+//    UIImageView *navBarHairlineImageView = [self findHairlineImageViewUnder:self.navigationController.navigationBar];
+//    navBarHairlineImageView.hidden = YES;
+    
 }
 // 寻找导航栏下的黑线
 - (UIImageView *)findHairlineImageViewUnder:(UIView *)view {

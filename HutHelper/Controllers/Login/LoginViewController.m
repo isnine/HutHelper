@@ -89,14 +89,14 @@
                 //弹出提示框；
                 [self presentViewController:alert animated:true completion:nil];
             } else{
-                [MBProgressHUD showError:Show_Msg];
+                [MBProgressHUD showError:Show_Msg toView:self.view];
             }
             HideAllHUD
             
         }
     }failure:^(NSError *error) {
         HideAllHUD
-        [MBProgressHUD showError:@"网络错误或超时"];
+        [MBProgressHUD showError:@"网络错误或超时" toView:self.view];
     }];
 }
 

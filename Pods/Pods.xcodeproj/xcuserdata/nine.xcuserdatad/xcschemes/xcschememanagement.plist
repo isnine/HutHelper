@@ -49,11 +49,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>PYSearch.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>Pods-HutHelper.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -86,87 +81,6 @@
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
-	<dict>
-		<key>04CF549EBEEE7BC87AEAE35397184D94</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>3E4F42329B6B9617356E7A571F7942B9</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>5437890023F30CA85DFCA260CA914D48</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>582AFB9C71E471D71C54273FE92E9320</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>586F2DFA9BDCC6675C2546793A69E5CC</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>71045D231DDFBEAA6A91239FEA8D5BB7</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>7AA58F2296988547B3767F41B7F5DE05</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>9C623D1AF8229419BA603B3C66BE24B9</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>9E033EDB5EC0819481B0546434FA577B</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>AFBF70F855AE2ACF2C39734BC9612A83</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>B61BCC904492320A4F3409E3F9982B39</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>BE21DA0F82C3C25FA9F9F3CC5FC01D39</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>C10421B4A6A9B99859C0EFBB6CA0D83A</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>DD0D0859B2C23A0C3F9431CBB4F88C17</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>E56EAB6E100C32DCD080CD7930C67C28</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>F0EA78F8F3362DEBC9840500226DA5E7</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-	</dict>
+	<dict/>
 </dict>
 </plist>

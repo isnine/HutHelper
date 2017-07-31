@@ -133,15 +133,15 @@
 }
 
 +(NSString*)getApiImUserInfo:(NSString*)User_id{
-    return [NSString stringWithFormat:@"%@/api/v2/im/get_studentinfo/%@",Config.apiIndexHttps,User_id];
+    return [NSString stringWithFormat:@"%@/api/v2/im/get_studentinfo/%@",Config.apiIndex,User_id];
 }
 
 +(NSString*)getApiImStudent{
-    return [NSString stringWithFormat:@"%@/api/v2/Im/get_students",Config.apiIndexHttps];
+    return [NSString stringWithFormat:@"%@/api/v2/Im/get_students",Config.apiIndex];
 }
 
 +(NSString*)apiIndex{
-    return @"http://hugongda.com:8888";
+    return @"https://hut.wxz.name";
 }
 +(NSString*)apiIndexHttps{
     return @"https://hut.wxz.name";

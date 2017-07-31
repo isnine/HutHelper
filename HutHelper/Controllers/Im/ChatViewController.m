@@ -25,6 +25,7 @@
     currentUserInfo.userId=[Config getUserId];
     currentUserInfo.name=[Config getTrueName];
     currentUserInfo.portraitUri=[NSString stringWithFormat:@"%@/%@",Config.getApiImg,Config.getHeadPicThumb];
+   
 }
 
 - (void)didReceiveMemoryWarning {

@@ -136,11 +136,12 @@
                               [self.mj_header endRefreshing];
                               [self reloadData];
                           }failure:^(NSError *error) {
+                              [MBProgressHUD showError:@"网络错误" toView:self];
                           }];
                  }
                  else{
                      [self.mj_header endRefreshing];
-                     [MBProgressHUD showError:@"网络错误"];
+                     [MBProgressHUD showError:@"网络错误" toView:self];
                  }
              }
              else{
@@ -149,7 +150,7 @@
              }
          }failure:^(NSError *error) {
              [self.mj_header endRefreshing];
-             [MBProgressHUD showError:@"网络错误"];
+             [MBProgressHUD showError:@"网络错误" toView:self];
          }];
 }
 -(void)load{

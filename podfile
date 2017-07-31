@@ -1,4 +1,4 @@
-platform:ios,'9.0'
+platform:ios,'8.0'
 target "HutHelper" do
     pod 'ASIHTTPRequest'
     pod 'MBProgressHUD', '~> 1.0.0'
@@ -19,5 +19,4 @@ target "HutHelper" do
     pod 'DZNEmptyDataSet'
     pod 'RongCloudIM/IMLib', '~> 2.8.3'
     pod 'RongCloudIM/IMKit', '~> 2.8.3'
-    pod "PYSearch"
 end
