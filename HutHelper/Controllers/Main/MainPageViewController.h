@@ -9,6 +9,19 @@
 #import <UIKit/UIKit.h>
 @class LeftSortsViewController;
 @interface MainPageViewController : UIViewController
+typedef enum ClassStatus {
+    ClassOK  = 0,
+    ClassXpError,
+    ClassError,
+    ClassAndClassXpError
+} ClassStatus;
+
+typedef enum ScoreStatus {
+    ScoreOK  = 0,
+    ScoreRankError,
+    ScoreError,
+    ScoreAndScoreRankError
+} ScoreStatus;
 
 @property (weak, nonatomic) IBOutlet UILabel *body;
 @property (weak, nonatomic) IBOutlet UILabel *noticetitle;

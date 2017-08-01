@@ -27,6 +27,7 @@
 
 @implementation AppDelegate
 
+#pragma mark - 生命周期
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     //友盟推送
     [UMessage startWithAppkey:APPKEY_UMESSAGE launchOptions:launchOptions];
@@ -36,9 +37,9 @@
     UNAuthorizationOptions types10   = UNAuthorizationOptionBadge|UNAuthorizationOptionAlert|UNAuthorizationOptionSound;
     [center requestAuthorizationWithOptions:types10 completionHandler:^(BOOL granted, NSError * _Nullable error) {
         if (granted) {
-
+            
         } else {
-
+            
         }
     }];
     [UMessage setLogEnabled:NO];//打开日志，方便调试
@@ -47,7 +48,6 @@
     [MobClick setAppVersion:[Config getCurrentVersion]];
     [MobClick startWithConfigure:UMConfigInstance];//配置以上参数后调用此方法初始化SDK！
     //设置初始界面
-    //   self.window                      = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor      = [UIColor whiteColor];//设置通用背景颜色
     [self.window makeKeyAndVisible];
     MainPageViewController *mainVC   = [[MainPageViewController alloc] initWithNibName:@"MainViewController" bundle:nil];
@@ -69,12 +69,11 @@
     //    [JSPatch setupDevelopment];
     //    [JSPatch setupRSAPublicKey:RSA_JSPATCH];
     //    [JSPatch sync];
-    /*IM**/
+    //IM
     [[RCIM sharedRCIM] initWithAppKey:@"x18ywvqfxjiyc"];
-    
-
-    //即时聊天模块登录
+    //IM登录
     if ([Config getImToken]) {
+        NSLog(@"执行融云登录");
         [RCIM sharedRCIM].enableMessageAttachUserInfo=YES;
         [[RCIM sharedRCIM] connectWithToken:[Config getImToken]
                                     success:^(NSString *userId) {
@@ -100,50 +99,23 @@
     return YES;
 }
 
-- (void)getUserInfoWithUserId:(NSString *)userId
-                   completion:(void (^)(RCUserInfo *userInfo))completion{
-    [APIRequest GET:[Config getApiImUserInfo:userId] parameters:nil
-            success:^(id responseObject) {
-                 RCUserInfo *userInfo=[[RCUserInfo alloc]init];
-                NSLog(@"全局他人:%@",responseObject[@"data"][@"TrueName"]);
-                    userInfo.userId=userId;
-                    userInfo.name=responseObject[@"data"][@"TrueName"];
-                    userInfo.portraitUri=[NSString stringWithFormat:@"%@/%@",Config.getApiImg,responseObject[@"data"][@"head_pic_thumb"]];
-                 return completion(userInfo);
-            } failure:^(NSError *error) {
-                 NSLog(@"全局他人失败");
-                 return completion(nil);
-            }];
 
-}
- 
-- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
-{
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation{
     BOOL result = [[UMSocialManager defaultManager] handleOpenURL:url];
     if (!result) {
         // 其他如支付等SDK的回调
     }
     return result;
 }
-
 - (void)applicationWillResignActive:(UIApplication *)application {
 }
-
 - (void)applicationDidBecomeActive:(UIApplication *)application {
 }
-- (void)configUSharePlatforms
-{
-    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_QQ appKey:@"1105703863"  appSecret:APPKEY_QQ_SECRET redirectURL:@"http://mobile.umeng.com/social"];
-    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_Sina appKey:@"1046968355"  appSecret:APPKEY_SINA_SECRET redirectURL:@"http://sns.whalecloud.com/sina2/callback"];
-    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_WechatSession appKey:@"wx944eb9ae391a7c2b" appSecret:APPKEY_WECHAT_SECRET redirectURL:@"http://mobile.umeng.com/social"];
-}
-
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 //iOS10以下使用这个方法接收通知
-- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
-{
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo{
     [UMessage didReceiveRemoteNotification:userInfo];
 }
 
@@ -222,6 +194,33 @@
     }
     
 }
+#pragma mark - 其他
+//融云获取用户头像
+- (void)getUserInfoWithUserId:(NSString *)userId
+                   completion:(void (^)(RCUserInfo *userInfo))completion{
+
+    [APIRequest GET:[Config getApiImUserInfo:userId] parameters:nil
+            success:^(id responseObject) {
+                RCUserInfo *userInfo=[[RCUserInfo alloc]init];
+                NSLog(@"全局他人:%@",responseObject[@"data"][@"TrueName"]);
+                userInfo.userId=userId;
+                userInfo.name=responseObject[@"data"][@"TrueName"];
+                userInfo.portraitUri=[NSString stringWithFormat:@"%@/%@",Config.getApiImg,responseObject[@"data"][@"head_pic_thumb"]];
+                return completion(userInfo);
+            } failure:^(NSError *error) {
+                NSLog(@"全局他人失败");
+                return completion(nil);
+            }];
+    
+}
+//友盟分析平台设置
+- (void)configUSharePlatforms
+{
+    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_QQ appKey:@"1105703863"  appSecret:APPKEY_QQ_SECRET redirectURL:@"http://mobile.umeng.com/social"];
+    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_Sina appKey:@"1046968355"  appSecret:APPKEY_SINA_SECRET redirectURL:@"http://sns.whalecloud.com/sina2/callback"];
+    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_WechatSession appKey:@"wx944eb9ae391a7c2b" appSecret:APPKEY_WECHAT_SECRET redirectURL:@"http://mobile.umeng.com/social"];
+}
+//检查app更新
 + (void)initialize
 {
     [iVersion sharedInstance].appStoreID = APPSTORE_ID;

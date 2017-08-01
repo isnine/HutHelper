@@ -21,111 +21,158 @@
 #import<CommonCrypto/CommonDigest.h>
 #import "MBProgressHUD.h"
 #import "UINavigationBar+Awesome.h"
-
 #import "User.h"
 #import "AFNetworking.h"
 #import "MBProgressHUD+MJ.h"
 #import "HandTableViewController.h"
 #import "ScoreShowViewController.h"
-
 #import "LeftSortsViewController.h"
 #import "MomentsViewController.h"
 #import "APIRequest.h"
 #import "VedioPlayViewController.h"
-
 #import <RongIMKit/RongIMKit.h>
 #import "PointView.h"
 #define vBackBarButtonItemName  @"backArrow.png"    //导航条返回默认图片名
 #define ERROR_MSG_INVALID @"登录过期,请重新登录"
 
-@interface MainPageViewController ()
 
+
+@interface MainPageViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *Scontent;
 @property (weak, nonatomic) IBOutlet UILabel *Time;
 @end
 
 @implementation MainPageViewController
 int class_error_;
+#pragma mark - 生命周期
 - (void)viewDidLoad {
     [super viewDidLoad];
-    /**设置标题*/
+    //设置标题
     [self setTitle];
-    /**友盟统计*/
+    //友盟统计
     [self setUMeng];
-    /**主界面*/
+    //主界面
     [Config isAppFirstRun];
-    /**设置第几周*/
+    //设置第几周
     [Config saveNowWeek:[Math getWeek]];
-    /**  首次登陆以及判断是否打开课程表 */
+    //首次登陆以及判断是否打开课程表
     [self loadSet];
-    /**时间Label*/
+    //时间Label
     [self SetTimeLabel];
-    
-    //    [[RCIM sharedRCIM] connectWithToken:@"YourTestUserToken"     success:^(NSString *userId) {
-    //        NSLog(@"登陆成功。当前登录的用户ID：%@", userId);
-    //    } error:^(RCConnectErrorCode status) {
-    //        NSLog(@"登陆的错误码为:%d", status);
-    //    } tokenIncorrect:^{
-    //        //token过期或者不正确。
-    //        //如果设置了token有效期并且token过期，请重新请求您的服务器获取新的token
-    //        //如果没有设置token有效期却提示token错误，请检查您客户端和服务器的appkey是否匹配，还有检查您获取token的流程。
-    //        NSLog(@"token错误");
-    //    }];
+}
+
+
+
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    //侧栏关闭
+    AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [tempAppDelegate.LeftSlideVC setPanEnabled:NO];
+    //关闭隐藏标题栏
+    UIColor *ownColor                = [UIColor colorWithRed:255/255.0 green:255/255.0 blue:255/255.0 alpha:1];
+    [[UINavigationBar appearance] setBarTintColor: ownColor];  //颜色
+    [self.navigationController.navigationBar lt_reset];
+    //状态栏恢复黑色
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    //侧栏开启
+    AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [tempAppDelegate.LeftSlideVC setPanEnabled:YES];
+    //保存当前周次
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    NSDate *now                               = [NSDate date];
+    NSCalendar *calendar                      = [NSCalendar currentCalendar];
+    NSUInteger unitFlags                      = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay |NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
+    NSDateComponents *dateComponent           = [calendar components:unitFlags fromDate:now];
+    [defaults setInteger:[Math getWeek:(short)[dateComponent year] m:(short)[dateComponent month] d:(short)[dateComponent day]] forKey:@"TrueWeek"];
+    //导航栏变为透明
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:0];
+    //让黑线消失的方法
+    self.navigationController.navigationBar.shadowImage=[UIImage new];
+    //设置通知
+    [self setNotice];
+    [_leftSortsViewController.tableview reloadData];
+    //状态栏白色
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    //返回栏主题色
+    [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:94/255.0 green:199/255.0 blue:217/255.0 alpha:1]];
 }
 #pragma mark - 各按钮事件
+//课程表
 - (IBAction)ClassFind:(id)sender {  //课表界面
     if(([Config getCourse]==nil)||([Config getCourseXp]==nil)){
         [MBProgressHUD showMessage:@"查询中" toView:self.view];
         NSString *urlString=Config.getApiClass;
         NSString *urlXpString=Config.getApiClassXP;
-        /**平时课表*/
-        [APIRequest GET:urlString parameters:nil success:^(id responseObject) {
-            NSString *msg=responseObject[@"msg"];
-            if ([msg isEqualToString:@"ok"]) {
-                NSArray *arrayCourse = responseObject[@"data"];
-                [Config saveCourse:arrayCourse];
-                [Config saveWidgetCourse:arrayCourse];
-                /**实验课表*/
-                {
-                    [APIRequest GET:urlXpString parameters:nil success:^(id responseObject) {
-                        NSString *msg=responseObject[@"msg"];
-                        if ([msg isEqualToString:@"ok"]) {
-                            NSArray *arrayCourseXp= responseObject[@"data"];
-                            [Config saveCourseXp:arrayCourseXp];
-                            [Config saveWidgetCourseXp:arrayCourseXp];
-                            [Config setIs:0];
-                            [Config pushViewController:@"Class"];
-                        }
-                        else{
-                            [Config pushViewController:@"Class"];
-                            [MBProgressHUD showError:msg];
-                        }
-                        HideAllHUD
-                    } failure:^(NSError *error) {
-                        [MBProgressHUD showError:@"网络超时，实验课表查询失败"];
-                        HideAllHUD
-                    }];
+        __block ClassStatus status=ClassOK;
+        dispatch_group_t group = dispatch_group_create();
+        dispatch_queue_t q = dispatch_get_global_queue(0, 0);
+        //平时课表队列请求
+        dispatch_group_async(group, q, ^{
+            dispatch_group_enter(group);
+            [APIRequest GET:urlString parameters:nil success:^(id responseObject) {
+                NSString *msg=responseObject[@"msg"];
+                if ([msg isEqualToString:@"ok"]) {
+                    NSArray *arrayCourse = responseObject[@"data"];
+                    [Config saveCourse:arrayCourse];
+                    [Config saveWidgetCourse:arrayCourse];
+                }else if([msg isEqualToString:@"令牌错误"]){
+                    status=status+2;
+                    [MBProgressHUD showError:ERROR_MSG_INVALID];
+                }else{
+                    status=status+2;
+                    [MBProgressHUD showError:msg];
                 }
-            }else if([msg isEqualToString:@"令牌错误"]){
-                [MBProgressHUD showError:ERROR_MSG_INVALID];
-                HideAllHUD
-            }
-            else{
-                [MBProgressHUD showError:msg];
-                HideAllHUD
-            }
-        } failure:^(NSError *error) {
+                dispatch_group_leave(group);
+            } failure:^(NSError *error) {
+                status=status+2;
+                dispatch_group_leave(group);
+                [MBProgressHUD showError:@"网络超时，平时课表查询失败"];
+            }];
+        });
+        
+        //实验课表队列请求
+        dispatch_group_async(group, q, ^{
+            dispatch_group_enter(group);
+            [APIRequest GET:urlXpString parameters:nil success:^(id responseObject) {
+                NSString *msg=responseObject[@"msg"];
+                if ([msg isEqualToString:@"ok"]) {
+                    NSArray *arrayCourseXp= responseObject[@"data"];
+                    [Config saveCourseXp:arrayCourseXp];
+                    [Config saveWidgetCourseXp:arrayCourseXp];
+                }else if([msg isEqualToString:@"令牌错误"]){
+                    status=status+1;
+                    [MBProgressHUD showError:ERROR_MSG_INVALID];
+                }else{
+                    status=status+1;
+                    [MBProgressHUD showError:msg];
+                }
+                dispatch_group_leave(group);
+            } failure:^(NSError *error) {
+                status=status+1;
+                [MBProgressHUD showError:@"网络超时，实验课表查询失败"];
+                dispatch_group_leave(group);
+            }];
+        });
+        
+        //两个队列都完成后
+        dispatch_group_notify(group, dispatch_get_main_queue(), ^{
             HideAllHUD
-            [MBProgressHUD showError:@"网络超时，平时课表查询失败"];
-        }];
+            if (status==ClassOK||status==ClassXpError) {
+                [Config setIs:0];
+                [Config pushViewController:@"Class"];
+            }
+        });
     }else{
         [Config setIs:0];
         [Config pushViewController:@"Class"];
     }
-} //课程表
+}
 - (IBAction)ClassXPFind:(id)sender {  //实验课表
     [Config pushViewController:@"ClassXp"];
-    
 } //实验课表
 - (IBAction)HomeWork:(id)sender {
     [Config pushViewController:@"HomeWork"];
@@ -147,41 +194,63 @@ int class_error_;
 } //二手市场
 - (IBAction)Score:(id)sender {
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    //如果没有缓存数据
     if((![defaults objectForKey:@"Score"])||(![defaults objectForKey:@"ScoreRank"])){
         [MBProgressHUD showMessage:@"查询中" toView:self.view];
-        NSString *urlString=Config.getApiScores;
-        [APIRequest GET:urlString parameters:nil timeout:8.0 success:^(id responseObject){
-            NSData *scoreData =    [NSJSONSerialization dataWithJSONObject:responseObject options:NSJSONWritingPrettyPrinted error:nil];
-            NSString *msg=responseObject[@"msg"];
-            if([msg isEqualToString:@"ok"]){
-                [Config saveScore:scoreData];
-                NSString *urlRankString=Config.getApiRank;
-                [APIRequest GET:urlRankString parameters:nil timeout:8.0 success:^(id responseObject) {
-                    if ([responseObject[@"msg"]isEqualToString:@"ok"]) {
-                        [Config saveScoreRank:responseObject];
-                        [Config pushViewController:@"ScoreShow"];
-                        HideAllHUD
-                    }else{
-                        [MBProgressHUD showError:@"排名查询错误"];
-                        HideAllHUD
-                    }
-                } failure:^(NSError *error) {
-                    [MBProgressHUD showError:@"网络超时"];
-                    HideAllHUD
-                }];
-                
-            }else if([msg isEqualToString:@"令牌错误"]){
-                [MBProgressHUD showError:ERROR_MSG_INVALID];
-                HideAllHUD
-            }else{
-                [MBProgressHUD showError:msg];
-                HideAllHUD
-            }
-            
-        }failure:^(NSError *error){
-            [MBProgressHUD showError:@"网络超时"];
-            HideAllHUD
-        }];
+        dispatch_group_t group = dispatch_group_create();
+        dispatch_queue_t q = dispatch_get_global_queue(0, 0);
+        __block ScoreStatus *scoreStatus=ScoreOK;
+        //分数队列请求
+        dispatch_group_async(group, q, ^{
+            dispatch_group_enter(group);
+            [APIRequest GET:Config.getApiScores parameters:nil timeout:8.0 success:^(id responseObject){
+                NSData *scoreData =    [NSJSONSerialization dataWithJSONObject:responseObject options:NSJSONWritingPrettyPrinted error:nil];
+                NSString *msg=responseObject[@"msg"];
+                if([msg isEqualToString:@"ok"]){
+                    [Config saveScore:scoreData];
+                }else if([msg isEqualToString:@"令牌错误"]){
+                    [MBProgressHUD showError:ERROR_MSG_INVALID];
+                    scoreStatus=scoreStatus+1;
+                }else{
+                    [MBProgressHUD showError:msg];
+                    scoreStatus=scoreStatus+1;
+                }
+                dispatch_group_leave(group);
+            }failure:^(NSError *error){
+                [MBProgressHUD showError:@"网络超时"];
+                scoreStatus=scoreStatus+1;
+                dispatch_group_leave(group);
+            }];
+         });
+        
+        //排名队列请求
+        dispatch_group_async(group, q, ^{
+            dispatch_group_enter(group);
+            [APIRequest GET:Config.getApiRank parameters:nil timeout:8.0 success:^(id responseObject) {
+                if ([responseObject[@"msg"]isEqualToString:@"ok"]) {
+                    [Config saveScoreRank:responseObject];
+                }else if([responseObject[@"msg"] isEqualToString:@"令牌错误"]){
+                    [MBProgressHUD showError:ERROR_MSG_INVALID];
+                    scoreStatus=scoreStatus+2;
+                }else{
+                    scoreStatus=scoreStatus+2;
+                    [MBProgressHUD showError:@"排名查询错误"];
+                }
+                dispatch_group_leave(group);
+            } failure:^(NSError *error) {
+                scoreStatus=scoreStatus+2;
+                [MBProgressHUD showError:@"网络超时"];
+                dispatch_group_leave(group);
+            }];
+        });
+        
+        //两个队列请求完毕
+         dispatch_group_notify(group, dispatch_get_main_queue(), ^{
+             if (scoreStatus==ScoreOK) {
+                 [Config pushViewController:@"ScoreShow"];
+             }
+              HideAllHUD
+      });
     }else{
         [Config pushViewController:@"ScoreShow"];
         
@@ -247,6 +316,7 @@ int class_error_;
             }];
     
 }
+//绘制日历
 -(void)drawCalendar:(NSArray*)calendarArray{
     int yearInt,mouthInt,dayInt,countDown = 0;
     int xSum=0;//当前X的累加
@@ -318,46 +388,9 @@ int class_error_;
         [tempAppDelegate.LeftSlideVC closeLeftView];
     }
 }  //侧栏滑动
-- (void)viewWillDisappear:(BOOL)animated{
-    [super viewWillDisappear:animated];
-    AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    [tempAppDelegate.LeftSlideVC setPanEnabled:NO];
-    UIColor *ownColor                = [UIColor colorWithRed:255/255.0 green:255/255.0 blue:255/255.0 alpha:1];
-    [[UINavigationBar appearance] setBarTintColor: ownColor];  //颜色
-    [self.navigationController.navigationBar lt_reset];
-    //状态栏恢复黑色
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
-}
 
-- (void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-    AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    [tempAppDelegate.LeftSlideVC setPanEnabled:YES];
-    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    NSDate *now                               = [NSDate date];
-    NSCalendar *calendar                      = [NSCalendar currentCalendar];
-    NSUInteger unitFlags                      = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay |NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
-    NSDateComponents *dateComponent           = [calendar components:unitFlags fromDate:now];
-    int year                                  = (short)[dateComponent year];//年
-    int month                                 = (short)[dateComponent month];//月
-    int day                                   = (short)[dateComponent day];//日
-    [defaults setInteger:[Math getWeek:year m:month d:day] forKey:@"TrueWeek"];
-    //判断完毕//
-    /**导航栏变为透明*/
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:0];
-    /**让黑线消失的方法*/
-    self.navigationController.navigationBar.shadowImage=[UIImage new];
-    /**设置通知*/
-    [self setNotice];
-    [_leftSortsViewController.tableview reloadData];
-    //状态栏白色
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-    //返回栏主题色
-    [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:94/255.0 green:199/255.0 blue:217/255.0 alpha:1]];
-    
-    
-}
 #pragma mark - 设置方法
+//设置通知栏显示内容
 -(void)setNotice{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     NSArray *notice=[defaults objectForKey:@"Notice"];
@@ -365,6 +398,7 @@ int class_error_;
     // _noticetitle.text=[notice[0] objectForKey:@"title"];
     //_noticetime.text=[[notice[0] objectForKey:@"time"] substringWithRange:NSMakeRange(5,5)];
 }
+//加载设置内容
 -(void)loadSet{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     NSDictionary *User_All=[defaults objectForKey:@"kUser"];
@@ -383,6 +417,7 @@ int class_error_;
         [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:NO];
     }
 }
+//友盟统计
 -(void)setUMeng{
     /**友盟统计*/
     Class cls                                 = NSClassFromString(@"UMANUtil");
@@ -395,6 +430,7 @@ int class_error_;
                                                                                 options:NSJSONWritingPrettyPrinted
                                                                                   error:nil];
 }
+//设置标题栏
 -(void)setTitle{
     /**标题文字*/
     UIColor *greyColor                        = [UIColor colorWithRed:239/255.0 green:239/255.0 blue:239/255.0 alpha:1];
@@ -412,8 +448,8 @@ int class_error_;
     [menuBtn addTarget:self action:@selector(openOrCloseLeftList) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.leftBarButtonItem     = [[UIBarButtonItem alloc] initWithCustomView:menuBtn];
     /**让黑线消失的方法*/
-//    UIImageView *navBarHairlineImageView = [self findHairlineImageViewUnder:self.navigationController.navigationBar];
-//    navBarHairlineImageView.hidden = YES;
+    //    UIImageView *navBarHairlineImageView = [self findHairlineImageViewUnder:self.navigationController.navigationBar];
+    //    navBarHairlineImageView.hidden = YES;
     
 }
 // 寻找导航栏下的黑线

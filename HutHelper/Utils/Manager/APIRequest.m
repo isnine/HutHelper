@@ -14,6 +14,7 @@
 #define POST_TIMEOUT 10.f
 + (void)GET:(NSString *)URLString parameters:(id)parameters success:(void (^)(id))success failure:(void (^)(NSError *))failure
 {
+
     [Config setNoSharedCache];
     [self GET:URLString parameters:parameters timeout:GET_TIMEOUT success:^(id responseObject) {
         if (success) {
