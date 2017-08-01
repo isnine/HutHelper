@@ -33,10 +33,6 @@
 		3A4D2FDD1E8D237500901E3B /* LibraryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A4D2FD81E8D237500901E3B /* LibraryViewController.m */; };
 		3A4D2FDE1E8D237500901E3B /* PowerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A4D2FDA1E8D237500901E3B /* PowerViewController.m */; };
 		3A4D2FE11E8D23F800901E3B /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A4D2FE01E8D23F800901E3B /* AboutViewController.m */; };
-		3A4D2FEB1E8D245F00901E3B /* HandAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A4D2FE41E8D245F00901E3B /* HandAddViewController.m */; };
-		3A4D2FEC1E8D245F00901E3B /* HandShowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A4D2FE61E8D245F00901E3B /* HandShowViewController.m */; };
-		3A4D2FED1E8D245F00901E3B /* HandTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A4D2FE81E8D245F00901E3B /* HandTableViewCell.m */; };
-		3A4D2FEE1E8D245F00901E3B /* HandTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A4D2FEA1E8D245F00901E3B /* HandTableViewController.m */; };
 		3A4D2FF31E8D24C100901E3B /* NoticeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A4D2FF11E8D24C100901E3B /* NoticeTableViewCell.m */; };
 		3A4D2FF41E8D24C100901E3B /* NoticeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A4D2FF21E8D24C100901E3B /* NoticeTableViewCell.xib */; };
 		3A4D2FF91E8D24E200901E3B /* ScoreTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A4D2FF71E8D24E200901E3B /* ScoreTableViewCell.m */; };
@@ -116,6 +112,14 @@
 		3A9C28F71F15FD9F00B91876 /* LineUIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A9C28F61F15FD9F00B91876 /* LineUIView.m */; };
 		3AAB90991EA393A000C35137 /* ScoreRank.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AAB90981EA393A000C35137 /* ScoreRank.m */; };
 		3ACF3D081EA731E800FBEC57 /* CourseXpTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ACF3D071EA731E800FBEC57 /* CourseXpTableViewController.m */; };
+		3AD047AF1F316CCA00B61A02 /* HandAddViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 3ABDCDCD1F316BEC00B95D6C /* HandAddViewController.h */; };
+		3AD047B01F316CCA00B61A02 /* HandAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ABDCDCE1F316BEC00B95D6C /* HandAddViewController.m */; };
+		3AD047B11F316CCA00B61A02 /* HandShowViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 3ABDCDCF1F316BEC00B95D6C /* HandShowViewController.h */; };
+		3AD047B21F316CCA00B61A02 /* HandShowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ABDCDD01F316BEC00B95D6C /* HandShowViewController.m */; };
+		3AD047B31F316CCA00B61A02 /* HandTableViewCell.h in Sources */ = {isa = PBXBuildFile; fileRef = 3ABDCDD11F316BEC00B95D6C /* HandTableViewCell.h */; };
+		3AD047B41F316CCA00B61A02 /* HandTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ABDCDD21F316BEC00B95D6C /* HandTableViewCell.m */; };
+		3AD047B51F316CCA00B61A02 /* HandTableViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 3ABDCDD31F316BEC00B95D6C /* HandTableViewController.h */; };
+		3AD047B61F316CCA00B61A02 /* HandTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ABDCDD41F316BEC00B95D6C /* HandTableViewController.m */; };
 		3AD443EB1E97CF5600720F42 /* VedioTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD443EA1E97CF5600720F42 /* VedioTableViewCell.m */; };
 		3AE01BA81EB0D23700D5B7EF /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A8BACF61DDDBD5D001C78B8 /* SystemConfiguration.framework */; };
 		3AE01BAA1EB0D23F00D5B7EF /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AE01BA91EB0D23F00D5B7EF /* CoreFoundation.framework */; };
@@ -234,14 +238,6 @@
 		3A4D2FDA1E8D237500901E3B /* PowerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PowerViewController.m; path = User/Other/PowerViewController.m; sourceTree = "<group>"; };
 		3A4D2FDF1E8D23F800901E3B /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AboutViewController.h; path = User/AboutViewController.h; sourceTree = "<group>"; };
 		3A4D2FE01E8D23F800901E3B /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AboutViewController.m; path = User/AboutViewController.m; sourceTree = "<group>"; };
-		3A4D2FE31E8D245F00901E3B /* HandAddViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HandAddViewController.h; sourceTree = "<group>"; };
-		3A4D2FE41E8D245F00901E3B /* HandAddViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HandAddViewController.m; sourceTree = "<group>"; };
-		3A4D2FE51E8D245F00901E3B /* HandShowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HandShowViewController.h; sourceTree = "<group>"; };
-		3A4D2FE61E8D245F00901E3B /* HandShowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HandShowViewController.m; sourceTree = "<group>"; };
-		3A4D2FE71E8D245F00901E3B /* HandTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HandTableViewCell.h; sourceTree = "<group>"; };
-		3A4D2FE81E8D245F00901E3B /* HandTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HandTableViewCell.m; sourceTree = "<group>"; };
-		3A4D2FE91E8D245F00901E3B /* HandTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HandTableViewController.h; sourceTree = "<group>"; };
-		3A4D2FEA1E8D245F00901E3B /* HandTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HandTableViewController.m; sourceTree = "<group>"; };
 		3A4D2FF01E8D24C100901E3B /* NoticeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoticeTableViewCell.h; sourceTree = "<group>"; };
 		3A4D2FF11E8D24C100901E3B /* NoticeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoticeTableViewCell.m; sourceTree = "<group>"; };
 		3A4D2FF21E8D24C100901E3B /* NoticeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoticeTableViewCell.xib; sourceTree = "<group>"; };
@@ -392,6 +388,14 @@
 		3A9C28F61F15FD9F00B91876 /* LineUIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineUIView.m; sourceTree = "<group>"; };
 		3AAB90971EA393A000C35137 /* ScoreRank.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreRank.h; sourceTree = "<group>"; };
 		3AAB90981EA393A000C35137 /* ScoreRank.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScoreRank.m; sourceTree = "<group>"; };
+		3ABDCDCD1F316BEC00B95D6C /* HandAddViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HandAddViewController.h; sourceTree = "<group>"; };
+		3ABDCDCE1F316BEC00B95D6C /* HandAddViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HandAddViewController.m; sourceTree = "<group>"; };
+		3ABDCDCF1F316BEC00B95D6C /* HandShowViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HandShowViewController.h; sourceTree = "<group>"; };
+		3ABDCDD01F316BEC00B95D6C /* HandShowViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HandShowViewController.m; sourceTree = "<group>"; };
+		3ABDCDD11F316BEC00B95D6C /* HandTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HandTableViewCell.h; sourceTree = "<group>"; };
+		3ABDCDD21F316BEC00B95D6C /* HandTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HandTableViewCell.m; sourceTree = "<group>"; };
+		3ABDCDD31F316BEC00B95D6C /* HandTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HandTableViewController.h; sourceTree = "<group>"; };
+		3ABDCDD41F316BEC00B95D6C /* HandTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HandTableViewController.m; sourceTree = "<group>"; };
 		3ACF3D061EA731E800FBEC57 /* CourseXpTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseXpTableViewController.h; sourceTree = "<group>"; };
 		3ACF3D071EA731E800FBEC57 /* CourseXpTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseXpTableViewController.m; sourceTree = "<group>"; };
 		3AD443E91E97CF5600720F42 /* VedioTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VedioTableViewCell.h; sourceTree = "<group>"; };
@@ -582,22 +586,6 @@
 			path = Exam/Lost;
 			sourceTree = "<group>";
 		};
-		3A4D2FE21E8D245F00901E3B /* Hand */ = {
-			isa = PBXGroup;
-			children = (
-				3A4D2FE31E8D245F00901E3B /* HandAddViewController.h */,
-				3A4D2FE41E8D245F00901E3B /* HandAddViewController.m */,
-				3A4D2FE51E8D245F00901E3B /* HandShowViewController.h */,
-				3A4D2FE61E8D245F00901E3B /* HandShowViewController.m */,
-				3A4D2FE71E8D245F00901E3B /* HandTableViewCell.h */,
-				3A4D2FE81E8D245F00901E3B /* HandTableViewCell.m */,
-				3A4D2FE91E8D245F00901E3B /* HandTableViewController.h */,
-				3A4D2FEA1E8D245F00901E3B /* HandTableViewController.m */,
-			);
-			name = Hand;
-			path = User/Hand;
-			sourceTree = "<group>";
-		};
 		3A4D2FEF1E8D24C100901E3B /* Notice */ = {
 			isa = PBXGroup;
 			children = (
@@ -752,11 +740,11 @@
 		3A796B9E1E534C1B00794043 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				3ABDCDCC1F316BEC00B95D6C /* Hand */,
 				3A3FB37E1F2CBDAC00E74BB0 /* Im */,
 				3ACF3D051EA731A300FBEC57 /* CourseXp */,
 				3A532CD41E91212A003CD5A8 /* Vedio */,
 				3A796BD91E534C1B00794043 /* Main */,
-				3A4D2FE21E8D245F00901E3B /* Hand */,
 				3A4048F81E6A663B0038F207 /* Moments */,
 				3A796BA21E534C1B00794043 /* Course */,
 				3A4D30001E8D27F800901E3B /* Exam */,
@@ -1132,6 +1120,21 @@
 				3AF73BF01E7D12610086417E /* APIRequest.m */,
 			);
 			path = Manager;
+			sourceTree = "<group>";
+		};
+		3ABDCDCC1F316BEC00B95D6C /* Hand */ = {
+			isa = PBXGroup;
+			children = (
+				3ABDCDCD1F316BEC00B95D6C /* HandAddViewController.h */,
+				3ABDCDCE1F316BEC00B95D6C /* HandAddViewController.m */,
+				3ABDCDCF1F316BEC00B95D6C /* HandShowViewController.h */,
+				3ABDCDD01F316BEC00B95D6C /* HandShowViewController.m */,
+				3ABDCDD11F316BEC00B95D6C /* HandTableViewCell.h */,
+				3ABDCDD21F316BEC00B95D6C /* HandTableViewCell.m */,
+				3ABDCDD31F316BEC00B95D6C /* HandTableViewController.h */,
+				3ABDCDD41F316BEC00B95D6C /* HandTableViewController.m */,
+			);
+			path = Hand;
 			sourceTree = "<group>";
 		};
 		3ACF3D051EA731A300FBEC57 /* CourseXp */ = {
@@ -1526,7 +1529,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3A4D2FEC1E8D245F00901E3B /* HandShowViewController.m in Sources */,
+				3AD047AF1F316CCA00B61A02 /* HandAddViewController.h in Sources */,
+				3AD047B01F316CCA00B61A02 /* HandAddViewController.m in Sources */,
+				3AD047B11F316CCA00B61A02 /* HandShowViewController.h in Sources */,
+				3AD047B21F316CCA00B61A02 /* HandShowViewController.m in Sources */,
+				3AD047B31F316CCA00B61A02 /* HandTableViewCell.h in Sources */,
+				3AD047B41F316CCA00B61A02 /* HandTableViewCell.m in Sources */,
+				3AD047B51F316CCA00B61A02 /* HandTableViewController.h in Sources */,
+				3AD047B61F316CCA00B61A02 /* HandTableViewController.m in Sources */,
 				3A31E1EB1E6BE6E20056565A /* MomentsTableView.m in Sources */,
 				3A796C391E534C1B00794043 /* LeftSortsViewController.m in Sources */,
 				3A98CB5E1E7CF7AA00CABD0D /* LikesModel.m in Sources */,
@@ -1535,7 +1545,6 @@
 				3A532CCA1E910C13003CD5A8 /* UITabBarController+ZFPlayerRotation.m in Sources */,
 				3A98CC071E7CFA9C00CABD0D /* JSHeaderView.m in Sources */,
 				3A98CB611E7CF7AA00CABD0D /* User.m in Sources */,
-				3A4D2FEB1E8D245F00901E3B /* HandAddViewController.m in Sources */,
 				3A4D2FF91E8D24E200901E3B /* ScoreTableViewCell.m in Sources */,
 				3A796C251E534C1B00794043 /* FeedbackResultViewController.m in Sources */,
 				3A98CC0D1E7CFA9C00CABD0D /* XWScanImage.m in Sources */,
@@ -1559,7 +1568,6 @@
 				3A98CBFE1E7CFA9C00CABD0D /* FORGesture.m in Sources */,
 				3A98CC0B1E7CFA9C00CABD0D /* UIView_extra.m in Sources */,
 				3AF152FB1F2DCEC600709F97 /* ChatViewController.m in Sources */,
-				3A4D2FEE1E8D245F00901E3B /* HandTableViewController.m in Sources */,
 				3AFA4F781EC04C0E00CB7DA2 /* main.m in Sources */,
 				3A796C261E534C1B00794043 /* FeedbackViewController.m in Sources */,
 				3AFA4F7F1EC04C6100CB7DA2 /* CourseModel.m in Sources */,
@@ -1599,7 +1607,6 @@
 				3A532CCB1E910C13003CD5A8 /* UIView+CustomControlView.m in Sources */,
 				3A96DEE51E94B384006C2CC8 /* VedioPlayViewController.m in Sources */,
 				3A532CD11E910C13003CD5A8 /* ZFPlayerControlView.m in Sources */,
-				3A4D2FED1E8D245F00901E3B /* HandTableViewCell.m in Sources */,
 				3A532CC51E910C13003CD5A8 /* ASValuePopUpView.m in Sources */,
 				3A98CC011E7CFA9C00CABD0D /* GWPCourseListView.m in Sources */,
 				3A4D300A1E8D28AA00901E3B /* LostShowViewController.m in Sources */,

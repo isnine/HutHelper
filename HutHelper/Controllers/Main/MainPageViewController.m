@@ -34,9 +34,6 @@
 #import "PointView.h"
 #define vBackBarButtonItemName  @"backArrow.png"    //导航条返回默认图片名
 #define ERROR_MSG_INVALID @"登录过期,请重新登录"
-
-
-
 @interface MainPageViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *Scontent;
 @property (weak, nonatomic) IBOutlet UILabel *Time;

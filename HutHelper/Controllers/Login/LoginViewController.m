@@ -113,6 +113,8 @@
     [_UserName setValue:RGB(202,202,202,1) forKeyPath:@"_placeholderLabel.textColor"];
     _Password.placeholder=@"密码";
     [_Password setValue:RGB(202,202,202,1) forKeyPath:@"_placeholderLabel.textColor"];
+    self.UserName.delegate=self;
+    self.Password.delegate=self;
     /** 标题栏样式 */
     UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     self.navigationItem.backBarButtonItem = item;
@@ -136,8 +138,29 @@
     [super didReceiveMemoryWarning];
     
 }
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    [self animateTextField: textField up: YES];
+}
 
+- (void)textFieldDidEndEditing:(UITextField *)textField
 
+{
+    [self animateTextField: textField up: NO];
+}
+- (void) animateTextField: (UITextField*) textField up: (BOOL) up
+
+{
+    const int movementDistance = SYReal(160); // tweak as needed
+    const float movementDuration = 0.3f; // tweak as needed
+    int movement = (up ? -movementDistance : movementDistance);
+    [UIView beginAnimations: @"anim" context: nil];
+    [UIView setAnimationBeginsFromCurrentState: YES];
+    [UIView setAnimationDuration: movementDuration];
+    self.view.frame = CGRectOffset(self.view.frame, 0, movement);
+    [UIView commitAnimations];
+    
+}
 
 @end
 

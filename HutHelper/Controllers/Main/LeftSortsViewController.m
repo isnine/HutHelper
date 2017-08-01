@@ -214,7 +214,6 @@
     shareObject.webpageUrl =@"http://hugongda.com:8888/res/app/";
     //分享消息对象设置分享内容对象
     messageObject.shareObject = shareObject;
-    
     //调用分享接口
     [[UMSocialManager defaultManager] shareToPlatform:platformType messageObject:messageObject currentViewController:self completion:^(id data, NSError *error) {
         if (error) {

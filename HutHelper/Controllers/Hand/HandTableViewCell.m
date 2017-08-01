@@ -8,12 +8,11 @@
 
 #import "HandTableViewCell.h"
 #import "MBProgressHUD+MJ.h"
-#import "HandShowViewController.h"
 #import "AppDelegate.h"
 
 #import "User.h"
 #import "AFNetworking.h"
- 
+#import "HandShowViewController.h"
 @implementation HandTableViewCell
 
 - (void)awakeFromNib {
@@ -28,21 +27,22 @@
     [super setSelected:selected animated:animated];
 }
 
+-(id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
+    self=[super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    if (self) {
+        self=[[[NSBundle mainBundle] loadNibNamed:@"HandTableViewCell" owner:nil options:nil]lastObject];
+        
+    }
+    return self;
+}
 +(instancetype)tableviewcell{
     return [[[NSBundle mainBundle] loadNibNamed:@"HandTableViewCell" owner:nil options:nil]lastObject];
 }
 - (IBAction)Buuton1:(id)sender {
     
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    NSString *Url_String=[NSString stringWithFormat:API_GOODS_SHOW,Config.getStudentKH,Config.getRememberCodeApp,[self getid:(short)([self getIndexPath].section+1)*2-1]];
-    NSLog(@"商品查询地址:%@",Url_String);
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
-    manager.requestSerializer.timeoutInterval = 4.f;
-    [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
-    /**请求平时课表*/
-    [manager GET:Url_String parameters:nil progress:nil
-         success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    NSString *Url_String=[NSString stringWithFormat:@"%@/%@/%@/%@",Config.getApiGoodsShow,Config.getStudentKH,Config.getRememberCodeApp,[self getid:(short)([self getIndexPath].section+1)*2-1]];
+    [APIRequest GET:Url_String parameters:nil success:^(id responseObject) {
              NSDictionary *Hand_All = [NSDictionary dictionaryWithDictionary:responseObject];
              NSString *Msg=[Hand_All objectForKey:@"msg"];
              if ([Msg isEqualToString:@"ok"]) {
@@ -50,10 +50,10 @@
                  [defaults setObject:array forKey:@"Hand_Show"];
                  [defaults synchronize];
                  //进入商品界面
-                 UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-                 HandShowViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"ShowHand"];
-                 AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-                 [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:NO];
+                 HandShowViewController *handShow=[[HandShowViewController alloc]init];
+                 handShow.handDic=array;
+                 AppDelegate *tempAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+                 [tempAppDelegate.mainNavigationController pushViewController:handShow animated:YES];
              }
              else if ([Msg isEqualToString:@"令牌错误"]){
                  [MBProgressHUD showError:@"登录过期,请重新登录"];
@@ -61,7 +61,7 @@
              else {
                  [MBProgressHUD showError:@"查询失败"];
              }
-         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        }failure:^(NSError *error) {
              [MBProgressHUD showError:@"网络错误"];
          }];
     
@@ -70,31 +70,24 @@
 }
 - (IBAction)Button2:(id)sender {
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    NSString *Url_String=[NSString stringWithFormat:API_GOODS_SHOW,Config.getStudentKH,Config.getRememberCodeApp,[self getid:(short)([self getIndexPath].section+1)*2]];
-    NSLog(@"商品查询地址:%@",Url_String);
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
-    manager.requestSerializer.timeoutInterval = 4.f;
-    [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
-    /**请求平时课表*/
-    [manager GET:Url_String parameters:nil progress:nil
-         success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    NSString *Url_String=[NSString stringWithFormat:@"%@/%@/%@/%@",Config.getApiGoodsShow,Config.getStudentKH,Config.getRememberCodeApp,[self getid:(short)([self getIndexPath].section+1)*2]];
+    [APIRequest GET:Url_String parameters:nil success:^(id responseObject) {
              NSDictionary *Hand_All = [NSDictionary dictionaryWithDictionary:responseObject];
              NSString *Msg=[Hand_All objectForKey:@"msg"];
              if ([Msg isEqualToString:@"ok"]) {
-                 NSArray *array               = [Hand_All objectForKey:@"data"];
+                 NSArray *array    = [Hand_All objectForKey:@"data"];
                  [defaults setObject:array forKey:@"Hand_Show"];
                  [defaults synchronize];
                  //进入商品界面
-                 UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-                 HandShowViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"ShowHand"];
-                 AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-                 [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:NO];
+                 HandShowViewController *handShow=[[HandShowViewController alloc]init];
+                 handShow.handDic=array;
+                 AppDelegate *tempAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+                 [tempAppDelegate.mainNavigationController pushViewController:handShow animated:YES];
              }
              else{
                  [MBProgressHUD showError:@"查询失败"];
              }
-         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+         }failure:^(NSError *error) {
              [MBProgressHUD showError:@"网络错误"];
          }];
 }

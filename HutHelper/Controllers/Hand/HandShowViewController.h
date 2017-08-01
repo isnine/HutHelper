@@ -1,13 +1,13 @@
 //
-//  HandShowViewController.h
+//  HandShow2ViewController.h
 //  HutHelper
 //
-//  Created by nine on 2017/1/18.
+//  Created by nine on 2017/8/1.
 //  Copyright © 2017年 nine. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
 @interface HandShowViewController : UIViewController
-@property (nonatomic,copy) NSDictionary      *Hand_show;
+@property (nonatomic,copy) NSDictionary      *handDic;
 @end

@@ -23,7 +23,6 @@
     // Do any additional setup after loading the view.
     //  self.zf_prefersNavigationBarHidden = YES;
     // 自动播放，默认不自动播放
-    
     self.view.backgroundColor=[UIColor whiteColor];
     _playerFatherView=[[ZFPlayerView alloc]initWithFrame:CGRectMake(0,SYReal(68),DeviceMaxWidth,DeviceMaxWidth*9/16)];
     [self.view addSubview:self.playerFatherView];

@@ -81,7 +81,6 @@
     [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:0];
     /**让黑线消失的方法*/
     self.navigationController.navigationBar.shadowImage=[UIImage new];
-    
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 }
 - (void)viewWillDisappear:(BOOL)animated
@@ -90,7 +89,6 @@
     [MobClick endLogPageView:@"电费查询"];
     self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:0/255.0 green:224/255.0 blue:208/255.0 alpha:1];
     [self.navigationController.navigationBar lt_reset];
-    
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
 }
 
