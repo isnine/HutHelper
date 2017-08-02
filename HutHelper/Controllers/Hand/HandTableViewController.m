@@ -28,6 +28,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor]}];
+    self.view.backgroundColor=RGB(239, 239, 239, 1);
     //加载数据
     if ([Config getIs]==0) {
         _Hand_content=[Config getHand];
@@ -115,7 +116,9 @@
 
 #pragma mark - 其他
 -(void)addHand{
-    [Config pushViewController:@"Addhand"];
+    HandAddViewController *handAddViewController=[[HandAddViewController alloc]init];
+    AppDelegate *tempAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [tempAppDelegate.mainNavigationController pushViewController:handAddViewController animated:YES];
 }
 -(void)myHand{
     [Config setNoSharedCache];

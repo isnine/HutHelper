@@ -12,100 +12,175 @@
 #import "AFNetworking.h"
 #import "MBProgressHUD+MJ.h"
 
+#import "UINavigationBar+Awesome.h"
 @interface HandAddViewController ()<TZImagePickerControllerDelegate,UICollectionViewDataSource,UICollectionViewDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,UIAlertViewDelegate,UINavigationControllerDelegate> {
     NSMutableArray *_selectedPhotos;
     NSMutableArray *_selectedAssets;
+    
 }
-@property (weak, nonatomic) IBOutlet UITextField *Title;
-@property (weak, nonatomic) IBOutlet UITextView *Describe;
-@property (weak, nonatomic) IBOutlet UITextField *Price;
-@property (weak, nonatomic) IBOutlet UITextField *Old;
-@property (weak, nonatomic) IBOutlet UITextField *Phone;
-@property (weak, nonatomic) IBOutlet UITextField *QQ;
-@property (weak, nonatomic) IBOutlet UITextField *Wechat;
-@property (weak, nonatomic) IBOutlet UITextField *Price_src;
+@property (nonatomic,strong) UIImageView *goodsImgView;
+@property (nonatomic,strong) UIImageView *backImgView;
+@property (nonatomic,strong)  UITextField *titleField;
+@property (nonatomic,strong)  UITextView *describeText;
+
+@property (nonatomic,strong)  UITextField *goodsField;
+
 @property (nonatomic,copy) NSString      *responstring;
-@property (weak, nonatomic) IBOutlet UIImageView *Img1;
-@property (weak, nonatomic) IBOutlet UIImageView *Img2;
-@property (weak, nonatomic) IBOutlet UIImageView *Img3;
-@property (weak, nonatomic) IBOutlet UIImageView *Img4;
+
 @property  int getphoto;
 @end
 
 @implementation HandAddViewController
-
+#pragma mark - 生命周期
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.title=@"发布商品";
-    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor]}];
+    self.navigationItem.title=@"添加商品";
+    self.view.backgroundColor=[UIColor whiteColor];
     /**按钮*/
     UIView *rightButtonView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 50)];
     UIButton *mainAndSearchBtn = [[UIButton alloc] initWithFrame:CGRectMake(70, 0, 50, 50)];
     [rightButtonView addSubview:mainAndSearchBtn];
-    [mainAndSearchBtn setImage:[UIImage imageNamed:@"ok"] forState:UIControlStateNormal];
+    [mainAndSearchBtn setImage:[UIImage imageNamed:@"ico_hand_ok"] forState:UIControlStateNormal];
     [mainAndSearchBtn addTarget:self action:@selector(PostHand) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *rightCunstomButtonView = [[UIBarButtonItem alloc] initWithCustomView:rightButtonView];
     self.navigationItem.rightBarButtonItem = rightCunstomButtonView;
-    _Describe.text = @"描述下你的商品...";
-    _Describe.textColor = [UIColor lightGrayColor];
-    _Describe.delegate=self;
-    _Phone.delegate=self;
-    _QQ.delegate=self;
-    _Wechat.delegate=self;
+    
+    [self setHeadImg];
+    [self setText];
+    [self setFoot];
 }
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
--(BOOL)textViewShouldBeginEditing:(UITextView *)textView
+- (void)viewWillAppear:(BOOL)animated
 {
-    
-    textView.text=@"";
-    textView.textColor = [UIColor blackColor];
-    
-    return YES;
-    
+    [super viewWillAppear:animated];
+    //标题透明
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:0];
+    //黑线消失
+    self.navigationController.navigationBar.shadowImage=[UIImage new];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    //标题白色
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
+    //返回箭头白色
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
 }
-- (IBAction)AddImg:(id)sender {
-    TZImagePickerController *imagePickerVc = [[TZImagePickerController alloc] initWithMaxImagesCount:9 delegate:self];
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    //返回箭头还原
+    self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:0/255.0 green:224/255.0 blue:208/255.0 alpha:1];
+    //标题透明还原
+    [self.navigationController.navigationBar lt_reset];
+    //状态栏还原
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
+    //标题还原
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor]}];
+}
+#pragma mark - 界面绘制
+-(void)setHeadImg{
+    //背景放大并高斯模糊
+    _backImgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, DeviceMaxWidth, SYReal(390))];
+    //中心切割
+    _backImgView.contentMode =UIViewContentModeScaleAspectFill;
+    _backImgView.clipsToBounds = YES;
+    _backImgView.backgroundColor=[UIColor whiteColor];
+    [self.view addSubview:_backImgView];
+    UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, _backImgView.frame.size.width, _backImgView.frame.size.height)];
+    toolbar.barStyle = UIBarStyleBlackTranslucent;
+    [_backImgView addSubview:toolbar];
+    //商品图
+    _goodsImgView = [[UIImageView alloc] initWithFrame:CGRectMake(SYReal(26), SYReal(110), SYReal(120), SYReal(120))];
+    //中心切割
+    _goodsImgView.contentMode =UIViewContentModeScaleAspectFill;
+    _goodsImgView.clipsToBounds = YES;
+    _goodsImgView.image=[UIImage imageNamed:@"img_hand_addpic"];
+    [self.view addSubview:_goodsImgView];
+    //点击图片事件
+    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(addImg)];
+    [_goodsImgView addGestureRecognizer:tapGestureRecognizer];
+    [_goodsImgView setUserInteractionEnabled:YES];
+}
+-(void)setText{
+    //商品名称
+    _titleField=[[UITextField alloc]initWithFrame:CGRectMake(SYReal(26), SYReal(230), SYReal(375), SYReal(50))];
+    _titleField.textColor=[UIColor whiteColor];
+    _titleField.placeholder=@"请输入商品名称...";
+    _titleField.font=[UIFont systemFontOfSize:SYReal(15)];
+    [_titleField setValue:[UIColor whiteColor] forKeyPath:@"_placeholderLabel.textColor"];
+    [self.view addSubview:_titleField];
+    //商品描述
+    _describeText=[[UITextView alloc]initWithFrame:CGRectMake(SYReal(23), SYReal(270), SYReal(375), SYReal(100))];
+    _describeText.textColor=[UIColor whiteColor];
+    _describeText.font=[UIFont systemFontOfSize:SYReal(15)];
+    _describeText.backgroundColor=[UIColor clearColor];
+    _describeText.text=@"请输入商品详情描述..";
+    _describeText.delegate=self;
+    [self.view addSubview:_describeText];
+    //四个块的标题
+    NSArray *LabTitle=@[@"价格",@"成色",@"联系电话",@"发布区域"];
+    int LabX[5]={26,233,26,233};
+    int LabY[5]={425,425,560,560};
+    for (int i=0; i<4; i++) {
+        UILabel *Lab=[[UILabel alloc]initWithFrame:CGRectMake(SYReal(LabX[i]), SYReal(LabY[i]), SYReal(50), SYReal(30))];
+        Lab.textColor=[UIColor lightGrayColor];
+        Lab.text=LabTitle[i];
+        Lab.font=[UIFont systemFontOfSize:SYReal(12)];
+        [self.view addSubview:Lab];
+    }
+    //四个块的数据
+    NSArray *fieldHolder=@[@"请输入价格",@"99成新/95成新/9成新/8成新",@"请输入手机号",@"五食堂？东门?"];
+    for (int i=0; i<4; i++) {
+        _goodsField=[[UITextField alloc]initWithFrame:CGRectMake(SYReal(LabX[i]), SYReal(LabY[i]+15), SYReal(175), SYReal(80))];
+        _goodsField.textColor=[UIColor blackColor];
+        _goodsField.font=[UIFont systemFontOfSize:SYReal(17)];
+        _goodsField.placeholder=fieldHolder[i];
+        _goodsField.tag=100+i;
+        _goodsField.font=[UIFont systemFontOfSize:SYReal(15)];
+        _goodsField.delegate=self;
+        [_goodsField setValue:RGB(202, 202, 202, 1) forKeyPath:@"_placeholderLabel.textColor"];
+        [self.view addSubview:_goodsField];
+    }
+}
+-(void)setFoot{
+    //绘制底部背景
+    UIImageView *foodImgView=[[UIImageView alloc]initWithFrame:CGRectMake(0, SYReal(680), DeviceMaxWidth, SYReal(56))];
+    foodImgView.backgroundColor=RGB(239, 239, 239, 1);
+    [self.view addSubview:foodImgView];
+}
+#pragma  mark - 方法
+-(void)addImg{
+    TZImagePickerController *imagePickerVc = [[TZImagePickerController alloc] initWithMaxImagesCount:3 delegate:self];
     [imagePickerVc setDidFinishPickingPhotosHandle:^(NSArray<UIImage *> *photos, NSArray *assets,BOOL isSelectOriginalPhoto) {
         _selectedPhotos = [NSMutableArray arrayWithArray:photos];
         _selectedAssets = [NSMutableArray arrayWithArray:assets];
-        switch (_selectedPhotos.count) {
-            case 1:
-                _Img1.image=_selectedPhotos[0];
-                break;
-            case 2:
-                _Img1.image=_selectedPhotos[0];
-                _Img2.image=_selectedPhotos[1];
-                break;
-            case 3:
-                _Img1.image=_selectedPhotos[0];
-                _Img2.image=_selectedPhotos[1];
-                _Img3.image=_selectedPhotos[2];
-                break;
-            default:
-                _Img1.image=_selectedPhotos[0];
-                _Img2.image=_selectedPhotos[1];
-                _Img3.image=_selectedPhotos[2];
-                _Img4.image=_selectedPhotos[3];
-                break;
+        int imgX=26;
+        for (int i=0 ; i<_selectedPhotos.count; i++) {
+            UIImageView *selectedImgView=[[UIImageView alloc]initWithFrame:CGRectMake(SYReal(imgX), SYReal(110), SYReal(120), SYReal(120))];
+            selectedImgView.image=_selectedPhotos[i];
+            [self.view addSubview:selectedImgView];
+            imgX+=125;
         }
-        
-    }];
+        //不满3个图片时显示添加按钮
+        if (_selectedPhotos.count<3) {
+            _goodsImgView.frame=CGRectMake(SYReal(imgX), SYReal(110), SYReal(120), SYReal(120));
+        }
+        //设置第一个图片为背景
+        if (_selectedPhotos.count!=0) {
+            _backImgView.image=_selectedPhotos[0];
+        }
+     }];
     [self presentViewController:imagePickerVc animated:YES completion:nil];
 }
-//-(BOOL)textViewShouldBeginEditing:(UITextView *)textView
-//{
-//    textView.text=@"";
-//    textView.textColor = [UIColor blackColor];
-//    return YES;
-//}
+
 -(void)PostHand{
     NSString *Url_String=Config.getApiGoodsCreate;
-    
+        UITextField *_Price=[self.view viewWithTag:100];
+    UITextField *_Old=[self.view viewWithTag:101];
+    NSLog(@"价格%@",_Price);
+    UITextField *_Phone=[self.view viewWithTag:102];
+    UITextField *_address=[self.view viewWithTag:103];
     NSLog(@"二手发布请求地址%@",Url_String);
+
+    
+   
     if (_selectedPhotos.count!=0) {
         _responstring=@"";
         _getphoto=0;
@@ -114,7 +189,7 @@
         manager.requestSerializer.timeoutInterval = 5.f;
         [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
         NSDictionary *dict = @{@"username":@"Saup"};
-        if ([_Describe.text isEqualToString:@"描述下你的商品..."]) {
+        if ([_describeText.text isEqualToString:@"描述下你的商品..."]) {
             [MBProgressHUD showError:@"必须输入商品描述"];
         }
         else if(!([_Old.text isEqualToString:@"99成新"]||[_Old.text isEqualToString:@"95成新"]||[_Old.text isEqualToString:@"9成新"]||[_Old.text isEqualToString:@"8成新"]||[_Old.text isEqualToString:@"7成新及以下"])){
@@ -151,16 +226,17 @@
                             else if([_Old.text isEqualToString:@"8成新"])attr=@"4";
                             else if([_Old.text isEqualToString:@"7成新及以下"])attr=@"5";
                             NSDictionary *params = @{
-                                                     @"tit":_Title.text,
-                                                     @"content" : _Describe.text,
+                                                     @"tit":_titleField.text,
+                                                     @"content" : _describeText.text,
                                                      @"prize"  : _Price.text,
-                                                     @"prize_src"  : _Price_src.text,
+                                                     @"prize_src"  : _Price.text,
                                                      @"attr"  : attr,
                                                      @"class" :@"0",
+                                                     @"address" :_address.text,
                                                      @"hidden"  : _responstring,
                                                      @"phone":_Phone.text,
-                                                     @"qq":_QQ.text,
-                                                     @"wechat":_Wechat.text
+                                                     @"qq":@"",
+                                                     @"wechat":@""
                                                      };
                             [MBProgressHUD showMessage:@"发表中" toView:self.view];
                             [manager POST:Url_String parameters:params success:^(NSURLSessionDataTask *task, id responseObject) {
@@ -203,6 +279,22 @@
     }
     else
         [MBProgressHUD showError:@"必须添加图片"];
+    
+}
+
+
+#pragma  mark - 代理
+-(BOOL)textViewShouldBeginEditing:(UITextView *)textView
+{
+    textView.text=@"";
+    return YES;
+    
+}
+- (BOOL)textFieldShouldReturn:(UITextField *)textField;
+{
+    //用户结束输入
+    [textField  resignFirstResponder];
+    return  YES;
 }
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
@@ -218,7 +310,7 @@
 - (void) animateTextField: (UITextField*) textField up: (BOOL) up
 
 {
-    const int movementDistance = SYReal(160); // tweak as needed
+    const int movementDistance = SYReal(190); // tweak as needed
     const float movementDuration = 0.3f; // tweak as needed
     int movement = (up ? -movementDistance : movementDistance);
     [UIView beginAnimations: @"anim" context: nil];
@@ -228,4 +320,5 @@
     [UIView commitAnimations];
     
 }
+
 @end

@@ -58,7 +58,7 @@
     return [NSString stringWithFormat:@"%@/api/v1/stuff/own1/%@/%@/1",Config.apiIndex,Config.getStudentKH,Config.getRememberCodeApp];
 }
 +(NSString*)getApiGoodsCreate{
-    return [NSString stringWithFormat:@"%@/api/v1/stuff/create/%@/%@",Config.apiIndex,Config.getStudentKH,Config.getRememberCodeApp];
+    return [NSString stringWithFormat:@"%@/api/v2/trade/create/%@/%@",Config.apiIndex,Config.getStudentKH,Config.getRememberCodeApp];
 }
 +(NSString*)getApiGoodsImgUpload{
     return [NSString stringWithFormat:@"%@/api/v1/stuff/upload",Config.apiIndex];

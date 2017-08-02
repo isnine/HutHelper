@@ -138,7 +138,6 @@
         goodsLab.font=[UIFont systemFontOfSize:SYReal(17)];
         [self.view addSubview:goodsLab];
     }
-    NSLog(@"%@",_handDic);
 }
 -(void)setFoot{
     //绘制底部背景
