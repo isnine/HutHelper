@@ -92,8 +92,9 @@
     if (!cell) {
         cell=[[[NSBundle mainBundle]loadNibNamed:@"HandTableViewCell" owner:self options:nil]lastObject];
     }else{
-        NSLog(@"被重用了%d",indexPath.section);
+        
     }
+    cell.tag=indexPath.section;
     cell.price1.text=[NSString stringWithFormat:@"¥%@",[self getprize:(short)(indexPath.section+1)*2-1]];
     cell.name1.text=[self getName:(short)(indexPath.section+1)*2-1];
     cell.time1.text=[self gettime:(short)(indexPath.section+1)*2-1];
@@ -106,11 +107,14 @@
         cell.name2.text=[self getName:(short)(indexPath.section+1)*2];
         cell.time2.text=[self gettime:(short)(indexPath.section+1)*2];
         cell.Button2.hidden=false;
+        cell.blackImg2.hidden=false;
+        cell.shadowblack2.hidden=false;
         cell.img2.contentMode =UIViewContentModeScaleAspectFill;
         cell.img2.clipsToBounds = YES;
         [cell.img2 sd_setImageWithURL:[NSURL URLWithString:[self getPhoto:(short)(indexPath.section+1)*2]]
                      placeholderImage:[UIImage imageNamed:@"load_img"]];
     }
+        cell.Hand_content=_Hand_content;
     return cell;
 }
 

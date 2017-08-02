@@ -17,9 +17,7 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    /**加载数据*/
-    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    _Hand_content=[defaults objectForKey:@"Hand"];
+
     // Initialization code
 }
 
@@ -39,16 +37,13 @@
     return [[[NSBundle mainBundle] loadNibNamed:@"HandTableViewCell" owner:nil options:nil]lastObject];
 }
 - (IBAction)Buuton1:(id)sender {
-    
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    NSString *Url_String=[NSString stringWithFormat:@"%@/%@/%@/%@",Config.getApiGoodsShow,Config.getStudentKH,Config.getRememberCodeApp,[self getid:(short)([self getIndexPath].section+1)*2-1]];
+    NSString *Url_String=[NSString stringWithFormat:@"%@/%@/%@/%@",Config.getApiGoodsShow,Config.getStudentKH,Config.getRememberCodeApp,[self getid:(short)(((UITableViewCell*)[[sender superview]superview]).tag+1)*2-1]];
     [APIRequest GET:Url_String parameters:nil success:^(id responseObject) {
              NSDictionary *Hand_All = [NSDictionary dictionaryWithDictionary:responseObject];
              NSString *Msg=[Hand_All objectForKey:@"msg"];
              if ([Msg isEqualToString:@"ok"]) {
                  NSDictionary *array               = [Hand_All objectForKey:@"data"];
-                 [defaults setObject:array forKey:@"Hand_Show"];
-                 [defaults synchronize];
                  //进入商品界面
                  HandShowViewController *handShow=[[HandShowViewController alloc]init];
                  handShow.handDic=array;
@@ -70,14 +65,12 @@
 }
 - (IBAction)Button2:(id)sender {
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    NSString *Url_String=[NSString stringWithFormat:@"%@/%@/%@/%@",Config.getApiGoodsShow,Config.getStudentKH,Config.getRememberCodeApp,[self getid:(short)([self getIndexPath].section+1)*2]];
+    NSString *Url_String=[NSString stringWithFormat:@"%@/%@/%@/%@",Config.getApiGoodsShow,Config.getStudentKH,Config.getRememberCodeApp,[self getid:(short)(((UITableViewCell*)[[sender superview]superview]).tag+1)*2]];
     [APIRequest GET:Url_String parameters:nil success:^(id responseObject) {
              NSDictionary *Hand_All = [NSDictionary dictionaryWithDictionary:responseObject];
              NSString *Msg=[Hand_All objectForKey:@"msg"];
              if ([Msg isEqualToString:@"ok"]) {
-                 NSArray *array    = [Hand_All objectForKey:@"data"];
-                 [defaults setObject:array forKey:@"Hand_Show"];
-                 [defaults synchronize];
+                 NSDictionary *array               = [Hand_All objectForKey:@"data"];
                  //进入商品界面
                  HandShowViewController *handShow=[[HandShowViewController alloc]init];
                  handShow.handDic=array;
@@ -95,6 +88,9 @@
 - (NSIndexPath *)getIndexPath
 {
     //IOS7 OR LATER AVALIABLE
+    
+    
+    
     UITableView *tableView = (UITableView *)self.superview.superview;
     return [tableView indexPathForCell:self];
 }
