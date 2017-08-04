@@ -51,17 +51,17 @@
     if ([Msg isEqualToString:@"ok"]) {
         [defaults setObject:username_text forKey:@"username"];
         HideAllHUD
-        [MBProgressHUD showSuccess:@"修改成功"];
+        [MBProgressHUD showSuccess:@"修改成功" toView:self.view];
           [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:([self.navigationController.viewControllers count] -3)] animated:YES];  //返回用户
     }
     else if ([Msg isEqualToString:@"令牌错误"]){
         HideAllHUD
-        [MBProgressHUD showError:@"登录过期，请重新登录"];
+        [MBProgressHUD showError:@"登录过期，请重新登录" toView:self.view];
         [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:([self.navigationController.viewControllers count] -3)] animated:YES];  //返回Home
     }
     else{
         HideAllHUD
-        [MBProgressHUD showError:@"网络错误"];
+        [MBProgressHUD showError:@"网络错误" toView:self.view];
     }
 
     

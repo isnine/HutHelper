@@ -308,32 +308,32 @@
                     else
                         [self getScoreData];
                     [self.tableView reloadData];
-                    [MBProgressHUD showSuccess:@"刷新成功"];
+                    [MBProgressHUD showSuccess:@"刷新成功" toView:self.view];
                     [self.tableView.mj_header endRefreshing];
                     HideAllHUD
                 }else{
-                    [MBProgressHUD showError:@"排名查询错误"];
+                    [MBProgressHUD showError:@"排名查询错误" toView:self.view];
                     [self.tableView.mj_header endRefreshing];
                     HideAllHUD
                 }
             } failure:^(NSError *error) {
-                [MBProgressHUD showError:@"网络超时"];
+                [MBProgressHUD showError:@"网络超时" toView:self.view];
                 [self.tableView.mj_header endRefreshing];
                 HideAllHUD
             }];
             
         }else if([msg isEqualToString:@"令牌错误"]){
-            [MBProgressHUD showError:@"登录过期,请重新登录"];
+            [MBProgressHUD showError:@"登录过期,请重新登录" toView:self.view];
             [self.tableView.mj_header endRefreshing];
             HideAllHUD
         }else{
-            [MBProgressHUD showError:msg];
+            [MBProgressHUD showError:msg toView:self.view];
             [self.tableView.mj_header endRefreshing];
             HideAllHUD
         }
         
     }failure:^(NSError *error){
-        [MBProgressHUD showError:@"网络超时"];
+        [MBProgressHUD showError:@"网络超时" toView:self.view];
         [self.tableView.mj_header endRefreshing];
         HideAllHUD
     }];

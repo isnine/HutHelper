@@ -145,10 +145,10 @@
             [tempAppDelegate.mainNavigationController pushViewController:hand animated:YES];
         }else{
             HideAllHUD
-            [MBProgressHUD showError:@"您没有发布的商品"];
+            [MBProgressHUD showError:@"您没有发布的商品" toView:self.view];
         }
     }failure:^(NSError *error) {
-        [MBProgressHUD showError:@"网络超时"];
+        [MBProgressHUD showError:@"网络超时" toView:self.view];
         HideAllHUD
     }];
 }
@@ -221,7 +221,7 @@
         [self.tableView reloadData];
         [self.tableView.mj_header endRefreshing];
     }failure:^(NSError *error) {
-        [MBProgressHUD showError:@"网络错误"];
+        [MBProgressHUD showError:@"网络错误"toView:self.view];
         [self.tableView.mj_header endRefreshing];
         HideAllHUD
     }];
@@ -246,13 +246,13 @@
             [self.tableView.mj_footer endRefreshing];
             self.tableView.mj_header.hidden = YES;
         }failure:^(NSError *error) {
-            [MBProgressHUD showError:@"网络错误"];
+            [MBProgressHUD showError:@"网络错误"toView:self.view];
             _num--;
             [self.tableView.mj_footer endRefreshing];
             HideAllHUD
         }];
     }else{
-        [MBProgressHUD showError:@"当前已是最大页数"];
+        [MBProgressHUD showError:@"当前已是最大页数"toView:self.view];
         [self.tableView.mj_footer endRefreshing];
     }
     

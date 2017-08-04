@@ -190,10 +190,10 @@
         [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
         NSDictionary *dict = @{@"username":@"Saup"};
         if ([_describeText.text isEqualToString:@"描述下你的商品..."]) {
-            [MBProgressHUD showError:@"必须输入商品描述"];
+            [MBProgressHUD showError:@"必须输入商品描述" toView:self.view];
         }
         else if(!([_Old.text isEqualToString:@"99成新"]||[_Old.text isEqualToString:@"95成新"]||[_Old.text isEqualToString:@"9成新"]||[_Old.text isEqualToString:@"8成新"]||[_Old.text isEqualToString:@"7成新及以下"])){
-            [MBProgressHUD showError:@"请按格式输入成色,比如:99成新"];
+            [MBProgressHUD showError:@"请按格式输入成色,比如:99成新"toView:self.view];
         }
         else{
             //formData: 专门用于拼接需要上传的数据,在此位置生成一个要上传的数据体
@@ -245,13 +245,13 @@
                                 if ([Msg isEqualToString:@"ok"])
                                 {
                                     HideAllHUD
-                                    [MBProgressHUD showSuccess:@"发布成功"];
+                                    [MBProgressHUD showSuccess:@"发布成功" toView:self.view];
                                     [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:([self.navigationController.viewControllers count] -2)] animated:YES];  //返回Home
                                     
                                 }
                                 else if ([Msg isEqualToString:@"令牌错误"]){
                                     HideAllHUD
-                                    [MBProgressHUD showError:@"登录过期，请重新登录"];
+                                    [MBProgressHUD showError:@"登录过期，请重新登录"toView:self.view];
                                     [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:([self.navigationController.viewControllers count] -2)] animated:YES];  //返回Home
                                 }
                                 else{
@@ -259,7 +259,7 @@
                                     [MBProgressHUD showError:Msg];}
                             } failure:^(NSURLSessionDataTask *task, NSError *error) {
                                 HideAllHUD
-                                [MBProgressHUD showError:@"网络错误"];
+                                [MBProgressHUD showError:@"网络错误"toView:self.view];
                             }];
                             
                             break;
@@ -268,17 +268,17 @@
                     }
                     else{
                         HideAllHUD
-                        [MBProgressHUD showError:@"发表失败"];
+                        [MBProgressHUD showError:@"发表失败"toView:self.view];
                     }
                 } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                     HideAllHUD
-                    [MBProgressHUD showError:@"网络错误"];
+                    [MBProgressHUD showError:@"网络错误"toView:self.view];
                 }];
             }
         }
     }
     else
-        [MBProgressHUD showError:@"必须添加图片"];
+        [MBProgressHUD showError:@"必须添加图片"toView:self.view];
     
 }
 

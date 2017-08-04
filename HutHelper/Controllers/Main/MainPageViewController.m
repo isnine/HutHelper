@@ -118,16 +118,16 @@ int class_error_;
                     [Config saveWidgetCourse:arrayCourse];
                 }else if([msg isEqualToString:@"令牌错误"]){
                     status=status+2;
-                    [MBProgressHUD showError:ERROR_MSG_INVALID];
+                    [MBProgressHUD showError:ERROR_MSG_INVALID toView:self.view];
                 }else{
                     status=status+2;
-                    [MBProgressHUD showError:msg];
+                    [MBProgressHUD showError:msg toView:self.view];
                 }
                 dispatch_group_leave(group);
             } failure:^(NSError *error) {
                 status=status+2;
                 dispatch_group_leave(group);
-                [MBProgressHUD showError:@"网络超时，平时课表查询失败"];
+                [MBProgressHUD showError:@"网络超时，平时课表查询失败" toView:self.view];
             }];
         });
         
@@ -142,15 +142,15 @@ int class_error_;
                     [Config saveWidgetCourseXp:arrayCourseXp];
                 }else if([msg isEqualToString:@"令牌错误"]){
                     status=status+1;
-                    [MBProgressHUD showError:ERROR_MSG_INVALID];
+                    [MBProgressHUD showError:ERROR_MSG_INVALID toView:self.view];
                 }else{
                     status=status+1;
-                    [MBProgressHUD showError:msg];
+                    [MBProgressHUD showError:msg toView:self.view];
                 }
                 dispatch_group_leave(group);
             } failure:^(NSError *error) {
                 status=status+1;
-                [MBProgressHUD showError:@"网络超时，实验课表查询失败"];
+                [MBProgressHUD showError:@"网络超时，实验课表查询失败" toView:self.view];
                 dispatch_group_leave(group);
             }];
         });
@@ -206,15 +206,15 @@ int class_error_;
                 if([msg isEqualToString:@"ok"]){
                     [Config saveScore:scoreData];
                 }else if([msg isEqualToString:@"令牌错误"]){
-                    [MBProgressHUD showError:ERROR_MSG_INVALID];
+                    [MBProgressHUD showError:ERROR_MSG_INVALID toView:self.view];
                     scoreStatus=scoreStatus+1;
                 }else{
-                    [MBProgressHUD showError:msg];
+                    [MBProgressHUD showError:msg toView:self.view];
                     scoreStatus=scoreStatus+1;
                 }
                 dispatch_group_leave(group);
             }failure:^(NSError *error){
-                [MBProgressHUD showError:@"网络超时"];
+                [MBProgressHUD showError:@"网络超时" toView:self.view];
                 scoreStatus=scoreStatus+1;
                 dispatch_group_leave(group);
             }];
@@ -227,16 +227,16 @@ int class_error_;
                 if ([responseObject[@"msg"]isEqualToString:@"ok"]) {
                     [Config saveScoreRank:responseObject];
                 }else if([responseObject[@"msg"] isEqualToString:@"令牌错误"]){
-                    [MBProgressHUD showError:ERROR_MSG_INVALID];
+                    [MBProgressHUD showError:ERROR_MSG_INVALID toView:self.view];
                     scoreStatus=scoreStatus+2;
                 }else{
                     scoreStatus=scoreStatus+2;
-                    [MBProgressHUD showError:@"排名查询错误"];
+                    [MBProgressHUD showError:@"排名查询错误" toView:self.view];
                 }
                 dispatch_group_leave(group);
             } failure:^(NSError *error) {
                 scoreStatus=scoreStatus+2;
-                [MBProgressHUD showError:@"网络超时"];
+                [MBProgressHUD showError:@"网络超时" toView:self.view];
                 dispatch_group_leave(group);
             }];
         });
@@ -273,14 +273,14 @@ int class_error_;
                 [Config saveLost:sayContent];
                 [Config pushViewController:@"LostShow"];
             }else{
-                [MBProgressHUD showError:@"数据错误"];
+                [MBProgressHUD showError:@"数据错误" toView:self.view];
             }
         }else{
-            [MBProgressHUD showError:responseObject[@"msg"]];
+            [MBProgressHUD showError:responseObject[@"msg"] toView:self.view];
         }
         HideAllHUD
     } failure:^(NSError *error) {
-        [MBProgressHUD showError:@"网络超时"];
+        [MBProgressHUD showError:@"网络超时" toView:self.view];
         HideAllHUD
     }];
 }  //失物招领

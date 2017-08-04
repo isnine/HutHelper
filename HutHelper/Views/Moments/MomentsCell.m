@@ -363,17 +363,21 @@
             if ([Msg isEqualToString:@"ok"])   {
                 _momentsTable.reload;
                 [MBProgressHUD hideHUDForView:self.contentView animated:YES];
-                [MBProgressHUD showSuccess:@"评论成功"];
+                [MBProgressHUD showSuccess:@"评论成功" toView:self];
             }
             else if ([Msg isEqualToString:@"令牌错误"]){
                 [MBProgressHUD hideHUDForView:self.contentView animated:YES];
-                [MBProgressHUD showError:@"登录过期，请重新登录"];}
+                [MBProgressHUD showError:@"登录过期，请重新登录" toView:self];
+                
+            }
             else{
                 [MBProgressHUD hideHUDForView:self.contentView animated:YES];
-                [MBProgressHUD showError:Msg];}
+                [MBProgressHUD showError:Msg toView:self];
+                
+            }
         } failure:^(NSURLSessionDataTask *task, NSError *error) {
             [MBProgressHUD hideHUDForView:self.contentView animated:YES];
-            [MBProgressHUD showError:@"网络错误"];
+            [MBProgressHUD showError:@"网络错误" toView:self];
         }];
     }];
 }
@@ -392,7 +396,7 @@
                  likesNumLabel.text=[NSString stringWithFormat:@"%d",[_data.likes intValue]-1];
                  _data.likes=[NSString stringWithFormat:@"%d",[_data.likes intValue]-1];
              }else if([[Say_All objectForKey:@"msg"]isEqualToString:@"令牌错误"]){
-                 [MBProgressHUD showError:@"登录过期，请重新登录"];
+                 [MBProgressHUD showError:@"登录过期，请重新登录" toView:self];
              }
         }failure:^(NSError *error) {
              
@@ -411,16 +415,16 @@
          success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
              NSDictionary *Say_All = [NSDictionary dictionaryWithDictionary:responseObject];
              if ([[Say_All objectForKey:@"msg"]isEqualToString:@"ok"]) {
-                 [MBProgressHUD showSuccess:@"删除成功"];
+                 [MBProgressHUD showSuccess:@"删除成功" toView:self];
                  _momentsTable.reload;
              }
              else{
-                 [MBProgressHUD showError:[Say_All objectForKey:@"msg"]];
+                 [MBProgressHUD showError:[Say_All objectForKey:@"msg"] toView:self];
              }
              
          } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
              
-             [MBProgressHUD showError:@"网络错误"];
+             [MBProgressHUD showError:@"网络错误" toView:self];
          }];
     
 }
@@ -429,16 +433,16 @@
    [APIRequest GET:Url_String parameters:nil success:^(id responseObject) {
              NSDictionary *Say_All = [NSDictionary dictionaryWithDictionary:responseObject];
              if ([[Say_All objectForKey:@"msg"]isEqualToString:@"ok"]) {
-                 [MBProgressHUD showSuccess:@"删除成功"];
+                 [MBProgressHUD showSuccess:@"删除成功" toView:self];
                  _momentsTable.reload;
              }
              else{
-                 [MBProgressHUD showError:[Say_All objectForKey:@"msg"]];
+                 [MBProgressHUD showError:[Say_All objectForKey:@"msg"] toView:self];
              }
              
          }failure:^(NSError *error) {
              
-             [MBProgressHUD showError:@"网络错误"];
+             [MBProgressHUD showError:@"网络错误" toView:self];
          }];
     
 }

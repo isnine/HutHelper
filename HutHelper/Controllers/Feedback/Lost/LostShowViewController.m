@@ -248,23 +248,23 @@
                  if (Say_content!=NULL) {
                      [defaults setObject:Say_content forKey:@"Lost"];
                      _lostData=[defaults objectForKey:@"Lost"];
-                     [MBProgressHUD showSuccess:@"刷新成功"];
+                     [MBProgressHUD showSuccess:@"刷新成功" toView:self.view];
                      HideAllHUD
                      [self.tableView.mj_header endRefreshing];
                      [self.tableView reloadData];
                  }
                  else{
                      [self.tableView.mj_header endRefreshing];
-                     [MBProgressHUD showError:@"网络错误"];
+                     [MBProgressHUD showError:@"网络错误" toView:self.view];
                  }
              }
              else{
                  [self.tableView.mj_header endRefreshing];
-                 [MBProgressHUD showError:[Say_All objectForKey:@"msg"]];
+                 [MBProgressHUD showError:[Say_All objectForKey:@"msg"] toView:self.view];
              }             HideAllHUD
          }failure:^(NSError *error) {
              [self.tableView.mj_header endRefreshing];
-             [MBProgressHUD showError:@"网络错误"];
+             [MBProgressHUD showError:@"网络错误" toView:self.view];
          }];
 }
 -(void)load{
@@ -282,7 +282,7 @@
                      if (_num<=[max_page intValue]) {//如果该页小于最大页数
                          [defaults setObject:Say_content forKey:@"Lost"];
                          _lostData=[defaults objectForKey:@"Lost"];
-                         [MBProgressHUD showSuccess:@"刷新成功"];
+                         [MBProgressHUD showSuccess:@"刷新成功" toView:self.view];
                          NSString *num_string=[NSString stringWithFormat:@"第%d页",_num];
                          self.navigationItem.title = num_string;
                          HideAllHUD
@@ -291,7 +291,7 @@
                          [self.tableView reloadData];}
                      else{
                          _num--;
-                         [MBProgressHUD showError:@"当前已是最大页数"];
+                         [MBProgressHUD showError:@"当前已是最大页数" toView:self.view];
                          [self.tableView.mj_footer endRefreshing];
                          
                      }
@@ -299,19 +299,19 @@
                  else{
                      _num--;
                      [self.tableView.mj_footer endRefreshing];
-                     [MBProgressHUD showError:@"网络错误"];
+                     [MBProgressHUD showError:@"网络错误" toView:self.view];
                  }
              }
              else{
                  _num--;
                  [self.tableView.mj_footer endRefreshing];
-                 [MBProgressHUD showError:[Say_All objectForKey:@"msg"]];
+                 [MBProgressHUD showError:[Say_All objectForKey:@"msg"] toView:self.view];
              }
              HideAllHUD
          }failure:^(NSError *error) {
              _num--;
              [self.tableView.mj_footer endRefreshing];
-             [MBProgressHUD showError:@"网络错误"];
+             [MBProgressHUD showError:@"网络错误" toView:self.view];
          }];
 }
 #pragma mark - "数据源"
@@ -447,15 +447,15 @@
                  }
                  else{
                      HideAllHUD
-                     [MBProgressHUD showError:@"您没有发布的失物"];
+                     [MBProgressHUD showError:@"您没有发布的失物" toView:self.view];
                  }
              }
              else{
                  HideAllHUD
-                 [MBProgressHUD showError:[Say_All objectForKey:[Say_All objectForKey:@"msg"]]];
+                 [MBProgressHUD showError:[Say_All objectForKey:[Say_All objectForKey:@"msg"]] toView:self.view];
              }             HideAllHUD
          }failure:^(NSError *error) {
-             [MBProgressHUD showError:@"网络超时"];
+             [MBProgressHUD showError:@"网络超时" toView:self.view];
              HideAllHUD
          }];
 }

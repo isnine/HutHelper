@@ -126,7 +126,7 @@
         [self.tableView.mj_header endRefreshing];
     }failure:^(NSError *error) {
         [self.tableView.mj_header endRefreshing];
-        [MBProgressHUD showError:@"网络错误"];
+        [MBProgressHUD showError:@"网络错误"toView:self.view];
     }];
 }
 #pragma mark - 空白状态代理

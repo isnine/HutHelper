@@ -135,7 +135,7 @@ NSData* data;
 -(void)postsucces{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     HideAllHUD
-    [MBProgressHUD showSuccess:@"上传成功"];
+    [MBProgressHUD showSuccess:@"上传成功" toView:self.view];
     [defaults setObject:data forKey:@"head_img"];
     [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:([self.navigationController.viewControllers count] -2)] animated:YES];  //返回Home
     
@@ -143,7 +143,7 @@ NSData* data;
 
 -(void)postfailure{
     HideAllHUD
-    [MBProgressHUD showError:@"上传失败"];
+    [MBProgressHUD showError:@"上传失败" toView:self.view];
 }
 
 #pragma mark -

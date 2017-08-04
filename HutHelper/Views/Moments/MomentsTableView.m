@@ -167,25 +167,25 @@
                      [self.mj_footer endRefreshing];
                      [self reloadData];
                      if (num==[sayMax intValue]) {
-                         [MBProgressHUD showSuccess:@"当前为最大页数"];
+                         [MBProgressHUD showSuccess:@"当前为最大页数" toView:self];
                          self.mj_footer.hidden = YES;
                      }
                      
                  }else{
                      [self.mj_footer endRefreshing];
-                     [MBProgressHUD showError:@"没有找到说说数据"];
+                     [MBProgressHUD showError:@"没有找到说说数据" toView:self];
                      num--;
                  }
              }
              else{
                  [self.mj_footer endRefreshing];
-                 [MBProgressHUD showError:[Say_All objectForKey:@"msg"]];
+                 [MBProgressHUD showError:[Say_All objectForKey:@"msg"] toView:self];
                  num--;
              }
              
          }failure:^(NSError *error) {
              [self.mj_footer endRefreshing];
-             [MBProgressHUD showError:@"网络错误"];
+             [MBProgressHUD showError:@"网络错误" toView:self];
              num--;
          }];
 }

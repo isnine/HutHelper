@@ -229,15 +229,15 @@ int datediff(int y1,int m1,int d1,int y2,int m2,int d2)
                 [self.tableView.mj_header endRefreshing];
             }
             else{
-                [MBProgressHUD showError:@"计划表上暂无考试"];
+                [MBProgressHUD showError:@"计划表上暂无考试" toView:self.view];
             }
         }
         else{
             
-            [MBProgressHUD showError:@"超时,显示本地数据"];
+            [MBProgressHUD showError:@"超时,显示本地数据" toView:self.view];
         }
     } failure:^(NSError *error) {
-        [MBProgressHUD showError:@"网络错误"];
+        [MBProgressHUD showError:@"网络错误" toView:self.view];
         [self.tableView.mj_header endRefreshing];
     }];
 }

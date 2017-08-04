@@ -131,16 +131,16 @@
                 [tempAppDelegate.mainNavigationController pushViewController:Say animated:YES];
             }else{
                 HideAllHUD
-                [MBProgressHUD showError:@"您没有发布的说说"];
+                [MBProgressHUD showError:@"您没有发布的说说" toView:self.view];
             }
         }
         else{
             HideAllHUD
-            [MBProgressHUD showError:[Say_All objectForKey:@"msg"]];
+            [MBProgressHUD showError:[Say_All objectForKey:@"msg"] toView:self.view];
         }
         HideAllHUD
     }failure:^(NSError *error) {
-        [MBProgressHUD showError:@"网络超时"];
+        [MBProgressHUD showError:@"网络超时" toView:self.view];
         HideAllHUD
     }];
 }

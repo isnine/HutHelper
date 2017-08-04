@@ -142,9 +142,7 @@
 {
     [self animateTextField: textField up: YES];
 }
-
 - (void)textFieldDidEndEditing:(UITextField *)textField
-
 {
     [self animateTextField: textField up: NO];
 }

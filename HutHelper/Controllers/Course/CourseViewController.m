@@ -687,7 +687,7 @@ NSString *show_xp;
                               NSArray *arrayCourseXp               = [ClassXP_All objectForKey:@"data"];
                               [Config saveWidgetCourseXp:arrayCourseXp];
                               HideAllHUD
-                              [MBProgressHUD showSuccess:@"刷新成功"];
+                              [MBProgressHUD showSuccess:@"刷新成功" toView:self.view];
                               if(now_xp==0){
                                   [self addCourse];
                               }
@@ -697,20 +697,20 @@ NSString *show_xp;
                           }
                       }failure:^(NSError *error) {
                           HideAllHUD
-                          [MBProgressHUD showError:@"网络错误，实验课表查询失败"];
+                          [MBProgressHUD showError:@"网络错误，实验课表查询失败" toView:self.view];
                       }];
              }
              else if([Msg isEqualToString:@"令牌错误"]){
                  HideAllHUD
-                 [MBProgressHUD showError:@"登录过期,请重新登录"];
+                 [MBProgressHUD showError:@"登录过期,请重新登录" toView:self.view];
              }
              else{
                  HideAllHUD
-                 [MBProgressHUD showError:@"查询失败"];
+                 [MBProgressHUD showError:@"查询失败" toView:self.view];
              }
          }failure:^(NSError *error) {
              HideAllHUD
-             [MBProgressHUD showError:@"网络错误，平时课表查询失败"];
+             [MBProgressHUD showError:@"网络错误，平时课表查询失败" toView:self.view];
          }];
     
     

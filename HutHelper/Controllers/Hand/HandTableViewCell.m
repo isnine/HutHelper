@@ -51,13 +51,13 @@
                  [tempAppDelegate.mainNavigationController pushViewController:handShow animated:YES];
              }
              else if ([Msg isEqualToString:@"令牌错误"]){
-                 [MBProgressHUD showError:@"登录过期,请重新登录"];
+                 [MBProgressHUD showError:@"登录过期,请重新登录"toView:self];
              }
              else {
-                 [MBProgressHUD showError:@"查询失败"];
+                 [MBProgressHUD showError:@"查询失败"toView:self];
              }
         }failure:^(NSError *error) {
-             [MBProgressHUD showError:@"网络错误"];
+             [MBProgressHUD showError:@"网络错误"toView:self];
          }];
     
     
@@ -78,10 +78,10 @@
                  [tempAppDelegate.mainNavigationController pushViewController:handShow animated:YES];
              }
              else{
-                 [MBProgressHUD showError:@"查询失败"];
+                 [MBProgressHUD showError:@"查询失败"toView:self];
              }
          }failure:^(NSError *error) {
-             [MBProgressHUD showError:@"网络错误"];
+             [MBProgressHUD showError:@"网络错误"toView:self];
          }];
 }
 

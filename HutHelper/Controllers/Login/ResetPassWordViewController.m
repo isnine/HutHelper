@@ -57,7 +57,7 @@
 {
     //隐藏显示
     HideAllHUD
-    [MBProgressHUD showError:@"网络错误"];
+    [MBProgressHUD showError:@"网络错误" toView:self.view];
 }
 
 

@@ -108,11 +108,11 @@
         }
         else{
             [self.tableView.mj_header endRefreshing];
-            [MBProgressHUD showError:msg];
+            [MBProgressHUD showError:msg toView:self.view];
         }
     } failure:^(NSError *error) {
         [self.tableView.mj_header endRefreshing];
-        [MBProgressHUD showError:@"网络超时，实验课表查询失败"];
+        [MBProgressHUD showError:@"网络超时，实验课表查询失败"toView:self.view];
     }];
 }
 #pragma mark - Table view data source
