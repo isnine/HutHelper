@@ -32,6 +32,7 @@
 #import "VedioPlayViewController.h"
 #import <RongIMKit/RongIMKit.h>
 #import "PointView.h"
+#import "LostViewController.h"
 #define vBackBarButtonItemName  @"backArrow.png"    //导航条返回默认图片名
 #define ERROR_MSG_INVALID @"登录过期,请重新登录"
 @interface MainPageViewController ()
@@ -193,11 +194,11 @@ int class_error_;
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     //如果没有缓存数据
     if((![defaults objectForKey:@"Score"])||(![defaults objectForKey:@"ScoreRank"])){
-        [MBProgressHUD showMessage:@"查询中" toView:self.view];
         dispatch_group_t group = dispatch_group_create();
         dispatch_queue_t q = dispatch_get_global_queue(0, 0);
         __block ScoreStatus *scoreStatus=ScoreOK;
         //分数队列请求
+        
         dispatch_group_async(group, q, ^{
             dispatch_group_enter(group);
             [APIRequest GET:Config.getApiScores parameters:nil timeout:8.0 success:^(id responseObject){
@@ -213,12 +214,13 @@ int class_error_;
                     scoreStatus=scoreStatus+1;
                 }
                 dispatch_group_leave(group);
+                
             }failure:^(NSError *error){
                 [MBProgressHUD showError:@"网络超时" toView:self.view];
                 scoreStatus=scoreStatus+1;
                 dispatch_group_leave(group);
             }];
-         });
+        });
         
         //排名队列请求
         dispatch_group_async(group, q, ^{
@@ -234,6 +236,7 @@ int class_error_;
                     [MBProgressHUD showError:@"排名查询错误" toView:self.view];
                 }
                 dispatch_group_leave(group);
+               
             } failure:^(NSError *error) {
                 scoreStatus=scoreStatus+2;
                 [MBProgressHUD showError:@"网络超时" toView:self.view];
@@ -242,12 +245,13 @@ int class_error_;
         });
         
         //两个队列请求完毕
-         dispatch_group_notify(group, dispatch_get_main_queue(), ^{
-             if (scoreStatus==ScoreOK) {
-                 [Config pushViewController:@"ScoreShow"];
-             }
-              HideAllHUD
-      });
+        dispatch_group_notify(group, dispatch_get_main_queue(), ^{
+            if (scoreStatus==ScoreOK) {
+                [Config pushViewController:@"ScoreShow"];
+            }
+            
+             HideAllHUD
+        });
     }else{
         [Config pushViewController:@"ScoreShow"];
         
@@ -264,25 +268,9 @@ int class_error_;
     [Config pushViewController:@"Day"];
 }  //校历
 - (IBAction)Lost:(id)sender {
-    [Config setNoSharedCache];
-    [MBProgressHUD showMessage:@"加载中" toView:self.view];
-    [APIRequest GET:[Config getApiLost:1] parameters:nil success:^(id responseObject) {
-        if ([responseObject[@"msg"]isEqualToString:@"ok"]) {
-            NSArray *sayContent=responseObject[@"data"][@"posts"];//加载该页数据
-            if (sayContent) {
-                [Config saveLost:sayContent];
-                [Config pushViewController:@"LostShow"];
-            }else{
-                [MBProgressHUD showError:@"数据错误" toView:self.view];
-            }
-        }else{
-            [MBProgressHUD showError:responseObject[@"msg"] toView:self.view];
-        }
-        HideAllHUD
-    } failure:^(NSError *error) {
-        [MBProgressHUD showError:@"网络超时" toView:self.view];
-        HideAllHUD
-    }];
+    LostViewController *lostViewController=[[LostViewController alloc]init];
+    [self.navigationController pushViewController:lostViewController animated:YES];
+    
 }  //失物招领
 - (IBAction)Notice:(id)sender {
     [Config pushViewController:@"Notice"];

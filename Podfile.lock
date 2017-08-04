@@ -56,6 +56,7 @@ PODS:
     - UMengUShare/Core
   - UMengUShare/UI (6.4.5):
     - UMengUShare/Core
+  - XRWaterfallLayout (0.1.2)
   - YCXMenu (0.0.11)
 
 DEPENDENCIES:
@@ -77,6 +78,7 @@ DEPENDENCIES:
   - UMengUShare/Social/ReducedSina
   - UMengUShare/Social/ReducedWeChat
   - UMengUShare/UI
+  - XRWaterfallLayout
   - YCXMenu (~> 0.0.11)
 
 SPEC CHECKSUMS:
@@ -96,8 +98,9 @@ SPEC CHECKSUMS:
   UITableView+FDTemplateLayoutCell: 5c949b4a5059c404b442926c0e80f81d10a2d66f
   UMengAnalytics-NO-IDFA: 16666e32edce5be44ae5b14aaaa7f3582e09d6ab
   UMengUShare: a5711c54e640b04e3048e931d2b88d50f9cfa55c
+  XRWaterfallLayout: 8d615c21e7be46dc220e0ece45697fdd4bfa0f3b
   YCXMenu: 6003bcd20d8ac72e3eb3c442c97ed21948c6dc1f
 
-PODFILE CHECKSUM: 33034b8f18f7092b6f5b635bd36b01c18101ce45
+PODFILE CHECKSUM: 492f6b0c8ed89ffd0408d2af01e254f434b965ee
 
 COCOAPODS: 1.2.1

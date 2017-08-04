@@ -48,6 +48,7 @@
 +(NSDictionary*)getSayLike;
 +(NSArray*)getHand;
 +(NSArray*)getOtherHand;
++(NSArray*)getLost;
 +(NSData*)getExam;
 +(NSDictionary*)getScoreRank;
 +(NSArray*)getCalendar;

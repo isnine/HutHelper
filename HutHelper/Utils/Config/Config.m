@@ -148,7 +148,7 @@ static int Is ;
 }
 +(void)saveLost:(NSArray*)lostData{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    [defaults setObject:lostData forKey:@"Lost"];
+    [defaults setObject:lostData forKey:@"kLost"];
     [defaults synchronize];
 }
 +(void)saveNowWeek:(int)nowWeek{
@@ -199,6 +199,10 @@ static int Is ;
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     return [defaults objectForKey:@"Say"];
  }
++(NSArray*)getLost{
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    return [defaults objectForKey:@"kLost"];
+}
 +(NSDictionary*)getSayLike{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     return [defaults objectForKey:@"SayLikes"];
