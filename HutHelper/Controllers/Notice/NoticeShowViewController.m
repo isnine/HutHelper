@@ -7,7 +7,7 @@
 //
 
 #import "NoticeShowViewController.h"
-
+#import "UINavigationBar+Awesome.h"
 @interface NoticeShowViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *show;
 @property (nonatomic,copy) NSDictionary      *noticeShowData;
@@ -23,7 +23,23 @@
     [self setTitle];
     [self showOther];
 }
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:0];
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
 
+    /**让黑线消失的方法*/
+    self.navigationController.navigationBar.shadowImage=[UIImage new];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+}
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:0/255.0 green:224/255.0 blue:208/255.0 alpha:1];
+    [self.navigationController.navigationBar lt_reset];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -60,7 +76,7 @@
     self.navigationItem.title = @"通知详情";
     UIColor *greyColor        = [UIColor colorWithRed:239/255.0 green:239/255.0 blue:239/255.0 alpha:1];
     self.view.backgroundColor = greyColor;
-    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor]}];
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
 }
 
 @end

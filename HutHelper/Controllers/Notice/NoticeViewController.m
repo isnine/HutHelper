@@ -48,17 +48,14 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath*)indexPath
 {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    [defaults setObject:_noticeData[indexPath.section] forKey:@"NoticeShow"];
-    [Config pushViewController:@"NoticeShow"];
+
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 80;
+    return 190;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 10;
+    return 1;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
@@ -71,6 +68,9 @@
     cell.Title.text=[self getTitle:(short)indexPath.section];
     cell.Time.text=[self getTime:(short)indexPath.section];
     cell.Body.text=[self getBody:(short)indexPath.section];
+    cell.tag=indexPath.section;
+    //cell不可被选中
+   [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     return cell;
 }
 #pragma mark - 数据源

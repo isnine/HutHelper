@@ -12,5 +12,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *Title;
 @property (weak, nonatomic) IBOutlet UILabel *Time;
 @property (weak, nonatomic) IBOutlet UILabel *Body;
+@property (weak, nonatomic) IBOutlet UIButton *showBtn;
 +(instancetype)tableViewCell;
 @end

@@ -7,11 +7,13 @@
 //
 
 #import "NoticeTableViewCell.h"
-
+#import "NoticeShowViewController.h"
+#import "AppDelegate.h"
 @implementation NoticeTableViewCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    self.showBtn.backgroundColor=RGB(226, 249, 249, 1);
     // Initialization code
 }
 
@@ -22,6 +24,14 @@
 }
 +(instancetype)tableViewCell{
     return [[[NSBundle mainBundle]loadNibNamed:@"NoticeTableViewCell" owner:nil options:nil]lastObject];
+}
+- (IBAction)showBtn:(id)sender {
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    NSArray *noticeData=[defaults objectForKey:@"Notice"];
+    [defaults setObject:noticeData[((UITableViewCell*)[[sender superview]superview]).tag] forKey:@"NoticeShow"];
+    
+    [Config pushViewController:@"NoticeShow"];
+    
 }
 
 @end
