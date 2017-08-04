@@ -76,6 +76,11 @@ extern NSString *const  UMSPlatformNameAlipaySession;
 extern NSString *const  UMSPlatformNameQQ;
 
 /**
+ Tencent Tim
+ */
+extern NSString *const  UMSPlatformNameTim;
+
+/**
  Facebook
  */
 extern NSString *const  UMSPlatformNameFacebook;
@@ -334,6 +339,7 @@ typedef NS_ENUM(NSInteger,UMSocialPlatformType)
     UMSocialPlatformType_DropBox            = 32,//dropbox
     UMSocialPlatformType_VKontakte          = 33,//vkontakte
     UMSocialPlatformType_FaceBookMessenger  = 34,//FaceBookMessenger
+    UMSocialPlatformType_Tim                = 35,// Tencent TIM
     
     UMSocialPlatformType_Predefine_end      = 999,
     

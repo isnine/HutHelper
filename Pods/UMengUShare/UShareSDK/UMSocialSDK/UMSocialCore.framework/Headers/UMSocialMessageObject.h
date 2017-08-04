@@ -96,11 +96,10 @@
  *
  */
 + (UMShareImageObject *)shareObjectWithTitle:(NSString *)title
-                     descr:(NSString *)descr
-                 thumImage:(id)thumImage;
+                                       descr:(NSString *)descr
+                                   thumImage:(id)thumImage;
 
 @end
-
 
 @interface UMShareMusicObject : UMShareObject
 
@@ -129,8 +128,8 @@
  *
  */
 + (UMShareMusicObject *)shareObjectWithTitle:(NSString *)title
-                     descr:(NSString *)descr
-                 thumImage:(id)thumImage;
+                                       descr:(NSString *)descr
+                                   thumImage:(id)thumImage;
 
 @end
 
@@ -394,4 +393,33 @@
  */
 @property (nonatomic, retain) NSData    *fileData;
 
+
 @end
+
+
+#pragma mark - UMMiniProgramObject
+
+/*! @brief 多媒体消息中包含 分享微信小程序的数据对象
+ *
+ * @see UMShareObject
+ */
+@interface UMShareMiniProgramObject : UMShareObject
+
+/**
+ 低版本微信网页链接
+ */
+@property (nonatomic, strong) NSString *webpageUrl;
+
+/**
+ 小程序username
+ */
+@property (nonatomic, strong) NSString *userName;
+
+/**
+ 小程序页面的路径
+ */
+@property (nonatomic, strong) NSString *path;
+
+@end
+
+

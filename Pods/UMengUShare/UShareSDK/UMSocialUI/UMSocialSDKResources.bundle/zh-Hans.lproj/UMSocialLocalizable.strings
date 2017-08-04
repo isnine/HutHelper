@@ -24,6 +24,9 @@
 "oauth_error_message" = "服务器繁忙，授权失败，请稍后再试";
 "oauth_error_not_approved" = "由于没有在开放平台添加此账号作为测试账号或者没有通过审核等原因授权失败";
 
+"umsocial_shareUI_Title" = "请选择分享平台";
+"umsocial_shareUI_CancelControlText" = "取消分享";
+
 "shareQQ_error" = "抱歉";
 "shareQQ_notInstall" = "没有安装手机QQ客户端";
 "shareQQ_openFail" = "打开手机QQ失败";

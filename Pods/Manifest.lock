@@ -36,25 +36,25 @@ PODS:
   - MBProgressHUD (1.0.0)
   - MJRefresh (3.1.12)
   - Reachability (3.2)
-  - RongCloudIM/IMKit (2.8.12):
+  - RongCloudIM/IMKit (2.8.14):
     - RongCloudIM/IMLib
-  - RongCloudIM/IMLib (2.8.12)
+  - RongCloudIM/IMLib (2.8.14)
   - SDWebImage (3.8.2):
     - SDWebImage/Core (= 3.8.2)
   - SDWebImage/Core (3.8.2)
-  - TZImagePickerController (1.7.8)
-  - UITableView+FDTemplateLayoutCell (1.4)
+  - TZImagePickerController (1.8.7)
+  - UITableView+FDTemplateLayoutCell (1.6)
   - UMengAnalytics-NO-IDFA (4.2.5)
-  - UMengUShare/Core (6.4.1):
+  - UMengUShare/Core (6.4.5):
     - UMengUShare/Network
-  - UMengUShare/Network (6.4.1)
-  - UMengUShare/Social/ReducedQQ (6.4.1):
+  - UMengUShare/Network (6.4.5)
+  - UMengUShare/Social/ReducedQQ (6.4.5):
     - UMengUShare/Core
-  - UMengUShare/Social/ReducedSina (6.4.1):
+  - UMengUShare/Social/ReducedSina (6.4.5):
     - UMengUShare/Core
-  - UMengUShare/Social/ReducedWeChat (6.4.1):
+  - UMengUShare/Social/ReducedWeChat (6.4.5):
     - UMengUShare/Core
-  - UMengUShare/UI (6.4.1):
+  - UMengUShare/UI (6.4.5):
     - UMengUShare/Core
   - YCXMenu (0.0.11)
 
@@ -90,12 +90,12 @@ SPEC CHECKSUMS:
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
-  RongCloudIM: 13599772038afa20dc62aff70c620b9305e6ac96
+  RongCloudIM: 04334f9285db8bc5e2f69bda0e3ce5431a6bec72
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
-  TZImagePickerController: 87a138ae5d585225aaa6c8abe2cface0f0ad19dd
-  UITableView+FDTemplateLayoutCell: 234e1582bcc4e18461af91155123bb96538ed030
+  TZImagePickerController: 79fa5712237cf6bdc63311cf65d7e0aa369b2b0a
+  UITableView+FDTemplateLayoutCell: 5c949b4a5059c404b442926c0e80f81d10a2d66f
   UMengAnalytics-NO-IDFA: 16666e32edce5be44ae5b14aaaa7f3582e09d6ab
-  UMengUShare: 7756e2e46ceba04e3000fb2c9b1d3f61784ca2ff
+  UMengUShare: a5711c54e640b04e3048e931d2b88d50f9cfa55c
   YCXMenu: 6003bcd20d8ac72e3eb3c442c97ed21948c6dc1f
 
 PODFILE CHECKSUM: 33034b8f18f7092b6f5b635bd36b01c18101ce45

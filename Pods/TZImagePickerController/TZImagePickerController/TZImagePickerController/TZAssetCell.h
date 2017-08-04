@@ -25,8 +25,9 @@ typedef enum : NSUInteger {
 @property (nonatomic, copy) void (^didSelectPhotoBlock)(BOOL);
 @property (nonatomic, assign) TZAssetCellType type;
 @property (nonatomic, assign) BOOL allowPickingGif;
+@property (nonatomic, assign) BOOL allowPickingMultipleVideo;
 @property (nonatomic, copy) NSString *representedAssetIdentifier;
-@property (nonatomic, assign) PHImageRequestID imageRequestID;
+@property (nonatomic, assign) int32_t imageRequestID;
 
 @property (nonatomic, copy) NSString *photoSelImageName;
 @property (nonatomic, copy) NSString *photoDefImageName;

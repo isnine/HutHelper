@@ -160,7 +160,8 @@
  *  @param platformType 平台类型 @see UMSocialPlatformType
  *
  *  @return YES 代表安装，NO 代表未安装
- *  @note 在判断QQ空间的App的时候，QQApi判断会出问题
+ *  @note 调用前请检查是否配置好平台相关白名单: http://dev.umeng.com/social/ios/quick-integration#1_3 
+ *  在判断QQ空间的App的时候，QQApi判断会出问题
  */
 -(BOOL) isInstall:(UMSocialPlatformType)platformType;
 
