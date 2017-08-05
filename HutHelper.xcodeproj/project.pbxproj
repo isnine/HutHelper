@@ -76,6 +76,7 @@
 		3A796C541E534C1B00794043 /* UserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A796C111E534C1B00794043 /* UserViewController.m */; };
 		3A796C6C1E534DAE00794043 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A796C681E534DAE00794043 /* Launch Screen.storyboard */; };
 		3A796C6D1E534DAE00794043 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A796C691E534DAE00794043 /* Main.storyboard */; };
+		3A7F638F1F35588700991DAC /* LostShowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A7F638E1F35588700991DAC /* LostShowViewController.m */; };
 		3A8BACF91DDDBD71001C78B8 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A8BACF81DDDBD71001C78B8 /* libsqlite3.tbd */; };
 		3A8BACFD1DDDBDDB001C78B8 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A8BACFC1DDDBDDB001C78B8 /* ImageIO.framework */; };
 		3A96DEE51E94B384006C2CC8 /* VedioPlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A96DEE41E94B384006C2CC8 /* VedioPlayViewController.m */; };
@@ -321,6 +322,8 @@
 		3A796C681E534DAE00794043 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		3A796C691E534DAE00794043 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		3A7D3CA91DB0A6CB00355E7A /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
+		3A7F638D1F35588700991DAC /* LostShowViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LostShowViewController.h; sourceTree = "<group>"; };
+		3A7F638E1F35588700991DAC /* LostShowViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LostShowViewController.m; sourceTree = "<group>"; };
 		3A85677B1DA908AA00EBD44A /* HutHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HutHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A8BACF61DDDBD5D001C78B8 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		3A8BACF81DDDBD71001C78B8 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
@@ -611,6 +614,8 @@
 				3A4D30061E8D28AA00901E3B /* LostAddViewController.m */,
 				3AE8004E1F349A6700D1BAC0 /* LostViewController.h */,
 				3AE8004F1F349A6700D1BAC0 /* LostViewController.m */,
+				3A7F638D1F35588700991DAC /* LostShowViewController.h */,
+				3A7F638E1F35588700991DAC /* LostShowViewController.m */,
 			);
 			name = Lost;
 			path = Feedback/Lost;
@@ -1598,6 +1603,7 @@
 				3A796C4E1E534C1B00794043 /* ScoreDataViewController.m in Sources */,
 				3AE52B871EA8F0EB00705269 /* CourseXpTableViewCell.m in Sources */,
 				3A31E1E51E6BC5040056565A /* MomentsViewController.m in Sources */,
+				3A7F638F1F35588700991DAC /* LostShowViewController.m in Sources */,
 				3A98CB5D1E7CF7AA00CABD0D /* CommentsModel.m in Sources */,
 				3A796C1F1E534C1B00794043 /* CourseViewController.m in Sources */,
 				3A532CCD1E910C13003CD5A8 /* UIWindow+CurrentViewController.m in Sources */,

@@ -17,12 +17,14 @@
     if (self) {
         self.content       = dic[@"content"];
         self.tit         = dic[@"tit"];
+        self.created_on            = dic[@"created_on"];
         self.time            = dic[@"time"];
         self.locate            = dic[@"locate"];
         self.phone       = dic[@"phone"];
         self.username              = dic[@"username"];
         self.user_id   = dic[@"user_id"];
          self.pics             = dic[@"pics"];
+        self.blackColor=arc4random() % 4;
         /**计算图片高度并加入*/
         if (self.pics.count==1||self.pics.count==2) {
             self.photoHeight=SYReal(75);

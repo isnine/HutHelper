@@ -17,6 +17,8 @@
 /**发布人*/
 @property(nonatomic,copy)NSString *username;
 /**发布时间*/
+@property(nonatomic,copy)NSString *created_on;
+/**拾取时间*/
 @property(nonatomic,copy)NSString *time;
 /**拾取地点*/
 @property(nonatomic,copy)NSString *locate;
@@ -27,6 +29,8 @@
 ///说说的小图
 @property(nonatomic,copy)NSMutableArray *pics;
 
+///背景颜色
+@property(nonatomic,assign)NSInteger blackColor;
 ///文本高度
 @property(nonatomic,assign)double textHeight;
 ///文本宽度

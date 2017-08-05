@@ -30,7 +30,7 @@
     //背景
     if (!blackView) {
         blackView = [[UIImageView alloc]initWithFrame:self.bounds];
-        blackView.backgroundColor=[self randomColor];
+        blackView.backgroundColor=[self randomColor:_lostModel.blackColor];
         blackView.layer.masksToBounds = YES; //没这句话它圆不起来
         blackView.layer.cornerRadius = 5.0; //设置图片圆角的尺度
         blackView.userInteractionEnabled=NO;
@@ -100,7 +100,7 @@
         timeLabel=[[UILabel alloc]initWithFrame:CGRectMake(SYReal(110), Y+SYReal(85), SYReal(175), SYReal(15))];
         timeLabel.font=[UIFont systemFontOfSize:11];
         timeLabel.textColor=[UIColor whiteColor];
-        timeLabel.text=[_lostModel.time substringWithRange:NSMakeRange(0,10)];
+        timeLabel.text=[_lostModel.created_on substringWithRange:NSMakeRange(0,10)];
         [self addSubview:timeLabel];
     }
 
@@ -111,8 +111,8 @@
     [XWScanImage scanBigImageWithImageView:clickedImageView];
 }
 
--(UIColor*)randomColor{
-    switch (arc4random() % 4) {
+-(UIColor*)randomColor:(NSInteger)colors{
+    switch (colors) {
         case 0:
             return RGB(176, 194, 225, 1);
             break;

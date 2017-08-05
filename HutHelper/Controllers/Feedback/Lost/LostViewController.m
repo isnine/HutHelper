@@ -16,7 +16,7 @@
 #import "UIScrollView+EmptyDataSet.h"
 #import "YCXMenuItem.h"
 #import "YCXMenu.h"
-
+#import "LostShowViewController.h"
 @interface LostViewController ()<UICollectionViewDataSource, JRWaterFallLayoutDelegate,DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic,copy) NSMutableArray      *lostData;
@@ -87,6 +87,7 @@
                 [self reloadData:lostDataPostArray];
                 [self.collectionView.mj_header endRefreshing];
                 [self.collectionView reloadData];
+                 self.collectionView.mj_header.hidden = YES;
             }else{
                 [self.collectionView.mj_header endRefreshing];
                 [MBProgressHUD showError:@"网络错误" toView:self.view];
@@ -133,7 +134,7 @@
         Lost *lostModel=[[Lost alloc]initWithDic:eachDic];
         [self.lostArray addObject:lostModel];
     }
-    NSLog(@"%@",_lostArray);
+ 
 }
 -(void)loadData:(NSArray*)JSONArray{
     for (NSDictionary *eachDic in JSONArray) {
@@ -168,7 +169,10 @@
 {
     CGPoint point = [tap locationInView:self.collectionView];
     NSIndexPath * indexPath = [self.collectionView indexPathForItemAtPoint:point];
-    NSLog(@"%ld",(long)indexPath.item);
+    LostShowViewController *lostShowViewController=[[LostShowViewController alloc]init];
+    Lost *lost=self.lostArray[indexPath.item];
+    lostShowViewController.lostModel=lost;
+    [self.navigationController pushViewController:lostShowViewController animated:YES];
 }
 - (CGFloat)waterFallLayout:(JRWaterFallLayout *)waterFallLayout heightForItemAtIndex:(NSUInteger)index width:(CGFloat)width
 {
