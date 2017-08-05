@@ -2,10 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>获得当前地理位置</string>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>获得当前地理位置</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
@@ -68,7 +64,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>47</string>
+	<string>170805</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>wechat</string>
@@ -304,6 +300,10 @@
 	</dict>
 	<key>NSCameraUsageDescription</key>
 	<string>我们需要您同意才能使用相机</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>获得当前地理位置</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>获得当前地理位置</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>我们需要您同意才能使用麦克风</string>
 	<key>NSPhotoLibraryUsageDescription</key>

@@ -57,10 +57,19 @@
          self.navigationItem.title=@"我的失物";
         [self.collectionView reloadData];
     }else{
-        //下拉刷新
-        self.collectionView.mj_header =  [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(reload)];
-        self.collectionView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loads)];
+        // 隐藏时间的下拉刷新
+        MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector((reload))];
+        self.collectionView.mj_header = header;
+        header.lastUpdatedTimeLabel.hidden = YES;
+        MJRefreshAutoNormalFooter *footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loads)];
+        footer.stateLabel.hidden = YES;
+        self.collectionView.mj_footer = footer;
         [self.collectionView.mj_header beginRefreshing];
+        //MJRefresh适配iOS11
+        if (@available(iOS 11.0, *)) {
+            self.collectionView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+            self.collectionView.contentInset = UIEdgeInsetsMake(64, 0, 0, 0);
+        }
         //按钮
         UIView *rightButtonView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 50)];
         UIButton *mainAndSearchBtn = [[UIButton alloc] initWithFrame:CGRectMake(70, 0, 50, 50)];
@@ -69,6 +78,7 @@
         [mainAndSearchBtn addTarget:self action:@selector(menu) forControlEvents:UIControlEventTouchUpInside];
         UIBarButtonItem *rightCunstomButtonView = [[UIBarButtonItem alloc] initWithCustomView:rightButtonView];
         self.navigationItem.rightBarButtonItem = rightCunstomButtonView;
+
     }
     //空白数据代理
     self.collectionView.emptyDataSetSource = self;

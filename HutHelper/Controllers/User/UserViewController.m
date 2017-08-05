@@ -30,15 +30,14 @@ UIImage* img ;
 - (void)viewDidLoad {
     [super viewDidLoad];
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    //    NSString *path_document = NSHomeDirectory();
-    //    NSString *imagePath = [path_document stringByAppendingString:@"/img/pic.jpg"];//把图片直接保存到指定的路径
-    //    UIImage *getimage2 = [UIImage imageWithContentsOfFile:imagePath];
-    //
+
+    
     NSDictionary *User_Data=[defaults objectForKey:@"User"];
 
     self.headerView=[[JSHeaderView alloc] initWithImage:[self getImg]];
     self.navigationItem.titleView = self.headerView;
-    
+    //MJRefresh适配iOS11
+
     [self.headerView reloadSizeWithScrollView:self.tableView];
     [self.headerView handleClickActionWithBlock:^{
         [self getImageFromIpc];
@@ -49,6 +48,7 @@ UIImage* img ;
     UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     self.navigationItem.backBarButtonItem = item;
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+
 }
 - (void)getImageFromIpc
 {

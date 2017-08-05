@@ -28,6 +28,20 @@
 #else
 # define NSLog(...)
 #endif
+
+//判断是在iOS11之前
+#ifndef kiOS11Before
+#define kiOS11Before (kSystemVersion < 11)
+#endif
+//声明tableView的位置 添加下面代码
+#ifdef kiOS11Before
+#else
+_tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+_tableView.contentInset = UIEdgeInsetsMake(64, 0, 49, 0);
+_tableView.scrollIndicatorInsets = _tableView.contentInset;
+#endif
+
+
 /**AppKey*/
 #define APPKEY_UMESSAGE @"57fe13d867e58e0e59000ca1"
 #define APPKEY_QQ_SECRET @"y7n6BRLtnH9mrFT3"

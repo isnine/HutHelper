@@ -45,8 +45,20 @@
     self.emptyDataSetDelegate = self;
     self.tableFooterView = [UIView new];
     
-    self.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(reload)];
+    MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector((reload))];
+    self.mj_header = header;
+    // 设置自动切换透明度(在导航栏下面自动隐藏)
+    header.automaticallyChangeAlpha = YES;
+    // 隐藏时间
+    header.lastUpdatedTimeLabel.hidden = YES;
+    // 马上进入刷新状态
     self.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(load)];
+    //MJRefresh适配iOS11
+    if (@available(iOS 11.0, *)) {
+        self.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+        self.contentInset = UIEdgeInsetsMake(64, 0, 0, 0);
+    }
+    
     return self;
 }
 -(void)HiddenMJ{

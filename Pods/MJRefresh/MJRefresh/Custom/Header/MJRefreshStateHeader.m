@@ -42,6 +42,7 @@
     if (!_lastUpdatedTimeLabel) {
         [self addSubview:_lastUpdatedTimeLabel = [UILabel mj_label]];
     }
+  
     return _lastUpdatedTimeLabel;
 }
 

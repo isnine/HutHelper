@@ -49,9 +49,18 @@
         self.tableView.tableFooterView = [UIView new];
         //下拉刷新
         self.navigationItem.title=@"二手市场";
-        self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(reload)];
+        MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector((reload))];
+        self.tableView.mj_header = header;
+        // 隐藏时间
+        header.lastUpdatedTimeLabel.hidden = YES;
         self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(load)];
         [self.tableView.mj_header beginRefreshing];
+        //MJRefresh适配iOS11
+        if (@available(iOS 11.0, *)) {
+            self.tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+            self.tableView.contentInset = UIEdgeInsetsMake(64, 0, 0, 0);
+        }
+        
     }else{
         [self reloadData:_myHandArray];
         //[self.tableView reloadData];

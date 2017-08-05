@@ -15,7 +15,7 @@
 + (void)GET:(NSString *)URLString parameters:(id)parameters success:(void (^)(id))success failure:(void (^)(NSError *))failure
 {
     [Config setNoSharedCache];
-    [self GET:URLString parameters:parameters timeout:GET_TIMEOUT success:^(id responseObject) {
+    [self GET:URLString parameters:parameters timeout:3.f success:^(id responseObject) {
         if (success) {
             success(responseObject);
         }

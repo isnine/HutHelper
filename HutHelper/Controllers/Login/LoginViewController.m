@@ -22,6 +22,7 @@
 @interface LoginViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *UserName;
 @property (weak, nonatomic) IBOutlet UITextField *Password;
+@property  Boolean isBtn;
 @end
 
 @implementation LoginViewController
@@ -34,10 +35,13 @@
 }
 
 - (IBAction)Login:(id)sender {
+    self.isBtn=TRUE;
     NSString *UserName_String =[NSString stringWithFormat:@"%@",_UserName.text];
     NSString *Password_String =[NSString stringWithFormat:@"%@",_Password.text];
     [MBProgressHUD showMessage:@"登录中" toView:self.view];
-    [APIRequest GET:[Config getApiLogin:UserName_String passWord:Password_String] parameters:nil success:^(id responseObject) {
+    [APIRequest GET:[Config getApiLogin:UserName_String passWord:Password_String] parameters:nil
+            success:^(id responseObject) {
+                 HideAllHUD
         NSDictionary *userAll = [NSDictionary dictionaryWithDictionary:responseObject];
         NSDictionary *userData=[userAll objectForKey:@"data"];//All字典 -> Data字典
         NSString *msg=[userAll objectForKey:@"msg"];
@@ -74,7 +78,6 @@
                      }];
             //返回主界面
             [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:([self.navigationController.viewControllers count] -2)] animated:YES];  //返回上一个View
-            HideAllHUD
         }
         else {
             NSString *Show_Msg=[msg stringByAppendingString:@",默认密码身份证后六位"];
@@ -91,7 +94,6 @@
             } else{
                 [MBProgressHUD showError:Show_Msg toView:self.view];
             }
-            HideAllHUD
             
         }
     }failure:^(NSError *error) {
@@ -109,12 +111,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.view.backgroundColor=[UIColor whiteColor];
     _UserName.placeholder=@"学号";
     [_UserName setValue:RGB(202,202,202,1) forKeyPath:@"_placeholderLabel.textColor"];
     _Password.placeholder=@"密码";
     [_Password setValue:RGB(202,202,202,1) forKeyPath:@"_placeholderLabel.textColor"];
     self.UserName.delegate=self;
     self.Password.delegate=self;
+    self.isBtn=false;
     /** 标题栏样式 */
     UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     self.navigationItem.backBarButtonItem = item;
@@ -149,6 +153,10 @@
 - (void) animateTextField: (UITextField*) textField up: (BOOL) up
 
 {
+    if (_isBtn) {
+        _isBtn=false;
+        return;
+    }
     const int movementDistance = SYReal(180); // tweak as needed
     const float movementDuration = 0.3f; // tweak as needed
     int movement = (up ? -movementDistance : movementDistance);
@@ -156,8 +164,8 @@
     [UIView setAnimationBeginsFromCurrentState: YES];
     [UIView setAnimationDuration: movementDuration];
     self.view.frame = CGRectOffset(self.view.frame, 0, movement);
+
     [UIView commitAnimations];
-    
 }
 
 @end

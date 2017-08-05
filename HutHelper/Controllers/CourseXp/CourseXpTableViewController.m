@@ -33,8 +33,16 @@
     self.tableView.emptyDataSetDelegate = self;
     self.tableView.tableFooterView = [UIView new];
     [self loadData:[Config getCourseXp]];
-    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(reload)];
+    // 隐藏时间的下拉刷新
+    MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector((reload))];
+    self.tableView.mj_header = header;
+    header.lastUpdatedTimeLabel.hidden = YES;
     [self.tableView.mj_header beginRefreshing];
+    //MJRefresh适配iOS11
+    if (@available(iOS 11.0, *)) {
+        self.tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+        self.tableView.contentInset = UIEdgeInsetsMake(64, 0, 0, 0);
+    }
     //左滑手势
     UISwipeGestureRecognizer* leftSwipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipes:)];
     leftSwipeGestureRecognizer.direction = UISwipeGestureRecognizerDirectionLeft;
