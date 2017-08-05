@@ -6,9 +6,9 @@
 //  Copyright © 2017年 nine. All rights reserved.
 //
 
-#import "VedioModel.h"
+#import "Vedio.h"
 
-@implementation VedioModel
+@implementation Vedio
 -(instancetype)initWithDic:(NSDictionary*)Dic{
     self=[super init];
     if (self) {

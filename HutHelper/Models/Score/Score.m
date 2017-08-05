@@ -10,7 +10,6 @@
 #import "JSONKit.h"
 @implementation Score
 
-
 /**
  从NSUserDefaults读取成绩并放到数组
  

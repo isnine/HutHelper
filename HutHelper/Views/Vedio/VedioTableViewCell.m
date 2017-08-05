@@ -8,7 +8,7 @@
 
 #import "VedioTableViewCell.h"
 #import <SDWebImage/UIImageView+WebCache.h>
-#import "VedioModel.h"
+#import "Vedio.h"
 #import "ZFPlayerModel.h"
 #import "AppDelegate.h"
 #import "VedioPlayViewController.h"

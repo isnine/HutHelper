@@ -7,13 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-@class VedioModel;
+@class Vedio;
 @class ZFPlayerModel;
 @interface VedioTableViewCell : UITableViewCell
 -(void)drawLeft;
 -(void)drawRight;
 -(void)drawTop;
-@property (nonatomic, weak) VedioModel *dataLeft;
-@property (nonatomic, weak) VedioModel *dataRight;
+@property (nonatomic, weak) Vedio *dataLeft;
+@property (nonatomic, weak) Vedio *dataRight;
 @property (nonatomic, strong) ZFPlayerModel *playerModel;
 @end

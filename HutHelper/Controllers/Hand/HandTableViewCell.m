@@ -9,7 +9,7 @@
 #import "HandTableViewCell.h"
 #import "MBProgressHUD+MJ.h"
 #import "AppDelegate.h"
-
+#import "Hand.h"
 #import "User.h"
 #import "AFNetworking.h"
 #import "HandShowViewController.h"
@@ -37,8 +37,8 @@
     return [[[NSBundle mainBundle] loadNibNamed:@"HandTableViewCell" owner:nil options:nil]lastObject];
 }
 - (IBAction)Buuton1:(id)sender {
-    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    NSString *Url_String=[NSString stringWithFormat:@"%@/%@/%@/%@",Config.getApiGoodsShow,Config.getStudentKH,Config.getRememberCodeApp,[self getid:(short)(((UITableViewCell*)[[sender superview]superview]).tag+1)*2-1]];
+    Hand *hand=_handArray[(short)(((UITableViewCell*)[[sender superview]superview]).tag+1)*2-1];
+    NSString *Url_String=[NSString stringWithFormat:@"%@/%@/%@/%@",Config.getApiGoodsShow,Config.getStudentKH,Config.getRememberCodeApp,hand.good_id];
     [APIRequest GET:Url_String parameters:nil success:^(id responseObject) {
              NSDictionary *Hand_All = [NSDictionary dictionaryWithDictionary:responseObject];
              NSString *Msg=[Hand_All objectForKey:@"msg"];
@@ -64,8 +64,8 @@
     
 }
 - (IBAction)Button2:(id)sender {
-    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    NSString *Url_String=[NSString stringWithFormat:@"%@/%@/%@/%@",Config.getApiGoodsShow,Config.getStudentKH,Config.getRememberCodeApp,[self getid:(short)(((UITableViewCell*)[[sender superview]superview]).tag+1)*2]];
+    Hand *hand=_handArray[(short)(((UITableViewCell*)[[sender superview]superview]).tag+1)*2];
+    NSString *Url_String=[NSString stringWithFormat:@"%@/%@/%@/%@",Config.getApiGoodsShow,Config.getStudentKH,Config.getRememberCodeApp,hand.good_id];
     [APIRequest GET:Url_String parameters:nil success:^(id responseObject) {
              NSDictionary *Hand_All = [NSDictionary dictionaryWithDictionary:responseObject];
              NSString *Msg=[Hand_All objectForKey:@"msg"];
@@ -88,14 +88,9 @@
 - (NSIndexPath *)getIndexPath
 {
     //IOS7 OR LATER AVALIABLE
-    
-    
-    
     UITableView *tableView = (UITableView *)self.superview.superview;
     return [tableView indexPathForCell:self];
 }
--(NSString*)getid:(int)i{
-    return [_Hand_content[i] objectForKey:@"id"];
-}
+
 
 @end

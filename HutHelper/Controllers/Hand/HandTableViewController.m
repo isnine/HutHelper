@@ -15,10 +15,12 @@
 #import "AppDelegate.h"
 #import "HandAddViewController.h"
 #import "User.h"
+#import "Hand.h"
 #import "YCXMenu.h"
 #import "UIScrollView+EmptyDataSet.h"
 @interface HandTableViewController ()<DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
-@property (nonatomic,copy) NSArray      *Hand_content;
+@property (nonatomic,copy) NSArray      *handAllArray;
+@property (nonatomic, copy) NSMutableArray      *handArray;
 @property (nonatomic , strong) NSMutableArray *items;
 @property int num;
 @end
@@ -30,8 +32,9 @@
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor]}];
     self.view.backgroundColor=RGB(239, 239, 239, 1);
     //加载数据
-    if ([Config getIs]==0) {
-        _Hand_content=[Config getHand];
+    if (!_myHandArray) {
+        [self reloadData:[Config getHand]];
+       // _Hand_content=[Config getHand];
         //按钮
         UIView *rightButtonView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 50)];
         UIButton *mainAndSearchBtn = [[UIButton alloc] initWithFrame:CGRectMake(70, 0, 50, 50)];
@@ -50,7 +53,8 @@
         self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(load)];
         [self.tableView.mj_header beginRefreshing];
     }else{
-        _Hand_content=[Config getOtherHand];
+        [self reloadData:_myHandArray];
+        //[self.tableView reloadData];
         self.navigationItem.title=@"我的发布";
     }
     // 标题栏样式
@@ -63,7 +67,7 @@
 
 #pragma mark - TableView代理
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{  //多少块
-    return _Hand_content.count/2;
+    return _handArray.count/2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{//每块几部分
@@ -81,8 +85,6 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
-
-
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
     return 0.00001;
 }
@@ -95,26 +97,29 @@
         
     }
     cell.tag=indexPath.section;
-    cell.price1.text=[NSString stringWithFormat:@"¥%@",[self getprize:(short)(indexPath.section+1)*2-1]];
-    cell.name1.text=[self getName:(short)(indexPath.section+1)*2-1];
-    cell.time1.text=[self gettime:(short)(indexPath.section+1)*2-1];
+    Hand *hand=_handArray[(short)(indexPath.section+1)*2-1];
+    cell.price1.text=[NSString stringWithFormat:@"¥%@",hand.prize];
+    cell.name1.text=hand.title;
+    cell.time1.text=hand.created_on;
     cell.img1.contentMode =UIViewContentModeScaleAspectFill;
     cell.img1.clipsToBounds = YES;
-    [cell.img1 sd_setImageWithURL:[NSURL URLWithString:[self getPhoto:(short)(indexPath.section+1)*2-1]]
+    [cell.img1 sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/%@",Config.getApiImg,hand.image]]
                  placeholderImage:[UIImage imageNamed:@"load_img"]];
-    if (_Hand_content.count>(indexPath.section+1)*2) {
-        cell.price2.text=[self getprize:(short)(indexPath.section+1)*2];
-        cell.name2.text=[self getName:(short)(indexPath.section+1)*2];
-        cell.time2.text=[self gettime:(short)(indexPath.section+1)*2];
+    if (_handArray.count>(indexPath.section+1)*2) {
+        Hand *hand=_handArray[(short)(indexPath.section+1)*2];
+        cell.price2.text=[NSString stringWithFormat:@"¥%@",hand.prize];
+        cell.name2.text=hand.title;
+        cell.time2.text=hand.created_on;
         cell.Button2.hidden=false;
         cell.blackImg2.hidden=false;
         cell.shadowblack2.hidden=false;
+        cell.price2.hidden=false;
         cell.img2.contentMode =UIViewContentModeScaleAspectFill;
         cell.img2.clipsToBounds = YES;
-        [cell.img2 sd_setImageWithURL:[NSURL URLWithString:[self getPhoto:(short)(indexPath.section+1)*2]]
+        [cell.img2 sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/%@",Config.getApiImg,hand.image]]
                      placeholderImage:[UIImage imageNamed:@"load_img"]];
     }
-        cell.Hand_content=_Hand_content;
+        cell.handArray=_handArray;
     return cell;
 }
 
@@ -127,24 +132,26 @@
 -(void)myHand{
     [Config setNoSharedCache];
     [MBProgressHUD showMessage:@"加载中" toView:self.view];
-    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+//    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     [APIRequest GET:Config.getApiGoodsUser parameters:nil success:^(id responseObject) {
+        HideAllHUD
         NSDictionary *dic1 = [NSDictionary dictionaryWithObject:responseObject forKey:@""];
         NSArray *Hand           = [dic1 objectForKey:@""];
         if (Hand.count!=0) {
             NSMutableArray *data=[[NSMutableArray alloc]init];
-            [data addObject:_Hand_content[0]];
+            [data addObject:_handAllArray[0]];
             [data addObjectsFromArray:Hand];
-            NSArray *Hands = [NSArray arrayWithArray:data];
-            [defaults setObject:Hands forKey:@"otherHand"];
-            [defaults synchronize];
-            HideAllHUD
-            [Config setIs:1];
+//            NSArray *Hands = [NSArray arrayWithArray:data];
+//            [defaults setObject:Hands forKey:@"otherHand"];
+//            [defaults synchronize];
+//
+//            [Config setIs:1];
             HandTableViewController *hand=[[HandTableViewController alloc]init];
+            hand.myHandArray=[data mutableCopy];
             AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
             [tempAppDelegate.mainNavigationController pushViewController:hand animated:YES];
         }else{
-            HideAllHUD
+           
             [MBProgressHUD showError:@"您没有发布的商品" toView:self.view];
         }
     }failure:^(NSError *error) {
@@ -156,16 +163,12 @@
 -(void)menu{
     [YCXMenu setTintColor:[UIColor colorWithRed:240/255.0 green:240/255.0 blue:240/255.0 alpha:1]];
     [YCXMenu setSeparatorColor:[UIColor colorWithRed:240/255.0 green:240/255.0 blue:240/255.0 alpha:1]];
-    //    [YCXMenu setTitleFont:[UIFont systemFontOfSize:19.0]];
-    //    [YCXMenu setSelectedColor:[UIColor redColor]];
     if ([YCXMenu isShow]){
         [YCXMenu dismissMenu];
     } else {
         [YCXMenu showMenuInView:self.view fromRect:CGRectMake(self.view.frame.size.width - 50, 70, 50, 0) menuItems:self.items selected:^(NSInteger index, YCXMenuItem *item) {
-            
         }];
     }
-    
 }
 
 - (NSMutableArray *)items {
@@ -188,36 +191,32 @@
     _items = items;
 }
 #pragma mark - 数据
--(NSString*)getPhoto:(int)i{
-    NSString *photo=[_Hand_content[i] objectForKey:@"image"];
-    NSString *Url=[NSString stringWithFormat:@"%@/%@",Config.getApiImg,photo];
-    return Url;
+
+-(void)reloadData:(NSArray*)JSONArray{
+    _handArray = [[NSMutableArray alloc]init];
+    [_handArray  removeAllObjects];
+    for (NSDictionary *eachDic in JSONArray) {
+        Hand *handModel=[[Hand alloc]initWithDic:eachDic];
+        [self.handArray addObject:handModel];
+    }
+    
 }
--(UIImage*)getImg:(int)i{
-    NSString *Url=[NSString stringWithFormat:@"%@/%@",Config.getApiImg,[_Hand_content[i] objectForKey:@"image"]];
-    NSURL *imageUrl = [NSURL URLWithString:Url];
-    return [UIImage imageWithData:[NSData dataWithContentsOfURL:imageUrl]];
-}
--(NSString*)getName:(int)i{
-    return [_Hand_content[i] objectForKey:@"title"];
-}
--(NSString*)getprize:(int)i{
-    return [_Hand_content[i] objectForKey:@"prize"];
-}
--(NSString*)gettime:(int)i{
-    return [_Hand_content[i] objectForKey:@"created_on"];
-}
--(NSNumber*)getMaxPage{
-    return [_Hand_content[0] objectForKey:@"page_max"];
+-(void)loadData:(NSArray*)JSONArray{
+    for (int i=1; i<JSONArray.count; i++) {
+        NSDictionary *eachDic=JSONArray[i];
+        Hand *handModel=[[Hand alloc]initWithDic:eachDic];
+        [self.handArray addObject:handModel];
+    }
 }
 
 -(void)reload{
     [Config setNoSharedCache];
     [APIRequest GET:[Config getApiGoods:_num] parameters:nil success:^(id responseObject) {
         NSDictionary *dic1 = [NSDictionary dictionaryWithObject:responseObject forKey:@""];
-        NSArray *Hand           = [dic1 objectForKey:@""];
-        [Config saveHand:Hand];
-        _Hand_content=Hand;
+        _handAllArray           = [dic1 objectForKey:@""];
+        [Config saveHand:_handAllArray];
+        [self reloadData:_handAllArray];
+      //  _Hand_content=Hand;
         [self.tableView reloadData];
         [self.tableView.mj_header endRefreshing];
     }failure:^(NSError *error) {
@@ -229,7 +228,6 @@
 
 -(void)load{
     _num++;
-    if (_num<=[[self getMaxPage] intValue]) {
         [Config setNoSharedCache];
         NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
         //拼接地址*/
@@ -238,10 +236,7 @@
             NSArray *Hand           = [dic1 objectForKey:@""];
             [defaults setObject:Hand forKey:@"Hand"];
             [defaults synchronize];
-            _Hand_content=Hand;
-            NSString *num_string=[NSString stringWithFormat:@"第%d页",_num];
-            self.navigationItem.title = num_string;
-            [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+            [self loadData:Hand];
             [self.tableView reloadData];
             [self.tableView.mj_footer endRefreshing];
             self.tableView.mj_header.hidden = YES;
@@ -251,12 +246,6 @@
             [self.tableView.mj_footer endRefreshing];
             HideAllHUD
         }];
-    }else{
-        [MBProgressHUD showError:@"当前已是最大页数"toView:self.view];
-        [self.tableView.mj_footer endRefreshing];
-    }
-    
-    
 }
 
 #pragma mark - 空白状态代理

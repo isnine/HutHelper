@@ -8,9 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
-@interface VedioModel : NSObject
+@interface Vedio : NSObject
+/**浏览图地址*/
 @property(nonatomic,copy)NSString *img;
+/**视频名称*/
 @property(nonatomic,copy)NSString *name;
+/**视频列表*/
 @property(nonatomic,copy)NSArray *vedioList;
 -(instancetype)initWithDic:(NSDictionary*)Dic;
 @end

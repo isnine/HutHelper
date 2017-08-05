@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface HandTableViewController : UITableViewController
-
+@property (nonatomic, copy) NSMutableArray      *myHandArray;
 @end

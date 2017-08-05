@@ -9,17 +9,28 @@
 #import <Foundation/Foundation.h>
 
 @interface User : NSObject
-@property NSString *TrueName; //姓名
-@property NSString *address;//省份
-@property NSString *class_name;//班级
-@property NSString *dep_name;//学院
-@property NSString *head_pic;//头像无压缩
-@property NSString *head_pic_thumb;//头像
-@property NSString *last_login;//最后一次登录
-@property NSString *sex;//性别
-@property NSString *studentKH;//学号
-@property NSString *username;//昵称
-@property NSString *user_id;//说说id
+/**姓名*/
+@property NSString *TrueName;
+/**省份*/
+@property NSString *address;
+/**班级*/
+@property NSString *class_name;
+/**学院*/
+@property NSString *dep_name;
+/**头像无压缩*/
+@property NSString *head_pic;
+/**头像*/
+@property NSString *head_pic_thumb;
+/**最后一次登录*/
+@property NSString *last_login;
+/**性别*/
+@property NSString *sex;
+/**学号*/
+@property NSString *studentKH;
+/**昵称*/
+@property NSString *username;
+/**用户id*/
+@property NSString *user_id;
 -(instancetype)initWithDic:(NSDictionary*)Dic;
 @end
 

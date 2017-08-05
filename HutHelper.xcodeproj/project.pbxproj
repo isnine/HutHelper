@@ -10,7 +10,7 @@
 		3A0056121EC97CB70047E8F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A0056111EC97CB70047E8F2 /* Assets.xcassets */; };
 		3A06D9B51E8CEDE400066DD1 /* ExamCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A06D9B31E8CEDE400066DD1 /* ExamCell.m */; };
 		3A06D9B61E8CEDE400066DD1 /* ExamCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A06D9B41E8CEDE400066DD1 /* ExamCell.xib */; };
-		3A1CEC331E93D71A002D8583 /* VedioModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A1CEC321E93D71A002D8583 /* VedioModel.m */; };
+		3A1CEC331E93D71A002D8583 /* Vedio.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A1CEC321E93D71A002D8583 /* Vedio.m */; };
 		3A2FF4EA1E50179700B07EB6 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A2FF4E91E50179700B07EB6 /* NotificationCenter.framework */; };
 		3A2FF4F51E50179700B07EB6 /* Extend.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 3A2FF4E81E50179700B07EB6 /* Extend.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		3A2FF4FC1E50202000B07EB6 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A2FF4FB1E50202000B07EB6 /* Media.xcassets */; };
@@ -77,13 +77,14 @@
 		3A796C6D1E534DAE00794043 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A796C691E534DAE00794043 /* Main.storyboard */; };
 		3A7F638F1F35588700991DAC /* LostShowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A7F638E1F35588700991DAC /* LostShowViewController.m */; };
 		3A7F63921F35676F00991DAC /* LostAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A7F63911F35676F00991DAC /* LostAddViewController.m */; };
+		3A7F63991F357F6500991DAC /* Hand.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A7F63981F357F6500991DAC /* Hand.m */; };
+		3A7F639A1F35805D00991DAC /* Score.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A7F63961F357B4A00991DAC /* Score.m */; };
 		3A8BACF91DDDBD71001C78B8 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A8BACF81DDDBD71001C78B8 /* libsqlite3.tbd */; };
 		3A8BACFD1DDDBDDB001C78B8 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A8BACFC1DDDBDDB001C78B8 /* ImageIO.framework */; };
 		3A96DEE51E94B384006C2CC8 /* VedioPlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A96DEE41E94B384006C2CC8 /* VedioPlayViewController.m */; };
 		3A98CB5D1E7CF7AA00CABD0D /* CommentsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A98CB4F1E7CF7A900CABD0D /* CommentsModel.m */; };
 		3A98CB5E1E7CF7AA00CABD0D /* LikesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A98CB511E7CF7A900CABD0D /* LikesModel.m */; };
 		3A98CB5F1E7CF7AA00CABD0D /* MomentsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A98CB531E7CF7A900CABD0D /* MomentsModel.m */; };
-		3A98CB601E7CF7AA00CABD0D /* Score.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A98CB561E7CF7A900CABD0D /* Score.m */; };
 		3A98CB611E7CF7AA00CABD0D /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A98CB591E7CF7A900CABD0D /* User.m */; };
 		3A98CB721E7CF82F00CABD0D /* MBProgressHUD+MJ.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A98CB6B1E7CF82F00CABD0D /* MBProgressHUD+MJ.m */; };
 		3A98CB731E7CF82F00CABD0D /* MBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3A98CB6C1E7CF82F00CABD0D /* MBProgressHUD.bundle */; };
@@ -106,13 +107,9 @@
 		3A9C28F71F15FD9F00B91876 /* LineUIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A9C28F61F15FD9F00B91876 /* LineUIView.m */; };
 		3AAB90991EA393A000C35137 /* ScoreRank.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AAB90981EA393A000C35137 /* ScoreRank.m */; };
 		3ACF3D081EA731E800FBEC57 /* CourseXpTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ACF3D071EA731E800FBEC57 /* CourseXpTableViewController.m */; };
-		3AD047AF1F316CCA00B61A02 /* HandAddViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 3ABDCDCD1F316BEC00B95D6C /* HandAddViewController.h */; };
 		3AD047B01F316CCA00B61A02 /* HandAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ABDCDCE1F316BEC00B95D6C /* HandAddViewController.m */; };
-		3AD047B11F316CCA00B61A02 /* HandShowViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 3ABDCDCF1F316BEC00B95D6C /* HandShowViewController.h */; };
 		3AD047B21F316CCA00B61A02 /* HandShowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ABDCDD01F316BEC00B95D6C /* HandShowViewController.m */; };
-		3AD047B31F316CCA00B61A02 /* HandTableViewCell.h in Sources */ = {isa = PBXBuildFile; fileRef = 3ABDCDD11F316BEC00B95D6C /* HandTableViewCell.h */; };
 		3AD047B41F316CCA00B61A02 /* HandTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ABDCDD21F316BEC00B95D6C /* HandTableViewCell.m */; };
-		3AD047B51F316CCA00B61A02 /* HandTableViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 3ABDCDD31F316BEC00B95D6C /* HandTableViewController.h */; };
 		3AD047B61F316CCA00B61A02 /* HandTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ABDCDD41F316BEC00B95D6C /* HandTableViewController.m */; };
 		3AD443EB1E97CF5600720F42 /* VedioTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD443EA1E97CF5600720F42 /* VedioTableViewCell.m */; };
 		3AE01BA81EB0D23700D5B7EF /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A8BACF61DDDBD5D001C78B8 /* SystemConfiguration.framework */; };
@@ -120,7 +117,6 @@
 		3AE01BAC1EB0D24900D5B7EF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AE01BAB1EB0D24900D5B7EF /* Foundation.framework */; };
 		3AE52B871EA8F0EB00705269 /* CourseXpTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AE52B861EA8F0EB00705269 /* CourseXpTableViewCell.m */; };
 		3AE800501F349A6700D1BAC0 /* LostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AE8004F1F349A6700D1BAC0 /* LostViewController.m */; };
-		3AE800541F349EBC00D1BAC0 /* JRWaterFallLayout.h in Sources */ = {isa = PBXBuildFile; fileRef = 3AE800521F349BED00D1BAC0 /* JRWaterFallLayout.h */; };
 		3AE800551F349EBC00D1BAC0 /* JRWaterFallLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AE800531F349BED00D1BAC0 /* JRWaterFallLayout.m */; };
 		3AE800591F349F1800D1BAC0 /* LostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AE800571F349F1800D1BAC0 /* LostCell.m */; };
 		3AE8005D1F34A6FA00D1BAC0 /* Lost.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AE8005C1F34A6FA00D1BAC0 /* Lost.m */; };
@@ -197,8 +193,8 @@
 		3A06D9B21E8CEDE400066DD1 /* ExamCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExamCell.h; sourceTree = "<group>"; };
 		3A06D9B31E8CEDE400066DD1 /* ExamCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExamCell.m; sourceTree = "<group>"; };
 		3A06D9B41E8CEDE400066DD1 /* ExamCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExamCell.xib; sourceTree = "<group>"; };
-		3A1CEC311E93D71A002D8583 /* VedioModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VedioModel.h; sourceTree = "<group>"; };
-		3A1CEC321E93D71A002D8583 /* VedioModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VedioModel.m; sourceTree = "<group>"; };
+		3A1CEC311E93D71A002D8583 /* Vedio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vedio.h; sourceTree = "<group>"; };
+		3A1CEC321E93D71A002D8583 /* Vedio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Vedio.m; sourceTree = "<group>"; };
 		3A2FF4E81E50179700B07EB6 /* Extend.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Extend.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A2FF4E91E50179700B07EB6 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		3A2FF4F21E50179700B07EB6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -324,6 +320,10 @@
 		3A7F638E1F35588700991DAC /* LostShowViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LostShowViewController.m; sourceTree = "<group>"; };
 		3A7F63901F35676F00991DAC /* LostAddViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LostAddViewController.h; sourceTree = "<group>"; };
 		3A7F63911F35676F00991DAC /* LostAddViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LostAddViewController.m; sourceTree = "<group>"; };
+		3A7F63951F357B4A00991DAC /* Score.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Score.h; sourceTree = "<group>"; };
+		3A7F63961F357B4A00991DAC /* Score.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Score.m; sourceTree = "<group>"; };
+		3A7F63971F357F6500991DAC /* Hand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Hand.h; sourceTree = "<group>"; };
+		3A7F63981F357F6500991DAC /* Hand.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Hand.m; sourceTree = "<group>"; };
 		3A85677B1DA908AA00EBD44A /* HutHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HutHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A8BACF61DDDBD5D001C78B8 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		3A8BACF81DDDBD71001C78B8 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
@@ -337,8 +337,6 @@
 		3A98CB511E7CF7A900CABD0D /* LikesModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LikesModel.m; sourceTree = "<group>"; };
 		3A98CB521E7CF7A900CABD0D /* MomentsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MomentsModel.h; sourceTree = "<group>"; };
 		3A98CB531E7CF7A900CABD0D /* MomentsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MomentsModel.m; sourceTree = "<group>"; };
-		3A98CB551E7CF7A900CABD0D /* Score.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Score.h; path = Score/Score.h; sourceTree = "<group>"; };
-		3A98CB561E7CF7A900CABD0D /* Score.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Score.m; path = Score/Score.m; sourceTree = "<group>"; };
 		3A98CB581E7CF7A900CABD0D /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = User.h; path = User/User.h; sourceTree = "<group>"; };
 		3A98CB591E7CF7A900CABD0D /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = User.m; path = User/User.m; sourceTree = "<group>"; };
 		3A98CB6A1E7CF82F00CABD0D /* MBProgressHUD+MJ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+MJ.h"; sourceTree = "<group>"; };
@@ -879,6 +877,17 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		3A7F63941F357B4A00991DAC /* Score */ = {
+			isa = PBXGroup;
+			children = (
+				3A7F63951F357B4A00991DAC /* Score.h */,
+				3A7F63961F357B4A00991DAC /* Score.m */,
+				3AAB90971EA393A000C35137 /* ScoreRank.h */,
+				3AAB90981EA393A000C35137 /* ScoreRank.m */,
+			);
+			path = Score;
+			sourceTree = "<group>";
+		};
 		3A8567721DA908AA00EBD44A = {
 			isa = PBXGroup;
 			children = (
@@ -922,18 +931,17 @@
 		3A98CB441E7CF7A900CABD0D /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				3A7F63941F357B4A00991DAC /* Score */,
 				3AFA4F7A1EC04C6100CB7DA2 /* Course */,
 				3A98CB4D1E7CF7A900CABD0D /* Moments */,
 				3A98CB581E7CF7A900CABD0D /* User.h */,
 				3A98CB591E7CF7A900CABD0D /* User.m */,
-				3A98CB551E7CF7A900CABD0D /* Score.h */,
-				3A98CB561E7CF7A900CABD0D /* Score.m */,
-				3A1CEC311E93D71A002D8583 /* VedioModel.h */,
-				3A1CEC321E93D71A002D8583 /* VedioModel.m */,
-				3AAB90971EA393A000C35137 /* ScoreRank.h */,
-				3AAB90981EA393A000C35137 /* ScoreRank.m */,
+				3A1CEC311E93D71A002D8583 /* Vedio.h */,
+				3A1CEC321E93D71A002D8583 /* Vedio.m */,
 				3AE8005B1F34A6FA00D1BAC0 /* Lost.h */,
 				3AE8005C1F34A6FA00D1BAC0 /* Lost.m */,
+				3A7F63971F357F6500991DAC /* Hand.h */,
+				3A7F63981F357F6500991DAC /* Hand.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -993,7 +1001,6 @@
 				3A98CBE91E7CFA9C00CABD0D /* LeftSlideViewController */,
 				3A98CBEE1E7CFA9C00CABD0D /* UMessage_Sdk_1.4.0 */,
 				3A98CBF41E7CFA9C00CABD0D /* YYFPSLabel */,
-				3AE01BA51EB0D20400D5B7EF /* BmobIM */,
 				3A98CBF11E7CFA9C00CABD0D /* XWScanImage */,
 			);
 			path = Vendor;
@@ -1149,14 +1156,6 @@
 				3AD443EA1E97CF5600720F42 /* VedioTableViewCell.m */,
 			);
 			path = Vedio;
-			sourceTree = "<group>";
-		};
-		3AE01BA51EB0D20400D5B7EF /* BmobIM */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = BmobIM;
-			path = XWScanImage/BmobIM;
 			sourceTree = "<group>";
 		};
 		3AE52B841EA8F0EB00705269 /* CourseXp */ = {
@@ -1531,15 +1530,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3AE800541F349EBC00D1BAC0 /* JRWaterFallLayout.h in Sources */,
+				3A7F639A1F35805D00991DAC /* Score.m in Sources */,
 				3AE800551F349EBC00D1BAC0 /* JRWaterFallLayout.m in Sources */,
-				3AD047AF1F316CCA00B61A02 /* HandAddViewController.h in Sources */,
 				3AD047B01F316CCA00B61A02 /* HandAddViewController.m in Sources */,
-				3AD047B11F316CCA00B61A02 /* HandShowViewController.h in Sources */,
 				3AD047B21F316CCA00B61A02 /* HandShowViewController.m in Sources */,
-				3AD047B31F316CCA00B61A02 /* HandTableViewCell.h in Sources */,
 				3AD047B41F316CCA00B61A02 /* HandTableViewCell.m in Sources */,
-				3AD047B51F316CCA00B61A02 /* HandTableViewController.h in Sources */,
 				3AD047B61F316CCA00B61A02 /* HandTableViewController.m in Sources */,
 				3A31E1EB1E6BE6E20056565A /* MomentsTableView.m in Sources */,
 				3A796C391E534C1B00794043 /* LeftSortsViewController.m in Sources */,
@@ -1579,6 +1574,7 @@
 				3A98CC001E7CFA9C00CABD0D /* UUInputAccessoryView.m in Sources */,
 				3A532CCF1E910C13003CD5A8 /* ZFBrightnessView.m in Sources */,
 				3A4D30131E8D297200901E3B /* LeftItemTableViewCell.m in Sources */,
+				3A7F63991F357F6500991DAC /* Hand.m in Sources */,
 				3A06D9B51E8CEDE400066DD1 /* ExamCell.m in Sources */,
 				3A532CC91E910C13003CD5A8 /* UINavigationController+ZFPlayerRotation.m in Sources */,
 				3A532CD31E910C13003CD5A8 /* ZFPlayerView.m in Sources */,
@@ -1591,9 +1587,8 @@
 				3A796C541E534C1B00794043 /* UserViewController.m in Sources */,
 				3AAB90991EA393A000C35137 /* ScoreRank.m in Sources */,
 				3ACF3D081EA731E800FBEC57 /* CourseXpTableViewController.m in Sources */,
-				3A1CEC331E93D71A002D8583 /* VedioModel.m in Sources */,
+				3A1CEC331E93D71A002D8583 /* Vedio.m in Sources */,
 				3AE800501F349A6700D1BAC0 /* LostViewController.m in Sources */,
-				3A98CB601E7CF7AA00CABD0D /* Score.m in Sources */,
 				3A98CC031E7CFA9C00CABD0D /* iVersion.m in Sources */,
 				3A4D2FFD1E8D251500901E3B /* CourseSetViewController.m in Sources */,
 				3A796C3A1E534C1B00794043 /* MainPageViewController.m in Sources */,

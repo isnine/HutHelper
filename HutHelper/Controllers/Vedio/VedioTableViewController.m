@@ -9,7 +9,7 @@
 #import "VedioTableViewController.h"
 #import "VedioTableViewCell.h"
 #import "MBProgressHUD+MJ.h"
-#import "VedioModel.h"
+#import "Vedio.h"
 #import "MJRefresh.h"
 #import "APIRequest.h"
 #import "Config+Api.h"
@@ -109,7 +109,7 @@
 -(void)loadData:(NSDictionary*)JSONDic{
     datas=[[NSMutableArray alloc]init];
     for (NSDictionary *eachDic in JSONDic) {
-        VedioModel *momentsModel=[[VedioModel alloc]initWithDic:eachDic];
+        Vedio *momentsModel=[[Vedio alloc]initWithDic:eachDic];
         [datas addObject:momentsModel];
     }
 }

@@ -21,7 +21,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *shadowblack2;
 @property (weak, nonatomic) IBOutlet UIButton *Button2;
 
-@property (nonatomic,copy) NSArray      *Hand_content;
+@property (nonatomic, copy) NSMutableArray      *handArray;
 
 +(instancetype)tableviewcell;
 @end

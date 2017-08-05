@@ -21,7 +21,7 @@
 @interface LostViewController ()<UICollectionViewDataSource, JRWaterFallLayoutDelegate,DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic,copy) NSMutableArray      *lostData;
-@property (nonatomic, copy) NSMutableArray *lostArray;
+@property (nonatomic, copy) NSMutableArray      *lostArray;
 //菜单按钮
 @property (nonatomic , strong) NSMutableArray *items;
 //当前页

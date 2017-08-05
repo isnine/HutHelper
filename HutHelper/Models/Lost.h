@@ -26,15 +26,14 @@
 @property(nonatomic,copy)NSString *phone;
 /**发布人id*/
 @property(nonatomic,copy)NSString *user_id;
-///说说的小图
+/**说说的小图*/
 @property(nonatomic,copy)NSMutableArray *pics;
-
-///背景颜色
+/**背景颜色*/
 @property(nonatomic,assign)NSInteger blackColor;
-///文本高度
+/**文本高度*/
 @property(nonatomic,assign)double textHeight;
-///文本宽度
+/**文本宽度*/
 @property(nonatomic,assign)double textWidth;
-///照片高度
+/**照片高度*/
 @property(nonatomic,assign)double photoHeight;
 @end
