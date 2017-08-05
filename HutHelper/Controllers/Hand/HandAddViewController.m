@@ -22,7 +22,6 @@
 @property (nonatomic,strong) UIImageView *backImgView;
 @property (nonatomic,strong)  UITextField *titleField;
 @property (nonatomic,strong)  UITextView *describeText;
-
 @property (nonatomic,strong)  UITextField *goodsField;
 
 @property (nonatomic,copy) NSString      *responstring;
@@ -172,15 +171,19 @@
 
 -(void)PostHand{
     NSString *Url_String=Config.getApiGoodsCreate;
-        UITextField *_Price=[self.view viewWithTag:100];
+    UITextField *_Price=[self.view viewWithTag:100];
     UITextField *_Old=[self.view viewWithTag:101];
-    NSLog(@"价格%@",_Price);
     UITextField *_Phone=[self.view viewWithTag:102];
     UITextField *_address=[self.view viewWithTag:103];
     NSLog(@"二手发布请求地址%@",Url_String);
-
+    if ([_describeText.text isEqualToString:@"描述下你的商品..."]) {
+        [MBProgressHUD showError:@"必须输入商品描述" toView:self.view];
+        return;
+    }else if(!([_Old.text isEqualToString:@"99成新"]||[_Old.text isEqualToString:@"95成新"]||[_Old.text isEqualToString:@"9成新"]||[_Old.text isEqualToString:@"8成新"]||[_Old.text isEqualToString:@"7成新及以下"])){
+        [MBProgressHUD showError:@"请按格式输入成色,比如:99成新"toView:self.view];
+        return;
+    }
     
-   
     if (_selectedPhotos.count!=0) {
         _responstring=@"";
         _getphoto=0;
@@ -189,13 +192,6 @@
         manager.requestSerializer.timeoutInterval = 5.f;
         [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
         NSDictionary *dict = @{@"username":@"Saup"};
-        if ([_describeText.text isEqualToString:@"描述下你的商品..."]) {
-            [MBProgressHUD showError:@"必须输入商品描述" toView:self.view];
-        }
-        else if(!([_Old.text isEqualToString:@"99成新"]||[_Old.text isEqualToString:@"95成新"]||[_Old.text isEqualToString:@"9成新"]||[_Old.text isEqualToString:@"8成新"]||[_Old.text isEqualToString:@"7成新及以下"])){
-            [MBProgressHUD showError:@"请按格式输入成色,比如:99成新"toView:self.view];
-        }
-        else{
             //formData: 专门用于拼接需要上传的数据,在此位置生成一个要上传的数据体
             for (int i = 0; i < _selectedPhotos.count; i++) {
                 UIImage *image = _selectedPhotos[i];
@@ -207,7 +203,6 @@
                     NSString *fileName = [NSString  stringWithFormat:@"%@.jpg", dateString];
                     [formData appendPartWithFileData:imageData name:@"file" fileName:fileName mimeType:@"image/jpeg"]; //
                 } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                    NSLog(@"上传成功 %@", responseObject);
                     NSString *msg=[responseObject objectForKey:@"msg"];
                     if ([msg isEqualToString:@"ok"]) {
                         _responstring=[_responstring stringByAppendingString:[responseObject objectForKey:@"data"]];
@@ -240,33 +235,27 @@
                                                      };
                             [MBProgressHUD showMessage:@"发表中" toView:self.view];
                             [manager POST:Url_String parameters:params success:^(NSURLSessionDataTask *task, id responseObject) {
+                                     HideAllHUD
                                 NSDictionary *response = [NSDictionary dictionaryWithDictionary:responseObject];
                                 NSString *Msg=[response objectForKey:@"msg"];
                                 if ([Msg isEqualToString:@"ok"])
                                 {
-                                    HideAllHUD
                                     [MBProgressHUD showSuccess:@"发布成功" toView:self.view];
                                     [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:([self.navigationController.viewControllers count] -2)] animated:YES];  //返回Home
                                     
-                                }
-                                else if ([Msg isEqualToString:@"令牌错误"]){
-                                    HideAllHUD
+                                }else if ([Msg isEqualToString:@"令牌错误"]){
                                     [MBProgressHUD showError:@"登录过期，请重新登录"toView:self.view];
                                     [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:([self.navigationController.viewControllers count] -2)] animated:YES];  //返回Home
+                                }else{
+                                    [MBProgressHUD showError:Msg toView:self.view];
                                 }
-                                else{
-                                    HideAllHUD
-                                    [MBProgressHUD showError:Msg];}
                             } failure:^(NSURLSessionDataTask *task, NSError *error) {
                                 HideAllHUD
                                 [MBProgressHUD showError:@"网络错误"toView:self.view];
                             }];
-                            
                             break;
                         }
-                        
-                    }
-                    else{
+                    }else{
                         HideAllHUD
                         [MBProgressHUD showError:@"发表失败"toView:self.view];
                     }
@@ -274,12 +263,9 @@
                     HideAllHUD
                     [MBProgressHUD showError:@"网络错误"toView:self.view];
                 }];
-            }
         }
-    }
-    else
+    }else
         [MBProgressHUD showError:@"必须添加图片"toView:self.view];
-    
 }
 
 

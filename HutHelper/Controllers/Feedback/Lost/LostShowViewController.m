@@ -107,7 +107,7 @@
     goodsContentText.text=_lostModel.content;
     goodsContentText.font=[UIFont systemFontOfSize:SYReal(16)];
     [self.view addSubview:goodsContentText];
-    //四个块的标题
+    //白色卡片背景
     UIImageView *blackImgView=[[UIImageView alloc]initWithFrame:CGRectMake(SYReal(20), SYReal(330), SYReal(374), SYReal(355))];
     blackImgView.backgroundColor=[UIColor whiteColor];
     [self.view addSubview:blackImgView];

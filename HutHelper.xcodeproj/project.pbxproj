@@ -34,7 +34,6 @@
 		3A4D2FFD1E8D251500901E3B /* CourseSetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A4D2FFC1E8D251500901E3B /* CourseSetViewController.m */; };
 		3A4D2FFF1E8D273600901E3B /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A4D2FFE1E8D273600901E3B /* LoginViewController.xib */; };
 		3A4D30031E8D27F800901E3B /* ExamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A4D30021E8D27F800901E3B /* ExamViewController.m */; };
-		3A4D30091E8D28AA00901E3B /* LostAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A4D30061E8D28AA00901E3B /* LostAddViewController.m */; };
 		3A4D30131E8D297200901E3B /* LeftItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A4D300D1E8D297200901E3B /* LeftItemTableViewCell.m */; };
 		3A4D30141E8D297200901E3B /* LeftItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A4D300E1E8D297200901E3B /* LeftItemTableViewCell.xib */; };
 		3A4D30151E8D297200901E3B /* LeftUserTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A4D30101E8D297200901E3B /* LeftUserTableViewCell.m */; };
@@ -77,6 +76,7 @@
 		3A796C6C1E534DAE00794043 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A796C681E534DAE00794043 /* Launch Screen.storyboard */; };
 		3A796C6D1E534DAE00794043 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A796C691E534DAE00794043 /* Main.storyboard */; };
 		3A7F638F1F35588700991DAC /* LostShowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A7F638E1F35588700991DAC /* LostShowViewController.m */; };
+		3A7F63921F35676F00991DAC /* LostAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A7F63911F35676F00991DAC /* LostAddViewController.m */; };
 		3A8BACF91DDDBD71001C78B8 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A8BACF81DDDBD71001C78B8 /* libsqlite3.tbd */; };
 		3A8BACFD1DDDBDDB001C78B8 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A8BACFC1DDDBDDB001C78B8 /* ImageIO.framework */; };
 		3A96DEE51E94B384006C2CC8 /* VedioPlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A96DEE41E94B384006C2CC8 /* VedioPlayViewController.m */; };
@@ -239,8 +239,6 @@
 		3A4D2FFE1E8D273600901E3B /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		3A4D30011E8D27F800901E3B /* ExamViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExamViewController.h; sourceTree = "<group>"; };
 		3A4D30021E8D27F800901E3B /* ExamViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExamViewController.m; sourceTree = "<group>"; };
-		3A4D30051E8D28AA00901E3B /* LostAddViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LostAddViewController.h; sourceTree = "<group>"; };
-		3A4D30061E8D28AA00901E3B /* LostAddViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LostAddViewController.m; sourceTree = "<group>"; };
 		3A4D300C1E8D297200901E3B /* LeftItemTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftItemTableViewCell.h; sourceTree = "<group>"; };
 		3A4D300D1E8D297200901E3B /* LeftItemTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftItemTableViewCell.m; sourceTree = "<group>"; };
 		3A4D300E1E8D297200901E3B /* LeftItemTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LeftItemTableViewCell.xib; sourceTree = "<group>"; };
@@ -324,6 +322,8 @@
 		3A7D3CA91DB0A6CB00355E7A /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		3A7F638D1F35588700991DAC /* LostShowViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LostShowViewController.h; sourceTree = "<group>"; };
 		3A7F638E1F35588700991DAC /* LostShowViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LostShowViewController.m; sourceTree = "<group>"; };
+		3A7F63901F35676F00991DAC /* LostAddViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LostAddViewController.h; sourceTree = "<group>"; };
+		3A7F63911F35676F00991DAC /* LostAddViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LostAddViewController.m; sourceTree = "<group>"; };
 		3A85677B1DA908AA00EBD44A /* HutHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HutHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A8BACF61DDDBD5D001C78B8 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		3A8BACF81DDDBD71001C78B8 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
@@ -610,12 +610,12 @@
 			isa = PBXGroup;
 			children = (
 				3AE800511F349BED00D1BAC0 /* waterFallLayout */,
-				3A4D30051E8D28AA00901E3B /* LostAddViewController.h */,
-				3A4D30061E8D28AA00901E3B /* LostAddViewController.m */,
 				3AE8004E1F349A6700D1BAC0 /* LostViewController.h */,
 				3AE8004F1F349A6700D1BAC0 /* LostViewController.m */,
 				3A7F638D1F35588700991DAC /* LostShowViewController.h */,
 				3A7F638E1F35588700991DAC /* LostShowViewController.m */,
+				3A7F63901F35676F00991DAC /* LostAddViewController.h */,
+				3A7F63911F35676F00991DAC /* LostAddViewController.m */,
 			);
 			name = Lost;
 			path = Feedback/Lost;
@@ -1556,6 +1556,7 @@
 				3AFA4F591EC0440F00CB7DA2 /* Config+Api.m in Sources */,
 				3AFA4F831EC0504500CB7DA2 /* AppDelegate.m in Sources */,
 				3A796C531E534C1B00794043 /* UsernameViewController.m in Sources */,
+				3A7F63921F35676F00991DAC /* LostAddViewController.m in Sources */,
 				3A4D2FDE1E8D237500901E3B /* PowerViewController.m in Sources */,
 				3A532CD21E910C13003CD5A8 /* ZFPlayerModel.m in Sources */,
 				3A98CBFF1E7CFA9C00CABD0D /* FORGestureTrack.m in Sources */,
@@ -1621,7 +1622,6 @@
 				3A4049091E6A6C730038F207 /* MomentsCell.m in Sources */,
 				3A98CB721E7CF82F00CABD0D /* MBProgressHUD+MJ.m in Sources */,
 				3AE8005D1F34A6FA00D1BAC0 /* Lost.m in Sources */,
-				3A4D30091E8D28AA00901E3B /* LostAddViewController.m in Sources */,
 				3A796C4F1E534C1B00794043 /* ScoreShowViewController.m in Sources */,
 				3A3FB3811F2CBDE500E74BB0 /* ChatListViewController.m in Sources */,
 				3A9C28F71F15FD9F00B91876 /* LineUIView.m in Sources */,

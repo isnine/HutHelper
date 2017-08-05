@@ -17,6 +17,7 @@
 #import "YCXMenuItem.h"
 #import "YCXMenu.h"
 #import "LostShowViewController.h"
+#import "LostAddViewController.h"
 @interface LostViewController ()<UICollectionViewDataSource, JRWaterFallLayoutDelegate,DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic,copy) NSMutableArray      *lostData;
@@ -209,7 +210,8 @@
     return _items;
 }
 -(void)addLost{
-    [Config pushViewController:@"AddLosta"];
+    LostAddViewController *lostAddViewController2=[[LostAddViewController alloc]init];
+    [self.navigationController pushViewController:lostAddViewController2 animated:YES];
 }
 -(void)myLost{
     [MBProgressHUD showMessage:@"加载中" toView:self.view];
