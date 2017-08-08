@@ -17,6 +17,7 @@
 		3A31E1E51E6BC5040056565A /* MomentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A31E1E41E6BC5040056565A /* MomentsViewController.m */; };
 		3A31E1E81E6BE68C0056565A /* MomentsAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A31E1E71E6BE68C0056565A /* MomentsAddViewController.m */; };
 		3A31E1EB1E6BE6E20056565A /* MomentsTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A31E1EA1E6BE6E20056565A /* MomentsTableView.m */; };
+		3A31FE9C1F3A093700104A03 /* XWInteractiveTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A31FE9B1F3A093700104A03 /* XWInteractiveTransition.m */; };
 		3A3545D91F1B53A2009B1A84 /* PointView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A3545D81F1B53A2009B1A84 /* PointView.m */; };
 		3A3775561F35EA50005A5170 /* LostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A3775551F35EA25005A5170 /* LostCell.m */; };
 		3A37755F1F35EAD7005A5170 /* LibraryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A37755B1F35EAD7005A5170 /* LibraryViewController.m */; };
@@ -208,6 +209,8 @@
 		3A31E1E71E6BE68C0056565A /* MomentsAddViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MomentsAddViewController.m; path = Moments/MomentsAddViewController.m; sourceTree = "<group>"; };
 		3A31E1E91E6BE6E20056565A /* MomentsTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MomentsTableView.h; sourceTree = "<group>"; };
 		3A31E1EA1E6BE6E20056565A /* MomentsTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MomentsTableView.m; sourceTree = "<group>"; };
+		3A31FE9A1F3A093700104A03 /* XWInteractiveTransition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XWInteractiveTransition.h; sourceTree = "<group>"; };
+		3A31FE9B1F3A093700104A03 /* XWInteractiveTransition.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XWInteractiveTransition.m; sourceTree = "<group>"; };
 		3A3545D71F1B53A2009B1A84 /* PointView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PointView.h; sourceTree = "<group>"; };
 		3A3545D81F1B53A2009B1A84 /* PointView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PointView.m; sourceTree = "<group>"; };
 		3A3775541F35EA25005A5170 /* LostCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LostCell.h; sourceTree = "<group>"; };
@@ -1182,6 +1185,8 @@
 		3AEED7131F39E23B00D17693 /* navigationDelegate */ = {
 			isa = PBXGroup;
 			children = (
+				3A31FE9A1F3A093700104A03 /* XWInteractiveTransition.h */,
+				3A31FE9B1F3A093700104A03 /* XWInteractiveTransition.m */,
 				3AEED70D1F39B2AE00D17693 /* XWNaviTransition.h */,
 				3AEED70E1F39B2AE00D17693 /* XWNaviTransition.m */,
 			);
@@ -1606,6 +1611,7 @@
 				3AAB90991EA393A000C35137 /* ScoreRank.m in Sources */,
 				3ACF3D081EA731E800FBEC57 /* CourseXpTableViewController.m in Sources */,
 				3A1CEC331E93D71A002D8583 /* Vedio.m in Sources */,
+				3A31FE9C1F3A093700104A03 /* XWInteractiveTransition.m in Sources */,
 				3A98CC031E7CFA9C00CABD0D /* iVersion.m in Sources */,
 				3A4D2FFD1E8D251500901E3B /* CourseSetViewController.m in Sources */,
 				3A796C3A1E534C1B00794043 /* MainPageViewController.m in Sources */,

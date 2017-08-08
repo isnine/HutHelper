@@ -12,8 +12,10 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "XWScanImage.h"
 
+#import "XWInteractiveTransition.h"
 #import "XWNaviTransition.h"
 @interface LostShowViewController ()
+@property (nonatomic, strong) XWInteractiveTransition *interactiveTransition;
 @end
 
 @implementation LostShowViewController
@@ -28,8 +30,11 @@
     [super viewDidLoad];
     self.title=@"失物详情";
     self.view.backgroundColor=RGB(239, 239, 239, 1);
-   // self.imageView=[[UIImageView alloc]initWithFrame:[UIScreen mainScreen].bounds];
-    // Do any additional setup after loading the view.
+    
+    //初始化手势过渡的代理
+    self.interactiveTransition = [XWInteractiveTransition interactiveTransitionWithTransitionType:XWInteractiveTransitionTypePop GestureDirection:XWInteractiveTransitionGestureDirectionRight];
+    //给当前控制器的视图添加手势
+    [_interactiveTransition addPanGestureForViewController:self];
 }
 - (void)viewWillAppear:(BOOL)animated
 {
