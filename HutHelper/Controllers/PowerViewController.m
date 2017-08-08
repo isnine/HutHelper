@@ -80,6 +80,23 @@ typedef NS_ENUM(NSUInteger, PowerSelectBtn) {
         NSLog(@"%@",responseObject);
         self.openLab.text=responseObject[@"data"][@"yes"];
         self.unOpenLab.text=responseObject[@"data"][@"no"];
+        if (responseObject[@"opt"]) {
+            self.powerSelectBtn=[responseObject[@"opt"] intValue];
+            switch (self.powerSelectBtn) {
+                case 1:
+                    [self.openBtn setImage:[UIImage imageNamed:@"ico_power_selected"] forState:UIControlStateNormal];
+                    self.openBtn.enabled=NO;
+                    self.noOpenBtn.enabled=NO;
+                    break;
+                case 2:
+                    [self.noOpenBtn setImage:[UIImage imageNamed:@"ico_power_selected"] forState:UIControlStateNormal];
+                    self.openBtn.enabled=NO;
+                    self.noOpenBtn.enabled=NO;
+                    break;
+                default:
+                    break;
+            }
+        }
     } failure:^(NSError *error) {
         NSLog(@"网络错误");
     }];
