@@ -65,7 +65,7 @@
     [super viewWillDisappear:animated];
     [MobClick endLogPageView:@"成绩查询"];
     //标题栏透明取消
-    self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:0/255.0 green:224/255.0 blue:208/255.0 alpha:1];
+    self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:29/255.0 green:203/255.0 blue:219/255.0 alpha:1];
     [self.navigationController.navigationBar lt_reset];
     [[UIApplication sharedApplication]setStatusBarStyle:UIStatusBarStyleDefault];
     

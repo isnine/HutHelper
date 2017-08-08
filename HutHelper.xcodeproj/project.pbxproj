@@ -26,7 +26,6 @@
 		3A3775651F35EAEE005A5170 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A3775631F35EAEE005A5170 /* AboutViewController.m */; };
 		3A3775731F35EB51005A5170 /* LostAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A3775681F35EB37005A5170 /* LostAddViewController.m */; };
 		3A3775751F35EB51005A5170 /* LostShowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A37756A1F35EB37005A5170 /* LostShowViewController.m */; };
-		3A3775771F35EB51005A5170 /* LostUICollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A37756C1F35EB37005A5170 /* LostUICollectionView.m */; };
 		3A3775791F35EB51005A5170 /* LostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A37756E1F35EB37005A5170 /* LostViewController.m */; };
 		3A37757C1F35EB76005A5170 /* JRWaterFallLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A3775711F35EB37005A5170 /* JRWaterFallLayout.m */; };
 		3A3FB3811F2CBDE500E74BB0 /* ChatListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A3FB3801F2CBDE500E74BB0 /* ChatListViewController.m */; };
@@ -121,6 +120,8 @@
 		3AE01BAC1EB0D24900D5B7EF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AE01BAB1EB0D24900D5B7EF /* Foundation.framework */; };
 		3AE52B871EA8F0EB00705269 /* CourseXpTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AE52B861EA8F0EB00705269 /* CourseXpTableViewCell.m */; };
 		3AE8005D1F34A6FA00D1BAC0 /* Lost.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AE8005C1F34A6FA00D1BAC0 /* Lost.m */; };
+		3AEED70F1F39B30C00D17693 /* XWNaviTransition.h in Sources */ = {isa = PBXBuildFile; fileRef = 3AEED70D1F39B2AE00D17693 /* XWNaviTransition.h */; };
+		3AEED7101F39B30C00D17693 /* XWNaviTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AEED70E1F39B2AE00D17693 /* XWNaviTransition.m */; };
 		3AF152FB1F2DCEC600709F97 /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF152FA1F2DCEC600709F97 /* ChatViewController.m */; };
 		3AF72C9A1E9A23F000093A39 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AF72C991E9A23F000093A39 /* JavaScriptCore.framework */; };
 		3AF72C9B1E9A23F900093A39 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A6FF7C61DB3152C004CFBE8 /* libz.tbd */; };
@@ -225,8 +226,6 @@
 		3A3775681F35EB37005A5170 /* LostAddViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LostAddViewController.m; sourceTree = "<group>"; };
 		3A3775691F35EB37005A5170 /* LostShowViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LostShowViewController.h; sourceTree = "<group>"; };
 		3A37756A1F35EB37005A5170 /* LostShowViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LostShowViewController.m; sourceTree = "<group>"; };
-		3A37756B1F35EB37005A5170 /* LostUICollectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LostUICollectionView.h; sourceTree = "<group>"; };
-		3A37756C1F35EB37005A5170 /* LostUICollectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LostUICollectionView.m; sourceTree = "<group>"; };
 		3A37756D1F35EB37005A5170 /* LostViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LostViewController.h; sourceTree = "<group>"; };
 		3A37756E1F35EB37005A5170 /* LostViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LostViewController.m; sourceTree = "<group>"; };
 		3A3775701F35EB37005A5170 /* JRWaterFallLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JRWaterFallLayout.h; sourceTree = "<group>"; };
@@ -403,6 +402,8 @@
 		3AE52B861EA8F0EB00705269 /* CourseXpTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseXpTableViewCell.m; sourceTree = "<group>"; };
 		3AE8005B1F34A6FA00D1BAC0 /* Lost.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Lost.h; sourceTree = "<group>"; };
 		3AE8005C1F34A6FA00D1BAC0 /* Lost.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Lost.m; sourceTree = "<group>"; };
+		3AEED70D1F39B2AE00D17693 /* XWNaviTransition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XWNaviTransition.h; sourceTree = "<group>"; };
+		3AEED70E1F39B2AE00D17693 /* XWNaviTransition.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XWNaviTransition.m; sourceTree = "<group>"; };
 		3AF152F91F2DCEC600709F97 /* ChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatViewController.h; sourceTree = "<group>"; };
 		3AF152FA1F2DCEC600709F97 /* ChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatViewController.m; sourceTree = "<group>"; };
 		3AF72C991E9A23F000093A39 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
@@ -538,12 +539,11 @@
 		3A3775661F35EB37005A5170 /* Lost */ = {
 			isa = PBXGroup;
 			children = (
+				3AEED7131F39E23B00D17693 /* navigationDelegate */,
 				3A3775671F35EB37005A5170 /* LostAddViewController.h */,
 				3A3775681F35EB37005A5170 /* LostAddViewController.m */,
 				3A3775691F35EB37005A5170 /* LostShowViewController.h */,
 				3A37756A1F35EB37005A5170 /* LostShowViewController.m */,
-				3A37756B1F35EB37005A5170 /* LostUICollectionView.h */,
-				3A37756C1F35EB37005A5170 /* LostUICollectionView.m */,
 				3A37756D1F35EB37005A5170 /* LostViewController.h */,
 				3A37756E1F35EB37005A5170 /* LostViewController.m */,
 				3A37756F1F35EB37005A5170 /* waterFallLayout */,
@@ -1179,6 +1179,15 @@
 			path = CourseXp;
 			sourceTree = "<group>";
 		};
+		3AEED7131F39E23B00D17693 /* navigationDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				3AEED70D1F39B2AE00D17693 /* XWNaviTransition.h */,
+				3AEED70E1F39B2AE00D17693 /* XWNaviTransition.m */,
+			);
+			path = navigationDelegate;
+			sourceTree = "<group>";
+		};
 		3AFA4F541EC043FD00CB7DA2 /* Config */ = {
 			isa = PBXGroup;
 			children = (
@@ -1533,10 +1542,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3AEED70F1F39B30C00D17693 /* XWNaviTransition.h in Sources */,
+				3AEED7101F39B30C00D17693 /* XWNaviTransition.m in Sources */,
 				3A37757C1F35EB76005A5170 /* JRWaterFallLayout.m in Sources */,
 				3A3775731F35EB51005A5170 /* LostAddViewController.m in Sources */,
 				3A3775751F35EB51005A5170 /* LostShowViewController.m in Sources */,
-				3A3775771F35EB51005A5170 /* LostUICollectionView.m in Sources */,
 				3A3775791F35EB51005A5170 /* LostViewController.m in Sources */,
 				3A3775561F35EA50005A5170 /* LostCell.m in Sources */,
 				3A7F639A1F35805D00991DAC /* Score.m in Sources */,
@@ -1700,7 +1710,7 @@
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -1720,7 +1730,7 @@
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -1894,7 +1904,7 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "HutHelper-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -1943,7 +1953,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "HutHelper-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -1963,7 +1973,7 @@
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -1983,7 +1993,7 @@
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

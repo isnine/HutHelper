@@ -17,6 +17,9 @@
 #import "iVersion.h"
 #import <RongIMKit/RongIMKit.h>
 
+#import "XHNavigationController.h"
+#import "XHWaterfallViewController.h"
+
 @interface AppDelegate ()<RCIMUserInfoDataSource>{
     
 }
@@ -29,7 +32,7 @@
 
 #pragma mark - 生命周期
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    //友盟推送
+
     [UMessage startWithAppkey:APPKEY_UMESSAGE launchOptions:launchOptions];
     [UMessage registerForRemoteNotifications];
     UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
@@ -64,7 +67,7 @@
     [[UMSocialManager defaultManager] openLog:NO]; //打开调试日志
     [[UMSocialManager defaultManager] setUmSocialAppkey:APPKEY_UMESSAGE];//设置友盟appkey
     [self configUSharePlatforms];
-    /*热更新**/
+    //热更新
     //    [JSPatch startWithAppKey:APPKEY_JSPATCH];
     //    [JSPatch setupDevelopment];
     //    [JSPatch setupRSAPublicKey:RSA_JSPATCH];
@@ -88,6 +91,7 @@
                                         NSLog(@"token错误");
                                     }];
     }
+   
 #ifdef DEBUG//因为这个是私有的api，一定要保证上线时的包中不包含这段代码！
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
@@ -97,6 +101,7 @@
 #endif
     
     return YES;
+    
 }
 
 

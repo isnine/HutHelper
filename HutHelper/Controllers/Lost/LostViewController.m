@@ -19,7 +19,6 @@
 #import "LostShowViewController.h"
 #import "LostAddViewController.h"
 @interface LostViewController ()<UICollectionViewDataSource, JRWaterFallLayoutDelegate,DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
-@property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic,copy) NSMutableArray      *lostData;
 @property (nonatomic, copy) NSMutableArray      *lostArray;
 //菜单按钮
@@ -35,8 +34,8 @@
     [super viewDidLoad];
     //设置标题颜色和返回箭头
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor]}];
-     UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
-        self.navigationItem.backBarButtonItem = item;
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+    self.navigationItem.backBarButtonItem = item;
     self.navigationItem.title=@"失物招领";
     //当前页
     self.currentPage = 1;
@@ -54,7 +53,7 @@
     //如果是我的失物界面
     if (self.myLostArray) {
         [self reloadData:self.myLostArray];
-         self.navigationItem.title=@"我的失物";
+        self.navigationItem.title=@"我的失物";
         [self.collectionView reloadData];
     }else{
         // 隐藏时间的下拉刷新
@@ -78,7 +77,6 @@
         [mainAndSearchBtn addTarget:self action:@selector(menu) forControlEvents:UIControlEventTouchUpInside];
         UIBarButtonItem *rightCunstomButtonView = [[UIBarButtonItem alloc] initWithCustomView:rightButtonView];
         self.navigationItem.rightBarButtonItem = rightCunstomButtonView;
-
     }
     //空白数据代理
     self.collectionView.emptyDataSetSource = self;
@@ -98,7 +96,7 @@
                 [self reloadData:lostDataPostArray];
                 [self.collectionView.mj_header endRefreshing];
                 [self.collectionView reloadData];
-                 self.collectionView.mj_header.hidden = YES;
+                self.collectionView.mj_header.hidden = YES;
             }else{
                 [self.collectionView.mj_header endRefreshing];
                 [MBProgressHUD showError:@"网络错误" toView:self.view];
@@ -145,7 +143,7 @@
         Lost *lostModel=[[Lost alloc]initWithDic:eachDic];
         [self.lostArray addObject:lostModel];
     }
- 
+    
 }
 -(void)loadData:(NSArray*)JSONArray{
     for (NSDictionary *eachDic in JSONArray) {
@@ -180,9 +178,11 @@
 {
     CGPoint point = [tap locationInView:self.collectionView];
     NSIndexPath * indexPath = [self.collectionView indexPathForItemAtPoint:point];
-    LostShowViewController *lostShowViewController=[[LostShowViewController alloc]init];
     Lost *lost=self.lostArray[indexPath.item];
+    _currentIndexPath = indexPath;
+    LostShowViewController *lostShowViewController=[[LostShowViewController alloc]init];
     lostShowViewController.lostModel=lost;
+    self.navigationController.delegate = lostShowViewController;
     [self.navigationController pushViewController:lostShowViewController animated:YES];
 }
 - (CGFloat)waterFallLayout:(JRWaterFallLayout *)waterFallLayout heightForItemAtIndex:(NSUInteger)index width:(CGFloat)width
@@ -201,9 +201,7 @@
         [YCXMenu showMenuInView:self.view fromRect:CGRectMake(self.view.frame.size.width - 50, 70, 50, 0) menuItems:self.items selected:^(NSInteger index, YCXMenuItem *item) {
         }];
     }
-    
 }
-
 - (NSMutableArray *)items {
     if (!_items) {
         YCXMenuItem *menuTitle = [YCXMenuItem menuItem:@"添加失物" image:[UIImage imageNamed:@"adds"] target:self action:@selector(addLost)];

@@ -43,6 +43,7 @@
 - (void)customBackButton{
     /**按钮*/
     UIView *rightButtonView = [[UIView alloc] initWithFrame:CGRectMake(-20,0, 40, 40)];
+    
     mainAndSearchBtn = [[UIButton alloc] initWithFrame:CGRectMake(-20,0, 40, 40)];
     [rightButtonView addSubview:mainAndSearchBtn];
     [mainAndSearchBtn setImage:[UIImage imageNamed:@"back"] forState:UIControlStateNormal];

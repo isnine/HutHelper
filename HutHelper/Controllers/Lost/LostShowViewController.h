@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 @class Lost;
-@interface LostShowViewController : UIViewController
+@interface LostShowViewController : UIViewController<UINavigationControllerDelegate>
 @property (nonatomic,weak) Lost *lostModel;
+@property (strong, nonatomic) UIImageView *imageView;
+
 @end

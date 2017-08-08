@@ -151,8 +151,8 @@
 {
     NSString *text = @"暂无相关内容";
     
-    NSDictionary *attributes = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:16.0f],
-                                 NSForegroundColorAttributeName: [UIColor darkGrayColor]};
+    NSDictionary *attributes = @{NSFontAttributeName: [UIFont systemFontOfSize:14.0f],
+                                 NSForegroundColorAttributeName: [UIColor lightGrayColor]};
     
     return [[NSAttributedString alloc] initWithString:text attributes:attributes];
 }

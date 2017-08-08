@@ -31,11 +31,20 @@
     [super viewDidLoad];
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor]}];
     self.view.backgroundColor=RGB(239, 239, 239, 1);
+    
+    
+//    UIButton *mainAndSearchBtn = [[UIButton alloc] initWithFrame:CGRectMake(-20,0, 40, 40)];
+//    [mainAndSearchBtn setImage:[UIImage imageNamed:@"back"] forState:UIControlStateNormal];
+//    self.navigationItem.backBarButtonItem = mainAndSearchBtn;
+
+    
     //加载数据
     if (!_myHandArray) {
         [self reloadData:[Config getHand]];
        // _Hand_content=[Config getHand];
         //按钮
+    
+        
         UIView *rightButtonView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 50)];
         UIButton *mainAndSearchBtn = [[UIButton alloc] initWithFrame:CGRectMake(70, 0, 50, 50)];
         [rightButtonView addSubview:mainAndSearchBtn];
@@ -105,6 +114,7 @@
     }else{
         
     }
+    
     cell.tag=indexPath.section;
     Hand *hand=_handArray[(short)(indexPath.section+1)*2-1];
     cell.price1.text=[NSString stringWithFormat:@"¥%@",hand.prize];
@@ -265,10 +275,8 @@
 - (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView
 {
     NSString *text = @"暂无相关内容";
-    
-    NSDictionary *attributes = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:16.0f],
-                                 NSForegroundColorAttributeName: [UIColor darkGrayColor]};
-    
+    NSDictionary *attributes = @{NSFontAttributeName: [UIFont systemFontOfSize:14.0f],
+                                 NSForegroundColorAttributeName: [UIColor lightGrayColor]};
     return [[NSAttributedString alloc] initWithString:text attributes:attributes];
 }
 - (NSAttributedString *)descriptionForEmptyDataSet:(UIScrollView *)scrollView{

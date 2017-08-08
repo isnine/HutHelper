@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13168.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13147.4"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -38,7 +38,7 @@
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4ek-gy-4kv">
-                    <rect key="frame" x="331" y="607" width="50" height="35"/>
+                    <rect key="frame" x="333" y="598" width="53" height="53"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <state key="normal" backgroundImage="ico_main_vedio"/>
                     <connections>
@@ -46,7 +46,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gPR-Dn-O4Y">
-                    <rect key="frame" x="128" y="501" width="41" height="35"/>
+                    <rect key="frame" x="122" y="492" width="53" height="53"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <state key="normal" backgroundImage="ico_main_lost"/>
                     <connections>
@@ -61,12 +61,12 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qe3-JR-Ze4">
-                    <rect key="frame" x="15" y="311" width="26" height="34"/>
+                    <rect key="frame" x="20" y="312" width="26" height="32"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <state key="normal" backgroundImage="ico_main_message"/>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aqC-WV-5eK">
-                    <rect key="frame" x="337" y="501" width="38" height="35"/>
+                    <rect key="frame" x="333" y="492" width="53" height="53"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <state key="normal" backgroundImage="ico_main_social"/>
                     <connections>
@@ -74,7 +74,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dU6-LM-Y0w">
-                    <rect key="frame" x="131" y="397" width="35" height="36"/>
+                    <rect key="frame" x="122" y="389" width="53" height="53"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <state key="normal" backgroundImage="ico_main_curriculum"/>
                     <connections>
@@ -82,7 +82,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b0D-iY-O4X">
-                    <rect key="frame" x="233" y="398" width="36" height="35"/>
+                    <rect key="frame" x="225" y="389" width="53" height="53"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <state key="normal" backgroundImage="ico_main_secondhand"/>
                     <connections>
@@ -90,7 +90,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JP6-q9-cMU">
-                    <rect key="frame" x="340" y="398" width="38" height="35"/>
+                    <rect key="frame" x="333" y="389" width="53" height="53"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <state key="normal" backgroundImage="ico_main_electricity"/>
                     <connections>
@@ -105,7 +105,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="考试查询" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1yp-ft-3Lr">
-                    <rect key="frame" x="7" y="645" width="93" height="31"/>
+                    <rect key="frame" x="0.0" y="645" width="93" height="31"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                     <nil key="textColor"/>
@@ -140,14 +140,14 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="这是一条通知...." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="72Q-bm-Qn2">
-                    <rect key="frame" x="65" y="325" width="329" height="28"/>
+                    <rect key="frame" x="65" y="325" width="341" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                    <color key="textColor" red="0.7018093466758728" green="0.70596855878829956" blue="0.70991688966751099" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tOD-9h-L2q">
-                    <rect key="frame" x="230" y="607" width="43" height="35"/>
+                    <rect key="frame" x="225" y="598" width="53" height="53"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <state key="normal" backgroundImage="ico_main_homework"/>
                     <connections>
@@ -155,7 +155,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ysJ-nj-Trr">
-                    <rect key="frame" x="27" y="607" width="38" height="35"/>
+                    <rect key="frame" x="20" y="598" width="53" height="53"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <state key="normal" backgroundImage="ico_main_exam"/>
                     <connections>
@@ -163,7 +163,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yNT-hu-4zn">
-                    <rect key="frame" x="236" y="501" width="30" height="35"/>
+                    <rect key="frame" x="225" y="492" width="53" height="53"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <state key="normal" backgroundImage="ico_main_score"/>
                     <connections>
@@ -178,7 +178,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PLQ-ix-p8e">
-                    <rect key="frame" x="26" y="501" width="36" height="35"/>
+                    <rect key="frame" x="20" y="492" width="53" height="53"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <state key="normal" backgroundImage="ico_main_calendar"/>
                     <connections>
@@ -186,7 +186,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EXV-Sv-7jO">
-                    <rect key="frame" x="130" y="607" width="37" height="35"/>
+                    <rect key="frame" x="122" y="598" width="53" height="53"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <state key="normal" backgroundImage="ico_main_lab"/>
                     <connections>
@@ -194,7 +194,7 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="实验课表" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MZ1-9K-dA7">
-                    <rect key="frame" x="102" y="644" width="93" height="31"/>
+                    <rect key="frame" x="102" y="645" width="93" height="31"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                     <nil key="textColor"/>
@@ -204,13 +204,6 @@
                     <rect key="frame" x="309" y="645" width="93" height="31"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="通知" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5mi-m9-btC">
-                    <rect key="frame" x="65" y="306" width="210" height="23"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -226,7 +219,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rVC-ab-mg8">
-                    <rect key="frame" x="20" y="397" width="53" height="35"/>
+                    <rect key="frame" x="20" y="389" width="53" height="53"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <state key="normal" backgroundImage="ico_main_library"/>
                     <connections>
@@ -257,7 +250,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="校历" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A4j-Ur-sam">
-                    <rect key="frame" x="6" y="541" width="77" height="31"/>
+                    <rect key="frame" x="8" y="541" width="77" height="31"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                     <nil key="textColor"/>
@@ -270,6 +263,13 @@
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="通知" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5mi-m9-btC">
+                    <rect key="frame" x="65" y="307" width="85" height="15"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="0.70115083456039429" green="0.70594173669815063" blue="0.7098737359046936" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <point key="canvasLocation" x="22" y="47"/>
@@ -277,19 +277,19 @@
     </objects>
     <resources>
         <image name="ico_main_banner" width="720" height="500"/>
-        <image name="ico_main_calendar" width="66" height="62"/>
-        <image name="ico_main_curriculum" width="56" height="62"/>
-        <image name="ico_main_electricity" width="54" height="62"/>
-        <image name="ico_main_exam" width="64" height="62"/>
-        <image name="ico_main_homework" width="74" height="62"/>
-        <image name="ico_main_lab" width="64" height="62"/>
-        <image name="ico_main_library" width="90" height="62"/>
-        <image name="ico_main_lost" width="72" height="62"/>
+        <image name="ico_main_calendar" width="98" height="98"/>
+        <image name="ico_main_curriculum" width="98" height="98"/>
+        <image name="ico_main_electricity" width="98" height="98"/>
+        <image name="ico_main_exam" width="98" height="98"/>
+        <image name="ico_main_homework" width="98" height="98"/>
+        <image name="ico_main_lab" width="98" height="98"/>
+        <image name="ico_main_library" width="98" height="98"/>
+        <image name="ico_main_lost" width="98" height="98"/>
         <image name="ico_main_message" width="42" height="52"/>
-        <image name="ico_main_score" width="55" height="62"/>
-        <image name="ico_main_secondhand" width="68" height="62"/>
-        <image name="ico_main_social" width="64" height="62"/>
-        <image name="ico_main_vedio" width="69" height="62"/>
+        <image name="ico_main_score" width="98" height="98"/>
+        <image name="ico_main_secondhand" width="98" height="98"/>
+        <image name="ico_main_social" width="98" height="98"/>
+        <image name="ico_main_vedio" width="98" height="98"/>
         <image name="img_main_time" width="32" height="32"/>
     </resources>
 </document>

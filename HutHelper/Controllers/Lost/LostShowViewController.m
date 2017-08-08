@@ -11,16 +11,24 @@
 #import "Lost.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "XWScanImage.h"
-@interface LostShowViewController ()
 
+#import "XWNaviTransition.h"
+@interface LostShowViewController ()
 @end
 
 @implementation LostShowViewController
+- (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController animationControllerForOperation:(UINavigationControllerOperation)operation fromViewController:(UIViewController *)fromVC toViewController:(UIViewController *)toVC{
+    NSLog(@"%@", NSStringFromCGRect(self.imageView.frame));
+    //分pop和push两种情况分别返回动画过渡代理相应不同的动画操作
+    return [XWNaviTransition transitionWithType:operation == UINavigationControllerOperationPush ? XWNaviOneTransitionTypePush : XWNaviOneTransitionTypePop];
+}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title=@"失物详情";
     self.view.backgroundColor=RGB(239, 239, 239, 1);
+   // self.imageView=[[UIImageView alloc]initWithFrame:[UIScreen mainScreen].bounds];
     // Do any additional setup after loading the view.
 }
 - (void)viewWillAppear:(BOOL)animated
@@ -60,6 +68,8 @@
     //中心切割
     backImgView.backgroundColor=[self randomColor:_lostModel.blackColor];
     [self.view addSubview:backImgView];
+    
+    self.imageView = [[UIImageView alloc] initWithFrame:self.view.bounds];
     //商品图
     NSInteger img_x=140;
     //根据商品数量设置图片起始x位置

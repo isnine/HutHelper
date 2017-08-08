@@ -11,5 +11,6 @@
 @interface LostCell : UICollectionViewCell
 
 @property (nonatomic,weak) Lost *lostModel;
+@property (nonatomic,strong)UIImageView *imageView;
 -(void)draw;
 @end

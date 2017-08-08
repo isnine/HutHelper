@@ -56,10 +56,10 @@ int class_error_;
     //首次登陆以及判断是否打开课程表
     [self loadSet];
     //时间Label
-    [self SetTimeLabel];
+    [self SetTimeLabel] ;
+
+
 }
-
-
 
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
@@ -433,8 +433,8 @@ int class_error_;
     [menuBtn addTarget:self action:@selector(openOrCloseLeftList) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.leftBarButtonItem     = [[UIBarButtonItem alloc] initWithCustomView:menuBtn];
     /**让黑线消失的方法*/
-    //    UIImageView *navBarHairlineImageView = [self findHairlineImageViewUnder:self.navigationController.navigationBar];
-    //    navBarHairlineImageView.hidden = YES;
+        UIImageView *navBarHairlineImageView = [self findHairlineImageViewUnder:self.navigationController.navigationBar];
+        navBarHairlineImageView.hidden = YES;
     
 }
 // 寻找导航栏下的黑线

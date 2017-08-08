@@ -25,6 +25,15 @@
     [super awakeFromNib];
     // Initialization code
 }
+-(UIImage*)UIViewToUIImageView:(UIView*)view{
+    CGSize size = view.bounds.size;
+    // 下面的方法：第一个参数表示区域大小；第二个参数表示是否是非透明的如果需要显示半透明效果，需要传NO，否则传YES；第三个参数是屏幕密度
+    UIGraphicsBeginImageContextWithOptions(size, NO, [UIScreen mainScreen].scale);
+    [view.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage*image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return image;
+}
 
 -(void)draw{
     //背景
@@ -34,6 +43,7 @@
         blackView.layer.masksToBounds = YES; //没这句话它圆不起来
         blackView.layer.cornerRadius = 5.0; //设置图片圆角的尺度
         blackView.userInteractionEnabled=NO;
+        self.imageView=blackView;
         [self addSubview:blackView];
     }
     //内容
@@ -104,8 +114,9 @@
         [self addSubview:timeLabel];
     }
 
-    
+  
 }
+
 -(void)scanBigImageClick:(UITapGestureRecognizer *)tap{
     UIImageView *clickedImageView = (UIImageView *)tap.view;
     [XWScanImage scanBigImageWithImageView:clickedImageView];

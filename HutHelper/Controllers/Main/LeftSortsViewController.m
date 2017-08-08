@@ -88,23 +88,23 @@
         return userCell;
     }else if (indexPath.row == 2) {
         itemCell.Text.text                = @"私信";
-        itemCell.Img.image=[UIImage imageNamed:@"im"];
+        itemCell.Img.image=[UIImage imageNamed:@"ico_left_im"];
         return itemCell;
     }else if (indexPath.row == 3) {
         itemCell.Text.text              = @"分享应用";
-        itemCell.Img.image=[UIImage imageNamed:@"shares"];
+        itemCell.Img.image=[UIImage imageNamed:@"ico_left_shares"];
         return itemCell;
     } else if (indexPath.row == 4) {
         itemCell.Text.text                = @"切换用户";
-        itemCell.Img.image=[UIImage imageNamed:@"sign-out"];
+        itemCell.Img.image=[UIImage imageNamed:@"ico_left_sign-out"];
         return itemCell;
     } else if (indexPath.row == 5) {
         itemCell.Text.text                = @"关于";
-        itemCell.Img.image=[UIImage imageNamed:@"about"];
+        itemCell.Img.image=[UIImage imageNamed:@"ico_left_about"];
         return itemCell;
     } else if (indexPath.row == 6) {
         itemCell.Text.text                = @"反馈";
-        itemCell.Img.image=[UIImage imageNamed:@"feedback"];
+        itemCell.Img.image=[UIImage imageNamed:@"ico_left_feedback"];
         return itemCell;
     } else{
         return itemCell;
