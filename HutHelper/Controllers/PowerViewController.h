@@ -9,5 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface PowerViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UIButton *openBtn;
+@property (weak, nonatomic) IBOutlet UIButton *noOpenBtn;
+@property (weak, nonatomic) IBOutlet UILabel *openLab;
+@property (weak, nonatomic) IBOutlet UILabel *unOpenLab;
 
 @end

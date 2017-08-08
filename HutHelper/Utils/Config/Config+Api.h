@@ -21,6 +21,8 @@
 +(NSString*)getApiProfileAvatar;
 +(NSString*)getApiHomeWork;
 +(NSString*)getApiPower:(NSString*)build room:(NSString*)room;
++(NSString*)getApiPowerAirCondition;
++(NSString*)getApiPowerAirConditionCreate:(int)opt;
 
 +(NSString*)getApiGoods:(int)num;
 +(NSString*)getApiGoodsUser;

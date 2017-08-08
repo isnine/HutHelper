@@ -52,8 +52,10 @@ int datediff(int y1,int m1,int d1,int y2,int m2,int d2)
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor]}];
     //获得考试信息
     [self getexam];
-    UIView *headView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, DeviceMaxWidth, 1)];
-
+    UIView *headView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, DeviceMaxWidth, SYReal(50))];
+    UIImageView *noticeImgView=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, DeviceMaxWidth, SYReal(40))];
+    noticeImgView.image=[UIImage imageNamed:@"img_exam_notice"];
+    [headView addSubview:noticeImgView];
     self.tableView.tableHeaderView=headView;
     self.tableView.emptyDataSetSource = self;
     self.tableView.emptyDataSetDelegate = self;

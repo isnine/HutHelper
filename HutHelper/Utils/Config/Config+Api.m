@@ -50,6 +50,12 @@
 +(NSString*)getApiPower:(NSString*)build room:(NSString*)room{
     return [NSString stringWithFormat:@"%@/api/v1/get/power/%@/%@",Config.apiIndex,build,room];
 }
++(NSString*)getApiPowerAirCondition{
+    return [NSString stringWithFormat:@"%@/api/v1/set/schema/%@/%@/1",Config.apiIndex,Config.getStudentKH,Config.getRememberCodeApp];
+}
++(NSString*)getApiPowerAirConditionCreate:(int)opt{
+    return [NSString stringWithFormat:@"%@/api/v1/set/schema/%@/%@/1/%d",Config.apiIndex,Config.getStudentKH,Config.getRememberCodeApp,opt];
+}
 #pragma mark - 二手市场
 +(NSString*)getApiGoods:(int)num{
     return [NSString stringWithFormat:@"%@/api/v1/stuff/goods/%d",Config.apiIndex,num];

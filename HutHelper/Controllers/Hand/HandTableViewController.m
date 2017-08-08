@@ -185,6 +185,11 @@
     if ([YCXMenu isShow]){
         [YCXMenu dismissMenu];
     } else {
+        UIView *blindView=[[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
+        blindView.backgroundColor = [UIColor blackColor];
+        blindView.alpha=0.5;
+        blindView.tag=99;
+        [self.view addSubview:blindView];
         [YCXMenu showMenuInView:self.view fromRect:CGRectMake(self.view.frame.size.width - 50, 70, 50, 0) menuItems:self.items selected:^(NSInteger index, YCXMenuItem *item) {
         }];
     }
@@ -208,6 +213,21 @@
 
 - (void)setItems:(NSMutableArray *)items {
     _items = items;
+}
+- (id) init{
+    self = [super init];
+    if(self != nil){
+        //监听一个通知，当收到通知时，调用notificationAction方法
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(removeYCXMenuBlind) name:@"YCXMenuWillDisappearNotification" object:nil];
+    }
+    return self;
+}
+- (void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"YCXMenuWillDisappearNotification" object:nil];
+}
+-(void)removeYCXMenuBlind{
+    UIView *blindView=[self.view viewWithTag:99];
+    [blindView removeFromSuperview];
 }
 #pragma mark - 数据
 
@@ -299,4 +319,5 @@
 - (void)emptyDataSetDidTapView:(UIScrollView *)scrollView{
     [self.tableView.mj_header beginRefreshing];
 }
+
 @end

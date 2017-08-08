@@ -23,6 +23,7 @@
 @property (nonatomic, copy) NSMutableArray      *lostArray;
 //菜单按钮
 @property (nonatomic , strong) NSMutableArray *items;
+@property(nonatomic,strong)UIView *blindView;
 //当前页
 @property(nonatomic, assign)  int currentPage;
 @end
@@ -81,8 +82,11 @@
     //空白数据代理
     self.collectionView.emptyDataSetSource = self;
     self.collectionView.emptyDataSetDelegate = self;
+    //遮挡层
+    self.blindView=[[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
+    self.blindView.backgroundColor = [UIColor blackColor];
+    self.blindView.alpha=0;
 }
-
 #pragma mark - 加载数据
 -(void)reload{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
@@ -198,6 +202,11 @@
     if ([YCXMenu isShow]){
         [YCXMenu dismissMenu];
     } else {
+        UIView *blindView=[[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
+        blindView.backgroundColor = [UIColor blackColor];
+        blindView.alpha=0.5;
+        blindView.tag=99;
+        [self.view addSubview:blindView];
         [YCXMenu showMenuInView:self.view fromRect:CGRectMake(self.view.frame.size.width - 50, 70, 50, 0) menuItems:self.items selected:^(NSInteger index, YCXMenuItem *item) {
         }];
     }
@@ -283,4 +292,20 @@
 - (void)emptyDataSetDidTapView:(UIScrollView *)scrollView{
     [self.collectionView.mj_header beginRefreshing];
 }
+- (id) init{
+    self = [super init];
+    if(self != nil){
+        //监听一个通知，当收到通知时，调用notificationAction方法
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(removeYCXMenuBlind) name:@"YCXMenuWillDisappearNotification" object:nil];
+    }
+    return self;
+}
+- (void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"YCXMenuWillDisappearNotification" object:nil];
+}
+-(void)removeYCXMenuBlind{
+    UIView *blindView=[self.view viewWithTag:99];
+    [blindView removeFromSuperview];
+}
+
 @end

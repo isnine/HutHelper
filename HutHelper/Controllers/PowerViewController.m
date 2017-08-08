@@ -15,9 +15,55 @@
 @property (weak, nonatomic) IBOutlet UITextField *Building;
 @property (weak, nonatomic) IBOutlet UITextField *Room;
 
+typedef NS_ENUM(NSUInteger, PowerSelectBtn) {
+    UnSelected =0,
+    OpenSelected=1 ,
+    NoOpenSelected=2,
+};
+@property(assign,nonatomic)PowerSelectBtn powerSelectBtn;
 @end
 
 @implementation PowerViewController
+- (IBAction)openBtn:(id)sender {
+    switch (self.powerSelectBtn) {
+        case 0:
+            [self.openBtn setImage:[UIImage imageNamed:@"ico_power_selected"] forState:UIControlStateNormal];
+            self.powerSelectBtn=OpenSelected;
+            break;
+        case 1:
+            [self.openBtn setImage:[UIImage imageNamed:@"ico_power_unselected"] forState:UIControlStateNormal];
+             self.powerSelectBtn=UnSelected;
+            break;
+        case 2:
+            [self.openBtn setImage:[UIImage imageNamed:@"ico_power_selected"] forState:UIControlStateNormal];
+            [self.noOpenBtn setImage:[UIImage imageNamed:@"ico_power_unselected"] forState:UIControlStateNormal];
+            self.powerSelectBtn=OpenSelected;
+            break;
+        default:
+            break;
+    }
+    
+}
+- (IBAction)noOpenBtn:(id)sender {
+    [self.noOpenBtn setImage:[UIImage imageNamed:@"ico_power_selected"] forState:UIControlStateNormal];
+    switch (self.powerSelectBtn) {
+        case 0:
+            [self.noOpenBtn setImage:[UIImage imageNamed:@"ico_power_selected"] forState:UIControlStateNormal];
+            self.powerSelectBtn=NoOpenSelected;
+            break;
+        case 1:
+            [self.openBtn setImage:[UIImage imageNamed:@"ico_power_unselected"] forState:UIControlStateNormal];
+            [self.noOpenBtn setImage:[UIImage imageNamed:@"ico_power_selected"] forState:UIControlStateNormal];
+            self.powerSelectBtn=NoOpenSelected;
+            break;
+        case 2:
+            [self.noOpenBtn setImage:[UIImage imageNamed:@"ico_power_unselected"] forState:UIControlStateNormal];
+            self.powerSelectBtn=UnSelected;
+            break;
+        default:
+            break;
+    }
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -29,6 +75,14 @@
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     [self getRoom];
+    
+    [APIRequest GET:Config.getApiPowerAirCondition parameters:nil success:^(id responseObject) {
+        NSLog(@"%@",responseObject);
+        self.openLab.text=responseObject[@"data"][@"yes"];
+        self.unOpenLab.text=responseObject[@"data"][@"no"];
+    } failure:^(NSError *error) {
+        NSLog(@"网络错误");
+    }];
 }
 -(void)getRoom{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
@@ -82,7 +136,11 @@
     /**让黑线消失的方法*/
     self.navigationController.navigationBar.shadowImage=[UIImage new];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    
 }
+
+
+
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
@@ -90,6 +148,13 @@
     self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:29/255.0 green:203/255.0 blue:219/255.0 alpha:1];
     [self.navigationController.navigationBar lt_reset];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
+    if (self.powerSelectBtn!=UnSelected) {
+        [APIRequest GET:[Config getApiPowerAirConditionCreate:self.powerSelectBtn] parameters:nil success:^(id responseObject) {
+            NSLog(@"%@",responseObject);
+        } failure:^(NSError *error) {
+            NSLog(@"保存空调数据时网络错误");
+        }];
+    }
 }
 
 @end

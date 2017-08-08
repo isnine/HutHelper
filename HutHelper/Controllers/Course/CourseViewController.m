@@ -78,6 +78,8 @@ NSString *show_xp;
         [self isxp];
     }
     selectss=1;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(removeYCXMenuBlind) name:@"YCXMenuWillDisappearNotification" object:nil];
 }
 
 - (void)addCourse{
@@ -790,16 +792,12 @@ NSString *show_xp;
     if (self)
     {
         self.title                                   = @"LGPlusButtonsView";
-        
         self.navigationItem.rightBarButtonItem       = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(showHideButtonsAction)];
-        
         // -----
-        
         _scrollView                                  = [UIScrollView new];
         _scrollView.backgroundColor                  = [UIColor lightGrayColor];
         _scrollView.alwaysBounceVertical             = YES;
         [self.view addSubview:_scrollView];
-        
         _exampleView                                 = [UIView new];
         _exampleView.backgroundColor                 = [UIColor colorWithWhite:0.f alpha:0.1];
         [_scrollView addSubview:_exampleView];
@@ -807,6 +805,10 @@ NSString *show_xp;
     return self;
 }
 
+-(void)removeYCXMenuBlind{
+    UIView *blindView=[self.view viewWithTag:99];
+    [blindView removeFromSuperview];
+}
 
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -971,9 +973,8 @@ NSString *show_xp;
 
 #pragma mark - Dealloc
 
-- (void)dealloc
-{
-    
+- (void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"YCXMenuWillDisappearNotification" object:nil];
 }
 
 #pragma mark - Appearing
@@ -1023,6 +1024,11 @@ NSString *show_xp;
     if ([YCXMenu isShow]){
         [YCXMenu dismissMenu];
     } else {
+        UIView *blindView=[[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
+        blindView.backgroundColor = [UIColor blackColor];
+        blindView.alpha=0.5;
+        blindView.tag=99;
+        [self.view addSubview:blindView];
         [YCXMenu showMenuInView:self.view fromRect:CGRectMake(self.view.frame.size.width - 50, 70, 50, 0) menuItems:self.items selected:^(NSInteger index, YCXMenuItem *item) {
             
         }];
