@@ -269,7 +269,7 @@
             return [UIImage imageNamed:@"img_user_girl"];
         }
     }else if ([defaults objectForKey:@"kUserHead"]!=NULL){
-        return [UIImage imageWithData:[defaults objectForKey:@"kUserHead"]];
+        return [self circleImage:[UIImage imageWithData:[defaults objectForKey:@"kUserHead"]]];
     }else{
         NSURL *imageUrl = [NSURL URLWithString:Url];
         UIImage *Img=[UIImage imageWithData:[NSData dataWithContentsOfURL:imageUrl]];
