@@ -17,9 +17,6 @@
 #import "iVersion.h"
 #import <RongIMKit/RongIMKit.h>
 
-#import "XHNavigationController.h"
-#import "XHWaterfallViewController.h"
-
 @interface AppDelegate ()<RCIMUserInfoDataSource>{
     
 }
@@ -91,6 +88,12 @@
                                         NSLog(@"token错误");
                                     }];
     }
+    //设置返回按钮
+    UINavigationBar * navigationBar = [UINavigationBar appearance];
+    UIImage *image = [UIImage imageNamed:@"ico_menu_back"];
+    navigationBar.backIndicatorImage = image;
+    navigationBar.backIndicatorTransitionMaskImage = image;
+
    
 #ifdef DEBUG//因为这个是私有的api，一定要保证上线时的包中不包含这段代码！
 #pragma clang diagnostic push

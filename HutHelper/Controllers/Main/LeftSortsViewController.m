@@ -263,14 +263,18 @@
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults]; //得到用户数据
     NSString *Url=[NSString stringWithFormat:@"%@/%@",Config.getApiImg,Config.getHeadPicThumb];
     if ((!Config.getHeadPicThumb)||[Config.getHeadPicThumb isEqualToString:@""]) {
-        return [self circleImage:[UIImage imageNamed:@"img_defalut"]];
-    }else if ([defaults objectForKey:@"head_img"]!=NULL){
-        return [self circleImage:[UIImage imageWithData:[defaults objectForKey:@"head_img"]]];
+        if ([Config.getSex isEqualToString:@"男"]) {
+            return [UIImage imageNamed:@"img_user_boy"];
+        }else{
+            return [UIImage imageNamed:@"img_user_girl"];
+        }
+    }else if ([defaults objectForKey:@"kUserHead"]!=NULL){
+        return [UIImage imageWithData:[defaults objectForKey:@"kUserHead"]];
     }else{
         NSURL *imageUrl = [NSURL URLWithString:Url];
         UIImage *Img=[UIImage imageWithData:[NSData dataWithContentsOfURL:imageUrl]];
         NSData *data = UIImagePNGRepresentation(Img);
-        [defaults setObject:data forKey:@"head_img"];
+        [defaults setObject:data forKey:@"kUserHead"];
         [defaults synchronize];
         return [self circleImage:Img];
     }

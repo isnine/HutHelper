@@ -52,6 +52,9 @@ int datediff(int y1,int m1,int d1,int y2,int m2,int d2)
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor]}];
     //获得考试信息
     [self getexam];
+    UIView *headView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, DeviceMaxWidth, 1)];
+
+    self.tableView.tableHeaderView=headView;
     self.tableView.emptyDataSetSource = self;
     self.tableView.emptyDataSetDelegate = self;
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(reloadexam)];
@@ -158,7 +161,6 @@ int datediff(int y1,int m1,int d1,int y2,int m2,int d2)
     else{
         Exam_Time=@"-";
     }
-    NSLog(@"%@",Exam_Time);
     /**计算倒计时*/
     NSDate *now                               = [NSDate date];
     NSCalendar *calendar                      = [NSCalendar currentCalendar];

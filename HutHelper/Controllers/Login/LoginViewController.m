@@ -22,7 +22,6 @@
 @interface LoginViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *UserName;
 @property (weak, nonatomic) IBOutlet UITextField *Password;
-@property  Boolean isBtn;
 @end
 
 @implementation LoginViewController
@@ -35,7 +34,7 @@
 }
 
 - (IBAction)Login:(id)sender {
-    self.isBtn=TRUE;
+     [self.view endEditing:YES];
     NSString *UserName_String =[NSString stringWithFormat:@"%@",_UserName.text];
     NSString *Password_String =[NSString stringWithFormat:@"%@",_Password.text];
     [MBProgressHUD showMessage:@"登录中" toView:self.view];
@@ -118,11 +117,13 @@
     [_Password setValue:RGB(202,202,202,1) forKeyPath:@"_placeholderLabel.textColor"];
     self.UserName.delegate=self;
     self.Password.delegate=self;
-    self.isBtn=false;
     /** 标题栏样式 */
     UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     self.navigationItem.backBarButtonItem = item;
-    
+    //空白收起键盘
+    self.view.userInteractionEnabled = YES;
+    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(fingerTapped:)];
+    [self.view addGestureRecognizer:singleTap];
     
 }
 - (IBAction)resetpassword:(id)sender {
@@ -142,6 +143,12 @@
     [super didReceiveMemoryWarning];
     
 }
+
+# pragma  mark - 代理方法
+-(void)fingerTapped:(UITapGestureRecognizer *)gestureRecognizer
+{
+    [self.view endEditing:YES];
+}
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
     [self animateTextField: textField up: YES];
@@ -153,10 +160,6 @@
 - (void) animateTextField: (UITextField*) textField up: (BOOL) up
 
 {
-    if (_isBtn) {
-        _isBtn=false;
-        return;
-    }
     const int movementDistance = SYReal(180); // tweak as needed
     const float movementDuration = 0.3f; // tweak as needed
     int movement = (up ? -movementDistance : movementDistance);
@@ -164,7 +167,6 @@
     [UIView setAnimationBeginsFromCurrentState: YES];
     [UIView setAnimationDuration: movementDuration];
     self.view.frame = CGRectOffset(self.view.frame, 0, movement);
-
     [UIView commitAnimations];
 }
 

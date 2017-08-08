@@ -43,6 +43,10 @@
     [mainAndSearchBtn addTarget:self action:@selector(PostHand) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *rightCunstomButtonView = [[UIBarButtonItem alloc] initWithCustomView:rightButtonView];
     self.navigationItem.rightBarButtonItem = rightCunstomButtonView;
+    //空白收起键盘
+    self.view.userInteractionEnabled = YES;
+    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(fingerTapped:)];
+    [self.view addGestureRecognizer:singleTap];
     
     [self setHeadImg];
     [self setText];
@@ -270,6 +274,20 @@
 
 
 #pragma  mark - 代理
+
+
+-(void)fingerTapped:(UITapGestureRecognizer *)gestureRecognizer
+{
+    [self.view endEditing:YES];
+}
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
+    if ([text isEqualToString:@"\n"]){
+        [textView resignFirstResponder];
+        return NO;
+    }
+    return YES;
+}
+
 -(BOOL)textViewShouldBeginEditing:(UITextView *)textView
 {
     textView.text=@"";
@@ -296,7 +314,7 @@
 - (void) animateTextField: (UITextField*) textField up: (BOOL) up
 
 {
-    const int movementDistance = SYReal(190); // tweak as needed
+    const int movementDistance = SYReal(220); // tweak as needed
     const float movementDuration = 0.3f; // tweak as needed
     int movement = (up ? -movementDistance : movementDistance);
     [UIView beginAnimations: @"anim" context: nil];
