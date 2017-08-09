@@ -61,23 +61,27 @@
     LostCell *cell = (LostCell *)[fromVC.collectionView cellForItemAtIndexPath:fromVC.currentIndexPath];
     UIView *containerView = [transitionContext containerView];
     //snapshotViewAfterScreenUpdates 对cell的imageView截图保存成另一个视图用于过渡，并将视图转换到当前控制器的坐标
-    UIView *tempView = [cell snapshotViewAfterScreenUpdates:NO];
+    //保存cell的背景，用来进入时显示
+    UIView *tempView = [cell.imageView snapshotViewAfterScreenUpdates:NO];
+    //镜像，用来整个cell，用于返回时显示
+    UIView *tempView2 = [cell snapshotViewAfterScreenUpdates:NO];
     tempView.frame = [cell convertRect:cell.bounds toView: containerView];
     //设置动画前的各个控件的状态
-    tempView.alpha = 1;
     toVC.view.alpha = 0;
     [containerView addSubview:toVC.view];
     [containerView addSubview:tempView];
     //开始做动画
     [UIView animateWithDuration:[self transitionDuration:transitionContext] delay:0.0 usingSpringWithDamping:0.55 initialSpringVelocity:1 / 0.55 options:0 animations:^{
         tempView.frame = [toVC.imageView convertRect:toVC.imageView.bounds toView:containerView];
+        tempView2.frame = [toVC.imageView convertRect:toVC.imageView.bounds toView:containerView];
         toVC.view.alpha = 1;
-        tempView.alpha = 0;
     } completion:^(BOOL finished) {
         tempView.hidden = YES;
+        tempView2.hidden = YES;
         toVC.imageView.hidden = NO;
         tempView.alpha = 1;
         //如果动画过渡取消了就标记不完成，否则才完成，这里可以直接写YES，如果有手势过渡才需要判断，必须标记，否则系统不会中动画完成的部署，会出现无法交互之类的bug
+        [containerView addSubview:tempView2];
         [transitionContext completeTransition:YES];
     }];
 }

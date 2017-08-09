@@ -110,6 +110,9 @@
 		3A98CC0F1E7CFA9C00CABD0D /* YYWeakProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A98CBF81E7CFA9C00CABD0D /* YYWeakProxy.m */; };
 		3A9C28F71F15FD9F00B91876 /* LineUIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A9C28F61F15FD9F00B91876 /* LineUIView.m */; };
 		3AAB90991EA393A000C35137 /* ScoreRank.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AAB90981EA393A000C35137 /* ScoreRank.m */; };
+		3AC12C241F3B381E007C3B7E /* ChatChoiceTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AC12C231F3B381E007C3B7E /* ChatChoiceTableViewController.m */; };
+		3AC12C2C1F3B3BD1007C3B7E /* ChatChoiceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AC12C2B1F3B3BD1007C3B7E /* ChatChoiceTableViewCell.m */; };
+		3AC12C2F1F3B3C6D007C3B7E /* ChatUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AC12C2E1F3B3C6D007C3B7E /* ChatUser.m */; };
 		3ACF3D081EA731E800FBEC57 /* CourseXpTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ACF3D071EA731E800FBEC57 /* CourseXpTableViewController.m */; };
 		3AD047B01F316CCA00B61A02 /* HandAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ABDCDCE1F316BEC00B95D6C /* HandAddViewController.m */; };
 		3AD047B21F316CCA00B61A02 /* HandShowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ABDCDD01F316BEC00B95D6C /* HandShowViewController.m */; };
@@ -395,6 +398,12 @@
 		3ABDCDD21F316BEC00B95D6C /* HandTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HandTableViewCell.m; sourceTree = "<group>"; };
 		3ABDCDD31F316BEC00B95D6C /* HandTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HandTableViewController.h; sourceTree = "<group>"; };
 		3ABDCDD41F316BEC00B95D6C /* HandTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HandTableViewController.m; sourceTree = "<group>"; };
+		3AC12C221F3B381E007C3B7E /* ChatChoiceTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChatChoiceTableViewController.h; sourceTree = "<group>"; };
+		3AC12C231F3B381E007C3B7E /* ChatChoiceTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChatChoiceTableViewController.m; sourceTree = "<group>"; };
+		3AC12C2A1F3B3BD1007C3B7E /* ChatChoiceTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChatChoiceTableViewCell.h; sourceTree = "<group>"; };
+		3AC12C2B1F3B3BD1007C3B7E /* ChatChoiceTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChatChoiceTableViewCell.m; sourceTree = "<group>"; };
+		3AC12C2D1F3B3C6D007C3B7E /* ChatUser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChatUser.h; sourceTree = "<group>"; };
+		3AC12C2E1F3B3C6D007C3B7E /* ChatUser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChatUser.m; sourceTree = "<group>"; };
 		3ACF3D061EA731E800FBEC57 /* CourseXpTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseXpTableViewController.h; sourceTree = "<group>"; };
 		3ACF3D071EA731E800FBEC57 /* CourseXpTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseXpTableViewController.m; sourceTree = "<group>"; };
 		3AD443E91E97CF5600720F42 /* VedioTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VedioTableViewCell.h; sourceTree = "<group>"; };
@@ -570,6 +579,8 @@
 				3A3FB3801F2CBDE500E74BB0 /* ChatListViewController.m */,
 				3AF152F91F2DCEC600709F97 /* ChatViewController.h */,
 				3AF152FA1F2DCEC600709F97 /* ChatViewController.m */,
+				3AC12C221F3B381E007C3B7E /* ChatChoiceTableViewController.h */,
+				3AC12C231F3B381E007C3B7E /* ChatChoiceTableViewController.m */,
 			);
 			path = Im;
 			sourceTree = "<group>";
@@ -855,6 +866,7 @@
 		3A796C661E534DAE00794043 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				3AC12C291F3B3BB4007C3B7E /* Im */,
 				3A3775531F35EA25005A5170 /* Lost */,
 				3AE52B841EA8F0EB00705269 /* CourseXp */,
 				3A4D300B1E8D297200901E3B /* Main */,
@@ -957,6 +969,8 @@
 				3AE8005C1F34A6FA00D1BAC0 /* Lost.m */,
 				3A7F63971F357F6500991DAC /* Hand.h */,
 				3A7F63981F357F6500991DAC /* Hand.m */,
+				3AC12C2D1F3B3C6D007C3B7E /* ChatUser.h */,
+				3AC12C2E1F3B3C6D007C3B7E /* ChatUser.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1153,6 +1167,15 @@
 				3ABDCDD41F316BEC00B95D6C /* HandTableViewController.m */,
 			);
 			path = Hand;
+			sourceTree = "<group>";
+		};
+		3AC12C291F3B3BB4007C3B7E /* Im */ = {
+			isa = PBXGroup;
+			children = (
+				3AC12C2A1F3B3BD1007C3B7E /* ChatChoiceTableViewCell.h */,
+				3AC12C2B1F3B3BD1007C3B7E /* ChatChoiceTableViewCell.m */,
+			);
+			path = Im;
 			sourceTree = "<group>";
 		};
 		3ACF3D051EA731A300FBEC57 /* CourseXp */ = {
@@ -1618,15 +1641,18 @@
 				3AFA4F631EC0485400CB7DA2 /* NSData+CRC32.m in Sources */,
 				3AFA4F6C1EC049F600CB7DA2 /* Math.m in Sources */,
 				3A796C4E1E534C1B00794043 /* ScoreDataViewController.m in Sources */,
+				3AC12C2F1F3B3C6D007C3B7E /* ChatUser.m in Sources */,
 				3AE52B871EA8F0EB00705269 /* CourseXpTableViewCell.m in Sources */,
 				3A31E1E51E6BC5040056565A /* MomentsViewController.m in Sources */,
 				3A98CB5D1E7CF7AA00CABD0D /* CommentsModel.m in Sources */,
+				3AC12C2C1F3B3BD1007C3B7E /* ChatChoiceTableViewCell.m in Sources */,
 				3A796C1F1E534C1B00794043 /* CourseViewController.m in Sources */,
 				3A532CCD1E910C13003CD5A8 /* UIWindow+CurrentViewController.m in Sources */,
 				3A796C301E534C1B00794043 /* ResetPassWordViewController.m in Sources */,
 				3A532CCB1E910C13003CD5A8 /* UIView+CustomControlView.m in Sources */,
 				3A96DEE51E94B384006C2CC8 /* VedioPlayViewController.m in Sources */,
 				3A532CD11E910C13003CD5A8 /* ZFPlayerControlView.m in Sources */,
+				3AC12C241F3B381E007C3B7E /* ChatChoiceTableViewController.m in Sources */,
 				3A532CC51E910C13003CD5A8 /* ASValuePopUpView.m in Sources */,
 				3A98CC011E7CFA9C00CABD0D /* GWPCourseListView.m in Sources */,
 				3AFA4F661EC0488200CB7DA2 /* UILabel+LXAdd.m in Sources */,

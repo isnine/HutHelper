@@ -73,8 +73,7 @@
     //中心切割
     backImgView.backgroundColor=[self randomColor:_lostModel.blackColor];
     [self.view addSubview:backImgView];
-    
-    self.imageView = [[UIImageView alloc] initWithFrame:self.view.bounds];
+    self.imageView = [[UIImageView alloc] initWithFrame:CGRectMake(SYReal(10), SYReal(80), SYReal(390), SYReal(230))];
     //商品图
     NSInteger img_x=140;
     //根据商品数量设置图片起始x位置

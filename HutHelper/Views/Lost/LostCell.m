@@ -43,8 +43,10 @@
         blackView.layer.masksToBounds = YES; //没这句话它圆不起来
         blackView.layer.cornerRadius = 5.0; //设置图片圆角的尺度
         blackView.userInteractionEnabled=NO;
-        self.imageView=blackView;
+      //  self.imageView=blackView;
         [self addSubview:blackView];
+        self.imageView=blackView;
+       // [self.shotoView addSubview:blackView];
     }
     //内容
     if (!textLabel) {

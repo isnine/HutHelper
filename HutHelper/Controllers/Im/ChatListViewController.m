@@ -10,11 +10,14 @@
 #import "AppDelegate.h"
 #import <RongIMKit/RongIMKit.h>
 #import "ChatViewController.h"
+#import "ChatChoiceTableViewController.h"
+#import "ChatUser.h"
 @interface ChatListViewController()<UISearchBarDelegate,RCIMUserInfoDataSource>{
 }
 @property(nonatomic, strong) UISearchBar *searchBar;
 @property (nonatomic,strong) UIView *headerView;
 @property (nonatomic,strong) UIControl *searchBg;
+@property (nonatomic,copy) NSMutableArray *chatChoiceArray;
 @end
 
 @implementation ChatListViewController
@@ -119,26 +122,35 @@
              success:^(id responseObject) {
                  NSDictionary *resultDictionary = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
                  NSArray *resultArray   = [resultDictionary objectForKey:@"data"];
+               //  [self loadData:resultArray];
                  NSLog(@"%@",resultArray[0]);
-                 
-                 if (resultArray.count==1) {
+                  if (resultArray.count==1) {
                      ChatViewController *conversationVC = [[ChatViewController alloc]init];
                      conversationVC.conversationType = ConversationType_PRIVATE;
                      conversationVC.targetId = [resultArray[0] objectForKey:@"id"];
                      conversationVC.title = [searchBar text];
                      [self.navigationController pushViewController:conversationVC animated:YES];
                  }else{
-                     NSLog(@"多个用户");
+                     
+                     ChatChoiceTableViewController *chatChoiceTableViewController=[[ChatChoiceTableViewController alloc]init];
+                     chatChoiceTableViewController.resultArray=[NSArray arrayWithArray:self.chatChoiceArray];
+                     [self.navigationController pushViewController:chatChoiceTableViewController animated:YES];
                  }
+                 
 
              }
              failure:^(NSError *error) {
                  NSLog(@"请求失败");
              }];
-    
-
-    
     NSLog(@"search text :%@",[searchBar text]);
+}
+-(void)loadData:(NSArray*)JSONArray{
+    self.chatChoiceArray = [[NSMutableArray alloc]init];
+    for (NSDictionary *eachDic in JSONArray) {
+        ChatUser *chatUser=[[ChatUser alloc]initWithDic:eachDic];
+        [self.chatChoiceArray addObject:chatUser];
+    }
+    
 }
 // 将点击tableviewcell的时候收回 searchBar 键盘
 -(NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
