@@ -111,9 +111,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor=[UIColor whiteColor];
-    _UserName.placeholder=@"学号";
+    _UserName.placeholder=@"学 号";
     [_UserName setValue:RGB(202,202,202,1) forKeyPath:@"_placeholderLabel.textColor"];
-    _Password.placeholder=@"密码";
+    _Password.placeholder=@"密 码";
     [_Password setValue:RGB(202,202,202,1) forKeyPath:@"_placeholderLabel.textColor"];
     self.UserName.delegate=self;
     self.Password.delegate=self;

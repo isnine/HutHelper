@@ -33,6 +33,7 @@
 #import <RongIMKit/RongIMKit.h>
 #import "PointView.h"
 #import "LostViewController.h"
+#import "ChatListViewController.h"
 #define vBackBarButtonItemName  @"backArrow.png"    //导航条返回默认图片名
 #define ERROR_MSG_INVALID @"登录过期,请重新登录"
 @interface MainPageViewController ()
@@ -57,7 +58,6 @@ int class_error_;
     [self loadSet];
     //时间Label
     [self SetTimeLabel] ;
-
 
 }
 
@@ -432,6 +432,14 @@ int class_error_;
     [menuBtn setBackgroundImage:[UIImage imageNamed:@"menu"] forState:UIControlStateNormal];
     [menuBtn addTarget:self action:@selector(openOrCloseLeftList) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.leftBarButtonItem     = [[UIBarButtonItem alloc] initWithCustomView:menuBtn];
+    //按钮
+    UIView *rightButtonView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 50)];
+    UIButton *mainAndSearchBtn = [[UIButton alloc] initWithFrame:CGRectMake(70, 0, 50, 50)];
+    [rightButtonView addSubview:mainAndSearchBtn];
+    [mainAndSearchBtn setImage:[UIImage imageNamed:@"ico_menu_notice"] forState:UIControlStateNormal];
+    [mainAndSearchBtn addTarget:self action:@selector(notice) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *rightCunstomButtonView = [[UIBarButtonItem alloc] initWithCustomView:rightButtonView];
+    self.navigationItem.rightBarButtonItem = rightCunstomButtonView;
     /**让黑线消失的方法*/
         UIImageView *navBarHairlineImageView = [self findHairlineImageViewUnder:self.navigationController.navigationBar];
         navBarHairlineImageView.hidden = YES;
@@ -449,5 +457,11 @@ int class_error_;
         }
     }
     return nil;
+}
+
+-(void)notice{
+    AppDelegate *tempAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    ChatListViewController *chatList = [[ChatListViewController alloc] init];
+    [tempAppDelegate.mainNavigationController pushViewController:chatList animated:YES];
 }
 @end

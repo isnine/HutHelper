@@ -29,7 +29,6 @@
 
 #pragma mark - 生命周期
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-
     [UMessage startWithAppkey:APPKEY_UMESSAGE launchOptions:launchOptions];
     [UMessage registerForRemoteNotifications];
     UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
@@ -93,8 +92,6 @@
     UIImage *image = [UIImage imageNamed:@"ico_menu_back"];
     navigationBar.backIndicatorImage = image;
     navigationBar.backIndicatorTransitionMaskImage = image;
-
-   
 #ifdef DEBUG//因为这个是私有的api，一定要保证上线时的包中不包含这段代码！
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"

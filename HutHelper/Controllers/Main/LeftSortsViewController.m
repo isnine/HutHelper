@@ -139,7 +139,6 @@
         AppDelegate *tempAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         ChatListViewController *chatList = [[ChatListViewController alloc] init];
           [tempAppDelegate.mainNavigationController pushViewController:chatList animated:YES];
-        
     }
     if (indexPath.row == 3) {  //分享
         
