@@ -97,6 +97,9 @@ int class_error_;
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     //返回栏主题色
     [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:94/255.0 green:199/255.0 blue:217/255.0 alpha:1]];
+    /**让黑线消失的方法*/
+    UIImageView *navBarHairlineImageView = [self findHairlineImageViewUnder:self.navigationController.navigationBar];
+    navBarHairlineImageView.hidden = YES;
 }
 #pragma mark - 各按钮事件
 
@@ -444,9 +447,6 @@ int class_error_;
     [mainAndSearchBtn addTarget:self action:@selector(notice) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *rightCunstomButtonView = [[UIBarButtonItem alloc] initWithCustomView:rightButtonView];
     self.navigationItem.rightBarButtonItem = rightCunstomButtonView;
-    /**让黑线消失的方法*/
-        UIImageView *navBarHairlineImageView = [self findHairlineImageViewUnder:self.navigationController.navigationBar];
-        navBarHairlineImageView.hidden = YES;
     
 }
 // 寻找导航栏下的黑线

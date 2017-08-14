@@ -26,16 +26,34 @@
     [super viewDidLoad];
     
     self.navigationItem.title          = @"反馈";
-    UIColor *greyColor                 = [UIColor colorWithRed:239/255.0 green:239/255.0 blue:239/255.0 alpha:1];
-    self.view.backgroundColor          = greyColor;
+    
+//    UIColor *greyColor                 = [UIColor colorWithRed:239/255.0 green:239/255.0 blue:239/255.0 alpha:1];
+//    self.view.backgroundColor          = greyColor;
+    UIImageView *navBarHairlineImageView = [self findHairlineImageViewUnder:self.navigationController.navigationBar];
+    navBarHairlineImageView.hidden = NO;
     /** 标题栏样式 */
     UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     self.navigationItem.backBarButtonItem = item;
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor]}];
     _Content.text = @"请输入反馈意见";
-    _Content.textColor = [UIColor lightGrayColor];
+   // _Content.textColor = [UIColor lightGrayColor];
+    [_Mail setValue:RGB(64,64 , 64, 1) forKeyPath:@"_placeholderLabel.textColor"];
     _Content.delegate=self;
     _Mail.delegate=self;
+}
+
+// 寻找导航栏下的黑线
+- (UIImageView *)findHairlineImageViewUnder:(UIView *)view {
+    if ([view isKindOfClass:UIImageView.class] && view.bounds.size.height <= 1.0) {
+        return (UIImageView *)view;
+    }
+    for (UIView *subview in view.subviews) {
+        UIImageView *imageView = [self findHairlineImageViewUnder:subview];
+        if (imageView) {
+            return imageView;
+        }
+    }
+    return nil;
 }
 -(BOOL)textViewShouldBeginEditing:(UITextView *)textView
 {
