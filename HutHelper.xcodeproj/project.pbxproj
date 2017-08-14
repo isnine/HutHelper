@@ -70,7 +70,7 @@
 		3A796C251E534C1B00794043 /* FeedbackResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A796BB21E534C1B00794043 /* FeedbackResultViewController.m */; };
 		3A796C261E534C1B00794043 /* FeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A796BB41E534C1B00794043 /* FeedbackViewController.m */; };
 		3A796C2F1E534C1B00794043 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A796BC81E534C1B00794043 /* LoginViewController.m */; };
-		3A796C301E534C1B00794043 /* ResetPassWordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A796BCA1E534C1B00794043 /* ResetPassWordViewController.m */; };
+		3A796C301E534C1B00794043 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A796BCA1E534C1B00794043 /* WebViewController.m */; };
 		3A796C391E534C1B00794043 /* LeftSortsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A796BDB1E534C1B00794043 /* LeftSortsViewController.m */; };
 		3A796C3A1E534C1B00794043 /* MainPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A796BDD1E534C1B00794043 /* MainPageViewController.m */; };
 		3A796C3C1E534C1B00794043 /* NoticeShowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A796BE21E534C1B00794043 /* NoticeShowViewController.m */; };
@@ -313,8 +313,8 @@
 		3A796BB41E534C1B00794043 /* FeedbackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedbackViewController.m; sourceTree = "<group>"; };
 		3A796BC71E534C1B00794043 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		3A796BC81E534C1B00794043 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
-		3A796BC91E534C1B00794043 /* ResetPassWordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResetPassWordViewController.h; sourceTree = "<group>"; };
-		3A796BCA1E534C1B00794043 /* ResetPassWordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResetPassWordViewController.m; sourceTree = "<group>"; };
+		3A796BC91E534C1B00794043 /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
+		3A796BCA1E534C1B00794043 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		3A796BDA1E534C1B00794043 /* LeftSortsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftSortsViewController.h; sourceTree = "<group>"; };
 		3A796BDB1E534C1B00794043 /* LeftSortsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftSortsViewController.m; sourceTree = "<group>"; };
 		3A796BDC1E534C1B00794043 /* MainPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainPageViewController.h; sourceTree = "<group>"; };
@@ -774,6 +774,8 @@
 				3A796C0D1E534C1B00794043 /* User */,
 				3A3775571F35EAD7005A5170 /* DayViewController.h */,
 				3A37755D1F35EAD7005A5170 /* DayViewController.m */,
+				3A796BC91E534C1B00794043 /* WebViewController.h */,
+				3A796BCA1E534C1B00794043 /* WebViewController.m */,
 				3A3775591F35EAD7005A5170 /* HomeWorkViewController.h */,
 				3A3775581F35EAD7005A5170 /* HomeWorkViewController.m */,
 				3A37755E1F35EAD7005A5170 /* LibraryViewController.h */,
@@ -813,8 +815,6 @@
 			children = (
 				3A796BC71E534C1B00794043 /* LoginViewController.h */,
 				3A796BC81E534C1B00794043 /* LoginViewController.m */,
-				3A796BC91E534C1B00794043 /* ResetPassWordViewController.h */,
-				3A796BCA1E534C1B00794043 /* ResetPassWordViewController.m */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -1648,7 +1648,7 @@
 				3AC12C2C1F3B3BD1007C3B7E /* ChatChoiceTableViewCell.m in Sources */,
 				3A796C1F1E534C1B00794043 /* CourseViewController.m in Sources */,
 				3A532CCD1E910C13003CD5A8 /* UIWindow+CurrentViewController.m in Sources */,
-				3A796C301E534C1B00794043 /* ResetPassWordViewController.m in Sources */,
+				3A796C301E534C1B00794043 /* WebViewController.m in Sources */,
 				3A532CCB1E910C13003CD5A8 /* UIView+CustomControlView.m in Sources */,
 				3A96DEE51E94B384006C2CC8 /* VedioPlayViewController.m in Sources */,
 				3A532CD11E910C13003CD5A8 /* ZFPlayerControlView.m in Sources */,

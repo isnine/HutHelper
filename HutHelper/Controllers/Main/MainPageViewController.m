@@ -99,13 +99,14 @@ int class_error_;
     [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:94/255.0 green:199/255.0 blue:217/255.0 alpha:1]];
 }
 #pragma mark - 各按钮事件
-//课程表
-- (IBAction)ClassFind:(id)sender {  //课表界面
+
+- (IBAction)ClassFind:(id)sender {
     if(([Config getCourse]==nil)||([Config getCourseXp]==nil)){
         [MBProgressHUD showMessage:@"查询中" toView:self.view];
         NSString *urlString=Config.getApiClass;
         NSString *urlXpString=Config.getApiClassXP;
         __block ClassStatus status=ClassOK;
+        __block NSString *errorStr;
         dispatch_group_t group = dispatch_group_create();
         dispatch_queue_t q = dispatch_get_global_queue(0, 0);
         //平时课表队列请求
@@ -119,16 +120,16 @@ int class_error_;
                     [Config saveWidgetCourse:arrayCourse];
                 }else if([msg isEqualToString:@"令牌错误"]){
                     status=status+2;
-                    [MBProgressHUD showError:ERROR_MSG_INVALID toView:self.view];
+                    errorStr=ERROR_MSG_INVALID;
                 }else{
                     status=status+2;
-                    [MBProgressHUD showError:msg toView:self.view];
+                    errorStr=msg;
                 }
                 dispatch_group_leave(group);
             } failure:^(NSError *error) {
                 status=status+2;
                 dispatch_group_leave(group);
-                [MBProgressHUD showError:@"网络超时，平时课表查询失败" toView:self.view];
+                errorStr=@"网络超时，平时课表查询失败";
             }];
         });
         
@@ -143,15 +144,16 @@ int class_error_;
                     [Config saveWidgetCourseXp:arrayCourseXp];
                 }else if([msg isEqualToString:@"令牌错误"]){
                     status=status+1;
-                    [MBProgressHUD showError:ERROR_MSG_INVALID toView:self.view];
+                    errorStr=ERROR_MSG_INVALID;
                 }else{
                     status=status+1;
-                    [MBProgressHUD showError:msg toView:self.view];
+                    errorStr=msg;
                 }
+                HideAllHUD
                 dispatch_group_leave(group);
             } failure:^(NSError *error) {
                 status=status+1;
-                [MBProgressHUD showError:@"网络超时，实验课表查询失败" toView:self.view];
+                 errorStr=@"网络超时，实验课表查询失败";
                 dispatch_group_leave(group);
             }];
         });
@@ -162,13 +164,15 @@ int class_error_;
             if (status==ClassOK||status==ClassXpError) {
                 [Config setIs:0];
                 [Config pushViewController:@"Class"];
+            }else{
+                [MBProgressHUD showError:errorStr toView:self.view];
             }
         });
     }else{
         [Config setIs:0];
         [Config pushViewController:@"Class"];
     }
-}
+}//课程表
 - (IBAction)ClassXPFind:(id)sender {  //实验课表
     [Config pushViewController:@"ClassXp"];
 } //实验课表

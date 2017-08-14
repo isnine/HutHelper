@@ -10,6 +10,7 @@
 #import "JSONKit.h"
 #import "AppDelegate.h"
 #import "LeftSortsViewController.h"
+#import "WebViewController.h"
 #import <StoreKit/StoreKit.h>
 @interface AboutViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *version;
@@ -25,12 +26,22 @@
     self.view.backgroundColor = greyColor;
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor]}];
     // Do any additional setup after loading the view from its nib.
-    NSString *app_Version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+    NSString *app_Version =[NSString stringWithFormat:@"%@(%@)",[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"],[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"]] ;
    _version.text=app_Version;
+    //返回箭头样式
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+    self.navigationItem.backBarButtonItem = item;
 }
 
 - (IBAction)Appscore:(id)sender {
     [Config showAppStore];
+}
+- (IBAction)helpBtn:(id)sender {
+    UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    WebViewController *webViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Web"];
+    webViewController.urlString=@"http://hugongda.com:8888/home/post/39";
+    webViewController.viewTitle=@"Q&A";
+    [self.navigationController pushViewController:webViewController animated:YES];
 }
 
 

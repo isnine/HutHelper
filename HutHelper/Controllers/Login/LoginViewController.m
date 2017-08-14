@@ -7,7 +7,7 @@
 //
 
 #import "LoginViewController.h"
-#import "ResetPassWordViewController.h"
+#import "WebViewController.h"
 #import "LeftSortsViewController.h"
 #import "JSONKit.h"
 #import "AppDelegate.h"
@@ -127,7 +127,11 @@
     
 }
 - (IBAction)resetpassword:(id)sender {
-    [Config pushViewController:@"Login2"];
+    UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    WebViewController *webViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Web"];
+    webViewController.urlString=Config.getApiLoginReset;
+    webViewController.viewTitle=@"重置密码";
+    [self.navigationController pushViewController:webViewController animated:YES];
 }
 
 
