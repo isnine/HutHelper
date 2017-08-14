@@ -29,6 +29,7 @@
 
 #pragma mark - 生命周期
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    //友盟推送
     [UMessage startWithAppkey:APPKEY_UMESSAGE launchOptions:launchOptions];
     [UMessage registerForRemoteNotifications];
     UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
@@ -41,7 +42,7 @@
             
         }
     }];
-    [UMessage setLogEnabled:NO];//打开日志，方便调试
+    [UMessage setLogEnabled:YES];//打开日志，方便调试
     //友盟统计
     UMConfigInstance.appKey = APPKEY_UMESSAGE;
     [MobClick setAppVersion:[Config getCurrentVersion]];
@@ -87,6 +88,24 @@
                                         NSLog(@"token错误");
                                     }];
     }
+    //融云推送
+    if ([application
+         respondsToSelector:@selector(registerUserNotificationSettings:)]) {
+        //注册推送, 用于iOS8以及iOS8之后的系统
+        UIUserNotificationSettings *settings = [UIUserNotificationSettings
+                                                settingsForTypes:(UIUserNotificationTypeBadge |
+                                                                  UIUserNotificationTypeSound |
+                                                                  UIUserNotificationTypeAlert)
+                                                categories:nil];
+        [application registerUserNotificationSettings:settings];
+    } else {
+        //注册推送，用于iOS8之前的系统
+        UIRemoteNotificationType myTypes = UIRemoteNotificationTypeBadge |
+        UIRemoteNotificationTypeAlert |
+        UIRemoteNotificationTypeSound;
+        [application registerForRemoteNotificationTypes:myTypes];
+    }
+
     //设置返回按钮
     UINavigationBar * navigationBar = [UINavigationBar appearance];
     UIImage *image = [UIImage imageNamed:@"ico_menu_back"];
@@ -112,6 +131,31 @@
     }
     return result;
 }
+
+
+//注册用户通知设置
+- (void)application:(UIApplication *)application
+didRegisterUserNotificationSettings:
+(UIUserNotificationSettings *)notificationSettings {
+    // register to receive notifications
+    [application registerForRemoteNotifications];
+}
+/**
+ * 推送处理3
+ */
+- (void)application:(UIApplication *)application
+didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    NSString *token =
+    [[[[deviceToken description] stringByReplacingOccurrencesOfString:@"<"
+                                                           withString:@""]
+      stringByReplacingOccurrencesOfString:@">"
+      withString:@""]
+     stringByReplacingOccurrencesOfString:@" "
+     withString:@""];
+    
+    [[RCIMClient sharedRCIMClient] setDeviceToken:token];
+}
+
 - (void)applicationWillResignActive:(UIApplication *)application {
 }
 - (void)applicationDidBecomeActive:(UIApplication *)application {
@@ -126,6 +170,9 @@
 
 //iOS10新增：处理前台收到通知的代理方法
 -(void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions))completionHandler{
+    NSLog(@"通知收到");
+    //友盟推送
+    /*
     NSDictionary * userInfo          = notification.request.content.userInfo;
     if([notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
         //应用处于前台时的远程推送接受
@@ -162,6 +209,8 @@
     }
     //当应用处于前台时提示设置，需要哪个可以设置哪一个
     completionHandler(UNNotificationPresentationOptionSound|UNNotificationPresentationOptionBadge|UNNotificationPresentationOptionAlert);
+    
+    */
 }
 
 //iOS10新增：处理后台点击通知的代理方法
