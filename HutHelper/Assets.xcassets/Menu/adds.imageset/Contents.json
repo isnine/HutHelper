@@ -6,11 +6,11 @@
     },
     {
       "idiom" : "universal",
-      "filename" : "adds.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
+      "filename" : "adds.png",
       "scale" : "3x"
     }
   ],
