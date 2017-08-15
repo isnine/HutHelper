@@ -71,6 +71,7 @@
     }else{
         [self reloadData:_myHandArray];
         //[self.tableView reloadData];
+        self.isSelfGoods=YES;
         self.navigationItem.title=@"我的发布";
     }
     // 标题栏样式
@@ -137,6 +138,7 @@
                      placeholderImage:[UIImage imageNamed:@"load_img"]];
     }
         cell.handArray=_handArray;
+    cell.isSelfGoods=self.isSelfGoods;
     return cell;
 }
 
@@ -154,7 +156,11 @@
         HideAllHUD
         NSDictionary *dic1 = [NSDictionary dictionaryWithObject:responseObject forKey:@""];
         NSArray *Hand           = [dic1 objectForKey:@""];
-        if (Hand.count!=0) {
+//        if ([responseObject objectForKey:@"msg"]) {
+//            [MBProgressHUD showError:@"登录过期，请重新登录" toView:self.view];
+//            return ;
+//        }
+        if (Hand.count>0) {
             NSMutableArray *data=[[NSMutableArray alloc]init];
             [data addObject:_handAllArray[0]];
             [data addObjectsFromArray:Hand];
@@ -165,6 +171,7 @@
 //            [Config setIs:1];
             HandTableViewController *hand=[[HandTableViewController alloc]init];
             hand.myHandArray=[data mutableCopy];
+            
             AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
             [tempAppDelegate.mainNavigationController pushViewController:hand animated:YES];
         }else{

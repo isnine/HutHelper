@@ -10,4 +10,5 @@
 
 @interface HandTableViewController : UITableViewController
 @property (nonatomic, copy) NSMutableArray      *myHandArray;
+@property (nonatomic,assign) Boolean      *isSelfGoods;
 @end

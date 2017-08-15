@@ -65,7 +65,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     <color key="textColor" red="0.25094896554946899" green="0.25099846720695496" blue="0.25094583630561829" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                    <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" keyboardAppearance="alert" returnKeyType="done" secureTextEntry="YES"/>
+                    <textInputTraits key="textInputTraits" keyboardType="twitter" returnKeyType="done" secureTextEntry="YES"/>
                     <connections>
                         <action selector="End:" destination="-1" eventType="editingDidEndOnExit" id="b8R-n6-n6p"/>
                     </connections>
