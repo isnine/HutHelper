@@ -330,6 +330,18 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.93718296290000003" green="0.93729525800000002" blue="0.93714481589999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ico_about_arrows" translatesAutoresizingMaskIntoConstraints="NO" id="hZv-7h-1qr">
+                                <rect key="frame" x="394" y="530" width="9" height="13"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ico_about_arrows" translatesAutoresizingMaskIntoConstraints="NO" id="90a-gh-J8Q">
+                                <rect key="frame" x="394" y="488" width="9" height="13"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ico_about_arrows" translatesAutoresizingMaskIntoConstraints="NO" id="0s1-vL-ivk">
+                                <rect key="frame" x="394" y="440" width="9" height="13"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -1559,6 +1571,7 @@
         <image name="button" width="144" height="69"/>
         <image name="buttonnull" width="399" height="102"/>
         <image name="calendar1" width="689" height="1037"/>
+        <image name="ico_about_arrows" width="11" height="20"/>
         <image name="ico_about_ico" width="88" height="86"/>
         <image name="ico_notice_time" width="30" height="30"/>
         <image name="ico_power_unselected" width="21" height="21"/>

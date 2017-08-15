@@ -31,6 +31,8 @@
 		3A37757C1F35EB76005A5170 /* JRWaterFallLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A3775711F35EB37005A5170 /* JRWaterFallLayout.m */; };
 		3A3FB3811F2CBDE500E74BB0 /* ChatListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A3FB3801F2CBDE500E74BB0 /* ChatListViewController.m */; };
 		3A4049091E6A6C730038F207 /* MomentsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A4049081E6A6C730038F207 /* MomentsCell.m */; };
+		3A42B7561F42E953005D45D6 /* ChatChoiceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A42B7541F42E953005D45D6 /* ChatChoiceTableViewCell.m */; };
+		3A42B7571F42E953005D45D6 /* ChatChoiceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A42B7551F42E953005D45D6 /* ChatChoiceTableViewCell.xib */; };
 		3A4D2FBD1E8D20E900901E3B /* HandTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A4D2FBB1E8D20E900901E3B /* HandTableViewCell.xib */; };
 		3A4D2FBE1E8D20E900901E3B /* HandTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A4D2FBC1E8D20E900901E3B /* HandTableViewController.xib */; };
 		3A4D2FF31E8D24C100901E3B /* NoticeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A4D2FF11E8D24C100901E3B /* NoticeTableViewCell.m */; };
@@ -111,7 +113,6 @@
 		3A9C28F71F15FD9F00B91876 /* LineUIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A9C28F61F15FD9F00B91876 /* LineUIView.m */; };
 		3AAB90991EA393A000C35137 /* ScoreRank.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AAB90981EA393A000C35137 /* ScoreRank.m */; };
 		3AC12C241F3B381E007C3B7E /* ChatChoiceTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AC12C231F3B381E007C3B7E /* ChatChoiceTableViewController.m */; };
-		3AC12C2C1F3B3BD1007C3B7E /* ChatChoiceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AC12C2B1F3B3BD1007C3B7E /* ChatChoiceTableViewCell.m */; };
 		3AC12C2F1F3B3C6D007C3B7E /* ChatUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AC12C2E1F3B3C6D007C3B7E /* ChatUser.m */; };
 		3ACF3D081EA731E800FBEC57 /* CourseXpTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ACF3D071EA731E800FBEC57 /* CourseXpTableViewController.m */; };
 		3AD047B01F316CCA00B61A02 /* HandAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ABDCDCE1F316BEC00B95D6C /* HandAddViewController.m */; };
@@ -240,6 +241,9 @@
 		3A3FB3801F2CBDE500E74BB0 /* ChatListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatListViewController.m; sourceTree = "<group>"; };
 		3A4049071E6A6C730038F207 /* MomentsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MomentsCell.h; sourceTree = "<group>"; };
 		3A4049081E6A6C730038F207 /* MomentsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MomentsCell.m; sourceTree = "<group>"; };
+		3A42B7531F42E953005D45D6 /* ChatChoiceTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChatChoiceTableViewCell.h; sourceTree = "<group>"; };
+		3A42B7541F42E953005D45D6 /* ChatChoiceTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChatChoiceTableViewCell.m; sourceTree = "<group>"; };
+		3A42B7551F42E953005D45D6 /* ChatChoiceTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatChoiceTableViewCell.xib; sourceTree = "<group>"; };
 		3A4D2FBB1E8D20E900901E3B /* HandTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HandTableViewCell.xib; sourceTree = "<group>"; };
 		3A4D2FBC1E8D20E900901E3B /* HandTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HandTableViewController.xib; sourceTree = "<group>"; };
 		3A4D2FF01E8D24C100901E3B /* NoticeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoticeTableViewCell.h; sourceTree = "<group>"; };
@@ -400,8 +404,6 @@
 		3ABDCDD41F316BEC00B95D6C /* HandTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HandTableViewController.m; sourceTree = "<group>"; };
 		3AC12C221F3B381E007C3B7E /* ChatChoiceTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChatChoiceTableViewController.h; sourceTree = "<group>"; };
 		3AC12C231F3B381E007C3B7E /* ChatChoiceTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChatChoiceTableViewController.m; sourceTree = "<group>"; };
-		3AC12C2A1F3B3BD1007C3B7E /* ChatChoiceTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChatChoiceTableViewCell.h; sourceTree = "<group>"; };
-		3AC12C2B1F3B3BD1007C3B7E /* ChatChoiceTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChatChoiceTableViewCell.m; sourceTree = "<group>"; };
 		3AC12C2D1F3B3C6D007C3B7E /* ChatUser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChatUser.h; sourceTree = "<group>"; };
 		3AC12C2E1F3B3C6D007C3B7E /* ChatUser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChatUser.m; sourceTree = "<group>"; };
 		3ACF3D061EA731E800FBEC57 /* CourseXpTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseXpTableViewController.h; sourceTree = "<group>"; };
@@ -1172,8 +1174,9 @@
 		3AC12C291F3B3BB4007C3B7E /* Im */ = {
 			isa = PBXGroup;
 			children = (
-				3AC12C2A1F3B3BD1007C3B7E /* ChatChoiceTableViewCell.h */,
-				3AC12C2B1F3B3BD1007C3B7E /* ChatChoiceTableViewCell.m */,
+				3A42B7531F42E953005D45D6 /* ChatChoiceTableViewCell.h */,
+				3A42B7541F42E953005D45D6 /* ChatChoiceTableViewCell.m */,
+				3A42B7551F42E953005D45D6 /* ChatChoiceTableViewCell.xib */,
 			);
 			path = Im;
 			sourceTree = "<group>";
@@ -1474,6 +1477,7 @@
 				3A4D2FBD1E8D20E900901E3B /* HandTableViewCell.xib in Resources */,
 				3A532CD01E910C13003CD5A8 /* ZFPlayer.bundle in Resources */,
 				3A4D30171E8D297200901E3B /* MainViewController.xib in Resources */,
+				3A42B7571F42E953005D45D6 /* ChatChoiceTableViewCell.xib in Resources */,
 				3A4D30161E8D297200901E3B /* LeftUserTableViewCell.xib in Resources */,
 				3AFA4F771EC04C0E00CB7DA2 /* Info.plist in Resources */,
 				3A4D2FFA1E8D24E200901E3B /* ScoreTableViewCell.xib in Resources */,
@@ -1645,7 +1649,6 @@
 				3AE52B871EA8F0EB00705269 /* CourseXpTableViewCell.m in Sources */,
 				3A31E1E51E6BC5040056565A /* MomentsViewController.m in Sources */,
 				3A98CB5D1E7CF7AA00CABD0D /* CommentsModel.m in Sources */,
-				3AC12C2C1F3B3BD1007C3B7E /* ChatChoiceTableViewCell.m in Sources */,
 				3A796C1F1E534C1B00794043 /* CourseViewController.m in Sources */,
 				3A532CCD1E910C13003CD5A8 /* UIWindow+CurrentViewController.m in Sources */,
 				3A796C301E534C1B00794043 /* WebViewController.m in Sources */,
@@ -1657,6 +1660,7 @@
 				3A98CC011E7CFA9C00CABD0D /* GWPCourseListView.m in Sources */,
 				3AFA4F661EC0488200CB7DA2 /* UILabel+LXAdd.m in Sources */,
 				3A532CC81E910C13003CD5A8 /* UIImageView+ZFCache.m in Sources */,
+				3A42B7561F42E953005D45D6 /* ChatChoiceTableViewCell.m in Sources */,
 				3A532CCC1E910C13003CD5A8 /* UIViewController+ZFPlayerRotation.m in Sources */,
 				3A4049091E6A6C730038F207 /* MomentsCell.m in Sources */,
 				3A98CB721E7CF82F00CABD0D /* MBProgressHUD+MJ.m in Sources */,

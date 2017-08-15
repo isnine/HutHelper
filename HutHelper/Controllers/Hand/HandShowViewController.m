@@ -26,7 +26,7 @@
     [self setText];
     [self setFoot];
     if(self.isSelfGoods){
-        /**按钮*/
+        //按钮
         UIView *rightButtonView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 50)];
         UIButton *mainAndSearchBtn = [[UIButton alloc] initWithFrame:CGRectMake(70, 0, 50, 50)];
         [rightButtonView addSubview:mainAndSearchBtn];

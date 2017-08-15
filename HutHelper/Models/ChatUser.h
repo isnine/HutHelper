@@ -22,7 +22,7 @@
 /**头像*/
 @property NSString *head_pic_thumb;
 /**最后一次登录*/
-@property NSString *last_login;
+@property NSString *last_use;
 /**性别*/
 @property NSString *sex;
 -(instancetype)initWithDic:(NSDictionary*)Dic;

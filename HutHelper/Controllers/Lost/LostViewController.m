@@ -147,7 +147,6 @@
         Lost *lostModel=[[Lost alloc]initWithDic:eachDic];
         [self.lostArray addObject:lostModel];
     }
-    
 }
 -(void)loadData:(NSArray*)JSONArray{
     for (NSDictionary *eachDic in JSONArray) {

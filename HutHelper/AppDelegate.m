@@ -259,6 +259,11 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
                 NSLog(@"全局他人:%@",responseObject[@"data"][@"TrueName"]);
                 userInfo.userId=userId;
                 userInfo.name=responseObject[@"data"][@"TrueName"];
+//                if (responseObject[@"data"][@"head_pic_thumb"] isEqualToString:@"") {
+//                    if (<#condition#>) {
+//                        <#statements#>
+//                    }
+//                }
                 userInfo.portraitUri=[NSString stringWithFormat:@"%@/%@",Config.getApiImg,responseObject[@"data"][@"head_pic_thumb"]];
                 return completion(userInfo);
             } failure:^(NSError *error) {

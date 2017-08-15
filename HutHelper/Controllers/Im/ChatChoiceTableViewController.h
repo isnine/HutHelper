@@ -10,5 +10,4 @@
 
 
 @interface ChatChoiceTableViewController : UITableViewController
-@property(nonatomic,copy) NSArray *resultArray;
 @end

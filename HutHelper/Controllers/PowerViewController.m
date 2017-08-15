@@ -155,9 +155,6 @@ typedef NS_ENUM(NSUInteger, PowerSelectBtn) {
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     
 }
-
-
-
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
