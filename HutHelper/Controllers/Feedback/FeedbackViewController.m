@@ -16,6 +16,7 @@
 @interface FeedbackViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *Mail;
 @property (weak, nonatomic) IBOutlet UITextView *Content;
+@property (weak, nonatomic) IBOutlet UILabel *wordLab;
 
 
 @end
@@ -26,35 +27,19 @@
     [super viewDidLoad];
     
     self.navigationItem.title          = @"反馈";
-    
-//    UIColor *greyColor                 = [UIColor colorWithRed:239/255.0 green:239/255.0 blue:239/255.0 alpha:1];
-//    self.view.backgroundColor          = greyColor;
-    UIImageView *navBarHairlineImageView = [self findHairlineImageViewUnder:self.navigationController.navigationBar];
-    navBarHairlineImageView.hidden = NO;
+    self.view.backgroundColor          = RGB(239, 239, 239, 1);
     /** 标题栏样式 */
     UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     self.navigationItem.backBarButtonItem = item;
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor]}];
-    _Content.text = @"请输入反馈意见";
-   // _Content.textColor = [UIColor lightGrayColor];
-    [_Mail setValue:RGB(64,64 , 64, 1) forKeyPath:@"_placeholderLabel.textColor"];
+    _Content.text = @"请输入15个字以上的问题描述以便我们提供更好的帮助";
+    _Content.textColor = [UIColor lightGrayColor];
+    [_Mail setValue:[UIColor lightGrayColor] forKeyPath:@"_placeholderLabel.textColor"];
     _Content.delegate=self;
     _Mail.delegate=self;
 }
 
-// 寻找导航栏下的黑线
-- (UIImageView *)findHairlineImageViewUnder:(UIView *)view {
-    if ([view isKindOfClass:UIImageView.class] && view.bounds.size.height <= 1.0) {
-        return (UIImageView *)view;
-    }
-    for (UIView *subview in view.subviews) {
-        UIImageView *imageView = [self findHairlineImageViewUnder:subview];
-        if (imageView) {
-            return imageView;
-        }
-    }
-    return nil;
-}
+
 -(BOOL)textViewShouldBeginEditing:(UITextView *)textView
 {
     textView.text=@"";
@@ -69,7 +54,18 @@
     [textField  resignFirstResponder];
     return  YES;
     }
-
+//正在改变
+- (void)textViewDidChange:(UITextView *)textView
+{
+    self.wordLab.text = [NSString stringWithFormat:@"%lu/200", (unsigned long)textView.text.length];
+    //字数限制操作
+    if (textView.text.length >=200) {
+        
+        textView.text = [textView.text substringToIndex:200];
+        self.wordLab.text = @"200/200";
+    }
+ 
+}
 -(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
 {
     if ([text isEqualToString:@"\n"]) {
@@ -98,63 +94,33 @@
             [MBProgressHUD showError:@"发送超时，请重试" toView:self.view];
             HideAllHUD
         }];
-//        NSURL * url                        = [NSURL URLWithString:Config.getApiFeedback];
-//        NSString *str1=@"email=";
-//        NSString *Mail_String              = _Mail.text;
-//        NSString *str2=@"&content=";
-//        NSString *Content_String           = _Content.text;
-//        NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-//        NSString *studentKH=Config.getStudentKH;
-//        if(studentKH==NULL){
-//            str2=@"&content= ";
-//        }
-//        else
-//        {
-//            str2=[str2 stringByAppendingString:studentKH];
-//            str2=[str2 stringByAppendingString:@" iOS "];
-//        }
-//        
-//        NSString *str1_Mail_String=[str1 stringByAppendingString:Mail_String];
-//        NSString *str1_Mail_String_str2=[str1_Mail_String stringByAppendingString:str2];
-//        NSString *str=[str1_Mail_String_str2 stringByAppendingString:Content_String];
-//        
-//        NSMutableURLRequest * request      = [NSMutableURLRequest requestWithURL:url];
-//        //设置请求方式(默认的是get方式)
-//        request.HTTPMethod                 = @"POST";//使用大写规范
-//        //设置请求参数
-//        request.HTTPBody                   = [str dataUsingEncoding:NSUTF8StringEncoding];
-//        //创建NSURLConnection 对象用来连接服务器并且发送请求
-//        NSURLConnection * conn   = [[NSURLConnection alloc] initWithRequest:request delegate:self];
-//        [conn start];
-//        [Config saveUmeng];
-//        [Config pushViewController:@"Feedback2"];
         
     }
     
     
 }
-- (void)textFieldDidBeginEditing:(UITextField *)textField
-{
-    [self animateTextField: textField up: YES];
-}
+//- (void)textFieldDidBeginEditing:(UITextField *)textField
+//{
+//    [self animateTextField: textField up: YES];
+//}
+//
+//- (void)textFieldDidEndEditing:(UITextField *)textField
+//
+//{
+//    [self animateTextField: textField up: NO];
+//}
 
-- (void)textFieldDidEndEditing:(UITextField *)textField
-
-{
-    [self animateTextField: textField up: NO];
-}
-
-- (void) animateTextField: (UITextField*) textField up: (BOOL) up
-
-{
-    const int movementDistance = SYReal(120); // tweak as needed
-    const float movementDuration = 0.3f; // tweak as needed
-    int movement = (up ? -movementDistance : movementDistance);
-    [UIView beginAnimations: @"anim" context: nil];
-    [UIView setAnimationBeginsFromCurrentState: YES];
-    [UIView setAnimationDuration: movementDuration];
-    self.view.frame = CGRectOffset(self.view.frame, 0, movement);
-    [UIView commitAnimations];
-    
-}
+//- (void) animateTextField: (UITextField*) textField up: (BOOL) up
+//
+//{
+//    const int movementDistance = SYReal(120); // tweak as needed
+//    const float movementDuration = 0.3f; // tweak as needed
+//    int movement = (up ? -movementDistance : movementDistance);
+//    [UIView beginAnimations: @"anim" context: nil];
+//    [UIView setAnimationBeginsFromCurrentState: YES];
+//    [UIView setAnimationDuration: movementDuration];
+//    self.view.frame = CGRectOffset(self.view.frame, 0, movement);
+//    [UIView commitAnimations];
+//
+//}
 @end

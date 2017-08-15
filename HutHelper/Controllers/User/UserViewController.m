@@ -240,7 +240,11 @@ NSData* data;
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults]; //得到用户数据
     NSString *Url=[NSString stringWithFormat:@"%@/%@",Config.getApiImg,Config.getHeadPicThumb];
     if ((!Config.getHeadPicThumb)||[Config.getHeadPicThumb isEqualToString:@""]) {
-        return [UIImage imageNamed:@"header.jpg"];
+        if ([Config.getSex isEqualToString:@"男"]) {
+            return [UIImage imageNamed:@"img_user_boy"];
+        }else{
+            return [UIImage imageNamed:@"img_user_girl"];
+        }
     }
     else if ([defaults objectForKey:@"head_img"]){
         return [UIImage imageWithData:[defaults objectForKey:@"head_img"]];

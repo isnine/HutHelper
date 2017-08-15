@@ -404,47 +404,64 @@
          }];
 }
 -(void)btnDeleteComment{
-    CommentsModel *commentsModel=_data.commentsModelArray[comments_i];
-    NSString *Url_String=[NSString stringWithFormat:@"%@/%@/%@/%@",Config.getApiMomentsCommentDelete,Config.getStudentKH,Config.getRememberCodeApp,commentsModel.comment_id];
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
-    manager.requestSerializer.timeoutInterval = 3.f;
-    [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
-    /**请求平时课表*/
-    [manager GET:Url_String parameters:nil progress:nil
-         success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-             NSDictionary *Say_All = [NSDictionary dictionaryWithDictionary:responseObject];
-             if ([[Say_All objectForKey:@"msg"]isEqualToString:@"ok"]) {
-                 [MBProgressHUD showSuccess:@"删除成功" toView:self];
-                 _momentsTable.reload;
-             }
-             else{
-                 [MBProgressHUD showError:[Say_All objectForKey:@"msg"] toView:self];
-             }
-             
-         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-             
-             [MBProgressHUD showError:@"网络错误" toView:self];
-         }];
-    
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"删除评论" message:@"是否要删除当前评论" preferredStyle:  UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+    }]];
+    [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        CommentsModel *commentsModel=_data.commentsModelArray[comments_i];
+        NSString *Url_String=[NSString stringWithFormat:@"%@/%@/%@/%@",Config.getApiMomentsCommentDelete,Config.getStudentKH,Config.getRememberCodeApp,commentsModel.comment_id];
+        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+        [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
+        manager.requestSerializer.timeoutInterval = 3.f;
+        [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
+        //请求
+        [manager GET:Url_String parameters:nil progress:nil
+             success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                 NSDictionary *Say_All = [NSDictionary dictionaryWithDictionary:responseObject];
+                 if ([[Say_All objectForKey:@"msg"]isEqualToString:@"ok"]) {
+                     [MBProgressHUD showSuccess:@"删除成功" toView:self];
+                     _momentsTable.reload;
+                 }
+                 else{
+                     [MBProgressHUD showError:[Say_All objectForKey:@"msg"] toView:self];
+                 }
+                 
+             } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                 
+                 [MBProgressHUD showError:@"网络错误" toView:self];
+             }];
+        
+    }]];
+    UIViewController* activeVC = [UIApplication sharedApplication].keyWindow.rootViewController;
+    [activeVC presentViewController:alert animated:true completion:nil];
 }
 -(void)btnDeleteSay{
-    NSString *Url_String=[NSString stringWithFormat:@"%@/%@/%@/%@",Config.getApiMomentsDelete,Config.getStudentKH,Config.getRememberCodeApp,_data.moments_id];
-   [APIRequest GET:Url_String parameters:nil success:^(id responseObject) {
-             NSDictionary *Say_All = [NSDictionary dictionaryWithDictionary:responseObject];
-             if ([[Say_All objectForKey:@"msg"]isEqualToString:@"ok"]) {
-                 [MBProgressHUD showSuccess:@"删除成功" toView:self];
-                 _momentsTable.reload;
-             }
-             else{
-                 [MBProgressHUD showError:[Say_All objectForKey:@"msg"] toView:self];
-             }
-             
-         }failure:^(NSError *error) {
-             
-             [MBProgressHUD showError:@"网络错误" toView:self];
-         }];
     
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"删除说说" message:@"是否要删除当前说说" preferredStyle:  UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+    }]];
+    [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        NSString *Url_String=[NSString stringWithFormat:@"%@/%@/%@/%@",Config.getApiMomentsDelete,Config.getStudentKH,Config.getRememberCodeApp,_data.moments_id];
+        [APIRequest GET:Url_String parameters:nil success:^(id responseObject) {
+            NSDictionary *Say_All = [NSDictionary dictionaryWithDictionary:responseObject];
+            if ([[Say_All objectForKey:@"msg"]isEqualToString:@"ok"]) {
+                [MBProgressHUD showSuccess:@"删除成功" toView:self];
+                _momentsTable.reload;
+            }
+            else{
+                [MBProgressHUD showError:[Say_All objectForKey:@"msg"] toView:self];
+            }
+            
+        }failure:^(NSError *error) {
+            
+            [MBProgressHUD showError:@"网络错误" toView:self];
+        }];
+        
+    }]];
+    UIViewController* activeVC = [UIApplication sharedApplication].keyWindow.rootViewController;
+    [activeVC presentViewController:alert animated:true completion:nil];
 }
 
 -(void)scanBigImageClick:(UITapGestureRecognizer *)tap{
