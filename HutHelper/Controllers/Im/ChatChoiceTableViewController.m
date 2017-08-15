@@ -67,7 +67,7 @@
                  NSDictionary *resultDictionary = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
                  NSArray *resultArray   = [resultDictionary objectForKey:@"data"];
                  if (resultArray.count==0) {
-                     [MBProgressHUD showError:@"没有这个人" toView:self.view];
+                     [MBProgressHUD showError:@"查无此人" toView:self.view];
                  }else{
                      [self loadData:resultArray];
                      [self.tableView reloadData];

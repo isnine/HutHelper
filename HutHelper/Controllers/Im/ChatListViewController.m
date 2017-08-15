@@ -33,20 +33,6 @@
     [super viewDidLoad];
     //标题设置
     self.navigationItem.title=@"私信";
-    //搜索栏
-    /*
-     self.searchBar =[[UISearchBar alloc]initWithFrame:CGRectMake(0, 0, self.conversationListTableView.frame.size.width,SYReal(60))];
-     self.searchBar.delegate = self;
-     self.searchBar.placeholder=@"搜索对方的姓名";
-     self.searchBar.barTintColor=RGB(240, 240, 240, 1);
-     
-     self.headerView= [[UIView alloc]initWithFrame:CGRectMake(0,0,DeviceMaxWidth,SYReal(60))];
-     [self.headerView addSubview:self.searchBar];
-     self.conversationListTableView.delegate=self;
-     self.conversationListTableView.tableHeaderView =self.headerView;
-     [self.searchBar setAutocapitalizationType:UITextAutocapitalizationTypeNone];
-     [self.searchBar sizeToFit];
-     */
     //返回箭头
     UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     self.navigationItem.backBarButtonItem = item;

@@ -1902,6 +1902,7 @@
 				CODE_SIGN_ENTITLEMENTS = "HutHelper/Supporting Files/HutHelper.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = JW2LR94V6G;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1952,6 +1953,7 @@
 				CODE_SIGN_ENTITLEMENTS = "HutHelper/Supporting Files/HutHelper.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = JW2LR94V6G;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

@@ -1572,7 +1572,7 @@
         <image name="buttonnull" width="399" height="102"/>
         <image name="calendar1" width="689" height="1037"/>
         <image name="ico_about_arrows" width="11" height="20"/>
-        <image name="ico_about_ico" width="88" height="86"/>
+        <image name="ico_about_ico" width="61" height="61"/>
         <image name="ico_notice_time" width="30" height="30"/>
         <image name="ico_power_unselected" width="21" height="21"/>
         <image name="img_feedback_ok" width="660" height="66"/>

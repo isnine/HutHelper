@@ -36,6 +36,12 @@
     self.tableView.delegate=(id)self;
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(reload)];
     [self.tableView.mj_header beginRefreshing];
+    //MJRefresh适配iOS11
+    if (@available(iOS 11.0, *)) {
+        self.tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+        self.tableView.contentInset = UIEdgeInsetsMake(64, 0, 0, 0);
+    }
+    
     /**让黑线消失的方法*/
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"white"] forBarMetrics:UIBarMetricsDefault];
     self.navigationController.navigationBar.shadowImage = [[UIImage alloc] init];
@@ -301,6 +307,7 @@
             [Config saveScore:scoreData];
             NSString *urlRankString=Config.getApiRank;
             [APIRequest GET:urlRankString parameters:nil timeout:8.0 success:^(id responseObject) {
+                HideAllHUD
                 if ([responseObject[@"msg"]isEqualToString:@"ok"]) {
                     [Config saveScoreRank:responseObject];
                     if(_GradeString)
@@ -310,32 +317,32 @@
                     [self.tableView reloadData];
                     [MBProgressHUD showSuccess:@"刷新成功" toView:self.view];
                     [self.tableView.mj_header endRefreshing];
-                    HideAllHUD
                 }else{
                     [MBProgressHUD showError:@"排名查询错误" toView:self.view];
                     [self.tableView.mj_header endRefreshing];
-                    HideAllHUD
                 }
             } failure:^(NSError *error) {
+                HideAllHUD
                 [MBProgressHUD showError:@"网络超时" toView:self.view];
                 [self.tableView.mj_header endRefreshing];
-                HideAllHUD
             }];
             
         }else if([msg isEqualToString:@"令牌错误"]){
+            HideAllHUD
             [MBProgressHUD showError:@"登录过期,请重新登录" toView:self.view];
             [self.tableView.mj_header endRefreshing];
-            HideAllHUD
+            
         }else{
+            HideAllHUD
             [MBProgressHUD showError:msg toView:self.view];
             [self.tableView.mj_header endRefreshing];
-            HideAllHUD
+            
         }
         
     }failure:^(NSError *error){
+        HideAllHUD
         [MBProgressHUD showError:@"网络超时" toView:self.view];
         [self.tableView.mj_header endRefreshing];
-        HideAllHUD
     }];
 }
 

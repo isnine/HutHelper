@@ -54,6 +54,8 @@ int class_error_;
     [Config isAppFirstRun];
     //设置第几周
     [Config saveNowWeek:[Math getWeek]];
+    [Math getWeekDay:2017 m:9 d:5];
+    NSLog(@"当前周数%d",[Math getWeek:2017 m:9 d:5]);
     //首次登陆以及判断是否打开课程表
     [self loadSet];
     //时间Label
