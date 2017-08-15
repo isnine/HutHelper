@@ -112,6 +112,7 @@
 		3A98CC0F1E7CFA9C00CABD0D /* YYWeakProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A98CBF81E7CFA9C00CABD0D /* YYWeakProxy.m */; };
 		3A9C28F71F15FD9F00B91876 /* LineUIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A9C28F61F15FD9F00B91876 /* LineUIView.m */; };
 		3AAB90991EA393A000C35137 /* ScoreRank.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AAB90981EA393A000C35137 /* ScoreRank.m */; };
+		3AAECDBA1F4344C7004A6156 /* UIBarButtonItem+Badge.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AAECDB91F4344C7004A6156 /* UIBarButtonItem+Badge.m */; };
 		3AC12C241F3B381E007C3B7E /* ChatChoiceTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AC12C231F3B381E007C3B7E /* ChatChoiceTableViewController.m */; };
 		3AC12C2F1F3B3C6D007C3B7E /* ChatUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AC12C2E1F3B3C6D007C3B7E /* ChatUser.m */; };
 		3ACF3D081EA731E800FBEC57 /* CourseXpTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ACF3D071EA731E800FBEC57 /* CourseXpTableViewController.m */; };
@@ -394,6 +395,8 @@
 		3A9C28F61F15FD9F00B91876 /* LineUIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineUIView.m; sourceTree = "<group>"; };
 		3AAB90971EA393A000C35137 /* ScoreRank.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreRank.h; sourceTree = "<group>"; };
 		3AAB90981EA393A000C35137 /* ScoreRank.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScoreRank.m; sourceTree = "<group>"; };
+		3AAECDB81F4344C7004A6156 /* UIBarButtonItem+Badge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+Badge.h"; sourceTree = "<group>"; };
+		3AAECDB91F4344C7004A6156 /* UIBarButtonItem+Badge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+Badge.m"; sourceTree = "<group>"; };
 		3ABDCDCD1F316BEC00B95D6C /* HandAddViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HandAddViewController.h; sourceTree = "<group>"; };
 		3ABDCDCE1F316BEC00B95D6C /* HandAddViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HandAddViewController.m; sourceTree = "<group>"; };
 		3ABDCDCF1F316BEC00B95D6C /* HandShowViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HandShowViewController.h; sourceTree = "<group>"; };
@@ -998,6 +1001,8 @@
 				3A98CB691E7CF82F00CABD0D /* MBProgressHUD+MJ */,
 				3AFA4F6D1EC04A4B00CB7DA2 /* UINavigationBar+Awesome.h */,
 				3AFA4F6E1EC04A4B00CB7DA2 /* UINavigationBar+Awesome.m */,
+				3AAECDB81F4344C7004A6156 /* UIBarButtonItem+Badge.h */,
+				3AAECDB91F4344C7004A6156 /* UIBarButtonItem+Badge.m */,
 				3AFA4F671EC0489900CB7DA2 /* NSString+Common.h */,
 				3AFA4F681EC0489900CB7DA2 /* NSString+Common.m */,
 				3AFA4F611EC0485400CB7DA2 /* NSData+CRC32.h */,
@@ -1644,6 +1649,7 @@
 				3A796C3A1E534C1B00794043 /* MainPageViewController.m in Sources */,
 				3AFA4F631EC0485400CB7DA2 /* NSData+CRC32.m in Sources */,
 				3AFA4F6C1EC049F600CB7DA2 /* Math.m in Sources */,
+				3AAECDBA1F4344C7004A6156 /* UIBarButtonItem+Badge.m in Sources */,
 				3A796C4E1E534C1B00794043 /* ScoreDataViewController.m in Sources */,
 				3AC12C2F1F3B3C6D007C3B7E /* ChatUser.m in Sources */,
 				3AE52B871EA8F0EB00705269 /* CourseXpTableViewCell.m in Sources */,

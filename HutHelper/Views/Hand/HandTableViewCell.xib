@@ -37,7 +37,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="img_hand_shadow" translatesAutoresizingMaskIntoConstraints="NO" id="956-No-wMv">
-                        <rect key="frame" x="37" y="277" width="234" height="39"/>
+                        <rect key="frame" x="33" y="277" width="234" height="39"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     </imageView>
                     <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="img_hand_shadow" translatesAutoresizingMaskIntoConstraints="NO" id="h3m-Yw-KLF">
@@ -86,18 +86,18 @@
                         <color key="textColor" red="0.0" green="0.80520880222320557" blue="0.88075709342956543" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cGi-fV-pW2">
-                        <rect key="frame" x="33" y="15" width="300" height="397"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                        <connections>
-                            <action selector="Buuton1:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="ASC-Xj-bMC"/>
-                        </connections>
-                    </button>
                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jD6-mz-bSK">
                         <rect key="frame" x="365" y="16" width="300" height="397"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                         <connections>
                             <action selector="Button2:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="VHy-Qr-8Fd"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cGi-fV-pW2">
+                        <rect key="frame" x="34" y="16" width="300" height="397"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                        <connections>
+                            <action selector="Buuton1:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="ASC-Xj-bMC"/>
                         </connections>
                     </button>
                 </subviews>

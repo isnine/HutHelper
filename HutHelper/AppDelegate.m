@@ -16,7 +16,7 @@
 //#import <JSPatchPlatform/JSPatch.h>
 #import "iVersion.h"
 #import <RongIMKit/RongIMKit.h>
-
+#import "ChatListViewController.h"
 @interface AppDelegate ()<RCIMUserInfoDataSource>{
     
 }
@@ -37,12 +37,14 @@
     UNAuthorizationOptions types10   = UNAuthorizationOptionBadge|UNAuthorizationOptionAlert|UNAuthorizationOptionSound;
     [center requestAuthorizationWithOptions:types10 completionHandler:^(BOOL granted, NSError * _Nullable error) {
         if (granted) {
-            
+            //点击允许
+            //这里可以添加一些自己的逻辑
         } else {
             
         }
     }];
     [UMessage setLogEnabled:YES];//打开日志，方便调试
+
     //友盟统计
     UMConfigInstance.appKey = APPKEY_UMESSAGE;
     [MobClick setAppVersion:[Config getCurrentVersion]];
@@ -75,6 +77,11 @@
     if ([Config getImToken]) {
         NSLog(@"执行融云登录");
         [RCIM sharedRCIM].enableMessageAttachUserInfo=YES;
+        [RCIM sharedRCIM].enablePersistentUserInfoCache=YES;
+        [RCIM sharedRCIM].globalConversationAvatarStyle=RC_USER_AVATAR_CYCLE;
+        [RCIM sharedRCIM].enabledReadReceiptConversationTypeList =@[@(ConversationType_PRIVATE)];
+        [RCIM sharedRCIM].enableTypingStatus=YES;
+        [RCIM sharedRCIM].enableSyncReadStatus=YES;
         [[RCIM sharedRCIM] connectWithToken:[Config getImToken]
                                     success:^(NSString *userId) {
                                         NSLog(@"登陆成功。当前登录的用户ID：%@", userId);
@@ -135,16 +142,16 @@
 
 //注册用户通知设置
 - (void)application:(UIApplication *)application
-didRegisterUserNotificationSettings:
-(UIUserNotificationSettings *)notificationSettings {
-    // register to receive notifications
+        didRegisterUserNotificationSettings:
+            (UIUserNotificationSettings *)notificationSettings {
+        // register to receive notifications
     [application registerForRemoteNotifications];
 }
 /**
  * 推送处理3
  */
 - (void)application:(UIApplication *)application
-didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+        didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     NSString *token =
     [[[[deviceToken description] stringByReplacingOccurrencesOfString:@"<"
                                                            withString:@""]
@@ -152,6 +159,8 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
       withString:@""]
      stringByReplacingOccurrencesOfString:@" "
      withString:@""];
+
+    NSLog(@"Token:%@",token);
     
     [[RCIMClient sharedRCIMClient] setDeviceToken:token];
 }
@@ -170,13 +179,18 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 
 //iOS10新增：处理前台收到通知的代理方法
 -(void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions))completionHandler{
-    NSLog(@"通知收到");
+    NSLog(@"前台通知收到");
     //友盟推送
-    /*
     NSDictionary * userInfo          = notification.request.content.userInfo;
-    if([notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
+ //   if([notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
         //应用处于前台时的远程推送接受
         //关闭友盟自带的弹出框
+     //如果是聊天信息，跳转私信
+    if ([userInfo objectForKey:@"aps"] ==NULL) {
+        ChatListViewController *chatList = [[ChatListViewController alloc] init];
+        [self.mainNavigationController pushViewController:chatList animated:YES];
+        return;
+    }
         NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
         NSMutableArray *notice;
         NSArray *array;
@@ -187,7 +201,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
             notice=[array mutableCopy];
         }
         //变为可变字典以便加入时间
-        NSMutableDictionary *noticeDictionary=[NSMutableDictionary dictionaryWithDictionary:[[userInfo objectForKey:@"aps"]objectForKey:@"alert"]];
+        NSMutableDictionary *noticeDictionary=[NSMutableDictionary dictionaryWithDictionary:[[userInfo objectForKey:@"aps"] objectForKey:@"alert"]];
         //获得时间
         NSDate * senddate=[NSDate date];
         NSDateFormatter *day=[[NSDateFormatter alloc] init];
@@ -203,19 +217,26 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
         [UMessage setAutoAlert:NO];
         //必须加这句代码
         [UMessage didReceiveRemoteNotification:userInfo];
-        
-    }else{
-        //应用处于前台时的本地推送接受
-    }
+//    }else{
+//        //应用处于前台时的本地推送接受
+//    }
     //当应用处于前台时提示设置，需要哪个可以设置哪一个
     completionHandler(UNNotificationPresentationOptionSound|UNNotificationPresentationOptionBadge|UNNotificationPresentationOptionAlert);
     
-    */
+   
 }
 
 //iOS10新增：处理后台点击通知的代理方法
 -(void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)())completionHandler{
+     NSLog(@"后台通知收到");
     NSDictionary * userInfo          = response.notification.request.content.userInfo;
+    //如果是聊天信息，跳转私信
+    if ([userInfo objectForKey:@"aps"]==NULL) {
+        ChatListViewController *chatList = [[ChatListViewController alloc] init];
+        [self.mainNavigationController pushViewController:chatList animated:YES];
+        return;
+    }
+    
     if([response.notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
         //应用处于后台时的远程推送接受
         //必须加这句代码
@@ -229,7 +250,9 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
             notice=[array mutableCopy];
         }
         //变为可变字典以便加入时间
-        NSMutableDictionary *noticeDictionary=[NSMutableDictionary dictionaryWithDictionary:[[userInfo objectForKey:@"aps"]objectForKey:@"alert"]];
+        NSMutableDictionary *noticeDictionary=[[NSMutableDictionary alloc]init];
+        NSLog(@"值%@ 值%@",[userInfo objectForKey:@"aps"],[[userInfo objectForKey:@"aps"] objectForKey:@"alert"]);
+        noticeDictionary=[NSMutableDictionary dictionaryWithDictionary:[[userInfo objectForKey:@"aps"] objectForKey:@"alert"]];
         //获得时间
         NSDate * senddate=[NSDate date];
         NSDateFormatter *day=[[NSDateFormatter alloc] init];
@@ -245,6 +268,33 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
         [UMessage didReceiveRemoteNotification:userInfo];
     }else{
         //应用处于后台时的本地推送接受
+        NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+        NSMutableArray *notice;
+        NSArray *array;
+        if (![defaults objectForKey:@"Notice"])
+            notice=[[NSMutableArray alloc]init];
+        else{
+            array=[defaults objectForKey:@"Notice"];
+            notice=[array mutableCopy];
+        }
+        //变为可变字典以便加入时间
+        NSMutableDictionary *noticeDictionary=[NSMutableDictionary
+                                               dictionaryWithDictionary:
+                                               [[userInfo objectForKey:@"aps"]objectForKey:@"alert"]
+                                               ];
+        //获得时间
+        NSDate * senddate=[NSDate date];
+        NSDateFormatter *day=[[NSDateFormatter alloc] init];
+        [day setDateFormat:@"YYYY-MM-dd HH:mm"];
+        NSString *time=[NSString stringWithFormat:@"%@",[day stringFromDate:senddate]];
+        [noticeDictionary setValue:time forKey:@"time"];
+        [notice insertObject:noticeDictionary atIndex:0];
+        array = [NSArray arrayWithArray:notice];
+        [defaults setObject:array forKey:@"Notice"];//通知列表
+        [defaults setObject:noticeDictionary forKey:@"NoticeShow"];//通知详情
+        [defaults synchronize];
+        [Config pushViewController:@"NoticeShow"];
+        [UMessage didReceiveRemoteNotification:userInfo];
     }
     
 }
@@ -268,6 +318,10 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
                 return completion(userInfo);
             } failure:^(NSError *error) {
                 NSLog(@"全局他人失败");
+//                RCUserInfo *userInfo=[[RCUserInfo alloc]init];
+//                userInfo.userId=userId;
+//                userInfo.name=[NSString stringWithFormat:@"%@同学",userId];
+//                userInfo.portraitUri=[NSString stringWithFormat:@"%@/%@",Config.getApiImg,@"/head/head-boy.png"];
                 return completion(nil);
             }];
     

@@ -34,6 +34,7 @@
 #import "PointView.h"
 #import "LostViewController.h"
 #import "ChatListViewController.h"
+#import "UIBarButtonItem+Badge.h"
 #define vBackBarButtonItemName  @"backArrow.png"    //导航条返回默认图片名
 #define ERROR_MSG_INVALID @"登录过期,请重新登录"
 @interface MainPageViewController ()
@@ -54,8 +55,6 @@ int class_error_;
     [Config isAppFirstRun];
     //设置第几周
     [Config saveNowWeek:[Math getWeek]];
-    [Math getWeekDay:2017 m:9 d:5];
-    NSLog(@"当前周数%d",[Math getWeek:2017 m:9 d:5]);
     //首次登陆以及判断是否打开课程表
     [self loadSet];
     //时间Label
@@ -78,6 +77,9 @@ int class_error_;
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    //通知数目
+    self.navigationItem.rightBarButtonItem.badgeValue = [NSString stringWithFormat:@"%d",[[RCIMClient sharedRCIMClient] getTotalUnreadCount]];
+    [self.navigationItem.rightBarButtonItem setBadgeOriginY:SYReal(3)];
     //侧栏开启
     AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [tempAppDelegate.LeftSlideVC setPanEnabled:YES];
@@ -450,7 +452,6 @@ int class_error_;
     [mainAndSearchBtn addTarget:self action:@selector(notice) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *rightCunstomButtonView = [[UIBarButtonItem alloc] initWithCustomView:rightButtonView];
     self.navigationItem.rightBarButtonItem = rightCunstomButtonView;
-    
 }
 // 寻找导航栏下的黑线
 - (UIImageView *)findHairlineImageViewUnder:(UIView *)view {

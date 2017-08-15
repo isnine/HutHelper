@@ -37,7 +37,7 @@
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(reload)];
     [self.tableView.mj_header beginRefreshing];
     //MJRefresh适配iOS11
-    if (@available(iOS 11.0, *)) {
+   if (@available(iOS 11.0, *)) {
         self.tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
         self.tableView.contentInset = UIEdgeInsetsMake(64, 0, 0, 0);
     }

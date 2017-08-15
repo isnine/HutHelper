@@ -25,11 +25,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     //搜索栏
-    self.searchBar =[[UISearchBar alloc]initWithFrame:CGRectMake(0, 0, SYReal(414),SYReal(70))];
+    //MJRefresh适配iOS11
+    if (@available(iOS 11.0, *)) {
+        self.searchBar =[[UISearchBar alloc]initWithFrame:CGRectMake(0, 0, DeviceMaxWidth,SYReal(70))];
+        self.searchBar.showsCancelButton=YES;
+    }else{
+      self.searchBar =[[UISearchBar alloc]initWithFrame:CGRectMake(0, 0, SYReal(370),SYReal(70))];
+    }
+    [self.searchBar setContentMode:UIViewContentModeLeft];
     self.searchBar.delegate = self;
     self.searchBar.placeholder=@"搜索对方的姓名";
     self.searchBar.tintColor=[UIColor blackColor];
-    self.searchBar.showsCancelButton=YES;
+
     self.searchBar.barTintColor=[UIColor grayColor];
     UIBarButtonItem * searchButton = [[UIBarButtonItem alloc]initWithCustomView:self.searchBar];
     self.navigationItem.rightBarButtonItem = searchButton;
