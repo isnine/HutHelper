@@ -830,7 +830,7 @@ static YCXMenu                      *gMenu;
 - (void)dismissMenu {
 
     if (_menuView) {
-        [_menuView dismissMenu:NO];
+        [_menuView dismissMenu:YES];
         _menuView = nil;
     }
 

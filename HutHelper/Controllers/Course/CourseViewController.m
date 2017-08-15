@@ -806,7 +806,7 @@ NSString *show_xp;
 }
 
 -(void)removeYCXMenuBlind{
-    UIView *blindView=[self.view viewWithTag:99];
+    UIView *blindView=[[[UIApplication  sharedApplication]  keyWindow] viewWithTag:99];
     [blindView removeFromSuperview];
 }
 
@@ -1028,8 +1028,8 @@ NSString *show_xp;
         blindView.backgroundColor = [UIColor blackColor];
         blindView.alpha=0.5;
         blindView.tag=99;
-        [self.view addSubview:blindView];
-        [YCXMenu showMenuInView:self.view fromRect:CGRectMake(self.view.frame.size.width - 50, 70, 50, 0) menuItems:self.items selected:^(NSInteger index, YCXMenuItem *item) {
+        [[[UIApplication  sharedApplication]  keyWindow] addSubview:blindView];
+        [YCXMenu showMenuInView:[[UIApplication  sharedApplication]  keyWindow] fromRect:CGRectMake(self.view.frame.size.width - 50, 70, 50, 0) menuItems:self.items selected:^(NSInteger index, YCXMenuItem *item) {
             
         }];
     }

@@ -12,8 +12,10 @@
 #import "LeftSortsViewController.h"
 #import "WebViewController.h"
 #import <StoreKit/StoreKit.h>
+#import "ChatViewController.h"
 @interface AboutViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *version;
+@property (weak, nonatomic) IBOutlet UITextView *aboutText;
 
 @end
 
@@ -31,6 +33,8 @@
     //返回箭头样式
     UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     self.navigationItem.backBarButtonItem = item;
+    //大小
+    self.aboutText.font=[UIFont systemFontOfSize:SYReal(15)];
 }
 
 - (IBAction)Appscore:(id)sender {
@@ -40,8 +44,16 @@
     UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     WebViewController *webViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Web"];
     webViewController.urlString=@"http://hugongda.com:8888/home/post/39";
-    webViewController.viewTitle=@"Q&A";
+    webViewController.viewTitle=@"帮助";
     [self.navigationController pushViewController:webViewController animated:YES];
+}
+- (IBAction)contactMe:(id)sender {
+    ChatViewController *conversationVC = [[ChatViewController alloc]init];
+    conversationVC.conversationType = ConversationType_PRIVATE;
+    conversationVC.targetId = @"15198";
+    conversationVC.title = @"开发者";
+    
+    [self.navigationController pushViewController:conversationVC animated:YES];
 }
 
 

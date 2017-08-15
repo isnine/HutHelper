@@ -43,8 +43,6 @@
         [self reloadData:[Config getHand]];
        // _Hand_content=[Config getHand];
         //按钮
-    
-        
         UIView *rightButtonView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 50)];
         UIButton *mainAndSearchBtn = [[UIButton alloc] initWithFrame:CGRectMake(70, 0, 50, 50)];
         [rightButtonView addSubview:mainAndSearchBtn];
@@ -189,8 +187,9 @@
         blindView.backgroundColor = [UIColor blackColor];
         blindView.alpha=0.5;
         blindView.tag=99;
-        [self.view addSubview:blindView];
-        [YCXMenu showMenuInView:self.view fromRect:CGRectMake(self.view.frame.size.width - 50, 70, 50, 0) menuItems:self.items selected:^(NSInteger index, YCXMenuItem *item) {
+        [[[UIApplication  sharedApplication]  keyWindow] addSubview:blindView];
+
+        [YCXMenu showMenuInView:[[UIApplication  sharedApplication]keyWindow] fromRect:CGRectMake(self.view.frame.size.width - 50, 70, 50, 0) menuItems:self.items selected:^(NSInteger index, YCXMenuItem *item) {
         }];
     }
 }
@@ -226,7 +225,7 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"YCXMenuWillDisappearNotification" object:nil];
 }
 -(void)removeYCXMenuBlind{
-    UIView *blindView=[self.view viewWithTag:99];
+    UIView *blindView=[[[UIApplication  sharedApplication]  keyWindow] viewWithTag:99];
     [blindView removeFromSuperview];
 }
 #pragma mark - 数据
