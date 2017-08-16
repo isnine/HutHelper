@@ -44,7 +44,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ct2-Ot-t4d">
-                        <rect key="frame" x="22" y="97" width="483" height="35"/>
+                        <rect key="frame" x="22" y="97" width="483" height="30"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                         <state key="normal" backgroundImage="img_notice_show">
                             <color key="titleColor" red="0.34833759069442749" green="0.83870029449462891" blue="0.89276695251464844" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

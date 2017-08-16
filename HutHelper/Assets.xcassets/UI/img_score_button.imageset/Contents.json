@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "button111.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "button1-查看成绩@2x.png",
       "scale" : "2x"
     },
     {
