@@ -74,12 +74,25 @@ int class_error_;
     //状态栏恢复黑色
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
 }
+-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary*)change context:(void *)context{
+    
+    NSLog(@"改变了啊啊啊%@",change);
+    
+}
+-(void)unreadNotificationAction{
+    //通知数目
+    RCIMClient *test=[RCIMClient sharedRCIMClient];
+    [test addObserver:self forKeyPath:@"totalUnreadCount" options:NSKeyValueObservingOptionNew context:nil];
+    if ([[RCIMClient sharedRCIMClient] getTotalUnreadCount]>0) {
+        self.navigationItem.rightBarButtonItem.badgeValue = [NSString stringWithFormat:@"%d",[[RCIMClient sharedRCIMClient] getTotalUnreadCount]];
+        [self.navigationItem.rightBarButtonItem setBadgeOriginY:SYReal(3)];
+    }
 
+}
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    //通知数目
-    self.navigationItem.rightBarButtonItem.badgeValue = [NSString stringWithFormat:@"%d",[[RCIMClient sharedRCIMClient] getTotalUnreadCount]];
-    [self.navigationItem.rightBarButtonItem setBadgeOriginY:SYReal(3)];
+    //更新未读消息
+    [self unreadNotificationAction];
     //侧栏开启
     AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [tempAppDelegate.LeftSlideVC setPanEnabled:YES];

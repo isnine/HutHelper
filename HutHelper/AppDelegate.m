@@ -217,9 +217,7 @@
         [UMessage setAutoAlert:NO];
         //必须加这句代码
         [UMessage didReceiveRemoteNotification:userInfo];
-//    }else{
-//        //应用处于前台时的本地推送接受
-//    }
+
     //当应用处于前台时提示设置，需要哪个可以设置哪一个
     completionHandler(UNNotificationPresentationOptionSound|UNNotificationPresentationOptionBadge|UNNotificationPresentationOptionAlert);
     
