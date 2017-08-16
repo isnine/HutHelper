@@ -492,31 +492,6 @@
             </objects>
             <point key="canvasLocation" x="-5214.4927536231889" y="529.89130434782612"/>
         </scene>
-        <!--Day View Controller-->
-        <scene sceneID="gX8-G7-0FL">
-            <objects>
-                <viewController storyboardIdentifier="Day" id="zvD-CW-QF0" customClass="DayViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="8nM-wR-7gR"/>
-                        <viewControllerLayoutGuide type="bottom" id="snm-oA-WsO"/>
-                    </layoutGuides>
-                    <view key="view" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="fRq-u4-BTE">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" image="calendar1" translatesAutoresizingMaskIntoConstraints="NO" id="Hah-4Y-VW4">
-                                <rect key="frame" x="0.0" y="58" width="414" height="640"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            </imageView>
-                        </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="9jN-0d-1Uu"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="NdQ-kE-TMR" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1394" y="-2329"/>
-        </scene>
         <!--Library View Controller-->
         <scene sceneID="PFz-8n-2Zk">
             <objects>
@@ -1569,7 +1544,6 @@
         <image name="Hand_around" width="345" height="499"/>
         <image name="add-pic" width="150" height="150"/>
         <image name="button" width="144" height="69"/>
-        <image name="calendar1" width="689" height="1037"/>
         <image name="ico_about_arrows" width="11" height="20"/>
         <image name="ico_about_ico" width="61" height="61"/>
         <image name="ico_notice_time" width="30" height="30"/>

@@ -35,6 +35,7 @@
 #import "LostViewController.h"
 #import "ChatListViewController.h"
 #import "UIBarButtonItem+Badge.h"
+#import "CalendarHomeViewController.h"
 #define vBackBarButtonItemName  @"backArrow.png"    //导航条返回默认图片名
 #define ERROR_MSG_INVALID @"登录过期,请重新登录"
 @interface MainPageViewController ()
@@ -74,11 +75,7 @@ int class_error_;
     //状态栏恢复黑色
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
 }
--(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary*)change context:(void *)context{
-    
-    NSLog(@"改变了啊啊啊%@",change);
-    
-}
+
 -(void)unreadNotificationAction{
     //通知数目
     RCIMClient *test=[RCIMClient sharedRCIMClient];
@@ -289,7 +286,29 @@ int class_error_;
     
 } //考试计划
 - (IBAction)Day:(id)sender {
-    [Config pushViewController:@"Day"];
+    DayViewController *chvc = [[DayViewController alloc]init];
+//    chvc.calendarblock = ^(CalendarDayModel *model){
+//
+//        NSLog(@"\n---------------------------");
+//        NSLog(@"1星期 %@",[model getWeek]);
+//        NSLog(@"2字符串 %@",[model toString]);
+//        NSLog(@"3节日  %@",model.holiday);
+//
+//        if (model.holiday) {
+//
+//         //   [but setTitle:[NSString stringWithFormat:@"%@ %@ %@",[model toString],[model getWeek],model.holiday] forState:UIControlStateNormal];
+//
+//        }else{
+//
+//         //   [but setTitle:[NSString stringWithFormat:@"%@ %@",[model toString],[model getWeek]] forState:UIControlStateNormal];
+//
+//        }
+//    };
+//
+
+  [self.navigationController pushViewController:chvc animated:YES];
+    
+  // [Config pushViewController:@"Day"];
 }  //校历
 - (IBAction)Lost:(id)sender {
     LostViewController *lostViewController=[[LostViewController alloc]init];

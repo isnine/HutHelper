@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface DayViewController : UIViewController
+#import "CalendarViewController.h"
+@interface DayViewController : CalendarViewController
 
 @end
