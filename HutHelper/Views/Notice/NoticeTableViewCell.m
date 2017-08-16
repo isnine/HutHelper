@@ -13,7 +13,7 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    self.showBtn.backgroundColor=RGB(226, 249, 249, 1);
+  
     // Initialization code
 }
 

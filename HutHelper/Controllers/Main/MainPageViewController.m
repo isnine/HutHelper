@@ -80,7 +80,7 @@ int class_error_;
     //通知数目
     RCIMClient *test=[RCIMClient sharedRCIMClient];
     [test addObserver:self forKeyPath:@"totalUnreadCount" options:NSKeyValueObservingOptionNew context:nil];
-    if ([[RCIMClient sharedRCIMClient] getTotalUnreadCount]>0) {
+    if ([[RCIMClient sharedRCIMClient] getTotalUnreadCount]>=0) {
         self.navigationItem.rightBarButtonItem.badgeValue = [NSString stringWithFormat:@"%d",[[RCIMClient sharedRCIMClient] getTotalUnreadCount]];
         [self.navigationItem.rightBarButtonItem setBadgeOriginY:SYReal(3)];
     }

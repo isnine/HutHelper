@@ -24,8 +24,15 @@
     RCUserInfo *currentUserInfo =[[RCIM sharedRCIM] currentUserInfo];
     currentUserInfo.userId=[Config getUserId];
     currentUserInfo.name=[Config getTrueName];
-    currentUserInfo.portraitUri=[NSString stringWithFormat:@"%@/%@",Config.getApiImg,Config.getHeadPicThumb];
-   
+    if ((!Config.getHeadPicThumb)||[Config.getHeadPicThumb isEqualToString:@""]) {
+        if ([Config.getSex isEqualToString:@"男"]) {
+           currentUserInfo.portraitUri=[NSString stringWithFormat:@"%@/%@",Config.getApiImg,@"/head/head-boy.png"];
+        }else{
+            currentUserInfo.portraitUri=[NSString stringWithFormat:@"%@/%@",Config.getApiImg,@"/head/head-gril.png"];
+        }
+    }else{
+        currentUserInfo.portraitUri=[NSString stringWithFormat:@"%@/%@",Config.getApiImg,Config.getHeadPicThumb];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
