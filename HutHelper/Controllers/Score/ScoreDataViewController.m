@@ -315,7 +315,7 @@
                     else
                         [self getScoreData];
                     [self.tableView reloadData];
-                    [MBProgressHUD showSuccess:@"刷新成功" toView:self.view];
+                  //  [MBProgressHUD showSuccess:@"刷新成功" toView:self.view];
                     [self.tableView.mj_header endRefreshing];
                 }else{
                     [MBProgressHUD showError:@"排名查询错误" toView:self.view];

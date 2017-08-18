@@ -307,19 +307,10 @@
                 NSLog(@"全局他人:%@",responseObject[@"data"][@"TrueName"]);
                 userInfo.userId=userId;
                 userInfo.name=responseObject[@"data"][@"TrueName"];
-//                if (responseObject[@"data"][@"head_pic_thumb"] isEqualToString:@"") {
-//                    if (<#condition#>) {
-//                        <#statements#>
-//                    }
-//                }
                 userInfo.portraitUri=[NSString stringWithFormat:@"%@/%@",Config.getApiImg,responseObject[@"data"][@"head_pic_thumb"]];
                 return completion(userInfo);
             } failure:^(NSError *error) {
                 NSLog(@"全局他人失败");
-//                RCUserInfo *userInfo=[[RCUserInfo alloc]init];
-//                userInfo.userId=userId;
-//                userInfo.name=[NSString stringWithFormat:@"%@同学",userId];
-//                userInfo.portraitUri=[NSString stringWithFormat:@"%@/%@",Config.getApiImg,@"/head/head-boy.png"];
                 return completion(nil);
             }];
     

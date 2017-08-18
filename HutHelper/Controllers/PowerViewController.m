@@ -75,7 +75,10 @@ typedef NS_ENUM(NSUInteger, PowerSelectBtn) {
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     [self getRoom];
-    
+    //默认关闭选择
+    self.openBtn.enabled=NO;
+    self.noOpenBtn.enabled=NO;
+    //如果当天没有投过票再打开
     [APIRequest GET:Config.getApiPowerAirCondition parameters:nil success:^(id responseObject) {
         NSLog(@"%@",responseObject);
         self.openLab.text=responseObject[@"data"][@"yes"];
@@ -94,6 +97,8 @@ typedef NS_ENUM(NSUInteger, PowerSelectBtn) {
                     self.noOpenBtn.enabled=NO;
                     break;
                 default:
+                    self.openBtn.enabled=YES;
+                    self.noOpenBtn.enabled=YES;
                     break;
             }
         }

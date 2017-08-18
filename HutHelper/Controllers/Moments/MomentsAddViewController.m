@@ -141,7 +141,7 @@
                                 if ([Msg isEqualToString:@"ok"])
                                 {
                                     HideAllHUD
-                                    [MBProgressHUD showSuccess:@"发表成功" toView:self.view];
+                                //[MBProgressHUD showSuccess:@"发表成功" toView:self.view];
                                     [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:([self.navigationController.viewControllers count] -2)] animated:YES];  //返回Home
                                     
                                 }

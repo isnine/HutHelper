@@ -21,13 +21,6 @@
 @end
 
 @implementation ChatListViewController
-//- (UISearchBar *)searchBar{
-//    if (!_searchBar) {
-//        _searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, self.conversationListTableView.frame.size.width, 44)];
-//        
-//    }
-//    return _searchBar;
-//}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -61,6 +54,22 @@
     self.conversationListTableView.tableFooterView = [UIView new];
     //显示重连状态
     self.showConnectingStatusOnNavigatorBar=YES;
+        //设置用户信息代理
+     [[RCIM sharedRCIM] setUserInfoDataSource:self];
+        //设置当前用户信息
+    RCUserInfo *currentUserInfo =[[RCIM sharedRCIM] currentUserInfo];
+    currentUserInfo.userId=[Config getUserId];
+    currentUserInfo.name=[Config getTrueName];
+    if ((!Config.getHeadPicThumb)||[Config.getHeadPicThumb isEqualToString:@""]) {
+        if ([Config.getSex isEqualToString:@"男"]) {
+            currentUserInfo.portraitUri=[NSString stringWithFormat:@"%@/%@",Config.getApiImg,@"\/head\/head-boy.png"];
+        }else{
+            currentUserInfo.portraitUri=[NSString stringWithFormat:@"%@/%@",Config.getApiImg,@"\/head\/head-girl.png"];
+           
+        }
+    }else{
+        currentUserInfo.portraitUri=[NSString stringWithFormat:@"%@/%@",Config.getApiImg,Config.getHeadPicThumb];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -86,14 +95,6 @@
 - (void)onSelectedTableRow:(RCConversationModelType)conversationModelType
          conversationModel:(RCConversationModel *)model
                atIndexPath:(NSIndexPath *)indexPath {
-    //    if (conversationModelType ==RC_CONVERSATION_MODEL_TYPE_COLLECTION) {
-    //        ChatListViewController *temp=[[ChatListViewController alloc]init];
-    //        NSArray *array=[NSArray arrayWithObjects:[NSNumber numberWithInt:model.conversationType] ];
-    //        [temp setDisplayConversationTypes:array];
-    //        [temp setCollectionConversationType:nil];
-    //        temp.isEnteredToCollectionViewController=YES;
-    //        [self.navigationController pushViewController:temp animated:YES];
-    //    }
     ChatViewController *conversationVC = [[ChatViewController alloc]init];
     conversationVC.conversationType = model.conversationType;
     conversationVC.targetId = model.targetId;
@@ -112,36 +113,6 @@
     textDidChange:(NSString *)searchText {
     
 }
-//-(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
-//    NSDictionary *dic=@{
-//                        @"name":[searchBar text]
-//                        };
-//    [APIRequest POST:[Config getApiImStudent] parameters:dic
-//             success:^(id responseObject) {
-//                 NSDictionary *resultDictionary = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
-//                 NSArray *resultArray   = [resultDictionary objectForKey:@"data"];
-//                 //     NSLog(@"%@",resultArray[0]);
-//                 //     [self loadData:resultArray];
-//                 //                  if (resultArray.count==1) {
-//                 //                     ChatViewController *conversationVC = [[ChatViewController alloc]init];
-//                 //                     conversationVC.conversationType = ConversationType_PRIVATE;
-//                 //                     conversationVC.targetId = [resultArray[0] objectForKey:@"id"];
-//                 //                     conversationVC.title = [searchBar text];
-//                 //                     [self.navigationController pushViewController:conversationVC animated:YES];
-//                 //                 }else{
-//
-//                 //                     ChatChoiceTableViewController *chatChoiceTableViewController=[[ChatChoiceTableViewController alloc]init];
-//                 //                     chatChoiceTableViewController.resultArray=[];
-//                 //                     [self.navigationController pushViewController:chatChoiceTableViewController animated:YES];
-//                 //           }
-//
-//
-//             }
-//             failure:^(NSError *error) {
-//                 NSLog(@"请求失败");
-//             }];
-//    NSLog(@"search text :%@",[searchBar text]);
-//}
 -(void)loadData:(NSArray*)JSONArray{
     self.chatChoiceArray = [[NSMutableArray alloc]init];
     for (NSDictionary *eachDic in JSONArray) {
