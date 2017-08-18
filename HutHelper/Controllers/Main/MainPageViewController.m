@@ -34,6 +34,8 @@
 #import "PointView.h"
 #import "LostViewController.h"
 #import "ChatListViewController.h"
+#import "UIBarButtonItem+Badge.h"
+#import "CalendarHomeViewController.h"
 #define vBackBarButtonItemName  @"backArrow.png"    //导航条返回默认图片名
 #define ERROR_MSG_INVALID @"登录过期,请重新登录"
 @interface MainPageViewController ()
@@ -74,8 +76,20 @@ int class_error_;
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
 }
 
+-(void)unreadNotificationAction{
+    //通知数目
+    RCIMClient *test=[RCIMClient sharedRCIMClient];
+    [test addObserver:self forKeyPath:@"totalUnreadCount" options:NSKeyValueObservingOptionNew context:nil];
+    if ([[RCIMClient sharedRCIMClient] getTotalUnreadCount]>=0) {
+        self.navigationItem.rightBarButtonItem.badgeValue = [NSString stringWithFormat:@"%d",[[RCIMClient sharedRCIMClient] getTotalUnreadCount]];
+        [self.navigationItem.rightBarButtonItem setBadgeOriginY:SYReal(3)];
+    }
+
+}
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    //更新未读消息
+    [self unreadNotificationAction];
     //侧栏开启
     AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [tempAppDelegate.LeftSlideVC setPanEnabled:YES];
@@ -272,7 +286,29 @@ int class_error_;
     
 } //考试计划
 - (IBAction)Day:(id)sender {
-    [Config pushViewController:@"Day"];
+    DayViewController *chvc = [[DayViewController alloc]init];
+//    chvc.calendarblock = ^(CalendarDayModel *model){
+//
+//        NSLog(@"\n---------------------------");
+//        NSLog(@"1星期 %@",[model getWeek]);
+//        NSLog(@"2字符串 %@",[model toString]);
+//        NSLog(@"3节日  %@",model.holiday);
+//
+//        if (model.holiday) {
+//
+//         //   [but setTitle:[NSString stringWithFormat:@"%@ %@ %@",[model toString],[model getWeek],model.holiday] forState:UIControlStateNormal];
+//
+//        }else{
+//
+//         //   [but setTitle:[NSString stringWithFormat:@"%@ %@",[model toString],[model getWeek]] forState:UIControlStateNormal];
+//
+//        }
+//    };
+//
+
+  [self.navigationController pushViewController:chvc animated:YES];
+    
+  // [Config pushViewController:@"Day"];
 }  //校历
 - (IBAction)Lost:(id)sender {
     LostViewController *lostViewController=[[LostViewController alloc]init];
@@ -387,6 +423,7 @@ int class_error_;
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     NSArray *notice=[defaults objectForKey:@"Notice"];
     _body.text=[notice[0] objectForKey:@"body"];
+    _body.font=[UIFont systemFontOfSize:SYReal(16)];
     // _noticetitle.text=[notice[0] objectForKey:@"title"];
     //_noticetime.text=[[notice[0] objectForKey:@"time"] substringWithRange:NSMakeRange(5,5)];
 }
@@ -447,7 +484,6 @@ int class_error_;
     [mainAndSearchBtn addTarget:self action:@selector(notice) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *rightCunstomButtonView = [[UIBarButtonItem alloc] initWithCustomView:rightButtonView];
     self.navigationItem.rightBarButtonItem = rightCunstomButtonView;
-    
 }
 // 寻找导航栏下的黑线
 - (UIImageView *)findHairlineImageViewUnder:(UIView *)view {

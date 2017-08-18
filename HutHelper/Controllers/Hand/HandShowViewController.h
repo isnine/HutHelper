@@ -10,4 +10,5 @@
 
 @interface HandShowViewController : UIViewController
 @property (nonatomic,copy) NSDictionary      *handDic;
+@property (nonatomic,assign) Boolean      *isSelfGoods;
 @end

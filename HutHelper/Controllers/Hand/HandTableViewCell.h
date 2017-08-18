@@ -22,6 +22,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *Button2;
 
 @property (nonatomic, copy) NSMutableArray      *handArray;
-
+@property (nonatomic,assign) Boolean      *isSelfGoods;
 +(instancetype)tableviewcell;
 @end

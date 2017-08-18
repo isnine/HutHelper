@@ -8,6 +8,7 @@
 
 #import "HandShowViewController.h"
 #import "UINavigationBar+Awesome.h"
+#import "MBProgressHUD+MJ.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "XWScanImage.h"
 @interface HandShowViewController ()
@@ -24,6 +25,17 @@
     [self setHeadImg];
     [self setText];
     [self setFoot];
+    if(self.isSelfGoods){
+        //按钮
+        UIView *rightButtonView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 50)];
+        UIButton *mainAndSearchBtn = [[UIButton alloc] initWithFrame:CGRectMake(70, 0, 50, 50)];
+        [rightButtonView addSubview:mainAndSearchBtn];
+        [mainAndSearchBtn setImage:[UIImage imageNamed:@"ico_hand_delete"] forState:UIControlStateNormal];
+        [mainAndSearchBtn addTarget:self action:@selector(delectGoods) forControlEvents:UIControlEventTouchUpInside];
+        UIBarButtonItem *rightCunstomButtonView = [[UIBarButtonItem alloc] initWithCustomView:rightButtonView];
+        self.navigationItem.rightBarButtonItem = rightCunstomButtonView;
+    }
+
 }
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -149,7 +161,12 @@
     NSMutableArray *footTitle=[[NSMutableArray alloc]init];
     [footTitle addObject:_handDic[@"user"][@"username"]];
     [footTitle addObject:[_handDic objectForKey:@"created_on"]];
-    for (int i=0; i<2; i++) {
+    int i=0;
+    //如果是我的商品，则跳过学号
+    if(self.isSelfGoods){
+        i=1;
+    }
+    for (; i<2; i++) {
         UILabel *foodLab=[[UILabel alloc]initWithFrame:CGRectMake(SYReal(LabX[i]), SYReal(685), SYReal(130), SYReal(20))];
         foodLab.textColor=[UIColor lightGrayColor];
         foodLab.text=footTitle[i];
@@ -157,7 +174,30 @@
         [self.view addSubview:foodLab];
     }
 }
+-(void)delectGoods{
+    
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"删除商品" message:@"是否要删除当前商品" preferredStyle:  UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+    }]];
+    [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [APIRequest GET:[Config getApiGoodsDelect:self.handDic[@"id"]] parameters:nil success:^(id responseObject) {
+            NSLog(@"%@",responseObject);
+            if ([responseObject[@"msg"]isEqualToString:@"ok"]) {
+         //       [MBProgressHUD showSuccess:@"删除成功" toView:self.view];
+                [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:([self.navigationController.viewControllers count] -3)] animated:YES];  //返回Home
+            }else{
+                [MBProgressHUD showError:responseObject[@"msg"] toView:self.view];
+            }
+        } failure:^(NSError *error) {
+            [MBProgressHUD showError:@"网络错误" toView:self.view];
+        }];
+        
+    }]];
+    [self presentViewController:alert animated:true completion:nil];
+    
 
+}
 #pragma mark - 数据
 -(NSString*)getimg:(int)i{
     NSArray *img=[_handDic objectForKey:@"pics"];

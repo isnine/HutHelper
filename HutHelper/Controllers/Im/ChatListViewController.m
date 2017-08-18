@@ -21,33 +21,23 @@
 @end
 
 @implementation ChatListViewController
-//- (UISearchBar *)searchBar{
-//    if (!_searchBar) {
-//        _searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, self.conversationListTableView.frame.size.width, 44)];
-//        
-//    }
-//    return _searchBar;
-//}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     //标题设置
     self.navigationItem.title=@"私信";
-    //搜索栏
-    self.searchBar =[[UISearchBar alloc]initWithFrame:CGRectMake(0, 0, self.conversationListTableView.frame.size.width,SYReal(60))];
-    self.searchBar.delegate = self;
-    self.searchBar.placeholder=@"搜索对方的姓名";
-    self.searchBar.barTintColor=RGB(240, 240, 240, 1);
-    self.headerView= [[UIView alloc]initWithFrame:CGRectMake(0,0,DeviceMaxWidth,SYReal(60))];
-    [self.headerView addSubview:self.searchBar];
-    self.conversationListTableView.delegate=self;
-    self.conversationListTableView.tableHeaderView =self.headerView;
-    [self.searchBar setAutocapitalizationType:UITextAutocapitalizationTypeNone];
-    [self.searchBar sizeToFit];
     //返回箭头
     UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     self.navigationItem.backBarButtonItem = item;
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor]}];
+    //按钮
+    UIView *rightButtonView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 50)];
+    UIButton *mainAndSearchBtn = [[UIButton alloc] initWithFrame:CGRectMake(70, 0, 50, 50)];
+    [rightButtonView addSubview:mainAndSearchBtn];
+    [mainAndSearchBtn setImage:[UIImage imageNamed:@"ico_im_find"] forState:UIControlStateNormal];
+    [mainAndSearchBtn addTarget:self action:@selector(find) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *rightCunstomButtonView = [[UIBarButtonItem alloc] initWithCustomView:rightButtonView];
+    self.navigationItem.rightBarButtonItem = rightCunstomButtonView;
     //设置需要显示哪些类型的会话
     [self setDisplayConversationTypes:@[@(ConversationType_PRIVATE),
                                         @(ConversationType_DISCUSSION),
@@ -64,10 +54,24 @@
     self.conversationListTableView.tableFooterView = [UIView new];
     //显示重连状态
     self.showConnectingStatusOnNavigatorBar=YES;
+        //设置用户信息代理
+     [[RCIM sharedRCIM] setUserInfoDataSource:self];
+        //设置当前用户信息
+    RCUserInfo *currentUserInfo =[[RCIM sharedRCIM] currentUserInfo];
+    currentUserInfo.userId=[Config getUserId];
+    currentUserInfo.name=[Config getTrueName];
+    if ((!Config.getHeadPicThumb)||[Config.getHeadPicThumb isEqualToString:@""]) {
+        if ([Config.getSex isEqualToString:@"男"]) {
+            currentUserInfo.portraitUri=[NSString stringWithFormat:@"%@/%@",Config.getApiImg,@"\/head\/head-boy.png"];
+        }else{
+            currentUserInfo.portraitUri=[NSString stringWithFormat:@"%@/%@",Config.getApiImg,@"\/head\/head-girl.png"];
+           
+        }
+    }else{
+        currentUserInfo.portraitUri=[NSString stringWithFormat:@"%@/%@",Config.getApiImg,Config.getHeadPicThumb];
+    }
 }
-//-(void)viewWillAppear:(BOOL)animated{
-//
-//}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -86,20 +90,11 @@
             } failure:^(NSError *error) {
                 return completion(nil);
             }];
-    
 }
 //重写RCConversationListViewController的onSelectedTableRow事件
 - (void)onSelectedTableRow:(RCConversationModelType)conversationModelType
          conversationModel:(RCConversationModel *)model
                atIndexPath:(NSIndexPath *)indexPath {
-    //    if (conversationModelType ==RC_CONVERSATION_MODEL_TYPE_COLLECTION) {
-    //        ChatListViewController *temp=[[ChatListViewController alloc]init];
-    //        NSArray *array=[NSArray arrayWithObjects:[NSNumber numberWithInt:model.conversationType] ];
-    //        [temp setDisplayConversationTypes:array];
-    //        [temp setCollectionConversationType:nil];
-    //        temp.isEnteredToCollectionViewController=YES;
-    //        [self.navigationController pushViewController:temp animated:YES];
-    //    }
     ChatViewController *conversationVC = [[ChatViewController alloc]init];
     conversationVC.conversationType = model.conversationType;
     conversationVC.targetId = model.targetId;
@@ -109,48 +104,22 @@
     [self.navigationController pushViewController:conversationVC animated:YES];
     
 }
+-(void)find{
+    ChatChoiceTableViewController *chatChoiceTableViewController=[[ChatChoiceTableViewController alloc]init];
+    [self.navigationController pushViewController:chatChoiceTableViewController animated:YES];
+}
 #pragma mark - UISearchBarDelegate
 - (void)searchBar:(UISearchBar *)searchBar
     textDidChange:(NSString *)searchText {
-
-}
--(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
-    NSDictionary *dic=@{
-                        @"name":[searchBar text]
-                        };
-    [APIRequest POST:[Config getApiImStudent] parameters:dic
-             success:^(id responseObject) {
-                 NSDictionary *resultDictionary = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
-                 NSArray *resultArray   = [resultDictionary objectForKey:@"data"];
-               //  [self loadData:resultArray];
-                 NSLog(@"%@",resultArray[0]);
-                  if (resultArray.count==1) {
-                     ChatViewController *conversationVC = [[ChatViewController alloc]init];
-                     conversationVC.conversationType = ConversationType_PRIVATE;
-                     conversationVC.targetId = [resultArray[0] objectForKey:@"id"];
-                     conversationVC.title = [searchBar text];
-                     [self.navigationController pushViewController:conversationVC animated:YES];
-                 }else{
-                     
-                     ChatChoiceTableViewController *chatChoiceTableViewController=[[ChatChoiceTableViewController alloc]init];
-                     chatChoiceTableViewController.resultArray=[NSArray arrayWithArray:self.chatChoiceArray];
-                     [self.navigationController pushViewController:chatChoiceTableViewController animated:YES];
-                 }
-                 
-
-             }
-             failure:^(NSError *error) {
-                 NSLog(@"请求失败");
-             }];
-    NSLog(@"search text :%@",[searchBar text]);
+    
 }
 -(void)loadData:(NSArray*)JSONArray{
     self.chatChoiceArray = [[NSMutableArray alloc]init];
     for (NSDictionary *eachDic in JSONArray) {
+        NSLog(@"%@",eachDic);
         ChatUser *chatUser=[[ChatUser alloc]initWithDic:eachDic];
         [self.chatChoiceArray addObject:chatUser];
     }
-    
 }
 // 将点击tableviewcell的时候收回 searchBar 键盘
 -(NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath

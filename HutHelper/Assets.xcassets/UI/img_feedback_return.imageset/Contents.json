@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "再次留言1111.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "button2-再次留言@2x.png",
       "scale" : "2x"
     },
     {

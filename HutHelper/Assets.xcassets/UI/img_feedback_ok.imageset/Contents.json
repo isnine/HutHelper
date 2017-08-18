@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "好的  返回.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "button2-好的返回@2x.png",
       "scale" : "2x"
     },
     {

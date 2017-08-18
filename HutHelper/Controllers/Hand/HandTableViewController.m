@@ -43,8 +43,6 @@
         [self reloadData:[Config getHand]];
        // _Hand_content=[Config getHand];
         //按钮
-    
-        
         UIView *rightButtonView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 50)];
         UIButton *mainAndSearchBtn = [[UIButton alloc] initWithFrame:CGRectMake(70, 0, 50, 50)];
         [rightButtonView addSubview:mainAndSearchBtn];
@@ -73,6 +71,7 @@
     }else{
         [self reloadData:_myHandArray];
         //[self.tableView reloadData];
+        self.isSelfGoods=YES;
         self.navigationItem.title=@"我的发布";
     }
     // 标题栏样式
@@ -139,6 +138,7 @@
                      placeholderImage:[UIImage imageNamed:@"load_img"]];
     }
         cell.handArray=_handArray;
+    cell.isSelfGoods=self.isSelfGoods;
     return cell;
 }
 
@@ -156,7 +156,11 @@
         HideAllHUD
         NSDictionary *dic1 = [NSDictionary dictionaryWithObject:responseObject forKey:@""];
         NSArray *Hand           = [dic1 objectForKey:@""];
-        if (Hand.count!=0) {
+//        if ([responseObject objectForKey:@"msg"]) {
+//            [MBProgressHUD showError:@"登录过期，请重新登录" toView:self.view];
+//            return ;
+//        }
+        if (Hand.count>0) {
             NSMutableArray *data=[[NSMutableArray alloc]init];
             [data addObject:_handAllArray[0]];
             [data addObjectsFromArray:Hand];
@@ -167,6 +171,7 @@
 //            [Config setIs:1];
             HandTableViewController *hand=[[HandTableViewController alloc]init];
             hand.myHandArray=[data mutableCopy];
+            
             AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
             [tempAppDelegate.mainNavigationController pushViewController:hand animated:YES];
         }else{
@@ -189,8 +194,9 @@
         blindView.backgroundColor = [UIColor blackColor];
         blindView.alpha=0.5;
         blindView.tag=99;
-        [self.view addSubview:blindView];
-        [YCXMenu showMenuInView:self.view fromRect:CGRectMake(self.view.frame.size.width - 50, 70, 50, 0) menuItems:self.items selected:^(NSInteger index, YCXMenuItem *item) {
+        [[[UIApplication  sharedApplication]  keyWindow] addSubview:blindView];
+
+        [YCXMenu showMenuInView:[[UIApplication  sharedApplication]keyWindow] fromRect:CGRectMake(self.view.frame.size.width - 50, 70, 50, 0) menuItems:self.items selected:^(NSInteger index, YCXMenuItem *item) {
         }];
     }
 }
@@ -226,7 +232,7 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"YCXMenuWillDisappearNotification" object:nil];
 }
 -(void)removeYCXMenuBlind{
-    UIView *blindView=[self.view viewWithTag:99];
+    UIView *blindView=[[[UIApplication  sharedApplication]  keyWindow] viewWithTag:99];
     [blindView removeFromSuperview];
 }
 #pragma mark - 数据

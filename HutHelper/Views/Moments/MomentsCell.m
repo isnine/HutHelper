@@ -420,7 +420,7 @@
              success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                  NSDictionary *Say_All = [NSDictionary dictionaryWithDictionary:responseObject];
                  if ([[Say_All objectForKey:@"msg"]isEqualToString:@"ok"]) {
-                     [MBProgressHUD showSuccess:@"删除成功" toView:self];
+                  //   [MBProgressHUD showSuccess:@"删除成功" toView:self];
                      _momentsTable.reload;
                  }
                  else{
@@ -447,7 +447,7 @@
         [APIRequest GET:Url_String parameters:nil success:^(id responseObject) {
             NSDictionary *Say_All = [NSDictionary dictionaryWithDictionary:responseObject];
             if ([[Say_All objectForKey:@"msg"]isEqualToString:@"ok"]) {
-                [MBProgressHUD showSuccess:@"删除成功" toView:self];
+          //      [MBProgressHUD showSuccess:@"删除成功" toView:self];
                 _momentsTable.reload;
             }
             else{

@@ -17,8 +17,8 @@
         self.dep_name=Dic[@"dep_name"];
         self.head_pic=Dic[@"head_pic"];
         self.head_pic_thumb=Dic[@"head_pic_thumb"];
-        self.last_login=Dic[@"last_login"];
-        self.user_id=Dic[@"user_id"];
+        self.last_use=Dic[@"last_use"];
+        self.user_id=Dic[@"id"];
         self.sex=Dic[@"sex"];
     }
     return self;

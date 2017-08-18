@@ -202,11 +202,12 @@ int datediff(int y1,int m1,int d1,int y2,int m2,int d2)
     
     cell.examDayLabel.text=[NSString stringWithFormat:@"%@月%d日",mouthString,Day];
     cell.Label_ExamName.text=CourseName;
+    cell.examDayLabel.font=[UIFont systemFontOfSize:SYReal(29)];
     cell.Label_ExamRoom.text=RoomName;
     cell.Label_ExamTime.text=Exam_Time;
  //   cell.Label_ExamIsset.text=isset;
     cell.Label_ExamLast.text=lastime;
-    
+    cell.Label_ExamLast.font=[UIFont systemFontOfSize:SYReal(15)];
     //  NSLog(@"%@",dict1);
     return cell;
 }

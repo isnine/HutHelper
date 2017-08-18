@@ -68,8 +68,8 @@ NSString *show_xp;
     UIView *rightButtonView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 50)];
     UIButton *mainAndSearchBtn = [[UIButton alloc] initWithFrame:CGRectMake(70, 0, 50, 50)];
     [rightButtonView addSubview:mainAndSearchBtn];
-    [mainAndSearchBtn setImage:[UIImage imageNamed:@"ico_menu_menu"] forState:UIControlStateNormal];
-    [mainAndSearchBtn addTarget:self action:@selector(menu) forControlEvents:UIControlEventTouchUpInside];
+    [mainAndSearchBtn setImage:[UIImage imageNamed:@"refresh"] forState:UIControlStateNormal];
+    [mainAndSearchBtn addTarget:self action:@selector(reloadcourse) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *rightCunstomButtonView = [[UIBarButtonItem alloc] initWithCustomView:rightButtonView];
     self.navigationItem.rightBarButtonItem = rightCunstomButtonView;
     now_xp=0;
@@ -806,7 +806,7 @@ NSString *show_xp;
 }
 
 -(void)removeYCXMenuBlind{
-    UIView *blindView=[self.view viewWithTag:99];
+    UIView *blindView=[[[UIApplication  sharedApplication]  keyWindow] viewWithTag:99];
     [blindView removeFromSuperview];
 }
 
@@ -1028,8 +1028,8 @@ NSString *show_xp;
         blindView.backgroundColor = [UIColor blackColor];
         blindView.alpha=0.5;
         blindView.tag=99;
-        [self.view addSubview:blindView];
-        [YCXMenu showMenuInView:self.view fromRect:CGRectMake(self.view.frame.size.width - 50, 70, 50, 0) menuItems:self.items selected:^(NSInteger index, YCXMenuItem *item) {
+        [[[UIApplication  sharedApplication]  keyWindow] addSubview:blindView];
+        [YCXMenu showMenuInView:[[UIApplication  sharedApplication]  keyWindow] fromRect:CGRectMake(self.view.frame.size.width - 50, 70, 50, 0) menuItems:self.items selected:^(NSInteger index, YCXMenuItem *item) {
             
         }];
     }
@@ -1043,7 +1043,7 @@ NSString *show_xp;
         //        YCXMenuItem *menuTitle = [YCXMenuItem menuTitle:@"添加失物" WithIcon:nil];
         //        menuTitle.foreColor = [UIColor whiteColor];
         //        menuTitle.titleFont = [UIFont boldSystemFontOfSize:20.0f];
-        YCXMenuItem *menuTitle = [YCXMenuItem menuItem:@"课表刷新" image:[UIImage imageNamed:@"reload"] target:self action:@selector(reloadcourse)];
+        YCXMenuItem *menuTitle = [YCXMenuItem menuItem:@"课表刷新" image:[UIImage imageNamed:@"refresh"] target:self action:@selector(reloadcourse)];
         menuTitle.foreColor = [UIColor blackColor];
         menuTitle.alignment = NSTextAlignmentCenter;
         //set logout button

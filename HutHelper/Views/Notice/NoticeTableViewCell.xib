@@ -19,7 +19,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="2017.01.01" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WLi-tM-D4m">
-                        <rect key="frame" x="53" y="34" width="327" height="29"/>
+                        <rect key="frame" x="53" y="33" width="327" height="30"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" red="0.75288265943527222" green="0.75297415256500244" blue="0.75285154581069946" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -32,18 +32,8 @@
                         <color key="textColor" red="0.20620650053024292" green="0.83116501569747925" blue="0.89279729127883911" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ct2-Ot-t4d">
-                        <rect key="frame" x="26" y="98" width="471" height="29"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                        <state key="normal" title="查看详情">
-                            <color key="titleColor" red="0.34833759069442749" green="0.83870029449462891" blue="0.89276695251464844" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        </state>
-                        <connections>
-                            <action selector="showBtn:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="ti6-pS-D1B"/>
-                        </connections>
-                    </button>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ico_notice_time" translatesAutoresizingMaskIntoConstraints="NO" id="gAj-lI-pza">
-                        <rect key="frame" x="26" y="36" width="22" height="24"/>
+                        <rect key="frame" x="26" y="35" width="22" height="25"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="内容" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Rj-D2-1bA">
@@ -53,6 +43,16 @@
                         <color key="textColor" red="0.25095823407173157" green="0.25099286437034607" blue="0.25094646215438843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ct2-Ot-t4d">
+                        <rect key="frame" x="22" y="97" width="483" height="30"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                        <state key="normal" backgroundImage="img_notice_show">
+                            <color key="titleColor" red="0.34833759069442749" green="0.83870029449462891" blue="0.89276695251464844" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </state>
+                        <connections>
+                            <action selector="showBtn:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="ti6-pS-D1B"/>
+                        </connections>
+                    </button>
                 </subviews>
             </tableViewCellContentView>
             <connections>
@@ -66,5 +66,6 @@
     </objects>
     <resources>
         <image name="ico_notice_time" width="30" height="30"/>
+        <image name="img_notice_show" width="688" height="68"/>
     </resources>
 </document>

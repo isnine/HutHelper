@@ -11,6 +11,24 @@
 		3A06D9B51E8CEDE400066DD1 /* ExamCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A06D9B31E8CEDE400066DD1 /* ExamCell.m */; };
 		3A06D9B61E8CEDE400066DD1 /* ExamCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A06D9B41E8CEDE400066DD1 /* ExamCell.xib */; };
 		3A1CEC331E93D71A002D8583 /* Vedio.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A1CEC321E93D71A002D8583 /* Vedio.m */; };
+		3A20AFEF1F43E2B800712A1E /* CalendarDayCell.h in Sources */ = {isa = PBXBuildFile; fileRef = 3A20AFDD1F43E21200712A1E /* CalendarDayCell.h */; };
+		3A20AFF01F43E2B800712A1E /* CalendarDayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A20AFDE1F43E21200712A1E /* CalendarDayCell.m */; };
+		3A20AFF11F43E2B800712A1E /* CalendarDayModel.h in Sources */ = {isa = PBXBuildFile; fileRef = 3A20AFDF1F43E21200712A1E /* CalendarDayModel.h */; };
+		3A20AFF21F43E2B800712A1E /* CalendarDayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A20AFE01F43E21200712A1E /* CalendarDayModel.m */; };
+		3A20AFF31F43E2B800712A1E /* CalendarHomeViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 3A20AFE11F43E21200712A1E /* CalendarHomeViewController.h */; };
+		3A20AFF41F43E2B800712A1E /* CalendarHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A20AFE21F43E21200712A1E /* CalendarHomeViewController.m */; };
+		3A20AFF51F43E2B800712A1E /* CalendarLogic.h in Sources */ = {isa = PBXBuildFile; fileRef = 3A20AFE31F43E21200712A1E /* CalendarLogic.h */; };
+		3A20AFF61F43E2B800712A1E /* CalendarLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A20AFE41F43E21200712A1E /* CalendarLogic.m */; };
+		3A20AFF71F43E2B800712A1E /* CalendarMonthCollectionViewLayout.h in Sources */ = {isa = PBXBuildFile; fileRef = 3A20AFE51F43E21200712A1E /* CalendarMonthCollectionViewLayout.h */; };
+		3A20AFF81F43E2B800712A1E /* CalendarMonthCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A20AFE61F43E21200712A1E /* CalendarMonthCollectionViewLayout.m */; };
+		3A20AFF91F43E2B800712A1E /* CalendarMonthHeaderView.h in Sources */ = {isa = PBXBuildFile; fileRef = 3A20AFE71F43E21200712A1E /* CalendarMonthHeaderView.h */; };
+		3A20AFFA1F43E2B800712A1E /* CalendarMonthHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A20AFE81F43E21200712A1E /* CalendarMonthHeaderView.m */; };
+		3A20AFFB1F43E2B800712A1E /* CalendarViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 3A20AFE91F43E21200712A1E /* CalendarViewController.h */; };
+		3A20AFFC1F43E2B800712A1E /* CalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A20AFEA1F43E21200712A1E /* CalendarViewController.m */; };
+		3A20AFFD1F43E2B800712A1E /* chack.png in Sources */ = {isa = PBXBuildFile; fileRef = 3A20AFEB1F43E21200712A1E /* chack.png */; };
+		3A20AFFE1F43E2B800712A1E /* Color.h in Sources */ = {isa = PBXBuildFile; fileRef = 3A20AFEC1F43E21200712A1E /* Color.h */; };
+		3A20AFFF1F43E2B800712A1E /* NSDate+WQCalendarLogic.h in Sources */ = {isa = PBXBuildFile; fileRef = 3A20AFED1F43E21200712A1E /* NSDate+WQCalendarLogic.h */; };
+		3A20B0001F43E2B800712A1E /* NSDate+WQCalendarLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A20AFEE1F43E21200712A1E /* NSDate+WQCalendarLogic.m */; };
 		3A2FF4EA1E50179700B07EB6 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A2FF4E91E50179700B07EB6 /* NotificationCenter.framework */; };
 		3A2FF4F51E50179700B07EB6 /* Extend.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 3A2FF4E81E50179700B07EB6 /* Extend.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		3A2FF4FC1E50202000B07EB6 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A2FF4FB1E50202000B07EB6 /* Media.xcassets */; };
@@ -31,6 +49,8 @@
 		3A37757C1F35EB76005A5170 /* JRWaterFallLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A3775711F35EB37005A5170 /* JRWaterFallLayout.m */; };
 		3A3FB3811F2CBDE500E74BB0 /* ChatListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A3FB3801F2CBDE500E74BB0 /* ChatListViewController.m */; };
 		3A4049091E6A6C730038F207 /* MomentsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A4049081E6A6C730038F207 /* MomentsCell.m */; };
+		3A42B7561F42E953005D45D6 /* ChatChoiceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A42B7541F42E953005D45D6 /* ChatChoiceTableViewCell.m */; };
+		3A42B7571F42E953005D45D6 /* ChatChoiceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A42B7551F42E953005D45D6 /* ChatChoiceTableViewCell.xib */; };
 		3A4D2FBD1E8D20E900901E3B /* HandTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A4D2FBB1E8D20E900901E3B /* HandTableViewCell.xib */; };
 		3A4D2FBE1E8D20E900901E3B /* HandTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A4D2FBC1E8D20E900901E3B /* HandTableViewController.xib */; };
 		3A4D2FF31E8D24C100901E3B /* NoticeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A4D2FF11E8D24C100901E3B /* NoticeTableViewCell.m */; };
@@ -110,8 +130,8 @@
 		3A98CC0F1E7CFA9C00CABD0D /* YYWeakProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A98CBF81E7CFA9C00CABD0D /* YYWeakProxy.m */; };
 		3A9C28F71F15FD9F00B91876 /* LineUIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A9C28F61F15FD9F00B91876 /* LineUIView.m */; };
 		3AAB90991EA393A000C35137 /* ScoreRank.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AAB90981EA393A000C35137 /* ScoreRank.m */; };
+		3AAECDBA1F4344C7004A6156 /* UIBarButtonItem+Badge.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AAECDB91F4344C7004A6156 /* UIBarButtonItem+Badge.m */; };
 		3AC12C241F3B381E007C3B7E /* ChatChoiceTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AC12C231F3B381E007C3B7E /* ChatChoiceTableViewController.m */; };
-		3AC12C2C1F3B3BD1007C3B7E /* ChatChoiceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AC12C2B1F3B3BD1007C3B7E /* ChatChoiceTableViewCell.m */; };
 		3AC12C2F1F3B3C6D007C3B7E /* ChatUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AC12C2E1F3B3C6D007C3B7E /* ChatUser.m */; };
 		3ACF3D081EA731E800FBEC57 /* CourseXpTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ACF3D071EA731E800FBEC57 /* CourseXpTableViewController.m */; };
 		3AD047B01F316CCA00B61A02 /* HandAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ABDCDCE1F316BEC00B95D6C /* HandAddViewController.m */; };
@@ -201,6 +221,24 @@
 		3A06D9B41E8CEDE400066DD1 /* ExamCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExamCell.xib; sourceTree = "<group>"; };
 		3A1CEC311E93D71A002D8583 /* Vedio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vedio.h; sourceTree = "<group>"; };
 		3A1CEC321E93D71A002D8583 /* Vedio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Vedio.m; sourceTree = "<group>"; };
+		3A20AFDD1F43E21200712A1E /* CalendarDayCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CalendarDayCell.h; sourceTree = "<group>"; };
+		3A20AFDE1F43E21200712A1E /* CalendarDayCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CalendarDayCell.m; sourceTree = "<group>"; };
+		3A20AFDF1F43E21200712A1E /* CalendarDayModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CalendarDayModel.h; sourceTree = "<group>"; };
+		3A20AFE01F43E21200712A1E /* CalendarDayModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CalendarDayModel.m; sourceTree = "<group>"; };
+		3A20AFE11F43E21200712A1E /* CalendarHomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CalendarHomeViewController.h; sourceTree = "<group>"; };
+		3A20AFE21F43E21200712A1E /* CalendarHomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CalendarHomeViewController.m; sourceTree = "<group>"; };
+		3A20AFE31F43E21200712A1E /* CalendarLogic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CalendarLogic.h; sourceTree = "<group>"; };
+		3A20AFE41F43E21200712A1E /* CalendarLogic.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CalendarLogic.m; sourceTree = "<group>"; };
+		3A20AFE51F43E21200712A1E /* CalendarMonthCollectionViewLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CalendarMonthCollectionViewLayout.h; sourceTree = "<group>"; };
+		3A20AFE61F43E21200712A1E /* CalendarMonthCollectionViewLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CalendarMonthCollectionViewLayout.m; sourceTree = "<group>"; };
+		3A20AFE71F43E21200712A1E /* CalendarMonthHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CalendarMonthHeaderView.h; sourceTree = "<group>"; };
+		3A20AFE81F43E21200712A1E /* CalendarMonthHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CalendarMonthHeaderView.m; sourceTree = "<group>"; };
+		3A20AFE91F43E21200712A1E /* CalendarViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CalendarViewController.h; sourceTree = "<group>"; };
+		3A20AFEA1F43E21200712A1E /* CalendarViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CalendarViewController.m; sourceTree = "<group>"; };
+		3A20AFEB1F43E21200712A1E /* chack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chack.png; sourceTree = "<group>"; };
+		3A20AFEC1F43E21200712A1E /* Color.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Color.h; sourceTree = "<group>"; };
+		3A20AFED1F43E21200712A1E /* NSDate+WQCalendarLogic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDate+WQCalendarLogic.h"; sourceTree = "<group>"; };
+		3A20AFEE1F43E21200712A1E /* NSDate+WQCalendarLogic.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDate+WQCalendarLogic.m"; sourceTree = "<group>"; };
 		3A2FF4E81E50179700B07EB6 /* Extend.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Extend.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A2FF4E91E50179700B07EB6 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		3A2FF4F21E50179700B07EB6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -240,6 +278,9 @@
 		3A3FB3801F2CBDE500E74BB0 /* ChatListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatListViewController.m; sourceTree = "<group>"; };
 		3A4049071E6A6C730038F207 /* MomentsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MomentsCell.h; sourceTree = "<group>"; };
 		3A4049081E6A6C730038F207 /* MomentsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MomentsCell.m; sourceTree = "<group>"; };
+		3A42B7531F42E953005D45D6 /* ChatChoiceTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChatChoiceTableViewCell.h; sourceTree = "<group>"; };
+		3A42B7541F42E953005D45D6 /* ChatChoiceTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChatChoiceTableViewCell.m; sourceTree = "<group>"; };
+		3A42B7551F42E953005D45D6 /* ChatChoiceTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatChoiceTableViewCell.xib; sourceTree = "<group>"; };
 		3A4D2FBB1E8D20E900901E3B /* HandTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HandTableViewCell.xib; sourceTree = "<group>"; };
 		3A4D2FBC1E8D20E900901E3B /* HandTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HandTableViewController.xib; sourceTree = "<group>"; };
 		3A4D2FF01E8D24C100901E3B /* NoticeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoticeTableViewCell.h; sourceTree = "<group>"; };
@@ -390,6 +431,8 @@
 		3A9C28F61F15FD9F00B91876 /* LineUIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineUIView.m; sourceTree = "<group>"; };
 		3AAB90971EA393A000C35137 /* ScoreRank.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreRank.h; sourceTree = "<group>"; };
 		3AAB90981EA393A000C35137 /* ScoreRank.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScoreRank.m; sourceTree = "<group>"; };
+		3AAECDB81F4344C7004A6156 /* UIBarButtonItem+Badge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+Badge.h"; sourceTree = "<group>"; };
+		3AAECDB91F4344C7004A6156 /* UIBarButtonItem+Badge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+Badge.m"; sourceTree = "<group>"; };
 		3ABDCDCD1F316BEC00B95D6C /* HandAddViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HandAddViewController.h; sourceTree = "<group>"; };
 		3ABDCDCE1F316BEC00B95D6C /* HandAddViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HandAddViewController.m; sourceTree = "<group>"; };
 		3ABDCDCF1F316BEC00B95D6C /* HandShowViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HandShowViewController.h; sourceTree = "<group>"; };
@@ -400,8 +443,6 @@
 		3ABDCDD41F316BEC00B95D6C /* HandTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HandTableViewController.m; sourceTree = "<group>"; };
 		3AC12C221F3B381E007C3B7E /* ChatChoiceTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChatChoiceTableViewController.h; sourceTree = "<group>"; };
 		3AC12C231F3B381E007C3B7E /* ChatChoiceTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChatChoiceTableViewController.m; sourceTree = "<group>"; };
-		3AC12C2A1F3B3BD1007C3B7E /* ChatChoiceTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChatChoiceTableViewCell.h; sourceTree = "<group>"; };
-		3AC12C2B1F3B3BD1007C3B7E /* ChatChoiceTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChatChoiceTableViewCell.m; sourceTree = "<group>"; };
 		3AC12C2D1F3B3C6D007C3B7E /* ChatUser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChatUser.h; sourceTree = "<group>"; };
 		3AC12C2E1F3B3C6D007C3B7E /* ChatUser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChatUser.m; sourceTree = "<group>"; };
 		3ACF3D061EA731E800FBEC57 /* CourseXpTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseXpTableViewController.h; sourceTree = "<group>"; };
@@ -524,6 +565,31 @@
 				3A06D9B41E8CEDE400066DD1 /* ExamCell.xib */,
 			);
 			path = Exam;
+			sourceTree = "<group>";
+		};
+		3A20AFDC1F43E21200712A1E /* ZFCalendar */ = {
+			isa = PBXGroup;
+			children = (
+				3A20AFDD1F43E21200712A1E /* CalendarDayCell.h */,
+				3A20AFDE1F43E21200712A1E /* CalendarDayCell.m */,
+				3A20AFDF1F43E21200712A1E /* CalendarDayModel.h */,
+				3A20AFE01F43E21200712A1E /* CalendarDayModel.m */,
+				3A20AFE11F43E21200712A1E /* CalendarHomeViewController.h */,
+				3A20AFE21F43E21200712A1E /* CalendarHomeViewController.m */,
+				3A20AFE31F43E21200712A1E /* CalendarLogic.h */,
+				3A20AFE41F43E21200712A1E /* CalendarLogic.m */,
+				3A20AFE51F43E21200712A1E /* CalendarMonthCollectionViewLayout.h */,
+				3A20AFE61F43E21200712A1E /* CalendarMonthCollectionViewLayout.m */,
+				3A20AFE71F43E21200712A1E /* CalendarMonthHeaderView.h */,
+				3A20AFE81F43E21200712A1E /* CalendarMonthHeaderView.m */,
+				3A20AFE91F43E21200712A1E /* CalendarViewController.h */,
+				3A20AFEA1F43E21200712A1E /* CalendarViewController.m */,
+				3A20AFEB1F43E21200712A1E /* chack.png */,
+				3A20AFEC1F43E21200712A1E /* Color.h */,
+				3A20AFED1F43E21200712A1E /* NSDate+WQCalendarLogic.h */,
+				3A20AFEE1F43E21200712A1E /* NSDate+WQCalendarLogic.m */,
+			);
+			path = ZFCalendar;
 			sourceTree = "<group>";
 		};
 		3A2FF4EB1E50179700B07EB6 /* Extend */ = {
@@ -996,6 +1062,8 @@
 				3A98CB691E7CF82F00CABD0D /* MBProgressHUD+MJ */,
 				3AFA4F6D1EC04A4B00CB7DA2 /* UINavigationBar+Awesome.h */,
 				3AFA4F6E1EC04A4B00CB7DA2 /* UINavigationBar+Awesome.m */,
+				3AAECDB81F4344C7004A6156 /* UIBarButtonItem+Badge.h */,
+				3AAECDB91F4344C7004A6156 /* UIBarButtonItem+Badge.m */,
 				3AFA4F671EC0489900CB7DA2 /* NSString+Common.h */,
 				3AFA4F681EC0489900CB7DA2 /* NSString+Common.m */,
 				3AFA4F611EC0485400CB7DA2 /* NSData+CRC32.h */,
@@ -1021,6 +1089,7 @@
 		3A98CBCB1E7CFA9C00CABD0D /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				3A20AFDC1F43E21200712A1E /* ZFCalendar */,
 				3A532CA41E910C13003CD5A8 /* ZFPlayer */,
 				3A98CBCC1E7CFA9C00CABD0D /* Commit */,
 				3A98CBD51E7CFA9C00CABD0D /* GWPCourseListView */,
@@ -1172,8 +1241,9 @@
 		3AC12C291F3B3BB4007C3B7E /* Im */ = {
 			isa = PBXGroup;
 			children = (
-				3AC12C2A1F3B3BD1007C3B7E /* ChatChoiceTableViewCell.h */,
-				3AC12C2B1F3B3BD1007C3B7E /* ChatChoiceTableViewCell.m */,
+				3A42B7531F42E953005D45D6 /* ChatChoiceTableViewCell.h */,
+				3A42B7541F42E953005D45D6 /* ChatChoiceTableViewCell.m */,
+				3A42B7551F42E953005D45D6 /* ChatChoiceTableViewCell.xib */,
 			);
 			path = Im;
 			sourceTree = "<group>";
@@ -1474,6 +1544,7 @@
 				3A4D2FBD1E8D20E900901E3B /* HandTableViewCell.xib in Resources */,
 				3A532CD01E910C13003CD5A8 /* ZFPlayer.bundle in Resources */,
 				3A4D30171E8D297200901E3B /* MainViewController.xib in Resources */,
+				3A42B7571F42E953005D45D6 /* ChatChoiceTableViewCell.xib in Resources */,
 				3A4D30161E8D297200901E3B /* LeftUserTableViewCell.xib in Resources */,
 				3AFA4F771EC04C0E00CB7DA2 /* Info.plist in Resources */,
 				3A4D2FFA1E8D24E200901E3B /* ScoreTableViewCell.xib in Resources */,
@@ -1570,6 +1641,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A20AFEF1F43E2B800712A1E /* CalendarDayCell.h in Sources */,
+				3A20AFF01F43E2B800712A1E /* CalendarDayCell.m in Sources */,
+				3A20AFF11F43E2B800712A1E /* CalendarDayModel.h in Sources */,
+				3A20AFF21F43E2B800712A1E /* CalendarDayModel.m in Sources */,
+				3A20AFF31F43E2B800712A1E /* CalendarHomeViewController.h in Sources */,
+				3A20AFF41F43E2B800712A1E /* CalendarHomeViewController.m in Sources */,
+				3A20AFF51F43E2B800712A1E /* CalendarLogic.h in Sources */,
+				3A20AFF61F43E2B800712A1E /* CalendarLogic.m in Sources */,
+				3A20AFF71F43E2B800712A1E /* CalendarMonthCollectionViewLayout.h in Sources */,
+				3A20AFF81F43E2B800712A1E /* CalendarMonthCollectionViewLayout.m in Sources */,
+				3A20AFF91F43E2B800712A1E /* CalendarMonthHeaderView.h in Sources */,
+				3A20AFFA1F43E2B800712A1E /* CalendarMonthHeaderView.m in Sources */,
+				3A20AFFB1F43E2B800712A1E /* CalendarViewController.h in Sources */,
+				3A20AFFC1F43E2B800712A1E /* CalendarViewController.m in Sources */,
+				3A20AFFD1F43E2B800712A1E /* chack.png in Sources */,
+				3A20AFFE1F43E2B800712A1E /* Color.h in Sources */,
+				3A20AFFF1F43E2B800712A1E /* NSDate+WQCalendarLogic.h in Sources */,
+				3A20B0001F43E2B800712A1E /* NSDate+WQCalendarLogic.m in Sources */,
 				3AEED70F1F39B30C00D17693 /* XWNaviTransition.h in Sources */,
 				3AEED7101F39B30C00D17693 /* XWNaviTransition.m in Sources */,
 				3A37757C1F35EB76005A5170 /* JRWaterFallLayout.m in Sources */,
@@ -1640,12 +1729,12 @@
 				3A796C3A1E534C1B00794043 /* MainPageViewController.m in Sources */,
 				3AFA4F631EC0485400CB7DA2 /* NSData+CRC32.m in Sources */,
 				3AFA4F6C1EC049F600CB7DA2 /* Math.m in Sources */,
+				3AAECDBA1F4344C7004A6156 /* UIBarButtonItem+Badge.m in Sources */,
 				3A796C4E1E534C1B00794043 /* ScoreDataViewController.m in Sources */,
 				3AC12C2F1F3B3C6D007C3B7E /* ChatUser.m in Sources */,
 				3AE52B871EA8F0EB00705269 /* CourseXpTableViewCell.m in Sources */,
 				3A31E1E51E6BC5040056565A /* MomentsViewController.m in Sources */,
 				3A98CB5D1E7CF7AA00CABD0D /* CommentsModel.m in Sources */,
-				3AC12C2C1F3B3BD1007C3B7E /* ChatChoiceTableViewCell.m in Sources */,
 				3A796C1F1E534C1B00794043 /* CourseViewController.m in Sources */,
 				3A532CCD1E910C13003CD5A8 /* UIWindow+CurrentViewController.m in Sources */,
 				3A796C301E534C1B00794043 /* WebViewController.m in Sources */,
@@ -1657,6 +1746,7 @@
 				3A98CC011E7CFA9C00CABD0D /* GWPCourseListView.m in Sources */,
 				3AFA4F661EC0488200CB7DA2 /* UILabel+LXAdd.m in Sources */,
 				3A532CC81E910C13003CD5A8 /* UIImageView+ZFCache.m in Sources */,
+				3A42B7561F42E953005D45D6 /* ChatChoiceTableViewCell.m in Sources */,
 				3A532CCC1E910C13003CD5A8 /* UIViewController+ZFPlayerRotation.m in Sources */,
 				3A4049091E6A6C730038F207 /* MomentsCell.m in Sources */,
 				3A98CB721E7CF82F00CABD0D /* MBProgressHUD+MJ.m in Sources */,
@@ -1898,6 +1988,7 @@
 				CODE_SIGN_ENTITLEMENTS = "HutHelper/Supporting Files/HutHelper.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = JW2LR94V6G;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1948,6 +2039,7 @@
 				CODE_SIGN_ENTITLEMENTS = "HutHelper/Supporting Files/HutHelper.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = JW2LR94V6G;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

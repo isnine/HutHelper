@@ -252,20 +252,16 @@ static int Is ;
 #pragma mark - 通知
 +(void)addNotice{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    NSDictionary *noticeDictionary=@{@"time":@"2017-05-15 08:00",
+    NSDictionary *noticeDictionary=@{@"time":@"2017-08-15 08:00",
                                      @"title":@"工大助手",
-                                     @"body":@"工大助手V2.4.0更新日志\n\n- 修复了校园说说缓存问题\n- 修改了成绩查询列表为自动刷新"
+                                     @"body":@"工大助手V3.0.0更新日志\n\n- 新增了私信聊天，可与全校任何一人直接聊天\n- 修改了整体界面\n- 修改了图标\n- 修改了失物招领界面\n- 修改了一万个界面..."
                                      };
     
-    NSDictionary *noticeDictionary1=@{@"time":@"2017-05-15 08:00",
-                                      @"title":@"考试计划Widget使用",
-                                      @"body":@"临近期末，为了方便掌握考试时间\n您可以在主界面滑到最左边，点击下方的编辑添加【工大助手·考试倒计时】"
+    NSDictionary *noticeDictionary1=@{@"time":@"2017-08-14 08:00",
+                                      @"title":@"私信功能的使用",
+                                      @"body":@"您可以点击侧栏-私信-右上角搜索按钮。\n输入你想要聊天的对象姓名。即可开始聊天。"
                                       };
-    NSDictionary *noticeDictionary2=@{@"time":@"2017-05-15 08:00",
-                                      @"title":@"工大助手iOS端内测邀请",
-                                      @"body":@"校园交友，老乡查找，社团活动\n这些一系列的功能想不想抢先尝试？\nApp功能太少，我有更多的想法\n想不想直接和开发者沟通？\n发现了新的Bug，不满意，要吐槽一番？\n\n现在即可加入到工大助手iOS端的内测中\nQQ群:245057396\n验证信息:姓名+学号。"
-                                      };
-    NSArray *array = @[noticeDictionary,noticeDictionary1,noticeDictionary2];
+    NSArray *array = @[noticeDictionary,noticeDictionary1];
     [defaults setObject:array forKey:@"Notice"];//通知列表
     [defaults synchronize];
 }

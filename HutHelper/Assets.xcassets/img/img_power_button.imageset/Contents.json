@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "shuru-button.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "button1-查询电费@2x.png",
       "scale" : "2x"
     },
     {
