@@ -2087,7 +2087,7 @@
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CODE_SIGN_ENTITLEMENTS = ExamTime/ExamTime.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = JW2LR94V6G;
 				GCC_PREFIX_HEADER = "HutHelper/Supporting Files/HutHelper-Prefix.pch";
 				INFOPLIST_FILE = ExamTime/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -2107,7 +2107,7 @@
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CODE_SIGN_ENTITLEMENTS = ExamTime/ExamTime.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = JW2LR94V6G;
 				GCC_PREFIX_HEADER = "HutHelper/Supporting Files/HutHelper-Prefix.pch";
 				INFOPLIST_FILE = ExamTime/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;

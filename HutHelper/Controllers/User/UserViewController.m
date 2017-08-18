@@ -36,7 +36,6 @@ UIImage* img ;
 
     self.headerView=[[JSHeaderView alloc] initWithImage:[self getImg]];
     self.navigationItem.titleView = self.headerView;
-    //MJRefresh适配iOS11
 
     [self.headerView reloadSizeWithScrollView:self.tableView];
     [self.headerView handleClickActionWithBlock:^{

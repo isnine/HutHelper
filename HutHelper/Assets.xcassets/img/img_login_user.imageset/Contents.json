@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "img_login_user.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "学号.png",
       "scale" : "2x"
     },
     {

@@ -38,6 +38,11 @@
     NSString *UserName_String =[NSString stringWithFormat:@"%@",_UserName.text];
     NSString *Password_String =[NSString stringWithFormat:@"%@",_Password.text];
     [MBProgressHUD showMessage:@"登录中" toView:self.view];
+    if ([UserName_String isEqualToString:@""]||[Password_String isEqualToString:@""]) {
+        HideAllHUD
+        [MBProgressHUD showError:@"请输入账号密码" toView:self.view];
+        return;
+    }
     [APIRequest GET:[Config getApiLogin:UserName_String passWord:Password_String] parameters:nil
             success:^(id responseObject) {
                  HideAllHUD

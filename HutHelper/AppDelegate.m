@@ -82,6 +82,7 @@
         [RCIM sharedRCIM].enabledReadReceiptConversationTypeList =@[@(ConversationType_PRIVATE)];
         [RCIM sharedRCIM].enableTypingStatus=YES;
         [RCIM sharedRCIM].enableSyncReadStatus=YES;
+        [RCIM sharedRCIM].globalNavigationBarTintColor=[UIColor colorWithRed:94/255.0 green:199/255.0 blue:217/255.0 alpha:1];
         [[RCIM sharedRCIM] connectWithToken:[Config getImToken]
                                     success:^(NSString *userId) {
                                         NSLog(@"登陆成功。当前登录的用户ID：%@", userId);

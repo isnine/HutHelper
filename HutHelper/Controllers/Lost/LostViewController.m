@@ -66,10 +66,10 @@
         self.collectionView.mj_footer = footer;
         [self.collectionView.mj_header beginRefreshing];
         //MJRefresh适配iOS11
-        if (@available(iOS 11.0, *)) {
-            self.collectionView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
-            self.collectionView.contentInset = UIEdgeInsetsMake(64, 0, 0, 0);
-        }
+//        if (@available(iOS 11.0, *)) {
+//            self.collectionView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+//            self.collectionView.contentInset = UIEdgeInsetsMake(64, 0, 0, 0);
+//        }
         //按钮
         UIView *rightButtonView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 50)];
         UIButton *mainAndSearchBtn = [[UIButton alloc] initWithFrame:CGRectMake(70, 0, 50, 50)];

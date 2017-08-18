@@ -254,7 +254,7 @@ static int Is ;
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     NSDictionary *noticeDictionary=@{@"time":@"2017-08-15 08:00",
                                      @"title":@"工大助手",
-                                     @"body":@"工大助手V3.0.0更新日志\n\n- 新增了私信聊天，可与全校任何一人直接聊天\n- 修改了整体界面\n- 修改了图标\n- 修改了失物招领界面\n- 修改了一万个界面..."
+                                     @"body":@"工大助手V3.0.0更新日志\n\n- 新增了私信聊天\n- 修改了整体界面\n- 修改了图标\n- 修改了失物招领界面\n- 修改了一万个界面"
                                      };
     
     NSDictionary *noticeDictionary1=@{@"time":@"2017-08-14 08:00",
