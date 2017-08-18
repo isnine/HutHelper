@@ -150,7 +150,7 @@
 }
 
 +(NSString*)apiIndex{
-    return @"https://hugongda.com:8888";
+    return @"http://hugongda.com:8888";
 }
 +(NSString*)apiIndexHttps{
     return @"https://hut.wxz.name";
