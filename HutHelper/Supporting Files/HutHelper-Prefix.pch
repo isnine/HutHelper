@@ -7,7 +7,7 @@
 //
 
 #ifndef HutHelper_Prefix_pch
-#define HutHelper_Prefix_pch
+#define HutHelper_ Prefix_pch
 
 #import "Config.h"
 #import "Config+Api.h"
@@ -43,6 +43,7 @@ _tableView.scrollIndicatorInsets = _tableView.contentInset;
 
 
 /**AppKey*/
+#define RONGCLOUD_APPKEY @"x4vkb1qpx05kk"
 #define APPKEY_UMESSAGE @"57fe13d867e58e0e59000ca1"
 #define APPKEY_QQ_SECRET @"y7n6BRLtnH9mrFT3"
 #define APPKEY_SINA_SECRET @"ba2997aaab6a1602406fc94247dc072d"

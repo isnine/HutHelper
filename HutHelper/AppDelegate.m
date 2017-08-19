@@ -62,6 +62,7 @@
     self.mainNavigationController.navigationBar.barTintColor = [UIColor whiteColor];
     //返回箭头颜色
     [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:94/255.0 green:199/255.0 blue:217/255.0 alpha:1]];
+    
     //友盟分享
     [[UMSocialManager defaultManager] openLog:NO]; //打开调试日志
     [[UMSocialManager defaultManager] setUmSocialAppkey:APPKEY_UMESSAGE];//设置友盟appkey
@@ -72,13 +73,14 @@
     //    [JSPatch setupRSAPublicKey:RSA_JSPATCH];
     //    [JSPatch sync];
     //IM
-    [[RCIM sharedRCIM] initWithAppKey:@"x18ywvqfxjiyc"];
+    [[RCIM sharedRCIM] initWithAppKey:RONGCLOUD_APPKEY];
     //IM登录
     if ([Config getImToken]) {
         NSLog(@"执行融云登录");
         [RCIM sharedRCIM].enableMessageAttachUserInfo=YES;
         [RCIM sharedRCIM].enablePersistentUserInfoCache=YES;
         [RCIM sharedRCIM].globalConversationAvatarStyle=RC_USER_AVATAR_CYCLE;
+        [RCIM sharedRCIM].globalMessageAvatarStyle=RC_USER_AVATAR_CYCLE;
         [RCIM sharedRCIM].enabledReadReceiptConversationTypeList =@[@(ConversationType_PRIVATE)];
         [RCIM sharedRCIM].enableTypingStatus=YES;
         [RCIM sharedRCIM].enableSyncReadStatus=YES;
@@ -106,12 +108,6 @@
                                                                   UIUserNotificationTypeAlert)
                                                 categories:nil];
         [application registerUserNotificationSettings:settings];
-    } else {
-        //注册推送，用于iOS8之前的系统
-        UIRemoteNotificationType myTypes = UIRemoteNotificationTypeBadge |
-        UIRemoteNotificationTypeAlert |
-        UIRemoteNotificationTypeSound;
-        [application registerForRemoteNotificationTypes:myTypes];
     }
 
     //设置返回按钮
