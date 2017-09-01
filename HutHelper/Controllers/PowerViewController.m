@@ -78,6 +78,9 @@ typedef NS_ENUM(NSUInteger, PowerSelectBtn) {
     //默认关闭选择
     self.openBtn.enabled=NO;
     self.noOpenBtn.enabled=NO;
+    //点击空白收起键盘
+    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(fingerTapped:)];
+    [self.view addGestureRecognizer:singleTap];
     //如果当天没有投过票再打开
     [APIRequest GET:Config.getApiPowerAirCondition parameters:nil success:^(id responseObject) {
         NSLog(@"%@",responseObject);
@@ -175,5 +178,8 @@ typedef NS_ENUM(NSUInteger, PowerSelectBtn) {
         }];
     }
 }
-
+-(void)fingerTapped:(UITapGestureRecognizer *)gestureRecognizer
+{
+    [self.view endEditing:YES];
+}
 @end

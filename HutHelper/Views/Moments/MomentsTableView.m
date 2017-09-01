@@ -28,7 +28,6 @@
 - (instancetype)initWithFrame:(CGRect)frame style:(UITableViewStyle)style withSay:(NSDictionary *)JSONDic withSayLike:(NSDictionary *)LikesDic{
     self = [super initWithFrame:frame style:style];
     if (self) {
-        
         self.separatorStyle = UITableViewCellSeparatorStyleNone;
         self.dataSource = self;
         self.delegate = self;
@@ -43,8 +42,7 @@
     }
     self.emptyDataSetSource = self;
     self.emptyDataSetDelegate = self;
-    self.tableFooterView = [UIView new];
-    
+  // self.tableFooterView = [UIView new];
     MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector((reload))];
     self.mj_header = header;
     // 设置自动切换透明度(在导航栏下面自动隐藏)

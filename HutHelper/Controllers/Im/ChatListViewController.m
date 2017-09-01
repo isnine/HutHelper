@@ -65,7 +65,6 @@
             currentUserInfo.portraitUri=[NSString stringWithFormat:@"%@/%@",Config.getApiImg,@"\/head\/head-boy.png"];
         }else{
             currentUserInfo.portraitUri=[NSString stringWithFormat:@"%@/%@",Config.getApiImg,@"\/head\/head-girl.png"];
-           
         }
     }else{
         currentUserInfo.portraitUri=[NSString stringWithFormat:@"%@/%@",Config.getApiImg,Config.getHeadPicThumb];
@@ -88,6 +87,7 @@
                 userInfo.portraitUri=[NSString stringWithFormat:@"%@/%@",Config.getApiImg,responseObject[@"data"][@"head_pic_thumb"]];
                 return completion(userInfo);
             } failure:^(NSError *error) {
+                NSLog(@"失败");
                 return completion(nil);
             }];
 }
@@ -130,7 +130,6 @@
 // 滑动的时候 searchBar 回收键盘
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
-    
     [_searchBar resignFirstResponder];
 }
 @end

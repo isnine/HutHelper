@@ -75,7 +75,7 @@
     sumHeight=0.0;
     /**用户昵称*/
     nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(SYReal(60), 0, SYReal(200),SYReal(50))];
-    nameLabel.textColor=[UIColor colorWithRed:4/255.0 green:213/255.0 blue:192/255.0 alpha:1.0];
+    nameLabel.textColor=[UIColor colorWithRed:29/255.0 green:203/255.0 blue:219/255.0 alpha:1.0];
     nameLabel.text=_data.username;
     [self.contentView addSubview:nameLabel];
     /**发布时间*/
@@ -161,7 +161,7 @@
     [self.contentView addSubview:likesNumLabel];
     /**删除说说按钮*/
     if ([Config.getUserId isEqualToString:_data.user_id]) {
-        deleteSay = [[UIButton alloc] initWithFrame:CGRectMake(SYReal(290), sumHeight, SYReal(30),SYReal(30))];
+        deleteSay = [[UIButton alloc] initWithFrame:CGRectMake(SYReal(270), sumHeight, SYReal(30),SYReal(30))];
         [deleteSay setTitle:@"删除" forState:UIControlStateNormal];
         deleteSay.titleLabel.font=[UIFont systemFontOfSize: 12.0];
         [deleteSay setTitleColor:[UIColor redColor]forState:UIControlStateNormal];
