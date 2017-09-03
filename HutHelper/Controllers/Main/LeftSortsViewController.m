@@ -22,6 +22,7 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <RongIMKit/RongIMKit.h>
 #import "ChatListViewController.h"
+#import "UserShowViewController.h"
 @interface LeftSortsViewController () <UITableViewDelegate,UITableViewDataSource>
 
 @end
@@ -137,8 +138,10 @@
     }
     if (indexPath.row == 2) {  //私信
         AppDelegate *tempAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-        ChatListViewController *chatList = [[ChatListViewController alloc] init];
-          [tempAppDelegate.mainNavigationController pushViewController:chatList animated:YES];
+       // ChatListViewController *chatList = [[ChatListViewController alloc] init];
+        UserShowViewController *userShow=[[UserShowViewController alloc]init];
+        [tempAppDelegate.mainNavigationController pushViewController:userShow animated:YES];
+        //[tempAppDelegate.mainNavigationController pushViewController:chatList animated:YES];
     }
     if (indexPath.row == 3) {  //分享
         

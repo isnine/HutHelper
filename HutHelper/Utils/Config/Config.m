@@ -252,9 +252,9 @@ static int Is ;
 #pragma mark - 通知
 +(void)addNotice{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    NSDictionary *noticeDictionary=@{@"time":@"2017-08-15 08:00",
+    NSDictionary *noticeDictionary=@{@"time":@"2017-09-03 08:00",
                                      @"title":@"工大助手",
-                                     @"body":@"工大助手V3.0.0更新日志\n\n- 新增了私信聊天\n- 修改了整体界面\n- 修改了图标\n- 修改了失物招领界面\n- 修改了一万个界面"
+                                     @"body":@"工大助手V3.1.0更新日志\n\n- 失物招领加入私信聊天\n- 修改了校园说说姓名颜色\n您有任何意见，可以在关于-联系我，与我直接对话进行沟通。"
                                      };
     
     NSDictionary *noticeDictionary1=@{@"time":@"2017-08-14 08:00",

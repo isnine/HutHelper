@@ -133,6 +133,7 @@
 		3AAECDBA1F4344C7004A6156 /* UIBarButtonItem+Badge.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AAECDB91F4344C7004A6156 /* UIBarButtonItem+Badge.m */; };
 		3AC12C241F3B381E007C3B7E /* ChatChoiceTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AC12C231F3B381E007C3B7E /* ChatChoiceTableViewController.m */; };
 		3AC12C2F1F3B3C6D007C3B7E /* ChatUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AC12C2E1F3B3C6D007C3B7E /* ChatUser.m */; };
+		3ACA5EFB1F5C549F00E3934E /* UserShowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ACA5EFA1F5C549F00E3934E /* UserShowViewController.m */; };
 		3ACF3D081EA731E800FBEC57 /* CourseXpTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ACF3D071EA731E800FBEC57 /* CourseXpTableViewController.m */; };
 		3AD047B01F316CCA00B61A02 /* HandAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ABDCDCE1F316BEC00B95D6C /* HandAddViewController.m */; };
 		3AD047B21F316CCA00B61A02 /* HandShowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ABDCDD01F316BEC00B95D6C /* HandShowViewController.m */; };
@@ -445,6 +446,8 @@
 		3AC12C231F3B381E007C3B7E /* ChatChoiceTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChatChoiceTableViewController.m; sourceTree = "<group>"; };
 		3AC12C2D1F3B3C6D007C3B7E /* ChatUser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChatUser.h; sourceTree = "<group>"; };
 		3AC12C2E1F3B3C6D007C3B7E /* ChatUser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChatUser.m; sourceTree = "<group>"; };
+		3ACA5EF91F5C549F00E3934E /* UserShowViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserShowViewController.h; sourceTree = "<group>"; };
+		3ACA5EFA1F5C549F00E3934E /* UserShowViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserShowViewController.m; sourceTree = "<group>"; };
 		3ACF3D061EA731E800FBEC57 /* CourseXpTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseXpTableViewController.h; sourceTree = "<group>"; };
 		3ACF3D071EA731E800FBEC57 /* CourseXpTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseXpTableViewController.m; sourceTree = "<group>"; };
 		3AD443E91E97CF5600720F42 /* VedioTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VedioTableViewCell.h; sourceTree = "<group>"; };
@@ -925,6 +928,8 @@
 				3A796C0F1E534C1B00794043 /* UsernameViewController.m */,
 				3A796C101E534C1B00794043 /* UserViewController.h */,
 				3A796C111E534C1B00794043 /* UserViewController.m */,
+				3ACA5EF91F5C549F00E3934E /* UserShowViewController.h */,
+				3ACA5EFA1F5C549F00E3934E /* UserShowViewController.m */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -1681,6 +1686,7 @@
 				3A532CCA1E910C13003CD5A8 /* UITabBarController+ZFPlayerRotation.m in Sources */,
 				3A98CC071E7CFA9C00CABD0D /* JSHeaderView.m in Sources */,
 				3A98CB611E7CF7AA00CABD0D /* User.m in Sources */,
+				3ACA5EFB1F5C549F00E3934E /* UserShowViewController.m in Sources */,
 				3A4D2FF91E8D24E200901E3B /* ScoreTableViewCell.m in Sources */,
 				3A796C251E534C1B00794043 /* FeedbackResultViewController.m in Sources */,
 				3A98CC0D1E7CFA9C00CABD0D /* XWScanImage.m in Sources */,
