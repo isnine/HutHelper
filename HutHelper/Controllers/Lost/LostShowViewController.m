@@ -11,7 +11,7 @@
 #import "Lost.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "XWScanImage.h"
-
+#import "ChatViewController.h"
 #import "XWInteractiveTransition.h"
 #import "XWNaviTransition.h"
 @interface LostShowViewController ()
@@ -19,22 +19,32 @@
 @end
 
 @implementation LostShowViewController
-- (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController animationControllerForOperation:(UINavigationControllerOperation)operation fromViewController:(UIViewController *)fromVC toViewController:(UIViewController *)toVC{
-    NSLog(@"%@", NSStringFromCGRect(self.imageView.frame));
-    //分pop和push两种情况分别返回动画过渡代理相应不同的动画操作
-    return [XWNaviTransition transitionWithType:operation == UINavigationControllerOperationPush ? XWNaviOneTransitionTypePush : XWNaviOneTransitionTypePop];
-}
+//- (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController animationControllerForOperation:(UINavigationControllerOperation)operation fromViewController:(UIViewController *)fromVC toViewController:(UIViewController *)toVC{
+//    NSLog(@"%@", NSStringFromCGRect(self.imageView.frame));
+//    //分pop和push两种情况分别返回动画过渡代理相应不同的动画操作
+//    return [XWNaviTransition transitionWithType:operation == UINavigationControllerOperationPush ? XWNaviOneTransitionTypePush : XWNaviOneTransitionTypePop];
+//}
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title=@"失物详情";
     self.view.backgroundColor=RGB(239, 239, 239, 1);
-    
     //初始化手势过渡的代理
     self.interactiveTransition = [XWInteractiveTransition interactiveTransitionWithTransitionType:XWInteractiveTransitionTypePop GestureDirection:XWInteractiveTransitionGestureDirectionRight];
     //给当前控制器的视图添加手势
     [_interactiveTransition addPanGestureForViewController:self];
+    //返回箭头
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+    self.navigationItem.backBarButtonItem = item;
+    //按钮
+    UIView *rightButtonView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 50)];
+    UIButton *mainAndSearchBtn = [[UIButton alloc] initWithFrame:CGRectMake(70, 0, 50, 50)];
+    [rightButtonView addSubview:mainAndSearchBtn];
+    [mainAndSearchBtn setImage:[UIImage imageNamed:@"ico_left_im"] forState:UIControlStateNormal];
+    [mainAndSearchBtn addTarget:self action:@selector(im) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *rightCunstomButtonView = [[UIBarButtonItem alloc] initWithCustomView:rightButtonView];
+    self.navigationItem.rightBarButtonItem = rightCunstomButtonView;
 }
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -187,7 +197,14 @@
     }
     return RGB(152, 205, 222, 1);
 }
-
+#pragma  mark - 方法
+-(void)im{
+    ChatViewController *conversationVC = [[ChatViewController alloc]init];
+    conversationVC.conversationType = ConversationType_PRIVATE;
+    conversationVC.targetId = _lostModel.user_id;
+    conversationVC.title = _lostModel.username;
+    [self.navigationController pushViewController:conversationVC animated:YES];
+}
 
 
 @end
