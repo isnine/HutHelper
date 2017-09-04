@@ -11,4 +11,5 @@
 @interface LostShowViewController : UIViewController<UINavigationControllerDelegate>
 @property (nonatomic,weak) Lost *lostModel;
 @property (strong, nonatomic) UIImageView *imageView;
+@property (nonatomic,assign) Boolean  *isSelf;
 @end

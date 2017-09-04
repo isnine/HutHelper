@@ -32,6 +32,7 @@
 +(NSString*)getApiGoodsDelect:(NSString*)goodID;
 
 +(NSString*)getApiLost:(int)num;
++(NSString*)getApiLostUserOther:(NSString*)user_id;
 +(NSString*)getApiLostUser;
 +(NSString*)getApiLostCreate;
 +(NSString*)getApiLostImgUpload;

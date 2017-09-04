@@ -38,13 +38,15 @@
     UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     self.navigationItem.backBarButtonItem = item;
     //按钮
-    UIView *rightButtonView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 50)];
-    UIButton *mainAndSearchBtn = [[UIButton alloc] initWithFrame:CGRectMake(70, 0, 50, 50)];
-    [rightButtonView addSubview:mainAndSearchBtn];
-    [mainAndSearchBtn setImage:[UIImage imageNamed:@"ico_user_user"] forState:UIControlStateNormal];
-    [mainAndSearchBtn addTarget:self action:@selector(user) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *rightCunstomButtonView = [[UIBarButtonItem alloc] initWithCustomView:rightButtonView];
-    self.navigationItem.rightBarButtonItem = rightCunstomButtonView;
+    if (!self.isSelf) {
+        UIView *rightButtonView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 50)];
+        UIButton *mainAndSearchBtn = [[UIButton alloc] initWithFrame:CGRectMake(70, 0, 50, 50)];
+        [rightButtonView addSubview:mainAndSearchBtn];
+        [mainAndSearchBtn setImage:[UIImage imageNamed:@"ico_user_user"] forState:UIControlStateNormal];
+        [mainAndSearchBtn addTarget:self action:@selector(user) forControlEvents:UIControlEventTouchUpInside];
+        UIBarButtonItem *rightCunstomButtonView = [[UIBarButtonItem alloc] initWithCustomView:rightButtonView];
+        self.navigationItem.rightBarButtonItem = rightCunstomButtonView;
+    }
 }
 - (void)viewWillAppear:(BOOL)animated
 {

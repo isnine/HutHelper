@@ -56,6 +56,11 @@
         [self reloadData:self.myLostArray];
         self.navigationItem.title=@"我的失物";
         [self.collectionView reloadData];
+    }else if (self.otherLostArray) {//如果是其他人的发布
+        self.myLostArray=self.otherLostArray;
+        [self reloadData:self.myLostArray];
+        self.navigationItem.title=[NSString stringWithFormat:@"%@的失物列表",self.otherName];
+        [self.collectionView reloadData];
     }else{
         // 隐藏时间的下拉刷新
         MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector((reload))];
@@ -184,6 +189,9 @@
     Lost *lost=self.lostArray[indexPath.item];
     _currentIndexPath = indexPath;
     LostShowViewController *lostShowViewController=[[LostShowViewController alloc]init];
+    if (self.myLostArray) {
+        lostShowViewController.isSelf=true;
+    }
     lostShowViewController.lostModel=lost;
     self.navigationController.delegate = lostShowViewController;
     [self.navigationController pushViewController:lostShowViewController animated:YES];

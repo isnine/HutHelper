@@ -82,6 +82,9 @@
 +(NSString*)getApiLostUser{
     return [NSString stringWithFormat:@"%@/api/v1/loses/posts/page/%@",Config.apiIndex,Config.getUserId];
 }
++(NSString*)getApiLostUserOther:(NSString*)user_id{
+    return [NSString stringWithFormat:@"%@/api/v1/loses/posts/page/%@",Config.apiIndex,user_id];
+}
 +(NSString*)getApiLostCreate{
     return [NSString stringWithFormat:@"%@/api/v1/loses/create/%@/%@",Config.apiIndex,Config.getStudentKH,Config.getRememberCodeApp];
 }

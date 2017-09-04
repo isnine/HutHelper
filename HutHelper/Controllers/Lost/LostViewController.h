@@ -10,6 +10,8 @@
 
 @interface LostViewController : UIViewController
 @property (nonatomic,copy) NSArray *myLostArray;
+@property (nonatomic,copy) NSArray *otherLostArray;
+@property (nonatomic,copy) NSString *otherName;
 @property (nonatomic, strong) NSIndexPath *currentIndexPath;
 @property (nonatomic, strong) UICollectionView *collectionView;
 @end

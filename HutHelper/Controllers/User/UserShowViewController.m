@@ -12,6 +12,7 @@
 #import "ChatViewController.h"
 #import "MBProgressHUD+MJ.h"
 #import "MomentsViewController.h"
+#import "LostViewController.h"
 @interface UserShowViewController ()
 
 @end
@@ -97,7 +98,15 @@
     sayBtnImg.frame =  CGRectMake(SY_Real(160), SY_Real(443.5), SY_Real(55), SY_Real(55));
     sayBtnImg.image=[UIImage imageNamed:@"img_user_saybtn"];
     [self.view addSubview:sayBtnImg];
-    
+    //失物招领
+    UIButton *lostBtn = [[UIButton alloc] init];
+    [lostBtn addTarget:self action:@selector(lost) forControlEvents:UIControlEventTouchUpInside];
+    lostBtn.frame = CGRectMake(SY_Real(70), SY_Real(443.5), SY_Real(55), SY_Real(55));
+    [self.view addSubview:lostBtn];
+    UIImageView *lostBtnImg = [[UIImageView alloc] init];
+    lostBtnImg.frame =  CGRectMake(SY_Real(70), SY_Real(443.5), SY_Real(55), SY_Real(55));
+    lostBtnImg.image=[UIImage imageNamed:@"img_user_lostbtn"];
+    [self.view addSubview:lostBtnImg];
 }
 -(void)im{
     ChatViewController *conversationVC = [[ChatViewController alloc]init];
@@ -134,6 +143,34 @@
         HideAllHUD
         [MBProgressHUD showError:@"网络错误" toView:self.view];
         
+    }];
+}
+-(void)lost{
+    [MBProgressHUD showMessage:@"加载中" toView:self.view];
+    //发起请求
+    [APIRequest GET:[Config getApiLostUserOther:_user_id] parameters:nil success:^(id responseObject) {
+        NSDictionary *responseDic = [NSDictionary dictionaryWithDictionary:responseObject];
+        if ([[responseDic objectForKey:@"msg"]isEqualToString:@"ok"]) {
+            NSDictionary *responseDataDic=[responseDic objectForKey:@"data"];
+            NSArray *responseDataPostArray=[responseDataDic objectForKey:@"posts"];//加载该页数据
+            if (responseDataPostArray.count!=0) {
+                HideAllHUD
+                LostViewController *lostViewController=[[LostViewController alloc]init];
+                lostViewController.otherLostArray=responseDataPostArray;
+                lostViewController.otherName=_name;
+                [self.navigationController pushViewController:lostViewController animated:YES];
+            }else{
+                HideAllHUD
+                [MBProgressHUD showError:@"对方没有发布的失物" toView:self.view];
+            }
+        }
+        else{
+            HideAllHUD
+            [MBProgressHUD showError:[responseDic objectForKey:@"msg"] toView:self.view];
+        }
+    }failure:^(NSError *error) {
+        [MBProgressHUD showError:@"网络超时" toView:self.view];
+        HideAllHUD
     }];
 }
 -(UIImage*) circleImage:(UIImage*) image{
