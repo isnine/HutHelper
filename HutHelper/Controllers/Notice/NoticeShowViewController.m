@@ -58,7 +58,7 @@
 }
 -(void)showOther{
    if ([[_noticeShowData objectForKey:@"title"]isEqualToString:@"工大助手"]) {
-    [_show setTitle:@"给我们评个分" forState:UIControlStateNormal];
+    [_show setTitle:@"喂程序猿星星吃" forState:UIControlStateNormal];
         [_show addTarget:self action:@selector(showAppStore) forControlEvents:UIControlEventTouchUpInside];
    }else if ([[_noticeShowData objectForKey:@"title"]isEqualToString:@"更新通知"]){
        [_show setTitle:@"去AppStore更新" forState:UIControlStateNormal];

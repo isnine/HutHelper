@@ -63,6 +63,7 @@
 +(NSString*)getApiGoodsUser{
     return [NSString stringWithFormat:@"%@/api/v1/stuff/own1/%@/%@/1",Config.apiIndex,Config.getStudentKH,Config.getRememberCodeApp];
 }
+
 +(NSString*)getApiGoodsCreate{
     return [NSString stringWithFormat:@"%@/api/v2/trade/create/%@/%@",Config.apiIndex,Config.getStudentKH,Config.getRememberCodeApp];
 }

@@ -58,28 +58,32 @@
             [Config addNotice];
             /**设置友盟标签&别名*/
             [Config saveUmeng];
+            //如果是特殊用户
+            if (Config.getTrueName ==nil) {
+                [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:([self.navigationController.viewControllers count] -2)] animated:YES];  //返回上一个View
+                return;
+            }
             //请求即时聊天服务的Token
-            NSDictionary *dic=@{@"userid":Config.getUserId,
-                                @"name":Config.getTrueName
-                                };
-            [APIRequest POST:[Config getApiImToken] parameters:dic
-                     success:^(id responseObject) {
-                         NSDictionary *resultDictionary = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
-                         NSLog(@"%@",resultDictionary);
-                         [Config saveImToken:resultDictionary[@"token"]];
-                         [[RCIM sharedRCIM] connectWithToken:[Config getImToken]
-                                                     success:^(NSString *userId) {
-                                                         NSLog(@"登陆成功。当前登录的用户ID：%@", userId);
-                                                     } error:^(RCConnectErrorCode status) {
-                                                         NSLog(@"登陆的错误码为:%d", status);
-                                                     } tokenIncorrect:^{
-                                                         
-                                                         NSLog(@"token错误");
-                                                     }];
-                     }
-                     failure:^(NSError *error) {
-                         NSLog(@"Token获取失败");
-                     }];
+                NSDictionary *dic=@{@"userid":Config.getUserId,
+                                    @"name":Config.getTrueName
+                                    };
+                [APIRequest POST:[Config getApiImToken] parameters:dic
+                         success:^(id responseObject) {
+                             NSDictionary *resultDictionary = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
+                             NSLog(@"%@",resultDictionary);
+                             [Config saveImToken:resultDictionary[@"token"]];
+                             [[RCIM sharedRCIM] connectWithToken:[Config getImToken]
+                                                         success:^(NSString *userId) {
+                                                             NSLog(@"登陆成功。当前登录的用户ID：%@", userId);
+                                                         } error:^(RCConnectErrorCode status) {
+                                                             [MBProgressHUD showError:[NSString stringWithFormat:@"私信模块登录错误，错误码:%ld",(long)status] toView:self.view];
+                                                         } tokenIncorrect:^{
+                                                             [MBProgressHUD showError:@"Token错误,您无法使用私信功能,可尝试重新登录" toView:self.view];
+                                                         }];
+                         }
+                         failure:^(NSError *error) {
+                             [MBProgressHUD showError:@"Token获取失败,您无法使用私信功能,可尝试重新登录" toView:self.view];
+                         }];
             //返回主界面
             [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:([self.navigationController.viewControllers count] -2)] animated:YES];  //返回上一个View
         }

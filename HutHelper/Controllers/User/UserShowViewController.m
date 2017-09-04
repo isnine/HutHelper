@@ -107,6 +107,15 @@
     lostBtnImg.frame =  CGRectMake(SY_Real(70), SY_Real(443.5), SY_Real(55), SY_Real(55));
     lostBtnImg.image=[UIImage imageNamed:@"img_user_lostbtn"];
     [self.view addSubview:lostBtnImg];
+    //二手市场
+    UIButton *handBtn = [[UIButton alloc] init];
+    [handBtn addTarget:self action:@selector(hand) forControlEvents:UIControlEventTouchUpInside];
+    handBtn.frame = CGRectMake(SY_Real(250), SY_Real(443.5), SY_Real(55), SY_Real(55));
+    [self.view addSubview:handBtn];
+    UIImageView *handBtnImg = [[UIImageView alloc] init];
+    handBtnImg.frame =  CGRectMake(SY_Real(250), SY_Real(443.5), SY_Real(55), SY_Real(55));
+    handBtnImg.image=[UIImage imageNamed:@"img_user_lostbtn"];
+    [self.view addSubview:handBtnImg];
 }
 -(void)im{
     ChatViewController *conversationVC = [[ChatViewController alloc]init];
@@ -114,6 +123,9 @@
     conversationVC.targetId = _user_id;
     conversationVC.title = _name;
     [self.navigationController pushViewController:conversationVC animated:YES];
+}
+-(void)hand{
+    [MBProgressHUD showError:@"程序猿正在赶制此功能中" toView:self.view ];
 }
 -(void)say{
     NSString *Url_String=[NSString stringWithFormat:@"%@/%@",Config.getApiMomentsUser,_user_id];
