@@ -52,7 +52,6 @@
     conversationVC.conversationType = ConversationType_PRIVATE;
     conversationVC.targetId = @"15198";
     conversationVC.title = @"开发者";
-    
     [self.navigationController pushViewController:conversationVC animated:YES];
 }
 

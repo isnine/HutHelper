@@ -54,21 +54,8 @@
     self.conversationListTableView.tableFooterView = [UIView new];
     //显示重连状态
     self.showConnectingStatusOnNavigatorBar=YES;
-        //设置用户信息代理
+     //设置用户信息代理
      [[RCIM sharedRCIM] setUserInfoDataSource:self];
-        //设置当前用户信息
-    RCUserInfo *currentUserInfo =[[RCIM sharedRCIM] currentUserInfo];
-    currentUserInfo.userId=[Config getUserId];
-    currentUserInfo.name=[Config getTrueName];
-    if ((!Config.getHeadPicThumb)||[Config.getHeadPicThumb isEqualToString:@""]) {
-        if ([Config.getSex isEqualToString:@"男"]) {
-            currentUserInfo.portraitUri=[NSString stringWithFormat:@"%@/%@",Config.getApiImg,@"\/head\/head-boy.png"];
-        }else{
-            currentUserInfo.portraitUri=[NSString stringWithFormat:@"%@/%@",Config.getApiImg,@"\/head\/head-girl.png"];
-        }
-    }else{
-        currentUserInfo.portraitUri=[NSString stringWithFormat:@"%@/%@",Config.getApiImg,Config.getHeadPicThumb];
-    }
 }
 
 - (void)didReceiveMemoryWarning {

@@ -16,11 +16,19 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    self.conversationListTableView.separatorColor =
-//    [UIColor colorWithHexString:@"dfdfdf" alpha:1.0f];
-//    self.conversationListTableView.tableFooterView = [UIView new];
-    // Do any additional setup after loading the view.
-
+    //设置当前用户信息
+    RCUserInfo *currentUserInfo =[[RCIM sharedRCIM] currentUserInfo];
+    currentUserInfo.userId=[Config getUserId];
+    currentUserInfo.name=[Config getTrueName];
+    if ((!Config.getHeadPicThumb)||[Config.getHeadPicThumb isEqualToString:@""]) {
+        if ([Config.getSex isEqualToString:@"男"]) {
+            currentUserInfo.portraitUri=[NSString stringWithFormat:@"%@/%@",Config.getApiImg,@"\/head\/head-boy.png"];
+        }else{
+            currentUserInfo.portraitUri=[NSString stringWithFormat:@"%@/%@",Config.getApiImg,@"\/head\/head-girl.png"];
+        }
+    }else{
+        currentUserInfo.portraitUri=[NSString stringWithFormat:@"%@/%@",Config.getApiImg,Config.getHeadPicThumb];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
