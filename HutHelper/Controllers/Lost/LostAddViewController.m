@@ -107,7 +107,7 @@
     //卡片内容
     NSArray *labTitle=@[@"拾到物品",@"拾到时间",@"拾到地点",@"联系电话"];
     NSArray *icoViewArray=@[@"ico_lost_lost",@"ico_lost_time",@"ico_lost_address",@"ico_lost_tel"];
-    NSArray *fieldHolder=@[@"请输入拾到物品名字",@"请输入拾到物品大致时间",@"请输入拾到物品的地点",@"请输入拾到者的手机"];
+    NSArray *fieldHolder=@[@"请输入拾到物品名字",@"请输入拾到物品时间,格式2017-01-01",@"请输入拾到物品的地点",@"请输入拾到者的手机"];
     int LabY=370;
     for (int i=0; i<4; i++) {
         //固定标签

@@ -21,6 +21,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     //设置标题以及返回箭头颜色
+    //返回箭头
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+    self.navigationItem.backBarButtonItem = item;
     self.title=@"商品详情";
     self.view.backgroundColor=[UIColor whiteColor];
     [self setHeadImg];
@@ -206,13 +209,12 @@
     [self presentViewController:alert animated:true completion:nil];
 }
 -(void)user{
-//    UserShowViewController *userShowViewController=[[UserShowViewController alloc]init];
-//    userShowViewController.name=_data.username;
-//    userShowViewController.user_id=_data.user_id;
-//    userShowViewController.dep_name=_data.dep_name;
-//    userShowViewController.head_pic=_data.head_pic_thumb;
-//    AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-//    [tempAppDelegate.mainNavigationController pushViewController:userShowViewController animated:YES];
+    UserShowViewController *userShowViewController=[[UserShowViewController alloc]init];
+    userShowViewController.name=_handDic[@"user"][@"username"];
+    userShowViewController.user_id=_handDic[@"user_id"];
+    userShowViewController.dep_name=_handDic[@"dep_name"];
+    userShowViewController.head_pic=_handDic[@"head_pic_thumb"];
+    [self.navigationController pushViewController:userShowViewController animated:YES];
 }
 #pragma mark - 数据
 -(NSString*)getimg:(int)i{

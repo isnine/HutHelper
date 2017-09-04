@@ -245,10 +245,6 @@
               calendarDay.day == 1){
         calendarDay.holiday = @"国庆节";
         
-        //11.1植树节
-    }else if (calendarDay.month == 11 &&
-              calendarDay.day == 1){
-        calendarDay.holiday = @"植树节";
         
         //11.11光棍节
     }else if (calendarDay.month == 11 &&

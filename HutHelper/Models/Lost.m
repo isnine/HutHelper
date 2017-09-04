@@ -24,6 +24,8 @@
         self.username              = dic[@"username"];
         self.user_id   = dic[@"user_id"];
          self.pics             = dic[@"pics"];
+        self.dep_name   = dic[@"dep_name"];
+        self.head_pic             = dic[@"head_pic"];
         self.blackColor=arc4random() % 4;
         /**计算图片高度并加入*/
         if (self.pics.count==1||self.pics.count==2) {

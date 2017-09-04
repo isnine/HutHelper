@@ -202,15 +202,9 @@
     UserShowViewController *userShowViewController=[[UserShowViewController alloc]init];
     userShowViewController.name=_lostModel.username;
     userShowViewController.user_id=_lostModel.user_id;
-//    userShowViewController.dep_name=_lostModel.dep_name;
-//    userShowViewController.head_pic=_lostModel.head_pic_thumb;
+    userShowViewController.dep_name=_lostModel.dep_name;
+    userShowViewController.head_pic=_lostModel.head_pic;
     [self.navigationController pushViewController:userShowViewController animated:YES];
-    
-//    ChatViewController *conversationVC = [[ChatViewController alloc]init];
-//    conversationVC.conversationType = ConversationType_PRIVATE;
-//    conversationVC.targetId = _lostModel.user_id;
-//    conversationVC.title = _lostModel.username;
-//    [self.navigationController pushViewController:conversationVC animated:YES];
 }
 
 

@@ -16,6 +16,10 @@
 @property(nonatomic,copy)NSString *content;
 /**发布人*/
 @property(nonatomic,copy)NSString *username;
+/**发布人头像*/
+@property(nonatomic,copy)NSString *head_pic;
+/**发布人学院*/
+@property(nonatomic,copy)NSString *dep_name;
 /**发布时间*/
 @property(nonatomic,copy)NSString *created_on;
 /**拾取时间*/
