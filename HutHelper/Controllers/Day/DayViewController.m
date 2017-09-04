@@ -8,6 +8,7 @@
 
 #import "DayViewController.h"
 #import "UMMobClick/MobClick.h"
+#import "DayCalendarViewController.h"
 @interface DayViewController ()
 
 @end
@@ -27,6 +28,17 @@
     [super viewDidLoad];
     super.calendarMonth = [self getMonthArrayOfDayNumber:365 ToDateforString:nil];
     [super.collectionView reloadData];//刷新
+    //返回箭头
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+    self.navigationItem.backBarButtonItem = item;
+    //按钮
+    UIView *rightButtonView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 50)];
+    UIButton *mainAndSearchBtn = [[UIButton alloc] initWithFrame:CGRectMake(70, 0, 50, 50)];
+    [rightButtonView addSubview:mainAndSearchBtn];
+    [mainAndSearchBtn setImage:[UIImage imageNamed:@"ico_day_day"] forState:UIControlStateNormal];
+    [mainAndSearchBtn addTarget:self action:@selector(day) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *rightCunstomButtonView = [[UIBarButtonItem alloc] initWithCustomView:rightButtonView];
+    self.navigationItem.rightBarButtonItem = rightCunstomButtonView;
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -34,7 +46,11 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+-(void)day{
+    DayCalendarViewController *dayCalendarViewController=[[DayCalendarViewController alloc]init];
+    [self.navigationController pushViewController:dayCalendarViewController animated:YES];
+    //[Config pushViewController:@"DayCalendar"];
+}
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];

@@ -261,7 +261,7 @@
                                 <rect key="frame" x="11" y="282" width="400" height="144"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <string key="text">工大助手App是由湖南工业大学计算机学院实验室移动组和网络组，为工大学生开发的产品，志于帮助同学们更加便捷的体验校园生活。 团队成员:汪小祯(iOS)、陈林祥(Android)、高沛(Android)、陈大山(Android)、董志东(后台)、Tony(后台)、曾恒(产品)、刘春杰(交互UI) </string>
+                                <string key="text">工大助手App是由湖南工业大学计算机学院实验室移动组和网络组为了方便自己学校的学生，义务开发的app，开发者皆为大二大三的学生，无盈利纯自愿。 团队成员(第二届):汪小祯(iOS)、陈林祥(Android)、高沛(Android)、陈大山(Android)、董志东(后台)、Tony(后台)、曾恒(产品)、刘春杰(交互UI) </string>
                                 <color key="textColor" red="0.25095823410000001" green="0.25099286440000002" blue="0.2509464622" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -279,7 +279,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gBO-m9-dcp">
                                 <rect key="frame" x="19" y="479" width="331" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="联系我">
+                                <state key="normal" title="找程序猿聊天">
                                     <color key="titleColor" red="0.25095823410000001" green="0.25099286440000002" blue="0.2509464622" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
@@ -297,10 +297,10 @@
                                 <color key="backgroundColor" red="0.9371829628944397" green="0.93729525804519653" blue="0.93714481592178345" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Waf-rg-NBX">
-                                <rect key="frame" x="19" y="527" width="355" height="28"/>
+                                <rect key="frame" x="19" y="526" width="355" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <state key="normal" title="给我评价">
+                                <state key="normal" title="给我评价(TAT~求五星)">
                                     <color key="titleColor" red="0.25095823407173157" green="0.25099286437034607" blue="0.25094646215438843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
