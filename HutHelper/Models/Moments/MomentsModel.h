@@ -19,6 +19,8 @@
 @property(nonatomic,copy)NSString *moments_id;
 ///个人的头像
 @property(nonatomic,copy)NSString *head_pic_thumb;
+///个人的头像原图
+@property(nonatomic,copy)NSString *head_pic;
 ///说说的小图
 @property(nonatomic,copy)NSMutableArray *pics;
 ///说说的大图

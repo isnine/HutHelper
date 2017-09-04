@@ -36,6 +36,7 @@
         self.likes            = dic[@"likes"];
         self.moments_id            = dic[@"id"];
         self.head_pic_thumb       = dic[@"head_pic_thumb"];
+        self.head_pic       = dic[@"head_pic"];
         self.pics             = dic[@"pics"];
         self.username              = dic[@"username"];
         self.user_id   = dic[@"user_id"];

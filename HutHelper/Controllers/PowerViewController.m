@@ -73,7 +73,6 @@ typedef NS_ENUM(NSUInteger, PowerSelectBtn) {
     [_Room setValue:[UIColor whiteColor] forKeyPath:@"_placeholderLabel.textColor"];
     self.title=@"电费查询";
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
-    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     [self getRoom];
     //默认关闭选择
     self.openBtn.enabled=NO;
@@ -157,6 +156,7 @@ typedef NS_ENUM(NSUInteger, PowerSelectBtn) {
 {
     [super viewWillAppear:animated];
     [MobClick beginLogPageView:@"电费查询"];//("PageOne"为页面名称，可自定义)
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:0];
     /**让黑线消失的方法*/
     self.navigationController.navigationBar.shadowImage=[UIImage new];

@@ -9,6 +9,7 @@
 #import "HandShowViewController.h"
 #import "UINavigationBar+Awesome.h"
 #import "MBProgressHUD+MJ.h"
+#import "UserShowViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "XWScanImage.h"
 @interface HandShowViewController ()
@@ -32,6 +33,15 @@
         [rightButtonView addSubview:mainAndSearchBtn];
         [mainAndSearchBtn setImage:[UIImage imageNamed:@"ico_hand_delete"] forState:UIControlStateNormal];
         [mainAndSearchBtn addTarget:self action:@selector(delectGoods) forControlEvents:UIControlEventTouchUpInside];
+        UIBarButtonItem *rightCunstomButtonView = [[UIBarButtonItem alloc] initWithCustomView:rightButtonView];
+        self.navigationItem.rightBarButtonItem = rightCunstomButtonView;
+    }else{
+        //按钮
+        UIView *rightButtonView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 50)];
+        UIButton *mainAndSearchBtn = [[UIButton alloc] initWithFrame:CGRectMake(70, 0, 50, 50)];
+        [rightButtonView addSubview:mainAndSearchBtn];
+        [mainAndSearchBtn setImage:[UIImage imageNamed:@"ico_user_user"] forState:UIControlStateNormal];
+        [mainAndSearchBtn addTarget:self action:@selector(user) forControlEvents:UIControlEventTouchUpInside];
         UIBarButtonItem *rightCunstomButtonView = [[UIBarButtonItem alloc] initWithCustomView:rightButtonView];
         self.navigationItem.rightBarButtonItem = rightCunstomButtonView;
     }
@@ -175,7 +185,6 @@
     }
 }
 -(void)delectGoods{
-    
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"删除商品" message:@"是否要删除当前商品" preferredStyle:  UIAlertControllerStyleAlert];
     [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         
@@ -195,8 +204,15 @@
         
     }]];
     [self presentViewController:alert animated:true completion:nil];
-    
-
+}
+-(void)user{
+//    UserShowViewController *userShowViewController=[[UserShowViewController alloc]init];
+//    userShowViewController.name=_data.username;
+//    userShowViewController.user_id=_data.user_id;
+//    userShowViewController.dep_name=_data.dep_name;
+//    userShowViewController.head_pic=_data.head_pic_thumb;
+//    AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+//    [tempAppDelegate.mainNavigationController pushViewController:userShowViewController animated:YES];
 }
 #pragma mark - 数据
 -(NSString*)getimg:(int)i{

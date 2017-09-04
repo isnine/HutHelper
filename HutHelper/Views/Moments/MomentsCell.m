@@ -23,6 +23,8 @@
 #import "MomentsViewController.h"
 #import "XWScanImage.h"
 #import "MomentsTableView.h"
+
+#import "UserShowViewController.h"
 @interface MomentsCell ()
 @end
 
@@ -305,6 +307,14 @@
 }
 #pragma mark - 按钮事件
 -(void)btnAvatar{
+    UserShowViewController *userShowViewController=[[UserShowViewController alloc]init];
+    userShowViewController.name=_data.username;
+    userShowViewController.user_id=_data.user_id;
+    userShowViewController.dep_name=_data.dep_name;
+    userShowViewController.head_pic=_data.head_pic_thumb;
+    AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [tempAppDelegate.mainNavigationController pushViewController:userShowViewController animated:YES];
+    /**
     if ([Config getIs]==1) {
         return;
     }
@@ -335,6 +345,7 @@
              
              
          }];
+    */
 }
 -(void)btnComment{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];

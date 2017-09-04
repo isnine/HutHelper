@@ -11,7 +11,7 @@
 #import "Lost.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "XWScanImage.h"
-#import "ChatViewController.h"
+#import "UserShowViewController.h"
 #import "XWInteractiveTransition.h"
 #import "XWNaviTransition.h"
 @interface LostShowViewController ()
@@ -41,8 +41,8 @@
     UIView *rightButtonView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 50)];
     UIButton *mainAndSearchBtn = [[UIButton alloc] initWithFrame:CGRectMake(70, 0, 50, 50)];
     [rightButtonView addSubview:mainAndSearchBtn];
-    [mainAndSearchBtn setImage:[UIImage imageNamed:@"ico_left_im"] forState:UIControlStateNormal];
-    [mainAndSearchBtn addTarget:self action:@selector(im) forControlEvents:UIControlEventTouchUpInside];
+    [mainAndSearchBtn setImage:[UIImage imageNamed:@"ico_user_user"] forState:UIControlStateNormal];
+    [mainAndSearchBtn addTarget:self action:@selector(user) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *rightCunstomButtonView = [[UIBarButtonItem alloc] initWithCustomView:rightButtonView];
     self.navigationItem.rightBarButtonItem = rightCunstomButtonView;
 }
@@ -198,12 +198,19 @@
     return RGB(152, 205, 222, 1);
 }
 #pragma  mark - 方法
--(void)im{
-    ChatViewController *conversationVC = [[ChatViewController alloc]init];
-    conversationVC.conversationType = ConversationType_PRIVATE;
-    conversationVC.targetId = _lostModel.user_id;
-    conversationVC.title = _lostModel.username;
-    [self.navigationController pushViewController:conversationVC animated:YES];
+-(void)user{
+    UserShowViewController *userShowViewController=[[UserShowViewController alloc]init];
+    userShowViewController.name=_lostModel.username;
+    userShowViewController.user_id=_lostModel.user_id;
+//    userShowViewController.dep_name=_lostModel.dep_name;
+//    userShowViewController.head_pic=_lostModel.head_pic_thumb;
+    [self.navigationController pushViewController:userShowViewController animated:YES];
+    
+//    ChatViewController *conversationVC = [[ChatViewController alloc]init];
+//    conversationVC.conversationType = ConversationType_PRIVATE;
+//    conversationVC.targetId = _lostModel.user_id;
+//    conversationVC.title = _lostModel.username;
+//    [self.navigationController pushViewController:conversationVC animated:YES];
 }
 
 

@@ -7,7 +7,11 @@
 //
 
 #import "UserShowViewController.h"
-
+#import "UINavigationBar+Awesome.h"
+#import <SDWebImage/UIImageView+WebCache.h>
+#import "ChatViewController.h"
+#import "MBProgressHUD+MJ.h"
+#import "MomentsViewController.h"
 @interface UserShowViewController ()
 
 @end
@@ -17,39 +21,135 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"img_user_bcg"]];
+    //返回箭头
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+    self.navigationItem.backBarButtonItem = item;
+    
     [self draw];
     // Do any additional setup after loading the view.
 }
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:0];
+    /**让黑线消失的方法*/
+    self.navigationController.navigationBar.shadowImage=[UIImage new];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    
+}
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:29/255.0 green:203/255.0 blue:219/255.0 alpha:1];
+    [self.navigationController.navigationBar lt_reset];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
+}
+
 -(void)draw{
+    //白色背景
     UIView *whitebackground = [[UIView alloc] init];
     whitebackground.frame = CGRectMake(SY_Real(27), SY_Real(196), SY_Real(321), SY_Real(275));
     whitebackground.backgroundColor = [UIColor colorWithRed:255/255.0 green:255/255.0 blue:255/255.0 alpha:1/1.0];
     [self.view addSubview:whitebackground];
+    //头像
+    UIImageView *headImg = [[UIImageView alloc] init];
+    headImg.frame =  CGRectMake(SY_Real(125), SY_Real(133.5), SY_Real(125), SY_Real(125));
+    [headImg sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",Config.getApiImg,_head_pic]]
+                   placeholderImage:[self circleImage:[UIImage imageNamed:@"img_defalut"]]
+                          completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL){
+                              if (![[NSString stringWithFormat:@"%@%@",Config.getApiImg,_head_pic] isEqualToString:Config.getApiImg]) {
+                                  headImg.image=[self circleImage:image];
+                              }}];
+    [self.view addSubview:headImg];
+    //名称
+    UILabel *nameLabel = [[UILabel alloc] init];
+    nameLabel.frame = CGRectMake(SY_Real(123),SY_Real(  288.5), SY_Real(129), SY_Real(26.5));
+    nameLabel.text = _name;
+    nameLabel.font = [UIFont fontWithName:@"PingFangSC-Regular" size:SY_Real(19)];
+    nameLabel.textAlignment = NSTextAlignmentCenter;
+    nameLabel.textColor = [UIColor colorWithRed:29/255.0 green:203/255.0 blue:219/255.0 alpha:1/1.0];
+     [self.view addSubview:nameLabel];
+    //学院
+    UILabel *depnameLabel = [[UILabel alloc] init];
+    depnameLabel.frame = CGRectMake(SY_Real(108), SY_Real(335), SY_Real(159), SY_Real(20));
+    depnameLabel.text = _dep_name;
+    depnameLabel.textAlignment = NSTextAlignmentCenter;
+    depnameLabel.font = [UIFont fontWithName:@"PingFangSC-Regular" size:14];
+    depnameLabel.textColor = [UIColor colorWithRed:173/255.0 green:173/255.0 blue:173/255.0 alpha:1/1.0];
+    [self.view addSubview:depnameLabel];
+    //发起聊天按钮
+    UIButton *imBtn = [[UIButton alloc] init];
+    imBtn.frame = CGRectMake(SY_Real(84), SY_Real(385), SY_Real(207), SY_Real(35));
+    [imBtn addTarget:self action:@selector(im) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:imBtn];
+    UIImageView *imBtnImg = [[UIImageView alloc] init];
+    imBtnImg.frame =  CGRectMake(SY_Real(84), SY_Real(385), SY_Real(207), SY_Real(35));
+    imBtnImg.image=[UIImage imageNamed:@"img_user_imbtn"];
+    [self.view addSubview:imBtnImg];
+    //校园说说
+    UIButton *sayBtn = [[UIButton alloc] init];
+    [sayBtn addTarget:self action:@selector(say) forControlEvents:UIControlEventTouchUpInside];
+    sayBtn.frame = CGRectMake(SY_Real(160), SY_Real(443.5), SY_Real(55), SY_Real(55));
+    [self.view addSubview:sayBtn];
+    UIImageView *sayBtnImg = [[UIImageView alloc] init];
+    sayBtnImg.frame =  CGRectMake(SY_Real(160), SY_Real(443.5), SY_Real(55), SY_Real(55));
+    sayBtnImg.image=[UIImage imageNamed:@"img_user_saybtn"];
+    [self.view addSubview:sayBtnImg];
     
-    UILabel *label = [[UILabel alloc] init];
-    label.frame = CGRectMake(SY_Real(145), SY_Real(288.5), SY_Real(59.5), SY_Real(26.5));
-    label.text = @"au小鹿";
-    label.font = [UIFont fontWithName:@"PingFangSC-Regular" size:19];
-     [self.view addSubview:label];
-    
-//    UIButton *imBtn = [[UIButton alloc] init];
-//    imBtn.frame = CGRectMake(84, 385, 207, 35);
-//    imBtn.imageView=[]
-//    [self.view addSubview:imBtn];
 }
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+-(void)im{
+    ChatViewController *conversationVC = [[ChatViewController alloc]init];
+    conversationVC.conversationType = ConversationType_PRIVATE;
+    conversationVC.targetId = _user_id;
+    conversationVC.title = _name;
+    [self.navigationController pushViewController:conversationVC animated:YES];
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(void)say{
+    NSString *Url_String=[NSString stringWithFormat:@"%@/%@",Config.getApiMomentsUser,_user_id];
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    [MBProgressHUD showMessage:@"加载中" toView:self.view];
+    [APIRequest GET:Url_String parameters:nil success:^(id responseObject) {
+        HideAllHUD
+        NSDictionary *Say_All = [NSDictionary dictionaryWithDictionary:responseObject];
+        if ([[Say_All objectForKey:@"msg"]isEqualToString:@"ok"]) {
+            NSDictionary *Say_Data=[Say_All objectForKey:@"data"];
+            NSArray *Say_content=[Say_Data objectForKey:@"posts"];//加载该页数据
+            if (Say_content.count!=0) {
+                [defaults setObject:Say_content forKey:@"otherSay"];
+                [defaults synchronize];
+                [Config setIs:1];
+                MomentsViewController *Say      = [[MomentsViewController alloc] init];
+                [self.navigationController pushViewController:Say animated:YES];
+            }else{
+                [MBProgressHUD showError:@"对方没有发布的说说" toView:self.view];
+            }
+        }
+        else{
+            [MBProgressHUD showError:@"网络错误" toView:self.view];
+        }
+        
+    }failure:^(NSError *error) {
+        HideAllHUD
+        [MBProgressHUD showError:@"网络错误" toView:self.view];
+        
+    }];
 }
-*/
+-(UIImage*) circleImage:(UIImage*) image{
+    UIGraphicsBeginImageContext(image.size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextSetLineWidth(context, 2);
+    CGContextSetStrokeColorWithColor(context, [UIColor whiteColor].CGColor);
+    CGRect rect = CGRectMake(0, 0, image.size.width , image.size.height );
+    CGContextAddEllipseInRect(context, rect);
+    CGContextClip(context);
+    [image drawInRect:rect];
+    CGContextAddEllipseInRect(context, rect);
+    CGContextStrokePath(context);
+    UIImage *newimg = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return newimg;
+}
 
 @end

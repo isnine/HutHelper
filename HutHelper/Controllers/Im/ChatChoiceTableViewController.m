@@ -122,7 +122,7 @@
 
     ChatViewController *conversationVC = [[ChatViewController alloc]init];
     ChatUser *chatUser=_chatChoiceArray[indexPath.section];
-    if ([chatUser.last_use isEqual:[NSNull null]]) {
+    if ([chatUser.last_use isEqualToString:@""]) {
         [MBProgressHUD showError:@"用户未使用工大助手" toView:self.view];
         return;
     }
