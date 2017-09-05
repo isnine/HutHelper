@@ -83,6 +83,33 @@ typedef NS_ENUM(NSUInteger, PowerSelectBtn) {
     //如果当天没有投过票再打开
     [APIRequest GET:Config.getApiPowerAirCondition parameters:nil success:^(id responseObject) {
         NSLog(@"%@",responseObject);
+        int yesInt=[responseObject[@"data"][@"yes"] intValue];
+        int noInt=[responseObject[@"data"][@"no"] intValue];
+        //yes进度条
+        UIImageView *yesImageView=[[UIImageView alloc]init];
+        yesImageView.frame=CGRectMake(SYReal(87), SYReal(609), SYReal(180*yesInt*1.0/(noInt+yesInt)), SYReal(20));
+        yesImageView.image=[self scaleImage:[UIImage imageNamed:@"img_power_isopen"] toScale:yesInt*1.0/(noInt+yesInt)];
+        yesImageView.contentMode =UIViewContentModeLeft;
+        yesImageView.clipsToBounds = YES;
+        yesImageView.alpha=0.7;
+        //进度条的圆角
+        yesImageView.layer.masksToBounds = YES; //没这句话它圆不起来
+        yesImageView.layer.cornerRadius = 11.0; //设置图片圆角的尺度
+        yesImageView.userInteractionEnabled=NO;
+        [self.view addSubview:yesImageView];
+        //no进度条
+        UIImageView *noImageView=[[UIImageView alloc]init];
+        noImageView.frame=CGRectMake(SYReal(87), SYReal(644), SYReal(180*noInt*1.0/(noInt+yesInt)), SYReal(20));
+        noImageView.image=[self scaleImage:[UIImage imageNamed:@"img_power_isopen"] toScale:noInt*1.0/(noInt+yesInt)];
+        noImageView.contentMode =UIViewContentModeLeft;
+        noImageView.clipsToBounds = YES;
+        noImageView.alpha=0.7;
+        //进度条的圆角
+        noImageView.layer.masksToBounds = YES; //没这句话它圆不起来
+        noImageView.layer.cornerRadius = 11.0; //设置图片圆角的尺度
+        noImageView.userInteractionEnabled=NO;
+        [self.view addSubview:noImageView];
+        
         self.openLab.text=responseObject[@"data"][@"yes"];
         self.unOpenLab.text=responseObject[@"data"][@"no"];
         if (responseObject[@"opt"]) {
@@ -181,5 +208,12 @@ typedef NS_ENUM(NSUInteger, PowerSelectBtn) {
 -(void)fingerTapped:(UITapGestureRecognizer *)gestureRecognizer
 {
     [self.view endEditing:YES];
+}
+- (UIImage *)scaleImage:(UIImage *)image toScale:(float)scaleSize{
+    UIGraphicsBeginImageContext(CGSizeMake(image.size.width * scaleSize, image.size.height ));
+    [image drawInRect:CGRectMake(0, 0, image.size.width * scaleSize, image.size.height )];
+    UIImage *scaledImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return scaledImage;
 }
 @end
