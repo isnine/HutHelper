@@ -12,6 +12,7 @@
 #import "ChatViewController.h"
 #import "MBProgressHUD+MJ.h"
 #import "MomentsViewController.h"
+#import "HandTableViewController.h"
 #import "LostViewController.h"
 @interface UserShowViewController ()
 
@@ -125,7 +126,29 @@
     [self.navigationController pushViewController:conversationVC animated:YES];
 }
 -(void)hand{
-    [MBProgressHUD showError:@"程序猿正在赶制此功能中" toView:self.view ];
+    [MBProgressHUD showMessage:@"加载中" toView:self.view];
+    [APIRequest GET:[Config getApiOtherGoods:1 withId:_user_id] parameters:nil success:^(id responseObject) {
+        HideAllHUD
+        NSDictionary *dic1 = [NSDictionary dictionaryWithObject:responseObject forKey:@""];
+        NSArray *Hand           = [dic1 objectForKey:@""];
+        if (Hand.count>0) {
+            NSMutableArray *data=[[NSMutableArray alloc]init];
+            NSDictionary *a=@{@"page_cur":@"1",
+                              @"page_max":@67
+                              };
+            [data addObject:a];
+            [data addObjectsFromArray:Hand];
+            HandTableViewController *hand=[[HandTableViewController alloc]init];
+            hand.otherHandArray=[data mutableCopy];
+            hand.otherName=_name;
+            [self.navigationController pushViewController:hand animated:YES];
+        }else{
+            [MBProgressHUD showError:@"对方没有发布的商品" toView:self.view];
+        }
+    }failure:^(NSError *error) {
+        [MBProgressHUD showError:@"网络超时" toView:self.view];
+        HideAllHUD
+    }];
 }
 -(void)say{
     NSString *Url_String=[NSString stringWithFormat:@"%@/%@",Config.getApiMomentsUser,_user_id];

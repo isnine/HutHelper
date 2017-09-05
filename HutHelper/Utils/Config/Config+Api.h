@@ -25,6 +25,7 @@
 +(NSString*)getApiPowerAirConditionCreate:(int)opt;
 
 +(NSString*)getApiGoods:(int)num;
++(NSString*)getApiOtherGoods:(int)num withId:(NSString*)user_id;
 +(NSString*)getApiGoodsUser;
 +(NSString*)getApiGoodsCreate;
 +(NSString*)getApiGoodsImgUpload;

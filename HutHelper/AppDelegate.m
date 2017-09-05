@@ -44,7 +44,6 @@
         }
     }];
     [UMessage setLogEnabled:YES];//打开日志，方便调试
-
     //友盟统计
     UMConfigInstance.appKey = APPKEY_UMESSAGE;
     [MobClick setAppVersion:[Config getCurrentVersion]];
@@ -62,7 +61,6 @@
     self.mainNavigationController.navigationBar.barTintColor = [UIColor whiteColor];
     //返回箭头颜色
     [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:94/255.0 green:199/255.0 blue:217/255.0 alpha:1]];
-    
     //友盟分享
     [[UMSocialManager defaultManager] openLog:NO]; //打开调试日志
     [[UMSocialManager defaultManager] setUmSocialAppkey:APPKEY_UMESSAGE];//设置友盟appkey
@@ -94,7 +92,6 @@
                                     } error:^(RCConnectErrorCode status) {
                                         NSLog(@"登陆的错误码为:%d", status);
                                     } tokenIncorrect:^{
-                                        
                                         NSLog(@"token错误");
                                     }];
     }
@@ -214,11 +211,8 @@
         [UMessage setAutoAlert:NO];
         //必须加这句代码
         [UMessage didReceiveRemoteNotification:userInfo];
-
     //当应用处于前台时提示设置，需要哪个可以设置哪一个
     completionHandler(UNNotificationPresentationOptionSound|UNNotificationPresentationOptionBadge|UNNotificationPresentationOptionAlert);
-    
-   
 }
 
 //iOS10新增：处理后台点击通知的代理方法
@@ -297,7 +291,6 @@
 //融云获取用户头像
 - (void)getUserInfoWithUserId:(NSString *)userId
                    completion:(void (^)(RCUserInfo *userInfo))completion{
-
     [APIRequest GET:[Config getApiImUserInfo:userId] parameters:nil
             success:^(id responseObject) {
                 RCUserInfo *userInfo=[[RCUserInfo alloc]init];

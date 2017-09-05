@@ -60,6 +60,9 @@
 +(NSString*)getApiGoods:(int)num{
     return [NSString stringWithFormat:@"%@/api/v1/stuff/goods/%d",Config.apiIndex,num];
 }
++(NSString*)getApiOtherGoods:(int)num withId:(NSString*)user_id{
+    return [NSString stringWithFormat:@"%@/api/v1/stuff/goods/%d/%@",Config.apiIndex,num,user_id];
+}
 +(NSString*)getApiGoodsUser{
     return [NSString stringWithFormat:@"%@/api/v1/stuff/own1/%@/%@/1",Config.apiIndex,Config.getStudentKH,Config.getRememberCodeApp];
 }

@@ -2022,7 +2022,7 @@
 					"$(PROJECT_DIR)/HutHelper/Vendor/JSPATCH",
 					"$(PROJECT_DIR)/HutHelper/Vendor/XWScanImage/BmobIM",
 				);
-				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREFIX_HEADER = "HutHelper/Supporting Files/HutHelper-Prefix.pch";
 				INFOPLIST_FILE = "HutHelper/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -2073,7 +2073,7 @@
 					"$(PROJECT_DIR)/HutHelper/Vendor/JSPATCH",
 					"$(PROJECT_DIR)/HutHelper/Vendor/XWScanImage/BmobIM",
 				);
-				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREFIX_HEADER = "HutHelper/Supporting Files/HutHelper-Prefix.pch";
 				INFOPLIST_FILE = "HutHelper/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;

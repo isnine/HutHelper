@@ -39,9 +39,18 @@
 
     
     //加载数据
-    if (!_myHandArray) {
+    if (_myHandArray) {
+        [self reloadData:_myHandArray];
+        self.isSelfGoods=YES;
+        self.navigationItem.title=@"我的发布";
+    }else if (_otherHandArray) {
+        _myHandArray=_otherHandArray;
+        [self reloadData:_myHandArray];
+        self.isSelfGoods=YES;
+        self.navigationItem.title=[NSString stringWithFormat:@"%@的发布",self.otherName];
+    }else{
         [self reloadData:[Config getHand]];
-       // _Hand_content=[Config getHand];
+        // _Hand_content=[Config getHand];
         //按钮
         UIView *rightButtonView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 50)];
         UIButton *mainAndSearchBtn = [[UIButton alloc] initWithFrame:CGRectMake(70, 0, 50, 50)];
@@ -63,16 +72,10 @@
         self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(load)];
         [self.tableView.mj_header beginRefreshing];
         //MJRefresh适配iOS11
-//        if (@available(iOS 11.0, *)) {
-//            self.tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
-//            self.tableView.contentInset = UIEdgeInsetsMake(64, 0, 0, 0);
-//        }
-        
-    }else{
-        [self reloadData:_myHandArray];
-        //[self.tableView reloadData];
-        self.isSelfGoods=YES;
-        self.navigationItem.title=@"我的发布";
+        //        if (@available(iOS 11.0, *)) {
+        //            self.tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+        //            self.tableView.contentInset = UIEdgeInsetsMake(64, 0, 0, 0);
+        //        }
     }
     // 标题栏样式
     UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
@@ -149,33 +152,23 @@
     [tempAppDelegate.mainNavigationController pushViewController:handAddViewController animated:YES];
 }
 -(void)myHand{
-    [Config setNoSharedCache];
     [MBProgressHUD showMessage:@"加载中" toView:self.view];
-//    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     [APIRequest GET:Config.getApiGoodsUser parameters:nil success:^(id responseObject) {
         HideAllHUD
         NSDictionary *dic1 = [NSDictionary dictionaryWithObject:responseObject forKey:@""];
         NSArray *Hand           = [dic1 objectForKey:@""];
-//        if ([responseObject objectForKey:@"msg"]) {
-//            [MBProgressHUD showError:@"登录过期，请重新登录" toView:self.view];
-//            return ;
-//        }
         if (Hand.count>0) {
             NSMutableArray *data=[[NSMutableArray alloc]init];
-            [data addObject:_handAllArray[0]];
+            NSDictionary *a=@{@"page_cur":@"1",
+                              @"page_max":@67
+                              };
+            [data addObject:a];
             [data addObjectsFromArray:Hand];
-//            NSArray *Hands = [NSArray arrayWithArray:data];
-//            [defaults setObject:Hands forKey:@"otherHand"];
-//            [defaults synchronize];
-//
-//            [Config setIs:1];
+
             HandTableViewController *hand=[[HandTableViewController alloc]init];
             hand.myHandArray=[data mutableCopy];
-            
-            AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-            [tempAppDelegate.mainNavigationController pushViewController:hand animated:YES];
+            [self.navigationController pushViewController:hand animated:YES];
         }else{
-           
             [MBProgressHUD showError:@"您没有发布的商品" toView:self.view];
         }
     }failure:^(NSError *error) {
