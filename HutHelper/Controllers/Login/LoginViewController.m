@@ -76,13 +76,13 @@
                                                          success:^(NSString *userId) {
                                                              NSLog(@"登陆成功。当前登录的用户ID：%@", userId);
                                                          } error:^(RCConnectErrorCode status) {
-                                                             [MBProgressHUD showError:[NSString stringWithFormat:@"私信模块登录错误，错误码:%ld",(long)status] toView:self.view];
+                                                             NSLog(@"私信模块登录错误，错误码:%ld");
                                                          } tokenIncorrect:^{
-                                                             [MBProgressHUD showError:@"Token错误,您无法使用私信功能,可尝试重新登录" toView:self.view];
+                                                             NSLog(@"Token错误,您无法使用私信功能,可尝试重新登录");
                                                          }];
                          }
                          failure:^(NSError *error) {
-                             [MBProgressHUD showError:@"Token获取失败,您无法使用私信功能,可尝试重新登录" toView:self.view];
+                             NSLog(@"Token获取失败,您无法使用私信功能,可尝试重新登录");
                          }];
             //返回主界面
             [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:([self.navigationController.viewControllers count] -2)] animated:YES];  //返回上一个View
