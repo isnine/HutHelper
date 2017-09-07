@@ -62,8 +62,13 @@
                    placeholderImage:[self circleImage:[UIImage imageNamed:@"img_defalut"]]
                           completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL){
                               if (![[NSString stringWithFormat:@"%@%@",Config.getApiImg,_head_pic] isEqualToString:Config.getApiImg]) {
+                                  if ([_head_pic isEqualToString:@"/head/head-boy.png"]||[_head_pic isEqualToString:@"/head/head-girl.png"]) {
+                                      headImg.image=image;
+                                  }else{
                                   headImg.image=[self circleImage:image];
+                                  }
                               }}];
+    
     [self.view addSubview:headImg];
     //名称
     UILabel *nameLabel = [[UILabel alloc] init];
@@ -115,9 +120,10 @@
     [self.view addSubview:handBtn];
     UIImageView *handBtnImg = [[UIImageView alloc] init];
     handBtnImg.frame =  CGRectMake(SY_Real(250), SY_Real(443.5), SY_Real(55), SY_Real(55));
-    handBtnImg.image=[UIImage imageNamed:@"img_user_lostbtn"];
+    handBtnImg.image=[UIImage imageNamed:@"img_user_handbtn"];
     [self.view addSubview:handBtnImg];
 }
+#pragma  mark - 方法
 -(void)im{
     ChatViewController *conversationVC = [[ChatViewController alloc]init];
     conversationVC.conversationType = ConversationType_PRIVATE;
@@ -146,8 +152,8 @@
             [MBProgressHUD showError:@"对方没有发布的商品" toView:self.view];
         }
     }failure:^(NSError *error) {
-        [MBProgressHUD showError:@"网络超时" toView:self.view];
         HideAllHUD
+        [MBProgressHUD showError:@"网络超时" toView:self.view];
     }];
 }
 -(void)say{
@@ -185,27 +191,25 @@
     //发起请求
     [APIRequest GET:[Config getApiLostUserOther:_user_id] parameters:nil success:^(id responseObject) {
         NSDictionary *responseDic = [NSDictionary dictionaryWithDictionary:responseObject];
+        HideAllHUD
         if ([[responseDic objectForKey:@"msg"]isEqualToString:@"ok"]) {
             NSDictionary *responseDataDic=[responseDic objectForKey:@"data"];
             NSArray *responseDataPostArray=[responseDataDic objectForKey:@"posts"];//加载该页数据
             if (responseDataPostArray.count!=0) {
-                HideAllHUD
                 LostViewController *lostViewController=[[LostViewController alloc]init];
                 lostViewController.otherLostArray=responseDataPostArray;
                 lostViewController.otherName=_name;
                 [self.navigationController pushViewController:lostViewController animated:YES];
             }else{
-                HideAllHUD
                 [MBProgressHUD showError:@"对方没有发布的失物" toView:self.view];
             }
         }
         else{
-            HideAllHUD
             [MBProgressHUD showError:[responseDic objectForKey:@"msg"] toView:self.view];
         }
     }failure:^(NSError *error) {
-        [MBProgressHUD showError:@"网络超时" toView:self.view];
         HideAllHUD
+        [MBProgressHUD showError:@"网络超时" toView:self.view];
     }];
 }
 -(UIImage*) circleImage:(UIImage*) image{

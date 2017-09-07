@@ -265,7 +265,7 @@
 -(UIImage*)getImg{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults]; //得到用户数据
     NSString *Url=[NSString stringWithFormat:@"%@/%@",Config.getApiImg,Config.getHeadPicThumb];
-    if ([Config.getHeadPicThumb isEqualToString:@"/head/head-boy.png"]) {
+    if ([Config.getHeadPicThumb isEqualToString:@"/head/head-boy.png"]||[Config.getHeadPicThumb isEqualToString:@"/head/head-girl.png"]) {
         if ([Config.getSex isEqualToString:@"男"]) {
             return [UIImage imageNamed:@"img_user_boy"];
         }else{
