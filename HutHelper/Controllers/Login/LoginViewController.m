@@ -95,7 +95,11 @@
                     //点击按钮的响应事件；
                 }]];
                 [alert addAction:[UIAlertAction actionWithTitle:@"修改密码" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                    [Config pushViewController:@"Login2"];
+                    UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                    WebViewController *webViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Web"];
+                    webViewController.urlString=Config.getApiLoginReset;
+                    webViewController.viewTitle=@"重置密码";
+                    [self.navigationController pushViewController:webViewController animated:YES];
                 }]];
                 //弹出提示框；
                 [self presentViewController:alert animated:true completion:nil];
