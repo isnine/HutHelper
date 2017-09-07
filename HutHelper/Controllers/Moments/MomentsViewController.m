@@ -145,8 +145,9 @@
         }
         HideAllHUD
     }failure:^(NSError *error) {
-        [MBProgressHUD showError:@"网络超时" toView:self.view];
         HideAllHUD
+        [MBProgressHUD showError:@"网络超时" toView:self.view];
+        
     }];
 }
 -(void)addSay{
