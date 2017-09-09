@@ -122,10 +122,10 @@
 
     ChatViewController *conversationVC = [[ChatViewController alloc]init];
     ChatUser *chatUser=_chatChoiceArray[indexPath.section];
-    if ([chatUser.last_use isEqualToString:@""]) {
-        [MBProgressHUD showError:@"用户未使用工大助手" toView:self.view];
-        return;
-    }
+//    if ([chatUser.last_use isEqualToString:@""]) {
+//        [MBProgressHUD showError:@"用户未使用工大助手" toView:self.view];
+//        return;
+//    }
     conversationVC.conversationType = ConversationType_PRIVATE;
     conversationVC.targetId = chatUser.user_id;
     conversationVC.title = chatUser.TrueName;

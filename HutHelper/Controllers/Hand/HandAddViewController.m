@@ -290,7 +290,9 @@
 
 -(BOOL)textViewShouldBeginEditing:(UITextView *)textView
 {
-    textView.text=@"";
+    if ([textView.text isEqualToString:@"请输入商品详情描述.."]) {
+        textView.text=@"";
+    }
     return YES;
     
 }

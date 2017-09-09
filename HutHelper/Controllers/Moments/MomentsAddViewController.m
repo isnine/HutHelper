@@ -217,8 +217,9 @@
 
 -(BOOL)textViewShouldBeginEditing:(UITextView *)textView
 {
-    
-    textView.text=@"";
+    if ([textView.text isEqualToString:@"请输入发表内容..."]) {
+            textView.text=@"";
+    }
     textView.textColor = [UIColor blackColor];
     
     return YES;

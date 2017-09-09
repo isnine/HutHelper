@@ -42,7 +42,9 @@
 
 -(BOOL)textViewShouldBeginEditing:(UITextView *)textView
 {
-    textView.text=@"";
+    if ([textView.text isEqualToString:@"请输入15个字以上的问题描述以便我们提供更好的帮助"]) {
+        textView.text=@"";
+    }
     textView.textColor = [UIColor blackColor];
     
     return YES;

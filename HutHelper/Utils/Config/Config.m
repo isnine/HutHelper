@@ -254,7 +254,7 @@ static int Is ;
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     NSDictionary *noticeDictionary=@{@"time":@"2017-09-03 08:00",
                                      @"title":@"工大助手",
-                                     @"body":@"工大助手V3.1.1更新日志\n\n- 修复了资料卡图标问题\n\n欢迎在【侧栏-关于-联系我】和我聊天，可聊可撩不修电脑\n点一下右下角的评分赏我几颗星星吧୧(๑•̀⌄•́๑)૭"
+                                     @"body":@"工大助手V3.1.1更新日志\n\n- 修复了资料卡图标问题\n- 修复了课程表有些课程不显示的BUG\n- 修复了输入框点击后文本消失的问题\n\n欢迎在【侧栏-关于-联系我】和我聊天，可聊可撩不修电脑\n点一下右下角的评分赏我几颗星星吧୧(๑•̀⌄•́๑)૭"
                                      };
     
     NSDictionary *noticeDictionary1=@{@"time":@"2017-08-14 08:00",
