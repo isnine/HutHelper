@@ -112,10 +112,18 @@ NSString *show_xp;
     CourseModel *a25 = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
     CourseModel *a26 = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
     CourseModel *a27 = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
+    CourseModel *a28 = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
+    CourseModel *a29 = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
+    CourseModel *a30 = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
+    CourseModel *a31 = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
+    CourseModel *a32 = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
+    CourseModel *a33 = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
+    CourseModel *a34 = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
+    CourseModel *a35 = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
     
     if ([defaults objectForKey:@"kCourse"]!=NULL) {
         NSArray *array                               = [defaults objectForKey:@"kCourse"];
-        int day1 = 1,day2=1,day3=1,day4=1,day5=1,day6=1;
+        int day1 = 1,day2=1,day3=1,day4=1,day5=1,day6=1,day7=1;
         
         for (int i= 0; i<=(array.count-1); i++) {
             NSDictionary *dict1       = array[i];
@@ -166,6 +174,14 @@ NSString *show_xp;
                             a5  = [CourseModel courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass];
                             day1++;
                             break;
+                        case 6:
+                            a26  = [CourseModel courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass];
+                            day1++;
+                            break;
+                        case 7:
+                            a27  = [CourseModel courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass];
+                            day1++;
+                            break;
                         default:
                             break;
                     }
@@ -191,6 +207,14 @@ NSString *show_xp;
                             break;
                         case 5:
                             a10 = [CourseModel courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass];
+                            day2++;
+                            break;
+                        case 6:
+                            a28  = [CourseModel courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass];
+                            day2++;
+                            break;
+                        case 7:
+                            a29 = [CourseModel courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass];
                             day2++;
                             break;
                         default:
@@ -220,6 +244,14 @@ NSString *show_xp;
                             a15 = [CourseModel courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass];
                             day3++;
                             break;
+                        case 6:
+                            a30 = [CourseModel courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass];
+                            day3++;
+                            break;
+                        case 7:
+                            a31 = [CourseModel courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass];
+                            day3++;
+                            break;
                         default:
                             break;
                     }
@@ -245,6 +277,14 @@ NSString *show_xp;
                             break;
                         case 5:
                             a20 = [CourseModel courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass];
+                            day4++;
+                            break;
+                        case 6:
+                            a32 = [CourseModel courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass];
+                            day4++;
+                            break;
+                        case 7:
+                            a33 = [CourseModel courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass];
                             day4++;
                             break;
                         default:
@@ -274,13 +314,21 @@ NSString *show_xp;
                             a25 = [CourseModel courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass];
                             day5++;
                             break;
+                        case 6:
+                            a34 = [CourseModel courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass];
+                            day5++;
+                            break;
+                        case 7:
+                            a35 = [CourseModel courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass];
+                            day5++;
+                            break;
                         default:
                             break;
                     } }
             }//swifth结束
         }
     }
-    _courseArr = [NSMutableArray arrayWithArray:@[a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,a15,a16,a17,a18,a19,a20,a21,a22,a23,a24,a25]];
+    _courseArr = [NSMutableArray arrayWithArray:@[a1,a2,a3,a4,a5,a26,a27,a6,a7,a8,a9,a10,a28,a29,a11,a12,a13,a14,a15,a30,a31,a16,a17,a18,a19,a20,a32,a33,a21,a22,a23,a24,a25,a34,a35]];
     [self.courseListView reloadData];
     if([show_xp isEqualToString:@"打开"]){
         [self xp];

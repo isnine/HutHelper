@@ -285,7 +285,6 @@
         [Config pushViewController:@"NoticeShow"];
         [UMessage didReceiveRemoteNotification:userInfo];
     }
-    
 }
 #pragma mark - 其他
 //融云获取用户头像
