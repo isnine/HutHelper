@@ -35,7 +35,9 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+//- (void)didTapCellPortrait:(NSString *)userId{
+//
+//}
 - (RCMessageContent *)willSendMessage:(RCMessageContent *)messageContent {
     NSLog(@"%s",__FUNCTION__);
     //可以在这里修改将要发送的消息

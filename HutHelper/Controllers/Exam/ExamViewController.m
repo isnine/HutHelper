@@ -221,7 +221,7 @@ int datediff(int y1,int m1,int d1,int y2,int m2,int d2)
     _arraycx = [Class_Data objectForKey:@"cxexam"];
 }
 -(void)reloadexam{
-    [Config setNoSharedCache];
+
     [APIRequest GET:Config.getApiExam parameters:nil success:^(id responseObject) {
         NSDictionary *Exam_All = [NSDictionary dictionaryWithDictionary:responseObject];
         NSData *Exam_data =    [NSJSONSerialization dataWithJSONObject:Exam_All options:NSJSONWritingPrettyPrinted error:nil];

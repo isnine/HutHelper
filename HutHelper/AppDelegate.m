@@ -225,7 +225,6 @@
         [self.mainNavigationController pushViewController:chatList animated:YES];
         return;
     }
-    
     if([response.notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
         //应用处于后台时的远程推送接受
         //必须加这句代码

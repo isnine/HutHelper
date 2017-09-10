@@ -196,8 +196,8 @@
         [APIRequest GET:[Config getApiGoodsDelect:self.handDic[@"id"]] parameters:nil success:^(id responseObject) {
             NSLog(@"%@",responseObject);
             if ([responseObject[@"msg"]isEqualToString:@"ok"]) {
-         //       [MBProgressHUD showSuccess:@"删除成功" toView:self.view];
-                [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:([self.navigationController.viewControllers count] -3)] animated:YES];  //返回Home
+               [MBProgressHUD showSuccess:@"删除成功" toView:self.view];
+                [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:([self.navigationController.viewControllers count]-3)] animated:NO];  //返回Home
             }else{
                 [MBProgressHUD showError:responseObject[@"msg"] toView:self.view];
             }

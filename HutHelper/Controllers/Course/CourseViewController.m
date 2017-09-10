@@ -728,7 +728,7 @@ NSString *show_xp;
              if ([Msg isEqualToString:@"ok"]) {
                  NSArray *arrayCourse               = [Class_All objectForKey:@"data"];
                  [Config saveWidgetCourse:arrayCourse];
-                 
+                 [Config saveCourse:arrayCourse];
                  /**请求实验课表*/
                  [APIRequest GET:Config.getApiClassXP parameters:nil success:^(id responseObject) {
                           NSDictionary *ClassXP_All = [NSDictionary dictionaryWithDictionary:responseObject];
@@ -736,6 +736,7 @@ NSString *show_xp;
                           if ([Msg isEqualToString:@"ok"]) {
                               NSArray *arrayCourseXp               = [ClassXP_All objectForKey:@"data"];
                               [Config saveWidgetCourseXp:arrayCourseXp];
+                              [Config saveCourseXp:arrayCourse];
                               HideAllHUD
                               [MBProgressHUD showSuccess:@"刷新成功" toView:self.view];
                               if(now_xp==0){

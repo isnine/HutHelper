@@ -22,7 +22,14 @@
 		<key>HutHelperUITests.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>19</integer>
+			<integer>4</integer>
+		</dict>
+		<key>HutHelperWatch.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>20</integer>
 		</dict>
 		<key>Notification Service Extension.xcscheme</key>
 		<dict>
@@ -40,6 +47,11 @@
 			<true/>
 		</dict>
 		<key>3A2FF4E71E50179700B07EB6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>3A4BDF141F63CF39007E375F</key>
 		<dict>
 			<key>primary</key>
 			<true/>

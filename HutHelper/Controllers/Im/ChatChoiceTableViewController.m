@@ -13,6 +13,7 @@
 #import "UINavigationBar+Awesome.h"
 #import "MBProgressHUD+MJ.h"
 #import "ChatViewController.h"
+#import "UserShowViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 @interface ChatChoiceTableViewController ()<DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 @property(nonatomic, strong) UISearchBar *searchBar;
@@ -122,14 +123,16 @@
 
     ChatViewController *conversationVC = [[ChatViewController alloc]init];
     ChatUser *chatUser=_chatChoiceArray[indexPath.section];
-//    if ([chatUser.last_use isEqualToString:@""]) {
-//        [MBProgressHUD showError:@"用户未使用工大助手" toView:self.view];
-//        return;
-//    }
-    conversationVC.conversationType = ConversationType_PRIVATE;
-    conversationVC.targetId = chatUser.user_id;
-    conversationVC.title = chatUser.TrueName;
-    [self.navigationController pushViewController:conversationVC animated:YES];
+    if ([chatUser.last_use isEqualToString:@""]) {
+        [MBProgressHUD showError:@"用户未使用工大助手" toView:self.view];
+        return;
+    }
+    UserShowViewController *userShowViewController=[[UserShowViewController alloc]init];
+    userShowViewController.name= chatUser.TrueName;
+    userShowViewController.user_id=chatUser.user_id;
+    userShowViewController.dep_name=chatUser.dep_name;
+    userShowViewController.head_pic=chatUser.head_pic_thumb;
+    [self.navigationController pushViewController:userShowViewController animated:YES];
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ChatChoiceTableViewCell *cell = [[[NSBundle mainBundle]loadNibNamed:@"ChatChoiceTableViewCell" owner:nil options:nil]lastObject];

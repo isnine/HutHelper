@@ -187,10 +187,12 @@
         [MBProgressHUD showError:@"请按格式输入成色,比如:99成新"toView:self.view];
         return;
     }
-    
+    [MBProgressHUD showMessage:@"发布中" toView:self.view];
     if (_selectedPhotos.count!=0) {
         _responstring=@"";
         _getphoto=0;
+        
+        
         AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
         [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
         manager.requestSerializer.timeoutInterval = 5.f;

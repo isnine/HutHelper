@@ -72,7 +72,7 @@
     [self.view addSubview:headImg];
     //名称
     UILabel *nameLabel = [[UILabel alloc] init];
-    nameLabel.frame = CGRectMake(SY_Real(123),SY_Real(  288.5), SY_Real(129), SY_Real(26.5));
+    nameLabel.frame = CGRectMake(SY_Real(63),SY_Real(288.5), SY_Real(249), SY_Real(26.5));
     nameLabel.text = _name;
     nameLabel.font = [UIFont fontWithName:@"PingFangSC-Regular" size:SY_Real(19)];
     nameLabel.textAlignment = NSTextAlignmentCenter;
@@ -85,16 +85,35 @@
     depnameLabel.textAlignment = NSTextAlignmentCenter;
     depnameLabel.font = [UIFont fontWithName:@"PingFangSC-Regular" size:14];
     depnameLabel.textColor = [UIColor colorWithRed:173/255.0 green:173/255.0 blue:173/255.0 alpha:1/1.0];
-    [self.view addSubview:depnameLabel];
-    //发起聊天按钮
-    UIButton *imBtn = [[UIButton alloc] init];
-    imBtn.frame = CGRectMake(SY_Real(84), SY_Real(385), SY_Real(207), SY_Real(35));
-    [imBtn addTarget:self action:@selector(im) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:imBtn];
-    UIImageView *imBtnImg = [[UIImageView alloc] init];
-    imBtnImg.frame =  CGRectMake(SY_Real(84), SY_Real(385), SY_Real(207), SY_Real(35));
-    imBtnImg.image=[UIImage imageNamed:@"img_user_imbtn"];
-    [self.view addSubview:imBtnImg];
+    //判断是打开自己的资料卡还是他人的
+    if (![self.user_id isEqualToString:Config.getUserId]) {
+        [self.view addSubview:depnameLabel];
+        //发起聊天按钮
+        UIButton *imBtn = [[UIButton alloc] init];
+        imBtn.frame = CGRectMake(SY_Real(84), SY_Real(385), SY_Real(207), SY_Real(35));
+        [imBtn addTarget:self action:@selector(im) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:imBtn];
+        UIImageView *imBtnImg = [[UIImageView alloc] init];
+        imBtnImg.frame =  CGRectMake(SY_Real(84), SY_Real(385), SY_Real(207), SY_Real(35));
+        imBtnImg.image=[UIImage imageNamed:@"img_user_imbtn"];
+        [self.view addSubview:imBtnImg];
+    }else{
+        UILabel *namelab = [[UILabel alloc] init];
+        namelab.frame = CGRectMake(SY_Real(101), SY_Real(344), SY_Real(173), SY_Real(25));
+        namelab.text = [NSString stringWithFormat:@"%@ %@ %@",Config.getTrueName,Config.getSex,Config.getStudentKH];
+        namelab.textAlignment = NSTextAlignmentCenter;
+        namelab.font = [UIFont fontWithName:@"PingFangSC-Regular" size:SY_Real(14)];
+        namelab.textColor = [UIColor colorWithRed:173/255.0 green:173/255.0 blue:173/255.0 alpha:1/1.0];
+        [self.view addSubview:namelab];
+        UILabel *deplab = [[UILabel alloc] init];
+        deplab.frame = CGRectMake(SY_Real(101), SY_Real(375), SY_Real(173), SY_Real(25));
+        deplab.text = [NSString stringWithFormat:@"%@ %@",Config.getDepName,Config.getClassName];
+        deplab.textAlignment = NSTextAlignmentCenter;
+        deplab.font = [UIFont fontWithName:@"PingFangSC-Regular" size:SY_Real(14)];
+        deplab.textColor = [UIColor colorWithRed:173/255.0 green:173/255.0 blue:173/255.0 alpha:1/1.0];
+        [self.view addSubview:deplab];
+    }
+    
     //校园说说
     UIButton *sayBtn = [[UIButton alloc] init];
     [sayBtn addTarget:self action:@selector(say) forControlEvents:UIControlEventTouchUpInside];

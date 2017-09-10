@@ -85,7 +85,16 @@
         }else{
             userCell.Username.text                = Config.getTrueName;
         }
-        userCell.Head.image=[self getImg];
+       // userCell.Head.image=[self getImg];
+        [userCell.Head sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",Config.getApiImg,Config.getHeadPicThumb]]
+                       placeholderImage:[UIImage imageNamed:@"img_user_boy"]
+                              completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL){
+                                      if ([Config.getHeadPicThumb isEqualToString:@"/head/head-boy.png"]||[Config.getHeadPicThumb isEqualToString:@"/head/head-girl.png"]) {
+                                          userCell.Head.image=image;
+                                      }else{
+                                          userCell.Head.image=[self circleImage:image];
+                                      }
+                              }];
         return userCell;
     }else if (indexPath.row == 2) {
         itemCell.Text.text                = @"私信";

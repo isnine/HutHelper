@@ -42,7 +42,8 @@
         [defaults setObject:currentVersion forKey:@"last_run_version_key"];
         NSLog(@"没有记录");
     }else if ([lastRunKey isEqualToString:@"3.0.0"]||
-              [lastRunKey isEqualToString:@"3.1.0"]){
+              [lastRunKey isEqualToString:@"3.1.0"]||
+              [lastRunKey isEqualToString:@"3.1.2"]){
         [defaults setObject:currentVersion forKey:@"last_run_version_key"];
         [Config addNotice];
     }else if (![lastRunKey isEqualToString:currentVersion]) {
