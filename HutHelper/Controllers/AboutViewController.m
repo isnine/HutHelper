@@ -54,6 +54,13 @@
     conversationVC.title = @"开发者";
     [self.navigationController pushViewController:conversationVC animated:YES];
 }
+- (IBAction)userPermitBtn:(id)sender {
+    UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    WebViewController *webViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Web"];
+    webViewController.urlString=@"http://hugongda.com:8888/home/post/40";
+    webViewController.viewTitle=@"用户许可协议及免责声明";
+    [self.navigationController pushViewController:webViewController animated:YES];
+}
 
 
 

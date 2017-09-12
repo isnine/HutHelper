@@ -30,11 +30,16 @@
     [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:94/255.0 green:199/255.0 blue:217/255.0 alpha:1]];
     
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor]}];
-    NSDictionary *Dic=[Config getVedio];
-    [self loadData:Dic[@"links"]];
-    [Config saveVedio480p:Dic[@"480P"]];
-    [Config saveVedio720p:Dic[@"720P"]];
-    [Config saveVedio1080p:Dic[@"1080P"]];
+
+
+    if (!([[Config getVedio] isEqual:[NSNull null]]||
+          [Config getVedio]==nil)) {
+        NSDictionary *Dic=[Config getVedio];
+        [self loadData:Dic[@"links"]];
+        [Config saveVedio480p:Dic[@"480P"]];
+        [Config saveVedio720p:Dic[@"720P"]];
+        [Config saveVedio1080p:Dic[@"1080P"]];
+    }
     //空白状态
     self.tableView.emptyDataSetSource = self;
     self.tableView.emptyDataSetDelegate = self;

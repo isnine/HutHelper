@@ -183,8 +183,7 @@
     if ([userInfo objectForKey:@"aps"] ==NULL) {
         ChatListViewController *chatList = [[ChatListViewController alloc] init];
         [self.mainNavigationController pushViewController:chatList animated:YES];
-        return;
-    }
+    }else{
         NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
         NSMutableArray *notice;
         NSArray *array;
@@ -213,6 +212,7 @@
         [UMessage didReceiveRemoteNotification:userInfo];
     //当应用处于前台时提示设置，需要哪个可以设置哪一个
     completionHandler(UNNotificationPresentationOptionSound|UNNotificationPresentationOptionBadge|UNNotificationPresentationOptionAlert);
+    }
 }
 
 //iOS10新增：处理后台点击通知的代理方法
