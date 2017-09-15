@@ -86,51 +86,54 @@ typedef NS_ENUM(NSUInteger, PowerSelectBtn) {
         int yesInt=[responseObject[@"data"][@"yes"] intValue];
         int noInt=[responseObject[@"data"][@"no"] intValue];
         //yes进度条
-        UIImageView *yesImageView=[[UIImageView alloc]init];
-        yesImageView.frame=CGRectMake(SYReal(87), SYReal(609), SYReal(180*yesInt*1.0/(noInt+yesInt)), SYReal(20));
-        yesImageView.image=[self scaleImage:[UIImage imageNamed:@"img_power_isopen"] toScale:yesInt*1.0/(noInt+yesInt)];
-        yesImageView.contentMode =UIViewContentModeLeft;
-        yesImageView.clipsToBounds = YES;
-        yesImageView.alpha=0.7;
-        //进度条的圆角
-        yesImageView.layer.masksToBounds = YES; //没这句话它圆不起来
-        yesImageView.layer.cornerRadius = 11.0; //设置图片圆角的尺度
-        yesImageView.userInteractionEnabled=NO;
-        [self.view addSubview:yesImageView];
-        //no进度条
-        UIImageView *noImageView=[[UIImageView alloc]init];
-        noImageView.frame=CGRectMake(SYReal(87), SYReal(644), SYReal(180*noInt*1.0/(noInt+yesInt)), SYReal(20));
-        noImageView.image=[self scaleImage:[UIImage imageNamed:@"img_power_isopen"] toScale:noInt*1.0/(noInt+yesInt)];
-        noImageView.contentMode =UIViewContentModeLeft;
-        noImageView.clipsToBounds = YES;
-        noImageView.alpha=0.7;
-        //进度条的圆角
-        noImageView.layer.masksToBounds = YES; //没这句话它圆不起来
-        noImageView.layer.cornerRadius = 11.0; //设置图片圆角的尺度
-        noImageView.userInteractionEnabled=NO;
-        [self.view addSubview:noImageView];
-        
-        self.openLab.text=responseObject[@"data"][@"yes"];
-        self.unOpenLab.text=responseObject[@"data"][@"no"];
-        if (responseObject[@"opt"]) {
-            self.powerSelectBtn=[responseObject[@"opt"] intValue];
-            switch (self.powerSelectBtn) {
-                case 1:
-                    [self.openBtn setImage:[UIImage imageNamed:@"ico_power_selected"] forState:UIControlStateNormal];
-                    self.openBtn.enabled=NO;
-                    self.noOpenBtn.enabled=NO;
-                    break;
-                case 2:
-                    [self.noOpenBtn setImage:[UIImage imageNamed:@"ico_power_selected"] forState:UIControlStateNormal];
-                    self.openBtn.enabled=NO;
-                    self.noOpenBtn.enabled=NO;
-                    break;
-                default:
-                    self.openBtn.enabled=YES;
-                    self.noOpenBtn.enabled=YES;
-                    break;
+        if (noInt+yesInt !=0) {
+            UIImageView *yesImageView=[[UIImageView alloc]init];
+            yesImageView.frame=CGRectMake(SYReal(87), SYReal(609), SYReal(180*yesInt*1.0/(noInt+yesInt)), SYReal(20));
+            yesImageView.image=[self scaleImage:[UIImage imageNamed:@"img_power_isopen"] toScale:yesInt*1.0/(noInt+yesInt)];
+            yesImageView.contentMode =UIViewContentModeLeft;
+            yesImageView.clipsToBounds = YES;
+            yesImageView.alpha=0.7;
+            //进度条的圆角
+            yesImageView.layer.masksToBounds = YES; //没这句话它圆不起来
+            yesImageView.layer.cornerRadius = 11.0; //设置图片圆角的尺度
+            yesImageView.userInteractionEnabled=NO;
+            [self.view addSubview:yesImageView];
+            //no进度条
+            UIImageView *noImageView=[[UIImageView alloc]init];
+            noImageView.frame=CGRectMake(SYReal(87), SYReal(644), SYReal(180*noInt*1.0/(noInt+yesInt)), SYReal(20));
+            noImageView.image=[self scaleImage:[UIImage imageNamed:@"img_power_isopen"] toScale:noInt*1.0/(noInt+yesInt)];
+            noImageView.contentMode =UIViewContentModeLeft;
+            noImageView.clipsToBounds = YES;
+            noImageView.alpha=0.7;
+            //进度条的圆角
+            noImageView.layer.masksToBounds = YES; //没这句话它圆不起来
+            noImageView.layer.cornerRadius = 11.0; //设置图片圆角的尺度
+            noImageView.userInteractionEnabled=NO;
+            [self.view addSubview:noImageView];
+            
+            self.openLab.text=responseObject[@"data"][@"yes"];
+            self.unOpenLab.text=responseObject[@"data"][@"no"];
+            if (responseObject[@"opt"]) {
+                self.powerSelectBtn=[responseObject[@"opt"] intValue];
+                switch (self.powerSelectBtn) {
+                    case 1:
+                        [self.openBtn setImage:[UIImage imageNamed:@"ico_power_selected"] forState:UIControlStateNormal];
+                        self.openBtn.enabled=NO;
+                        self.noOpenBtn.enabled=NO;
+                        break;
+                    case 2:
+                        [self.noOpenBtn setImage:[UIImage imageNamed:@"ico_power_selected"] forState:UIControlStateNormal];
+                        self.openBtn.enabled=NO;
+                        self.noOpenBtn.enabled=NO;
+                        break;
+                    default:
+                        self.openBtn.enabled=YES;
+                        self.noOpenBtn.enabled=YES;
+                        break;
+                }
             }
         }
+       
     } failure:^(NSError *error) {
         NSLog(@"网络错误");
     }];
