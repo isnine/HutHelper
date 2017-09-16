@@ -19,11 +19,11 @@
 @end
 
 @implementation LostShowViewController
-//- (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController animationControllerForOperation:(UINavigationControllerOperation)operation fromViewController:(UIViewController *)fromVC toViewController:(UIViewController *)toVC{
-//    NSLog(@"%@", NSStringFromCGRect(self.imageView.frame));
-//    //分pop和push两种情况分别返回动画过渡代理相应不同的动画操作
-//    return [XWNaviTransition transitionWithType:operation == UINavigationControllerOperationPush ? XWNaviOneTransitionTypePush : XWNaviOneTransitionTypePop];
-//}
+- (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController animationControllerForOperation:(UINavigationControllerOperation)operation fromViewController:(UIViewController *)fromVC toViewController:(UIViewController *)toVC{
+    NSLog(@"%@", NSStringFromCGRect(self.imageView.frame));
+    //分pop和push两种情况分别返回动画过渡代理相应不同的动画操作
+    return [XWNaviTransition transitionWithType:operation == UINavigationControllerOperationPush ? XWNaviOneTransitionTypePush : XWNaviOneTransitionTypePop];
+}
 
 
 - (void)viewDidLoad {
@@ -81,7 +81,7 @@
 #pragma mark - 界面绘制
 -(void)setHeadImg{
     //背景放大并高斯模糊
-    UIImageView *backImgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, DeviceMaxWidth, SYReal(390))];
+    UIImageView *backImgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, DeviceMaxWidth, SYReal(400))];
     //中心切割
     backImgView.backgroundColor=[self randomColor:_lostModel.blackColor];
     [self.view addSubview:backImgView];
@@ -206,6 +206,7 @@
     userShowViewController.user_id=_lostModel.user_id;
     userShowViewController.dep_name=_lostModel.dep_name;
     userShowViewController.head_pic=_lostModel.head_pic;
+    self.navigationController.delegate =nil;
     [self.navigationController pushViewController:userShowViewController animated:YES];
 }
 

@@ -66,7 +66,6 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
     LeftUserTableViewCell *userCell;
     LeftItemTableViewCell *itemCell;
     if (!userCell) {
