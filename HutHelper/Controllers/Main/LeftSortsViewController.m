@@ -149,10 +149,8 @@
         ChatListViewController *chatList = [[ChatListViewController alloc] init];
        // UserShowViewController *userShow=[[UserShowViewController alloc]init];
         [tempAppDelegate.mainNavigationController pushViewController:chatList animated:YES];
-      
     }
     if (indexPath.row == 3) {  //分享
-        
         [UMSocialUIManager setPreDefinePlatforms:@[@(UMSocialPlatformType_WechatSession),@(UMSocialPlatformType_QQ),@(UMSocialPlatformType_Qzone),@(UMSocialPlatformType_Sina)]];
         [UMSocialUIManager showShareMenuViewInWindowWithPlatformSelectionBlock:^(UMSocialPlatformType platformType, NSDictionary *userInfo) {
             [self shareWebPageToPlatformType:platformType];
@@ -165,13 +163,12 @@
             
         }]];
         [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            [Config removeUserDefaults];
             [Config removeUmeng];
+            [Config removeUserDefaults];
             [[RCIM sharedRCIM] clearUserInfoCache];
             AppDelegate *tempAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
             LoginViewController *firstlogin                = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
             [tempAppDelegate.mainNavigationController pushViewController:firstlogin animated:YES];
-            
         }]];
         [self presentViewController:alert animated:true completion:nil];
         [[RCIM sharedRCIM]logout];

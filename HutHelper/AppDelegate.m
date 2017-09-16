@@ -301,7 +301,6 @@
                 NSLog(@"全局他人失败");
                 return completion(nil);
             }];
-    
 }
 //友盟分析平台设置
 - (void)configUSharePlatforms

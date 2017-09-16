@@ -45,6 +45,7 @@
               [lastRunKey isEqualToString:@"3.1.0"]||
               [lastRunKey isEqualToString:@"3.1.2"]){
         [defaults setObject:currentVersion forKey:@"last_run_version_key"];
+        [Config saveUmeng];
         [Config addNotice];
     }else if (![lastRunKey isEqualToString:currentVersion]) {
         [Config removeUserDefaults];

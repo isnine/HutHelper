@@ -18,6 +18,7 @@
 #import "YCXMenu.h"
 #import "LostShowViewController.h"
 #import "LostAddViewController.h"
+
 @interface LostViewController ()<UICollectionViewDataSource, JRWaterFallLayoutDelegate,DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 @property (nonatomic,copy) NSMutableArray      *lostData;
 @property (nonatomic, copy) NSMutableArray      *lostArray;
@@ -193,6 +194,7 @@
         lostShowViewController.isSelf=true;
     }
     lostShowViewController.lostModel=lost;
+ 
     self.navigationController.delegate = lostShowViewController;
     [self.navigationController pushViewController:lostShowViewController animated:YES];
 }
