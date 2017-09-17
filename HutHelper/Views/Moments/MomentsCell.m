@@ -307,6 +307,7 @@
 }
 #pragma mark - 按钮事件
 -(void)btnAvatar{
+    
     UserShowViewController *userShowViewController=[[UserShowViewController alloc]init];
     userShowViewController.name=_data.username;
     userShowViewController.user_id=_data.user_id;
@@ -348,6 +349,10 @@
     */
 }
 -(void)btnComment{
+    if ([Config isTourist]) {
+        [MBProgressHUD showError:@"游客请登录" toView:self];
+        return;
+    }
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     NSString *Url_String=[NSString stringWithFormat:@"%@/%@/%@/%@",Config.getApiMomentsCreateComment,Config.getStudentKH,Config.getRememberCodeApp,_data.moments_id];
     [UUInputAccessoryView showKeyboardConfige:^(UUInputConfiger * _Nonnull configer) {
@@ -394,6 +399,10 @@
 }
 
 -(void)btnLikes{
+    if ([Config isTourist]) {
+        [MBProgressHUD showError:@"游客请登录" toView:self];
+        return;
+    }
     [Config setNoSharedCache];
     NSString *Url_String=[Config getApiMomentsLikesCreate:_data.moments_id];
     [APIRequest GET:Url_String parameters:nil success:^(id responseObject) {

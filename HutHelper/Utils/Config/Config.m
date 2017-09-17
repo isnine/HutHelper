@@ -299,5 +299,43 @@ static int Is ;
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
     }
 }
+
+
++(void)saveUrl:(NSString*)url{
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    [defaults setObject:url forKey:@"kUrl"];
+    [defaults synchronize];
+}
++(void)saveEducationSchool:(NSString*)school{
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    [defaults setObject:school forKey:@"kSchool"];
+    [defaults synchronize];
+}
++(void)saveEducationUserName:(NSString*)userName{
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    [defaults setObject:userName forKey:@"kUserName"];
+    [defaults synchronize];
+}
++(void)savePassWord:(NSString*)passWord{
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    [defaults setObject:passWord forKey:@"kPassWord"];
+    [defaults synchronize];
+}
++(NSString*)getEducationUserName{
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    return [defaults objectForKey:@"kUserName"];
+}
++(NSString*)getEducationPassWord{
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    return [defaults objectForKey:@"kPassWord"];
+}
++(NSString*)getUrl{
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    return [defaults objectForKey:@"kUrl"];
+}
++(NSString*)getSchool{
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    return [defaults objectForKey:@"kSchool"];
+}
 @end
 

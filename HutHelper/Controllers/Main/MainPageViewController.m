@@ -120,6 +120,10 @@ int class_error_;
 #pragma mark - 各按钮事件
 
 - (IBAction)ClassFind:(id)sender {
+    if([Config getCourse]!=nil){
+        [Config setIs:0];
+        [Config pushViewController:@"Class"];
+    }
     if ([Config isTourist]) {
         [MBProgressHUD showError:@"游客请登录" toView:self.view];
         return;
@@ -357,9 +361,10 @@ int class_error_;
     }
     [APIRequest GET:[Config getApiCalendar] parameters:nil
             success:^(id responseObject) {
-                
+                if (![Config getCalendar]) {
+                    [self drawCalendar:responseObject];
+                }
                 [Config saveCalendar:responseObject];
-                [self drawCalendar:responseObject];
             } failure:^(NSError *error) {
                 NSLog(@"倒计时加载失败");
             }];

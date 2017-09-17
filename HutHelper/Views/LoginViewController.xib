@@ -12,7 +12,9 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController">
             <connections>
                 <outlet property="Password" destination="Jcz-Ya-tA0" id="cEg-rv-9Wg"/>
+                <outlet property="UivSecCode" destination="86l-hC-6Yk" id="mzm-Yy-BE3"/>
                 <outlet property="UserName" destination="zbs-T7-KLD" id="4f3-JT-FBp"/>
+                <outlet property="UtfSecCode" destination="hzV-N1-1RQ" id="s4V-3O-dRr"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -111,6 +113,17 @@
                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="14" background="time_bg" translatesAutoresizingMaskIntoConstraints="NO" id="hzV-N1-1RQ" colorLabel="IBBuiltInLabel-Green">
+                    <rect key="frame" x="282" y="501" width="85" height="27"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                    <color key="textColor" red="0.25094896550000001" green="0.25099846720000002" blue="0.2509458363" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <textInputTraits key="textInputTraits" keyboardType="twitter" returnKeyType="done"/>
+                </textField>
+                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="86l-hC-6Yk">
+                    <rect key="frame" x="210" y="501" width="62" height="27"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                </imageView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <point key="canvasLocation" x="23" y="51"/>
@@ -121,5 +134,6 @@
         <image name="img_login_password" width="283" height="42"/>
         <image name="img_login_upbcg" width="720" height="560"/>
         <image name="img_login_user" width="283" height="42"/>
+        <image name="time_bg" width="64" height="18"/>
     </resources>
 </document>

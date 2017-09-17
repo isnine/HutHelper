@@ -144,7 +144,8 @@ NS_ASSUME_NONNULL_BEGIN
                       success:(nullable void (^)(NSURLSessionDataTask *task, id _Nullable responseObject))success
                       failure:(nullable void (^)(NSURLSessionDataTask * _Nullable task, NSError *error))failure DEPRECATED_ATTRIBUTE;
 
-
+//后加的属性
+@property (nonatomic,strong) NSDictionary* cookieDictionary;
 /**
  Creates and runs an `NSURLSessionDataTask` with a `GET` request.
 

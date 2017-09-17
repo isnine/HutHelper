@@ -73,6 +73,16 @@
 +(void)removeUmeng;
 
 +(void)showAppStore;
+
+
++(void)saveUrl:(NSString*)url;
++(void)saveSchool:(NSString*)school;
++(void)saveEducationUserName:(NSString*)userName;
++(void)saveEducationPassWord:(NSString*)passWord;
++(NSString*)getUrl;
++(NSString*)getSchool;
++(NSString*)getEducationUserName;
++(NSString*)getEducationPassWord;
 @end
 
 

@@ -13,5 +13,11 @@
 -(NSDictionary *)deleteAllNullValue;
 @end
 @interface LoginViewController : UIViewController
+//教务系统用
+@property(nonatomic,strong) NSString *userNameStr;
+@property(nonatomic,strong) NSString *passWorldStr;
+@property(nonatomic,strong) NSString *secCode;
+@property (copy,nonatomic) NSString *viewState;
 
+@property (nonatomic,strong) NSDictionary* cookieDictionary;
 @end

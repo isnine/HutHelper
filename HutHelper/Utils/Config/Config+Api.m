@@ -30,7 +30,7 @@
 }
 #pragma mark - 登录界面
 +(NSString*)getApiLogin:(NSString*)userName passWord:(NSString*)passWord{
-    return [NSString stringWithFormat:@"%@/api/v1/get/login/%@/%@/1",Config.apiIndex,userName,passWord];
+    return [NSString stringWithFormat:@"%@/api/v1/get/login/%@/%@/1",Config.apiIndexHttps,userName,passWord];
 }
 +(NSString*)getApiLoginReset{
     return [NSString stringWithFormat:@"%@/auth/resetPass",Config.apiIndex];
