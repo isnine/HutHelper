@@ -45,6 +45,7 @@
     
     [self setHeadImg];
     [self setText];
+    
 }
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -157,6 +158,10 @@
 }
 
 -(void)post{
+    if ([Config isTourist]) {
+        [MBProgressHUD showError:@"游客请登录" toView:self.view];
+        return;
+    }
     NSString *Url_String=Config.getApiLostCreate;
     UITextField *titField=[self.view viewWithTag:100];
     UITextField *timeField=[self.view viewWithTag:101];

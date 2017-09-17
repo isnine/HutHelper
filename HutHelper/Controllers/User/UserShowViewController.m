@@ -144,6 +144,10 @@
 }
 #pragma  mark - 方法
 -(void)im{
+    if ([Config isTourist]) {
+        [MBProgressHUD showError:@"游客请登录后再联系Ta" toView:self.view];
+        return;
+    }
     ChatViewController *conversationVC = [[ChatViewController alloc]init];
     conversationVC.conversationType = ConversationType_PRIVATE;
     conversationVC.targetId = _user_id;

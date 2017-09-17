@@ -48,6 +48,16 @@
     [self.navigationController pushViewController:webViewController animated:YES];
 }
 - (IBAction)contactMe:(id)sender {
+    if ([Config isTourist]) {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"游客可以通过发送邮件到wxz@wxz.name与我联系" preferredStyle:  UIAlertControllerStyleAlert];
+        [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            
+        }]];
+        [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            
+        }]];
+        [self presentViewController:alert animated:true completion:nil];
+    }
     ChatViewController *conversationVC = [[ChatViewController alloc]init];
     conversationVC.conversationType = ConversationType_PRIVATE;
     conversationVC.targetId = @"15198";
@@ -61,8 +71,6 @@
     webViewController.viewTitle=@"用户许可协议及免责声明";
     [self.navigationController pushViewController:webViewController animated:YES];
 }
-
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

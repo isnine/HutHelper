@@ -174,6 +174,10 @@
 }
 
 -(void)PostHand{
+    if ([Config isTourist]) {
+        [MBProgressHUD showError:@"游客请登录" toView:self.view];
+        return;
+    }
     NSString *Url_String=Config.getApiGoodsCreate;
     UITextField *_Price=[self.view viewWithTag:100];
     UITextField *_Old=[self.view viewWithTag:101];

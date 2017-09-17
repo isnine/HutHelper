@@ -10,7 +10,7 @@
 #import "AFNetworking.h"
 #import "MBProgressHUD+MJ.h"
 @implementation APIRequest
-#define GET_TIMEOUT 6.f
+#define GET_TIMEOUT 8.f
 #define POST_TIMEOUT 10.f
 + (void)GET:(NSString *)URLString parameters:(id)parameters success:(void (^)(id))success failure:(void (^)(NSError *))failure
 {
@@ -32,7 +32,7 @@
     failure:(void (^)(NSError *))failure
 {
     NSLog(@"请求地址:%@",URLString);
-        [Config setNoSharedCache];
+    [Config setNoSharedCache];
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     ((AFJSONResponseSerializer *)manager.responseSerializer).removesKeysWithNullValues = YES;
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
@@ -60,7 +60,7 @@
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
     manager.requestSerializer.timeoutInterval = POST_TIMEOUT;
     [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
-     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     
     
     [manager POST:URLString parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {

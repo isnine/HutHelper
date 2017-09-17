@@ -116,6 +116,10 @@
     return _items;
 }
 -(void)mySay{
+    if ([Config isTourist]) {
+        [MBProgressHUD showError:@"游客请登录" toView:self.view];
+        return;
+    }
     [Config setNoSharedCache];
     [MBProgressHUD showMessage:@"加载中" toView:self.view];
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
@@ -143,7 +147,6 @@
             HideAllHUD
             [MBProgressHUD showError:[Say_All objectForKey:@"msg"] toView:self.view];
         }
-        HideAllHUD
     }failure:^(NSError *error) {
         HideAllHUD
         [MBProgressHUD showError:@"网络超时" toView:self.view];
@@ -151,6 +154,10 @@
     }];
 }
 -(void)addSay{
+    if ([Config isTourist]) {
+        [MBProgressHUD showError:@"游客请登录" toView:self.view];
+        return;
+    }
     [Config pushViewController:@"AddSay"];
 }
 - (id) init{

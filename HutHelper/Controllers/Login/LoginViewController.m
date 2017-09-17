@@ -47,12 +47,11 @@
             success:^(id responseObject) {
                  HideAllHUD
         NSDictionary *userAll = [NSDictionary dictionaryWithDictionary:responseObject];
-        NSDictionary *userData=[userAll objectForKey:@"data"];//All字典 -> Data字典
-        NSString *msg=[userAll objectForKey:@"msg"];
+        NSString *msg=userAll[@"msg"];
         if ([msg isEqualToString: @"ok"])
         {
-            [Config saveUser:userData];
-            [Config saveRememberCodeApp:[userAll objectForKey:@"remember_code_app"]];
+            [Config saveUser:userAll[@"data"]];
+            [Config saveRememberCodeApp:userAll[@"remember_code_app"]];
             [Config saveCurrentVersion:[[[NSBundle mainBundle] infoDictionary]
                                         objectForKey:@"CFBundleShortVersionString"]];
             [Config addNotice];
@@ -113,6 +112,19 @@
         [MBProgressHUD showError:@"网络错误或超时" toView:self.view];
     }];
 }
+- (IBAction)touristBtn:(id)sender {
+    NSString *plistPath = [[NSBundle mainBundle]pathForResource:@"touristData" ofType:@"plist"];
+    NSDictionary *userAll = [[NSDictionary alloc] initWithContentsOfFile:plistPath];
+        NSLog(@"%@",userAll);
+    [Config saveUser:userAll[@"data"]];
+    [Config saveRememberCodeApp:userAll[@"remember_code_app"]];
+    [Config saveCurrentVersion:[[[NSBundle mainBundle] infoDictionary]
+                                objectForKey:@"CFBundleShortVersionString"]];
+    [Config addNotice];
+    [Config saveUmeng];
+    [Config saveTourist:YES];
+    [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:([self.navigationController.viewControllers count] -2)] animated:YES];  //返回上一个View
+}
 
 
 
@@ -137,7 +149,45 @@
     self.view.userInteractionEnabled = YES;
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(fingerTapped:)];
     [self.view addGestureRecognizer:singleTap];
+    //注册键盘弹出通知
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillShow:)
+                                                 name:UIKeyboardWillShowNotification
+                                               object:nil];
+    //注册键盘隐藏通知
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillHide:)
+                                                 name:UIKeyboardWillHideNotification
+                                               object:nil];
     
+    
+}
+
+-(void)keyboardWillShow:(NSNotification *)note
+{
+    NSDictionary *info = [note userInfo];
+    CGSize keyboardSize = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
+    //目标视图UITextField
+    CGRect frame = self.Password.frame;
+    int y = frame.origin.y + frame.size.height - (self.view.frame.size.height - keyboardSize.height);
+    NSTimeInterval animationDuration = 0.30f;
+    [UIView beginAnimations:@"ResizeView" context:nil];
+    [UIView setAnimationDuration:animationDuration];
+    if(y > 0)
+    {
+        self.view.frame = CGRectMake(0, -y, self.view.frame.size.width, self.view.frame.size.height);
+    }
+    [UIView commitAnimations];
+}
+
+//键盘隐藏后将视图恢复到原始状态
+-(void)keyboardWillHide:(NSNotification *)note
+{
+    NSTimeInterval animationDuration = 0.30f;
+    [UIView beginAnimations:@"ResizeView" context:nil];
+    [UIView setAnimationDuration:animationDuration];
+    self.view.frame =CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    [UIView commitAnimations];
 }
 - (IBAction)resetpassword:(id)sender {
     UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
@@ -166,26 +216,8 @@
 {
     [self.view endEditing:YES];
 }
-- (void)textFieldDidBeginEditing:(UITextField *)textField
-{
-    [self animateTextField: textField up: YES];
-}
-- (void)textFieldDidEndEditing:(UITextField *)textField
-{
-    [self animateTextField: textField up: NO];
-}
-- (void) animateTextField: (UITextField*) textField up: (BOOL) up
 
-{
-    const int movementDistance = SYReal(180); // tweak as needed
-    const float movementDuration = 0.3f; // tweak as needed
-    int movement = (up ? -movementDistance : movementDistance);
-    [UIView beginAnimations: @"anim" context: nil];
-    [UIView setAnimationBeginsFromCurrentState: YES];
-    [UIView setAnimationDuration: movementDuration];
-    self.view.frame = CGRectOffset(self.view.frame, 0, movement);
-    [UIView commitAnimations];
-}
+
 
 @end
 

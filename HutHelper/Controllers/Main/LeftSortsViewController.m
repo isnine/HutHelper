@@ -145,9 +145,19 @@
         [Config pushViewController:@"User"];
     }
     if (indexPath.row == 2) {  //私信
+        if ([Config isTourist]) {
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"游客请登录" message:@"需要学校账号才可使用私信" preferredStyle:  UIAlertControllerStyleAlert];
+            [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                
+            }]];
+            [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+
+            }]];
+            [self presentViewController:alert animated:true completion:nil];
+        }
+        
         AppDelegate *tempAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         ChatListViewController *chatList = [[ChatListViewController alloc] init];
-       // UserShowViewController *userShow=[[UserShowViewController alloc]init];
         [tempAppDelegate.mainNavigationController pushViewController:chatList animated:YES];
     }
     if (indexPath.row == 3) {  //分享
@@ -166,12 +176,13 @@
             [Config removeUmeng];
             [Config removeUserDefaults];
             [[RCIM sharedRCIM] clearUserInfoCache];
+             [[RCIM sharedRCIM]logout];
             AppDelegate *tempAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
             LoginViewController *firstlogin                = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
             [tempAppDelegate.mainNavigationController pushViewController:firstlogin animated:YES];
         }]];
         [self presentViewController:alert animated:true completion:nil];
-        [[RCIM sharedRCIM]logout];
+       
     }
     if (indexPath.row == 5) {  //关于
         [Config pushViewController:@"About"];

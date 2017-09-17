@@ -30,10 +30,7 @@ UIImage* img ;
 - (void)viewDidLoad {
     [super viewDidLoad];
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-
-    
     NSDictionary *User_Data=[defaults objectForKey:@"User"];
-
     self.headerView=[[JSHeaderView alloc] initWithImage:[self getImg]];
     self.navigationItem.titleView = self.headerView;
 

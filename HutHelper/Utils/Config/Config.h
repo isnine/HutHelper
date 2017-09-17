@@ -66,8 +66,10 @@
 +(NSString*)getUserId;
 +(NSString*)getRememberCodeApp;
 +(NSString*)getImToken;
++(BOOL)isTourist;
 
 +(void)saveUmeng;
++(void)saveTourist:(BOOL)isTourist;
 +(void)removeUmeng;
 
 +(void)showAppStore;

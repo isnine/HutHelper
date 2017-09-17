@@ -242,6 +242,10 @@
     [self.navigationController pushViewController:lostAddViewController2 animated:YES];
 }
 -(void)myLost{
+    if ([Config isTourist]) {
+        [MBProgressHUD showError:@"游客请登录" toView:self.view];
+        return;
+    }
     [MBProgressHUD showMessage:@"加载中" toView:self.view];
     //发起请求
     [APIRequest GET:Config.getApiLostUser parameters:nil success:^(id responseObject) {

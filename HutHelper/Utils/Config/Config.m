@@ -243,10 +243,20 @@ static int Is ;
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     return [defaults objectForKey:@"kCalendar"];
 }
++(BOOL)isTourist{
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    return [defaults boolForKey:@"KisTourist"];
+}
 #pragma mark - 版本信息
 +(void)saveCurrentVersion:(NSString*)currentVersion{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     [defaults setObject:currentVersion forKey:@"last_run_version_key"];
+    [defaults synchronize];
+}
+#pragma mark - 是否为游客
++(void)saveTourist:(BOOL)isTourist{
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    [defaults setBool:isTourist forKey:@"KisTourist"];
     [defaults synchronize];
 }
 #pragma mark - 通知

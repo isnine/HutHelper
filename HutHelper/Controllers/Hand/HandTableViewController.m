@@ -155,6 +155,10 @@
     [tempAppDelegate.mainNavigationController pushViewController:handAddViewController animated:YES];
 }
 -(void)myHand{
+    if ([Config isTourist]) {
+        [MBProgressHUD showError:@"游客请登录" toView:self.view];
+        return;
+    }
     [MBProgressHUD showMessage:@"加载中" toView:self.view];
     [APIRequest GET:Config.getApiGoodsUser parameters:nil success:^(id responseObject) {
         HideAllHUD

@@ -120,6 +120,10 @@ int class_error_;
 #pragma mark - 各按钮事件
 
 - (IBAction)ClassFind:(id)sender {
+    if ([Config isTourist]) {
+        [MBProgressHUD showError:@"游客请登录" toView:self.view];
+        return;
+    }
     if(([Config getCourse]==nil)||([Config getCourseXp]==nil)){
         [MBProgressHUD showMessage:@"查询中" toView:self.view];
         NSString *urlString=Config.getApiClass;
@@ -193,9 +197,17 @@ int class_error_;
     }
 }//课程表
 - (IBAction)ClassXPFind:(id)sender {  //实验课表
+     if ([Config isTourist]) {
+         [MBProgressHUD showError:@"游客请登录" toView:self.view];
+         return;
+     }
     [Config pushViewController:@"ClassXp"];
 } //实验课表
 - (IBAction)HomeWork:(id)sender {
+    if ([Config isTourist]) {
+        [MBProgressHUD showError:@"游客请登录" toView:self.view];
+        return;
+    }
     [Config pushViewController:@"HomeWork"];
 } //网上作业
 - (IBAction)Power:(id)sender {
@@ -214,6 +226,10 @@ int class_error_;
     [tempAppDelegate.mainNavigationController pushViewController:hand animated:YES];
 } //二手市场
 - (IBAction)Score:(id)sender {
+    if ([Config isTourist]) {
+        [MBProgressHUD showError:@"游客请登录" toView:self.view];
+        return;
+    }
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     //如果没有缓存数据
     if((![defaults objectForKey:@"Score"])||(![defaults objectForKey:@"ScoreRank"])){
@@ -284,8 +300,11 @@ int class_error_;
     [Config pushViewController:@"Library"];
 } //图书馆
 - (IBAction)Exam:(id)sender {
+    if ([Config isTourist]) {
+        [MBProgressHUD showError:@"游客请登录" toView:self.view];
+        return;
+    }
     [Config pushViewController:@"Exam"];
-    
 } //考试计划
 - (IBAction)Day:(id)sender {
     DayViewController *chvc = [[DayViewController alloc]init];
@@ -502,6 +521,17 @@ int class_error_;
 }
 
 -(void)notice{
+    if ([Config isTourist]) {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"游客请登录" message:@"需要学校账号才可使用私信" preferredStyle:  UIAlertControllerStyleAlert];
+        [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            
+        }]];
+        [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            
+        }]];
+        [self presentViewController:alert animated:true completion:nil];
+    }
+    
     AppDelegate *tempAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     ChatListViewController *chatList = [[ChatListViewController alloc] init];
     [tempAppDelegate.mainNavigationController pushViewController:chatList animated:YES];
