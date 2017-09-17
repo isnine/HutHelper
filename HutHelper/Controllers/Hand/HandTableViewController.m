@@ -18,6 +18,7 @@
 #import "Hand.h"
 #import "YCXMenu.h"
 #import "UIScrollView+EmptyDataSet.h"
+
 @interface HandTableViewController ()<DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 @property (nonatomic,copy) NSArray      *handAllArray;
 @property (nonatomic, copy) NSMutableArray      *handArray;
@@ -72,10 +73,12 @@
         self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(load)];
         [self.tableView.mj_header beginRefreshing];
         //MJRefresh适配iOS11
-        //        if (@available(iOS 11.0, *)) {
-        //            self.tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
-        //            self.tableView.contentInset = UIEdgeInsetsMake(64, 0, 0, 0);
-        //        }
+        #ifdef __IPHONE_11_0
+        if (@available(iOS 11.0, *)) {
+            self.tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+            self.tableView.contentInset = UIEdgeInsetsMake(64, 0, 0, 0);
+        }
+        #endif
     }
     // 标题栏样式
     UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];

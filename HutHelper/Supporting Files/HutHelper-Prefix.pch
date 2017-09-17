@@ -33,8 +33,17 @@
 # define NSLog(...)
 #endif
 
+//判断是在iOS11之前
+#ifndef kiOS11Before
+#define kiOS11Before (kSystemVersion < 11)
+#endif
 
+#ifdef kiOS11Before
 
-
+#else
+_tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+_tableView.contentInset = UIEdgeInsetsMake(64, 0, 49, 0);
+_tableView.scrollIndicatorInsets = _tableView.contentInset;
+#endif
 
 #endif /* HutHelper_Prefix_pch */

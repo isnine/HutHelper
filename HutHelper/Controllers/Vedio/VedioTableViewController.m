@@ -55,10 +55,12 @@
     [header beginRefreshing];
     
     //MJRefresh适配iOS11
-//    if (@available(iOS 11.0, *)) {
-//        self.tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
-//        self.tableView.contentInset = UIEdgeInsetsMake(64, 0, 0, 0);
-//    }
+#ifdef __IPHONE_11_0
+    if (@available(iOS 11.0, *)) {
+        self.tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+        self.tableView.contentInset = UIEdgeInsetsMake(64, 0, 0, 0);
+    }
+#endif
 
 }
 

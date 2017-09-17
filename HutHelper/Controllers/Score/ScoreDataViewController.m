@@ -37,10 +37,12 @@
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(reload)];
     [self.tableView.mj_header beginRefreshing];
     //MJRefresh适配iOS11
-//   if (@available(iOS 11.0, *)) {
-//        self.tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
-//        self.tableView.contentInset = UIEdgeInsetsMake(64, 0, 0, 0);
-//    }
+#ifdef __IPHONE_11_0
+   if (@available(iOS 11.0, *)) {
+        self.tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+        self.tableView.contentInset = UIEdgeInsetsMake(64, 0, 0, 0);
+    }
+#endif
     
     /**让黑线消失的方法*/
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"white"] forBarMetrics:UIBarMetricsDefault];

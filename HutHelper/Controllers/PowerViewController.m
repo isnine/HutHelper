@@ -86,7 +86,7 @@ typedef NS_ENUM(NSUInteger, PowerSelectBtn) {
         int yesInt=[responseObject[@"data"][@"yes"] intValue];
         int noInt=[responseObject[@"data"][@"no"] intValue];
         //yes进度条
-        if (noInt+yesInt !=0) {
+        if (noInt+yesInt!=0) {
             UIImageView *yesImageView=[[UIImageView alloc]init];
             yesImageView.frame=CGRectMake(SYReal(87), SYReal(609), SYReal(180*yesInt*1.0/(noInt+yesInt)), SYReal(20));
             yesImageView.image=[self scaleImage:[UIImage imageNamed:@"img_power_isopen"] toScale:yesInt*1.0/(noInt+yesInt)];
