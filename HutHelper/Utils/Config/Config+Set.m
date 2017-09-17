@@ -43,7 +43,8 @@
         NSLog(@"没有记录");
     }else if ([lastRunKey isEqualToString:@"3.0.0"]||
               [lastRunKey isEqualToString:@"3.1.0"]||
-              [lastRunKey isEqualToString:@"3.1.2"]){
+              [lastRunKey isEqualToString:@"3.1.2"]||
+              [lastRunKey isEqualToString:@"3.2.0"]){
         [defaults setObject:currentVersion forKey:@"last_run_version_key"];
         [Config saveUmeng];
         [Config addNotice];

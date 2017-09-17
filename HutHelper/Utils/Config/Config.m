@@ -262,9 +262,9 @@ static int Is ;
 #pragma mark - 通知
 +(void)addNotice{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    NSDictionary *noticeDictionary=@{@"time":@"2017-09-10 08:00",
+    NSDictionary *noticeDictionary=@{@"time":@"2017-09-17 08:00",
                                      @"title":@"工大助手",
-                                     @"body":@"工大助手V3.1.2更新日志\n\n- 修复了资料卡图标以及个人资料卡的问题\n- 修复了课程表有些课程不显示以及二手市场删除物品时的BUG\n- 修复了输入框点击后文本消失的问题\n- 修改了私信提示为小圆点\n\n欢迎在【侧栏-关于-联系我】和我聊天，可聊可撩\n点一下右下角的评分赏我几颗星星吧୧(๑•̀⌄•́๑)૭"
+                                     @"body":@"工大助手V3.3.0更新日志\n\n- 增加了失物招领界面动画\n- 增加了游客模式\n- 兼容了iOS11\n- 吃掉了电费界面的bug\n\n程序猿要去杭州比赛，十月份回来改进课表和成绩界面，欢迎在关于里面骚扰程序猿\n点一下右下角的评分赏我几颗星星吧୧(๑•̀⌄•́๑)૭"
                                      };
     
     NSDictionary *noticeDictionary1=@{@"time":@"2017-08-14 08:00",
