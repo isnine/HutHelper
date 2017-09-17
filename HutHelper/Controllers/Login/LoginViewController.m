@@ -22,6 +22,7 @@
 
 #import "zySheetPickerView.h"
 @interface LoginViewController ()
+@property (weak, nonatomic) IBOutlet UIButton *choiceBtn;
 @property (weak, nonatomic) IBOutlet UITextField *UserName;
 @property (weak, nonatomic) IBOutlet UITextField *Password;
 @property (weak, nonatomic) IBOutlet UITextField *UtfSecCode;
@@ -152,15 +153,17 @@
             _UtfSecCode.placeholder=@"验证码";
             _UtfSecCode.hidden=false;
             _UivSecCode.hidden=false;
+            [_choiceBtn setTitle:@"江苏理工学院" forState: UIControlStateNormal];
              [self refreshSecCode];
         }else if ([choiceString isEqualToString:@"湖南工业大学"]){
 //            [Config saveUrl:@"http://218.75.197.123:83"];
-//            _isEducation=true;
-//            _Password.placeholder=@"教务系统密码";
-//            _UtfSecCode.placeholder=@"验证码";
-//            _UtfSecCode.hidden=false;
-//            _UivSecCode.hidden=false;
-//            [self refreshSecCode];
+            [_choiceBtn setTitle:@"湖南工业大学" forState: UIControlStateNormal];
+            _isEducation=false;
+            _Password.placeholder=@"密 码";
+            _UtfSecCode.placeholder=@"验证码";
+            _UtfSecCode.hidden=true;
+            _UivSecCode.hidden=true;
+            [self refreshSecCode];
         }else{
             
         }

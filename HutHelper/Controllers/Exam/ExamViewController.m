@@ -248,7 +248,7 @@ int datediff(int y1,int m1,int d1,int y2,int m2,int d2)
             [MBProgressHUD showError:@"超时,显示本地数据" toView:self.view];
         }
     } failure:^(NSError *error) {
-        [MBProgressHUD showError:@"网络错误" toView:self.view];
+        [MBProgressHUD showError:@"没有连接到服务器，可能刚开学没有考试哦~" toView:self.view];
         [self.tableView.mj_header endRefreshing];
     }];
 }

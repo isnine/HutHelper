@@ -15,6 +15,7 @@
                 <outlet property="UivSecCode" destination="86l-hC-6Yk" id="mzm-Yy-BE3"/>
                 <outlet property="UserName" destination="zbs-T7-KLD" id="4f3-JT-FBp"/>
                 <outlet property="UtfSecCode" destination="hzV-N1-1RQ" id="s4V-3O-dRr"/>
+                <outlet property="choiceBtn" destination="YX3-IF-aEC" id="EBy-ay-R9U"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -88,7 +89,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YX3-IF-aEC">
-                    <rect key="frame" x="275" y="668" width="96" height="29"/>
+                    <rect key="frame" x="275" y="668" width="112" height="29"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <state key="normal" title="选择学校">

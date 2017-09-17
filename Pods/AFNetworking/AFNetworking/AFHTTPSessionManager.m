@@ -357,27 +357,5 @@
     HTTPClient.securityPolicy = [self.securityPolicy copyWithZone:zone];
     return HTTPClient;
 }
--(NSDictionary*)cookieDictionary{
-    if (!_cookieDictionary) {
-        //       NSDictionary *cookieDe=[[NSUserDefaults standardUserDefaults]dictionaryForKey:@"cookie"];
-        //       if(cookieDe) return cookieDe;
-        NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",[defaults objectForKey:@"kUrl"],@"/default2.aspx"]]];
-        //  cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData
-        //timeoutInterval:3];
-        
-        [NSURLConnection sendSynchronousRequest:request
-                              returningResponse:nil
-                                          error:nil];
-        
-        NSHTTPCookieStorage *cookieJar = [NSHTTPCookieStorage sharedHTTPCookieStorage];
-        NSArray *cookies =[cookieJar cookies];
-        _cookieDictionary= [NSHTTPCookie requestHeaderFieldsWithCookies:cookies];
-        //       _cookieDictionary=nil;
-    }
-    
-    
-    return _cookieDictionary;
-    //获取cookie
-}
+
 @end
