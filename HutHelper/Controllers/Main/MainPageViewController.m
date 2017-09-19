@@ -239,9 +239,10 @@ int class_error_;
     if((![defaults objectForKey:@"Score"])||(![defaults objectForKey:@"ScoreRank"])){
         dispatch_group_t group = dispatch_group_create();
         dispatch_queue_t q = dispatch_get_global_queue(0, 0);
-        __block ScoreStatus *scoreStatus=ScoreOK;
+        __block ScoreStatus scoreStatus=ScoreOK;
+        __block NSString *errorStr;
         //分数队列请求
-        
+        [MBProgressHUD showMessage:@"加载中" toView:self.view];
         dispatch_group_async(group, q, ^{
             dispatch_group_enter(group);
             [APIRequest GET:Config.getApiScores parameters:nil timeout:8.0 success:^(id responseObject){
@@ -250,16 +251,18 @@ int class_error_;
                 if([msg isEqualToString:@"ok"]){
                     [Config saveScore:scoreData];
                 }else if([msg isEqualToString:@"令牌错误"]){
-                    [MBProgressHUD showError:ERROR_MSG_INVALID toView:self.view];
+                    errorStr=ERROR_MSG_INVALID;
                     scoreStatus=scoreStatus+1;
                 }else{
-                    [MBProgressHUD showError:msg toView:self.view];
+                    errorStr=msg;
                     scoreStatus=scoreStatus+1;
                 }
+                HideAllHUD
                 dispatch_group_leave(group);
                 
             }failure:^(NSError *error){
-                [MBProgressHUD showError:@"网络超时" toView:self.view];
+                HideAllHUD
+                errorStr=@"网络超时";
                 scoreStatus=scoreStatus+1;
                 dispatch_group_leave(group);
             }];
@@ -272,28 +275,44 @@ int class_error_;
                 if ([responseObject[@"msg"]isEqualToString:@"ok"]) {
                     [Config saveScoreRank:responseObject];
                 }else if([responseObject[@"msg"] isEqualToString:@"令牌错误"]){
-                    [MBProgressHUD showError:ERROR_MSG_INVALID toView:self.view];
+                    errorStr=ERROR_MSG_INVALID;
                     scoreStatus=scoreStatus+2;
                 }else{
                     scoreStatus=scoreStatus+2;
-                    [MBProgressHUD showError:@"排名查询错误" toView:self.view];
+                    errorStr=@"排名查询错误";
                 }
+                HideAllHUD
                 dispatch_group_leave(group);
-               
             } failure:^(NSError *error) {
+                HideAllHUD
                 scoreStatus=scoreStatus+2;
-                [MBProgressHUD showError:@"网络超时" toView:self.view];
+                errorStr=@"网络超时";
                 dispatch_group_leave(group);
             }];
         });
         
         //两个队列请求完毕
         dispatch_group_notify(group, dispatch_get_main_queue(), ^{
-            if (scoreStatus==ScoreOK) {
-                [Config pushViewController:@"ScoreShow"];
+            HideAllHUD
+            switch (scoreStatus) {
+                case ScoreOK:
+                    [Config pushViewController:@"ScoreShow"];
+                    break;
+//                case ScoreRankError:
+//                    [MBProgressHUD showError:@"排名查询错误" toView:self.view];
+//                    break;
+//                case ScoreError:
+//                    [MBProgressHUD showError:@"分数查询错误" toView:self.view];
+//                    break;
+//                case ScoreAndScoreRankError:
+//                    [MBProgressHUD showError:@"排名和分数查询错误" toView:self.view];
+//                    break;
+                default:
+                     [MBProgressHUD showError:errorStr toView:self.view];
+                    break;
             }
+
             
-             HideAllHUD
         });
     }else{
         [Config pushViewController:@"ScoreShow"];
@@ -354,7 +373,6 @@ int class_error_;
     NSUInteger unitFlags                      = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay |NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
     NSDateComponents *dateComponent           = [calendar components:unitFlags fromDate:now];
     _Time.text=[NSString stringWithFormat:@"%d月%d日 周%@",(short) [dateComponent month],(short)[dateComponent day],[Math transforDay:[Math getWeekDay]]];
-    
     //倒计时
     if ([Config getCalendar]) {
         [self drawCalendar:[Config getCalendar]];
