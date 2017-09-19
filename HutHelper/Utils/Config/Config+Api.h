@@ -68,6 +68,8 @@
 +(NSString*)getApiImUserInfo:(NSString*)User_id;
 +(NSString*)getApiImStudent;
 
++(NSString*)getApiVersioniOS;
+
 +(NSString*)getApiCalendar;
 +(NSString*)apiIndex;
 @end

@@ -386,6 +386,11 @@ int class_error_;
             } failure:^(NSError *error) {
                 NSLog(@"倒计时加载失败");
             }];
+    [APIRequest GET:[Config getApiVersioniOS] parameters:nil
+            success:^(id responseObject) {
+            } failure:^(NSError *error) {
+                NSLog(@"版本接口调用失败");
+            }];
     
 }
 //绘制日历

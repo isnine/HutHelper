@@ -139,10 +139,14 @@
 +(NSString*)getApiCalendar{
     return @"http://www.hugongda.com:8888/api/v1/get/calendar";
 }
++(NSString*)getApiVersioniOS{
+    return [NSString stringWithFormat:@"%@/api/v1/get/versionIos/%@/%@",Config.apiIndex,Config.getStudentKH,[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]];
+}
 #pragma mark - 视频专栏
 +(NSString*)getApiVedioShow{
     return @"http://vedio.wxz.name/api/vedio.html";
 }
+
 #pragma mark - 私信
 +(NSString*)getApiImToken{
     return [NSString stringWithFormat:@"%@/api/v1/im/getToken",Config.apiIndexHttps];
