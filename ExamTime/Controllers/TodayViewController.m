@@ -25,7 +25,16 @@ static const int kLabelLeft=20;//距左
     NSUserDefaults *defaults=[[NSUserDefaults alloc] initWithSuiteName:@"group.HutHelper"];
     if (defaults&&([defaults objectForKey:@"Exam"]!=NULL)) {
         [self addExam];
-        [self showLabel:(23) withArray:0];
+        if(_arrayExam.count>0){
+            [self showLabel:(23) withArray:0];
+        }else{
+            UILabel *notice=[[UILabel alloc]initWithFrame:CGRectMake((10),(30),SYReal(370), (20))];
+            notice.text=@"所有考试已结束";
+            notice.textColor=[UIColor darkGrayColor];
+            notice.textAlignment = NSTextAlignmentCenter;
+            notice.font =[UIFont systemFontOfSize:SYReal(21)];
+            [self.view addSubview:notice];
+        }
     }else{
         UILabel *notice=[[UILabel alloc]initWithFrame:CGRectMake((10),(30),SYReal(370), (20))];
         notice.text=@"没有考试数据";
