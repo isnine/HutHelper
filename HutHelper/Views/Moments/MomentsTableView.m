@@ -140,15 +140,15 @@
                  NSDictionary *Say_content=[Say_Data objectForKey:@"posts"];//加载该页数据
                  if (Say_content) {
                      [Config saveSay:Say_content];
+                  [self reLoadData:Say_content];
                      [APIRequest GET:likesDataString parameters:nil success:^(id responseObject) {
                               NSDictionary *sayLikesAll = [NSDictionary dictionaryWithDictionary:responseObject];
                               [Config saveSayLikes:responseObject];
-                              [self reLoadData:Say_content];
                               [self loadLikesData:sayLikesAll];
                               [self.mj_header endRefreshing];
                               [self reloadData];
                           }failure:^(NSError *error) {
-                              [MBProgressHUD showError:@"网络错误" toView:self];
+                              
                           }];
                  }
                  else{

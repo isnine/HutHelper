@@ -30,7 +30,7 @@
 }
 #pragma mark - 登录界面
 +(NSString*)getApiLogin:(NSString*)userName passWord:(NSString*)passWord{
-    return [NSString stringWithFormat:@"%@/api/v1/get/login/%@/%@/1",Config.apiIndexHttps,userName,passWord];
+    return [NSString stringWithFormat:@"%@/api/v1/get/login/%@/%@/1",Config.apiIndex,userName,passWord];
 }
 +(NSString*)getApiLoginReset{
     return [NSString stringWithFormat:@"%@/auth/resetPass",Config.apiIndex];
@@ -161,7 +161,7 @@
 }
 
 +(NSString*)apiIndex{
-    return @"http://hugongda.com:8888";
+    return @"https://hut.wxz.name";
 }
 +(NSString*)apiIndexHttps{
     return @"https://hut.wxz.name";

@@ -329,6 +329,7 @@
     
 }
 -(void)acquireViewStare{
+    [MBProgressHUD showMessage:@"登录中" toView:self.view];
     [self.AFHROM GET:[NSString stringWithFormat:@"%@%@",[Config getUrl],@"/default2.aspx"] parameters:nil
              success:^(NSURLSessionTask *operation, id responseObject) {
                  NSStringEncoding enc = CFStringConvertEncodingToNSStringEncoding (kCFStringEncodingGB_18030_2000);
@@ -346,6 +347,7 @@
                      NSLog(@"1提取到得viewstate为%@",self.viewState);
                      [self logins];
                  }
+                 HideAllHUD
              } failure:^(NSURLSessionTask *operation, NSError *error) {
                  NSLog(@"Error: %@", [error debugDescription]);
              }];

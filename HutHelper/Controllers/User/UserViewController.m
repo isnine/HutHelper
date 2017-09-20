@@ -37,7 +37,6 @@ UIImage* img ;
     [self.headerView reloadSizeWithScrollView:self.tableView];
     [self.headerView handleClickActionWithBlock:^{
         [self getImageFromIpc];
-        
     }];
     
     /** 标题栏样式 */
@@ -245,12 +244,17 @@ NSData* data;
     else if ([defaults objectForKey:@"head_img"]){
         return [UIImage imageWithData:[defaults objectForKey:@"head_img"]];
     }else{
-        NSURL *imageUrl = [NSURL URLWithString:Url];
-        UIImage *Img=[UIImage imageWithData:[NSData dataWithContentsOfURL:imageUrl]];
-        NSData *data = UIImagePNGRepresentation(Img);
-        [defaults setObject:data forKey:@"head_img"];
-        [defaults synchronize];
-        return Img;
+        if ([Config.getSex isEqualToString:@"男"]) {
+            return [UIImage imageNamed:@"img_user_boy"];
+        }else{
+            return [UIImage imageNamed:@"img_user_girl"];
+        }
+//        NSURL *imageUrl = [NSURL URLWithString:Url];
+//        UIImage *Img=[UIImage imageWithData:[NSData dataWithContentsOfURL:imageUrl]];
+//        NSData *data = UIImagePNGRepresentation(Img);
+//        [defaults setObject:data forKey:@"head_img"];
+//        [defaults synchronize];
+//        return Img;
     }
 }
 @end
