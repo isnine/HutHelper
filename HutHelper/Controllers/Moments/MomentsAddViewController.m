@@ -108,6 +108,7 @@
         }
         else{
             //formData: 专门用于拼接需要上传的数据,在此位置生成一个要上传的数据体
+             [MBProgressHUD showMessage:@"发表中" toView:self.view];
             for (int i = 0; i < _selectedPhotos.count; i++) {
                 UIImage *image = _selectedPhotos[i];
                 [manager POST:Config.getApiMomentsImgUpload parameters:dict constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
@@ -134,9 +135,10 @@
                                                      @"content" : _Say_Text.text,
                                                      @"hidden"  : _responstring
                                                      };
-                            [MBProgressHUD showMessage:@"发表中" toView:self.view];
+                           
                             [manager POST:Url_String parameters:params success:^(NSURLSessionDataTask *task, id responseObject) {
                                 NSDictionary *response = [NSDictionary dictionaryWithDictionary:responseObject];
+                                NSLog(@"%@",response);
                                 NSString *Msg=[response objectForKey:@"msg"];
                                 if ([Msg isEqualToString:@"ok"])
                                 {
@@ -255,14 +257,5 @@
     
 }
 
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
 
 @end

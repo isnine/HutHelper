@@ -71,7 +71,7 @@
     return [NSString stringWithFormat:@"%@/api/v2/trade/create/%@/%@",Config.apiIndex,Config.getStudentKH,Config.getRememberCodeApp];
 }
 +(NSString*)getApiGoodsImgUpload{
-    return [NSString stringWithFormat:@"%@/api/v1/stuff/upload",Config.apiIndex];
+    return [NSString stringWithFormat:@"%@/api/v1/stuff/upload",Config.getApiImg];
 }
 +(NSString*)getApiGoodsShow{
     return [NSString stringWithFormat:@"%@/api/v1/stuff/detail",Config.apiIndex];
@@ -93,7 +93,7 @@
     return [NSString stringWithFormat:@"%@/api/v1/loses/create/%@/%@",Config.apiIndex,Config.getStudentKH,Config.getRememberCodeApp];
 }
 +(NSString*)getApiLostImgUpload{
-    return [NSString stringWithFormat:@"%@/api/v1/loses/upload",Config.apiIndex];
+    return [NSString stringWithFormat:@"%@/api/v1/loses/upload",Config.getApiImg];
 }
 #pragma mark - 校园说说
 +(NSString*)getApiMoments:(int)num{
@@ -106,7 +106,7 @@
     return [NSString stringWithFormat:@"%@/api/v1/moments/create/%@/%@",Config.apiIndex,Config.getStudentKH,Config.getRememberCodeApp];
 }
 +(NSString*)getApiMomentsImgUpload{
-    return [NSString stringWithFormat:@"%@/api/v1/moments/upload",Config.apiIndex];
+    return [NSString stringWithFormat:@"%@/api/v1/moments/upload",Config.getApiImg];
 }
 +(NSString*)getApiMomentsDelete{
     return [NSString stringWithFormat:@"%@/api/v1/moments/delete",Config.apiIndex];
@@ -133,9 +133,7 @@
     return @"http://218.75.197.121:8889/opac/m/index";
 }
 #pragma mark - 其他
-+(NSString*)getApiImg{
-    return @"http://www.hugongda.com:8888/";
-}
+
 +(NSString*)getApiCalendar{
     return @"http://www.hugongda.com:8888/api/v1/get/calendar";
 }
@@ -160,9 +158,15 @@
     return [NSString stringWithFormat:@"%@/api/v2/Im/get_students",Config.apiIndex];
 }
 
+#pragma mark - 全局
++(NSString*)getApiImg{
+    return @"http://hugongda.com:8888";
+}//images.tutuweb.cn
+
 +(NSString*)apiIndex{
-    return @"https://hut.wxz.name";
-}
+    return @"http://hugongda.com:8888";
+}//api.tutuweb.cn
+
 +(NSString*)apiIndexHttps{
     return @"https://hut.wxz.name";
 }
