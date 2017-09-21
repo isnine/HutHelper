@@ -195,9 +195,6 @@ int class_error_;
                 [MBProgressHUD showError:errorStr toView:self.view];
             }
         });
-    }else{
-        [Config setIs:0];
-        [Config pushViewController:@"Class"];
     }
 }//课程表
 - (IBAction)ClassXPFind:(id)sender {  //实验课表
