@@ -163,7 +163,7 @@
             _UtfSecCode.placeholder=@"验证码";
             _UtfSecCode.hidden=true;
             _UivSecCode.hidden=true;
-            [self refreshSecCode];
+//            [self refreshSecCode];
         }else{
             
         }
@@ -320,7 +320,7 @@
             if (!error) {
                 self.UivSecCode.image = [UIImage imageWithData:responseObject];
             } else {
-                [MBProgressHUD showMessage:@"验证码刷新失败" toView:self.view];
+               // [MBProgressHUD showMessage:@"验证码刷新失败" toView:self.view];
             }
         }] resume];
 
