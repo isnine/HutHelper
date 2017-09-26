@@ -29,6 +29,7 @@
 		3A20AFFE1F43E2B800712A1E /* Color.h in Sources */ = {isa = PBXBuildFile; fileRef = 3A20AFEC1F43E21200712A1E /* Color.h */; };
 		3A20AFFF1F43E2B800712A1E /* NSDate+WQCalendarLogic.h in Sources */ = {isa = PBXBuildFile; fileRef = 3A20AFED1F43E21200712A1E /* NSDate+WQCalendarLogic.h */; };
 		3A20B0001F43E2B800712A1E /* NSDate+WQCalendarLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A20AFEE1F43E21200712A1E /* NSDate+WQCalendarLogic.m */; };
+		3A2179BF1F7A9D9900210794 /* JSPatchPlatform.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A2179901F7A9AEC00210794 /* JSPatchPlatform.framework */; };
 		3A2FF4EA1E50179700B07EB6 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A2FF4E91E50179700B07EB6 /* NotificationCenter.framework */; };
 		3A2FF4F51E50179700B07EB6 /* Extend.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 3A2FF4E81E50179700B07EB6 /* Extend.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		3A2FF4FC1E50202000B07EB6 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A2FF4FB1E50202000B07EB6 /* Media.xcassets */; };
@@ -256,6 +257,7 @@
 		3A20AFEC1F43E21200712A1E /* Color.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Color.h; sourceTree = "<group>"; };
 		3A20AFED1F43E21200712A1E /* NSDate+WQCalendarLogic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDate+WQCalendarLogic.h"; sourceTree = "<group>"; };
 		3A20AFEE1F43E21200712A1E /* NSDate+WQCalendarLogic.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDate+WQCalendarLogic.m"; sourceTree = "<group>"; };
+		3A2179901F7A9AEC00210794 /* JSPatchPlatform.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JSPatchPlatform.framework; sourceTree = "<group>"; };
 		3A2FF4E81E50179700B07EB6 /* Extend.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Extend.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A2FF4E91E50179700B07EB6 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		3A2FF4F21E50179700B07EB6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -554,6 +556,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A2179BF1F7A9D9900210794 /* JSPatchPlatform.framework in Frameworks */,
 				3A8BACF91DDDBD71001C78B8 /* libsqlite3.tbd in Frameworks */,
 				3AE01BAC1EB0D24900D5B7EF /* Foundation.framework in Frameworks */,
 				3AE01BAA1EB0D23F00D5B7EF /* CoreFoundation.framework in Frameworks */,
@@ -620,6 +623,14 @@
 				3A20AFEE1F43E21200712A1E /* NSDate+WQCalendarLogic.m */,
 			);
 			path = ZFCalendar;
+			sourceTree = "<group>";
+		};
+		3A21798F1F7A9ADB00210794 /* JSPATCH */ = {
+			isa = PBXGroup;
+			children = (
+				3A2179901F7A9AEC00210794 /* JSPatchPlatform.framework */,
+			);
+			path = JSPATCH;
 			sourceTree = "<group>";
 		};
 		3A2FF4EB1E50179700B07EB6 /* Extend */ = {
@@ -1131,6 +1142,7 @@
 		3A98CBCB1E7CFA9C00CABD0D /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				3A21798F1F7A9ADB00210794 /* JSPATCH */,
 				3AA270421F6E700300F5E6F3 /* Hpple */,
 				3AA270491F6E700400F5E6F3 /* Picker */,
 				3A20AFDC1F43E21200712A1E /* ZFCalendar */,
