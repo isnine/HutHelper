@@ -15,7 +15,8 @@
     return [NSString stringWithFormat:@"%@/api/v1/get/lessons/%@/%@",Config.apiIndex,Config.getStudentKH,Config.getRememberCodeApp];
 }
 +(NSString*)getApiClassXP{
-    return [NSString stringWithFormat:@"%@/api/v1/get/lessonsexp/%@/%@",Config.apiIndex,Config.getStudentKH,Config.getRememberCodeApp];
+    //    return [NSString stringWithFormat:@"%@/api/v1/get/lessonsexp/%@/%@",Config.apiIndex,Config.getStudentKH,Config.getRememberCodeApp];
+    return [NSString stringWithFormat:@"%@/api/v3/Home/lessonsExp/%@/%@",Config.apiIndex,Config.getStudentKH,Config.getRememberCodeApp];
 }
 #pragma mark - 考试查询
 +(NSString*)getApiExam{
@@ -23,10 +24,12 @@
 }
 #pragma mark - 成绩查询
 +(NSString*)getApiScores{
-    return [NSString stringWithFormat:@"%@/api/v1/get/scores/%@/%@/%@",Config.apiIndex,Config.getStudentKH,Config.getRememberCodeApp,[[NSString stringWithFormat:@"%@%@%@",Config.getStudentKH,Config.getRememberCodeApp,@"f$Z@%"] sha1Str]];
+//    return [NSString stringWithFormat:@"%@/api/v1/get/scores/%@/%@/%@",Config.apiIndex,Config.getStudentKH,Config.getRememberCodeApp,[[NSString stringWithFormat:@"%@%@%@",Config.getStudentKH,Config.getRememberCodeApp,@"f$Z@%"] sha1Str]];
+    return [NSString stringWithFormat:@"%@/api/v3/Home/scores/%@/%@",Config.apiIndex,Config.getStudentKH,Config.getRememberCodeApp];
 }
 +(NSString*)getApiRank{
-    return [NSString stringWithFormat:@"%@/api/v1/get/ranking/%@/%@",Config.apiIndex,Config.getStudentKH,Config.getRememberCodeApp];
+  //  return [NSString stringWithFormat:@"%@/api/v1/get/ranking/%@/%@",Config.apiIndex,Config.getStudentKH,Config.getRememberCodeApp];
+    return [NSString stringWithFormat:@"%@/api/v3/Home/ranking/%@/%@",Config.apiIndex,Config.getStudentKH,Config.getRememberCodeApp];
 }
 #pragma mark - 登录界面
 +(NSString*)getApiLogin:(NSString*)userName passWord:(NSString*)passWord{
@@ -44,7 +47,8 @@
 }
 #pragma mark - 网上作业
 +(NSString*)getApiHomeWork{
-    return [NSString stringWithFormat:@"%@/api/v1/get/myhomework/%@/%@",Config.apiIndex,Config.getStudentKH,Config.getRememberCodeApp];
+    //return [NSString stringWithFormat:@"%@/api/v1/get/myhomework/%@/%@",Config.apiIndex,Config.getStudentKH,Config.getRememberCodeApp];
+    return [NSString stringWithFormat:@"%@/api/v3/Home/myHomeWork/%@/%@",Config.apiIndex,Config.getStudentKH,Config.getRememberCodeApp];
 }
 #pragma mark - 电费查询
 +(NSString*)getApiPower:(NSString*)build room:(NSString*)room{
@@ -160,11 +164,11 @@
 
 #pragma mark - 全局
 +(NSString*)getApiImg{
-    return @"http://hugongda.com:8888";
+    return @"http://images.tutuweb.cn:8888";
 }//images.tutuweb.cn
 
 +(NSString*)apiIndex{
-    return @"http://hugongda.com:8888";
+    return @"https://api.tutuweb.cn";
 }//api.tutuweb.cn
 
 +(NSString*)apiIndexHttps{

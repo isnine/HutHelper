@@ -129,6 +129,8 @@
     cell.img1.clipsToBounds = YES;
     [cell.img1 sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/%@",Config.getApiImg,hand.image]]
                  placeholderImage:[UIImage imageNamed:@"load_img"]];
+    
+    NSLog(@"%@",[NSString stringWithFormat:@"%@/%@",Config.getApiImg,hand.image]);
     if (_handArray.count>(indexPath.section+1)*2) {
         Hand *hand=_handArray[(short)(indexPath.section+1)*2];
         cell.price2.text=[NSString stringWithFormat:@"¥%@",hand.prize];
