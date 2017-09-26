@@ -34,7 +34,10 @@
     }else{
       self.searchBar =[[UISearchBar alloc]initWithFrame:CGRectMake(0, 0, SYReal(370),SYReal(70))];
     }
+#else
+    self.searchBar =[[UISearchBar alloc]initWithFrame:CGRectMake(0, 0, SYReal(370),SYReal(70))];
 #endif
+    
     [self.searchBar setContentMode:UIViewContentModeLeft];
     self.searchBar.delegate = self;
     self.searchBar.placeholder=@"搜索对方的姓名";
