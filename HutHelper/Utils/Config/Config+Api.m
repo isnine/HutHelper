@@ -169,6 +169,7 @@
 
 +(NSString*)apiIndex{
     return @"https://api.tutuweb.cn";
+   // return @"https://hut.wxz.name";
 }//api.tutuweb.cn
 
 +(NSString*)apiIndexHttps{

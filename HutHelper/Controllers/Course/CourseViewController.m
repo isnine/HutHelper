@@ -17,7 +17,7 @@
 #import "User.h"
 #import "AFNetworking.h"
 #import "MBProgressHUD+MJ.h"
- 
+ #import "DTKDropdownMenuView.h"
 #import "YCXMenu.h"
 #import "NSData+CRC32.h"
 #import "Config.h"
@@ -78,10 +78,58 @@ NSString *show_xp;
         [self isxp];
     }
     selectss=1;
-    
+    [self addTitleMenu];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(removeYCXMenuBlind) name:@"YCXMenuWillDisappearNotification" object:nil];
 }
+- (void)addTitleMenu
+{
+    DTKDropdownItem *item0 = [DTKDropdownItem itemWithTitle:@"所有成绩" callBack:^(NSUInteger index, id info) {
+//        [self getScoreData];
+//        [self.tableView reloadData];
+    }];
+    DTKDropdownItem *item1,*item2,*item3,*item4,*item5,*item6,*item7,*item8;
+    DTKDropdownMenuView *menuView;
+    item1 = [DTKDropdownItem itemWithTitle:@"第1周" callBack:^(NSUInteger index, id info) {
 
+        
+    }];
+    item2 = [DTKDropdownItem itemWithTitle:@"第2周" callBack:^(NSUInteger index, id info) {
+
+    }];
+    item3 = [DTKDropdownItem itemWithTitle:@"第3周" callBack:^(NSUInteger index, id info) {
+
+    }];
+    item4 = [DTKDropdownItem itemWithTitle:@"第4周" callBack:^(NSUInteger index, id info) {
+
+    }];
+    item5 = [DTKDropdownItem itemWithTitle:@"第5周" callBack:^(NSUInteger index, id info) {
+
+    }];
+    item6 = [DTKDropdownItem itemWithTitle:@"第6周" callBack:^(NSUInteger index, id info) {
+
+    }];
+    item7 = [DTKDropdownItem itemWithTitle:@"第7周" callBack:^(NSUInteger index, id info) {
+
+    }];
+    item8 = [DTKDropdownItem itemWithTitle:@"第8周" callBack:^(NSUInteger index, id info) {
+
+    }];
+    
+        menuView = [DTKDropdownMenuView dropdownMenuViewForNavbarTitleViewWithFrame:CGRectMake(SYReal(123.0), 0, SYReal(200.f), SYReal(44.f)) dropdownItems:@[item1,item2,item3,item4,item5,item6,item7,item8]];
+
+    menuView.currentNav = self.navigationController;
+    menuView.dropWidth = SYReal(150.f);
+    menuView.titleFont = [UIFont systemFontOfSize:18.f];
+    menuView.textColor = [UIColor blackColor];//每栏颜色
+    menuView.textFont = [UIFont systemFontOfSize:13.f];
+    menuView.textFont = [UIFont systemFontOfSize:14.f];
+    menuView.animationDuration = 0.2f;
+    menuView.selectedIndex = 0;
+    menuView.cellSeparatorColor = [UIColor whiteColor];
+    menuView.titleColor=[UIColor blackColor];//标题颜色
+    [menuView setArrow];
+    self.navigationItem.titleView = menuView;
+}
 - (void)addCourse{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     

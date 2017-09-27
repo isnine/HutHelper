@@ -130,7 +130,7 @@
     ChatUser *chatUser=_chatChoiceArray[indexPath.section];
     if ([chatUser.last_use isEqualToString:@""]) {
         [MBProgressHUD showError:@"用户未使用工大助手" toView:self.view];
-        return;
+//        return;
     }
     UserShowViewController *userShowViewController=[[UserShowViewController alloc]init];
     userShowViewController.name= chatUser.TrueName;

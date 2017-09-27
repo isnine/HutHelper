@@ -20,7 +20,7 @@
  *  @return
  */
 static CGFloat DDPMAX_TABLEVIEW_HEIGHT(){
-    return [UIScreen mainScreen].bounds.size.height * 0.6f;
+    return [UIScreen mainScreen].bounds.size.height * 0.3f;
 }
 
 static CGFloat DDP_TABLEVIEW_HEIGHT = 0.f;
@@ -276,7 +276,7 @@ UITableViewDataSource
                          CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
                          maskLayer.frame = bound;
                          maskLayer.path = maskPath.CGPath;
-                         menuWeakSelf.tableView.layer.mask = maskLayer;
+                      //   menuWeakSelf.tableView.layer.mask = maskLayer;
                          menuWeakSelf.backgroundView.alpha = self.backgroundAlpha;
                      } completion:^(BOOL finished) {
                          menuWeakSelf.titleButton.enabled = YES;

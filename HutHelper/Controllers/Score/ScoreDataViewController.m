@@ -199,7 +199,6 @@
 {
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     int grade=[[defaults objectForKey:@"sourceGrade"] intValue];
-    
     DTKDropdownItem *item0 = [DTKDropdownItem itemWithTitle:@"所有成绩" callBack:^(NSUInteger index, id info) {
         [self getScoreData];
         [self.tableView reloadData];

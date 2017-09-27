@@ -11,7 +11,8 @@
 
 #import "User.h"
 #import "MBProgressHUD+MJ.h"
- 
+#import "APIRequest.h"
+
 @interface UsernameViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *Username;
 
@@ -29,40 +30,27 @@
 - (IBAction)Add:(id)sender {
     [MBProgressHUD showMessage:@"修改中" toView:self.view];
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    NSString *Url_String=Config.getApiProfileUser;
-    NSURL * url  = [NSURL URLWithString:Url_String];
-    NSString *str=@"username=";
-    str=[str stringByAppendingString:_Username.text];
     NSString *username_text=_Username.text;
-    NSLog(@"地址%@",Url_String);
-    NSLog(@"传值%@",str);
-    NSMutableURLRequest * request      = [NSMutableURLRequest requestWithURL:url];
-    //设置请求方式(默认的是get方式)
-    request.HTTPMethod                 = @"POST";//使用大写规范
-    //设置请求参数
-    request.HTTPBody                   = [str dataUsingEncoding:NSUTF8StringEncoding];
-    //创建NSURLConnection 对象用来连接服务器并且发送请求
-    NSURLConnection * conn   = [[NSURLConnection alloc] initWithRequest:request delegate:self];
-    [conn start];
-    NSData *returnData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
-    NSDictionary *returnData_Dic       = [returnData objectFromJSONData];//数据 -> 字典
-    NSString *Msg=[returnData_Dic objectForKey:@"msg"];
-    
-    if ([Msg isEqualToString:@"ok"]) {
-        [defaults setObject:username_text forKey:@"username"];
+    NSDictionary *dict = @{@"username":username_text};
+    [APIRequest POST:Config.getApiProfileUser parameters:dict success:^(id responseObject) {
         HideAllHUD
-        [MBProgressHUD showSuccess:@"修改成功" toView:self.view];
-          [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:([self.navigationController.viewControllers count] -3)] animated:YES];  //返回用户
-    }
-    else if ([Msg isEqualToString:@"令牌错误"]){
-        HideAllHUD
-        [MBProgressHUD showError:@"登录过期，请重新登录" toView:self.view];
-        [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:([self.navigationController.viewControllers count] -3)] animated:YES];  //返回Home
-    }
-    else{
+        NSDictionary *responseDic = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
+         NSString *Msg=[responseDic objectForKey:@"msg"];
+        if ([Msg isEqualToString:@"ok"]) {
+            [defaults setObject:username_text forKey:@"username"];
+            [MBProgressHUD showSuccess:@"修改成功" toView:self.view];
+        }
+        else if ([Msg isEqualToString:@"令牌错误"]){
+            [MBProgressHUD showError:@"登录过期，请重新登录" toView:self.view];
+        }
+        else{
+            [MBProgressHUD showError:@"网络错误" toView:self.view];
+        }
+    } failure:^(NSError *error) {
         HideAllHUD
         [MBProgressHUD showError:@"网络错误" toView:self.view];
-    }
+    }];
+
 
     
 }
