@@ -425,7 +425,7 @@
         cellTime.textLabel.text = [NSString stringWithFormat:@"%zd", indexPath.row+1];
         
         cellTime.detailTextLabel.text = [self transformTime:indexPath.row+1];
-        cellTime.detailTextLabel.font = [UIFont systemFontOfSize: SYReal(7)];
+        cellTime.detailTextLabel.font = [UIFont systemFontOfSize: SYReal(6)];
         
         cellTime.backgroundColor = RGB(237, 241, 241, 1.0);
         cellTime.detailTextLabel.textColor = [UIColor darkGrayColor];
