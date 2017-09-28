@@ -262,9 +262,9 @@ static int Is ;
 #pragma mark - 通知
 +(void)addNotice{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    NSDictionary *noticeDictionary=@{@"time":@"2017-09-17 08:00",
+    NSDictionary *noticeDictionary=@{@"time":@"2017-09-28 08:00",
                                      @"title":@"工大助手",
-                                     @"body":@"工大助手V3.3.0更新日志\n\n- 更改为外网接口\n点一下右下角的评分赏我几颗星星吧୧(๑•̀⌄•́๑)૭"
+                                     @"body":@"工大助手V3.3.0更新日志\n\n- 更改为外网接口\n- 修改了课程表选周方式\n- 真的吃掉了课程表打开两次的问题\n\n程序猿正在努力改进课程表和成绩查询，点一下右下角的评分喂我几颗星星吧୧(๑•̀⌄•́๑)૭"
                                      };
     
     NSDictionary *noticeDictionary1=@{@"time":@"2017-08-14 08:00",

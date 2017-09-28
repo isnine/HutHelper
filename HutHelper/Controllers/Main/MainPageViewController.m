@@ -123,12 +123,13 @@ int class_error_;
     if([Config getCourse]!=nil){
         [Config setIs:0];
         [Config pushViewController:@"Class"];
+        return;
     }
     if ([Config isTourist]) {
         [MBProgressHUD showError:@"游客请登录" toView:self.view];
         return;
     }
-    if(([Config getCourse]==nil)||([Config getCourseXp]==nil)){
+    if([Config getCourse]==nil){
         [MBProgressHUD showMessage:@"查询中" toView:self.view];
         NSString *urlString=Config.getApiClass;
         NSString *urlXpString=Config.getApiClassXP;
@@ -160,30 +161,30 @@ int class_error_;
             }];
         });
         
-        //实验课表队列请求
-        dispatch_group_async(group, q, ^{
-            dispatch_group_enter(group);
-            [APIRequest GET:urlXpString parameters:nil success:^(id responseObject) {
-                NSString *msg=responseObject[@"msg"];
-                if ([msg isEqualToString:@"ok"]) {
-                    NSArray *arrayCourseXp= responseObject[@"data"];
-                    [Config saveCourseXp:arrayCourseXp];
-                    [Config saveWidgetCourseXp:arrayCourseXp];
-                }else if([msg isEqualToString:@"令牌错误"]){
-                    status=status+1;
-                    errorStr=ERROR_MSG_INVALID;
-                }else{
-                    status=status+1;
-                    errorStr=msg;
-                }
-                HideAllHUD
-                dispatch_group_leave(group);
-            } failure:^(NSError *error) {
-                status=status+1;
-                 errorStr=@"网络超时，实验课表查询失败";
-                dispatch_group_leave(group);
-            }];
-        });
+//        //实验课表队列请求
+//        dispatch_group_async(group, q, ^{
+//            dispatch_group_enter(group);
+//            [APIRequest GET:urlXpString parameters:nil success:^(id responseObject) {
+//                NSString *msg=responseObject[@"msg"];
+//                if ([msg isEqualToString:@"ok"]) {
+//                    NSArray *arrayCourseXp= responseObject[@"data"];
+//                    [Config saveCourseXp:arrayCourseXp];
+//                    [Config saveWidgetCourseXp:arrayCourseXp];
+//                }else if([msg isEqualToString:@"令牌错误"]){
+//                    status=status+1;
+//                    errorStr=ERROR_MSG_INVALID;
+//                }else{
+//                    status=status+1;
+//                    errorStr=msg;
+//                }
+//                HideAllHUD
+//                dispatch_group_leave(group);
+//            } failure:^(NSError *error) {
+//                status=status+1;
+//                 errorStr=@"网络超时，实验课表查询失败";
+//                dispatch_group_leave(group);
+//            }];
+//        });
         
         //两个队列都完成后
         dispatch_group_notify(group, dispatch_get_main_queue(), ^{

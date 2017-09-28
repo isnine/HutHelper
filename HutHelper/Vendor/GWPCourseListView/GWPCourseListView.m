@@ -46,12 +46,12 @@
 
 - (void)setup{
     UIView *sep = [[UIView alloc] init];
-    [self addSubview:sep];
+   // [self addSubview:sep];
     sep.backgroundColor = RGB(0, 0, 0, 0.07);
     self.sepLine = sep;
     self.backgroundColor = [UIColor clearColor];
     self.textLabel.textAlignment = NSTextAlignmentCenter;
-    self.textLabel.font = [UIFont systemFontOfSize:12];
+    self.textLabel.font = [UIFont systemFontOfSize:SYReal(12)];
     self.textLabel.numberOfLines = 0;
 }
 
@@ -134,13 +134,13 @@
 
 - (void)setup{
     /*=============================== 初始化变量 ==============================*/
-    _itemHeight = 50;
+    _itemHeight = SYReal(60);
     _timeTableWidth = 50;
     _courseListWidth = 0;
-    _maxCourseCount = 12;
+    _maxCourseCount = 10;
     _selectedIndex = [Math getWeekDay];
     _topBarBgColor = [UIColor whiteColor];
-    self.backgroundColor = RGB(245, 245, 245, 1);
+    self.backgroundColor = RGB(237, 241, 241, 1);
     
     /*=============================== 添加控件 ==============================*/
     NSMutableArray *temp;
@@ -376,15 +376,65 @@
     tableView.backgroundColor = [UIColor clearColor];
     return [tableView isEqual:self.timeTableView] ? _maxCourseCount :20;
 }
-
+-(NSString*)transformTime:(NSInteger)row{
+    switch (row) {
+        case 1:
+            return @"8:00";
+            break;
+        case 2:
+            return @"8:55";
+            break;
+        case 3:
+            return @"10:00";
+            break;
+        case 4:
+            return @"10:55";
+            break;
+        case 5:
+            return @"14:00";
+            break;
+        case 6:
+            return @"14:55";
+            break;
+        case 7:
+            return @"16:00";
+            break;
+        case 8:
+            return @"16:55";
+            break;
+        case 9:
+            return @"19:00";
+            break;
+        case 10:
+            return @"19:55";
+            break;
+        default:
+            return @"";
+            break;
+    }
+}
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     CourseCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([CourseCell class])];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     if ([tableView isEqual:self.timeTableView]) {
-        cell.textLabel.text = [NSString stringWithFormat:@"%zd", indexPath.row+1];
-        cell.backgroundColor = RGB(243, 243, 243, 1.0);
-        cell.textLabel.textColor = [UIColor darkGrayColor];
-        return cell;
+        UITableViewCell *cellTime = [tableView cellForRowAtIndexPath:indexPath];
+        if (cellTime == nil) {
+            cellTime = [[UITableViewCell alloc] initWithStyle: UITableViewCellStyleSubtitle
+                                          reuseIdentifier: @"cellTime"];
+        }
+        cellTime.textLabel.text = [NSString stringWithFormat:@"%zd", indexPath.row+1];
+        
+        cellTime.detailTextLabel.text = [self transformTime:indexPath.row+1];
+        cellTime.detailTextLabel.font = [UIFont systemFontOfSize: SYReal(7)];
+        
+        cellTime.backgroundColor = RGB(237, 241, 241, 1.0);
+        cellTime.detailTextLabel.textColor = [UIColor darkGrayColor];
+        
+//        cell.textLabel.text = [NSString stringWithFormat:@"%zd", indexPath.row+1];
+//        //cell.textLabel.numberOfLines=2;
+//        cell.backgroundColor = RGB(243, 243, 243, 1.0);
+//        cell.textLabel.textColor = [UIColor darkGrayColor];
+        return cellTime;
     }
     
     NSPredicate *pre = [NSPredicate predicateWithBlock:^BOOL(id<Course>  _Nonnull evaluatedObject, NSDictionary<NSString *,id> * _Nullable bindings) {

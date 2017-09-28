@@ -45,19 +45,19 @@
         self.tableView.contentInset = UIEdgeInsetsMake(64, 0, 0, 0);
     }
 #endif
-    //左滑手势
-    UISwipeGestureRecognizer* leftSwipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipes:)];
-    leftSwipeGestureRecognizer.direction = UISwipeGestureRecognizerDirectionLeft;
-    [self.view addGestureRecognizer:leftSwipeGestureRecognizer];
+//    //左滑手势
+//    UISwipeGestureRecognizer* leftSwipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipes:)];
+//    leftSwipeGestureRecognizer.direction = UISwipeGestureRecognizerDirectionLeft;
+//    [self.view addGestureRecognizer:leftSwipeGestureRecognizer];
 }
 
-- (void)handleSwipes:(UISwipeGestureRecognizer *)sender
-{
-    if (sender.direction == UISwipeGestureRecognizerDirectionLeft) {
-        [Config setIs:1];
-        [Config pushViewController:@"Class"];
-    }
-}
+//- (void)handleSwipes:(UISwipeGestureRecognizer *)sender
+//{
+//    if (sender.direction == UISwipeGestureRecognizerDirectionLeft) {
+//        [Config setIs:1];
+//        [Config pushViewController:@"Class"];
+//    }
+//}
 
 
 - (void)didReceiveMemoryWarning {
