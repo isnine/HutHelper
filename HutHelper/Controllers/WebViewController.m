@@ -59,11 +59,11 @@
 {
     HideAllHUD
     NSString *url=webView.request.URL.absoluteString;
-    if([url isEqualToString:@"http://hugongda.com:8888/"]){
+    if([url isEqualToString:[NSString stringWithFormat:@"%@/",Config.apiIndex]]){
         [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:([self.navigationController.viewControllers count] -2)] animated:YES];  //返回上一个View
     }
     CGSize screenSize = [UIScreen mainScreen].bounds.size;//获得屏幕大小
-    if(([url rangeOfString:@"http://hugongda.com:8888/home/post/39"].location !=NSNotFound)){
+    if(([url rangeOfString:[NSString stringWithFormat:@"%@/home/post/39",Config.apiIndex]].location !=NSNotFound)){
         if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPhone) {
             // 竖屏情况
             if (screenSize.height > screenSize.width) {

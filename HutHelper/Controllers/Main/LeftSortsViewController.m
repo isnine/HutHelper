@@ -230,7 +230,7 @@
     //创建网页内容对象
     UMShareWebpageObject *shareObject = [UMShareWebpageObject shareObjectWithTitle:@"工大助手" descr:@"工大助手APP是由湖南工业大学计算机学院实验室移动组和网络组，为工大学生开发的产品，志于帮助同学们更加便捷的体验校园生活。" thumImage:[UIImage imageNamed:@"ico"]];
     //设置网页地址
-    shareObject.webpageUrl =@"http://hugongda.com:8888/res/app/";
+    shareObject.webpageUrl =[NSString stringWithFormat:@"%@/res/index",Config.apiIndex];
     //分享消息对象设置分享内容对象
     messageObject.shareObject = shareObject;
     //调用分享接口

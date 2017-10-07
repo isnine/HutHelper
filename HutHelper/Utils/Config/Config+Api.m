@@ -43,7 +43,7 @@
     return [NSString stringWithFormat:@"%@/api/v1/set/profile/%@/%@",Config.apiIndex,Config.getStudentKH,Config.getRememberCodeApp];
 }
 +(NSString*)getApiProfileAvatar{
-    return [NSString stringWithFormat:@"%@/api/v1/set/avatar/%@/%@",Config.apiIndex,Config.getStudentKH,Config.getRememberCodeApp];
+    return [NSString stringWithFormat:@"%@/api/v1/set/avatar/%@/%@",Config.getApiImg,Config.getStudentKH,Config.getRememberCodeApp];
 }
 #pragma mark - 网上作业
 +(NSString*)getApiHomeWork{
@@ -139,7 +139,7 @@
 #pragma mark - 其他
 
 +(NSString*)getApiCalendar{
-    return @"http://www.hugongda.com:8888/api/v1/get/calendar";
+    return [NSString stringWithFormat:@"%@/api/v1/get/calendar",Config.apiIndex];
 }
 +(NSString*)getApiVersioniOS{
     return [NSString stringWithFormat:@"%@/api/v1/get/versionIos/%@/%@",Config.apiIndex,Config.getStudentKH,[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]];

@@ -43,7 +43,7 @@
 - (IBAction)helpBtn:(id)sender {
     UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     WebViewController *webViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Web"];
-    webViewController.urlString=@"http://hugongda.com:8888/home/post/39";
+    webViewController.urlString=[NSString stringWithFormat:@"%@/home/post/39",Config.apiIndex];
     webViewController.viewTitle=@"帮助";
     [self.navigationController pushViewController:webViewController animated:YES];
 }
@@ -67,7 +67,7 @@
 - (IBAction)userPermitBtn:(id)sender {
     UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     WebViewController *webViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Web"];
-    webViewController.urlString=@"http://hugongda.com:8888/home/post/40";
+    webViewController.urlString=[NSString stringWithFormat:@"%@/home/post/40",Config.apiIndex];
     webViewController.viewTitle=@"用户许可协议及免责声明";
     [self.navigationController pushViewController:webViewController animated:YES];
 }
