@@ -171,7 +171,7 @@ NSString *show_xp;
     menuView.textFont = [UIFont systemFontOfSize:13.f];
     menuView.textFont = [UIFont systemFontOfSize:14.f];
     menuView.animationDuration = 0.2f;
-    menuView.selectedIndex = now_week;
+    menuView.selectedIndex = now_week-1;
     menuView.cellSeparatorColor = [UIColor whiteColor];
     menuView.titleColor=[UIColor blackColor];//标题颜色
     [menuView setArrow];
@@ -179,7 +179,6 @@ NSString *show_xp;
 }
 - (void)addCourse{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    
     CourseModel *a1  = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
     CourseModel *a2  = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
     CourseModel *a3  = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
@@ -454,8 +453,6 @@ NSString *show_xp;
              HideAllHUD
              [MBProgressHUD showError:@"网络错误，平时课表查询失败" toView:self.view];
          }];
-    
-    
 }
 
 #pragma mark - GWPCourseListViewDataSource

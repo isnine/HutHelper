@@ -80,13 +80,16 @@ int class_error_;
     //通知数目
     RCIMClient *test=[RCIMClient sharedRCIMClient];
     [test addObserver:self forKeyPath:@"totalUnreadCount" options:NSKeyValueObservingOptionNew context:nil];
-    if ([[RCIMClient sharedRCIMClient] getTotalUnreadCount]>0) {
-        self.navigationItem.rightBarButtonItem.badgeValue = @" ";
-        [self.navigationItem.rightBarButtonItem setBadgeOriginY:SYReal(13)];
-    }else if([[RCIMClient sharedRCIMClient] getTotalUnreadCount]==0){
-        self.navigationItem.rightBarButtonItem.badgeValue = @"";
+//    if ([[RCIMClient sharedRCIMClient] getTotalUnreadCount]>0) {
+//        self.navigationItem.rightBarButtonItem.badgeValue = @" ";
+//        [self.navigationItem.rightBarButtonItem setBadgeOriginY:SYReal(13)];
+//    }else if([[RCIMClient sharedRCIMClient] getTotalUnreadCount]==0){
+//        self.navigationItem.rightBarButtonItem.badgeValue = @"";
+//    }
+    if ([[RCIMClient sharedRCIMClient] getTotalUnreadCount]>=0) {
+        self.navigationItem.rightBarButtonItem.badgeValue = [NSString stringWithFormat:@"%d",[[RCIMClient sharedRCIMClient] getTotalUnreadCount]];
+        [self.navigationItem.rightBarButtonItem setBadgeOriginY:SYReal(3)];
     }
-
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
