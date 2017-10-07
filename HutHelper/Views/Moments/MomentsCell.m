@@ -492,7 +492,7 @@
 -(UIImage*) circleImage:(UIImage*) image{
     UIGraphicsBeginImageContext(image.size);
     CGContextRef context = UIGraphicsGetCurrentContext();
-    CGContextSetLineWidth(context, 2);
+    CGContextSetLineWidth(context, 0);
     CGContextSetStrokeColorWithColor(context, [UIColor whiteColor].CGColor);
     CGRect rect = CGRectMake(0, 0, image.size.width , image.size.height );
     CGContextAddEllipseInRect(context, rect);

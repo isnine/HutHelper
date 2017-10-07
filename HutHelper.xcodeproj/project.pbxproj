@@ -11,30 +11,19 @@
 		3A06D9B51E8CEDE400066DD1 /* ExamCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A06D9B31E8CEDE400066DD1 /* ExamCell.m */; };
 		3A06D9B61E8CEDE400066DD1 /* ExamCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A06D9B41E8CEDE400066DD1 /* ExamCell.xib */; };
 		3A1CEC331E93D71A002D8583 /* Vedio.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A1CEC321E93D71A002D8583 /* Vedio.m */; };
-		3A20AFEF1F43E2B800712A1E /* CalendarDayCell.h in Sources */ = {isa = PBXBuildFile; fileRef = 3A20AFDD1F43E21200712A1E /* CalendarDayCell.h */; };
 		3A20AFF01F43E2B800712A1E /* CalendarDayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A20AFDE1F43E21200712A1E /* CalendarDayCell.m */; };
-		3A20AFF11F43E2B800712A1E /* CalendarDayModel.h in Sources */ = {isa = PBXBuildFile; fileRef = 3A20AFDF1F43E21200712A1E /* CalendarDayModel.h */; };
 		3A20AFF21F43E2B800712A1E /* CalendarDayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A20AFE01F43E21200712A1E /* CalendarDayModel.m */; };
-		3A20AFF31F43E2B800712A1E /* CalendarHomeViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 3A20AFE11F43E21200712A1E /* CalendarHomeViewController.h */; };
 		3A20AFF41F43E2B800712A1E /* CalendarHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A20AFE21F43E21200712A1E /* CalendarHomeViewController.m */; };
-		3A20AFF51F43E2B800712A1E /* CalendarLogic.h in Sources */ = {isa = PBXBuildFile; fileRef = 3A20AFE31F43E21200712A1E /* CalendarLogic.h */; };
 		3A20AFF61F43E2B800712A1E /* CalendarLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A20AFE41F43E21200712A1E /* CalendarLogic.m */; };
-		3A20AFF71F43E2B800712A1E /* CalendarMonthCollectionViewLayout.h in Sources */ = {isa = PBXBuildFile; fileRef = 3A20AFE51F43E21200712A1E /* CalendarMonthCollectionViewLayout.h */; };
 		3A20AFF81F43E2B800712A1E /* CalendarMonthCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A20AFE61F43E21200712A1E /* CalendarMonthCollectionViewLayout.m */; };
-		3A20AFF91F43E2B800712A1E /* CalendarMonthHeaderView.h in Sources */ = {isa = PBXBuildFile; fileRef = 3A20AFE71F43E21200712A1E /* CalendarMonthHeaderView.h */; };
 		3A20AFFA1F43E2B800712A1E /* CalendarMonthHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A20AFE81F43E21200712A1E /* CalendarMonthHeaderView.m */; };
-		3A20AFFB1F43E2B800712A1E /* CalendarViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 3A20AFE91F43E21200712A1E /* CalendarViewController.h */; };
 		3A20AFFC1F43E2B800712A1E /* CalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A20AFEA1F43E21200712A1E /* CalendarViewController.m */; };
 		3A20AFFD1F43E2B800712A1E /* chack.png in Sources */ = {isa = PBXBuildFile; fileRef = 3A20AFEB1F43E21200712A1E /* chack.png */; };
-		3A20AFFE1F43E2B800712A1E /* Color.h in Sources */ = {isa = PBXBuildFile; fileRef = 3A20AFEC1F43E21200712A1E /* Color.h */; };
-		3A20AFFF1F43E2B800712A1E /* NSDate+WQCalendarLogic.h in Sources */ = {isa = PBXBuildFile; fileRef = 3A20AFED1F43E21200712A1E /* NSDate+WQCalendarLogic.h */; };
 		3A20B0001F43E2B800712A1E /* NSDate+WQCalendarLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A20AFEE1F43E21200712A1E /* NSDate+WQCalendarLogic.m */; };
 		3A2179BF1F7A9D9900210794 /* JSPatchPlatform.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A2179901F7A9AEC00210794 /* JSPatchPlatform.framework */; };
 		3A2FF4EA1E50179700B07EB6 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A2FF4E91E50179700B07EB6 /* NotificationCenter.framework */; };
 		3A2FF4F51E50179700B07EB6 /* Extend.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 3A2FF4E81E50179700B07EB6 /* Extend.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		3A2FF4FC1E50202000B07EB6 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A2FF4FB1E50202000B07EB6 /* Media.xcassets */; };
-		3A31E1E51E6BC5040056565A /* MomentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A31E1E41E6BC5040056565A /* MomentsViewController.m */; };
-		3A31E1E81E6BE68C0056565A /* MomentsAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A31E1E71E6BE68C0056565A /* MomentsAddViewController.m */; };
 		3A31E1EB1E6BE6E20056565A /* MomentsTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A31E1EA1E6BE6E20056565A /* MomentsTableView.m */; };
 		3A31FE9C1F3A093700104A03 /* XWInteractiveTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A31FE9B1F3A093700104A03 /* XWInteractiveTransition.m */; };
 		3A3545D91F1B53A2009B1A84 /* PointView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A3545D81F1B53A2009B1A84 /* PointView.m */; };
@@ -136,6 +125,8 @@
 		3AA2704D1F6E76DF00F5E6F3 /* TFHppleElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA270461F6E700300F5E6F3 /* TFHppleElement.m */; };
 		3AA2704E1F6E76DF00F5E6F3 /* XPathQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA270481F6E700300F5E6F3 /* XPathQuery.m */; };
 		3AA2704F1F6E76DF00F5E6F3 /* zySheetPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA2704B1F6E700400F5E6F3 /* zySheetPickerView.m */; };
+		3AA3D1F11F891B1A00990358 /* MomentsAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA3D1EE1F891B0600990358 /* MomentsAddViewController.m */; };
+		3AA3D1F21F891B1A00990358 /* MomentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA3D1F01F891B0600990358 /* MomentsViewController.m */; };
 		3AAB90991EA393A000C35137 /* ScoreRank.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AAB90981EA393A000C35137 /* ScoreRank.m */; };
 		3AAECDBA1F4344C7004A6156 /* UIBarButtonItem+Badge.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AAECDB91F4344C7004A6156 /* UIBarButtonItem+Badge.m */; };
 		3AC12C241F3B381E007C3B7E /* ChatChoiceTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AC12C231F3B381E007C3B7E /* ChatChoiceTableViewController.m */; };
@@ -152,7 +143,6 @@
 		3AE01BAC1EB0D24900D5B7EF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AE01BAB1EB0D24900D5B7EF /* Foundation.framework */; };
 		3AE52B871EA8F0EB00705269 /* CourseXpTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AE52B861EA8F0EB00705269 /* CourseXpTableViewCell.m */; };
 		3AE8005D1F34A6FA00D1BAC0 /* Lost.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AE8005C1F34A6FA00D1BAC0 /* Lost.m */; };
-		3AEED70F1F39B30C00D17693 /* XWNaviTransition.h in Sources */ = {isa = PBXBuildFile; fileRef = 3AEED70D1F39B2AE00D17693 /* XWNaviTransition.h */; };
 		3AEED7101F39B30C00D17693 /* XWNaviTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AEED70E1F39B2AE00D17693 /* XWNaviTransition.m */; };
 		3AF152FB1F2DCEC600709F97 /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF152FA1F2DCEC600709F97 /* ChatViewController.m */; };
 		3AF72C9A1E9A23F000093A39 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AF72C991E9A23F000093A39 /* JavaScriptCore.framework */; };
@@ -263,10 +253,6 @@
 		3A2FF4F21E50179700B07EB6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3A2FF4FB1E50202000B07EB6 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		3A2FF5001E50742E00B07EB6 /* Extend.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Extend.entitlements; sourceTree = "<group>"; };
-		3A31E1E31E6BC5040056565A /* MomentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MomentsViewController.h; path = Moments/MomentsViewController.h; sourceTree = "<group>"; };
-		3A31E1E41E6BC5040056565A /* MomentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MomentsViewController.m; path = Moments/MomentsViewController.m; sourceTree = "<group>"; };
-		3A31E1E61E6BE68C0056565A /* MomentsAddViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MomentsAddViewController.h; path = Moments/MomentsAddViewController.h; sourceTree = "<group>"; };
-		3A31E1E71E6BE68C0056565A /* MomentsAddViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MomentsAddViewController.m; path = Moments/MomentsAddViewController.m; sourceTree = "<group>"; };
 		3A31E1E91E6BE6E20056565A /* MomentsTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MomentsTableView.h; sourceTree = "<group>"; };
 		3A31E1EA1E6BE6E20056565A /* MomentsTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MomentsTableView.m; sourceTree = "<group>"; };
 		3A31FE9A1F3A093700104A03 /* XWInteractiveTransition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XWInteractiveTransition.h; sourceTree = "<group>"; };
@@ -459,6 +445,10 @@
 		3AA270481F6E700300F5E6F3 /* XPathQuery.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XPathQuery.m; sourceTree = "<group>"; };
 		3AA2704A1F6E700400F5E6F3 /* zySheetPickerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = zySheetPickerView.h; sourceTree = "<group>"; };
 		3AA2704B1F6E700400F5E6F3 /* zySheetPickerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = zySheetPickerView.m; sourceTree = "<group>"; };
+		3AA3D1ED1F891B0600990358 /* MomentsAddViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MomentsAddViewController.h; sourceTree = "<group>"; };
+		3AA3D1EE1F891B0600990358 /* MomentsAddViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MomentsAddViewController.m; sourceTree = "<group>"; };
+		3AA3D1EF1F891B0600990358 /* MomentsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MomentsViewController.h; sourceTree = "<group>"; };
+		3AA3D1F01F891B0600990358 /* MomentsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MomentsViewController.m; sourceTree = "<group>"; };
 		3AAB90971EA393A000C35137 /* ScoreRank.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreRank.h; sourceTree = "<group>"; };
 		3AAB90981EA393A000C35137 /* ScoreRank.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScoreRank.m; sourceTree = "<group>"; };
 		3AAECDB81F4344C7004A6156 /* UIBarButtonItem+Badge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+Badge.h"; sourceTree = "<group>"; };
@@ -692,17 +682,6 @@
 			path = Im;
 			sourceTree = "<group>";
 		};
-		3A4048F81E6A663B0038F207 /* Moments */ = {
-			isa = PBXGroup;
-			children = (
-				3A31E1E31E6BC5040056565A /* MomentsViewController.h */,
-				3A31E1E41E6BC5040056565A /* MomentsViewController.m */,
-				3A31E1E61E6BE68C0056565A /* MomentsAddViewController.h */,
-				3A31E1E71E6BE68C0056565A /* MomentsAddViewController.m */,
-			);
-			name = Moments;
-			sourceTree = "<group>";
-		};
 		3A4049031E6A67C00038F207 /* Moments */ = {
 			isa = PBXGroup;
 			children = (
@@ -865,6 +844,7 @@
 		3A796B9E1E534C1B00794043 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				3AA3D1EC1F891B0600990358 /* Moments */,
 				3A7C99F61F5D920300DCAC06 /* Day */,
 				3A3775661F35EB37005A5170 /* Lost */,
 				3ABDCDCC1F316BEC00B95D6C /* Hand */,
@@ -872,7 +852,6 @@
 				3ACF3D051EA731A300FBEC57 /* CourseXp */,
 				3A532CD41E91212A003CD5A8 /* Vedio */,
 				3A796BD91E534C1B00794043 /* Main */,
-				3A4048F81E6A663B0038F207 /* Moments */,
 				3A796BA21E534C1B00794043 /* Course */,
 				3A4D30001E8D27F800901E3B /* Exam */,
 				3A796BB01E534C1B00794043 /* Feedback */,
@@ -1299,6 +1278,17 @@
 				3AA2704B1F6E700400F5E6F3 /* zySheetPickerView.m */,
 			);
 			path = Picker;
+			sourceTree = "<group>";
+		};
+		3AA3D1EC1F891B0600990358 /* Moments */ = {
+			isa = PBXGroup;
+			children = (
+				3AA3D1ED1F891B0600990358 /* MomentsAddViewController.h */,
+				3AA3D1EE1F891B0600990358 /* MomentsAddViewController.m */,
+				3AA3D1EF1F891B0600990358 /* MomentsViewController.h */,
+				3AA3D1F01F891B0600990358 /* MomentsViewController.m */,
+			);
+			path = Moments;
 			sourceTree = "<group>";
 		};
 		3ABDCDCC1F316BEC00B95D6C /* Hand */ = {
@@ -1738,29 +1728,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3AA3D1F11F891B1A00990358 /* MomentsAddViewController.m in Sources */,
+				3AA3D1F21F891B1A00990358 /* MomentsViewController.m in Sources */,
 				3AA2704C1F6E76DF00F5E6F3 /* TFHpple.m in Sources */,
 				3AA2704D1F6E76DF00F5E6F3 /* TFHppleElement.m in Sources */,
 				3AA2704E1F6E76DF00F5E6F3 /* XPathQuery.m in Sources */,
 				3AA2704F1F6E76DF00F5E6F3 /* zySheetPickerView.m in Sources */,
-				3A20AFEF1F43E2B800712A1E /* CalendarDayCell.h in Sources */,
 				3A20AFF01F43E2B800712A1E /* CalendarDayCell.m in Sources */,
-				3A20AFF11F43E2B800712A1E /* CalendarDayModel.h in Sources */,
 				3A20AFF21F43E2B800712A1E /* CalendarDayModel.m in Sources */,
-				3A20AFF31F43E2B800712A1E /* CalendarHomeViewController.h in Sources */,
 				3A20AFF41F43E2B800712A1E /* CalendarHomeViewController.m in Sources */,
-				3A20AFF51F43E2B800712A1E /* CalendarLogic.h in Sources */,
 				3A20AFF61F43E2B800712A1E /* CalendarLogic.m in Sources */,
-				3A20AFF71F43E2B800712A1E /* CalendarMonthCollectionViewLayout.h in Sources */,
 				3A20AFF81F43E2B800712A1E /* CalendarMonthCollectionViewLayout.m in Sources */,
-				3A20AFF91F43E2B800712A1E /* CalendarMonthHeaderView.h in Sources */,
 				3A20AFFA1F43E2B800712A1E /* CalendarMonthHeaderView.m in Sources */,
-				3A20AFFB1F43E2B800712A1E /* CalendarViewController.h in Sources */,
 				3A20AFFC1F43E2B800712A1E /* CalendarViewController.m in Sources */,
 				3A20AFFD1F43E2B800712A1E /* chack.png in Sources */,
-				3A20AFFE1F43E2B800712A1E /* Color.h in Sources */,
-				3A20AFFF1F43E2B800712A1E /* NSDate+WQCalendarLogic.h in Sources */,
 				3A20B0001F43E2B800712A1E /* NSDate+WQCalendarLogic.m in Sources */,
-				3AEED70F1F39B30C00D17693 /* XWNaviTransition.h in Sources */,
 				3AEED7101F39B30C00D17693 /* XWNaviTransition.m in Sources */,
 				3A37757C1F35EB76005A5170 /* JRWaterFallLayout.m in Sources */,
 				3A3775731F35EB51005A5170 /* LostAddViewController.m in Sources */,
@@ -1836,7 +1818,6 @@
 				3A796C4E1E534C1B00794043 /* ScoreDataViewController.m in Sources */,
 				3AC12C2F1F3B3C6D007C3B7E /* ChatUser.m in Sources */,
 				3AE52B871EA8F0EB00705269 /* CourseXpTableViewCell.m in Sources */,
-				3A31E1E51E6BC5040056565A /* MomentsViewController.m in Sources */,
 				3A98CB5D1E7CF7AA00CABD0D /* CommentsModel.m in Sources */,
 				3A796C1F1E534C1B00794043 /* CourseViewController.m in Sources */,
 				3A532CCD1E910C13003CD5A8 /* UIWindow+CurrentViewController.m in Sources */,
@@ -1862,7 +1843,6 @@
 				3A4D30031E8D27F800901E3B /* ExamViewController.m in Sources */,
 				3A532CC71E910C13003CD5A8 /* UIAlertController+ZFPlayerRotation.m in Sources */,
 				3A98CC0E1E7CFA9C00CABD0D /* YYFPSLabel.m in Sources */,
-				3A31E1E81E6BE68C0056565A /* MomentsAddViewController.m in Sources */,
 				3A98CC0F1E7CFA9C00CABD0D /* YYWeakProxy.m in Sources */,
 				3A3775611F35EAD7005A5170 /* HomeWorkViewController.m in Sources */,
 				3AF73BF11E7D12610086417E /* APIRequest.m in Sources */,

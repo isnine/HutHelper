@@ -422,13 +422,14 @@
             cellTime = [[UITableViewCell alloc] initWithStyle: UITableViewCellStyleSubtitle
                                           reuseIdentifier: @"cellTime"];
         }
-        cellTime.textLabel.text = [NSString stringWithFormat:@"%zd", indexPath.row+1];
+        cellTime.detailTextLabel.text = [NSString stringWithFormat:@"%zd", indexPath.row+1];
+        cellTime.detailTextLabel.textColor = [UIColor blackColor];
         
-        cellTime.detailTextLabel.text = [self transformTime:indexPath.row+1];
-        cellTime.detailTextLabel.font = [UIFont systemFontOfSize: SYReal(6)];
+        cellTime.textLabel.text = [self transformTime:indexPath.row+1];
+        cellTime.textLabel.font = [UIFont systemFontOfSize: SYReal(6)];
+        cellTime.textLabel.textColor = [UIColor darkGrayColor];
         
         cellTime.backgroundColor = RGB(237, 241, 241, 1.0);
-        cellTime.detailTextLabel.textColor = [UIColor darkGrayColor];
         
 //        cell.textLabel.text = [NSString stringWithFormat:@"%zd", indexPath.row+1];
 //        //cell.textLabel.numberOfLines=2;

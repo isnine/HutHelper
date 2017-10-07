@@ -17,7 +17,7 @@
 #import "User.h"
 #import "AFNetworking.h"
 #import "MBProgressHUD+MJ.h"
- #import "DTKDropdownMenuView.h"
+#import "DTKDropdownMenuView.h"
 #import "YCXMenu.h"
 #import "NSData+CRC32.h"
 #import "Config.h"
@@ -31,6 +31,8 @@
 @property (strong, nonatomic) LGPlusButtonsView *plusButtonsViewMain;
 @property (strong, nonatomic) LGPlusButtonsView *plusButtonsViewExample;
 @property (nonatomic , copy) NSMutableArray *selectCourse;
+
+@property (nonatomic , copy) DTKDropdownMenuView *menuView;
 @end
 
 @implementation CourseViewController
@@ -72,16 +74,15 @@ NSString *show_xp;
     [mainAndSearchBtn addTarget:self action:@selector(reloadcourse) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *rightCunstomButtonView = [[UIBarButtonItem alloc] initWithCustomView:rightButtonView];
     self.navigationItem.rightBarButtonItem = rightCunstomButtonView;
-     /**刷新课程表*/
+    /**刷新课程表*/
     [self addCourse];
     selectss=1;
-     /**选择周次*/
+    /**选择周次*/
     [self addTitleMenu];
 }
 - (void)addTitleMenu
 {
     DTKDropdownItem *item1,*item2,*item3,*item4,*item5,*item6,*item7,*item8,*item9,*item10,*item11,*item12,*item13,*item14,*item15,*item16,*item17,*item18,*item19,*item20;
-    DTKDropdownMenuView *menuView;
     item1 = [DTKDropdownItem itemWithTitle:@"第1周" callBack:^(NSUInteger index, id info) {
         now_week=1;
         [self addCourse];
@@ -162,20 +163,22 @@ NSString *show_xp;
         now_week=20;
         [self addCourse];
     }];
-    menuView = [DTKDropdownMenuView dropdownMenuViewForNavbarTitleViewWithFrame:CGRectMake(SYReal(123.0), 0, SYReal(200.f), SYReal(44.f)) dropdownItems:@[item1,item2,item3,item4,item5,item6,item7,item8,item9,item10,item11,item12,item13,item14,item15,item16,item17,item18,item19,item20]];
-
-    menuView.currentNav = self.navigationController;
-    menuView.dropWidth = SYReal(150.f);
-    menuView.titleFont = [UIFont systemFontOfSize:18.f];
-    menuView.textColor = [UIColor blackColor];//每栏颜色
-    menuView.textFont = [UIFont systemFontOfSize:13.f];
-    menuView.textFont = [UIFont systemFontOfSize:14.f];
-    menuView.animationDuration = 0.2f;
-    menuView.selectedIndex = now_week-1;
-    menuView.cellSeparatorColor = [UIColor whiteColor];
-    menuView.titleColor=[UIColor blackColor];//标题颜色
-    [menuView setArrow];
-    self.navigationItem.titleView = menuView;
+    _menuView = [DTKDropdownMenuView dropdownMenuViewForNavbarTitleViewWithFrame:CGRectMake(SYReal(123.0), 0, SYReal(200.f), SYReal(44.f)) dropdownItems:@[item1,item2,item3,item4,item5,item6,item7,item8,item9,item10,item11,item12,item13,item14,item15,item16,item17,item18,item19,item20]];
+    _menuView.currentNav = self.navigationController;
+    _menuView.dropWidth = SYReal(150.f);
+    _menuView.titleFont = [UIFont systemFontOfSize:18.f];
+    _menuView.textColor = [UIColor blackColor];//每栏颜色
+    _menuView.textFont = [UIFont systemFontOfSize:13.f];
+    _menuView.textFont = [UIFont systemFontOfSize:14.f];
+    _menuView.animationDuration = 0.2f;
+    if (now_week>20) {
+        now_week=20;
+    }
+    _menuView.selectedIndex = now_week-1;
+    _menuView.cellSeparatorColor = [UIColor whiteColor];
+    _menuView.titleColor=[UIColor blackColor];//标题颜色
+    [_menuView setArrow];
+    self.navigationItem.titleView = _menuView;
 }
 - (void)addCourse{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
@@ -435,24 +438,24 @@ NSString *show_xp;
     [MBProgressHUD showMessage:@"刷新中" toView:self.view];
     /**请求平时课表*/
     [APIRequest GET:Config.getApiClass parameters:nil success:^(id responseObject) {
-            HideAllHUD
-             NSDictionary *Class_All = [NSDictionary dictionaryWithDictionary:responseObject];
-             NSString *Msg=[Class_All objectForKey:@"msg"];
-             if ([Msg isEqualToString:@"ok"]) {
-                 NSArray *arrayCourse               = [Class_All objectForKey:@"data"];
-                 [Config saveWidgetCourse:arrayCourse];
-                 [Config saveCourse:arrayCourse];
-                 [self addCourse];
-                 [MBProgressHUD showSuccess:@"刷新成功" toView:self.view];
-             }else if([Msg isEqualToString:@"令牌错误"]){
-                 [MBProgressHUD showError:@"登录过期,请重新登录" toView:self.view];
-             }else{
-                 [MBProgressHUD showError:@"查询失败" toView:self.view];
-             }
-         }failure:^(NSError *error) {
-             HideAllHUD
-             [MBProgressHUD showError:@"网络错误，平时课表查询失败" toView:self.view];
-         }];
+        HideAllHUD
+        NSDictionary *Class_All = [NSDictionary dictionaryWithDictionary:responseObject];
+        NSString *Msg=[Class_All objectForKey:@"msg"];
+        if ([Msg isEqualToString:@"ok"]) {
+            NSArray *arrayCourse               = [Class_All objectForKey:@"data"];
+            [Config saveWidgetCourse:arrayCourse];
+            [Config saveCourse:arrayCourse];
+            [self addCourse];
+            [MBProgressHUD showSuccess:@"刷新成功" toView:self.view];
+        }else if([Msg isEqualToString:@"令牌错误"]){
+            [MBProgressHUD showError:@"登录过期,请重新登录" toView:self.view];
+        }else{
+            [MBProgressHUD showError:@"查询失败" toView:self.view];
+        }
+    }failure:^(NSError *error) {
+        HideAllHUD
+        [MBProgressHUD showError:@"网络错误，平时课表查询失败" toView:self.view];
+    }];
 }
 
 #pragma mark - GWPCourseListViewDataSource
@@ -515,6 +518,167 @@ NSString *show_xp;
 - (void)courseListView:(GWPCourseListView *)courseListView didSelectedCourse:(id<Course>)course{
     
 }
+/////////////按钮////////////
+- (instancetype)init
+{
+    self                                         = [super init];
+    if (self)
+    {
+        self.title                                   = @"LGPlusButtonsView";
+        self.navigationItem.rightBarButtonItem       = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(showHideButtonsAction)];
+        // -----
+        _scrollView                                  = [UIScrollView new];
+        _scrollView.backgroundColor                  = [UIColor lightGrayColor];
+        _scrollView.alwaysBounceVertical             = YES;
+        [self.view addSubview:_scrollView];
+        _exampleView                                 = [UIView new];
+        _exampleView.backgroundColor                 = [UIColor colorWithWhite:0.f alpha:0.1];
+        [_scrollView addSubview:_exampleView];
+    }
+    return self;
+}
+
+-(void)removeYCXMenuBlind{
+    UIView *blindView=[[[UIApplication  sharedApplication]  keyWindow] viewWithTag:99];
+    [blindView removeFromSuperview];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [MobClick beginLogPageView:@"课表查询"];
+    _plusButtonsViewMain                         = [LGPlusButtonsView plusButtonsViewWithNumberOfButtons:3
+                                                                                 firstButtonIsPlusButton:YES
+                                                                                           showAfterInit:YES
+                                                                                           actionHandler:^(LGPlusButtonsView *plusButtonView, NSString *title, NSString *description, NSUInteger index)
+                                                    {
+                                                        
+                                                        NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+                                                        if (index == 0){
+                                                            [_plusButtonsViewNavBar hideAnimated:YES completionHandler:nil];
+                                                        }
+                                                        else if (index == 1) {//实验课表
+                                                            if (now_week<20)
+                                                                now_week++;
+                                                            [self addCourse];
+                                                            _menuView.selectedIndex=now_week-1;
+                                                        }else if (index == 2) {
+                                                            if (now_week>1)
+                                                                now_week--;
+                                                            [self addCourse];
+                                                            _menuView.selectedIndex=now_week-1;
+                                                        }
+                                                    }];
+    
+    _plusButtonsViewMain.observedScrollView      = self.scrollView;
+    _plusButtonsViewMain.coverColor              = [UIColor colorWithWhite:1.f alpha:0.7];
+    _plusButtonsViewMain.position                = LGPlusButtonsViewPositionBottomRight;
+    _plusButtonsViewMain.plusButtonAnimationType = LGPlusButtonAnimationTypeRotate;
+    
+    [_plusButtonsViewMain setButtonsTitles:@[@"+", @"", @""] forState:UIControlStateNormal];
+    [_plusButtonsViewMain setDescriptionsTexts:@[@"",  @"下一周", @"上一周"]];
+    [_plusButtonsViewMain setButtonsImages:@[[NSNull new], [UIImage imageNamed:@"Picture"], [UIImage imageNamed:@"Message"]]
+                                  forState:UIControlStateNormal
+                            forOrientation:LGPlusButtonsViewOrientationAll];
+    
+    [_plusButtonsViewMain setButtonsAdjustsImageWhenHighlighted:NO];
+    [_plusButtonsViewMain setButtonsBackgroundColor:[UIColor colorWithRed:0.f green:0.5 blue:1.f alpha:1.f] forState:UIControlStateNormal];
+    [_plusButtonsViewMain setButtonsBackgroundColor:[UIColor colorWithRed:0.2 green:0.6 blue:1.f alpha:1.f] forState:UIControlStateHighlighted];
+    [_plusButtonsViewMain setButtonsBackgroundColor:[UIColor colorWithRed:0.2 green:0.6 blue:1.f alpha:1.f] forState:UIControlStateHighlighted|UIControlStateSelected];
+    [_plusButtonsViewMain setButtonsSize:CGSizeMake(44.f, 44.f) forOrientation:LGPlusButtonsViewOrientationAll];
+    [_plusButtonsViewMain setButtonsLayerCornerRadius:44.f/2.f forOrientation:LGPlusButtonsViewOrientationAll];
+    [_plusButtonsViewMain setButtonsTitleFont:[UIFont boldSystemFontOfSize:24.f] forOrientation:LGPlusButtonsViewOrientationAll];
+    [_plusButtonsViewMain setButtonsLayerShadowColor:[UIColor colorWithRed:0.1 green:0.1 blue:0.1 alpha:1.f]];
+    [_plusButtonsViewMain setButtonsLayerShadowOpacity:0.5];
+    [_plusButtonsViewMain setButtonsLayerShadowRadius:3.f];
+    [_plusButtonsViewMain setButtonsLayerShadowOffset:CGSizeMake(0.f, 2.f)];
+    
+    [_plusButtonsViewMain setButtonAtIndex:0 size:CGSizeMake(40.f, 40.f)
+                            forOrientation:(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone ? LGPlusButtonsViewOrientationPortrait : LGPlusButtonsViewOrientationAll)];
+    [_plusButtonsViewMain setButtonAtIndex:0 layerCornerRadius:40.f/2.f
+                            forOrientation:(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone ? LGPlusButtonsViewOrientationPortrait : LGPlusButtonsViewOrientationAll)];
+    [_plusButtonsViewMain setButtonAtIndex:0 titleFont:[UIFont systemFontOfSize:30.f]
+                            forOrientation:(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone ? LGPlusButtonsViewOrientationPortrait : LGPlusButtonsViewOrientationAll)];
+    [_plusButtonsViewMain setButtonAtIndex:1 size:CGSizeMake(36.f, 36.f)
+                            forOrientation:(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone ? LGPlusButtonsViewOrientationPortrait : LGPlusButtonsViewOrientationAll)];
+    [_plusButtonsViewMain setButtonAtIndex:1 layerCornerRadius:36.f/2.f
+                            forOrientation:(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone ? LGPlusButtonsViewOrientationPortrait : LGPlusButtonsViewOrientationAll)];
+    [_plusButtonsViewMain setButtonAtIndex:2 size:CGSizeMake(36.f, 36.f)
+                            forOrientation:(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone ? LGPlusButtonsViewOrientationPortrait : LGPlusButtonsViewOrientationAll)];
+    [_plusButtonsViewMain setButtonAtIndex:2 layerCornerRadius:36.f/2.f
+                            forOrientation:(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone ? LGPlusButtonsViewOrientationPortrait : LGPlusButtonsViewOrientationAll)];
+    [_plusButtonsViewMain setButtonAtIndex:0 titleOffset:CGPointMake(0.f, -3.f) forOrientation:LGPlusButtonsViewOrientationAll];
+    [_plusButtonsViewMain setButtonAtIndex:1 backgroundColor:[UIColor colorWithRed:0.f green:0.7 blue:0.f alpha:1.f] forState:UIControlStateNormal];
+    [_plusButtonsViewMain setButtonAtIndex:1 backgroundColor:[UIColor colorWithRed:0.f green:0.8 blue:0.f alpha:1.f] forState:UIControlStateHighlighted];
+    [_plusButtonsViewMain setButtonAtIndex:2 backgroundColor:[UIColor colorWithRed:1.f green:0.5 blue:0.f alpha:1.f] forState:UIControlStateNormal];
+    [_plusButtonsViewMain setButtonAtIndex:2 backgroundColor:[UIColor colorWithRed:1.f green:0.6 blue:0.2 alpha:1.f] forState:UIControlStateHighlighted];
+    //    [_plusButtonsViewMain setButtonAtIndex:3 backgroundColor:[UIColor colorWithRed:0.f green:0.7 blue:0.f alpha:1.f] forState:UIControlStateNormal];
+    //    [_plusButtonsViewMain setButtonAtIndex:3 backgroundColor:[UIColor colorWithRed:0.f green:0.8 blue:0.f alpha:1.f] forState:UIControlStateHighlighted];
+    
+    [_plusButtonsViewMain setDescriptionsBackgroundColor:[UIColor whiteColor]];
+    [_plusButtonsViewMain setDescriptionsTextColor:[UIColor blackColor]];
+    [_plusButtonsViewMain setDescriptionsLayerShadowColor:[UIColor colorWithRed:0.1 green:0.1 blue:0.1 alpha:1.f]];
+    [_plusButtonsViewMain setDescriptionsLayerShadowOpacity:0.25];
+    [_plusButtonsViewMain setDescriptionsLayerShadowRadius:1.f];
+    [_plusButtonsViewMain setDescriptionsLayerShadowOffset:CGSizeMake(0.f, 1.f)];
+    [_plusButtonsViewMain setDescriptionsLayerCornerRadius:6.f forOrientation:LGPlusButtonsViewOrientationAll];
+    [_plusButtonsViewMain setDescriptionsContentEdgeInsets:UIEdgeInsetsMake(4.f, 8.f, 4.f, 8.f) forOrientation:LGPlusButtonsViewOrientationAll];
+    
+    for (NSUInteger i                            = 1; i<=2; i++)
+        [_plusButtonsViewMain setButtonAtIndex:i offset:CGPointMake(-6.f, 0.f)
+                                forOrientation:(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone ? LGPlusButtonsViewOrientationPortrait : LGPlusButtonsViewOrientationAll)];
+    
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
+    {
+        [_plusButtonsViewMain setButtonAtIndex:0 titleOffset:CGPointMake(0.f, -2.f) forOrientation:LGPlusButtonsViewOrientationLandscape];
+        [_plusButtonsViewMain setButtonAtIndex:0 titleFont:[UIFont systemFontOfSize:32.f] forOrientation:LGPlusButtonsViewOrientationLandscape];
+    }
+    
+    [self.navigationController.view addSubview:_plusButtonsViewMain];
+    
+    if([self.navigationController.viewControllers count]>=3){
+        [_plusButtonsViewMain removeFromSuperview];
+    }
+    
+}
+
+#pragma mark - Dealloc
+
+- (void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"YCXMenuWillDisappearNotification" object:nil];
+}
+
+#pragma mark - Appearing
+
+- (void)viewWillLayoutSubviews
+{
+    [super viewWillLayoutSubviews];
+    
+    _scrollView.frame                            = CGRectMake(0.f, 0.f, self.view.frame.size.width, self.view.frame.size.height);
+    
+    UIEdgeInsets contentInsets                   = _scrollView.contentInset;
+    contentInsets.top                            = [UIApplication sharedApplication].statusBarFrame.size.height + self.navigationController.navigationBar.frame.size.height;
+    _scrollView.contentInset                     = contentInsets;
+    _scrollView.scrollIndicatorInsets            = contentInsets;
+    
+    _scrollView.contentSize                      = CGSizeMake(self.view.frame.size.width, 2000.f);
+    
+    // -----
+    
+    _exampleView.frame                           = CGRectMake(0.f, 0.f, _scrollView.frame.size.width, 400.f);
+}
+
+#pragma mark -
+
+- (void)showHideButtonsAction
+{
+    if (_plusButtonsViewNavBar.isShowing)
+        [_plusButtonsViewNavBar hideAnimated:YES completionHandler:nil];
+    else
+        [_plusButtonsViewNavBar showAnimated:YES completionHandler:nil];
+}
+
 
 
 
