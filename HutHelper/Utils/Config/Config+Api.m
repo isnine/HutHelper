@@ -83,6 +83,9 @@
 +(NSString*)getApiGoodsDelect:(NSString*)goodID{
     return [NSString stringWithFormat:@"%@/api/v1/stuff/delete/%@/%@/%@",Config.apiIndex,Config.getStudentKH,Config.getRememberCodeApp,goodID];
 }
++(NSString*)getApiUserIsTrue{
+    return [NSString stringWithFormat:@"%@/api/v2/Im/is_true/%@/%@",Config.apiIndex,Config.getStudentKH,Config.getRememberCodeApp];
+}
 #pragma mark - 失物招领
 +(NSString*)getApiLost:(int)num{
     return [NSString stringWithFormat:@"%@/api/v1/loses/posts/%d",Config.apiIndex,num];

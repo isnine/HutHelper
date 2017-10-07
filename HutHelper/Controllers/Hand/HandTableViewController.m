@@ -162,28 +162,47 @@
         return;
     }
     [MBProgressHUD showMessage:@"加载中" toView:self.view];
-    [APIRequest GET:Config.getApiGoodsUser parameters:nil success:^(id responseObject) {
-        HideAllHUD
-        NSDictionary *dic1 = [NSDictionary dictionaryWithObject:responseObject forKey:@""];
-        NSArray *Hand           = [dic1 objectForKey:@""];
-        if (Hand.count>0) {
-            NSMutableArray *data=[[NSMutableArray alloc]init];
-            NSDictionary *a=@{@"page_cur":@"1",
-                              @"page_max":@67
-                              };
-            [data addObject:a];
-            [data addObjectsFromArray:Hand];
-
-            HandTableViewController *hand=[[HandTableViewController alloc]init];
-            hand.myHandArray=[data mutableCopy];
-            [self.navigationController pushViewController:hand animated:YES];
+    [APIRequest GET:Config.getApiUserIsTrue parameters:nil success:^(id responseObject) {
+        NSDictionary *response = [NSDictionary dictionaryWithDictionary:responseObject];
+        if ([response[@"code"] boolValue]==true) {
+            [APIRequest GET:Config.getApiGoodsUser parameters:nil success:^(id responseObject) {
+                HideAllHUD
+                //如果没有发布商品
+                if ([responseObject count]==0) {
+                    [MBProgressHUD showError:@"您没有发布的商品" toView:self.view];
+                    return ;
+                }
+                NSDictionary *dic1 = [NSDictionary dictionaryWithObject:responseObject forKey:@""];
+                //获取二手数据
+                NSArray *Hand           = [dic1 objectForKey:@""];
+                if (Hand.count>0) {
+                    NSMutableArray *data=[[NSMutableArray alloc]init];
+                    NSDictionary *a=@{@"page_cur":@"1",
+                                      @"page_max":@67
+                                      };
+                    [data addObject:a];
+                    [data addObjectsFromArray:Hand];
+                    HandTableViewController *hand=[[HandTableViewController alloc]init];
+                    hand.myHandArray=[data mutableCopy];
+                    [self.navigationController pushViewController:hand animated:YES];
+                }else{
+                    [MBProgressHUD showError:@"您没有发布的商品" toView:self.view];
+                }
+            }failure:^(NSError *error) {
+                [MBProgressHUD showError:@"网络超时" toView:self.view];
+                HideAllHUD
+            }];
         }else{
-            [MBProgressHUD showError:@"您没有发布的商品" toView:self.view];
+            HideAllHUD
+            [MBProgressHUD showError:@"登录过期，请重新登录" toView:self.view];
+            return ;
         }
-    }failure:^(NSError *error) {
-        [MBProgressHUD showError:@"网络超时" toView:self.view];
-        HideAllHUD
+    } failure:^(NSError *error) {
+        [MBProgressHUD showError:@"登录过期，请重新登录" toView:self.view];
+        return ;
     }];
+        
+   
 }
 #pragma mark - 菜单
 -(void)menu{
