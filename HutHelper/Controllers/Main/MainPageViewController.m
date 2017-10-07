@@ -75,6 +75,8 @@ int class_error_;
     [self.navigationController.navigationBar lt_reset];
     //状态栏恢复黑色
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
+    
+
 }
 
 -(void)unreadNotificationAction{
@@ -106,10 +108,10 @@ int class_error_;
     NSUInteger unitFlags                      = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay |NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
     NSDateComponents *dateComponent           = [calendar components:unitFlags fromDate:now];
     [defaults setInteger:[Math getWeek:(short)[dateComponent year] m:(short)[dateComponent month] d:(short)[dateComponent day]] forKey:@"TrueWeek"];
-    //导航栏变为透明
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:0];
-    //让黑线消失的方法
-    self.navigationController.navigationBar.shadowImage=[UIImage new];
+//    //导航栏变为透明
+//    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:0];
+//    //让黑线消失的方法
+//    self.navigationController.navigationBar.shadowImage=[UIImage new];
     //设置通知
     [self setNotice];
     [_leftSortsViewController.tableview reloadData];
@@ -120,6 +122,8 @@ int class_error_;
     /**让黑线消失的方法*/
     UIImageView *navBarHairlineImageView = [self findHairlineImageViewUnder:self.navigationController.navigationBar];
     navBarHairlineImageView.hidden = YES;
+    
+     self.navigationController.delegate=self;
 }
 #pragma mark - 各按钮事件
 
@@ -333,28 +337,7 @@ int class_error_;
 } //考试计划
 - (IBAction)Day:(id)sender {
     DayViewController *chvc = [[DayViewController alloc]init];
-//    chvc.calendarblock = ^(CalendarDayModel *model){
-//
-//        NSLog(@"\n---------------------------");
-//        NSLog(@"1星期 %@",[model getWeek]);
-//        NSLog(@"2字符串 %@",[model toString]);
-//        NSLog(@"3节日  %@",model.holiday);
-//
-//        if (model.holiday) {
-//
-//         //   [but setTitle:[NSString stringWithFormat:@"%@ %@ %@",[model toString],[model getWeek],model.holiday] forState:UIControlStateNormal];
-//
-//        }else{
-//
-//         //   [but setTitle:[NSString stringWithFormat:@"%@ %@",[model toString],[model getWeek]] forState:UIControlStateNormal];
-//
-//        }
-//    };
-//
-
   [self.navigationController pushViewController:chvc animated:YES];
-    
-  // [Config pushViewController:@"Day"];
 }  //校历
 - (IBAction)Lost:(id)sender {
     LostViewController *lostViewController=[[LostViewController alloc]init];
@@ -606,4 +589,16 @@ int class_error_;
     ChatListViewController *chatList = [[ChatListViewController alloc] init];
     [tempAppDelegate.mainNavigationController pushViewController:chatList animated:YES];
 }
+
+-(void)navigationController:(UINavigationController*)navigationController willShowViewController:(nonnull UIViewController *)viewController animated:(BOOL)animated{
+     [viewController viewWillAppear:animated];
+    if([[viewController class]isSubclassOfClass:[MainPageViewController class]]) {
+        //导航栏变为透明
+        NSLog(@"123");
+   [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+        //让黑线消失的方法
+        self.navigationController.navigationBar.shadowImage=[UIImage new];
+    }
+}
+
 @end
