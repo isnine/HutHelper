@@ -39,6 +39,7 @@
 #define vBackBarButtonItemName  @"backArrow.png"    //导航条返回默认图片名
 #define ERROR_MSG_INVALID @"登录过期,请重新登录"
 @interface MainPageViewController ()
+@property (weak, nonatomic) IBOutlet UIImageView *bannerImgView;
 @property (weak, nonatomic) IBOutlet UILabel *Scontent;
 @property (weak, nonatomic) IBOutlet UILabel *Time;
 @end
@@ -534,6 +535,46 @@ int class_error_;
     [mainAndSearchBtn addTarget:self action:@selector(notice) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *rightCunstomButtonView = [[UIBarButtonItem alloc] initWithCustomView:rightButtonView];
     self.navigationItem.rightBarButtonItem = rightCunstomButtonView;
+    //轮番图手势
+  if ([Config getBanner]) {
+        UIImage *Img=[UIImage imageWithData:[Config getBanner]];
+        _bannerImgView.image=Img;
+   }
+     UITapGestureRecognizer *tapBanner = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(touchBanner)];
+    tapBanner.numberOfTapsRequired =2;
+    [_bannerImgView addGestureRecognizer:tapBanner];
+}
+#pragma mark -- <UIImagePickerControllerDelegate>--
+- (void)touchBanner
+{
+    // 1.判断相册是否可以打开
+    if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary]) return;
+    // 2. 创建图片选择控制器
+    UIImagePickerController *ipc = [[UIImagePickerController alloc] init];
+    // 3. 设置打开照片相册类型(显示所有相簿)
+    ipc.delegate = self;
+    ipc.allowsEditing = YES;
+    ipc.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    
+    // ipc.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
+    // 照相机
+    // ipc.sourceType = UIImagePickerControllerSourceTypeCamera;
+    // 4.设置代理
+    ipc.delegate = self;
+    // 5.modal出这个控制器
+    [self presentViewController:ipc animated:YES completion:nil];
+}
+
+// 获取图片后的操作
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info
+{
+    UIImage* img ;
+    [picker dismissViewControllerAnimated:YES completion:nil];
+    img = info[UIImagePickerControllerEditedImage]; //获得修改后
+    // img = [info objectForKey:UIImagePickerControllerOriginalImage];   //获得原图
+    NSData *imageData = UIImageJPEGRepresentation(img,1.0);
+    [Config saveBannerImg:imageData];
+    _bannerImgView.image=img;
 }
 // 寻找导航栏下的黑线
 - (UIImageView *)findHairlineImageViewUnder:(UIView *)view {

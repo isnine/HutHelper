@@ -186,6 +186,11 @@ static int Is ;
     [defaults setObject:token forKey:@"kImToken"];
     [defaults synchronize];
 }
++(void)saveBannerImg:(NSData*)imgData{
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    [defaults setObject:imgData forKey:@"kBannerImg"];
+    [defaults synchronize];
+}
 #pragma mark - 获得存储数据
 +(NSArray*)getCourse{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
@@ -242,6 +247,10 @@ static int Is ;
 +(NSArray*)getCalendar{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     return [defaults objectForKey:@"kCalendar"];
+}
++(NSData*)getBanner{
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    return [defaults objectForKey:@"kBannerImg"];
 }
 +(BOOL)isTourist{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];

@@ -71,11 +71,7 @@ UIImage* img ;
     // 5.modal出这个控制器
     [self presentViewController:ipc animated:YES completion:nil];
 }
-- (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated
-{
-    viewController.navigationItem.leftBarButtonItem.tintColor = [UIColor blackColor];
-    viewController.navigationItem.rightBarButtonItem.tintColor = [UIColor blackColor];
-}
+
 #pragma mark -- <UIImagePickerControllerDelegate>--
 // 获取图片后的操作
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info
