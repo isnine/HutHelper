@@ -14,6 +14,7 @@
 #import "UserShowViewController.h"
 #import "XWInteractiveTransition.h"
 #import "XWNaviTransition.h"
+#import "MBProgressHUD+MJ.h"
 @interface LostShowViewController ()
 @property (nonatomic, strong) XWInteractiveTransition *interactiveTransition;
 @end
@@ -44,6 +45,15 @@
         [rightButtonView addSubview:mainAndSearchBtn];
         [mainAndSearchBtn setImage:[UIImage imageNamed:@"ico_user_user"] forState:UIControlStateNormal];
         [mainAndSearchBtn addTarget:self action:@selector(user) forControlEvents:UIControlEventTouchUpInside];
+        UIBarButtonItem *rightCunstomButtonView = [[UIBarButtonItem alloc] initWithCustomView:rightButtonView];
+        self.navigationItem.rightBarButtonItem = rightCunstomButtonView;
+    }else{
+        //删除按钮
+        UIView *rightButtonView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 50)];
+        UIButton *mainAndSearchBtn = [[UIButton alloc] initWithFrame:CGRectMake(70, 0, 50, 50)];
+        [rightButtonView addSubview:mainAndSearchBtn];
+        [mainAndSearchBtn setImage:[UIImage imageNamed:@"ico_hand_delete"] forState:UIControlStateNormal];
+        [mainAndSearchBtn addTarget:self action:@selector(delectLost) forControlEvents:UIControlEventTouchUpInside];
         UIBarButtonItem *rightCunstomButtonView = [[UIBarButtonItem alloc] initWithCustomView:rightButtonView];
         self.navigationItem.rightBarButtonItem = rightCunstomButtonView;
     }
@@ -209,6 +219,26 @@
     self.navigationController.delegate =nil;
     [self.navigationController pushViewController:userShowViewController animated:YES];
 }
-
+-(void)delectLost{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"删除失物" message:@"是否要删除当前发布的失物？" preferredStyle:  UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+    }]];
+    [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [APIRequest GET:[Config getApiLostDelect:self.lostModel.id] parameters:nil success:^(id responseObject) {
+            NSLog(@"%@",responseObject);
+            if ([responseObject[@"msg"]isEqualToString:@"ok"]) {
+                [MBProgressHUD showSuccess:@"删除成功" toView:self.view];
+                [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:([self.navigationController.viewControllers count]-3)] animated:NO];  //返回Home
+            }else{
+                [MBProgressHUD showError:responseObject[@"msg"] toView:self.view];
+            }
+        } failure:^(NSError *error) {
+            [MBProgressHUD showError:@"网络错误" toView:self.view];
+        }];
+        
+    }]];
+    [self presentViewController:alert animated:true completion:nil];
+}
 
 @end

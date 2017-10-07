@@ -49,6 +49,7 @@
 +(NSString*)getApiLostUser;
 +(NSString*)getApiLostCreate;
 +(NSString*)getApiLostImgUpload;
++(NSString*)getApiLostDelect:(NSString*)lostID;
 
 +(NSString*)getApiMoments:(int)num;
 +(NSString*)getApiMomentsUser;

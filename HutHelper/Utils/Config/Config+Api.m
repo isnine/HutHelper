@@ -102,6 +102,9 @@
 +(NSString*)getApiLostImgUpload{
     return [NSString stringWithFormat:@"%@/api/v1/loses/upload",Config.getApiImg];
 }
++(NSString*)getApiLostDelect:(NSString*)lostID{
+    return [NSString stringWithFormat:@"%@/api/v1/stuff/delete/%@/%@/%@",Config.apiIndex,Config.getStudentKH,Config.getRememberCodeApp,lostID];
+}
 #pragma mark - 校园说说
 +(NSString*)getApiMoments:(int)num{
     return [NSString stringWithFormat:@"%@/api/v1/moments/posts/%d",Config.apiIndex,num];

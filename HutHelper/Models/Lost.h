@@ -30,6 +30,8 @@
 @property(nonatomic,copy)NSString *phone;
 /**发布人id*/
 @property(nonatomic,copy)NSString *user_id;
+/**物品id*/
+@property(nonatomic,copy)NSString *id;
 /**说说的小图*/
 @property(nonatomic,copy)NSMutableArray *pics;
 /**背景颜色*/

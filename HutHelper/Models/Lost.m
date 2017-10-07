@@ -23,6 +23,7 @@
         self.phone       = dic[@"phone"];
         self.username              = dic[@"username"];
         self.user_id   = dic[@"user_id"];
+        self.id   = dic[@"id"];
          self.pics             = dic[@"pics"];
         self.dep_name   = dic[@"dep_name"];
         self.head_pic             = dic[@"head_pic"];
