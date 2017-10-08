@@ -4,7 +4,7 @@
 //
 //  Created by 谭真 on 15/12/24.
 //  Copyright © 2015年 谭真. All rights reserved.
-//  version 1.8.7 - 2017.07.28
+//  version 1.9.3 - 2017.09.13
 //  更多信息，请前往项目的github地址：https://github.com/banchichen/TZImagePickerController
 
 #import "TZImagePickerController.h"
@@ -156,18 +156,24 @@
             _tipLabel.numberOfLines = 0;
             _tipLabel.font = [UIFont systemFontOfSize:16];
             _tipLabel.textColor = [UIColor blackColor];
-            NSString *appName = [[NSBundle mainBundle].infoDictionary valueForKey:@"CFBundleDisplayName"];
-            if (!appName) appName = [[NSBundle mainBundle].infoDictionary valueForKey:@"CFBundleName"];
+            NSDictionary *infoDict = [NSBundle mainBundle].localizedInfoDictionary;
+            if (!infoDict) {
+                infoDict = [NSBundle mainBundle].infoDictionary;
+            }
+            NSString *appName = [infoDict valueForKey:@"CFBundleDisplayName"];
+            if (!appName) appName = [infoDict valueForKey:@"CFBundleName"];
             NSString *tipText = [NSString stringWithFormat:[NSBundle tz_localizedStringForKey:@"Allow %@ to access your album in \"Settings -> Privacy -> Photos\""],appName];
             _tipLabel.text = tipText;
             [self.view addSubview:_tipLabel];
             
-            _settingBtn = [UIButton buttonWithType:UIButtonTypeSystem];
-            [_settingBtn setTitle:self.settingBtnTitleStr forState:UIControlStateNormal];
-            _settingBtn.frame = CGRectMake(0, 180, self.view.tz_width, 44);
-            _settingBtn.titleLabel.font = [UIFont systemFontOfSize:18];
-            [_settingBtn addTarget:self action:@selector(settingBtnClick) forControlEvents:UIControlEventTouchUpInside];
-            [self.view addSubview:_settingBtn];
+            if (iOS8Later) {
+                _settingBtn = [UIButton buttonWithType:UIButtonTypeSystem];
+                [_settingBtn setTitle:self.settingBtnTitleStr forState:UIControlStateNormal];
+                _settingBtn.frame = CGRectMake(0, 180, self.view.tz_width, 44);
+                _settingBtn.titleLabel.font = [UIFont systemFontOfSize:18];
+                [_settingBtn addTarget:self action:@selector(settingBtnClick) forControlEvents:UIControlEventTouchUpInside];
+                [self.view addSubview:_settingBtn];
+            }
             
             _timer = [NSTimer scheduledTimerWithTimeInterval:0.2 target:self selector:@selector(observeAuthrizationStatusChange) userInfo:nil repeats:YES];
         } else {
@@ -478,18 +484,7 @@
 }
 
 - (void)settingBtnClick {
-    if (iOS8Later) {
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
-    } else {
-        NSURL *privacyUrl = [NSURL URLWithString:@"prefs:root=Privacy&path=PHOTOS"];
-        if ([[UIApplication sharedApplication] canOpenURL:privacyUrl]) {
-            [[UIApplication sharedApplication] openURL:privacyUrl];
-        } else {
-            NSString *message = [NSBundle tz_localizedStringForKey:@"Can not jump to the privacy settings page, please go to the settings page by self, thank you"];
-            UIAlertView * alert = [[UIAlertView alloc]initWithTitle:[NSBundle tz_localizedStringForKey:@"Sorry"] message:message delegate:nil cancelButtonTitle:[NSBundle tz_localizedStringForKey:@"OK"] otherButtonTitles: nil];
-            [alert show];
-        }
-    }
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
 }
 
 - (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated {
@@ -592,8 +587,7 @@
         self.navigationItem.title = [NSBundle tz_localizedStringForKey:@"Videos"];
     }
     
-    // 1.6.10 采用微信的方式，只在相册列表页定义backBarButtonItem为返回，其余的顺系统的做法
-    if (self.isFirstAppear) {
+    if (self.isFirstAppear && !imagePickerVc.navLeftBarButtonSettingBlock) {
         self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:[NSBundle tz_localizedStringForKey:@"Back"] style:UIBarButtonItemStylePlain target:nil action:nil];
         self.isFirstAppear = NO;
     }
@@ -692,6 +686,20 @@
         image = [UIImage imageNamed:name];
     }
     return image;
+}
+
+@end
+
+
+@implementation NSString (TzExtension)
+
+- (BOOL)tz_containsString:(NSString *)string {
+    if (iOS8Later) {
+        return [self containsString:string];
+    } else {
+        NSRange range = [self rangeOfString:string];
+        return range.location != NSNotFound;
+    }
 }
 
 @end

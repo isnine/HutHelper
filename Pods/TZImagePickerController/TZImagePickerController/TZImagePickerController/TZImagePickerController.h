@@ -4,7 +4,7 @@
 //
 //  Created by 谭真 on 15/12/24.
 //  Copyright © 2015年 谭真. All rights reserved.
-//  version 1.8.7 - 2017.07.28
+//  version 1.9.3 - 2017.09.13
 //  更多信息，请前往项目的github地址：https://github.com/banchichen/TZImagePickerController
 
 /*
@@ -119,6 +119,8 @@
 @property (nonatomic, assign) NSInteger circleCropRadius;  ///< 圆形裁剪框半径大小
 @property (nonatomic, copy) void (^cropViewSettingBlock)(UIView *cropView);     ///< 自定义裁剪框的其他属性
 
+@property (nonatomic, copy) void (^navLeftBarButtonSettingBlock)(UIButton *leftButton);     ///< 自定义返回按钮样式及其属性
+
 - (id)showAlertWithTitle:(NSString *)title;
 - (void)hideAlertView:(id)alertView;
 - (void)showProgressHUD;
@@ -225,8 +227,11 @@
 
 
 @interface UIImage (MyBundle)
-
 + (UIImage *)imageNamedFromMyBundle:(NSString *)name;
+@end
 
+
+@interface NSString (TzExtension)
+- (BOOL)tz_containsString:(NSString *)string;
 @end
 

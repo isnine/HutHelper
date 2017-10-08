@@ -36,11 +36,13 @@
 #import "ChatListViewController.h"
 #import "UIBarButtonItem+Badge.h"
 #import "CalendarHomeViewController.h"
+#import "LineUIView.h"
 #define vBackBarButtonItemName  @"backArrow.png"    //导航条返回默认图片名
 #define ERROR_MSG_INVALID @"登录过期,请重新登录"
 @interface MainPageViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *bannerImgView;
 @property (weak, nonatomic) IBOutlet UILabel *Scontent;
+@property (weak, nonatomic) IBOutlet LineUIView *lineView;
 @property (weak, nonatomic) IBOutlet UILabel *Time;
 @end
 
@@ -75,8 +77,6 @@ int class_error_;
     [self.navigationController.navigationBar lt_reset];
     //状态栏恢复黑色
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
-    
-
 }
 
 -(void)unreadNotificationAction{
@@ -108,10 +108,10 @@ int class_error_;
     NSUInteger unitFlags                      = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay |NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
     NSDateComponents *dateComponent           = [calendar components:unitFlags fromDate:now];
     [defaults setInteger:[Math getWeek:(short)[dateComponent year] m:(short)[dateComponent month] d:(short)[dateComponent day]] forKey:@"TrueWeek"];
-//    //导航栏变为透明
-//    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:0];
-//    //让黑线消失的方法
-//    self.navigationController.navigationBar.shadowImage=[UIImage new];
+    //导航栏变为透明
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:0];
+    //让黑线消失的方法
+    self.navigationController.navigationBar.shadowImage=[UIImage new];
     //设置通知
     [self setNotice];
     [_leftSortsViewController.tableview reloadData];
@@ -122,8 +122,7 @@ int class_error_;
     /**让黑线消失的方法*/
     UIImageView *navBarHairlineImageView = [self findHairlineImageViewUnder:self.navigationController.navigationBar];
     navBarHairlineImageView.hidden = YES;
-    
-     self.navigationController.delegate=self;
+
 }
 #pragma mark - 各按钮事件
 
@@ -357,7 +356,7 @@ int class_error_;
     NSCalendar *calendar                      = [NSCalendar currentCalendar];
     NSUInteger unitFlags                      = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay |NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
     NSDateComponents *dateComponent           = [calendar components:unitFlags fromDate:now];
-    _Time.text=[NSString stringWithFormat:@"%d月%d日 周%@",(short) [dateComponent month],(short)[dateComponent day],[Math transforDay:[Math getWeekDay]]];
+    _Time.text=[NSString stringWithFormat:@"第%d周 星期%@",[Math getWeek],[Math transforDay:[Math getWeekDay]]];
     //倒计时
     if ([Config getCalendar]) {
         [self drawCalendar:[Config getCalendar]];
@@ -376,10 +375,30 @@ int class_error_;
             } failure:^(NSError *error) {
                 NSLog(@"版本接口调用失败");
             }];
+    [APIRequest GET:[Config getApiWeather] parameters:nil
+            success:^(id responseObject) {
+                NSDictionary *result=[NSDictionary dictionaryWithDictionary:responseObject];
+                NSArray *nowAry=result[@"results"];
+                NSDictionary *nowDic=[nowAry[0] objectForKey:@"now"];
+                NSLog(@"%@",nowDic);
+                UILabel *weatherLab=[[UILabel alloc]initWithFrame:CGRectMake(SYReal(322), SYReal(55), SYReal(150), SYReal(60))];
+                weatherLab.text=[NSString stringWithFormat:@"%@℃",nowDic[@"temperature"]];
+                weatherLab.textColor=[UIColor whiteColor];
+                weatherLab.font=[UIFont fontWithName:@"AvenirNext-Regular" size:SYReal(26)];
+                [self.view addSubview:weatherLab];
+                UILabel *weatherTextLab=[[UILabel alloc]initWithFrame:CGRectMake(SYReal(322), SYReal(81), SYReal(150), SYReal(60))];
+                weatherTextLab.text=[NSString stringWithFormat:@"株洲|%@",nowDic[@"text"]];
+                weatherTextLab.textColor=[UIColor whiteColor];
+                weatherTextLab.font=[UIFont fontWithName:@"AvenirNext-Regular" size:SYReal(17)];
+                [self.view addSubview:weatherTextLab];
+            } failure:^(NSError *error) {
+                NSLog(@"天气接口调用失败");
+            }];
     
 }
 //绘制日历
 -(void)drawCalendar:(NSArray*)calendarArray{
+    _lineView.hidden=false;
     int yearInt,mouthInt,dayInt,countDown = 0;
     int xSum=0;//当前X的累加
     int xfirstSum=0;//第一个label的x值
@@ -518,7 +537,7 @@ int class_error_;
     [mainAndSearchBtn addTarget:self action:@selector(notice) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *rightCunstomButtonView = [[UIBarButtonItem alloc] initWithCustomView:rightButtonView];
     self.navigationItem.rightBarButtonItem = rightCunstomButtonView;
-    //轮番图手势
+    //轮番图和手势更换图片
   if ([Config getBanner]) {
         UIImage *Img=[UIImage imageWithData:[Config getBanner]];
         _bannerImgView.image=Img;
@@ -590,15 +609,5 @@ int class_error_;
     [tempAppDelegate.mainNavigationController pushViewController:chatList animated:YES];
 }
 
--(void)navigationController:(UINavigationController*)navigationController willShowViewController:(nonnull UIViewController *)viewController animated:(BOOL)animated{
-     [viewController viewWillAppear:animated];
-    if([[viewController class]isSubclassOfClass:[MainPageViewController class]]) {
-        //导航栏变为透明
-        NSLog(@"123");
-   [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
-        //让黑线消失的方法
-        self.navigationController.navigationBar.shadowImage=[UIImage new];
-    }
-}
 
 @end

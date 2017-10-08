@@ -34,15 +34,15 @@ PODS:
   - LGPlusButtonsView (1.1.1)
   - Masonry (0.6.4)
   - MBProgressHUD (1.0.0)
-  - MJRefresh (3.1.12)
+  - MJRefresh (3.1.14)
   - Reachability (3.2)
-  - RongCloudIM/IMKit (2.8.14):
+  - RongCloudIM/IMKit (2.8.18):
     - RongCloudIM/IMLib
-  - RongCloudIM/IMLib (2.8.14)
+  - RongCloudIM/IMLib (2.8.18)
   - SDWebImage (3.8.2):
     - SDWebImage/Core (= 3.8.2)
   - SDWebImage/Core (3.8.2)
-  - TZImagePickerController (1.8.7)
+  - TZImagePickerController (1.9.3)
   - UITableView+FDTemplateLayoutCell (1.6)
   - UMengAnalytics-NO-IDFA (4.2.5)
   - UMengUShare/Core (6.4.5):
@@ -88,11 +88,11 @@ SPEC CHECKSUMS:
   LGPlusButtonsView: 57878cd3d461d0ee2042f5b7b25d1c017e22a084
   Masonry: 281802d04d787ea2973179ee8bcb50500579ede2
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
-  MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
+  MJRefresh: 6642e35b3227a5447b9fd5e17c552c90196c9859
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
-  RongCloudIM: 04334f9285db8bc5e2f69bda0e3ce5431a6bec72
+  RongCloudIM: 9a934460ec2115d2240c565acc15390b43fb715d
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
-  TZImagePickerController: 79fa5712237cf6bdc63311cf65d7e0aa369b2b0a
+  TZImagePickerController: 079ab986018c22793462e531045a75e366b18252
   UITableView+FDTemplateLayoutCell: 5c949b4a5059c404b442926c0e80f81d10a2d66f
   UMengAnalytics-NO-IDFA: 16666e32edce5be44ae5b14aaaa7f3582e09d6ab
   UMengUShare: a5711c54e640b04e3048e931d2b88d50f9cfa55c
@@ -100,4 +100,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 33034b8f18f7092b6f5b635bd36b01c18101ce45
 
-COCOAPODS: 1.3.1
+COCOAPODS: 1.2.1

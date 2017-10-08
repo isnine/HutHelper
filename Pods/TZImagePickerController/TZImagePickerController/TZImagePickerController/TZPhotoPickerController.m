@@ -69,7 +69,6 @@ static CGFloat itemMargin = 5;
     }
     return _imagePickerVc;
 }
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     TZImagePickerController *tzImagePickerVc = (TZImagePickerController *)self.navigationController;
@@ -78,7 +77,14 @@ static CGFloat itemMargin = 5;
     self.view.backgroundColor = [UIColor whiteColor];
     self.navigationItem.title = _model.name;
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:tzImagePickerVc.cancelBtnTitleStr style:UIBarButtonItemStylePlain target:tzImagePickerVc action:@selector(cancelButtonClick)];
-    _showTakePhotoBtn = (([[TZImageManager manager] isCameraRollAlbum:_model.name]) && tzImagePickerVc.allowTakePicture);
+    if (tzImagePickerVc.navLeftBarButtonSettingBlock) {
+        UIButton *leftButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        leftButton.frame = CGRectMake(0, 0, 44, 44);
+        [leftButton addTarget:self action:@selector(navLeftBarButtonClick) forControlEvents:UIControlEventTouchUpInside];
+        tzImagePickerVc.navLeftBarButtonSettingBlock(leftButton);
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:leftButton];
+    }
+    _showTakePhotoBtn = (_model.isCameraRoll && tzImagePickerVc.allowTakePicture);
     // [self resetCachedAssets];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didChangeStatusBarOrientationNotification:) name:UIApplicationDidChangeStatusBarOrientationNotification object:nil];
 }
@@ -116,6 +122,7 @@ static CGFloat itemMargin = 5;
         
         [self checkSelectedModels];
         [self configCollectionView];
+        _collectionView.hidden = YES;
         [self configBottomToolBar];
         
         [self scrollCollectionViewToBottom];
@@ -313,7 +320,9 @@ static CGFloat itemMargin = 5;
 }
 
 #pragma mark - Click Event
-
+- (void)navLeftBarButtonClick{
+    [self.navigationController popViewControllerAnimated:YES];
+}
 - (void)previewButtonClick {
     TZPhotoPreviewController *photoPreviewVc = [[TZPhotoPreviewController alloc] init];
     [self pushPhotoPrevireViewController:photoPreviewVc];
@@ -442,9 +451,7 @@ static CGFloat itemMargin = 5;
     cell.allowPickingGif = tzImagePickerVc.allowPickingGif;
     cell.model = model;
     cell.showSelectBtn = tzImagePickerVc.showSelectBtn;
-    if (!tzImagePickerVc.allowPreview) {
-        cell.selectPhotoButton.frame = cell.bounds;
-    }
+    cell.allowPreview = tzImagePickerVc.allowPreview;
     
     __weak typeof(cell) weakCell = cell;
     __weak typeof(self) weakSelf = self;
@@ -536,8 +543,13 @@ static CGFloat itemMargin = 5;
         NSString *appName = [[NSBundle mainBundle].infoDictionary valueForKey:@"CFBundleDisplayName"];
         if (!appName) appName = [[NSBundle mainBundle].infoDictionary valueForKey:@"CFBundleName"];
         NSString *message = [NSString stringWithFormat:[NSBundle tz_localizedStringForKey:@"Please allow %@ to access your camera in \"Settings -> Privacy -> Camera\""],appName];
-        UIAlertView * alert = [[UIAlertView alloc]initWithTitle:[NSBundle tz_localizedStringForKey:@"Can not use camera"] message:message delegate:self cancelButtonTitle:[NSBundle tz_localizedStringForKey:@"Cancel"] otherButtonTitles:[NSBundle tz_localizedStringForKey:@"Setting"], nil];
-        [alert show];
+        if (iOS8Later) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[NSBundle tz_localizedStringForKey:@"Can not use camera"] message:message delegate:self cancelButtonTitle:[NSBundle tz_localizedStringForKey:@"Cancel"] otherButtonTitles:[NSBundle tz_localizedStringForKey:@"Setting"], nil];
+            [alert show];
+        } else {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[NSBundle tz_localizedStringForKey:@"Can not use camera"] message:message delegate:self cancelButtonTitle:[NSBundle tz_localizedStringForKey:@"OK"] otherButtonTitles:nil];
+            [alert show];
+        }
     } else if (authStatus == AVAuthorizationStatusNotDetermined) {
         // fix issue 466, 防止用户首次拍照拒绝授权时相机页黑屏
         if (iOS7Later) {
@@ -647,7 +659,10 @@ static CGFloat itemMargin = 5;
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.01 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [_collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:item inSection:0] atScrollPosition:UICollectionViewScrollPositionBottom animated:NO];
             _shouldScrollToBottom = NO;
+            _collectionView.hidden = NO;
         });
+    } else {
+        _collectionView.hidden = NO;
     }
 }
 
@@ -671,15 +686,6 @@ static CGFloat itemMargin = 5;
     if (buttonIndex == 1) { // 去设置界面，开启相机访问权限
         if (iOS8Later) {
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
-        } else {
-            NSURL *privacyUrl = [NSURL URLWithString:@"prefs:root=Privacy&path=CAMERA"];
-            if ([[UIApplication sharedApplication] canOpenURL:privacyUrl]) {
-                [[UIApplication sharedApplication] openURL:privacyUrl];
-            } else {
-                NSString *message = [NSBundle tz_localizedStringForKey:@"Can not jump to the privacy settings page, please go to the settings page by self, thank you"];
-                UIAlertView * alert = [[UIAlertView alloc]initWithTitle:[NSBundle tz_localizedStringForKey:@"Sorry"] message:message delegate:nil cancelButtonTitle:[NSBundle tz_localizedStringForKey:@"OK"] otherButtonTitles: nil];
-                [alert show];
-            }
         }
     }
 }
@@ -742,6 +748,7 @@ static CGFloat itemMargin = 5;
                 [tzImagePickerVc.selectedModels addObject:assetModel];
                 [self refreshBottomToolBarStatus];
             }
+            _collectionView.hidden = YES;
             [_collectionView reloadData];
             
             _shouldScrollToBottom = YES;

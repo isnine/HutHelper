@@ -28,9 +28,9 @@
 #import "RCUserInfo.h"
 #import "RCWatchKitStatusDelegate.h"
 #import "RCCustomerServiceGroupItem.h"
-#import "RCUserOnlineStatusInfo.h"
 #import "RCSearchConversationResult.h"
 #import "RCPushProfile.h"
+#import "RCUserOnlineStatusInfo.h"
 
 #pragma mark - 消息接收监听器
 
@@ -1450,6 +1450,16 @@ FOUNDATION_EXPORT NSString *const RCLibDispatchReadReceiptNotification;
                     targetId:(NSString *)targetId
                        isTop:(BOOL)isTop;
 
+/*!
+ 获取置顶的会话列表
+ 
+ @param conversationTypeList 会话类型的数组(需要将RCConversationType转为NSNumber构建Array)
+ @return                     置顶的会话RCConversation的列表
+ 
+ @discussion 此方法会从本地数据库中，读取置顶的会话列表。
+ */
+- (NSArray<RCConversation *> *)getTopConversationList:(NSArray *)conversationTypeList;
+
 #pragma mark 会话中的草稿操作
 /*!
  获取会话中的草稿信息
@@ -1585,6 +1595,16 @@ getConversationNotificationStatus:(RCConversationType)conversationType
                           success:(void (^)(RCConversationNotificationStatus
                                                 nStatus))successBlock
                             error:(void (^)(RCErrorCode status))errorBlock;
+
+/*!
+ 获取屏蔽消息提醒的会话列表
+ 
+ @param conversationTypeList 会话类型的数组(需要将RCConversationType转为NSNumber构建Array)
+ @return                     屏蔽消息提醒的会话RCConversation的列表
+ 
+ @discussion 此方法会从本地数据库中，读取屏蔽消息提醒的会话列表。
+ */
+- (NSArray<RCConversation *> *)getBlockedConversationList:(NSArray *)conversationTypeList;
 
 #pragma mark 全局消息提醒
 
@@ -2396,9 +2416,27 @@ startCustomerService:(NSString *)kefuId
 - (void)getVendorToken:(void (^)(NSString *vendorToken))successBlock
                  error:(void (^)(RCErrorCode nErrorCode))errorBlock;
 
-
 //远程推送相关设置
 @property(nonatomic,strong,readonly)RCPushProfile *pushProfile;
+
+#pragma mark - 历史消息
+/**
+ 设置离线消息补偿时间（以天为单位）
+ 
+ @param duration 离线消息补偿时间，范围【1~7天】
+ @param  successBlock 成功回调
+ @param  errorBlock   失败回调
+ */
+-(void)setOfflineMessageDuration:(int)duration
+                         success:(void (^)())successBlock
+                         failure:(void (^)(RCErrorCode nErrorCode))errorBlock;
+
+/**
+ 获取离线消息补偿时间 （以天为单位）
+ 
+ @return 离线消息补偿时间
+ */
+-(int)getOfflineMessageDuration;
 @end
 
 #endif

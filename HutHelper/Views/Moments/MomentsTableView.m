@@ -51,13 +51,7 @@
     header.lastUpdatedTimeLabel.hidden = YES;
     // 马上进入刷新状态
     self.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(load)];
-    //MJRefresh适配iOS11
-    #ifdef __IPHONE_11_0
-    if (@available(iOS 11.0, *)) {
-        self.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
-        self.contentInset = UIEdgeInsetsMake(64, 0, 0, 0);
-    }
-    #endif
+
     
     return self;
 }

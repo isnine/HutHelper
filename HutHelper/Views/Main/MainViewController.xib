@@ -15,6 +15,7 @@
                 <outlet property="Time" destination="8A2-Sk-Fhb" id="8hu-mP-i02"/>
                 <outlet property="bannerImgView" destination="U3q-9q-YzO" id="ker-TZ-TtB"/>
                 <outlet property="body" destination="72Q-bm-Qn2" id="YUr-SQ-Ykr"/>
+                <outlet property="lineView" destination="QzZ-OL-ePM" id="gBU-CO-xKd"/>
                 <outlet property="noticetitle" destination="5mi-m9-btC" id="kbD-i7-uGd"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -227,7 +228,7 @@
                     <color key="textColor" red="0.25095823407173157" green="0.25099286437034607" blue="0.25094646215438843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QzZ-OL-ePM" customClass="LineUIView">
+                <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QzZ-OL-ePM" customClass="LineUIView">
                     <rect key="frame" x="50" y="220" width="349" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>

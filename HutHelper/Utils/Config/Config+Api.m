@@ -143,9 +143,11 @@
     return @"http://218.75.197.121:8889/opac/m/index";
 }
 #pragma mark - 其他
-
 +(NSString*)getApiCalendar{
     return [NSString stringWithFormat:@"%@/api/v1/get/calendar",Config.apiIndex];
+}
++(NSString*)getApiWeather{
+    return @"https://api.seniverse.com/v3/weather/now.json?key=il4weiqexf5krspx&location=zhuzhou&language=zh-Hans&unit=c";
 }
 +(NSString*)getApiVersioniOS{
     return [NSString stringWithFormat:@"%@/api/v1/get/versionIos/%@/%@",Config.apiIndex,Config.getStudentKH,[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]];

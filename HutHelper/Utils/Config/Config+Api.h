@@ -71,7 +71,7 @@
 +(NSString*)getApiImStudent;
 
 +(NSString*)getApiVersioniOS;
-
++(NSString*)getApiWeather;
 +(NSString*)getApiCalendar;
 +(NSString*)apiIndex;
 @end

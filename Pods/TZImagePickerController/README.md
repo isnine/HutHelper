@@ -2,6 +2,9 @@
  A clone of UIImagePickerController, support picking multiple photos、original photo、video, also allow preview photo and video, support iOS6+.   
  一个支持多选、选原图和视频的图片选择器，同时有预览功能，支持iOS6+。
  
+ ## 重要提示：1.9.0版本已发布，移除了"prefs:root="的调用，这个API已经被列为私有API，请大家尽快升级。  
+ 其它同样使用了该API的库大家可以检查下，比如著名的[SVProgressHUD](http://www.cocoachina.com/bbs/read.php?tid=1722166)    
+ 
      关于升级iOS10和Xcdoe8的提示:    
  在Xcode8环境下将项目运行在iOS10的设备/模拟器中，访问相册和相机需要额外配置info.plist文件。分别是Privacy - Photo Library Usage Description和Privacy - Camera Usage Description字段，详见Demo中info.plist中的设置。
     
@@ -57,6 +60,9 @@ A：请参考issue481：https://github.com/banchichen/TZImagePickerController/is
  
 **Q：photos数组图片不是原图，如何获取原图？**        
 A：请参考issue457的解释：https://github.com/banchichen/TZImagePickerController/issues/457    
+
+**Q：系统语言是中文/英文，界面上却有部分相册名字、返回按钮显示成了英文/中文？**        
+A：请参考issue443的解释：https://github.com/banchichen/TZImagePickerController/issues/443
  
 **Q：预览界面能否支持传入NSURL、UIImage对象？**       
 A：排期中，优先级高   
@@ -77,6 +83,8 @@ A：1.8.4版本已支持
 A：考虑下，优先级低  
 
       最近更新 
+1.9.0 移除"prefs:root="的调用，这个API已经被列为私有API，请大家尽快升级   
+1.8.8 修复一些细节   
 1.8.5 修复一些样式细节    
 1.8.4 加入横竖屏适配；支持视频/gif多选；支持视频和照片一起选    
 1.8.1 新增2个代理方法，支持由上层来决定相册/照片的显示与否     
