@@ -680,6 +680,12 @@ NSString *show_xp;
 }
 
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [_plusButtonsViewMain removeFromSuperview];
+    
+}
 
 
 @end

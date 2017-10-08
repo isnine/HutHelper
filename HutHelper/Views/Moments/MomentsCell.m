@@ -163,7 +163,7 @@
     [self.contentView addSubview:likesNumLabel];
     /**删除说说按钮*/
     if ([Config.getUserId isEqualToString:_data.user_id]) {
-        deleteSay = [[UIButton alloc] initWithFrame:CGRectMake(SYReal(270), sumHeight, SYReal(30),SYReal(30))];
+        deleteSay = [[UIButton alloc] initWithFrame:CGRectMake(SYReal(270), sumHeight, SYReal(40),SYReal(30))];
         [deleteSay setTitle:@"删除" forState:UIControlStateNormal];
         deleteSay.titleLabel.font=[UIFont systemFontOfSize: 12.0];
         [deleteSay setTitleColor:[UIColor redColor]forState:UIControlStateNormal];
