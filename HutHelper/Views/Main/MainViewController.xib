@@ -25,7 +25,7 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" image="ico_main_banner" translatesAutoresizingMaskIntoConstraints="NO" id="U3q-9q-YzO">
+                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" fixedFrame="YES" image="ico_main_banner" translatesAutoresizingMaskIntoConstraints="NO" id="U3q-9q-YzO">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="286"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                 </imageView>
