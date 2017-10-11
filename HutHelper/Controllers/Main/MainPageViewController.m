@@ -543,28 +543,30 @@ int class_error_;
         _bannerImgView.image=Img;
    }
      UITapGestureRecognizer *tapBanner = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(touchBanner)];
-    tapBanner.numberOfTapsRequired =2;
+    tapBanner.numberOfTapsRequired =1;
     [_bannerImgView addGestureRecognizer:tapBanner];
 }
 #pragma mark -- <UIImagePickerControllerDelegate>--
 - (void)touchBanner
 {
-    // 1.判断相册是否可以打开
-    if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary]) return;
-    // 2. 创建图片选择控制器
-    UIImagePickerController *ipc = [[UIImagePickerController alloc] init];
-    // 3. 设置打开照片相册类型(显示所有相簿)
-    ipc.delegate = self;
-    ipc.allowsEditing = YES;
-    ipc.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-    
-    // ipc.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
-    // 照相机
-    // ipc.sourceType = UIImagePickerControllerSourceTypeCamera;
-    // 4.设置代理
-    ipc.delegate = self;
-    // 5.modal出这个控制器
-    [self presentViewController:ipc animated:YES completion:nil];
+
+    UIAlertController *alertVc = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertAction *cancle = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction *_Nonnull action) {
+        
+    }];
+    UIAlertAction *camera = [UIAlertAction actionWithTitle:@"选取照片" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary]) return;
+        // 2. 创建图片选择控制器
+        UIImagePickerController *ipc = [[UIImagePickerController alloc] init];
+        // 3. 设置打开照片相册类型(显示所有相簿)
+        ipc.delegate = self;
+        ipc.allowsEditing = YES;
+        ipc.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        [self presentViewController:ipc animated:YES completion:nil];
+    }];
+    [alertVc addAction:cancle];
+    [alertVc addAction:camera];
+    [self presentViewController:alertVc animated:YES completion:nil];
 }
 
 // 获取图片后的操作
