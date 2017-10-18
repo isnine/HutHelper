@@ -148,19 +148,19 @@
 -(NSString*)getTime:(int)time{
     switch (time) {
         case 1:
-            return @"8:00-9:45";
+            return @"8:00-9:40";
             break;
         case 3:
-            return @"10:00-11:45";
+            return @"10:00-11:40";
             break;
         case 5:
-            return @"14:00-15:45";
+            return @"14:00-15:40";
             break;
         case 7:
-            return @"16:00-17:45";
+            return @"16:00-17:40";
             break;
         case 9:
-            return @"19:00-20:45";
+            return @"19:00-20:40";
             break;
         default:
             return @"";
