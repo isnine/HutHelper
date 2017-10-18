@@ -18,25 +18,16 @@
 
 @implementation LibraryViewController{
     UIButton *mainAndSearchBtn;
-    NSString *Url_String;
+
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self SetTitle];
-    [self SetURL];
-    NSURL *url                = [[NSURL alloc]initWithString:Url_String];
+    self.navigationItem.title = @"图书馆(必须连入学校Wifi)";
+    NSURL *url                = [[NSURL alloc]initWithString:Config.getApiLibrary];
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor]}];
     [self customBackButton];
     _views.delegate=self;
     [_views loadRequest:[NSURLRequest requestWithURL:url]];
-}
-
--(void)SetURL{
-    Url_String=@"http://218.75.197.121:8889/opac/m/index";
-}
-
--(void)SetTitle{
-    self.navigationItem.title = @"图书馆";
 }
 
 // 自定义返回按钮
@@ -67,7 +58,6 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [MobClick beginLogPageView:@"图书馆"];
     self.navigationItem.backBarButtonItem = mainAndSearchBtn;
     self.navigationController.interactivePopGestureRecognizer.delegate = self;
 }
@@ -75,9 +65,6 @@
 {
     
     [super viewWillDisappear:animated];
-    [MobClick endLogPageView:@"图书馆"];
-    
-    
 }
 /** webView的代理方法*/
 

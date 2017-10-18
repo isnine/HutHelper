@@ -140,7 +140,7 @@
 }
 #pragma mark - 图书馆
 +(NSString*)getApiLibrary{
-    return @"http://218.75.197.121:8889/opac/m/index";
+    return @"http://172.16.64.7:8080/opac/m/index";
 }
 #pragma mark - 其他
 +(NSString*)getApiCalendar{
