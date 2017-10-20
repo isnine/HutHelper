@@ -141,7 +141,7 @@
     _timeTableWidth = 50;
     _courseListWidth = 0;
     _maxCourseCount = 10;
-    _maxCourseCount = 10;
+    _selectedIndex = [Math getWeekDay];
     _weekIndex = 1;
     _topBarBgColor = [UIColor whiteColor];
     self.backgroundColor = RGB(237, 241, 241, 1);
@@ -214,11 +214,7 @@
         [temp addObject:table];
     }
     _courseTableArr = [NSArray arrayWithArray:temp];
-    
-     /** 周次 */
-    self.weekBarLabel=[[UILabel alloc]initWithFrame:CGRectMake(10, 0, 30, 15)];
-    /** 日期 */
-    self.dayBarLabel=[[UILabel alloc]initWithFrame:CGRectMake(10, 15, 30, 15)];
+
 }
 
 - (void)layoutSubviews{
@@ -350,9 +346,10 @@
         if ([_dataSource respondsToSelector:@selector(courseListView:titleAttributesInTopbarAtIndex:)]) {
             attr = [_dataSource courseListView:self titleAttributesInTopbarAtIndex:i];
         }
- //       if (attr) {
-//            NSAttributedString *attrStr = [[NSAttributedString alloc] initWithString:str attributes:attr];
+//        if (attr) {
+//            NSAttributedString *attrStr = [[NSAttributedString alloc] initWithString:@" " attributes:attr];
 //            [btn setAttributedTitle:attrStr forState:UIControlStateNormal];
+//        }
         /** 周次 */
             UILabel *weekBarLabel=[[UILabel alloc]initWithFrame:CGRectMake(SYReal(10), 0, SYReal(30), SYReal(15))];
         /** 日期 */
