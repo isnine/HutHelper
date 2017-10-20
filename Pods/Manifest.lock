@@ -36,6 +36,9 @@ PODS:
   - MBProgressHUD (1.0.0)
   - MJRefresh (3.1.14)
   - Reachability (3.2)
+  - Realm (3.0.0):
+    - Realm/Headers (= 3.0.0)
+  - Realm/Headers (3.0.0)
   - RongCloudIM/IMKit (2.8.18):
     - RongCloudIM/IMLib
   - RongCloudIM/IMLib (2.8.18)
@@ -67,6 +70,7 @@ DEPENDENCIES:
   - LGPlusButtonsView (~> 1.1.0)
   - MBProgressHUD (~> 1.0.0)
   - MJRefresh
+  - Realm
   - RongCloudIM/IMKit (~> 2.8.3)
   - RongCloudIM/IMLib (~> 2.8.3)
   - SDWebImage (~> 3.8)
@@ -90,6 +94,7 @@ SPEC CHECKSUMS:
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   MJRefresh: 6642e35b3227a5447b9fd5e17c552c90196c9859
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
+  Realm: dec0de73be8c57506e39db72694d513c189493b3
   RongCloudIM: 9a934460ec2115d2240c565acc15390b43fb715d
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
   TZImagePickerController: 079ab986018c22793462e531045a75e366b18252
@@ -98,6 +103,6 @@ SPEC CHECKSUMS:
   UMengUShare: a5711c54e640b04e3048e931d2b88d50f9cfa55c
   YCXMenu: 6003bcd20d8ac72e3eb3c442c97ed21948c6dc1f
 
-PODFILE CHECKSUM: 33034b8f18f7092b6f5b635bd36b01c18101ce45
+PODFILE CHECKSUM: 842e327ece981f8651fcface7bf9ba0242d0ad23
 
-COCOAPODS: 1.2.1
+COCOAPODS: 1.3.1

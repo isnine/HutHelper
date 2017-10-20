@@ -59,6 +59,8 @@
 /** 代理 */
 @property (nonatomic, weak) IBOutlet id<GWPCourseListViewDelegate> delegate;
 #pragma mark IU相关
+/** 第几周 */
+@property (nonatomic, assign) NSUInteger weekIndex;
 /** 行高，默认50 */
 @property (nonatomic, assign) CGFloat itemHeight;
 /** 左侧时间tableView的宽度，默认50 */

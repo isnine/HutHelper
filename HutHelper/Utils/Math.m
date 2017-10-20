@@ -18,7 +18,8 @@ int startday                        = 4;
     //返回当前是本年的第几天，year,month,day 表示现在的年月日，整数。
     int a[12]                                 = {31,0,31,30,31,30,31,31,30,31,30,31};
     int s                                     = 0;
-    for(int i           = 0; i < month-1; i++) {s   += a[i];
+    for(int i           = 0; i < month-1; i++) {
+        s   += a[i];
     }
     if(month > 2) {
         if(year % (year % 100 ? 4 : 400 ) ? 0 : 1)s                                         += 29;
@@ -60,6 +61,38 @@ int startday                        = 4;
     }
     int iWeek=(d+2*m+3*(m+1)/5+y+y/4-y/100+y/400)%7+1;
     return iWeek;
+}
+/** 得到当前为几号 */
++(int) getDayOfWeek:(int)week d:(int)day {
+    day=[self CountDays:2017 m:9 d:4]+(week-1)*7+day;
+    int year=startyear;
+    int d=0,m,leap,i;
+    int Month[12]={31,28,31,30,31,30,31,31,30,31,30,31};
+    
+    if( (year%4!=0) ||( (year%100==0)&& (year%400!=0)))
+        leap=0;//不是闰年
+    else
+        leap=1;//是闰年
+    
+    if(leap==1)
+        Month[1]=29;//闰年二月29天
+    m=1;
+    for(i=0;i<12;i++)
+    {
+        d=day-Month[i];
+        if(d>0)
+        {
+            day=d;
+            m++;//月数加1
+        }
+        
+        else
+        {
+            d = d+Month[i];
+            break;
+        }
+    }
+    return  d;
 }
 +(int)getWeekDay{
     NSDate *now                                  = [NSDate date];

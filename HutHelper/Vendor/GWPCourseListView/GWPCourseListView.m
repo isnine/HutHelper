@@ -7,7 +7,7 @@
 //
 
 #import "GWPCourseListView.h"
-
+#import "Math.h"
 #define MaxDay 7
 /** 通过三色值获取到颜色 */
 #define RGB(r,g,b,a) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:(a)]
@@ -79,7 +79,10 @@
 @property (nonatomic, weak)   UIView *topBarContentView;
 /** 顶部选项卡中的按钮 */
 @property (nonatomic, strong) NSArray *topBarBtnArr;
-
+/** 顶部选项卡中的日期 */
+@property (nonatomic, strong) UILabel *dayBarLabel;
+/** 顶部选项卡中的周次 */
+@property (nonatomic, strong) UILabel *weekBarLabel;
 /** 时间TableView */
 @property (nonatomic, weak)   UITableView *timeTableView;
 
@@ -138,7 +141,8 @@
     _timeTableWidth = 50;
     _courseListWidth = 0;
     _maxCourseCount = 10;
-    _selectedIndex = [Math getWeekDay];
+    _maxCourseCount = 10;
+    _weekIndex = 1;
     _topBarBgColor = [UIColor whiteColor];
     self.backgroundColor = RGB(237, 241, 241, 1);
     
@@ -210,6 +214,11 @@
         [temp addObject:table];
     }
     _courseTableArr = [NSArray arrayWithArray:temp];
+    
+     /** 周次 */
+    self.weekBarLabel=[[UILabel alloc]initWithFrame:CGRectMake(10, 0, 30, 15)];
+    /** 日期 */
+    self.dayBarLabel=[[UILabel alloc]initWithFrame:CGRectMake(10, 15, 30, 15)];
 }
 
 - (void)layoutSubviews{
@@ -291,7 +300,7 @@
 - (void)setDataSource:(id<GWPCourseListViewDataSource>)dataSource{
     _dataSource = dataSource;
     
-    [self loadData];
+   // [self loadData];
     
     
 }
@@ -316,6 +325,7 @@
 }
 
 - (void)loadData{
+   
     /*=============================== topBar ==============================*/
     NSArray *temp = @[
                       @"周一",
@@ -340,12 +350,36 @@
         if ([_dataSource respondsToSelector:@selector(courseListView:titleAttributesInTopbarAtIndex:)]) {
             attr = [_dataSource courseListView:self titleAttributesInTopbarAtIndex:i];
         }
-        if (attr) {
-            NSAttributedString *attrStr = [[NSAttributedString alloc] initWithString:str attributes:attr];
-            [btn setAttributedTitle:attrStr forState:UIControlStateNormal];
-        } else {
-            [btn setTitle:str forState:UIControlStateNormal];
-        }
+ //       if (attr) {
+//            NSAttributedString *attrStr = [[NSAttributedString alloc] initWithString:str attributes:attr];
+//            [btn setAttributedTitle:attrStr forState:UIControlStateNormal];
+        /** 周次 */
+            UILabel *weekBarLabel=[[UILabel alloc]initWithFrame:CGRectMake(SYReal(10), 0, SYReal(30), SYReal(15))];
+        /** 日期 */
+            UILabel *dayBarLabel=[[UILabel alloc]initWithFrame:CGRectMake(SYReal(10), SYReal(15), SYReal(30), SYReal(15))];
+            //周几
+            weekBarLabel.font=[UIFont systemFontOfSize:10];
+            weekBarLabel.tag=201+i;
+            weekBarLabel.text=temp[i];
+            //日期
+            dayBarLabel.font=[UIFont systemFontOfSize:10];
+            dayBarLabel.tag=101+i;
+           dayBarLabel.text=[NSString stringWithFormat:@"%d日",[Math getDayOfWeek:self.weekIndex d:i]];
+            [btn addSubview:weekBarLabel];
+            [btn addSubview:dayBarLabel];
+//        } else {
+//            //周几
+//            UILabel *weekBarLabel=[[UILabel alloc]initWithFrame:CGRectMake(10, 0, 30, 15)];
+//            weekBarLabel.font=[UIFont systemFontOfSize:10];
+//            weekBarLabel.text=temp[i];
+//            //日期
+//            UILabel *dayBarLabel=[[UILabel alloc]initWithFrame:CGRectMake(10, 15, 30, 15)];
+//            dayBarLabel.font=[UIFont systemFontOfSize:10];
+//            dayBarLabel.text=[NSString stringWithFormat:@"%d日",[Math getDayOfWeek:7 d:i]];
+//            [btn addSubview:weekBarLabel];
+//            [btn addSubview:dayBarLabel];
+//            //[btn setTitle:str forState:UIControlStateNormal];
+//        }
         
         UIColor *bgColor;
         if ([_dataSource respondsToSelector:@selector(courseListView:titleBackgroundColorInTopbarAtIndex:)]) {

@@ -426,6 +426,13 @@ NSString *show_xp;
         }
     }
     _courseArr = [NSMutableArray arrayWithArray:@[a1,a2,a3,a4,a5,a26,a27,a6,a7,a8,a9,a10,a28,a29,a11,a12,a13,a14,a15,a30,a31,a16,a17,a18,a19,a20,a32,a33,a21,a22,a23,a24,a25,a34,a35]];
+    self.courseListView.weekIndex=now_week;
+    for (int i=0 ; i<7; i++) {
+        UILabel *dayLab=(UILabel *)[self.courseListView viewWithTag:(101+i)];
+        UILabel *weekLab=(UILabel *)[self.courseListView viewWithTag:(201+i)];
+        [dayLab removeFromSuperview];
+        [weekLab removeFromSuperview];
+    }
     [self.courseListView reloadData];
 }
 

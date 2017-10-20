@@ -14,6 +14,7 @@
 + (int) getWeek;
 + (int) CountDays:(int)year m:(int)month d:(int)day;
 
++(int) getDayOfWeek:(int)week d:(int)day;
 + (int) getWeekDay:(int)y m:(int)m d:(int)d;
 + (int) getWeekDay;
 
