@@ -86,7 +86,7 @@ git clone https://github.com/isnine/HutHelper-Open.git --depth=1
 
 
 # License
-[GNU General Public License v2.0](https://github.com/isnine/HutHelper-Open/blob/master/LICENSE)
+[LGPL](https://github.com/isnine/HutHelper-Open/blob/master/LICENSE)
 
 
 
