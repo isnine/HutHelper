@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface HandAddViewController : UIViewController
-
+@property(nonatomic,assign)Boolean *isNeed;
 @end

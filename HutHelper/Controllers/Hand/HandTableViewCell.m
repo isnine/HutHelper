@@ -41,7 +41,7 @@
         [MBProgressHUD showError:@"游客请登录后查看" toView:self];
         return;
     }
-    Hand *hand=_handArray[(short)(((UITableViewCell*)[[sender superview]superview]).tag+1)*2-1];
+    Hand *hand=_handArray[(short)(((UITableViewCell*)[[sender superview]superview]).tag)*2];
     NSString *Url_String=[NSString stringWithFormat:@"%@/%@/%@/%@",Config.getApiGoodsShow,Config.getStudentKH,Config.getRememberCodeApp,hand.good_id];
     [APIRequest GET:Url_String parameters:nil success:^(id responseObject) {
              NSDictionary *Hand_All = [NSDictionary dictionaryWithDictionary:responseObject];
@@ -70,7 +70,7 @@
         [MBProgressHUD showError:@"游客请登录后查看" toView:self];
         return;
     }
-    Hand *hand=_handArray[(short)(((UITableViewCell*)[[sender superview]superview]).tag+1)*2];
+    Hand *hand=_handArray[(short)(((UITableViewCell*)[[sender superview]superview]).tag)*2+1];
     NSString *Url_String=[NSString stringWithFormat:@"%@/%@/%@/%@",Config.getApiGoodsShow,Config.getStudentKH,Config.getRememberCodeApp,hand.good_id];
     [APIRequest GET:Url_String parameters:nil success:^(id responseObject) {
              NSDictionary *Hand_All = [NSDictionary dictionaryWithDictionary:responseObject];

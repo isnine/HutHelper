@@ -118,7 +118,12 @@
     _describeText.delegate=self;
     [self.view addSubview:_describeText];
     //四个块的标题
-    NSArray *LabTitle=@[@"价格",@"成色",@"联系电话",@"发布区域"];
+    NSArray *LabTitle=[[NSArray alloc]init];
+    if(self.isNeed==true){
+        LabTitle=@[@"期望价格",@"期望成色",@"联系电话",@"发布区域"];
+    }else{
+        LabTitle=@[@"价格",@"成色",@"联系电话",@"发布区域"];
+    }
     int LabX[5]={26,233,26,233};
     int LabY[5]={425,425,560,560};
     for (int i=0; i<4; i++) {
@@ -195,8 +200,6 @@
     if (_selectedPhotos.count!=0) {
         _responstring=@"";
         _getphoto=0;
-        
-        
         AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
         [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
         manager.requestSerializer.timeoutInterval = 5.f;
@@ -206,7 +209,7 @@
             for (int i = 0; i < _selectedPhotos.count; i++) {
                 UIImage *image = _selectedPhotos[i];
                 [manager POST:Config.getApiGoodsImgUpload parameters:dict constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
-                    NSData *imageData = UIImageJPEGRepresentation(image, 0.5);
+                    NSData *imageData = UIImageJPEGRepresentation(image, 0.1);
                     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
                     [formatter setDateFormat:@"yyyyMMddHHmmss"];
                     NSString *dateString = [formatter stringFromDate:[NSDate date]];
@@ -230,35 +233,39 @@
                             else if([_Old.text isEqualToString:@"9成新"])attr=@"3";
                             else if([_Old.text isEqualToString:@"8成新"])attr=@"4";
                             else if([_Old.text isEqualToString:@"7成新及以下"])attr=@"5";
+                            
+                            NSNumber* type;
+                            if(self.isNeed==TRUE){
+                                type=@2;
+                            }else{
+                                type=@1;
+                            }
                             NSDictionary *params = @{
                                                      @"tit":_titleField.text,
                                                      @"content" : _describeText.text,
                                                      @"prize"  : _Price.text,
                                                      @"prize_src"  : _Price.text,
                                                      @"attr"  : attr,
-                                                     @"class" :@"0",
                                                      @"address" :_address.text,
                                                      @"hidden"  : _responstring,
                                                      @"phone":_Phone.text,
-                                                     @"qq":@"",
-                                                     @"wechat":@""
+                                                     @"type":type
                                                      };
-                            [MBProgressHUD showMessage:@"发表中" toView:self.view];
                             [manager POST:Url_String parameters:params success:^(NSURLSessionDataTask *task, id responseObject) {
                                      HideAllHUD
                                 NSDictionary *response = [NSDictionary dictionaryWithDictionary:responseObject];
-                                NSString *Msg=[response objectForKey:@"msg"];
-                                if ([Msg isEqualToString:@"ok"])
+                                NSString *Msg=[response objectForKey:@"code"];
+                                if ([Msg isEqualToString:@"200"])
                                 {
                                     [MBProgressHUD showSuccess:@"发布成功" toView:self.view];
                                     [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:([self.navigationController.viewControllers count] -2)] animated:YES];  //返回Home
-                                    
                                 }else if ([Msg isEqualToString:@"令牌错误"]){
                                     [MBProgressHUD showError:@"登录过期，请重新登录"toView:self.view];
                                     [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:([self.navigationController.viewControllers count] -2)] animated:YES];  //返回Home
                                 }else{
                                     [MBProgressHUD showError:Msg toView:self.view];
                                 }
+                                
                             } failure:^(NSURLSessionDataTask *task, NSError *error) {
                                 HideAllHUD
                                 [MBProgressHUD showError:@"网络错误"toView:self.view];

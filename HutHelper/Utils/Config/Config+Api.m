@@ -61,18 +61,18 @@
     return [NSString stringWithFormat:@"%@/api/v1/set/schema/%@/%@/1/%d",Config.apiIndex,Config.getStudentKH,Config.getRememberCodeApp,opt];
 }
 #pragma mark - 二手市场
-+(NSString*)getApiGoods:(int)num{
-    return [NSString stringWithFormat:@"%@/api/v1/stuff/goods/%d",Config.apiIndex,num];
++(NSString*)getApiGoods:(int)num type:(int)type{
+    return [NSString stringWithFormat:@"%@/api/v3/trade/goods/%d/%d",Config.apiIndex,num,type];
 }
 +(NSString*)getApiOtherGoods:(int)num withId:(NSString*)user_id{
     return [NSString stringWithFormat:@"%@/api/v1/stuff/goods/%d/%@",Config.apiIndex,num,user_id];
 }
 +(NSString*)getApiGoodsUser{
-    return [NSString stringWithFormat:@"%@/api/v1/stuff/own1/%@/%@/1",Config.apiIndex,Config.getStudentKH,Config.getRememberCodeApp];
+    return [NSString stringWithFormat:@"%@/api/v3/trade/own/%@/%@/1",Config.apiIndex,Config.getStudentKH,Config.getRememberCodeApp];
 }
 
 +(NSString*)getApiGoodsCreate{
-    return [NSString stringWithFormat:@"%@/api/v2/trade/create/%@/%@",Config.apiIndex,Config.getStudentKH,Config.getRememberCodeApp];
+    return [NSString stringWithFormat:@"%@/api/v3/trade/create/%@/%@",Config.apiIndex,Config.getStudentKH,Config.getRememberCodeApp];
 }
 +(NSString*)getApiGoodsImgUpload{
     return [NSString stringWithFormat:@"%@/api/v1/stuff/upload",Config.getApiImg];

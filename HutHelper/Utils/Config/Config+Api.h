@@ -35,7 +35,7 @@
 +(NSString*)getApiPowerAirCondition;
 +(NSString*)getApiPowerAirConditionCreate:(int)opt;
 
-+(NSString*)getApiGoods:(int)num;
++(NSString*)getApiGoods:(int)num type:(int)type;
 +(NSString*)getApiOtherGoods:(int)num withId:(NSString*)user_id;
 +(NSString*)getApiGoodsUser;
 +(NSString*)getApiGoodsCreate;

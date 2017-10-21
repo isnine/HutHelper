@@ -34,7 +34,7 @@
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor]}];
     self.view.backgroundColor=RGB(239, 239, 239, 1);
     
-    
+    self.type=1;
 //    UIButton *mainAndSearchBtn = [[UIButton alloc] initWithFrame:CGRectMake(-20,0, 40, 40)];
 //    [mainAndSearchBtn setImage:[UIImage imageNamed:@"back"] forState:UIControlStateNormal];
 //    self.navigationItem.backBarButtonItem = mainAndSearchBtn;
@@ -52,7 +52,7 @@
         self.navigationItem.title=[NSString stringWithFormat:@"%@的发布",self.otherName];
     }else{
         [self reloadData:[Config getHand]];
-        // _Hand_content=[Config getHand];
+//         _Hand_content=[Config getHand];
         //按钮
         UIView *rightButtonView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 50)];
         UIButton *mainAndSearchBtn = [[UIButton alloc] initWithFrame:CGRectMake(70, 0, 50, 50)];
@@ -73,7 +73,23 @@
         header.lastUpdatedTimeLabel.hidden = YES;
         self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(load)];
         [self.tableView.mj_header beginRefreshing];
+        //发布or求购选项
+        UIView *headView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, DeviceMaxWidth, SYReal(38))];
+        headView.backgroundColor=[UIColor colorWithRed:232/255.0 green:250/255.0 blue:252/255.0 alpha:1];
+        UIButton *publishBtn=[[UIButton alloc]initWithFrame:CGRectMake(0, 0, DeviceMaxWidth/2, SYReal(38))];
+        [publishBtn setTitle:@"发布" forState:UIControlStateNormal];
+        [publishBtn setTitleColor:RGB(100, 216, 228, 1) forState:UIControlStateNormal];
+        [publishBtn addTarget:self action:@selector(publishBtn) forControlEvents:UIControlEventTouchUpInside];
+        [headView addSubview:publishBtn];
+//        UIImageView *noticeImgView=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, DeviceMaxWidth, SYReal(40))];
+//        noticeImgView.image=[UIImage imageNamed:@"img_exam_notice"];
+        UIButton *needBtn=[[UIButton alloc]initWithFrame:CGRectMake(DeviceMaxWidth/2, 0, DeviceMaxWidth/2, SYReal(38))];
+        [needBtn setTitleColor:RGB(100, 216, 228, 1) forState:UIControlStateNormal];
+        [needBtn addTarget:self action:@selector(needBtn) forControlEvents:UIControlEventTouchUpInside];
+        [needBtn setTitle:@"求购" forState:UIControlStateNormal];
+        [headView addSubview:needBtn];
 
+        self.tableView.tableHeaderView=headView;
     }
     // 标题栏样式
     UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
@@ -82,7 +98,16 @@
     _num=1;
 
 }
-
+-(void)publishBtn{
+    self.type=1;
+    [self.tableView.mj_header beginRefreshing];
+    self.tableView.mj_footer.hidden=false;
+}
+-(void)needBtn{
+    self.type=2;
+    [self.tableView.mj_header beginRefreshing];
+    self.tableView.mj_footer.hidden=true;
+}
 #pragma mark - TableView代理
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{  //多少块
     return _handArray.count/2;
@@ -114,9 +139,8 @@
     }else{
         
     }
-    
     cell.tag=indexPath.section;
-    Hand *hand=_handArray[(short)(indexPath.section+1)*2-1];
+    Hand *hand=_handArray[(short)(indexPath.section)*2];
     cell.price1.text=[NSString stringWithFormat:@"¥%@",hand.prize];
     cell.name1.text=hand.title;
     cell.time1.text=hand.created_on;
@@ -124,10 +148,9 @@
     cell.img1.clipsToBounds = YES;
     [cell.img1 sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/%@",Config.getApiImg,hand.image]]
                  placeholderImage:[UIImage imageNamed:@"load_img"]];
+
     
-    NSLog(@"%@",[NSString stringWithFormat:@"%@/%@",Config.getApiImg,hand.image]);
-    if (_handArray.count>(indexPath.section+1)*2) {
-        Hand *hand=_handArray[(short)(indexPath.section+1)*2];
+       hand=_handArray[(short)(indexPath.section)*2+1];
         cell.price2.text=[NSString stringWithFormat:@"¥%@",hand.prize];
         cell.name2.text=hand.title;
         cell.time2.text=hand.created_on;
@@ -139,7 +162,7 @@
         cell.img2.clipsToBounds = YES;
         [cell.img2 sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/%@",Config.getApiImg,hand.image]]
                      placeholderImage:[UIImage imageNamed:@"load_img"]];
-    }
+
         cell.handArray=_handArray;
     cell.isSelfGoods=self.isSelfGoods;
     return cell;
@@ -148,6 +171,12 @@
 #pragma mark - 其他
 -(void)addHand{
     HandAddViewController *handAddViewController=[[HandAddViewController alloc]init];
+    AppDelegate *tempAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [tempAppDelegate.mainNavigationController pushViewController:handAddViewController animated:YES];
+}
+-(void)addNeedHand{
+    HandAddViewController *handAddViewController=[[HandAddViewController alloc]init];
+    handAddViewController.isNeed=TRUE;
     AppDelegate *tempAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [tempAppDelegate.mainNavigationController pushViewController:handAddViewController animated:YES];
 }
@@ -163,19 +192,21 @@
             [APIRequest GET:Config.getApiGoodsUser parameters:nil success:^(id responseObject) {
                 HideAllHUD
                 //如果没有发布商品
-                if ([responseObject count]==0) {
+                
+
+             
+                //获取二手数据
+                NSArray *Hand           = [responseObject objectForKey:@"goods"];
+                if (Hand.count==0) {
                     [MBProgressHUD showError:@"您没有发布的商品" toView:self.view];
                     return ;
                 }
-                NSDictionary *dic1 = [NSDictionary dictionaryWithObject:responseObject forKey:@""];
-                //获取二手数据
-                NSArray *Hand           = [dic1 objectForKey:@""];
                 if (Hand.count>0) {
                     NSMutableArray *data=[[NSMutableArray alloc]init];
-                    NSDictionary *a=@{@"page_cur":@"1",
-                                      @"page_max":@67
-                                      };
-                    [data addObject:a];
+//                    NSDictionary *a=@{@"page_cur":@"1",
+//                                      @"page_max":@67
+//                                      };
+//                    [data addObject:a];
                     [data addObjectsFromArray:Hand];
                     HandTableViewController *hand=[[HandTableViewController alloc]init];
                     hand.myHandArray=[data mutableCopy];
@@ -219,14 +250,18 @@
 
 - (NSMutableArray *)items {
     if (!_items) {
-        YCXMenuItem *firstTitle = [YCXMenuItem menuItem:@"添加商品" image:[UIImage imageNamed:@"adds"] target:self action:@selector(addHand)];
+        YCXMenuItem *firstTitle = [YCXMenuItem menuItem:@"发布物品" image:[UIImage imageNamed:@"adds"] target:self action:@selector(addHand)];
         firstTitle.foreColor = [UIColor blackColor];
         firstTitle.alignment = NSTextAlignmentCenter;
+        YCXMenuItem *firstTitle2 = [YCXMenuItem menuItem:@"求购物品" image:[UIImage imageNamed:@"adds"] target:self action:@selector(addNeedHand)];
+        firstTitle2.foreColor = [UIColor blackColor];
+        firstTitle2.alignment = NSTextAlignmentCenter;
         //set logout button
         YCXMenuItem *SecondTitle = [YCXMenuItem menuItem:@"我的发布" image:[UIImage imageNamed:@"mine"] target:self action:@selector(myHand)];
         SecondTitle.foreColor = [UIColor blackColor];
         SecondTitle.alignment = NSTextAlignmentCenter;
         _items = [@[firstTitle,
+                    firstTitle2,
                     SecondTitle
                     ] mutableCopy];
     }
@@ -263,7 +298,7 @@
     
 }
 -(void)loadData:(NSArray*)JSONArray{
-    for (int i=1; i<JSONArray.count; i++) {
+    for (int i=0; i<JSONArray.count; i++) {
         NSDictionary *eachDic=JSONArray[i];
         Hand *handModel=[[Hand alloc]initWithDic:eachDic];
         [self.handArray addObject:handModel];
@@ -272,9 +307,8 @@
 
 -(void)reload{
     [Config setNoSharedCache];
-    [APIRequest GET:[Config getApiGoods:_num] parameters:nil success:^(id responseObject) {
-        NSDictionary *dic1 = [NSDictionary dictionaryWithObject:responseObject forKey:@""];
-        _handAllArray           = [dic1 objectForKey:@""];
+    [APIRequest GET:[Config getApiGoods:_num type:(short)self.type] parameters:nil success:^(id responseObject) {
+        _handAllArray = responseObject[@"goods"];
         [Config saveHand:_handAllArray];
         [self reloadData:_handAllArray];
       //  _Hand_content=Hand;
@@ -292,9 +326,8 @@
         [Config setNoSharedCache];
         NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
         //拼接地址*/
-        [APIRequest GET:[Config getApiGoods:_num] parameters:nil success:^(id responseObject) {
-            NSDictionary *dic1 = [NSDictionary dictionaryWithObject:responseObject forKey:@""];
-            NSArray *Hand           = [dic1 objectForKey:@""];
+        [APIRequest GET:[Config getApiGoods:_num type:(short)self.type] parameters:nil success:^(id responseObject) {
+            NSArray *Hand           = responseObject[@"goods"];
             [defaults setObject:Hand forKey:@"Hand"];
             [defaults synchronize];
             [self loadData:Hand];

@@ -16,7 +16,7 @@
         self.good_id=Dic[@"id"];
         self.image=Dic[@"image"];
         self.prize=Dic[@"prize"];
-        self.title=Dic[@"title"];
+        self.title=Dic[@"tit"];
     }
     return self;
 }

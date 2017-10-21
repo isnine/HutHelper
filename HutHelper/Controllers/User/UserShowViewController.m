@@ -162,10 +162,10 @@
         NSArray *Hand           = [dic1 objectForKey:@""];
         if (Hand.count>0) {
             NSMutableArray *data=[[NSMutableArray alloc]init];
-            NSDictionary *a=@{@"page_cur":@"1",
-                              @"page_max":@67
-                              };
-            [data addObject:a];
+//            NSDictionary *a=@{@"page_cur":@"1",
+//                              @"page_max":@67
+//                              };
+//            [data addObject:a];
             [data addObjectsFromArray:Hand];
             HandTableViewController *hand=[[HandTableViewController alloc]init];
             hand.otherHandArray=[data mutableCopy];
