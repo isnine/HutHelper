@@ -1,0 +1,49 @@
+//
+//  HutHelper-Prefix.pch
+//  HutHelper
+//
+//  Created by Nine on 2017/3/18.
+//  Copyright © 2017年 nine. All rights reserved.
+//
+
+#ifndef HutHelper_Prefix_pch
+#define HutHelper_ Prefix_pch
+
+#import "Config.h"
+#import "Config+Api.h"
+#import "Config+Set.h"
+#import "Math.h"
+#import "APIRequest.h"
+
+/**常用宏*/
+#define HideAllHUD  [MBProgressHUD hideHUDForView:self.view animated:YES];
+#define DeviceMaxHeight ([UIScreen mainScreen].bounds.size.height)
+#define DeviceMaxWidth ([UIScreen mainScreen].bounds.size.width)
+#define SYReal(value) ((value)/414.0f*[UIScreen mainScreen].bounds.size.width)
+#define SY_Real(value) ((value)/375.0f*[UIScreen mainScreen].bounds.size.width)
+#define RGB(r,g,b,a) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:(a)]
+
+/**提示语*/
+#define MsgINVALID  @"登录过期,请重新登录"
+
+/**NSLOG*/
+#ifdef DEBUG
+#define NSLog(...) NSLog(__VA_ARGS__)
+#else
+# define NSLog(...)
+#endif
+
+//判断是在iOS11之前
+#ifndef kiOS11Before
+#define kiOS11Before (kSystemVersion < 11)
+#endif
+
+#ifdef kiOS11Before
+
+#else
+_tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+_tableView.contentInset = UIEdgeInsetsMake(64, 0, 49, 0);
+_tableView.scrollIndicatorInsets = _tableView.contentInset;
+#endif
+
+#endif /* HutHelper_Prefix_pch */

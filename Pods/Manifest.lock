@@ -1,0 +1,103 @@
+PODS:
+  - AFNetworking (3.1.0):
+    - AFNetworking/NSURLSession (= 3.1.0)
+    - AFNetworking/Reachability (= 3.1.0)
+    - AFNetworking/Security (= 3.1.0)
+    - AFNetworking/Serialization (= 3.1.0)
+    - AFNetworking/UIKit (= 3.1.0)
+  - AFNetworking/NSURLSession (3.1.0):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (3.1.0)
+  - AFNetworking/Security (3.1.0)
+  - AFNetworking/Serialization (3.1.0)
+  - AFNetworking/UIKit (3.1.0):
+    - AFNetworking/NSURLSession
+  - ASIHTTPRequest (1.8.2):
+    - ASIHTTPRequest/ASIWebPageRequest (= 1.8.2)
+    - ASIHTTPRequest/CloudFiles (= 1.8.2)
+    - ASIHTTPRequest/Core (= 1.8.2)
+    - ASIHTTPRequest/S3 (= 1.8.2)
+  - ASIHTTPRequest/ASIWebPageRequest (1.8.2):
+    - ASIHTTPRequest/Core
+  - ASIHTTPRequest/CloudFiles (1.8.2):
+    - ASIHTTPRequest/Core
+  - ASIHTTPRequest/Core (1.8.2):
+    - Reachability
+  - ASIHTTPRequest/S3 (1.8.2):
+    - ASIHTTPRequest/Core
+  - DJRefresh (1.0.5)
+  - DTKDropdownMenu (0.0.4):
+    - Masonry (~> 0.6)
+  - DZNEmptyDataSet (1.8.1)
+  - LGPlusButtonsView (1.1.1)
+  - Masonry (0.6.4)
+  - MBProgressHUD (1.0.0)
+  - MJRefresh (3.1.12)
+  - Reachability (3.2)
+  - RongCloudIM/IMKit (2.8.14):
+    - RongCloudIM/IMLib
+  - RongCloudIM/IMLib (2.8.14)
+  - SDWebImage (3.8.2):
+    - SDWebImage/Core (= 3.8.2)
+  - SDWebImage/Core (3.8.2)
+  - TZImagePickerController (1.8.7)
+  - UITableView+FDTemplateLayoutCell (1.6)
+  - UMengAnalytics-NO-IDFA (4.2.5)
+  - UMengUShare/Core (6.4.5):
+    - UMengUShare/Network
+  - UMengUShare/Network (6.4.5)
+  - UMengUShare/Social/ReducedQQ (6.4.5):
+    - UMengUShare/Core
+  - UMengUShare/Social/ReducedSina (6.4.5):
+    - UMengUShare/Core
+  - UMengUShare/Social/ReducedWeChat (6.4.5):
+    - UMengUShare/Core
+  - UMengUShare/UI (6.4.5):
+    - UMengUShare/Core
+  - YCXMenu (0.0.11)
+
+DEPENDENCIES:
+  - AFNetworking (~> 3.0)
+  - ASIHTTPRequest
+  - DJRefresh (~> 1.0.5)
+  - DTKDropdownMenu (~> 0.0.4)
+  - DZNEmptyDataSet
+  - LGPlusButtonsView (~> 1.1.0)
+  - MBProgressHUD (~> 1.0.0)
+  - MJRefresh
+  - RongCloudIM/IMKit (~> 2.8.3)
+  - RongCloudIM/IMLib (~> 2.8.3)
+  - SDWebImage (~> 3.8)
+  - TZImagePickerController
+  - UITableView+FDTemplateLayoutCell
+  - UMengAnalytics-NO-IDFA
+  - UMengUShare/Social/ReducedQQ
+  - UMengUShare/Social/ReducedSina
+  - UMengUShare/Social/ReducedWeChat
+  - UMengUShare/UI
+  - YCXMenu (~> 0.0.11)
+
+SPEC CHECKSUMS:
+  AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  ASIHTTPRequest: ec013992946676b7978dcbde6396d57312d21db4
+  DJRefresh: 32b3776546004faddddc28035442ba15e07c5f1b
+  DTKDropdownMenu: 3a3d8afc4f70fab50a5a8131aadc8b383ef54891
+  DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
+  LGPlusButtonsView: 57878cd3d461d0ee2042f5b7b25d1c017e22a084
+  Masonry: 281802d04d787ea2973179ee8bcb50500579ede2
+  MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
+  MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
+  Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
+  RongCloudIM: 04334f9285db8bc5e2f69bda0e3ce5431a6bec72
+  SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
+  TZImagePickerController: 79fa5712237cf6bdc63311cf65d7e0aa369b2b0a
+  UITableView+FDTemplateLayoutCell: 5c949b4a5059c404b442926c0e80f81d10a2d66f
+  UMengAnalytics-NO-IDFA: 16666e32edce5be44ae5b14aaaa7f3582e09d6ab
+  UMengUShare: a5711c54e640b04e3048e931d2b88d50f9cfa55c
+  YCXMenu: 6003bcd20d8ac72e3eb3c442c97ed21948c6dc1f
+
+PODFILE CHECKSUM: 33034b8f18f7092b6f5b635bd36b01c18101ce45
+
+COCOAPODS: 1.2.1

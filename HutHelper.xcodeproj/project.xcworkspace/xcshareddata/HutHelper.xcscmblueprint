@@ -1,0 +1,44 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "DFD9A92EF6FDD6B1FB07B0D30915DB6C635334B5",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "509BBBA98C7AA9C7F33F6CBED7836CCFA387727B" : 9223372036854775807,
+    "DFD9A92EF6FDD6B1FB07B0D30915DB6C635334B5" : 9223372036854775807,
+    "071198B77F3C2F95B97FA65C0E7B52564267E884" : 9223372036854775807,
+    "EF51387A5AF28E4351AFB0302884600583A438B5" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "84457175-4959-4D04-94C9-3D4C19D3815D",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "509BBBA98C7AA9C7F33F6CBED7836CCFA387727B" : "Ioswork\/Demo\/drawer\/qq\/",
+    "DFD9A92EF6FDD6B1FB07B0D30915DB6C635334B5" : "HutHelper\/",
+    "071198B77F3C2F95B97FA65C0E7B52564267E884" : "Ioswork\/HutHelper\/",
+    "EF51387A5AF28E4351AFB0302884600583A438B5" : "HutHelper1\/jsonkit\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "HutHelper",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "HutHelper.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/git.coding.net\/Ninse\/HutHelper.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "071198B77F3C2F95B97FA65C0E7B52564267E884"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/chennyhuang\/LeftSlide.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "509BBBA98C7AA9C7F33F6CBED7836CCFA387727B"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/git.coding.net\/Ninse\/Hut.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "DFD9A92EF6FDD6B1FB07B0D30915DB6C635334B5"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/johnezang\/JSONKit.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "EF51387A5AF28E4351AFB0302884600583A438B5"
+    }
+  ]
+}

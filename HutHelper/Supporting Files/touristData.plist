@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>remember_code_app</key>
+	<string>1</string>
+	<key>data</key>
+	<dict>
+		<key>username</key>
+		<string>游客</string>
+		<key>user_id</key>
+		<string>9999</string>
+		<key>studentKH</key>
+		<string>154000000</string>
+		<key>sex</key>
+		<string>男</string>
+		<key>school</key>
+		<string>游客</string>
+		<key>last_login</key>
+		<string>2017-09-07 20:47:53</string>
+		<key>TrueName</key>
+		<string>游客</string>
+		<key>active</key>
+		<string>1</string>
+		<key>address</key>
+		<string>请登录</string>
+		<key>class_name</key>
+		<string>请登录</string>
+		<key>dep_name</key>
+		<string>游客</string>
+		<key>head_pic</key>
+		<string>/head/head-boy.png</string>
+		<key>head_pic_thumb</key>
+		<string>/head/head-boy.png</string>
+	</dict>
+</dict>
+</plist>

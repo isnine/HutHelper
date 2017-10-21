@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="zh">
+    <head>
+        <meta charset="utf-8">
+        <meta name="renderer" content="webkit">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" >
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+        <meta name="google" content="notranslate">
+        <meta name="robots" content="noindex, nofollow">
+
+        <title>认证</title>
+        <link rel="stylesheet" href="/assets/frameworks/bootstrap/css/bootstrap.min.css">
+
+    </head>
+    <body class="hold-transition login-page" >
+    <!--[if lt IE 9]>
+    <h3 style="color:black;background: #FF5;margin: 0;padding:10px;position: fixed; z-index: 99;width: 100%" class="text-center">
+        此浏览器低于IE9或处于兼容模式
+    </h3>
+    <![endif]-->
+        <div class="container">
+
+<div class="login-box-body" style="padding: 0 15px">
+    <div class="row" >
+        <div class="col-lg-4 col-lg-offset-4">
+            <h3 class="text-center">
+                重置密码
+            </h3>
+
+            
+            <hr class="clear">
+
+            <form class="form-horizontal" action="/auth/resetPass" role="form" method="post">
+                <div class="form-group">
+                    <label class="control-label" >学号</label>
+                    <input type="text" name="identity" value="" id="identity" class="form-control" autofocus="autofocus" placeholder=""  />
+                </div>
+                <div class="form-group">
+                    <label class="control-label" >身份证号码</label>
+                    <input type="text" name="idNo" value="" id="idNo" class="form-control" placeholder=""  />
+                </div>
+                <div class="form-group">
+                    <label class="control-label" >姓名</label>
+                    <input type="text" name="trueName" value="" id="trueName" class="form-control" placeholder=""  />
+                </div>
+                <div class="form-group">
+                    <label class="control-label" >新密码</label>
+                    <input type="password" name="password" value="" id="password" class="form-control" placeholder=""  />
+                </div>
+                <div class="form-group">
+                    <label class="control-label" >重输新密码</label>
+                    <input type="password" name="password1" value="" id="password1" class="form-control" placeholder=""  />
+                </div>
+                <div class="form-group">
+                    <label class="control-label" >验证码</label>
+                    <input type="text" name="validCode" value="" id="validCode" class="form-control" placeholder="不区分大小写"  />
+                    <br>
+                    <img src="/funcs/validcode">
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-success btn-block">确 定</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+        </div>
+    </body>
+</html>
