@@ -63,7 +63,8 @@ int startday                        = 4;
     return iWeek;
 }
 /** 得到当前为几号 */
-+(int) getDayOfWeek:(int)week d:(int)day {
++(NSString*) getDayOfWeek:(int)week d:(int)day {
+    NSString *dStr,*wStr;
     day=[self CountDays:2017 m:9 d:4]+(week-1)*7+day;
     int year=startyear;
     int d=0,m,leap,i;
@@ -92,7 +93,17 @@ int startday                        = 4;
             break;
         }
     }
-    return  d;
+    if (d<10) {
+        dStr=[NSString stringWithFormat:@"0%d",d];
+    }else{
+        dStr=[NSString stringWithFormat:@"%d",d];
+    }
+    if (m<10) {
+        wStr=[NSString stringWithFormat:@"0%d",m];
+    }else{
+        wStr=[NSString stringWithFormat:@"%d",m];
+    }
+    return  [NSString stringWithFormat:@"%@-%@",wStr,dStr];
 }
 +(int)getWeekDay{
     NSDate *now                                  = [NSDate date];

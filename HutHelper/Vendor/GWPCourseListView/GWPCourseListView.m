@@ -336,7 +336,6 @@
         UIButton *btn = self.topBarBtnArr[i];
         NSString *str = @"";
         if ([_dataSource respondsToSelector:@selector(courseListView:titleInTopbarAtIndex:)]) {
-            
             str = [_dataSource courseListView:self titleInTopbarAtIndex:i];
         } else {
             str = temp[i];
@@ -346,22 +345,24 @@
         if ([_dataSource respondsToSelector:@selector(courseListView:titleAttributesInTopbarAtIndex:)]) {
             attr = [_dataSource courseListView:self titleAttributesInTopbarAtIndex:i];
         }
-//        if (attr) {
-//            NSAttributedString *attrStr = [[NSAttributedString alloc] initWithString:@" " attributes:attr];
-//            [btn setAttributedTitle:attrStr forState:UIControlStateNormal];
-//        }
         /** 周次 */
             UILabel *weekBarLabel=[[UILabel alloc]initWithFrame:CGRectMake(SYReal(10), 0, SYReal(30), SYReal(15))];
         /** 日期 */
-            UILabel *dayBarLabel=[[UILabel alloc]initWithFrame:CGRectMake(SYReal(10), SYReal(15), SYReal(30), SYReal(15))];
+            UILabel *dayBarLabel=[[UILabel alloc]initWithFrame:CGRectMake(SYReal(10), SYReal(15), SYReal(40), SYReal(15))];
             //周几
             weekBarLabel.font=[UIFont systemFontOfSize:10];
             weekBarLabel.tag=201+i;
             weekBarLabel.text=temp[i];
             //日期
-            dayBarLabel.font=[UIFont systemFontOfSize:10];
+            dayBarLabel.font=[UIFont systemFontOfSize:8];
             dayBarLabel.tag=101+i;
-           dayBarLabel.text=[NSString stringWithFormat:@"%d日",[Math getDayOfWeek:self.weekIndex d:i]];
+            dayBarLabel.text=[Math getDayOfWeek:self.weekIndex d:i];
+            dayBarLabel.textColor=[UIColor darkGrayColor];
+            //如果被选中
+            if (attr) {
+                dayBarLabel.textColor=[UIColor colorWithRed:94/255.0 green:199/255.0 blue:217/255.0 alpha:1];
+                weekBarLabel.textColor=[UIColor colorWithRed:94/255.0 green:199/255.0 blue:217/255.0 alpha:1];
+            }
             [btn addSubview:weekBarLabel];
             [btn addSubview:dayBarLabel];
 //        } else {
