@@ -477,8 +477,8 @@ int class_error_;
     NSArray *notice=[defaults objectForKey:@"Notice"];
     _body.text=[notice[0] objectForKey:@"body"];
     _body.font=[UIFont systemFontOfSize:SYReal(16)];
-    // _noticetitle.text=[notice[0] objectForKey:@"title"];
-    //_noticetime.text=[[notice[0] objectForKey:@"time"] substringWithRange:NSMakeRange(5,5)];
+     _noticetitle.text=[notice[0] objectForKey:@"title"];
+    _noticetime.text=[[notice[0] objectForKey:@"time"] substringWithRange:NSMakeRange(5,5)];
 }
 //加载设置内容
 -(void)loadSet{

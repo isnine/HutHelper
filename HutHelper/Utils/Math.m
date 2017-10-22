@@ -69,7 +69,6 @@ int startday                        = 4;
     int year=startyear;
     int d=0,m,leap,i;
     int Month[12]={31,28,31,30,31,30,31,31,30,31,30,31};
-    
     if( (year%4!=0) ||( (year%100==0)&& (year%400!=0)))
         leap=0;//不是闰年
     else
@@ -93,6 +92,47 @@ int startday                        = 4;
             break;
         }
     }
+    if (m>12) {
+        year=year+1;
+        m=m-12;
+        int Month[12]={31,28,31,30,31,30,31,31,30,31,30,31};
+        if( (year%4!=0) ||( (year%100==0)&& (year%400!=0)))
+            leap=0;//不是闰年
+        else
+            leap=1;//是闰年
+        
+        if(leap==1)
+            Month[1]=29;//闰年二月29天
+        m=1;
+        for(i=0;i<12;i++)
+        {
+            d=day-Month[i];
+            if(d>0)
+            {
+                day=d;
+                m++;//月数加1
+            }
+            
+            else
+            {
+                d = d+Month[i];
+                break;
+            }
+        }
+        if (d<10) {
+            dStr=[NSString stringWithFormat:@"0%d",d];
+        }else{
+            dStr=[NSString stringWithFormat:@"%d",d];
+        }
+        if (m<10) {
+            wStr=[NSString stringWithFormat:@"0%d",m];
+        }else{
+            wStr=[NSString stringWithFormat:@"%d",m];
+        }
+        return  [NSString stringWithFormat:@"%@-%@",wStr,dStr];
+        
+    }
+    
     if (d<10) {
         dStr=[NSString stringWithFormat:@"0%d",d];
     }else{
