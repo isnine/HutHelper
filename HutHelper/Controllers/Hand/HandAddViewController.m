@@ -33,7 +33,12 @@
 #pragma mark - 生命周期
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.title=@"添加商品";
+    if (self.isNeed) {
+        self.navigationItem.title=@"求购商品";
+    }else{
+        self.navigationItem.title=@"出售商品";
+    }
+    
     self.view.backgroundColor=[UIColor whiteColor];
     /**按钮*/
     UIView *rightButtonView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 50)];

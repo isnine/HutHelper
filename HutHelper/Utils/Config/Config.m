@@ -271,9 +271,9 @@ static int Is ;
 #pragma mark - 通知
 +(void)addNotice{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    NSDictionary *noticeDictionary=@{@"time":@"2017-09-28 08:00",
+    NSDictionary *noticeDictionary=@{@"time":@"2017-10-20 08:00",
                                      @"title":@"工大助手",
-                                     @"body":@"工大助手V3.3.1更新日志\n\n- 新增了双击主界面背景更换图片\n- 新增了失物招领删除功能\n- 修复了返回界面时的白边\n- 更改了私信为数目显示\n- 吃掉了二手市场登录过期可能闪退的bug\n\n点一下右下角的评分喂我几颗星星吧୧(๑•̀⌄•́๑)૭"
+                                     @"body":@"工大助手V3.3.2更新日志\n\n- 新增了二手市场求购和发布的区分\n- 新增了课程表显示日期\n- 修改了更换主界面图片的方式\n- 修复了小组件下课时间错误\n\n点一下右下角的评分喂我几颗星星吧୧(๑•̀⌄•́๑)૭"
                                      };
     
     NSDictionary *noticeDictionary1=@{@"time":@"2017-08-14 08:00",

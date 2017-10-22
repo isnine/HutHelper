@@ -77,7 +77,7 @@
         UIView *headView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, DeviceMaxWidth, SYReal(38))];
         headView.backgroundColor=[UIColor colorWithRed:232/255.0 green:250/255.0 blue:252/255.0 alpha:1];
         UIButton *publishBtn=[[UIButton alloc]initWithFrame:CGRectMake(0, 0, DeviceMaxWidth/2, SYReal(38))];
-        [publishBtn setTitle:@"发布" forState:UIControlStateNormal];
+        [publishBtn setTitle:@"出售" forState:UIControlStateNormal];
         [publishBtn setTitleColor:RGB(100, 216, 228, 1) forState:UIControlStateNormal];
         [publishBtn addTarget:self action:@selector(publishBtn) forControlEvents:UIControlEventTouchUpInside];
         [headView addSubview:publishBtn];
@@ -250,7 +250,7 @@
 
 - (NSMutableArray *)items {
     if (!_items) {
-        YCXMenuItem *firstTitle = [YCXMenuItem menuItem:@"发布物品" image:[UIImage imageNamed:@"adds"] target:self action:@selector(addHand)];
+        YCXMenuItem *firstTitle = [YCXMenuItem menuItem:@"出售物品" image:[UIImage imageNamed:@"adds"] target:self action:@selector(addHand)];
         firstTitle.foreColor = [UIColor blackColor];
         firstTitle.alignment = NSTextAlignmentCenter;
         YCXMenuItem *firstTitle2 = [YCXMenuItem menuItem:@"求购物品" image:[UIImage imageNamed:@"adds"] target:self action:@selector(addNeedHand)];
