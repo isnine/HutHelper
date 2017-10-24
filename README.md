@@ -10,10 +10,10 @@
 - 目前iOS端用户量4000人左右，Android端用户9000人左右。Web端日浏览量在3W左右。
 - 本仓库为工大助手iOS端，除接口文件不同，其余与线上版本一致。
 - iOS端下载: [AppStore](https://itunes.apple.com/cn/app/gong-da-zhu-shou-hu-nan-gong/id1164848835)
-- Android端下载: [工大助手](http://hugongda.top:8888/res/app/)
-- Win10端下载: [工大助手](http://hugongda.top:8888/res/app/)
-- Web端:[工大导航](http://hugongda.top:8888/)
-- 开发者博客:[Nine's Blog](http://www.wxz.name)
+- Android端下载: [工大助手](https://huthelper.cn/res/index)
+- Win10端下载: [工大助手](https://huthelper.cn/res/index)
+- 微信小程序: [工大助手](https://huthelper.cn/res/index)
+- 开发者博客:[Nine's Blog](https://www.wxz.name)
 
 # Get Started
 ```
@@ -59,8 +59,8 @@ git clone https://github.com/isnine/HutHelper-Open.git --depth=1
 - [x] 视频专栏
 - [x] 图书馆
 - [x] 校历
+- [x] 即时聊天
 - [ ] 老乡查找
-- [ ] 即时聊天
 - [ ] 校园活动
 # Screenshot
 ![start-1](https://img.wxz.name/start-1.jpg?imageView2/2/w/252/h/450/interlace/0/q/41)
