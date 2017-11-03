@@ -154,7 +154,7 @@
 }
 -(void)setFoot{
     //绘制底部背景
-    UIImageView *foodImgView=[[UIImageView alloc]initWithFrame:CGRectMake(0, SYReal(680), DeviceMaxWidth, SYReal(56))];
+    UIImageView *foodImgView=[[UIImageView alloc]initWithFrame:CGRectMake(0, SYReal(680), DeviceMaxWidth, SYReal(56)+(DeviceMaxHeight==812.0?145:0))];
     foodImgView.backgroundColor=RGB(239, 239, 239, 1);
     [self.view addSubview:foodImgView];
 }

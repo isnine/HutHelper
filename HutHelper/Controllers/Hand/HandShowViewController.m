@@ -78,7 +78,7 @@
 #pragma mark - 界面绘制
 -(void)setHeadImg{
     //背景放大并高斯模糊
-    UIImageView *backImgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, DeviceMaxWidth, SYReal(390))];
+    UIImageView *backImgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, DeviceMaxWidth, SYReal(390)+iphoneX_Y(113))];
     //中心切割
     backImgView.contentMode =UIViewContentModeScaleAspectFill;
     backImgView.clipsToBounds = YES;
@@ -108,7 +108,7 @@
     }
     //显示商品图
     for (int i=0; i<goodsImgArray.count&&i<3; i++) {
-        UIImageView *goodsImgView = [[UIImageView alloc] initWithFrame:CGRectMake(SYReal(img_x), SYReal(110), SYReal(120), SYReal(120))];
+        UIImageView *goodsImgView = [[UIImageView alloc] initWithFrame:CGRectMake(SYReal(img_x), SYReal(110)+iphoneX_Y(60), SYReal(120), SYReal(120))];
         //中心切割
         goodsImgView.contentMode =UIViewContentModeScaleAspectFill;
         goodsImgView.clipsToBounds = YES;
@@ -119,19 +119,19 @@
         UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scanBigImageClick:)];
         [goodsImgView addGestureRecognizer:tapGestureRecognizer];
         [goodsImgView setUserInteractionEnabled:YES];
-        img_x+=SYReal(125);
+        img_x+=113;
     }
 }
 
 -(void)setText{
     //标题
-    UILabel *goodsTitleLab=[[UILabel alloc]initWithFrame:CGRectMake(SYReal(26), SYReal(245), SYReal(363), SYReal(40))];
+    UILabel *goodsTitleLab=[[UILabel alloc]initWithFrame:CGRectMake(SYReal(26), SYReal(245)+iphoneX_Y(113), SYReal(363), SYReal(40))];
     goodsTitleLab.textColor=[UIColor whiteColor];
     goodsTitleLab.text=_handDic[@"tit"];
     goodsTitleLab.font=[UIFont systemFontOfSize:SYReal(15)];
     [self.view addSubview:goodsTitleLab];
     //内容
-    UITextView *goodsContentText=[[UITextView alloc]initWithFrame:CGRectMake(SYReal(22), SYReal(280), SYReal(368), SYReal(92))];
+    UITextView *goodsContentText=[[UITextView alloc]initWithFrame:CGRectMake(SYReal(22), SYReal(280)+iphoneX_Y(113), SYReal(368), SYReal(92))];
     goodsContentText.editable=NO;
     goodsContentText.backgroundColor=[UIColor clearColor];
     goodsContentText.textColor=[UIColor whiteColor];
@@ -143,7 +143,7 @@
     int LabX[5]={26,233,26,233};
     int LabY[5]={425,425,560,560};
     for (int i=0; i<4; i++) {
-        UILabel *Lab=[[UILabel alloc]initWithFrame:CGRectMake(SYReal(LabX[i]), SYReal(LabY[i]), SYReal(50), SYReal(30))];
+        UILabel *Lab=[[UILabel alloc]initWithFrame:CGRectMake(SYReal(LabX[i]), SYReal(LabY[i])+iphoneX_Y(113), SYReal(50), SYReal(30))];
         Lab.textColor=[UIColor lightGrayColor];
         Lab.text=LabTitle[i];
         Lab.font=[UIFont systemFontOfSize:SYReal(12)];
@@ -156,7 +156,7 @@
     [goodsTitle addObject:[self getcontact]];
     [goodsTitle addObject:_handDic[@"address"]];
     for (int i=0; i<4; i++) {
-        UITextView *goodsLab=[[UITextView alloc]initWithFrame:CGRectMake(SYReal(LabX[i]), SYReal(LabY[i]+40), SYReal(170), SYReal(80))];
+        UITextView *goodsLab=[[UITextView alloc]initWithFrame:CGRectMake(SYReal(LabX[i]), SYReal(LabY[i]+40)+iphoneX_Y(113), SYReal(170), SYReal(80))];
         goodsLab.textColor=[UIColor blackColor];
         goodsLab.editable=NO;
         goodsLab.text=goodsTitle[i];
@@ -166,7 +166,7 @@
 }
 -(void)setFoot{
     //绘制底部背景
-    UIImageView *foodImgView=[[UIImageView alloc]initWithFrame:CGRectMake(0, SYReal(680), DeviceMaxWidth, SYReal(56))];
+    UIImageView *foodImgView=[[UIImageView alloc]initWithFrame:CGRectMake(0, SYReal(680)+iphoneX_Y(113), DeviceMaxWidth, SYReal(56)+iphoneX_Y(113))];
     foodImgView.backgroundColor=RGB(239, 239, 239, 1);
     [self.view addSubview:foodImgView];
     //绘制底部文字
@@ -180,7 +180,7 @@
         i=1;
     }
     for (; i<2; i++) {
-        UILabel *foodLab=[[UILabel alloc]initWithFrame:CGRectMake(SYReal(LabX[i]), SYReal(685), SYReal(130), SYReal(20))];
+        UILabel *foodLab=[[UILabel alloc]initWithFrame:CGRectMake(SYReal(LabX[i]), SYReal(685)+iphoneX_Y(113), SYReal(130), SYReal(20))];
         foodLab.textColor=[UIColor lightGrayColor];
         foodLab.text=footTitle[i];
         foodLab.font=[UIFont systemFontOfSize:SYReal(12)];

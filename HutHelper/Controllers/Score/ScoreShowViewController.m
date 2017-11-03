@@ -94,7 +94,7 @@
     for (int i=0; i<rankMutableArray.count;i++) {
         ScoreRank *scoreRank=rankMutableArray[i];
         //学期
-        _label=[[UILabel alloc]initWithFrame:CGRectMake(SYReal(35),SYReal(317+i*26),SYReal(200),SYReal(22))];
+        _label=[[UILabel alloc]initWithFrame:CGRectMake(SYReal(35),SYReal(317+i*26)+iphoneX_Y(113),SYReal(200),SYReal(22))];
         _label.font=[UIFont systemFontOfSize: 10.0];
         if (scoreRank.term) {
             _label.text=[NSString stringWithFormat:@"%@第%@学期",scoreRank.year,scoreRank.term];
@@ -105,7 +105,7 @@
         _label.tag=200;
         [self.view addSubview:_label];
         //绩点条
-        _imageView=[[UIImageView alloc]initWithFrame:CGRectMake(SYReal(150), SYReal(317+i*26), SYReal(180), SYReal(22))];
+        _imageView=[[UIImageView alloc]initWithFrame:CGRectMake(SYReal(150), SYReal(317+i*26)+iphoneX_Y(113), SYReal(180), SYReal(22))];
         _imageView.image=[self scaleImage:[UIImage imageNamed:@"Score_jd"] toScale:[scoreRank.GPA doubleValue]/5.0];
         _imageView.contentMode =UIViewContentModeLeft;
         _imageView.clipsToBounds = YES;
@@ -113,7 +113,7 @@
         _imageView.tag=200;
         [self.view addSubview:_imageView];
         //绩点
-        _labelGPA=[[UILabel alloc]initWithFrame:CGRectMake(SYReal(301),SYReal(317+i*26),SYReal(71),SYReal(22))];
+        _labelGPA=[[UILabel alloc]initWithFrame:CGRectMake(SYReal(301),SYReal(317+i*26)+iphoneX_Y(113),SYReal(71),SYReal(22))];
         _labelGPA.font=[UIFont systemFontOfSize: 13.0];
         _labelGPA.text=scoreRank.GPA;
         _labelGPA.textColor=[UIColor whiteColor];
@@ -121,7 +121,7 @@
         _labelGPA.tag=200;
         [self.view addSubview:_labelGPA];
         //排名
-        _labelRank=[[UILabel alloc]initWithFrame:CGRectMake(SYReal(336),SYReal(317+i*26),SYReal(71),SYReal(22))];
+        _labelRank=[[UILabel alloc]initWithFrame:CGRectMake(SYReal(336),SYReal(317+i*26)+iphoneX_Y(113),SYReal(71),SYReal(22))];
         _labelRank.font=[UIFont systemFontOfSize: 13.0];
         _labelRank.text=scoreRank.rank;
         _labelRank.textColor=[UIColor whiteColor];

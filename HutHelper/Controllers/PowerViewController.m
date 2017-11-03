@@ -88,7 +88,7 @@ typedef NS_ENUM(NSUInteger, PowerSelectBtn) {
         //yes进度条
         if (noInt+yesInt!=0) {
             UIImageView *yesImageView=[[UIImageView alloc]init];
-            yesImageView.frame=CGRectMake(SYReal(87), SYReal(609), SYReal(180*yesInt*1.0/(noInt+yesInt)), SYReal(20));
+            yesImageView.frame=CGRectMake(SYReal(87), SYReal(609)+iphoneX_Y(125), SYReal(180*yesInt*1.0/(noInt+yesInt)), SYReal(20));
             yesImageView.image=[self scaleImage:[UIImage imageNamed:@"img_power_isopen"] toScale:yesInt*1.0/(noInt+yesInt)];
             yesImageView.contentMode =UIViewContentModeLeft;
             yesImageView.clipsToBounds = YES;
@@ -100,7 +100,7 @@ typedef NS_ENUM(NSUInteger, PowerSelectBtn) {
             [self.view addSubview:yesImageView];
             //no进度条
             UIImageView *noImageView=[[UIImageView alloc]init];
-            noImageView.frame=CGRectMake(SYReal(87), SYReal(644), SYReal(180*noInt*1.0/(noInt+yesInt)), SYReal(20));
+            noImageView.frame=CGRectMake(SYReal(87), SYReal(644)+iphoneX_Y(129), SYReal(180*noInt*1.0/(noInt+yesInt)), SYReal(20));
             noImageView.image=[self scaleImage:[UIImage imageNamed:@"img_power_isopen"] toScale:noInt*1.0/(noInt+yesInt)];
             noImageView.contentMode =UIViewContentModeLeft;
             noImageView.clipsToBounds = YES;

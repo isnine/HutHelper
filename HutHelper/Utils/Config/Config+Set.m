@@ -47,7 +47,8 @@
               [lastRunKey isEqualToString:@"3.2.0"]||
               [lastRunKey isEqualToString:@"3.2.1"]||
               [lastRunKey isEqualToString:@"3.3.0"]||
-              [lastRunKey isEqualToString:@"3.3.1"]){
+              [lastRunKey isEqualToString:@"3.3.1"]||
+              [lastRunKey isEqualToString:@"3.3.2"]){
         [defaults setObject:currentVersion forKey:@"last_run_version_key"];
         [Config saveUmeng];
         [Config addNotice];

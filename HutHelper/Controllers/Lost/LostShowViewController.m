@@ -91,7 +91,7 @@
 #pragma mark - 界面绘制
 -(void)setHeadImg{
     //背景放大并高斯模糊
-    UIImageView *backImgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, DeviceMaxWidth, SYReal(400))];
+    UIImageView *backImgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, DeviceMaxWidth, SYReal(400)+iphoneX_Y(113))];
     //中心切割
     backImgView.backgroundColor=[self randomColor:_lostModel.blackColor];
     [self.view addSubview:backImgView];
@@ -115,7 +115,7 @@
     }
     //显示商品图
     for (int i=0; i<_lostModel.pics.count&&i<3; i++) {
-        UIImageView *goodsImgView = [[UIImageView alloc] initWithFrame:CGRectMake(SYReal(img_x), SYReal(85), SYReal(120), SYReal(120))];
+        UIImageView *goodsImgView = [[UIImageView alloc] initWithFrame:CGRectMake(SYReal(img_x), SYReal(85)+iphoneX_Y(60), SYReal(120), SYReal(120))];
         //中心切割
         goodsImgView.contentMode =UIViewContentModeScaleAspectFill;
         goodsImgView.clipsToBounds = YES;
@@ -133,9 +133,9 @@
     //内容
     UITextView *goodsContentText=[[UITextView alloc]init];
     if (_lostModel.pics.count!=0) {
-        goodsContentText.frame=CGRectMake(SYReal(22), SYReal(213), SYReal(375), SYReal(90));
+        goodsContentText.frame=CGRectMake(SYReal(22), SYReal(213)+iphoneX_Y(113), SYReal(375), SYReal(90));
     }else{
-        goodsContentText.frame=CGRectMake(SYReal(22), SYReal(110), SYReal(375), SYReal(200));
+        goodsContentText.frame=CGRectMake(SYReal(22), SYReal(110)+iphoneX_Y(113), SYReal(375), SYReal(200));
     }
     goodsContentText.editable=NO;
     goodsContentText.backgroundColor=[UIColor clearColor];
@@ -144,7 +144,7 @@
     goodsContentText.font=[UIFont systemFontOfSize:SYReal(16)];
     [self.view addSubview:goodsContentText];
     //白色卡片背景
-    UIImageView *blackImgView=[[UIImageView alloc]initWithFrame:CGRectMake(SYReal(20), SYReal(330), SYReal(374), SYReal(355))];
+    UIImageView *blackImgView=[[UIImageView alloc]initWithFrame:CGRectMake(SYReal(20), SYReal(330)+iphoneX_Y(113), SYReal(374), SYReal(355))];
     blackImgView.backgroundColor=[UIColor whiteColor];
     [self.view addSubview:blackImgView];
     
@@ -155,17 +155,17 @@
     int LabY=370;
     for (int i=0; i<4; i++) {
         //固定标签
-        UILabel *Lab=[[UILabel alloc]initWithFrame:CGRectMake(SYReal(90), SYReal(LabY), SYReal(50), SYReal(30))];
+        UILabel *Lab=[[UILabel alloc]initWithFrame:CGRectMake(SYReal(90), SYReal(LabY)+iphoneX_Y(113), SYReal(50), SYReal(30))];
         Lab.textColor=[UIColor lightGrayColor];
          Lab.font=[UIFont systemFontOfSize:SYReal(12)];
         Lab.text=labTitle[i];
         [self.view addSubview:Lab];
         //ico图标
-        UIImageView *icoImgView=[[UIImageView alloc]initWithFrame:CGRectMake(SYReal(45), SYReal(LabY+20), SYReal(25), SYReal(25))];
+        UIImageView *icoImgView=[[UIImageView alloc]initWithFrame:CGRectMake(SYReal(45), SYReal(LabY+20)+iphoneX_Y(113), SYReal(25), SYReal(25))];
         icoImgView.image=[UIImage imageNamed:icoViewArray[i]];
         [self.view addSubview:icoImgView];
         //显示内容
-        UILabel *contentLab=[[UILabel alloc]initWithFrame:CGRectMake(SYReal(90), SYReal(LabY+20), SYReal(300), SYReal(40))];
+        UILabel *contentLab=[[UILabel alloc]initWithFrame:CGRectMake(SYReal(90), SYReal(LabY+20)+iphoneX_Y(113), SYReal(300), SYReal(40))];
         contentLab.textColor=[UIColor darkGrayColor];
         contentLab.font=[UIFont systemFontOfSize:SYReal(17)];
         contentLab.text=labContent[i];
@@ -180,7 +180,7 @@
     [footTitle addObject:_lostModel.username];
     [footTitle addObject:_lostModel.created_on];
     for (int i=0; i<2; i++) {
-        UILabel *foodLab=[[UILabel alloc]initWithFrame:CGRectMake(SYReal(LabX[i]), SYReal(685), SYReal(130), SYReal(20))];
+        UILabel *foodLab=[[UILabel alloc]initWithFrame:CGRectMake(SYReal(LabX[i]), SYReal(685)+iphoneX_Y(113), SYReal(130), SYReal(20))];
         foodLab.textColor=[UIColor lightGrayColor];
         foodLab.text=footTitle[i];
         foodLab.font=[UIFont systemFontOfSize:SYReal(12)];
