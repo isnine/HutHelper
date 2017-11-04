@@ -1,3 +1,10 @@
 uild/
 .DS_Store
 *.DS_Store
+*.xcuserstate  
+project.xcworkspace  
+xcuserdata  
+UserInterfaceState.xcuserstate  
+project.xcworkspace/  
+xcuserdata/  
+UserInterface.xcuserstate  
