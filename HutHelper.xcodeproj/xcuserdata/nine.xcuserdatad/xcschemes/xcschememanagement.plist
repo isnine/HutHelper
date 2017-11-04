@@ -33,7 +33,7 @@
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>20</integer>
+			<integer>5</integer>
 		</dict>
 		<key>Notification Service Extension.xcscheme</key>
 		<dict>

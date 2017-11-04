@@ -38,6 +38,7 @@
 +(void)saveCalendar:(NSArray*)calendarArray;
 +(void)saveImToken:(NSString*)token;
 +(void)saveBannerImg:(NSData*)imgData;
++(void)saveCacheImg:(NSData*)data;
 #pragma mark - 获得存储数据
 +(NSArray*)getCourse;
 +(NSArray*)getCourseXp;
@@ -54,6 +55,7 @@
 +(NSDictionary*)getScoreRank;
 +(NSArray*)getCalendar;
 +(NSData*)getBanner;
++(NSData*)getCacheImg;
 #pragma mark - 获得用户数据
 +(User*)getUser;
 +(NSString*)getStudentKH;

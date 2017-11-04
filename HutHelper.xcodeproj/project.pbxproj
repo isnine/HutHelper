@@ -120,6 +120,8 @@
 		3A98CC0E1E7CFA9C00CABD0D /* YYFPSLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A98CBF61E7CFA9C00CABD0D /* YYFPSLabel.m */; };
 		3A98CC0F1E7CFA9C00CABD0D /* YYWeakProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A98CBF81E7CFA9C00CABD0D /* YYWeakProxy.m */; };
 		3A9C28F71F15FD9F00B91876 /* LineUIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A9C28F61F15FD9F00B91876 /* LineUIView.m */; };
+		3AA158B01FADAF3800298AAD /* UserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA158AF1FADAF3800298AAD /* UserCell.m */; };
+		3AA158B31FADF79D00298AAD /* UserHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA158B21FADF79D00298AAD /* UserHeaderCell.m */; };
 		3AA270411F6E646D00F5E6F3 /* touristData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3AA270401F6E646D00F5E6F3 /* touristData.plist */; };
 		3AA2704C1F6E76DF00F5E6F3 /* TFHpple.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA270441F6E700300F5E6F3 /* TFHpple.m */; };
 		3AA2704D1F6E76DF00F5E6F3 /* TFHppleElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA270461F6E700300F5E6F3 /* TFHppleElement.m */; };
@@ -439,6 +441,10 @@
 		3A98CBF81E7CFA9C00CABD0D /* YYWeakProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYWeakProxy.m; sourceTree = "<group>"; };
 		3A9C28F51F15FD9F00B91876 /* LineUIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineUIView.h; sourceTree = "<group>"; };
 		3A9C28F61F15FD9F00B91876 /* LineUIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineUIView.m; sourceTree = "<group>"; };
+		3AA158AE1FADAF3800298AAD /* UserCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserCell.h; sourceTree = "<group>"; };
+		3AA158AF1FADAF3800298AAD /* UserCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserCell.m; sourceTree = "<group>"; };
+		3AA158B11FADF79D00298AAD /* UserHeaderCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserHeaderCell.h; sourceTree = "<group>"; };
+		3AA158B21FADF79D00298AAD /* UserHeaderCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserHeaderCell.m; sourceTree = "<group>"; };
 		3AA270401F6E646D00F5E6F3 /* touristData.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = touristData.plist; sourceTree = "<group>"; };
 		3AA270431F6E700300F5E6F3 /* TFHpple.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TFHpple.h; sourceTree = "<group>"; };
 		3AA270441F6E700300F5E6F3 /* TFHpple.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TFHpple.m; sourceTree = "<group>"; };
@@ -962,6 +968,7 @@
 		3A796C661E534DAE00794043 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				3AA158AD1FADAF3800298AAD /* User */,
 				3AC12C291F3B3BB4007C3B7E /* Im */,
 				3A3775531F35EA25005A5170 /* Lost */,
 				3AE52B841EA8F0EB00705269 /* CourseXp */,
@@ -1271,6 +1278,17 @@
 				3AF73BF01E7D12610086417E /* APIRequest.m */,
 			);
 			path = Manager;
+			sourceTree = "<group>";
+		};
+		3AA158AD1FADAF3800298AAD /* User */ = {
+			isa = PBXGroup;
+			children = (
+				3AA158AE1FADAF3800298AAD /* UserCell.h */,
+				3AA158AF1FADAF3800298AAD /* UserCell.m */,
+				3AA158B11FADF79D00298AAD /* UserHeaderCell.h */,
+				3AA158B21FADF79D00298AAD /* UserHeaderCell.m */,
+			);
+			path = User;
 			sourceTree = "<group>";
 		};
 		3AA270421F6E700300F5E6F3 /* Hpple */ = {
@@ -1801,6 +1819,7 @@
 				3A98CC091E7CFA9C00CABD0D /* JSONKit.m in Sources */,
 				3A3545D91F1B53A2009B1A84 /* PointView.m in Sources */,
 				3A532CDD1E9121C5003CD5A8 /* VedioTableViewController.m in Sources */,
+				3AA158B31FADF79D00298AAD /* UserHeaderCell.m in Sources */,
 				3A98CC081E7CFA9C00CABD0D /* UserInfoCell.m in Sources */,
 				3A98CBFE1E7CFA9C00CABD0D /* FORGesture.m in Sources */,
 				3A98CC0B1E7CFA9C00CABD0D /* UIView_extra.m in Sources */,
@@ -1842,6 +1861,7 @@
 				3A532CCB1E910C13003CD5A8 /* UIView+CustomControlView.m in Sources */,
 				3A96DEE51E94B384006C2CC8 /* VedioPlayViewController.m in Sources */,
 				3A532CD11E910C13003CD5A8 /* ZFPlayerControlView.m in Sources */,
+				3AA158B01FADAF3800298AAD /* UserCell.m in Sources */,
 				3AC12C241F3B381E007C3B7E /* ChatChoiceTableViewController.m in Sources */,
 				3AA3D1F51F8934A700990358 /* UINavigationItem+CustomBackButton.m in Sources */,
 				3A532CC51E910C13003CD5A8 /* ASValuePopUpView.m in Sources */,
@@ -2129,6 +2149,7 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = " ${SRCROOT}/**";
 			};
 			name = Debug;
 		};
@@ -2179,6 +2200,7 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "HutHelper-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = " ${SRCROOT}/**";
 			};
 			name = Release;
 		};

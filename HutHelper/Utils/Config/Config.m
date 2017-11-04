@@ -191,6 +191,11 @@ static int Is ;
     [defaults setObject:imgData forKey:@"kBannerImg"];
     [defaults synchronize];
 }
++(void)saveCacheImg:(NSData*)data{
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    [defaults setObject:data forKey:@"head_img"];
+    [defaults synchronize];
+}
 #pragma mark - 获得存储数据
 +(NSArray*)getCourse{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
@@ -251,6 +256,10 @@ static int Is ;
 +(NSData*)getBanner{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     return [defaults objectForKey:@"kBannerImg"];
+}
++(NSData*)getCacheImg{
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    return [defaults objectForKey:@"head_img"];
 }
 +(BOOL)isTourist{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
