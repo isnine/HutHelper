@@ -14,4 +14,5 @@
 @property (nonatomic, copy) NSString      *otherName;
 @property (nonatomic,assign) Boolean      *isSelfGoods;
 @property (nonatomic,assign) NSInteger      *type;
+
 @end

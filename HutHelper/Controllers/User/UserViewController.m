@@ -35,7 +35,8 @@ UIImage* img ;
     [super viewDidLoad];
     self.title=@"个人信息";
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor]}];
-    
+    //关闭tableview的横线
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.backgroundColor=RGB(247, 247, 247, 1);
     self.tableView.scrollEnabled = NO;
     

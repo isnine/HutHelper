@@ -282,7 +282,7 @@ static int Is ;
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     NSDictionary *noticeDictionary=@{@"time":@"2017-10-20 08:00",
                                      @"title":@"工大助手",
-                                     @"body":@"工大助手V3.3.3更新日志\n\n- 适配了iPhone X୧(๑•̀⌄•́๑)૭"
+                                     @"body":@"工大助手V3.3.3更新日志\n\n- 为土豪们适配了iPhone X\n- 重写了个人资料界面 "
                                      };
     
     NSDictionary *noticeDictionary1=@{@"time":@"2017-08-14 08:00",

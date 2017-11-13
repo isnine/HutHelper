@@ -84,7 +84,7 @@
         }else{
             userCell.Username.text                = Config.getTrueName;
         }
-       // userCell.Head.image=[self getImg];
+        NSLog(@"%@%@",Config.getApiImg,Config.getHeadPicThumb);
         [userCell.Head sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",Config.getApiImg,Config.getHeadPicThumb]]
                        placeholderImage:[UIImage imageNamed:@"img_user_boy"]
                               completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL){

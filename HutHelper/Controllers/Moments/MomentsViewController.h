@@ -8,5 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MomentsViewController : UIViewController
+@interface MomentsViewController : UITableViewController
+@property(nonatomic,copy)NSDictionary *JSONDic;
+@property(nonatomic,copy)NSDictionary *LikesDic;
+-(void)reload;
 @end

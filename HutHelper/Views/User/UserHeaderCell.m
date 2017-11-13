@@ -75,8 +75,8 @@
     }];
     [_headImgView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(5);
-        make.left.mas_equalTo(330);
-        make.right.mas_equalTo(-300);
+        make.left.mas_equalTo(350);
+        make.right.mas_equalTo(-290);
         make.bottom.mas_equalTo(-5);
     }];
 }

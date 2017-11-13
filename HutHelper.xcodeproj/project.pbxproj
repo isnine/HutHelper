@@ -24,7 +24,6 @@
 		3A2FF4EA1E50179700B07EB6 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A2FF4E91E50179700B07EB6 /* NotificationCenter.framework */; };
 		3A2FF4F51E50179700B07EB6 /* Extend.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 3A2FF4E81E50179700B07EB6 /* Extend.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		3A2FF4FC1E50202000B07EB6 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A2FF4FB1E50202000B07EB6 /* Media.xcassets */; };
-		3A31E1EB1E6BE6E20056565A /* MomentsTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A31E1EA1E6BE6E20056565A /* MomentsTableView.m */; };
 		3A31FE9C1F3A093700104A03 /* XWInteractiveTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A31FE9B1F3A093700104A03 /* XWInteractiveTransition.m */; };
 		3A3545D91F1B53A2009B1A84 /* PointView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A3545D81F1B53A2009B1A84 /* PointView.m */; };
 		3A3775561F35EA50005A5170 /* LostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A3775551F35EA25005A5170 /* LostCell.m */; };
@@ -258,8 +257,6 @@
 		3A2FF4F21E50179700B07EB6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3A2FF4FB1E50202000B07EB6 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		3A2FF5001E50742E00B07EB6 /* Extend.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Extend.entitlements; sourceTree = "<group>"; };
-		3A31E1E91E6BE6E20056565A /* MomentsTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MomentsTableView.h; sourceTree = "<group>"; };
-		3A31E1EA1E6BE6E20056565A /* MomentsTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MomentsTableView.m; sourceTree = "<group>"; };
 		3A31FE9A1F3A093700104A03 /* XWInteractiveTransition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XWInteractiveTransition.h; sourceTree = "<group>"; };
 		3A31FE9B1F3A093700104A03 /* XWInteractiveTransition.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XWInteractiveTransition.m; sourceTree = "<group>"; };
 		3A3545D71F1B53A2009B1A84 /* PointView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PointView.h; sourceTree = "<group>"; };
@@ -700,8 +697,6 @@
 		3A4049031E6A67C00038F207 /* Moments */ = {
 			isa = PBXGroup;
 			children = (
-				3A31E1E91E6BE6E20056565A /* MomentsTableView.h */,
-				3A31E1EA1E6BE6E20056565A /* MomentsTableView.m */,
 				3A4049071E6A6C730038F207 /* MomentsCell.h */,
 				3A4049081E6A6C730038F207 /* MomentsCell.m */,
 			);
@@ -1789,7 +1784,6 @@
 				3AD047B21F316CCA00B61A02 /* HandShowViewController.m in Sources */,
 				3AD047B41F316CCA00B61A02 /* HandTableViewCell.m in Sources */,
 				3AD047B61F316CCA00B61A02 /* HandTableViewController.m in Sources */,
-				3A31E1EB1E6BE6E20056565A /* MomentsTableView.m in Sources */,
 				3A796C391E534C1B00794043 /* LeftSortsViewController.m in Sources */,
 				3A3775601F35EAD7005A5170 /* PowerViewController.m in Sources */,
 				3A3775651F35EAEE005A5170 /* AboutViewController.m in Sources */,

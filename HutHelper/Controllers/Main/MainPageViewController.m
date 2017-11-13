@@ -44,6 +44,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *Scontent;
 @property (weak, nonatomic) IBOutlet LineUIView *lineView;
 @property (weak, nonatomic) IBOutlet UILabel *Time;
+
 @end
 
 @implementation MainPageViewController
@@ -63,6 +64,8 @@ int class_error_;
     [self loadSet];
     //时间Label
     [self SetTimeLabel] ;
+
+    
 
 }
 

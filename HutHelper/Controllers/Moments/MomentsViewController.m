@@ -7,20 +7,22 @@
 //
 
 #import "MomentsViewController.h"
-#import "MomentsTableView.h"
 #import "MomentsModel.h"
 #import "AFNetworking.h"
 #import "MBProgressHUD+MJ.h"
 #import "YYFPSLabel.h"
-
+#import "MomentsCell.h"
 #import "YCXMenu.h"
 #import "User.h"
 #import "AppDelegate.h"
-
+#import "MJRefresh.h"
 #import "MomentsAddViewController.h"
-@interface MomentsViewController (){
-    MomentsTableView *momentsTableView;
+#import "UIScrollView+EmptyDataSet.h"
+#import "LikesModel.h"
+@interface MomentsViewController ()<UITableViewDelegate, UITableViewDataSource,DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>{
     NSMutableArray *datas;
+    LikesModel *likeDatas;
+    int num;
 }
 @property (nonatomic , strong) NSMutableArray *items;
 @property (nonatomic, strong) YYFPSLabel *fpsLabel;
@@ -34,6 +36,12 @@
     UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     self.navigationItem.backBarButtonItem = item;
     [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:94/255.0 green:199/255.0 blue:217/255.0 alpha:1]];
+    //关闭tableview的横线
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    //适配iOS11
+    self.tableView.estimatedRowHeight = 0;
+    self.tableView.estimatedSectionHeaderHeight = 0;
+    self.tableView.estimatedSectionFooterHeight = 0;
     /** FTP */
     //    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:[[YYFPSLabel alloc]initWithFrame:CGRectMake(0, 5, 60, 30)]];
     if([Config getIs]==0){
@@ -44,41 +52,62 @@
         [mainAndSearchBtn addTarget:self action:@selector(menu) forControlEvents:UIControlEventTouchUpInside];
         UIBarButtonItem *rightCunstomButtonView = [[UIBarButtonItem alloc] initWithCustomView:rightButtonView];
         self.navigationItem.rightBarButtonItem = rightCunstomButtonView;
-        momentsTableView = [[MomentsTableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain withSay:[Config getSay] withSayLike:[Config getSayLike]];
-        momentsTableView.beginload;
-        [self.view addSubview:momentsTableView];
+        //加载缓存数据
+        self.JSONDic=[Config getSay];
+        self.LikesDic=[Config getSayLike];
+        [self loadData:self.JSONDic];
+        [self loadLikesData:self.LikesDic];
+        //下拉刷新
+        self.tableView.emptyDataSetSource = self;
+        self.tableView.emptyDataSetDelegate = self;
+        // self.tableFooterView = [UIView new];
+        MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector((reload))];
+        self.tableView.mj_header = header;
+        // 设置自动切换透明度(在导航栏下面自动隐藏)
+        header.automaticallyChangeAlpha = YES;
+        // 隐藏时间
+        header.lastUpdatedTimeLabel.hidden = YES;
+        self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(load)];
+         // 马上进入刷新状态
+        [self beginload];
+//        [self.view addSubview:momentsTableView];
         
-    }else{
+    }
+    else{
         NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
         NSDictionary *JSONDic=[defaults objectForKey:@"otherSay"];
         [self reLoadData:JSONDic];
         MomentsModel *momentsModel=datas[0];
         if(momentsModel.username){
             self.navigationItem.title = [NSString stringWithFormat:@"%@的说说",momentsModel.username];
-            momentsTableView = [[MomentsTableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain withSay:[defaults objectForKey:@"otherSay"] withSayLike:[Config getSayLike]];
-            momentsTableView.HiddenMJ;
-            [self.view addSubview:momentsTableView];
+            self.JSONDic=[defaults objectForKey:@"otherSay"];
+            self.LikesDic=[Config getSayLike];
+            [self loadData:self.JSONDic];
+            [self loadLikesData:self.LikesDic];
+//            [self reload];
+//            momentsTableView = [[MomentsTableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain withSay:[defaults objectForKey:@"otherSay"] withSayLike:[Config getSayLike]];
+//            momentsTableView.HiddenMJ;
+
         }
     }
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(walkVCClick:) name:@"btnCommit" object:nil];
+}
+- (void)walkVCClick:(NSNotification *)noti
+
+{
+    [self reload];
     
 }
+
+
 - (void)viewWillDisappear:(BOOL)animated{
     if ([self.navigationController.viewControllers count]==2&&[Config getIs]==1) {
         [Config setIs:0];
     }
 }
--(void)reLoadData:(NSDictionary*)JSONDic{
-    datas = [[NSMutableArray alloc]init];
-    for (NSDictionary *eachDic in JSONDic) {
-        MomentsModel *momentsModel=[[MomentsModel alloc]initWithDic:eachDic];
-        [datas addObject:momentsModel];
-    }
-}
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+
+
 
 -(void)menu{
     [YCXMenu setTintColor:[UIColor colorWithRed:240/255.0 green:240/255.0 blue:240/255.0 alpha:1]];
@@ -94,7 +123,6 @@
         blindView.tag=99;
         [[[UIApplication  sharedApplication]  keyWindow] addSubview:blindView];
         [YCXMenu showMenuInView:[[UIApplication  sharedApplication]  keyWindow] fromRect:CGRectMake(self.view.frame.size.width - 50, 70, 50, 0) menuItems:self.items selected:^(NSInteger index, YCXMenuItem *item) {
-            
         }];
     }
     
@@ -115,6 +143,7 @@
     }
     return _items;
 }
+
 -(void)mySay{
     if ([Config isTourist]) {
         [MBProgressHUD showError:@"游客请登录" toView:self.view];
@@ -169,10 +198,184 @@
     return self;
 }
 - (void)dealloc{
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"YCXMenuWillDisappearNotification" object:nil];
+   // [[NSNotificationCenter defaultCenter] removeObserver:self name:@"YCXMenuWillDisappearNotification" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 -(void)removeYCXMenuBlind{
     UIView *blindView=[[[UIApplication  sharedApplication]  keyWindow] viewWithTag:99];
     [blindView removeFromSuperview];
+}
+
+-(void)HiddenMJ{
+    self.tableView.mj_footer.hidden = YES;
+    self.tableView.mj_header.hidden = YES;
+}
+-(void)beginload{
+    [self.tableView.mj_header beginRefreshing];
+}
+- (void)drawCell:(MomentsCell *)cell withIndexPath:(NSIndexPath *)indexPath{
+    MomentsModel *data = [datas objectAtIndex:indexPath.section];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.likesData = likeDatas;
+    cell.momentsTable=self.tableView;
+    cell.data = data;
+    [cell draw];
+    [cell loadPhoto];
+}
+#pragma mark - 表格
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return datas.count;
+}
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 1;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    MomentsModel *momentsModel=datas[indexPath.section];
+    return SYReal(70)+momentsModel.textHeight+momentsModel.photoHeight+SYReal(40)+momentsModel.commentsHeight;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 10;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    return 0.00001;
+}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *cellIndentifier = @"MomentsCell";
+    MomentsCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIndentifier];
+    if (!cell) {
+        cell=[[MomentsCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIndentifier];
+    }else{
+        while ([cell.contentView.subviews lastObject] != nil) {
+            [(UIView*)[cell.contentView.subviews lastObject] removeFromSuperview];  //删除并进行重新分配
+        }
+    }
+    
+    [self drawCell:cell withIndexPath:indexPath];
+    
+    return cell;
+}
+#pragma mark - 处理数据
+-(void)loadData:(NSDictionary*)JSONDic{
+    for (NSDictionary *eachDic in JSONDic) {
+        MomentsModel *momentsModel=[[MomentsModel alloc]initWithDic:eachDic];
+        [datas addObject:momentsModel];
+    }
+}
+-(void)reLoadData:(NSDictionary*)JSONDic{
+    datas = [[NSMutableArray alloc]init];
+    for (NSDictionary *eachDic in JSONDic) {
+        MomentsModel *momentsModel=[[MomentsModel alloc]initWithDic:eachDic];
+        [datas addObject:momentsModel];
+    }
+}
+-(void)loadLikesData:(NSDictionary*)JSONDic{
+    likeDatas=[[LikesModel alloc]initWithDic:JSONDic];
+}
+#pragma mark - 加载方法
+-(void)reload{
+    /**拼接地址*/
+    NSString *likesDataString=Config.getApiMomentsLikesShow;
+    [Config setNoSharedCache];
+    [APIRequest GET:[Config getApiMoments:1] parameters:nil success:^(id responseObject) {
+        NSDictionary *Say_All = [NSDictionary dictionaryWithDictionary:responseObject];
+        if ([[Say_All objectForKey:@"msg"]isEqualToString:@"ok"]) {
+            NSDictionary *Say_Data=[Say_All objectForKey:@"data"];
+            NSDictionary *Say_content=[Say_Data objectForKey:@"posts"];//加载该页数据
+            if (Say_content) {
+                [Config saveSay:Say_content];
+                [self reLoadData:Say_content];
+                [APIRequest GET:likesDataString parameters:nil success:^(id responseObject) {
+                    NSDictionary *sayLikesAll = [NSDictionary dictionaryWithDictionary:responseObject];
+                    [Config saveSayLikes:responseObject];
+                    [self loadLikesData:sayLikesAll];
+                    [self.tableView.mj_header endRefreshing];
+                    [self.tableView reloadData];
+                }failure:^(NSError *error) {
+                    
+                }];
+            }
+            else{
+                [self.tableView.mj_header endRefreshing];
+                [MBProgressHUD showError:@"网络错误" toView:self.view];
+            }
+        }
+        else{
+            [self.tableView.mj_header endRefreshing];
+            [MBProgressHUD showError:[Say_All objectForKey:@"msg"]];
+        }
+    }failure:^(NSError *error) {
+        [self.tableView.mj_header endRefreshing];
+        [MBProgressHUD showError:@"网络错误" toView:self.view];
+    }];
+}
+-(void)load{
+    num++;
+    /**拼接地址*/
+    [APIRequest GET:[Config getApiMoments:num] parameters:nil success:^(id responseObject) {
+        NSDictionary *Say_All = [NSDictionary dictionaryWithDictionary:responseObject];
+        if ([[Say_All objectForKey:@"msg"]isEqualToString:@"ok"]) {
+            NSDictionary *Say_Data=[Say_All objectForKey:@"data"];
+            NSNumber *sayMax=[Say_Data[@"info"]objectForKey:@"page_max"];
+            NSDictionary *Say_content=[Say_Data objectForKey:@"posts"];//加载该页数据
+            if (Say_content!=NULL) {
+                [self loadData:Say_content];
+                [self.tableView.mj_footer endRefreshing];
+                [self.tableView reloadData];
+                if (num==[sayMax intValue]) {
+                    [MBProgressHUD showSuccess:@"当前为最大页数" toView:self.view];
+                    self.tableView.mj_footer.hidden = YES;
+                }
+                
+            }else{
+                [self.tableView.mj_footer endRefreshing];
+                [MBProgressHUD showError:@"没有找到说说数据" toView:self.view];
+                num--;
+            }
+        }
+        else{
+            [self.tableView.mj_footer endRefreshing];
+            [MBProgressHUD showError:[Say_All objectForKey:@"msg"] toView:self.view];
+            num--;
+        }
+        
+    }failure:^(NSError *error) {
+        [self.tableView.mj_footer endRefreshing];
+        [MBProgressHUD showError:@"网络错误" toView:self.view];
+        num--;
+    }];
+}
+#pragma mark - 空白状态代理
+- (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView
+{
+    return [UIImage imageNamed:@"ui_tableview_empty"];
+}
+- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView
+{
+    NSString *text = @"暂无相关内容";
+    
+    NSDictionary *attributes = @{NSFontAttributeName: [UIFont systemFontOfSize:14.0f],
+                                 NSForegroundColorAttributeName: [UIColor lightGrayColor]};
+    
+    return [[NSAttributedString alloc] initWithString:text attributes:attributes];
+}
+- (NSAttributedString *)descriptionForEmptyDataSet:(UIScrollView *)scrollView{
+    NSString *text = @"请检查网络并重试";
+    NSMutableParagraphStyle *paragraph = [NSMutableParagraphStyle new];
+    paragraph.lineBreakMode = NSLineBreakByWordWrapping;
+    paragraph.alignment = NSTextAlignmentCenter;
+    NSDictionary *attributes = @{NSFontAttributeName: [UIFont systemFontOfSize:14.0f],
+                                 NSForegroundColorAttributeName: [UIColor lightGrayColor],
+                                 NSParagraphStyleAttributeName: paragraph};
+    return [[NSAttributedString alloc] initWithString:text attributes:attributes];
+}
+- (UIColor *)backgroundColorForEmptyDataSet:(UIScrollView *)scrollView
+{
+    return RGB(238, 239, 240, 1);
+}
+- (BOOL)emptyDataSetShouldAllowScroll:(UIScrollView *)scrollView{
+    return YES;
+}
+- (void)emptyDataSetDidTapView:(UIScrollView *)scrollView{
+    [self.tableView.mj_header beginRefreshing];
 }
 @end

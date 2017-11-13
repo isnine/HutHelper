@@ -22,7 +22,7 @@
 #import "UUInputAccessoryView.h"
 #import "MomentsViewController.h"
 #import "XWScanImage.h"
-#import "MomentsTableView.h"
+#import "MomentsViewController.h"
 
 #import "UserShowViewController.h"
 @interface MomentsCell ()
@@ -377,8 +377,10 @@
             NSDictionary *response = [NSDictionary dictionaryWithDictionary:responseObject];
             NSString *Msg=[response objectForKey:@"msg"];
             if ([Msg isEqualToString:@"ok"])   {
-                _momentsTable.reload;
                 [MBProgressHUD hideHUDForView:self.contentView animated:YES];
+               // [_momentsTable reload];
+                NSNotification *LoseResponse = [NSNotification notificationWithName:@"btnCommit" object:nil];
+                [[NSNotificationCenter defaultCenter] postNotification:LoseResponse];
                 [MBProgressHUD showSuccess:@"评论成功" toView:self];
             }
             else if ([Msg isEqualToString:@"令牌错误"]){
@@ -441,7 +443,8 @@
                  NSDictionary *Say_All = [NSDictionary dictionaryWithDictionary:responseObject];
                  if ([[Say_All objectForKey:@"msg"]isEqualToString:@"ok"]) {
                   //   [MBProgressHUD showSuccess:@"删除成功" toView:self];
-                     _momentsTable.reload;
+                     NSNotification *LoseResponse = [NSNotification notificationWithName:@"btnCommit" object:nil];
+                     [[NSNotificationCenter defaultCenter] postNotification:LoseResponse];
                  }
                  else{
                      [MBProgressHUD showError:[Say_All objectForKey:@"msg"] toView:self];
@@ -468,7 +471,8 @@
             NSDictionary *Say_All = [NSDictionary dictionaryWithDictionary:responseObject];
             if ([[Say_All objectForKey:@"msg"]isEqualToString:@"ok"]) {
           //      [MBProgressHUD showSuccess:@"删除成功" toView:self];
-                _momentsTable.reload;
+                NSNotification *LoseResponse = [NSNotification notificationWithName:@"btnCommit" object:nil];
+                [[NSNotificationCenter defaultCenter] postNotification:LoseResponse];
             }
             else{
                 [MBProgressHUD showError:[Say_All objectForKey:@"msg"] toView:self];
