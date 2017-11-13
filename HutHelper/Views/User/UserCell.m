@@ -52,23 +52,25 @@
         _infoLabel.textAlignment = NSTextAlignmentRight;
         _infoLabel.backgroundColor = [UIColor clearColor];
         _infoLabel.textColor = Color(0xadadad);
-        _infoLabel.font = [UIFont boldSystemFontOfSize:18];
+        _infoLabel.font = [UIFont systemFontOfSize:18];
     }
     return _infoLabel;
 }
 
 -(void)layoutSubviews{
     [_nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+       // make.size.mas_equalTo(CGSizeMake(100, 20));
         make.top.mas_equalTo(10);
-        make.left.mas_equalTo(10);
-        make.right.mas_equalTo(-630);
-        make.bottom.mas_equalTo(-10);
+        make.left.mas_equalTo(20);
+//        make.right.mas_equalTo(-580);
+//        make.bottom.mas_equalTo(-10);
     }];
     [_infoLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+       // make.size.mas_equalTo(CGSizeMake(100, 20));
         make.top.mas_equalTo(10);
-        make.left.mas_equalTo(80);
+  //      make.left.mas_equalTo(80);
         make.right.mas_equalTo(-300);
-        make.bottom.mas_equalTo(-10);
+//        make.bottom.mas_equalTo(-10);
     }];
 }
 

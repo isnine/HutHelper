@@ -69,15 +69,15 @@
 -(void)layoutSubviews{
     [_nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(10);
-        make.left.mas_equalTo(10);
-        make.right.mas_equalTo(-630);
         make.bottom.mas_equalTo(-10);
+        make.left.mas_equalTo(20);
     }];
     [_headImgView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo(CGSizeMake(50, 50));
         make.top.mas_equalTo(5);
-        make.left.mas_equalTo(350);
+//        make.left.mas_equalTo(350);
         make.right.mas_equalTo(-290);
-        make.bottom.mas_equalTo(-5);
+//        make.bottom.mas_equalTo(-5);
     }];
 }
 
