@@ -64,9 +64,6 @@ int class_error_;
     [self loadSet];
     //时间Label
     [self SetTimeLabel] ;
-
-    
-
 }
 
 - (void)viewWillDisappear:(BOOL)animated{

@@ -55,7 +55,7 @@
         //加载缓存数据
         self.JSONDic=[Config getSay];
         self.LikesDic=[Config getSayLike];
-        [self loadData:self.JSONDic];
+        [self reLoadData:self.JSONDic];
         [self loadLikesData:self.LikesDic];
         //下拉刷新
         self.tableView.emptyDataSetSource = self;
@@ -69,7 +69,7 @@
         header.lastUpdatedTimeLabel.hidden = YES;
         self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(load)];
          // 马上进入刷新状态
-        [self beginload];
+       [self beginload];
 //        [self.view addSubview:momentsTableView];
         
     }
