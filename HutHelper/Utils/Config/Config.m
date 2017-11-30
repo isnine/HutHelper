@@ -10,7 +10,8 @@
 #import "User.h"
 #import "Config.h"
 #import "UMessage.h"
-#import "UMMobClick/MobClick.h"
+#import "MTA.h"
+#import "MTAConfig.h"
 #import <StoreKit/StoreKit.h>
 static int Is ;
 
@@ -294,7 +295,8 @@ static int Is ;
     [defaults synchronize];
 }
 +(void)saveUmeng{
-    [MobClick profileSignInWithPUID:[self getUser].studentKH];
+    [MTA setAccount:[self getUser].studentKH type:AT_OTH];
+
     [UMessage addTag:[self getUser].dep_name
             response:^(id responseObject, NSInteger remain, NSError *error) {
                 NSLog(@"学院信息保存成功/n");

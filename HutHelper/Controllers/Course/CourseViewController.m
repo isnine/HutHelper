@@ -11,7 +11,7 @@
 #import "CourseModel.h"
 #import "LGPlusButtonsView.h"
 #import "AppDelegate.h"
-#import "UMMobClick/MobClick.h"
+ 
 #import "JSONKit.h"
 #import "MBProgressHUD.h"
 #import "User.h"
@@ -554,7 +554,7 @@ NSString *show_xp;
 {
     [super viewWillAppear:animated];
     
-    [MobClick beginLogPageView:@"课表查询"];
+
     _plusButtonsViewMain                         = [LGPlusButtonsView plusButtonsViewWithNumberOfButtons:3
                                                                                  firstButtonIsPlusButton:YES
                                                                                            showAfterInit:YES

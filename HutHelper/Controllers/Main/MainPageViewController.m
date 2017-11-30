@@ -16,7 +16,7 @@
 #import "NoticeViewController.h"
 #import "DayViewController.h"
 #import "UMessage.h"
-#import "UMMobClick/MobClick.h"
+ 
 #import "LoginViewController.h"
 #import<CommonCrypto/CommonDigest.h>
 #import "MBProgressHUD.h"
@@ -54,8 +54,6 @@ int class_error_;
     [super viewDidLoad];
     //设置标题
     [self setTitle];
-    //友盟统计
-    [self setUMeng];
     //主界面
     [Config isAppFirstRun];
     //设置第几周
@@ -499,19 +497,7 @@ int class_error_;
         [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:NO];
     }
 }
-//友盟统计
--(void)setUMeng{
-    /**友盟统计*/
-    Class cls                                 = NSClassFromString(@"UMANUtil");
-    SEL deviceIDSelector                      = @selector(openUDIDString);
-    NSString *deviceID                        = nil;
-    if(cls && [cls respondsToSelector:deviceIDSelector]){
-        deviceID                                  = [cls performSelector:deviceIDSelector];
-    }
-    NSData* jsonData                          = [NSJSONSerialization dataWithJSONObject:@{@"oid" : deviceID}
-                                                                                options:NSJSONWritingPrettyPrinted
-                                                                                  error:nil];
-}
+
 //设置标题栏
 -(void)setTitle{
     /**标题文字*/

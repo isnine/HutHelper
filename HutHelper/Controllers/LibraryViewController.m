@@ -7,7 +7,7 @@
 //
 
 #import "LibraryViewController.h"
-#import "UMMobClick/MobClick.h"
+ 
 #import "MBProgressHUD.h"
 #import "MBProgressHUD+MJ.h"
  

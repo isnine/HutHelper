@@ -11,12 +11,14 @@
 #import "LeftSortsViewController.h"
 #import "NoticeViewController.h"
 #import "UMessage.h"
-#import "UMMobClick/MobClick.h"
 #import <UMSocialCore/UMSocialCore.h>
 #import <JSPatchPlatform/JSPatch.h>
 #import "iVersion.h"
 #import <RongIMKit/RongIMKit.h>
 #import "ChatListViewController.h"
+//MTA
+#import "MTA.h"
+#import "MTAConfig.h"
 @interface AppDelegate ()<RCIMUserInfoDataSource>{
     
 }
@@ -44,10 +46,8 @@
         }
     }];
     [UMessage setLogEnabled:YES];//打开日志，方便调试
-    //友盟统计
-    UMConfigInstance.appKey = APPKEY_UMESSAGE;
-    [MobClick setAppVersion:[Config getCurrentVersion]];
-    [MobClick startWithConfigure:UMConfigInstance];//配置以上参数后调用此方法初始化SDK！
+    //MTA统计
+    [MTA startWithAppkey:APPKEY_MTA];
     //设置初始界面
     self.window.backgroundColor      = [UIColor whiteColor];//设置通用背景颜色
     [self.window makeKeyAndVisible];

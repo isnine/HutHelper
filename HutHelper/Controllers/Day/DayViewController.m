@@ -7,7 +7,7 @@
 //
 
 #import "DayViewController.h"
-#import "UMMobClick/MobClick.h"
+ 
 #import "DayCalendarViewController.h"
 @interface DayViewController ()
 
@@ -58,12 +58,11 @@
     self.navigationItem.title = @"日历";
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor]}];
 
-    [MobClick beginLogPageView:@"校历"];//("PageOne"为页面名称，可自定义)
+
 }
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    [MobClick endLogPageView:@"校历"];
 }
 #pragma mark - 逻辑代码初始化
 

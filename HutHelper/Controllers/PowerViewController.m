@@ -8,7 +8,6 @@
 
 #import "PowerViewController.h"
 #import "JSONKit.h"
-#import "UMMobClick/MobClick.h"
 #import "UINavigationBar+Awesome.h"
 #import "MBProgressHUD+MJ.h"
 @interface PowerViewController ()
@@ -185,7 +184,7 @@ typedef NS_ENUM(NSUInteger, PowerSelectBtn) {
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [MobClick beginLogPageView:@"电费查询"];//("PageOne"为页面名称，可自定义)
+
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:0];
     /**让黑线消失的方法*/
@@ -196,7 +195,7 @@ typedef NS_ENUM(NSUInteger, PowerSelectBtn) {
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    [MobClick endLogPageView:@"电费查询"];
+
     self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:29/255.0 green:203/255.0 blue:219/255.0 alpha:1];
     [self.navigationController.navigationBar lt_reset];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];

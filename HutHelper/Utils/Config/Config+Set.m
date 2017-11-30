@@ -7,7 +7,7 @@
 //
 #import "Config+Set.h"
 #import "UMessage.h"
-#import "UMMobClick/MobClick.h"
+ 
 #import "AppDelegate.h"
 @implementation Config (Set)
 +(void)setNoSharedCache{

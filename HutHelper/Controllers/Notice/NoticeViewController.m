@@ -9,7 +9,7 @@
 #import "NoticeViewController.h"
 #import "NoticeTableViewCell.h"
 #import "NoticeShowViewController.h"
-#import "UMMobClick/MobClick.h"
+ 
 #import "AppDelegate.h"
 @interface NoticeViewController ()
 @property (nonatomic,copy) NSArray      *noticeData;
@@ -94,11 +94,11 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [MobClick beginLogPageView:@"通知"];//("PageOne"为页面名称，可自定义)
+
 }
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    [MobClick endLogPageView:@"通知"];
+
 }
 @end

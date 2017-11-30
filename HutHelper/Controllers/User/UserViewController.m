@@ -12,7 +12,7 @@
 #import "AppDelegate.h"
 #import "ASIHTTPRequest.h"
 #import "ASIFormDataRequest.h"
-#import "UMMobClick/MobClick.h"
+ 
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "JSONKit.h"
 #import "MBProgressHUD+MJ.h"

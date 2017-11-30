@@ -11,6 +11,15 @@
 		3A06D9B51E8CEDE400066DD1 /* ExamCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A06D9B31E8CEDE400066DD1 /* ExamCell.m */; };
 		3A06D9B61E8CEDE400066DD1 /* ExamCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A06D9B41E8CEDE400066DD1 /* ExamCell.xib */; };
 		3A1CEC331E93D71A002D8583 /* Vedio.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A1CEC321E93D71A002D8583 /* Vedio.m */; };
+		3A1D41F51FD0598A00180803 /* libautotrack.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A1D41E31FD0598A00180803 /* libautotrack.a */; };
+		3A1D41F61FD0598A00180803 /* 可视化埋点使用说明.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 3A1D41E51FD0598A00180803 /* 可视化埋点使用说明.pdf */; };
+		3A1D41F71FD0598A00180803 /* IDFA使用说明.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 3A1D41E71FD0598A00180803 /* IDFA使用说明.pdf */; };
+		3A1D41F81FD0598A00180803 /* libidfa.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A1D41E81FD0598A00180803 /* libidfa.a */; };
+		3A1D41F91FD0598A00180803 /* libinstalltracker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A1D41EA1FD0598A00180803 /* libinstalltracker.a */; };
+		3A1D41FA1FD0598A00180803 /* MTA安装来源追踪使用文档.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 3A1D41EB1FD0598A00180803 /* MTA安装来源追踪使用文档.pdf */; };
+		3A1D41FB1FD0598A00180803 /* libmtahybrid.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A1D41EE1FD0598A00180803 /* libmtahybrid.a */; };
+		3A1D41FC1FD0598A00180803 /* 混合统计使用说明.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 3A1D41EF1FD0598A00180803 /* 混合统计使用说明.pdf */; };
+		3A1D41FD1FD0598A00180803 /* libmtasdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A1D41F21FD0598A00180803 /* libmtasdk.a */; };
 		3A20AFF01F43E2B800712A1E /* CalendarDayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A20AFDE1F43E21200712A1E /* CalendarDayCell.m */; };
 		3A20AFF21F43E2B800712A1E /* CalendarDayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A20AFE01F43E21200712A1E /* CalendarDayModel.m */; };
 		3A20AFF41F43E2B800712A1E /* CalendarHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A20AFE21F43E21200712A1E /* CalendarHomeViewController.m */; };
@@ -233,6 +242,21 @@
 		3A06D9B41E8CEDE400066DD1 /* ExamCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExamCell.xib; sourceTree = "<group>"; };
 		3A1CEC311E93D71A002D8583 /* Vedio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vedio.h; sourceTree = "<group>"; };
 		3A1CEC321E93D71A002D8583 /* Vedio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Vedio.m; sourceTree = "<group>"; };
+		3A1D41E31FD0598A00180803 /* libautotrack.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libautotrack.a; sourceTree = "<group>"; };
+		3A1D41E41FD0598A00180803 /* MTAAutoTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTAAutoTrack.h; sourceTree = "<group>"; };
+		3A1D41E51FD0598A00180803 /* 可视化埋点使用说明.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "可视化埋点使用说明.pdf"; sourceTree = "<group>"; };
+		3A1D41E71FD0598A00180803 /* IDFA使用说明.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "IDFA使用说明.pdf"; sourceTree = "<group>"; };
+		3A1D41E81FD0598A00180803 /* libidfa.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libidfa.a; sourceTree = "<group>"; };
+		3A1D41EA1FD0598A00180803 /* libinstalltracker.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libinstalltracker.a; sourceTree = "<group>"; };
+		3A1D41EB1FD0598A00180803 /* MTA安装来源追踪使用文档.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "MTA安装来源追踪使用文档.pdf"; sourceTree = "<group>"; };
+		3A1D41EC1FD0598A00180803 /* Installtracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Installtracker.h; sourceTree = "<group>"; };
+		3A1D41EE1FD0598A00180803 /* libmtahybrid.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libmtahybrid.a; sourceTree = "<group>"; };
+		3A1D41EF1FD0598A00180803 /* 混合统计使用说明.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "混合统计使用说明.pdf"; sourceTree = "<group>"; };
+		3A1D41F01FD0598A00180803 /* MTAHybrid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTAHybrid.h; sourceTree = "<group>"; };
+		3A1D41F11FD0598A00180803 /* MTACrashReporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTACrashReporter.h; sourceTree = "<group>"; };
+		3A1D41F21FD0598A00180803 /* libmtasdk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libmtasdk.a; sourceTree = "<group>"; };
+		3A1D41F31FD0598A00180803 /* MTAConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTAConfig.h; sourceTree = "<group>"; };
+		3A1D41F41FD0598A00180803 /* MTA.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTA.h; sourceTree = "<group>"; };
 		3A20AFDD1F43E21200712A1E /* CalendarDayCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CalendarDayCell.h; sourceTree = "<group>"; };
 		3A20AFDE1F43E21200712A1E /* CalendarDayCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CalendarDayCell.m; sourceTree = "<group>"; };
 		3A20AFDF1F43E21200712A1E /* CalendarDayModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CalendarDayModel.h; sourceTree = "<group>"; };
@@ -558,17 +582,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A1D41F91FD0598A00180803 /* libinstalltracker.a in Frameworks */,
 				3A2179BF1F7A9D9900210794 /* JSPatchPlatform.framework in Frameworks */,
 				3A8BACF91DDDBD71001C78B8 /* libsqlite3.tbd in Frameworks */,
 				3AE01BAC1EB0D24900D5B7EF /* Foundation.framework in Frameworks */,
 				3AE01BAA1EB0D23F00D5B7EF /* CoreFoundation.framework in Frameworks */,
+				3A1D41FD1FD0598A00180803 /* libmtasdk.a in Frameworks */,
 				3AE01BA81EB0D23700D5B7EF /* SystemConfiguration.framework in Frameworks */,
 				3AF72C9B1E9A23F900093A39 /* libz.tbd in Frameworks */,
+				3A1D41F51FD0598A00180803 /* libautotrack.a in Frameworks */,
 				3AF72C9A1E9A23F000093A39 /* JavaScriptCore.framework in Frameworks */,
 				3A4D30191E8D2E4600901E3B /* CoreGraphics.framework in Frameworks */,
 				3A8BACFD1DDDBDDB001C78B8 /* ImageIO.framework in Frameworks */,
 				3A98CC0C1E7CFA9C00CABD0D /* libUMessage_Sdk_1.4.0.a in Frameworks */,
+				3A1D41F81FD0598A00180803 /* libidfa.a in Frameworks */,
 				DF4C1EB183B351F157BF18CD /* libPods-HutHelper.a in Frameworks */,
+				3A1D41FB1FD0598A00180803 /* libmtahybrid.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -600,6 +629,68 @@
 				3A06D9B41E8CEDE400066DD1 /* ExamCell.xib */,
 			);
 			path = Exam;
+			sourceTree = "<group>";
+		};
+		3A1D41E01FD0598A00180803 /* MTA */ = {
+			isa = PBXGroup;
+			children = (
+				3A1D41E11FD0598A00180803 /* plugin */,
+				3A1D41F11FD0598A00180803 /* MTACrashReporter.h */,
+				3A1D41F21FD0598A00180803 /* libmtasdk.a */,
+				3A1D41F31FD0598A00180803 /* MTAConfig.h */,
+				3A1D41F41FD0598A00180803 /* MTA.h */,
+			);
+			path = MTA;
+			sourceTree = "<group>";
+		};
+		3A1D41E11FD0598A00180803 /* plugin */ = {
+			isa = PBXGroup;
+			children = (
+				3A1D41E21FD0598A00180803 /* autotrack */,
+				3A1D41E61FD0598A00180803 /* idfa */,
+				3A1D41E91FD0598A00180803 /* installtracker */,
+				3A1D41ED1FD0598A00180803 /* hybrid */,
+			);
+			path = plugin;
+			sourceTree = "<group>";
+		};
+		3A1D41E21FD0598A00180803 /* autotrack */ = {
+			isa = PBXGroup;
+			children = (
+				3A1D41E31FD0598A00180803 /* libautotrack.a */,
+				3A1D41E41FD0598A00180803 /* MTAAutoTrack.h */,
+				3A1D41E51FD0598A00180803 /* 可视化埋点使用说明.pdf */,
+			);
+			path = autotrack;
+			sourceTree = "<group>";
+		};
+		3A1D41E61FD0598A00180803 /* idfa */ = {
+			isa = PBXGroup;
+			children = (
+				3A1D41E71FD0598A00180803 /* IDFA使用说明.pdf */,
+				3A1D41E81FD0598A00180803 /* libidfa.a */,
+			);
+			path = idfa;
+			sourceTree = "<group>";
+		};
+		3A1D41E91FD0598A00180803 /* installtracker */ = {
+			isa = PBXGroup;
+			children = (
+				3A1D41EA1FD0598A00180803 /* libinstalltracker.a */,
+				3A1D41EB1FD0598A00180803 /* MTA安装来源追踪使用文档.pdf */,
+				3A1D41EC1FD0598A00180803 /* Installtracker.h */,
+			);
+			path = installtracker;
+			sourceTree = "<group>";
+		};
+		3A1D41ED1FD0598A00180803 /* hybrid */ = {
+			isa = PBXGroup;
+			children = (
+				3A1D41EE1FD0598A00180803 /* libmtahybrid.a */,
+				3A1D41EF1FD0598A00180803 /* 混合统计使用说明.pdf */,
+				3A1D41F01FD0598A00180803 /* MTAHybrid.h */,
+			);
+			path = hybrid;
 			sourceTree = "<group>";
 		};
 		3A20AFDC1F43E21200712A1E /* ZFCalendar */ = {
@@ -1138,6 +1229,7 @@
 		3A98CBCB1E7CFA9C00CABD0D /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				3A1D41E01FD0598A00180803 /* MTA */,
 				3A21798F1F7A9ADB00210794 /* JSPATCH */,
 				3AA270421F6E700300F5E6F3 /* Hpple */,
 				3AA270491F6E700400F5E6F3 /* Picker */,
@@ -1649,13 +1741,17 @@
 				3A4D2FFA1E8D24E200901E3B /* ScoreTableViewCell.xib in Resources */,
 				3AFA4F791EC04C0E00CB7DA2 /* language.strings in Resources */,
 				3A796C6D1E534DAE00794043 /* Main.storyboard in Resources */,
+				3A1D41F71FD0598A00180803 /* IDFA使用说明.pdf in Resources */,
 				3A4D30141E8D297200901E3B /* LeftItemTableViewCell.xib in Resources */,
 				3A98CC021E7CFA9C00CABD0D /* iVersion.bundle in Resources */,
 				3A4D2FBE1E8D20E900901E3B /* HandTableViewController.xib in Resources */,
 				3A98CB731E7CF82F00CABD0D /* MBProgressHUD.bundle in Resources */,
 				3A4D2FF41E8D24C100901E3B /* NoticeTableViewCell.xib in Resources */,
 				3A0056121EC97CB70047E8F2 /* Assets.xcassets in Resources */,
+				3A1D41FC1FD0598A00180803 /* 混合统计使用说明.pdf in Resources */,
+				3A1D41F61FD0598A00180803 /* 可视化埋点使用说明.pdf in Resources */,
 				3A06D9B61E8CEDE400066DD1 /* ExamCell.xib in Resources */,
+				3A1D41FA1FD0598A00180803 /* MTA安装来源追踪使用文档.pdf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2133,6 +2229,11 @@
 					"$(PROJECT_DIR)/HutHelper/Lib/UMSocial/SocialLibraries/WeChat",
 					"$(PROJECT_DIR)/HutHelper/Vendor/UMessage_Sdk_1.4.0",
 					"$(PROJECT_DIR)/HutHelper/Utils/IM",
+					"$(PROJECT_DIR)/HutHelper/Vendor/MTA/plugin/autotrack",
+					"$(PROJECT_DIR)/HutHelper/Vendor/MTA/plugin/idfa",
+					"$(PROJECT_DIR)/HutHelper/Vendor/MTA/plugin/installtracker",
+					"$(PROJECT_DIR)/HutHelper/Vendor/MTA/plugin/hybrid",
+					"$(PROJECT_DIR)/HutHelper/Vendor/MTA",
 				);
 				NEW_SETTING = "";
 				PRODUCT_BUNDLE_IDENTIFIER = name.wxz.HutHelper;
@@ -2185,6 +2286,11 @@
 					"$(PROJECT_DIR)/HutHelper/Lib/UMSocial/SocialLibraries/WeChat",
 					"$(PROJECT_DIR)/HutHelper/Vendor/UMessage_Sdk_1.4.0",
 					"$(PROJECT_DIR)/HutHelper/Utils/IM",
+					"$(PROJECT_DIR)/HutHelper/Vendor/MTA/plugin/autotrack",
+					"$(PROJECT_DIR)/HutHelper/Vendor/MTA/plugin/idfa",
+					"$(PROJECT_DIR)/HutHelper/Vendor/MTA/plugin/installtracker",
+					"$(PROJECT_DIR)/HutHelper/Vendor/MTA/plugin/hybrid",
+					"$(PROJECT_DIR)/HutHelper/Vendor/MTA",
 				);
 				NEW_SETTING = "";
 				PRODUCT_BUNDLE_IDENTIFIER = name.wxz.HutHelper;

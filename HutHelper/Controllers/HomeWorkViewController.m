@@ -7,7 +7,7 @@
 //
 
 #import "HomeWorkViewController.h"
-#import "UMMobClick/MobClick.h"
+ 
 #import "MBProgressHUD+MJ.h"
 
 #import "User.h"
@@ -43,12 +43,12 @@
     - (void)viewWillAppear:(BOOL)animated
  {
  [super viewWillAppear:animated];
- [MobClick beginLogPageView:@"网上作业"];//("PageOne"为页面名称，可自定义)
+
  }
  - (void)viewWillDisappear:(BOOL)animated
  {
  [super viewWillDisappear:animated];
- [MobClick endLogPageView:@"网上作业"];
+
  }
 /** webView的代理方法*/
 - (void)webViewDidFinishLoad:(UIWebView *)webView

@@ -3,7 +3,6 @@ target "HutHelper" do
     pod 'ASIHTTPRequest'
     pod 'MBProgressHUD', '~> 1.0.0'
     pod 'DJRefresh', '~> 1.0.5'
-    pod 'UMengAnalytics-NO-IDFA'
     pod 'UMengUShare/Social/ReducedSina'
     pod 'UMengUShare/Social/ReducedWeChat'
     pod 'UMengUShare/Social/ReducedQQ'

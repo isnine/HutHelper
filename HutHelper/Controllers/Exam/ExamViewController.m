@@ -7,7 +7,7 @@
 //
 
 #import "ExamViewController.h"
-#import "UMMobClick/MobClick.h"
+ 
 
 #import "User.h"
 #import "AFNetworking.h"
@@ -250,12 +250,12 @@ int datediff(int y1,int m1,int d1,int y2,int m2,int d2)
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [MobClick beginLogPageView:@"考试计划"];//("PageOne"为页面名称，可自定义)
+
 }
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    [MobClick endLogPageView:@"考试计划"];
+
 }
 #pragma mark - 空白状态代理
 - (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView
