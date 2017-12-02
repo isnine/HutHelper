@@ -13,7 +13,7 @@
 #import "CourseSetViewController.h"
 #import "AboutViewController.h"
 #import "FeedbackViewController.h"
-#import "UMessage.h"
+#import "ChatChoiceTableViewController.h"
 #import <UShareUI/UShareUI.h>
 #import <UMSocialCore/UMSocialCore.h>
 #import "LoginViewController.h"
@@ -158,9 +158,9 @@
             [self presentViewController:alert animated:true completion:nil];
         }
         
+        ChatChoiceTableViewController *chatChoiceTableViewController=[[ChatChoiceTableViewController alloc]init];
         AppDelegate *tempAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-        ChatListViewController *chatList = [[ChatListViewController alloc] init];
-        [tempAppDelegate.mainNavigationController pushViewController:chatList animated:YES];
+        [tempAppDelegate.mainNavigationController pushViewController:chatChoiceTableViewController animated:YES];
     }
     if (indexPath.row == 3) {  //分享
         [UMSocialUIManager setPreDefinePlatforms:@[@(UMSocialPlatformType_WechatSession),@(UMSocialPlatformType_QQ),@(UMSocialPlatformType_Qzone),@(UMSocialPlatformType_Sina)]];

@@ -11,7 +11,7 @@
 #import "LeftSortsViewController.h"
 #import "JSONKit.h"
 #import "AppDelegate.h"
-#import "UMessage.h"
+  
 #import "MainPageViewController.h"
 #import "MBProgressHUD.h"
 #import "AFNetworking.h"

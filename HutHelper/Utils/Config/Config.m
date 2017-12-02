@@ -9,10 +9,11 @@
 
 #import "User.h"
 #import "Config.h"
-#import "UMessage.h"
+  
 #import "MTA.h"
 #import "MTAConfig.h"
 #import <StoreKit/StoreKit.h>
+#import "XGPush.h"
 static int Is ;
 
 @implementation Config
@@ -283,7 +284,7 @@ static int Is ;
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     NSDictionary *noticeDictionary=@{@"time":@"2017-10-20 08:00",
                                      @"title":@"工大助手",
-                                     @"body":@"工大助手V3.3.4更新日志\n\n- 修复了个人界面适配问题\n 修复了说说缓存问题 "
+                                     @"body":@"工大助手V3.3.4更新日志\n\n- 修复了个人界面适配问题\n- 修复了说说缓存问题 "
                                      };
     
     NSDictionary *noticeDictionary1=@{@"time":@"2017-08-14 08:00",
@@ -296,20 +297,12 @@ static int Is ;
 }
 +(void)saveUmeng{
     [MTA setAccount:[self getUser].studentKH type:AT_OTH];
-
-    [UMessage addTag:[self getUser].dep_name
-            response:^(id responseObject, NSInteger remain, NSError *error) {
-                NSLog(@"学院信息保存成功/n");
-            }];  //学院
-    [UMessage addAlias:[self getUser].studentKH type:kUMessageAliasTypeSina response:^(id responseObject, NSError *error) {
-        NSLog(@"学号信息保存成功/n");
-    }];
+    [[XGPushTokenManager defaultTokenManager] bindWithIdentifier:[self getUser].dep_name type:XGPushTokenBindTypeTag];
+    [[XGPushTokenManager defaultTokenManager] bindWithIdentifier:[self getUser].studentKH type:XGPushTokenBindTypeAccount];
 }
 +(void)removeUmeng{
-    [UMessage removeAllTags:^(id responseObject, NSInteger remain, NSError *error) {//删除友盟标签缓存
-    }];
-    [UMessage removeAlias:[Config getStudentKH] type:kUMessageAliasTypeSina response:^(id responseObject, NSError *error) {
-    }];
+    [[XGPushTokenManager defaultTokenManager] unbindWithIdentifer:[self getUser].dep_name type:XGPushTokenBindTypeTag];
+    [[XGPushTokenManager defaultTokenManager] unbindWithIdentifer:[self getUser].studentKH type:XGPushTokenBindTypeAccount];
 }
 +(void)showAppStore{
     if([SKStoreReviewController respondsToSelector:@selector(requestReview)]){

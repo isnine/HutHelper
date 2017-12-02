@@ -10,7 +10,7 @@
 #import "MainPageViewController.h"
 #import "LeftSortsViewController.h"
 #import "NoticeViewController.h"
-#import "UMessage.h"
+
 #import <UMSocialCore/UMSocialCore.h>
 #import <JSPatchPlatform/JSPatch.h>
 #import "iVersion.h"
@@ -19,6 +19,8 @@
 //MTA
 #import "MTA.h"
 #import "MTAConfig.h"
+//信鸽推送
+#import "XGPush.h"
 @interface AppDelegate ()<RCIMUserInfoDataSource>{
     
 }
@@ -32,20 +34,24 @@
 #pragma mark - 生命周期
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     //友盟推送
-    [UMessage startWithAppkey:APPKEY_UMESSAGE launchOptions:launchOptions];
-    [UMessage registerForRemoteNotifications];
-    UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
-    center.delegate                  = self;
-    UNAuthorizationOptions types10   = UNAuthorizationOptionBadge|UNAuthorizationOptionAlert|UNAuthorizationOptionSound;
-    [center requestAuthorizationWithOptions:types10 completionHandler:^(BOOL granted, NSError * _Nullable error) {
-        if (granted) {
-            //点击允许
-            //这里可以添加一些自己的逻辑
-        } else {
-            
-        }
-    }];
-    [UMessage setLogEnabled:YES];//打开日志，方便调试
+//    [UMessage startWithAppkey:APPKEY_UMESSAGE launchOptions:launchOptions];
+//    [UMessage registerForRemoteNotifications];
+//    UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
+//    center.delegate                  = self;
+//    UNAuthorizationOptions types10   = UNAuthorizationOptionBadge|UNAuthorizationOptionAlert|UNAuthorizationOptionSound;
+//    [center requestAuthorizationWithOptions:types10 completionHandler:^(BOOL granted, NSError * _Nullable error) {
+//        if (granted) {
+//            //点击允许
+//            //这里可以添加一些自己的逻辑
+//        } else {
+//            
+//        }
+//    }];
+//    [UMessage setLogEnabled:YES];//打开日志，方便调试
+    //xg推送
+    [[XGPush defaultManager] setEnableDebug:YES];
+    [[XGPush defaultManager] startXGWithAppID:2200272046 appKey:@"I6Z4HP4EA65L" delegate:nil];
+     [[XGPush defaultManager] reportXGNotificationInfo:launchOptions];
     //MTA统计
     [MTA startWithAppkey:APPKEY_MTA];
     //设置初始界面
@@ -123,8 +129,18 @@
     return YES;
     
 }
-
-
+#pragma mark - 信鸽
+- (void)xgPushUserNotificationCenter:(UNUserNotificationCenter *)center
+      didReceiveNotificationResponse:(UNNotificationResponse *)response
+               withCompletionHandler:(void(^)())completionHandler {
+    [[XGPush defaultManager] reportXGNotificationInfo:response.notification.request.content.userInfo];
+    
+    completionHandler();
+}
+- (void)xgPushUserNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions))completionHandler {
+    [[XGPush defaultManager] reportXGNotificationInfo:notification.request.content.userInfo];
+    completionHandler(UNNotificationPresentationOptionBadge | UNNotificationPresentationOptionSound | UNNotificationPresentationOptionAlert);
+}
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation{
     BOOL result = [[UMSocialManager defaultManager] handleOpenURL:url];
     if (!result) {
@@ -166,10 +182,7 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
-//iOS10以下使用这个方法接收通知
-- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo{
-    [UMessage didReceiveRemoteNotification:userInfo];
-}
+
 
 //iOS10新增：处理前台收到通知的代理方法
 -(void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions))completionHandler{
@@ -207,9 +220,6 @@
         [defaults setObject:noticeDictionary forKey:@"NoticeShow"];//通知详情
         [defaults synchronize];
         [Config pushViewController:@"NoticeShow"];
-        [UMessage setAutoAlert:NO];
-        //必须加这句代码
-        [UMessage didReceiveRemoteNotification:userInfo];
     //当应用处于前台时提示设置，需要哪个可以设置哪一个
     completionHandler(UNNotificationPresentationOptionSound|UNNotificationPresentationOptionBadge|UNNotificationPresentationOptionAlert);
     }
@@ -253,7 +263,7 @@
         [defaults setObject:noticeDictionary forKey:@"NoticeShow"];//通知详情
         [defaults synchronize];
         [Config pushViewController:@"NoticeShow"];
-        [UMessage didReceiveRemoteNotification:userInfo];
+
     }else{
         //应用处于后台时的本地推送接受
         NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
@@ -282,7 +292,6 @@
         [defaults setObject:noticeDictionary forKey:@"NoticeShow"];//通知详情
         [defaults synchronize];
         [Config pushViewController:@"NoticeShow"];
-        [UMessage didReceiveRemoteNotification:userInfo];
     }
 }
 #pragma mark - 其他

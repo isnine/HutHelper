@@ -20,6 +20,12 @@
 		3A1D41FB1FD0598A00180803 /* libmtahybrid.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A1D41EE1FD0598A00180803 /* libmtahybrid.a */; };
 		3A1D41FC1FD0598A00180803 /* 混合统计使用说明.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 3A1D41EF1FD0598A00180803 /* 混合统计使用说明.pdf */; };
 		3A1D41FD1FD0598A00180803 /* libmtasdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A1D41F21FD0598A00180803 /* libmtasdk.a */; };
+		3A1D42041FD1206C00180803 /* ReleaseNotes.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3A1D42001FD1206C00180803 /* ReleaseNotes.txt */; };
+		3A1D42051FD1206C00180803 /* libXG-SDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A1D42011FD1206C00180803 /* libXG-SDK.a */; };
+		3A1D42061FD1206C00180803 /* libxgidfa.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A1D42031FD1206C00180803 /* libxgidfa.a */; };
+		3A1D42071FD121AC00180803 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A7D3CA91DB0A6CB00355E7A /* UserNotifications.framework */; };
+		3A1D42081FD1220300180803 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A6FF7C41DB3151E004CFBE8 /* CoreTelephony.framework */; };
+		3A1D42091FD1221400180803 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A6FF7C81DB31544004CFBE8 /* libsqlite3.0.tbd */; };
 		3A20AFF01F43E2B800712A1E /* CalendarDayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A20AFDE1F43E21200712A1E /* CalendarDayCell.m */; };
 		3A20AFF21F43E2B800712A1E /* CalendarDayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A20AFE01F43E21200712A1E /* CalendarDayModel.m */; };
 		3A20AFF41F43E2B800712A1E /* CalendarHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A20AFE21F43E21200712A1E /* CalendarHomeViewController.m */; };
@@ -123,7 +129,6 @@
 		3A98CC091E7CFA9C00CABD0D /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A98CBE81E7CFA9C00CABD0D /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		3A98CC0A1E7CFA9C00CABD0D /* LeftSlideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A98CBEB1E7CFA9C00CABD0D /* LeftSlideViewController.m */; };
 		3A98CC0B1E7CFA9C00CABD0D /* UIView_extra.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A98CBED1E7CFA9C00CABD0D /* UIView_extra.m */; };
-		3A98CC0C1E7CFA9C00CABD0D /* libUMessage_Sdk_1.4.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A98CBEF1E7CFA9C00CABD0D /* libUMessage_Sdk_1.4.0.a */; };
 		3A98CC0D1E7CFA9C00CABD0D /* XWScanImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A98CBF31E7CFA9C00CABD0D /* XWScanImage.m */; };
 		3A98CC0E1E7CFA9C00CABD0D /* YYFPSLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A98CBF61E7CFA9C00CABD0D /* YYFPSLabel.m */; };
 		3A98CC0F1E7CFA9C00CABD0D /* YYWeakProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A98CBF81E7CFA9C00CABD0D /* YYWeakProxy.m */; };
@@ -257,6 +262,10 @@
 		3A1D41F21FD0598A00180803 /* libmtasdk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libmtasdk.a; sourceTree = "<group>"; };
 		3A1D41F31FD0598A00180803 /* MTAConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTAConfig.h; sourceTree = "<group>"; };
 		3A1D41F41FD0598A00180803 /* MTA.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTA.h; sourceTree = "<group>"; };
+		3A1D41FF1FD1206C00180803 /* XGPush.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XGPush.h; sourceTree = "<group>"; };
+		3A1D42001FD1206C00180803 /* ReleaseNotes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ReleaseNotes.txt; sourceTree = "<group>"; };
+		3A1D42011FD1206C00180803 /* libXG-SDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libXG-SDK.a"; sourceTree = "<group>"; };
+		3A1D42031FD1206C00180803 /* libxgidfa.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libxgidfa.a; sourceTree = "<group>"; };
 		3A20AFDD1F43E21200712A1E /* CalendarDayCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CalendarDayCell.h; sourceTree = "<group>"; };
 		3A20AFDE1F43E21200712A1E /* CalendarDayCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CalendarDayCell.m; sourceTree = "<group>"; };
 		3A20AFDF1F43E21200712A1E /* CalendarDayModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CalendarDayModel.h; sourceTree = "<group>"; };
@@ -452,8 +461,6 @@
 		3A98CBEB1E7CFA9C00CABD0D /* LeftSlideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftSlideViewController.m; sourceTree = "<group>"; };
 		3A98CBEC1E7CFA9C00CABD0D /* UIView_extra.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIView_extra.h; sourceTree = "<group>"; };
 		3A98CBED1E7CFA9C00CABD0D /* UIView_extra.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIView_extra.m; sourceTree = "<group>"; };
-		3A98CBEF1E7CFA9C00CABD0D /* libUMessage_Sdk_1.4.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUMessage_Sdk_1.4.0.a; sourceTree = "<group>"; };
-		3A98CBF01E7CFA9C00CABD0D /* UMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMessage.h; sourceTree = "<group>"; };
 		3A98CBF21E7CFA9C00CABD0D /* XWScanImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWScanImage.h; sourceTree = "<group>"; };
 		3A98CBF31E7CFA9C00CABD0D /* XWScanImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWScanImage.m; sourceTree = "<group>"; };
 		3A98CBF51E7CFA9C00CABD0D /* YYFPSLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYFPSLabel.h; sourceTree = "<group>"; };
@@ -582,22 +589,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A1D42091FD1221400180803 /* libsqlite3.0.tbd in Frameworks */,
+				3AF72C9B1E9A23F900093A39 /* libz.tbd in Frameworks */,
+				3A1D42081FD1220300180803 /* CoreTelephony.framework in Frameworks */,
+				3AE01BA81EB0D23700D5B7EF /* SystemConfiguration.framework in Frameworks */,
+				3A1D42071FD121AC00180803 /* UserNotifications.framework in Frameworks */,
 				3A1D41F91FD0598A00180803 /* libinstalltracker.a in Frameworks */,
 				3A2179BF1F7A9D9900210794 /* JSPatchPlatform.framework in Frameworks */,
 				3A8BACF91DDDBD71001C78B8 /* libsqlite3.tbd in Frameworks */,
 				3AE01BAC1EB0D24900D5B7EF /* Foundation.framework in Frameworks */,
 				3AE01BAA1EB0D23F00D5B7EF /* CoreFoundation.framework in Frameworks */,
 				3A1D41FD1FD0598A00180803 /* libmtasdk.a in Frameworks */,
-				3AE01BA81EB0D23700D5B7EF /* SystemConfiguration.framework in Frameworks */,
-				3AF72C9B1E9A23F900093A39 /* libz.tbd in Frameworks */,
+				3A1D42061FD1206C00180803 /* libxgidfa.a in Frameworks */,
 				3A1D41F51FD0598A00180803 /* libautotrack.a in Frameworks */,
 				3AF72C9A1E9A23F000093A39 /* JavaScriptCore.framework in Frameworks */,
 				3A4D30191E8D2E4600901E3B /* CoreGraphics.framework in Frameworks */,
 				3A8BACFD1DDDBDDB001C78B8 /* ImageIO.framework in Frameworks */,
-				3A98CC0C1E7CFA9C00CABD0D /* libUMessage_Sdk_1.4.0.a in Frameworks */,
 				3A1D41F81FD0598A00180803 /* libidfa.a in Frameworks */,
 				DF4C1EB183B351F157BF18CD /* libPods-HutHelper.a in Frameworks */,
 				3A1D41FB1FD0598A00180803 /* libmtahybrid.a in Frameworks */,
+				3A1D42051FD1206C00180803 /* libXG-SDK.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -691,6 +702,25 @@
 				3A1D41F01FD0598A00180803 /* MTAHybrid.h */,
 			);
 			path = hybrid;
+			sourceTree = "<group>";
+		};
+		3A1D41FE1FD1206C00180803 /* XgPush */ = {
+			isa = PBXGroup;
+			children = (
+				3A1D41FF1FD1206C00180803 /* XGPush.h */,
+				3A1D42001FD1206C00180803 /* ReleaseNotes.txt */,
+				3A1D42011FD1206C00180803 /* libXG-SDK.a */,
+				3A1D42021FD1206C00180803 /* idfa */,
+			);
+			path = XgPush;
+			sourceTree = "<group>";
+		};
+		3A1D42021FD1206C00180803 /* idfa */ = {
+			isa = PBXGroup;
+			children = (
+				3A1D42031FD1206C00180803 /* libxgidfa.a */,
+			);
+			path = idfa;
 			sourceTree = "<group>";
 		};
 		3A20AFDC1F43E21200712A1E /* ZFCalendar */ = {
@@ -1229,6 +1259,7 @@
 		3A98CBCB1E7CFA9C00CABD0D /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				3A1D41FE1FD1206C00180803 /* XgPush */,
 				3A1D41E01FD0598A00180803 /* MTA */,
 				3A21798F1F7A9ADB00210794 /* JSPATCH */,
 				3AA270421F6E700300F5E6F3 /* Hpple */,
@@ -1241,7 +1272,6 @@
 				3A98CBDC1E7CFA9C00CABD0D /* JSHeaderView */,
 				3A98CBE61E7CFA9C00CABD0D /* JSONKit */,
 				3A98CBE91E7CFA9C00CABD0D /* LeftSlideViewController */,
-				3A98CBEE1E7CFA9C00CABD0D /* UMessage_Sdk_1.4.0 */,
 				3A98CBF41E7CFA9C00CABD0D /* YYFPSLabel */,
 				3A98CBF11E7CFA9C00CABD0D /* XWScanImage */,
 			);
@@ -1326,15 +1356,6 @@
 				3A98CBED1E7CFA9C00CABD0D /* UIView_extra.m */,
 			);
 			path = LeftSlideViewController;
-			sourceTree = "<group>";
-		};
-		3A98CBEE1E7CFA9C00CABD0D /* UMessage_Sdk_1.4.0 */ = {
-			isa = PBXGroup;
-			children = (
-				3A98CBEF1E7CFA9C00CABD0D /* libUMessage_Sdk_1.4.0.a */,
-				3A98CBF01E7CFA9C00CABD0D /* UMessage.h */,
-			);
-			path = UMessage_Sdk_1.4.0;
 			sourceTree = "<group>";
 		};
 		3A98CBF11E7CFA9C00CABD0D /* XWScanImage */ = {
@@ -1668,6 +1689,9 @@
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
 							};
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
 							com.apple.Push = {
 								enabled = 1;
 							};
@@ -1750,6 +1774,7 @@
 				3A0056121EC97CB70047E8F2 /* Assets.xcassets in Resources */,
 				3A1D41FC1FD0598A00180803 /* 混合统计使用说明.pdf in Resources */,
 				3A1D41F61FD0598A00180803 /* 可视化埋点使用说明.pdf in Resources */,
+				3A1D42041FD1206C00180803 /* ReleaseNotes.txt in Resources */,
 				3A06D9B61E8CEDE400066DD1 /* ExamCell.xib in Resources */,
 				3A1D41FA1FD0598A00180803 /* MTA安装来源追踪使用文档.pdf in Resources */,
 			);
@@ -2234,6 +2259,8 @@
 					"$(PROJECT_DIR)/HutHelper/Vendor/MTA/plugin/installtracker",
 					"$(PROJECT_DIR)/HutHelper/Vendor/MTA/plugin/hybrid",
 					"$(PROJECT_DIR)/HutHelper/Vendor/MTA",
+					"$(PROJECT_DIR)/HutHelper/Vendor/XgPush",
+					"$(PROJECT_DIR)/HutHelper/Vendor/XgPush/idfa",
 				);
 				NEW_SETTING = "";
 				PRODUCT_BUNDLE_IDENTIFIER = name.wxz.HutHelper;
@@ -2291,6 +2318,8 @@
 					"$(PROJECT_DIR)/HutHelper/Vendor/MTA/plugin/installtracker",
 					"$(PROJECT_DIR)/HutHelper/Vendor/MTA/plugin/hybrid",
 					"$(PROJECT_DIR)/HutHelper/Vendor/MTA",
+					"$(PROJECT_DIR)/HutHelper/Vendor/XgPush",
+					"$(PROJECT_DIR)/HutHelper/Vendor/XgPush/idfa",
 				);
 				NEW_SETTING = "";
 				PRODUCT_BUNDLE_IDENTIFIER = name.wxz.HutHelper;

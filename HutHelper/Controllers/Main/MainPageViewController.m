@@ -15,7 +15,7 @@
 #import "LibraryViewController.h"
 #import "NoticeViewController.h"
 #import "DayViewController.h"
-#import "UMessage.h"
+  
  
 #import "LoginViewController.h"
 #import<CommonCrypto/CommonDigest.h>

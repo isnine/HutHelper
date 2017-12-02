@@ -6,7 +6,7 @@
 //  Copyright © 2017年 nine. All rights reserved.
 //
 #import "Config+Set.h"
-#import "UMessage.h"
+  
  
 #import "AppDelegate.h"
 @implementation Config (Set)
