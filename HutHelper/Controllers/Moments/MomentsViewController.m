@@ -70,6 +70,7 @@
         self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(load)];
          // 马上进入刷新状态
        [self beginload];
+        num=1;
 //        [self.view addSubview:momentsTableView];
         
     }
