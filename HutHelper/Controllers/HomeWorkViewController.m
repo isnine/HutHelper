@@ -42,12 +42,20 @@
 
     - (void)viewWillAppear:(BOOL)animated
  {
- [super viewWillAppear:animated];
+     [super viewWillAppear:animated];
+     // 禁用返回手势
+     if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
+         self.navigationController.interactivePopGestureRecognizer.enabled = NO;
+     }
 
  }
  - (void)viewWillDisappear:(BOOL)animated
  {
- [super viewWillDisappear:animated];
+     [super viewWillDisappear:animated];
+     // 开启返回手势
+     if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
+         self.navigationController.interactivePopGestureRecognizer.enabled = YES;
+     }
 
  }
 /** webView的代理方法*/

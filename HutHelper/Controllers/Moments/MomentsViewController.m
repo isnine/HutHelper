@@ -71,8 +71,6 @@
          // 马上进入刷新状态
        [self beginload];
         num=1;
-//        [self.view addSubview:momentsTableView];
-        
     }
     else{
         NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
