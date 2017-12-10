@@ -110,7 +110,7 @@
 }
 #pragma mark - TableView代理
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{  //多少块
-    return _handArray.count/2;
+    return (_handArray.count+1)/2 ;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{//每块几部分
@@ -148,9 +148,8 @@
     cell.img1.clipsToBounds = YES;
     [cell.img1 sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/%@",Config.getApiImg,hand.image]]
                  placeholderImage:[UIImage imageNamed:@"load_img"]];
-
-    
-       hand=_handArray[(short)(indexPath.section)*2+1];
+    if (_handArray.count > (short)(indexPath.section)*2+1 ) {
+        hand=_handArray[(short)(indexPath.section)*2+1];
         cell.price2.text=[NSString stringWithFormat:@"¥%@",hand.prize];
         cell.name2.text=hand.title;
         cell.time2.text=hand.created_on;
@@ -162,8 +161,10 @@
         cell.img2.clipsToBounds = YES;
         [cell.img2 sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/%@",Config.getApiImg,hand.image]]
                      placeholderImage:[UIImage imageNamed:@"load_img"]];
+    }
 
-        cell.handArray=_handArray;
+
+    cell.handArray=_handArray;
     cell.isSelfGoods=self.isSelfGoods;
     return cell;
 }

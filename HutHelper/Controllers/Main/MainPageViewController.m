@@ -62,6 +62,8 @@ int class_error_;
     [self loadSet];
     //时间Label
     [self SetTimeLabel] ;
+    //注册
+    [Config saveUmeng];
 }
 
 - (void)viewWillDisappear:(BOOL)animated{

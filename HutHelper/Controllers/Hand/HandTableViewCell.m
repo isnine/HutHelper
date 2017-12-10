@@ -70,6 +70,10 @@
         [MBProgressHUD showError:@"游客请登录后查看" toView:self];
         return;
     }
+    NSLog(@"%d",(short)(((UITableViewCell*)[[sender superview]superview]).tag)*2+1);
+    if (_handArray.count-1 < (short)(((UITableViewCell*)[[sender superview]superview]).tag)*2+1) {
+        return;
+    }
     Hand *hand=_handArray[(short)(((UITableViewCell*)[[sender superview]superview]).tag)*2+1];
     NSString *Url_String=[NSString stringWithFormat:@"%@/%@/%@/%@",Config.getApiGoodsShow,Config.getStudentKH,Config.getRememberCodeApp,hand.good_id];
     [APIRequest GET:Url_String parameters:nil success:^(id responseObject) {

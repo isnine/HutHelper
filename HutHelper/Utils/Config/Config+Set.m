@@ -41,23 +41,31 @@
         [Config removeUserDefaults];
         [defaults setObject:currentVersion forKey:@"last_run_version_key"];
         NSLog(@"没有记录");
-    }else if ([lastRunKey isEqualToString:@"3.0.0"]||
-              [lastRunKey isEqualToString:@"3.1.0"]||
-              [lastRunKey isEqualToString:@"3.1.2"]||
-              [lastRunKey isEqualToString:@"3.2.0"]||
-              [lastRunKey isEqualToString:@"3.2.1"]||
-              [lastRunKey isEqualToString:@"3.3.0"]||
-              [lastRunKey isEqualToString:@"3.3.1"]||
-              [lastRunKey isEqualToString:@"3.3.2"]||
-              [lastRunKey isEqualToString:@"3.3.3"]){
-        [defaults setObject:currentVersion forKey:@"last_run_version_key"];
-        [Config saveUmeng];
+    }
+//    else if ([lastRunKey isEqualToString:@"3.0.0"]||
+//              [lastRunKey isEqualToString:@"3.1.0"]||
+//              [lastRunKey isEqualToString:@"3.1.2"]||
+//              [lastRunKey isEqualToString:@"3.2.0"]||
+//              [lastRunKey isEqualToString:@"3.2.1"]||
+//              [lastRunKey isEqualToString:@"3.3.0"]||
+//              [lastRunKey isEqualToString:@"3.3.1"]||
+//              [lastRunKey isEqualToString:@"3.3.2"]||
+//              [lastRunKey isEqualToString:@"3.3.3"]){
+//        [defaults setObject:currentVersion forKey:@"last_run_version_key"];
+//        [Config saveUmeng];
+//        [Config addNotice];
+//    }
+    else if (![lastRunKey isEqualToString:currentVersion]) {
+       // [Config removeUserDefaults];
+        
         [Config addNotice];
-    }else if (![lastRunKey isEqualToString:currentVersion]) {
-        [Config removeUserDefaults];
         [defaults setObject:currentVersion forKey:@"last_run_version_key"];
         NSLog(@"记录不匹配");
     }
+//    else{
+//        [Config saveUmeng];
+//        [Config addNotice];
+//    }
 }
 +(NSString*)getCurrentVersion{
    return  [[[NSBundle mainBundle] infoDictionary]
