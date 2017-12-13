@@ -136,9 +136,9 @@
     HandTableViewCell *cell =[tableView dequeueReusableCellWithIdentifier:@"HandTableViewCell"];
     if (!cell) {
         cell=[[[NSBundle mainBundle]loadNibNamed:@"HandTableViewCell" owner:self options:nil]lastObject];
-    }else{
-        
     }
+    
+    
     cell.tag=indexPath.section;
     Hand *hand=_handArray[(short)(indexPath.section)*2];
     cell.price1.text=[NSString stringWithFormat:@"¥%@",hand.prize];
