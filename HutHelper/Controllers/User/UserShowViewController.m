@@ -144,15 +144,16 @@
 }
 #pragma  mark - 方法
 -(void)im{
-    if ([Config isTourist]) {
-        [MBProgressHUD showError:@"游客请登录后再联系Ta" toView:self.view];
-        return;
-    }
-    ChatViewController *conversationVC = [[ChatViewController alloc]init];
-    conversationVC.conversationType = ConversationType_PRIVATE;
-    conversationVC.targetId = _user_id;
-    conversationVC.title = _name;
-    [self.navigationController pushViewController:conversationVC animated:YES];
+    [MBProgressHUD showError:@"私信功能暂时关闭，待重新开发" toView:self.view];
+//    if ([Config isTourist]) {
+//        [MBProgressHUD showError:@"游客请登录后再联系Ta" toView:self.view];
+//        return;
+//    }
+//    ChatViewController *conversationVC = [[ChatViewController alloc]init];
+//    conversationVC.conversationType = ConversationType_PRIVATE;
+//    conversationVC.targetId = _user_id;
+//    conversationVC.title = _name;
+//    [self.navigationController pushViewController:conversationVC animated:YES];
 }
 -(void)hand{
     [MBProgressHUD showMessage:@"加载中" toView:self.view];

@@ -9,9 +9,9 @@
 #import "Math.h"
 #import <CommonCrypto/CommonDigest.h>
 @implementation Math
-int startyear                       = 2017;
-int startmonth                      = 9;
-int startday                        = 4;
+int startyear                       = 2018;
+int startmonth                      = 3;
+int startday                        = 5;
 #pragma mark - 日期
 /** 返回本年第几天*/
 +(int) CountDays:(int)year m:(int)month d:(int)day{
@@ -32,7 +32,7 @@ int startday                        = 4;
 /**返回当前是本学期第几周 */
 +(int) getWeek:(int)nowyear m:(int)nowmonth d:(int)nowday {
     int ans                                   = 0;
-    if (nowyear == 2017) {
+    if (nowyear == 2018) {
         ans     = [self CountDays:nowyear m:nowmonth d:nowday] - [self CountDays:startyear m:startmonth d:startday] + 1;
     } else {
         ans         = [self CountDays:nowyear m:nowmonth d:nowday] - [self CountDays:nowyear m:1 d:1] + 1;
@@ -65,7 +65,7 @@ int startday                        = 4;
 /** 得到当前为几号 */
 +(NSString*) getDayOfWeek:(int)week d:(int)day {
     NSString *dStr,*wStr;
-    day=[self CountDays:2017 m:9 d:4]+(week-1)*7+day;
+    day=[self CountDays:2018 m:3 d:5]+(week-1)*7+day;
     int year=startyear;
     int d=0,m,leap,i;
     int Month[12]={31,28,31,30,31,30,31,31,30,31,30,31};
