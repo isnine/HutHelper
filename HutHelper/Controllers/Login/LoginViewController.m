@@ -18,7 +18,6 @@
 #import "TFHpple.h"
 #import "MBProgressHUD+MJ.h"
 #import "User.h"
-#import <RongIMKit/RongIMKit.h>
 
 #import "zySheetPickerView.h"
 @interface LoginViewController ()
@@ -90,14 +89,14 @@
                              NSDictionary *resultDictionary = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
                              NSLog(@"%@",resultDictionary);
                              [Config saveImToken:resultDictionary[@"token"]];
-                             [[RCIM sharedRCIM] connectWithToken:[Config getImToken]
-                                                         success:^(NSString *userId) {
-                                                             NSLog(@"登陆成功。当前登录的用户ID：%@", userId);
-                                                         } error:^(RCConnectErrorCode status) {
-                                                             NSLog(@"私信模块登录错误，错误码:%ld");
-                                                         } tokenIncorrect:^{
-                                                             NSLog(@"Token错误,您无法使用私信功能,可尝试重新登录");
-                                                         }];
+//                             [[RCIM sharedRCIM] connectWithToken:[Config getImToken]
+//                                                         success:^(NSString *userId) {
+//                                                             NSLog(@"登陆成功。当前登录的用户ID：%@", userId);
+//                                                         } error:^(RCConnectErrorCode status) {
+//                                                             NSLog(@"私信模块登录错误，错误码:%ld");
+//                                                         } tokenIncorrect:^{
+//                                                             NSLog(@"Token错误,您无法使用私信功能,可尝试重新登录");
+//                                                         }];
                          }
                          failure:^(NSError *error) {
                              NSLog(@"Token获取失败,您无法使用私信功能,可尝试重新登录");

@@ -51,7 +51,6 @@
 		3A3775751F35EB51005A5170 /* LostShowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A37756A1F35EB37005A5170 /* LostShowViewController.m */; };
 		3A3775791F35EB51005A5170 /* LostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A37756E1F35EB37005A5170 /* LostViewController.m */; };
 		3A37757C1F35EB76005A5170 /* JRWaterFallLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A3775711F35EB37005A5170 /* JRWaterFallLayout.m */; };
-		3A3FB3811F2CBDE500E74BB0 /* ChatListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A3FB3801F2CBDE500E74BB0 /* ChatListViewController.m */; };
 		3A4049091E6A6C730038F207 /* MomentsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A4049081E6A6C730038F207 /* MomentsCell.m */; };
 		3A42B7561F42E953005D45D6 /* ChatChoiceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A42B7541F42E953005D45D6 /* ChatChoiceTableViewCell.m */; };
 		3A42B7571F42E953005D45D6 /* ChatChoiceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A42B7551F42E953005D45D6 /* ChatChoiceTableViewCell.xib */; };
@@ -162,7 +161,6 @@
 		3AE52B871EA8F0EB00705269 /* CourseXpTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AE52B861EA8F0EB00705269 /* CourseXpTableViewCell.m */; };
 		3AE8005D1F34A6FA00D1BAC0 /* Lost.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AE8005C1F34A6FA00D1BAC0 /* Lost.m */; };
 		3AEED7101F39B30C00D17693 /* XWNaviTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AEED70E1F39B2AE00D17693 /* XWNaviTransition.m */; };
-		3AF152FB1F2DCEC600709F97 /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF152FA1F2DCEC600709F97 /* ChatViewController.m */; };
 		3AF72C9A1E9A23F000093A39 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AF72C991E9A23F000093A39 /* JavaScriptCore.framework */; };
 		3AF72C9B1E9A23F900093A39 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A6FF7C61DB3152C004CFBE8 /* libz.tbd */; };
 		3AF73BF11E7D12610086417E /* APIRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF73BF01E7D12610086417E /* APIRequest.m */; };
@@ -314,8 +312,6 @@
 		3A37756E1F35EB37005A5170 /* LostViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LostViewController.m; sourceTree = "<group>"; };
 		3A3775701F35EB37005A5170 /* JRWaterFallLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JRWaterFallLayout.h; sourceTree = "<group>"; };
 		3A3775711F35EB37005A5170 /* JRWaterFallLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JRWaterFallLayout.m; sourceTree = "<group>"; };
-		3A3FB37F1F2CBDE500E74BB0 /* ChatListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatListViewController.h; sourceTree = "<group>"; };
-		3A3FB3801F2CBDE500E74BB0 /* ChatListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatListViewController.m; sourceTree = "<group>"; };
 		3A4049071E6A6C730038F207 /* MomentsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MomentsCell.h; sourceTree = "<group>"; };
 		3A4049081E6A6C730038F207 /* MomentsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MomentsCell.m; sourceTree = "<group>"; };
 		3A42B7531F42E953005D45D6 /* ChatChoiceTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChatChoiceTableViewCell.h; sourceTree = "<group>"; };
@@ -522,8 +518,6 @@
 		3AE8005C1F34A6FA00D1BAC0 /* Lost.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Lost.m; sourceTree = "<group>"; };
 		3AEED70D1F39B2AE00D17693 /* XWNaviTransition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XWNaviTransition.h; sourceTree = "<group>"; };
 		3AEED70E1F39B2AE00D17693 /* XWNaviTransition.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XWNaviTransition.m; sourceTree = "<group>"; };
-		3AF152F91F2DCEC600709F97 /* ChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatViewController.h; sourceTree = "<group>"; };
-		3AF152FA1F2DCEC600709F97 /* ChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatViewController.m; sourceTree = "<group>"; };
 		3AF72C991E9A23F000093A39 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		3AF73BEF1E7D12610086417E /* APIRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIRequest.h; sourceTree = "<group>"; };
 		3AF73BF01E7D12610086417E /* APIRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIRequest.m; sourceTree = "<group>"; };
@@ -805,10 +799,6 @@
 		3A3FB37E1F2CBDAC00E74BB0 /* Im */ = {
 			isa = PBXGroup;
 			children = (
-				3A3FB37F1F2CBDE500E74BB0 /* ChatListViewController.h */,
-				3A3FB3801F2CBDE500E74BB0 /* ChatListViewController.m */,
-				3AF152F91F2DCEC600709F97 /* ChatViewController.h */,
-				3AF152FA1F2DCEC600709F97 /* ChatViewController.m */,
 				3AC12C221F3B381E007C3B7E /* ChatChoiceTableViewController.h */,
 				3AC12C231F3B381E007C3B7E /* ChatChoiceTableViewController.m */,
 			);
@@ -1802,11 +1792,6 @@
 				"${PODS_ROOT}/DJRefresh/DJRefresh/DJRefresh.bundle",
 				"${PODS_ROOT}/DTKDropdownMenu/DTKDropdownMenuView/DTKDropdownMenuView.bundle",
 				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
-				"${PODS_ROOT}/RongCloudIM/RongCloudIM/RongCloud.bundle",
-				"${PODS_ROOT}/RongCloudIM/RongCloudIM/en.lproj",
-				"${PODS_ROOT}/RongCloudIM/RongCloudIM/zh-Hans.lproj",
-				"${PODS_ROOT}/RongCloudIM/RongCloudIM/Emoji.plist",
-				"${PODS_ROOT}/RongCloudIM/RongCloudIM/RCConfig.plist",
 				"${PODS_ROOT}/TZImagePickerController/TZImagePickerController/TZImagePickerController/TZImagePickerController.bundle",
 				"${PODS_ROOT}/UMengUShare/UShareSDK/UMSocialSDK/UMSocialSDKPromptResources.bundle",
 				"${PODS_ROOT}/UMengUShare/UShareSDK/UMSocialUI/UMSocialSDKResources.bundle",
@@ -1938,7 +1923,6 @@
 				3A98CC081E7CFA9C00CABD0D /* UserInfoCell.m in Sources */,
 				3A98CBFE1E7CFA9C00CABD0D /* FORGesture.m in Sources */,
 				3A98CC0B1E7CFA9C00CABD0D /* UIView_extra.m in Sources */,
-				3AF152FB1F2DCEC600709F97 /* ChatViewController.m in Sources */,
 				3AFA4F781EC04C0E00CB7DA2 /* main.m in Sources */,
 				3A796C261E534C1B00794043 /* FeedbackViewController.m in Sources */,
 				3AFA4F7F1EC04C6100CB7DA2 /* CourseModel.m in Sources */,
@@ -1989,7 +1973,6 @@
 				3A98CB721E7CF82F00CABD0D /* MBProgressHUD+MJ.m in Sources */,
 				3AE8005D1F34A6FA00D1BAC0 /* Lost.m in Sources */,
 				3A796C4F1E534C1B00794043 /* ScoreShowViewController.m in Sources */,
-				3A3FB3811F2CBDE500E74BB0 /* ChatListViewController.m in Sources */,
 				3A3775621F35EAD7005A5170 /* DayViewController.m in Sources */,
 				3A9C28F71F15FD9F00B91876 /* LineUIView.m in Sources */,
 				3A532CCE1E910C13003CD5A8 /* MMMaterialDesignSpinner.m in Sources */,

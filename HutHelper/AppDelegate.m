@@ -14,14 +14,12 @@
 #import <UMSocialCore/UMSocialCore.h>
 #import <JSPatchPlatform/JSPatch.h>
 #import "iVersion.h"
-#import <RongIMKit/RongIMKit.h>
-#import "ChatListViewController.h"
 //MTA
 #import "MTA.h"
 #import "MTAConfig.h"
 //信鸽推送
 #import "XGPush.h"
-@interface AppDelegate ()<RCIMUserInfoDataSource>{
+@interface AppDelegate (){
     
 }
 
@@ -77,41 +75,41 @@
         [JSPatch setupRSAPublicKey:RSA_JSPATCH];
         [JSPatch sync];
     //IM
-    [[RCIM sharedRCIM] initWithAppKey:RONGCLOUD_APPKEY];
+  //  [[RCIM sharedRCIM] initWithAppKey:RONGCLOUD_APPKEY];
     //IM登录
-    if ([Config getImToken]) {
-        NSLog(@"执行融云登录");
-        [RCIM sharedRCIM].enableMessageAttachUserInfo=YES;
-        [RCIM sharedRCIM].enablePersistentUserInfoCache=YES;
-        [RCIM sharedRCIM].globalConversationAvatarStyle=RC_USER_AVATAR_CYCLE;
-        [RCIM sharedRCIM].globalMessageAvatarStyle=RC_USER_AVATAR_CYCLE;
-        [RCIM sharedRCIM].enabledReadReceiptConversationTypeList =@[@(ConversationType_PRIVATE)];
-        [RCIM sharedRCIM].enableTypingStatus=YES;
-        [RCIM sharedRCIM].enableSyncReadStatus=YES;
-        [RCIM sharedRCIM].globalNavigationBarTintColor=[UIColor colorWithRed:94/255.0 green:199/255.0 blue:217/255.0 alpha:1];
-        [[RCIM sharedRCIM] connectWithToken:[Config getImToken]
-                                    success:^(NSString *userId) {
-                                        NSLog(@"登陆成功。当前登录的用户ID：%@", userId);
-                                        dispatch_async(dispatch_get_main_queue(), ^{
-                                            [[RCIM sharedRCIM]setUserInfoDataSource:self];
-                                        });
-                                    } error:^(RCConnectErrorCode status) {
-                                        NSLog(@"登陆的错误码为:%d", status);
-                                    } tokenIncorrect:^{
-                                        NSLog(@"token错误");
-                                    }];
-    }
+//    if ([Config getImToken]) {
+//        NSLog(@"执行融云登录");
+//        [RCIM sharedRCIM].enableMessageAttachUserInfo=YES;
+//        [RCIM sharedRCIM].enablePersistentUserInfoCache=YES;
+//        [RCIM sharedRCIM].globalConversationAvatarStyle=RC_USER_AVATAR_CYCLE;
+//        [RCIM sharedRCIM].globalMessageAvatarStyle=RC_USER_AVATAR_CYCLE;
+//        [RCIM sharedRCIM].enabledReadReceiptConversationTypeList =@[@(ConversationType_PRIVATE)];
+//        [RCIM sharedRCIM].enableTypingStatus=YES;
+//        [RCIM sharedRCIM].enableSyncReadStatus=YES;
+//        [RCIM sharedRCIM].globalNavigationBarTintColor=[UIColor colorWithRed:94/255.0 green:199/255.0 blue:217/255.0 alpha:1];
+//        [[RCIM sharedRCIM] connectWithToken:[Config getImToken]
+//                                    success:^(NSString *userId) {
+//                                        NSLog(@"登陆成功。当前登录的用户ID：%@", userId);
+//                                        dispatch_async(dispatch_get_main_queue(), ^{
+//                                            [[RCIM sharedRCIM]setUserInfoDataSource:self];
+//                                        });
+//                                    } error:^(RCConnectErrorCode status) {
+//                                        NSLog(@"登陆的错误码为:%d", status);
+//                                    } tokenIncorrect:^{
+//                                        NSLog(@"token错误");
+//                                    }];
+//    }
     //融云推送
-    if ([application
-         respondsToSelector:@selector(registerUserNotificationSettings:)]) {
-        //注册推送, 用于iOS8以及iOS8之后的系统
-        UIUserNotificationSettings *settings = [UIUserNotificationSettings
-                                                settingsForTypes:(UIUserNotificationTypeBadge |
-                                                                  UIUserNotificationTypeSound |
-                                                                  UIUserNotificationTypeAlert)
-                                                categories:nil];
-        [application registerUserNotificationSettings:settings];
-    }
+//    if ([application
+//         respondsToSelector:@selector(registerUserNotificationSettings:)]) {
+//        //注册推送, 用于iOS8以及iOS8之后的系统
+//        UIUserNotificationSettings *settings = [UIUserNotificationSettings
+//                                                settingsForTypes:(UIUserNotificationTypeBadge |
+//                                                                  UIUserNotificationTypeSound |
+//                                                                  UIUserNotificationTypeAlert)
+//                                                categories:nil];
+//        [application registerUserNotificationSettings:settings];
+//    }
 
     //设置返回按钮
     UINavigationBar * navigationBar = [UINavigationBar appearance];
@@ -172,7 +170,7 @@
 
     NSLog(@"Token:%@",token);
     
-    [[RCIMClient sharedRCIMClient] setDeviceToken:token];
+  //  [[RCIMClient sharedRCIMClient] setDeviceToken:token];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -193,10 +191,10 @@
         //应用处于前台时的远程推送接受
         //关闭友盟自带的弹出框
      //如果是聊天信息，跳转私信
-    if ([userInfo objectForKey:@"aps"] ==NULL) {
-        ChatListViewController *chatList = [[ChatListViewController alloc] init];
-        [self.mainNavigationController pushViewController:chatList animated:YES];
-    }else{
+//    if ([userInfo objectForKey:@"aps"] ==NULL) {
+//        ChatListViewController *chatList = [[ChatListViewController alloc] init];
+//        [self.mainNavigationController pushViewController:chatList animated:YES];
+//    }else{
         NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
         NSMutableArray *notice;
         NSArray *array;
@@ -222,7 +220,7 @@
         [Config pushViewController:@"NoticeShow"];
     //当应用处于前台时提示设置，需要哪个可以设置哪一个
     completionHandler(UNNotificationPresentationOptionSound|UNNotificationPresentationOptionBadge|UNNotificationPresentationOptionAlert);
-    }
+  //  }
 }
 
 //iOS10新增：处理后台点击通知的代理方法
@@ -230,11 +228,11 @@
      NSLog(@"后台通知收到");
     NSDictionary * userInfo          = response.notification.request.content.userInfo;
     //如果是聊天信息，跳转私信
-    if ([userInfo objectForKey:@"aps"]==NULL) {
-        ChatListViewController *chatList = [[ChatListViewController alloc] init];
-        [self.mainNavigationController pushViewController:chatList animated:YES];
-        return;
-    }
+//    if ([userInfo objectForKey:@"aps"]==NULL) {
+//        ChatListViewController *chatList = [[ChatListViewController alloc] init];
+//        [self.mainNavigationController pushViewController:chatList animated:YES];
+//        return;
+//    }
     if([response.notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
         //应用处于后台时的远程推送接受
         //必须加这句代码
@@ -296,21 +294,21 @@
 }
 #pragma mark - 其他
 //融云获取用户头像
-- (void)getUserInfoWithUserId:(NSString *)userId
-                   completion:(void (^)(RCUserInfo *userInfo))completion{
-    [APIRequest GET:[Config getApiImUserInfo:userId] parameters:nil
-            success:^(id responseObject) {
-                RCUserInfo *userInfo=[[RCUserInfo alloc]init];
-                NSLog(@"全局他人:%@",responseObject[@"data"][@"TrueName"]);
-                userInfo.userId=userId;
-                userInfo.name=responseObject[@"data"][@"TrueName"];
-                userInfo.portraitUri=[NSString stringWithFormat:@"%@/%@",Config.getApiImg,responseObject[@"data"][@"head_pic_thumb"]];
-                return completion(userInfo);
-            } failure:^(NSError *error) {
-                NSLog(@"全局他人失败");
-                return completion(nil);
-            }];
-}
+//- (void)getUserInfoWithUserId:(NSString *)userId
+//                   completion:(void (^)(RCUserInfo *userInfo))completion{
+//    [APIRequest GET:[Config getApiImUserInfo:userId] parameters:nil
+//            success:^(id responseObject) {
+//                RCUserInfo *userInfo=[[RCUserInfo alloc]init];
+//                NSLog(@"全局他人:%@",responseObject[@"data"][@"TrueName"]);
+//                userInfo.userId=userId;
+//                userInfo.name=responseObject[@"data"][@"TrueName"];
+//                userInfo.portraitUri=[NSString stringWithFormat:@"%@/%@",Config.getApiImg,responseObject[@"data"][@"head_pic_thumb"]];
+//                return completion(userInfo);
+//            } failure:^(NSError *error) {
+//                NSLog(@"全局他人失败");
+//                return completion(nil);
+//            }];
+//}
 //友盟分析平台设置
 - (void)configUSharePlatforms
 {

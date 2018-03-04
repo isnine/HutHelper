@@ -1,1 +1,0 @@
-../../../../Reveal-SDK/RevealServer-12/iOS/RevealServer.framework/Headers/RevealServer.h

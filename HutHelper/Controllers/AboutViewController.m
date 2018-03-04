@@ -12,7 +12,6 @@
 #import "LeftSortsViewController.h"
 #import "WebViewController.h"
 #import <StoreKit/StoreKit.h>
-#import "ChatViewController.h"
 @interface AboutViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *version;
 @property (weak, nonatomic) IBOutlet UITextView *aboutText;
@@ -48,8 +47,8 @@
     [self.navigationController pushViewController:webViewController animated:YES];
 }
 - (IBAction)contactMe:(id)sender {
-    if ([Config isTourist]) {
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"游客可以通过发送邮件到wxz@wxz.name与我联系" preferredStyle:  UIAlertControllerStyleAlert];
+  //  if ([Config isTourist]) {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"你可以通过QQ245328522与我联系，因大三实习紧张，仅接受iOS端上卡顿/崩溃等app的问题。账号/课表/考试计划/等其他问题请在反馈中留言" preferredStyle:  UIAlertControllerStyleAlert];
         [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             
         }]];
@@ -57,12 +56,12 @@
             
         }]];
         [self presentViewController:alert animated:true completion:nil];
-    }
-    ChatViewController *conversationVC = [[ChatViewController alloc]init];
-    conversationVC.conversationType = ConversationType_PRIVATE;
-    conversationVC.targetId = @"15198";
-    conversationVC.title = @"开发者";
-    [self.navigationController pushViewController:conversationVC animated:YES];
+//    }
+//    ChatViewController *conversationVC = [[ChatViewController alloc]init];
+//    conversationVC.conversationType = ConversationType_PRIVATE;
+//    conversationVC.targetId = @"15198";
+//    conversationVC.title = @"开发者";
+//    [self.navigationController pushViewController:conversationVC animated:YES];
 }
 - (IBAction)userPermitBtn:(id)sender {
     UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];

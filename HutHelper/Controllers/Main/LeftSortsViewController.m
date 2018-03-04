@@ -20,8 +20,6 @@
 #import "LeftUserTableViewCell.h"
 #import "LeftItemTableViewCell.h"
 #import <SDWebImage/UIImageView+WebCache.h>
-#import <RongIMKit/RongIMKit.h>
-#import "ChatListViewController.h"
 #import "UserShowViewController.h"
 @interface LeftSortsViewController () <UITableViewDelegate,UITableViewDataSource>
 
@@ -177,8 +175,6 @@
         [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             [Config removeUmeng];
             [Config removeUserDefaults];
-            [[RCIM sharedRCIM] clearUserInfoCache];
-             [[RCIM sharedRCIM]logout];
             AppDelegate *tempAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
             LoginViewController *firstlogin                = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
             [tempAppDelegate.mainNavigationController pushViewController:firstlogin animated:YES];

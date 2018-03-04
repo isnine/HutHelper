@@ -16,8 +16,6 @@ target "HutHelper" do
     pod 'YCXMenu', '~> 0.0.11'
     pod  'UITableView+FDTemplateLayoutCell'
     pod 'DZNEmptyDataSet'
-    pod 'RongCloudIM/IMLib', '~> 2.8.3'
-    pod 'RongCloudIM/IMKit', '~> 2.8.3'
     pod 'Realm'
     pod 'Masonry'
 end

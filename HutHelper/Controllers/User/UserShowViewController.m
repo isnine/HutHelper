@@ -9,7 +9,6 @@
 #import "UserShowViewController.h"
 #import "UINavigationBar+Awesome.h"
 #import <SDWebImage/UIImageView+WebCache.h>
-#import "ChatViewController.h"
 #import "MBProgressHUD+MJ.h"
 #import "MomentsViewController.h"
 #import "HandTableViewController.h"

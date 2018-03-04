@@ -30,10 +30,8 @@
 #import "MomentsViewController.h"
 #import "APIRequest.h"
 #import "VedioPlayViewController.h"
-#import <RongIMKit/RongIMKit.h>
 #import "PointView.h"
 #import "LostViewController.h"
-#import "ChatListViewController.h"
 #import "UIBarButtonItem+Badge.h"
 #import "CalendarHomeViewController.h"
 #import "LineUIView.h"
@@ -82,18 +80,18 @@ int class_error_;
 
 -(void)unreadNotificationAction{
     //通知数目
-    RCIMClient *test=[RCIMClient sharedRCIMClient];
-    [test addObserver:self forKeyPath:@"totalUnreadCount" options:NSKeyValueObservingOptionNew context:nil];
+//    RCIMClient *test=[RCIMClient sharedRCIMClient];
+//    [test addObserver:self forKeyPath:@"totalUnreadCount" options:NSKeyValueObservingOptionNew context:nil];
 //    if ([[RCIMClient sharedRCIMClient] getTotalUnreadCount]>0) {
 //        self.navigationItem.rightBarButtonItem.badgeValue = @" ";
 //        [self.navigationItem.rightBarButtonItem setBadgeOriginY:SYReal(13)];
 //    }else if([[RCIMClient sharedRCIMClient] getTotalUnreadCount]==0){
 //        self.navigationItem.rightBarButtonItem.badgeValue = @"";
 //    }
-    if ([[RCIMClient sharedRCIMClient] getTotalUnreadCount]>=0) {
-        self.navigationItem.rightBarButtonItem.badgeValue = [NSString stringWithFormat:@"%d",[[RCIMClient sharedRCIMClient] getTotalUnreadCount]];
-        [self.navigationItem.rightBarButtonItem setBadgeOriginY:SYReal(3)];
-    }
+//    if ([[RCIMClient sharedRCIMClient] getTotalUnreadCount]>=0) {
+//        self.navigationItem.rightBarButtonItem.badgeValue = [NSString stringWithFormat:@"%d",[[RCIMClient sharedRCIMClient] getTotalUnreadCount]];
+//        [self.navigationItem.rightBarButtonItem setBadgeOriginY:SYReal(3)];
+//    }
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -584,8 +582,8 @@ int class_error_;
 }
 
 -(void)notice{
-    if ([Config isTourist]) {
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"游客请登录" message:@"需要学校账号才可使用私信" preferredStyle:  UIAlertControllerStyleAlert];
+   // if ([Config isTourist]) {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"私信功能暂时关闭" message:@"待重新开发" preferredStyle:  UIAlertControllerStyleAlert];
         [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             
         }]];
@@ -593,11 +591,11 @@ int class_error_;
             
         }]];
         [self presentViewController:alert animated:true completion:nil];
-    }
+//    }
     
-    AppDelegate *tempAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    ChatListViewController *chatList = [[ChatListViewController alloc] init];
-    [tempAppDelegate.mainNavigationController pushViewController:chatList animated:YES];
+//    AppDelegate *tempAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+//   // ChatListViewController *chatList = [[ChatListViewController alloc] init];
+//    [tempAppDelegate.mainNavigationController pushViewController:chatList animated:YES];
 }
 
 

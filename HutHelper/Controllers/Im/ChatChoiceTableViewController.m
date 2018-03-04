@@ -12,7 +12,6 @@
 #import "UIScrollView+EmptyDataSet.h"
 #import "UINavigationBar+Awesome.h"
 #import "MBProgressHUD+MJ.h"
-#import "ChatViewController.h"
 #import "UserShowViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 @interface ChatChoiceTableViewController ()<DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
@@ -126,7 +125,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath*)indexPath
 {
 
-    ChatViewController *conversationVC = [[ChatViewController alloc]init];
+  //  ChatViewController *conversationVC = [[ChatViewController alloc]init];
     ChatUser *chatUser=_chatChoiceArray[indexPath.section];
     if ([chatUser.last_use isEqualToString:@""]) {
         [MBProgressHUD showError:@"用户未使用工大助手" toView:self.view];
