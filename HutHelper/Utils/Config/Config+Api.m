@@ -12,6 +12,7 @@
 @implementation Config (Api)
 #pragma mark - 课表查询
 +(NSString*)getApiClass{
+    //zxc453gfd789y4ds23s56
     return [NSString stringWithFormat:@"%@/api/v1/get/lessons/%@/%@",Config.apiIndex,Config.getStudentKH,Config.getRememberCodeApp];
 }
 +(NSString*)getApiClassXP{

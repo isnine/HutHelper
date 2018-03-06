@@ -48,7 +48,7 @@
 }
 - (IBAction)contactMe:(id)sender {
   //  if ([Config isTourist]) {
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"你可以通过QQ245328522与我联系，因大三实习紧张，仅接受iOS端上卡顿/崩溃等app的问题。账号/课表/考试计划/等其他问题请在反馈中留言" preferredStyle:  UIAlertControllerStyleAlert];
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"暂时聊不了天啦" message:@"请去反馈里面留下你的联系方式，我来找你吧" preferredStyle:  UIAlertControllerStyleAlert];
         [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             
         }]];
