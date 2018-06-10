@@ -194,7 +194,11 @@
     UITextField *_Phone=[self.view viewWithTag:102];
     UITextField *_address=[self.view viewWithTag:103];
     NSLog(@"二手发布请求地址%@",Url_String);
-    if ([_describeText.text isEqualToString:@"描述下你的商品..."]) {
+    if ([_titleField.text isEqualToString:@""]) {
+        [MBProgressHUD showError:@"必须输入商品名称" toView:self.view];
+         return;
+    }
+    if ([_describeText.text isEqualToString:@"请输入商品详情描述.."]) {
         [MBProgressHUD showError:@"必须输入商品描述" toView:self.view];
         return;
     }else if(!([_Old.text isEqualToString:@"99成新"]||[_Old.text isEqualToString:@"95成新"]||[_Old.text isEqualToString:@"9成新"]||[_Old.text isEqualToString:@"8成新"]||[_Old.text isEqualToString:@"7成新及以下"])){
