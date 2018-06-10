@@ -18,4 +18,5 @@ target "HutHelper" do
     pod 'DZNEmptyDataSet'
     pod 'Realm'
     pod 'Masonry'
+    pod 'HUPhotoBrowser'
 end

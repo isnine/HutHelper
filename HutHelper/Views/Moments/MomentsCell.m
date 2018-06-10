@@ -25,6 +25,7 @@
 #import "MomentsViewController.h"
 
 #import "UserShowViewController.h"
+#import <HUPhotoBrowser.h>
 @interface MomentsCell ()
 @end
 
@@ -225,15 +226,19 @@
     photoImg1=[[UIImageView alloc] init];
     photoImg1.contentMode =UIViewContentModeScaleAspectFill;
     photoImg1.clipsToBounds = YES;
+    photoImg1.tag = 101;
     photoImg2=[[UIImageView alloc] init];
     photoImg2.contentMode =UIViewContentModeScaleAspectFill;
     photoImg2.clipsToBounds = YES;
+    photoImg2.tag = 102;
     photoImg3=[[UIImageView alloc] init];
     photoImg3.contentMode =UIViewContentModeScaleAspectFill;
     photoImg3.clipsToBounds = YES;
+    photoImg3.tag = 103;
     photoImg4=[[UIImageView alloc] init];
     photoImg4.contentMode =UIViewContentModeScaleAspectFill;
     photoImg4.clipsToBounds = YES;
+    photoImg4.tag = 104;
     UITapGestureRecognizer *tapGestureRecognizer1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scanBigImageClick:)];
     [photoImg1 addGestureRecognizer:tapGestureRecognizer1];
     [photoImg1 setUserInteractionEnabled:YES];
@@ -246,6 +251,10 @@
     UITapGestureRecognizer *tapGestureRecognizer4 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scanBigImageClick:)];
     [photoImg4 addGestureRecognizer:tapGestureRecognizer4];
     [photoImg4 setUserInteractionEnabled:YES];
+    _dataUrls = [[NSMutableArray alloc]init];
+    for (int i=0; i<_data.pics.count; i++) {
+        [_dataUrls addObject:[NSString stringWithFormat:@"%@/%@",Config.getApiImg,[_data.pics[i] stringByReplacingOccurrencesOfString:@"_thumb" withString:@""]]];
+    }
     switch (_data.pics.count) {
         case 1:{
             photoImg1.frame=CGRectMake(SYReal(20),SYReal(70)+_data.textHeight,_data.photoHeight*1.77, _data.photoHeight);
@@ -490,7 +499,10 @@
 
 -(void)scanBigImageClick:(UITapGestureRecognizer *)tap{
     UIImageView *clickedImageView = (UIImageView *)tap.view;
-    [XWScanImage scanBigImageWithImageView:clickedImageView];
+    NSLog(@"%d",clickedImageView.tag);
+    [HUPhotoBrowser showFromImageView:clickedImageView withURLStrings:_dataUrls placeholderImage:[UIImage imageNamed:@"placeholder"] atIndex:clickedImageView.tag - 101 dismiss:nil];
+
+  //  [XWScanImage scanBigImageWithImageView:clickedImageView];
 }
 
 -(UIImage*) circleImage:(UIImage*) image{

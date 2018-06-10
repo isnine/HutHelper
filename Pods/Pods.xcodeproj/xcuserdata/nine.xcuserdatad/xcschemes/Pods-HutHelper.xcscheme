@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0700"
+   LastUpgradeVersion = "0930"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -13,11 +13,11 @@
             buildForProfiling = "YES"
             buildForArchiving = "YES">
             <BuildableReference
-               BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '1E3B718B89E54FE42EB48B3B67CF88AF'
-               BlueprintName = 'Pods-HutHelper'
-               ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'libPods-HutHelper.a'>
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "14B294C9D06E83A41B19509CD60AAFAD"
+               BlueprintName = "Pods-HutHelper"
+               ReferencedContainer = "container:Pods.xcodeproj"
+               BuildableName = "libPods-HutHelper.a">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

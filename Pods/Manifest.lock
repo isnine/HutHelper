@@ -31,6 +31,8 @@ PODS:
   - DTKDropdownMenu (0.0.4):
     - Masonry (~> 0.6)
   - DZNEmptyDataSet (1.8.1)
+  - HUPhotoBrowser (1.4.4):
+    - SVProgressHUD
   - LGPlusButtonsView (1.1.1)
   - Masonry (0.6.4)
   - MBProgressHUD (1.0.0)
@@ -42,8 +44,9 @@ PODS:
   - SDWebImage (3.8.2):
     - SDWebImage/Core (= 3.8.2)
   - SDWebImage/Core (3.8.2)
+  - SVProgressHUD (2.2.5)
   - TZImagePickerController (1.9.3)
-  - UITableView+FDTemplateLayoutCell (1.6)
+  - "UITableView+FDTemplateLayoutCell (1.6)"
   - UMengUShare/Core (6.4.5):
     - UMengUShare/Network
   - UMengUShare/Network (6.4.5)
@@ -63,6 +66,7 @@ DEPENDENCIES:
   - DJRefresh (~> 1.0.5)
   - DTKDropdownMenu (~> 0.0.4)
   - DZNEmptyDataSet
+  - HUPhotoBrowser
   - LGPlusButtonsView (~> 1.1.0)
   - Masonry
   - MBProgressHUD (~> 1.0.0)
@@ -70,12 +74,33 @@ DEPENDENCIES:
   - Realm
   - SDWebImage (~> 3.8)
   - TZImagePickerController
-  - UITableView+FDTemplateLayoutCell
+  - "UITableView+FDTemplateLayoutCell"
   - UMengUShare/Social/ReducedQQ
   - UMengUShare/Social/ReducedSina
   - UMengUShare/Social/ReducedWeChat
   - UMengUShare/UI
   - YCXMenu (~> 0.0.11)
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - AFNetworking
+    - ASIHTTPRequest
+    - DJRefresh
+    - DTKDropdownMenu
+    - DZNEmptyDataSet
+    - HUPhotoBrowser
+    - LGPlusButtonsView
+    - Masonry
+    - MBProgressHUD
+    - MJRefresh
+    - Reachability
+    - Realm
+    - SDWebImage
+    - SVProgressHUD
+    - TZImagePickerController
+    - "UITableView+FDTemplateLayoutCell"
+    - UMengUShare
+    - YCXMenu
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
@@ -83,6 +108,7 @@ SPEC CHECKSUMS:
   DJRefresh: 32b3776546004faddddc28035442ba15e07c5f1b
   DTKDropdownMenu: 3a3d8afc4f70fab50a5a8131aadc8b383ef54891
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
+  HUPhotoBrowser: 917ce8866f695e1985e5eb78e39555d8fc8c2bd9
   LGPlusButtonsView: 57878cd3d461d0ee2042f5b7b25d1c017e22a084
   Masonry: 281802d04d787ea2973179ee8bcb50500579ede2
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
@@ -90,11 +116,12 @@ SPEC CHECKSUMS:
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   Realm: dec0de73be8c57506e39db72694d513c189493b3
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   TZImagePickerController: 079ab986018c22793462e531045a75e366b18252
-  UITableView+FDTemplateLayoutCell: 5c949b4a5059c404b442926c0e80f81d10a2d66f
+  "UITableView+FDTemplateLayoutCell": 5c949b4a5059c404b442926c0e80f81d10a2d66f
   UMengUShare: a5711c54e640b04e3048e931d2b88d50f9cfa55c
   YCXMenu: 6003bcd20d8ac72e3eb3c442c97ed21948c6dc1f
 
-PODFILE CHECKSUM: 518d2bd799320187e5bdd9a28b122b1e7e075b3a
+PODFILE CHECKSUM: d260e348da0c199b4a6585a99f2e746ec62277c3
 
-COCOAPODS: 1.3.1
+COCOAPODS: 1.5.0

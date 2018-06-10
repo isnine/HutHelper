@@ -37,12 +37,7 @@
         self.moments_id            = dic[@"id"];
         self.head_pic_thumb       = dic[@"head_pic_thumb"];
         self.head_pic       = dic[@"head_pic"];
-        NSArray *pics = dic[@"pics"];
-        NSMutableArray *mutalPics = [[NSMutableArray alloc] init];
-        for (int i = 0; i<pics.count; i++) {
-            [mutalPics addObject:[pics[i] stringByReplacingOccurrencesOfString:@"_thumb" withString:@""]];
-        }
-        self.pics             = mutalPics;
+        self.pics             = dic[@"pics"];
         self.username              = dic[@"username"];
         self.user_id   = dic[@"user_id"];
         self.dep_name     = dic[@"dep_name"];

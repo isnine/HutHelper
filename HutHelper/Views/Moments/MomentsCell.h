@@ -27,7 +27,9 @@
 @interface MomentsCell : UITableViewCell
 @property (nonatomic, weak) MomentsModel *data;
 @property (nonatomic, weak) LikesModel *likesData;
+@property (nonatomic, strong) NSMutableArray *dataUrls;
 @property (nonatomic, strong) MomentsViewController *momentsTable;
+
 - (void)draw;
 -(void)loadPhoto;
 @end

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0700"
+   LastUpgradeVersion = "0930"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -13,11 +13,11 @@
             buildForProfiling = "YES"
             buildForArchiving = "YES">
             <BuildableReference
-               BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '4A6B4D6467344C9D1F56F9852671DB66'
-               BlueprintName = 'UITableView+FDTemplateLayoutCell'
-               ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'libUITableView+FDTemplateLayoutCell.a'>
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "90A6EED4C402E6D0E106AB6570A6E3CB"
+               BlueprintName = "UITableView+FDTemplateLayoutCell"
+               ReferencedContainer = "container:Pods.xcodeproj"
+               BuildableName = "libUITableView+FDTemplateLayoutCell.a">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0700"
+   LastUpgradeVersion = "0930"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -13,11 +13,11 @@
             buildForProfiling = "YES"
             buildForArchiving = "YES">
             <BuildableReference
-               BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'BE21DA0F82C3C25FA9F9F3CC5FC01D39'
-               BlueprintName = 'DTKDropdownMenu'
-               ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'libDTKDropdownMenu.a'>
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "BE21DA0F82C3C25FA9F9F3CC5FC01D39"
+               BlueprintName = "DTKDropdownMenu"
+               ReferencedContainer = "container:Pods.xcodeproj"
+               BuildableName = "libDTKDropdownMenu.a">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
