@@ -39,6 +39,9 @@
     _Mail.delegate=self;
 }
 
+- (IBAction)contactMe:(id)sender {
+    [[UIApplication sharedApplication]openURL:[NSURL URLWithString:@"sms:isninea@icloud.com"]];
+}
 
 -(BOOL)textViewShouldBeginEditing:(UITextView *)textView
 {

@@ -47,15 +47,16 @@
     [self.navigationController pushViewController:webViewController animated:YES];
 }
 - (IBAction)contactMe:(id)sender {
+    [[UIApplication sharedApplication]openURL:[NSURL URLWithString:@"sms:isninea@icloud.com"]];
   //  if ([Config isTourist]) {
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"暂时聊不了天啦" message:@"请去反馈里面留下你的联系方式，我来找你吧" preferredStyle:  UIAlertControllerStyleAlert];
-        [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            
-        }]];
-        [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            
-        }]];
-        [self presentViewController:alert animated:true completion:nil];
+//        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"暂时聊不了天啦" message:@"请去反馈里面留下你的联系方式，我来找你吧" preferredStyle:  UIAlertControllerStyleAlert];
+//        [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+//
+//        }]];
+//        [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+//
+//        }]];
+//        [self presentViewController:alert animated:true completion:nil];
 //    }
 //    ChatViewController *conversationVC = [[ChatViewController alloc]init];
 //    conversationVC.conversationType = ConversationType_PRIVATE;
