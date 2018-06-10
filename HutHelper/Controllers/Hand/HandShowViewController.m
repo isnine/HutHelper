@@ -151,10 +151,25 @@
     }
     //四个块的数据
     NSMutableArray *goodsTitle=[[NSMutableArray alloc]init];
-    [goodsTitle addObject:_handDic[@"prize"]];
-    [goodsTitle addObject:_handDic[@"attr"]];
+    if ([_handDic objectForKey: @"prize"] ) {
+        [goodsTitle addObject:_handDic[@"prize"]];
+    } else {
+        [goodsTitle addObject: @"无"];
+    }
+    
+    if ([_handDic objectForKey: @"attr"] ) {
+        [goodsTitle addObject:_handDic[@"attr"]];
+    } else {
+        [goodsTitle addObject: @"无"];
+    }
+    
     [goodsTitle addObject:[self getcontact]];
-    [goodsTitle addObject:_handDic[@"address"]];
+    
+    if ([_handDic objectForKey: @"address"] ) {
+        [goodsTitle addObject:_handDic[@"address"]];
+    } else {
+        [goodsTitle addObject: @"无"];
+    }
     for (int i=0; i<4; i++) {
         UITextView *goodsLab=[[UITextView alloc]initWithFrame:CGRectMake(SYReal(LabX[i]), SYReal(LabY[i]+40)+iphoneX_Y(113), SYReal(170), SYReal(80))];
         goodsLab.textColor=[UIColor blackColor];
