@@ -252,7 +252,7 @@ int class_error_;
             [APIRequest GET:Config.getApiScores parameters:nil timeout:8.0 success:^(id responseObject){
                 NSData *scoreData =    [NSJSONSerialization dataWithJSONObject:responseObject options:NSJSONWritingPrettyPrinted error:nil];
                 NSString *msg=responseObject[@"msg"];
-                if([msg isEqualToString:@"ok"]){
+                if([responseObject[@"code"] isEqual: @200]){
                     [Config saveScore:scoreData];
                 }else if([msg isEqualToString:@"令牌错误"]){
                     errorStr=ERROR_MSG_INVALID;
@@ -276,7 +276,7 @@ int class_error_;
         dispatch_group_async(group, q, ^{
             dispatch_group_enter(group);
             [APIRequest GET:Config.getApiRank parameters:nil timeout:8.0 success:^(id responseObject) {
-                if ([responseObject[@"msg"]isEqualToString:@"ok"]) {
+                if ([responseObject[@"code"] isEqual: @200]) {
                     [Config saveScoreRank:responseObject];
                 }else if([responseObject[@"msg"] isEqualToString:@"令牌错误"]){
                     errorStr=ERROR_MSG_INVALID;

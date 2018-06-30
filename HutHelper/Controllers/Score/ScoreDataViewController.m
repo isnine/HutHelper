@@ -94,14 +94,10 @@
 }
 -(NSString*)getClassScore:(int)num{
     NSDictionary *dict1        = _scoreData[num];
-    NSString *string_name= [dict1 objectForKey:@"KCMC"];//名字
-    NSString *string_score= [dict1 objectForKey:@"ZSCJ"];//成绩
-    NSString *string_score2= [dict1 objectForKey:@"BKCJ"];//成绩
-    NSString *string_cxbj= [dict1 objectForKey:@"CXBJ"];//重修标记
+    NSString *string_score= [dict1 objectForKey:@"cj"];//成绩
+    NSString *string_score2= [dict1 objectForKey:@"bkcj"];//成绩
+    NSString *string_cxbj= [dict1 objectForKey:@"cxbj"];//重修标记
 
-    if ([string_name isEqual:[NSNull null]])
-        string_name       = @"NULL";//名字
-    
     if ([string_score isEqual:[NSNull null]])
         string_score          = @"0";//成绩
     
@@ -118,17 +114,14 @@
     if (int_score<60&&int_score<int_score2)
         int_score=int_score2;
     
-    if([string_cxbj isEqualToString:@"1"]){
-        string_name=[string_name stringByAppendingString:@"*"];
-    }
     
     NSString *result=[NSString stringWithFormat:@"%d分",int_score];
     return result;
 }
 -(NSString*)getClassName:(int)num{
     NSDictionary *dict1        = _scoreData[num];
-    NSString *string_name= [dict1 objectForKey:@"KCMC"];//名字
-    NSString *string_cxbj= [dict1 objectForKey:@"CXBJ"];//重修标记
+    NSString *string_name= [dict1 objectForKey:@"kcmc"];//名字
+    NSString *string_cxbj= [dict1 objectForKey:@"cxbj"];//重修标记
     if ([string_cxbj isEqual:[NSNull null]])
         string_cxbj         = @"NULL";//学期
 
@@ -142,8 +135,8 @@
 }
 -(NSString*)getTime:(int)num{
     NSDictionary *dict1        = _scoreData[num];
-    NSString *string_xn= [dict1 objectForKey:@"XN"];//学期
-    NSString *string_xq= [dict1 objectForKey:@"XQ"];//学期
+    NSString *string_xn= [dict1 objectForKey:@"xn"];//学期
+    NSString *string_xq= [dict1 objectForKey:@"xq"];//学期
     if ([string_xn isEqual:[NSNull null]])
         string_xn         = @"NULL";//学期
     
@@ -157,42 +150,13 @@
 }
 -(NSString*)getJd:(int)num{
     NSDictionary *dict1        = _scoreData[num];
-    NSString *string_score= [dict1 objectForKey:@"ZSCJ"];//成绩
-    NSString *string_score2= [dict1 objectForKey:@"BKCJ"];//成绩
-    NSString *string_xf= [dict1 objectForKey:@"XF"];//学分
-
-    if ([string_score isEqual:[NSNull null]])
-        string_score          = @"0";//成绩
-    
-
-    if ([string_score2 isEqual:[NSNull null]])
-        string_score2         = @"0";//学期
-    
-    if ([string_xf isEqual:[NSNull null]])
-        string_xf         = @"0.1";//学期
-    
-
-    
-    int int_score          = [string_score intValue];
-    int int_score2          = [string_score2 intValue];
-    if (int_score<60&&int_score<int_score2)
-        int_score=int_score2;
-    
-    double jd=0;
-    if(int_score>=60){
-        jd=(int_score*1.0-50.0)/10.0;
-    }
-    else{
-        jd=0.0;
-    }
-    NSString *result=[NSString stringWithFormat:@"学分&绩点:  %.1lf/%.1lf",[string_xf floatValue],jd];
+    NSString *result=[NSString stringWithFormat:@"学分&绩点:  %@/%@",[dict1 objectForKey:@"xf"],[dict1 objectForKey:@"jd"]];
     return result;
 }
 #pragma  mark - 标题设置
 - (void)addTitleMenu
 {
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    int grade=[[defaults objectForKey:@"sourceGrade"] intValue];
     DTKDropdownItem *item0 = [DTKDropdownItem itemWithTitle:@"所有成绩" callBack:^(NSUInteger index, id info) {
         [self getScoreData];
         [self.tableView reloadData];
@@ -241,7 +205,8 @@
         [self.tableView reloadData];
     }];
     
-    ScoreRank *scoreRank=[[ScoreRank alloc]initWithArray:[Config getScoreRank][@"data"]];
+    NSDictionary *rank =[[Config getScoreRank] objectForKey:@"rank"];
+    ScoreRank *scoreRank=[[ScoreRank alloc]initWithArray:rank];
     switch (scoreRank.termMutableArray.count) {
         case 1:
             menuView = [DTKDropdownMenuView dropdownMenuViewForNavbarTitleViewWithFrame:CGRectMake(123.0, 0, 200.f, 44.f) dropdownItems:@[item0,item11]];
@@ -298,12 +263,12 @@
     [APIRequest GET:urlString parameters:nil timeout:8.0 success:^(id responseObject){
         NSData *scoreData =    [NSJSONSerialization dataWithJSONObject:responseObject options:NSJSONWritingPrettyPrinted error:nil];
         NSString *msg=responseObject[@"msg"];
-        if([msg isEqualToString:@"ok"]){
+        if([responseObject[@"code"] isEqual: @200]){
             [Config saveScore:scoreData];
             NSString *urlRankString=Config.getApiRank;
             [APIRequest GET:urlRankString parameters:nil timeout:8.0 success:^(id responseObject) {
                 HideAllHUD
-                if ([responseObject[@"msg"]isEqualToString:@"ok"]) {
+                if ([responseObject[@"code"] isEqual: @200]) {
                     [Config saveScoreRank:responseObject];
                     if(_GradeString)
                         [self getScoreData:_GradeString];

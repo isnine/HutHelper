@@ -1,0 +1,176 @@
+# document ref: http://clang.llvm.org/docs/ClangFormatStyleOptions.html
+
+#禁用当前format文件
+DisableFormat: false
+
+BasedOnStyle: WebKit
+
+#是否使用tab进行缩进
+UseTab: Never
+TabWidth: 4
+IndentWidth: 4
+
+
+
+#语言
+Language: Cpp
+Standard: Cpp11
+#includeCategoriesStandard: Cpp11
+#Cpp11BracedListStyle: false
+#ForEachMacros
+#IncludeCategories
+
+#-----------------------file----------------------
+
+#最大宽度,如果代码超过这个宽度会按语义折行
+ColumnLimit: 130
+
+#最多能超出ColumnLimit多少个字符
+PenaltyExcessCharacter: 0
+
+#允许最大连续空行数
+MaxEmptyLinesToKeep: 10
+
+#在续行(\  
+#     下一行)时的缩进长度
+ContinuationIndentWidth: 4
+
+
+#CommentPragmas: ''
+#DerivePointerBinding: false
+
+#--------------------------code block------------------
+
+#括号的断行模式
+BreakBeforeBraces: Mozilla
+
+#是否在容器字面量(@[@"1",@"2"])中插入空格
+SpacesInContainerLiterals: true
+
+#case语句的位置总是在switch语句后缩进一级
+IndentCaseLabels: true
+
+#多行赋值语句按=号对齐
+AlignConsecutiveAssignments: false
+
+#多行声明语句按=号对齐
+AlignConsecutiveDeclarations: false
+
+#是否把注释右对齐,下面为右对齐的效果
+#void someFunction() {
+#    doWork();     // Does something
+#    doMoreWork(); // Does something else
+#}
+AlignTrailingComments: true
+
+#是否在括号前加上空格
+SpaceBeforeParens: ControlStatements
+
+#在未封闭(括号的开始和结束不在同一行)的括号中的代码是否对齐
+# if(a &&
+#    b)
+# 
+AlignAfterOpenBracket: Align
+
+#类的访问修饰关键字(private,public,protected···)缩进
+# private:
+# int a;
+# 1表示不缩进
+#大于1的值表示访问修饰关键字的左侧从int a的左侧列开始往右侧移动的距离
+#AccessModifierOffset: 1
+
+#在构造函数初始化时按逗号断行，并以冒号对齐
+BreakConstructorInitializersBeforeComma: false
+
+
+#ConstructorInitializerAllOnOneLineOrOnePerLine: false
+#ConstructorInitializerIndentWidth: 0
+#ExperimentalAutoDetectBinPacking: false
+#IndentWrappedFunctionNames: true
+#IndentFunctionDeclarationAfterType: false
+#AlignEscapedNewlinesLeft: true
+#BinPackArguments: false
+#BinPackParameters: false
+#AllowAllParametersOfDeclarationOnNextLine: false
+
+#----------------------sataement----------------
+#指针在类型那边还是在变量名那边还是在中间
+PointerAlignment: Right
+
+#在=号前加空格
+SpaceBeforeAssignmentOperators: true
+
+#是否在空括号中加空格
+SpaceInEmptyParentheses: false
+
+#单行注释前的空格数
+SpacesBeforeTrailingComments: 0
+
+#是否在<>中间插入空格
+SpacesInAngles: false
+
+#是否在非空的括号中插入空格
+SpacesInParentheses: false
+
+#在三元运算符前断行
+BreakBeforeTernaryOperators: true
+
+#在二元运算符前断行
+#BreakBeforeBinaryOperators: All
+
+#是否允许短代码块在一行写完
+#如 if (a) { return; }
+AllowShortBlocksOnASingleLine: false
+
+#是否允许短switch的case 语句在一行写完
+AllowShortCaseLabelsOnASingleLine: true
+
+#是否允许短的函数在一行写完
+AllowShortFunctionsOnASingleLine: false
+
+#是否允许短的语句在一行写完
+AllowShortIfStatementsOnASingleLine: true
+
+#是否允许短的循环在一行写完
+AllowShortLoopsOnASingleLine: true
+
+#命名空间缩进
+#NamespaceIndentation: All
+
+#AlignOperands: false
+#PenaltyBreakBeforeFirstCallParameter: 100
+#PenaltyBreakComment: 100
+#PenaltyBreakFirstLessLess: 0
+#PenaltyBreakString: 100
+
+#-----------------------------OC only---------------------
+
+#block开始的正则
+MacroBlockBegin: ''
+
+#block开始的正则
+MacroBlockEnd: ''
+
+#在block从空行开始
+KeepEmptyLinesAtTheStartOfBlocks: true
+
+#block内的缩进
+ObjCBlockIndentWidth: 4
+
+#是否需要在"@property"后加上空格
+ObjCSpaceAfterProperty: true
+
+#是否需要在协议名后加上空格
+ObjCSpaceBeforeProtocolList: true
+
+
+
+#----------------------------other-------------------
+
+#AlwaysBreakAfterDefinitionReturnType
+#AlwaysBreakAfterReturnType
+#AlwaysBreakBeforeMultilineStrings: false
+#AlwaysBreakTemplateDeclarations: false
+#PenaltyReturnTypeOnItsOwnLine: 20
+#PointerBindsToType: 100
+#SpacesInCStyleCastParentheses: false

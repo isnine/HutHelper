@@ -10,7 +10,8 @@
 
 @interface ScoreRank : NSObject
 //总排名与绩点
-@property (nonatomic,copy)NSString *rank;
+@property (nonatomic,copy)NSString *bjRank;
+@property (nonatomic,copy)NSString *zyRank;
 @property (nonatomic,copy)NSString *GPA;
 //学年排名与绩点
 @property (nonatomic,copy)NSMutableArray *yearMutableArray;
@@ -21,7 +22,8 @@
 @property (nonatomic,copy)NSMutableArray *term2MutableArray;
 @property (nonatomic,copy)NSString *term;
 
--(instancetype)initWithArray:(NSArray*)data;
+-(instancetype)initWithBjTermArray:(NSDictionary*)data;
+-(instancetype)initWithArray:(NSDictionary*)data;
 @end
 
 

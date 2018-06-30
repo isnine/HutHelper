@@ -26,11 +26,11 @@
 #pragma mark - 成绩查询
 +(NSString*)getApiScores{
 //    return [NSString stringWithFormat:@"%@/api/v1/get/scores/%@/%@/%@",Config.apiIndex,Config.getStudentKH,Config.getRememberCodeApp,[[NSString stringWithFormat:@"%@%@%@",Config.getStudentKH,Config.getRememberCodeApp,@"f$Z@%"] sha1Str]];
-    return [NSString stringWithFormat:@"%@/api/v3/Home/scores/%@/%@",Config.apiIndex,Config.getStudentKH,Config.getRememberCodeApp];
+    return [NSString stringWithFormat:@"%@/api/v3/Get/score/%@/%@",Config.apiIndex,Config.getStudentKH,Config.getRememberCodeApp];
 }
 +(NSString*)getApiRank{
   //  return [NSString stringWithFormat:@"%@/api/v1/get/ranking/%@/%@",Config.apiIndex,Config.getStudentKH,Config.getRememberCodeApp];
-    return [NSString stringWithFormat:@"%@/api/v3/Home/ranking/%@/%@",Config.apiIndex,Config.getStudentKH,Config.getRememberCodeApp];
+    return [NSString stringWithFormat:@"%@/api/v3/Get/rank/%@/%@",Config.apiIndex,Config.getStudentKH,Config.getRememberCodeApp];
 }
 #pragma mark - 登录界面
 +(NSString*)getApiLogin:(NSString*)userName passWord:(NSString*)passWord{
@@ -177,7 +177,7 @@
 }//images.tutuweb.cn
 
 +(NSString*)apiIndex{
-    return @"https://api.tutuweb.cn";
+    return @"https://api.huthelper.cn";
    // return @"https://hut.wxz.name";
 }//api.tutuweb.cn
 

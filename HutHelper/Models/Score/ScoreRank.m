@@ -11,30 +11,30 @@
 
 @implementation ScoreRank
 
--(instancetype)initWithArray:(NSArray*)data{
+-(instancetype)initWithArray:(NSDictionary*)data{
     self=[super init];
     if (self) {
-        self.rank=[data[0][0] objectForKey:@"MC"];
-        self.GPA=[data[0][0] objectForKey:@"ZJD"];
-        for (NSDictionary *eachDic in data[1]) {
-            ScoreRank *scoreYearRank=[[ScoreRank alloc]initWithYearDic:eachDic];
-            [self.yearMutableArray  addObject: scoreYearRank ];
-        }
-        for (NSDictionary *eachDic in data[2]) {
+        for (NSDictionary *eachDic in [data objectForKey:@"xqrank"]) {
             ScoreRank *scoreTermRank=[[ScoreRank alloc]initWithTermDic:eachDic];
             [self.termMutableArray  addObject: scoreTermRank ];
         }
+        for (NSDictionary *eachDic in [data  objectForKey:@"xnrank"]) {
+            ScoreRank *scoreYearRank=[[ScoreRank alloc]initWithYearDic:eachDic];
+            [self.yearMutableArray addObject: scoreYearRank ];
+        }
+        
     }
     return  self;
 }
 
-
+#pragma mark - 字典
 -(instancetype)initWithYearDic:(NSDictionary*)yearDic{
     self=[super init];
     if (self) {
-            self.year=[yearDic objectForKey:@"XN"];
-            self.rank=[yearDic objectForKey:@"MC"];
-            self.GPA=[yearDic objectForKey:@"ZJD"];
+            self.year=[yearDic objectForKey:@"xn"];
+            self.bjRank=[yearDic objectForKey:@"bjrank"];
+            self.zyRank=[yearDic objectForKey:@"zyrank"];
+            self.GPA=[yearDic objectForKey:@"zhjd"];
     }
     return  self;
 }
@@ -42,15 +42,17 @@
 -(instancetype)initWithTermDic:(NSDictionary*)termDic{
     self=[super init];
     if (self) {
-        self.year=[termDic objectForKey:@"XN"];
-        self.rank=[termDic objectForKey:@"MC"];
-        self.term=[termDic objectForKey:@"XQ"];
-        self.GPA=[termDic objectForKey:@"ZJD"];
+        self.year=[termDic objectForKey:@"xn"];
+        self.bjRank=[termDic objectForKey:@"bjrank"];
+        self.zyRank=[termDic objectForKey:@"zyrank"];
+        self.GPA=[termDic objectForKey:@"zhjd"];
+        self.term=[termDic objectForKey:@"xq"];
     }
     return  self;
 }
 
 
+#pragma mark - 数组
 -(NSMutableArray *)yearMutableArray{
     if (!_yearMutableArray) {
         _yearMutableArray = [NSMutableArray array];

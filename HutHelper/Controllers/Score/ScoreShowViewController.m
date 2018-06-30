@@ -17,7 +17,7 @@
 @property (nonatomic,copy)NSMutableArray *rankArray;
 @property (nonatomic,copy)NSMutableArray *yearMutableArray;
 @property (nonatomic,copy)ScoreRank *scoreRank;
-@property (nonatomic,copy)ScoreRank *scoreGradeRank;
+@property (nonatomic,assign)Boolean isZY;
 @end
 
 @implementation ScoreShowViewController{
@@ -33,6 +33,7 @@
     [self setOther];
     [self setScale];
     [self setRanks:_scoreRank.termMutableArray];
+    self.isZY = false;
     //左滑手势
     UISwipeGestureRecognizer* leftSwipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipes:)];
     leftSwipeGestureRecognizer.direction = UISwipeGestureRecognizerDirectionLeft;
@@ -82,12 +83,11 @@
     [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:94/255.0 green:199/255.0 blue:217/255.0 alpha:1]];
 }
 -(void)setOther{
-    Score *score=[[Score alloc]init];
-    _scoreRank=[[ScoreRank alloc]initWithArray:[[Config getScoreRank] objectForKey:@"data"]];
-    _scoreGradeRank=[[ScoreRank alloc]initWithArray:[[Config getScoreRank] objectForKey:@"ndata"]];
-    self.Wtg.text=[NSString stringWithFormat:@"%d",[score getWtg]];
-    self.Zjd.text=[NSString stringWithFormat:@"%.2lf",[score getZxf]];
-    self.Rank.text=_scoreRank.rank;
+    NSDictionary *rank =[[Config getScoreRank] objectForKey:@"rank"];
+    _scoreRank=[[ScoreRank alloc]initWithArray:rank];
+    self.Wtg.text=[NSString stringWithFormat:@"%@",[[Config getScoreRank] objectForKey:@"gks"]];
+    self.Zjd.text=[NSString stringWithFormat:@"%@",[[Config getScoreRank] objectForKey:@"zhjd"]];
+    self.Rank.text=[[Config getScoreRank] objectForKey:@"pjf"];
 }
 
 -(void)setRanks:(NSMutableArray*)rankMutableArray{
@@ -123,7 +123,11 @@
         //排名
         _labelRank=[[UILabel alloc]initWithFrame:CGRectMake(SYReal(336),SYReal(317+i*26)+iphoneX_Y(113),SYReal(71),SYReal(22))];
         _labelRank.font=[UIFont systemFontOfSize: 13.0];
-        _labelRank.text=scoreRank.rank;
+        if (self.isZY == true) {
+            _labelRank.text=scoreRank.zyRank;
+        } else {
+            _labelRank.text=scoreRank.bjRank;
+        }
         _labelRank.textColor=[UIColor whiteColor];
         _labelRank.textAlignment = NSTextAlignmentRight;
         _labelRank.tag=200;
@@ -146,8 +150,7 @@
     }
 }
 -(void)setScale{
-    Score *score=[[Score alloc]init];
-    _Scale.text=[score getScale];
+    _Scale.text=[NSString stringWithFormat:@"%.1f/%.1f",[[[Config getScoreRank] objectForKey:@"gks"] doubleValue],[[[Config getScoreRank] objectForKey:@"zxf"] doubleValue]];
 }
 - (UIImage *)scaleImage:(UIImage *)image toScale:(float)scaleSize{
     UIGraphicsBeginImageContext(CGSizeMake(image.size.width * scaleSize, image.size.height ));
@@ -160,25 +163,25 @@
 {
     DTKDropdownItem *item0 = [DTKDropdownItem itemWithTitle:@"学期班级成绩" callBack:^(NSUInteger index, id info) {
         [self clearView];
+        self.isZY = false;
         [self setRanks:_scoreRank.termMutableArray];
-        self.Rank.text=_scoreRank.rank;
     }];
     DTKDropdownItem *item1,*item2,*item3;
     DTKDropdownMenuView *menuView;
     item1 = [DTKDropdownItem itemWithTitle:@"学年班级成绩" callBack:^(NSUInteger index, id info) {
         [self clearView];
+        self.isZY = false;
         [self setRanks:_scoreRank.yearMutableArray];
-        self.Rank.text=_scoreRank.rank;
     }];
     item2 = [DTKDropdownItem itemWithTitle:@"学期专业成绩" callBack:^(NSUInteger index, id info) {
         [self clearView];
-        [self setRanks:_scoreGradeRank.termMutableArray];
-        self.Rank.text=_scoreGradeRank.rank;
+        self.isZY = true;
+        [self setRanks:_scoreRank.termMutableArray];
     }];
     item3 = [DTKDropdownItem itemWithTitle:@"学年专业成绩" callBack:^(NSUInteger index, id info) {
         [self clearView];
-        [self setRanks:_scoreGradeRank.yearMutableArray];
-        self.Rank.text=_scoreGradeRank.rank;
+        self.isZY = true;
+        [self setRanks:_scoreRank.yearMutableArray];
     }];
     
     menuView = [DTKDropdownMenuView dropdownMenuViewForNavbarTitleViewWithFrame:CGRectMake(123.0, 0, 200.f, 44.f) dropdownItems:@[item0,item1,item2,item3]];
