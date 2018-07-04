@@ -299,15 +299,15 @@
 		</dict>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string>我们需要您同意才能使用相机</string>
+	<string>设置封面以及上传图片需要访问您的相机</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>获得当前地理位置</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>获得当前地理位置</string>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>我们需要您同意才能使用麦克风</string>
+	<string>语音聊天需要访问您的麦克风</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>我们需要您同意才能访问相册</string>
+	<string>设置封面以及上传图片需要访问您的相册</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>remote-notification</string>
