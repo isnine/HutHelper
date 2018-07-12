@@ -94,7 +94,7 @@
 }
 -(NSString*)getClassScore:(int)num{
     NSDictionary *dict1        = _scoreData[num];
-    NSString *string_score= [dict1 objectForKey:@"cj"];//成绩
+    NSString *string_score= [dict1 objectForKey:@"zscj"];//成绩
     NSString *string_score2= [dict1 objectForKey:@"bkcj"];//成绩
     NSString *string_cxbj= [dict1 objectForKey:@"cxbj"];//重修标记
 

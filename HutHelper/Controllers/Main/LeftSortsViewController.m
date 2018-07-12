@@ -186,12 +186,15 @@
         [Config pushViewController:@"About"];
     }
     if (indexPath.row == 6) {  //反馈
-        [Config pushViewController:@"Feedback"];
+        [self feedBack];
     }
     
     
 }
-
+- (void)feedBack {
+    [[UIApplication sharedApplication]openURL:[NSURL URLWithString:@"sms:isninea@icloud.com"]];
+//     [Config pushViewController:@"Feedback"];
+}
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
     return SYReal(130);
