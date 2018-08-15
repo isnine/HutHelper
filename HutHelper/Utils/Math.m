@@ -10,8 +10,8 @@
 #import <CommonCrypto/CommonDigest.h>
 @implementation Math
 int startyear                       = 2018;
-int startmonth                      = 3;
-int startday                        = 5;
+int startmonth                      = 9;
+int startday                        = 10;
 #pragma mark - 日期
 /** 返回本年第几天*/
 +(int) CountDays:(int)year m:(int)month d:(int)day{

@@ -12,7 +12,7 @@
 #import "NoticeViewController.h"
 
 #import <UMSocialCore/UMSocialCore.h>
-#import <JSPatchPlatform/JSPatch.h>
+//#import <JSPatchPlatform/JSPatch.h>
 #import "iVersion.h"
 //MTA
 #import "MTA.h"
@@ -70,10 +70,10 @@
     [[UMSocialManager defaultManager] setUmSocialAppkey:APPKEY_UMESSAGE];//设置友盟appkey
     [self configUSharePlatforms];
     //热更新
-        [JSPatch startWithAppKey:APPKEY_JSPATCH];
-  //      [JSPatch setupDevelopment];
-        [JSPatch setupRSAPublicKey:RSA_JSPATCH];
-        [JSPatch sync];
+//        [JSPatch startWithAppKey:APPKEY_JSPATCH];
+//  //      [JSPatch setupDevelopment];
+//        [JSPatch setupRSAPublicKey:RSA_JSPATCH];
+//        [JSPatch sync];
     //IM
   //  [[RCIM sharedRCIM] initWithAppKey:RONGCLOUD_APPKEY];
     //IM登录
