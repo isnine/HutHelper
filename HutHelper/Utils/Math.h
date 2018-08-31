@@ -22,4 +22,6 @@
 /**字符串*/
 +(NSString*)transforDay:(int)day;
 +(int)getDateDiff:(int)y2 m:(int)m2 d:(int)d2;
+
++ (NSString*)sha1WithStr :(NSString*)string;
 @end

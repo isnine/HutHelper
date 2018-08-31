@@ -220,4 +220,22 @@ int startday                        = 10;
     time_t st2=mktime(&ptr2);
     return (int)((st2-st1)/3600/24);
 }
+
++ (NSString*)sha1WithStr :(NSString*)string
+{
+    NSString * test =string;
+    const char *cstr = [test   cStringUsingEncoding:NSUTF8StringEncoding];
+    NSData *data = [NSData dataWithBytes:cstr length:test.length];
+    
+    uint8_t digest[CC_SHA1_DIGEST_LENGTH];
+    
+    CC_SHA1(data.bytes, (int)data.length, digest);
+    
+    NSMutableString* output = [NSMutableString stringWithCapacity:CC_SHA1_DIGEST_LENGTH * 2];
+    
+    for(int i = 0; i < CC_SHA1_DIGEST_LENGTH; i++)
+    [output appendFormat:@"%02x", digest[i]];
+    
+    return output;
+}
 @end

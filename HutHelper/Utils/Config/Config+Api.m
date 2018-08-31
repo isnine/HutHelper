@@ -8,7 +8,7 @@
 
 #import "Config+Api.h"
 #import "NSString+Common.h"
-
+#import "Math.h"
 @implementation Config (Api)
 #pragma mark - 课表查询
 +(NSString*)getApiClass{
@@ -53,7 +53,9 @@
 }
 #pragma mark - 电费查询
 +(NSString*)getApiPower:(NSString*)build room:(NSString*)room{
-    return [NSString stringWithFormat:@"%@/api/v1/get/power/%@/%@",Config.apiIndex,build,room];
+    NSString *sha1 = [Math sha1WithStr: [NSString stringWithFormat: @"%@%@%@%@%d",build,room,Config.getStudentKH,Config.getRememberCodeApp,1]];
+    return [NSString stringWithFormat:@"%@/api/v3/get/power_e/%d/%@/%@/%@/%@/%@",Config.apiIndex,1,build,room,Config.getStudentKH,Config.getRememberCodeApp,sha1];
+//    return [NSString stringWithFormat:@"%@/api/v1/get/power/%@/%@",Config.apiIndex,build,room];
 }
 +(NSString*)getApiPowerAirCondition{
     return [NSString stringWithFormat:@"%@/api/v1/set/schema/%@/%@/1",Config.apiIndex,Config.getStudentKH,Config.getRememberCodeApp];

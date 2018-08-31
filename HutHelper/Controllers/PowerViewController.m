@@ -159,8 +159,8 @@ typedef NS_ENUM(NSUInteger, PowerSelectBtn) {
     NSURL *url                = [NSURL URLWithString: [Config getApiPower:Build_String room:Room_String]];//接口地址
     [MBProgressHUD showMessage:@"查询中" toView:self.view];
     [APIRequest GET:[Config getApiPower:Build_String room:Room_String] parameters:nil success:^(id responseObject) {
-        NSString *power_du=[responseObject objectForKey:@"oddl"];
-        NSString *power_money=[responseObject objectForKey:@"prize"];
+        NSString *power_du=[responseObject objectForKey:@"electricity"];
+        NSString *power_money=[responseObject objectForKey:@"balance"];
         [defaults setObject:Build_String forKey:@"PowerBuild"];
         [defaults setObject:Room_String forKey:@"PowerRoom"];
         UIAlertView *alertView    = [[UIAlertView alloc] initWithTitle:@"查询成功"
