@@ -65,7 +65,7 @@ int startday                        = 10;
 /** 得到当前为几号 */
 +(NSString*) getDayOfWeek:(int)week d:(int)day {
     NSString *dStr,*wStr;
-    day=[self CountDays:2018 m:3 d:5]+(week-1)*7+day;
+    day=[self CountDays:2018 m:9 d:10]+(week-1)*7+day;
     int year=startyear;
     int d=0,m,leap,i;
     int Month[12]={31,28,31,30,31,30,31,31,30,31,30,31};
