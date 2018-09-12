@@ -10,8 +10,8 @@
   
 @implementation ExtendModel
 int startyear                       = 2018;
-int startmonth                      = 3;
-int startday                        = 5;
+int startmonth                      = 9;
+int startday                        = 10;
 +(NSString*)setDay{
     NSDate *now                               = [NSDate date];
     NSCalendar *calendar                      = [NSCalendar currentCalendar];
@@ -51,7 +51,7 @@ int startday                        = 5;
         ans     = [self CountDays:nowyear m:nowmonth d:nowday] - [self CountDays:startyear m:startmonth d:startday] + 1;
     } else {
         ans         = [self CountDays:nowyear m:nowmonth d:nowday] - [self CountDays:nowyear m:1 d:1] + 1;
-        ans        += [self CountDays:2018 m:3 d:5] - [self CountDays:startyear m:startmonth d:startday]+1;
+        ans        += [self CountDays:2018 m:9 d:10] - [self CountDays:startyear m:startmonth d:startday]+1;
     }
     if ((ans + 6) / 7<=0) {
         return 1;
