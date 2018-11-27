@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "BE21DA0F82C3C25FA9F9F3CC5FC01D39"
+               BlueprintIdentifier = "C5C829CC06351AD1BCE59E6F47BC0306"
                BlueprintName = "DTKDropdownMenu"
                ReferencedContainer = "container:Pods.xcodeproj"
                BuildableName = "libDTKDropdownMenu.a">

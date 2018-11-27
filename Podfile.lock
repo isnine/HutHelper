@@ -82,7 +82,7 @@ DEPENDENCIES:
   - YCXMenu (~> 0.0.11)
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  https://github.com/cocoapods/specs.git:
     - AFNetworking
     - ASIHTTPRequest
     - DJRefresh
@@ -124,4 +124,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: d260e348da0c199b4a6585a99f2e746ec62277c3
 
-COCOAPODS: 1.5.0
+COCOAPODS: 1.5.3

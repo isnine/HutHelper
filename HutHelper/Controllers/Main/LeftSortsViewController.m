@@ -192,7 +192,17 @@
     
 }
 - (void)feedBack {
-    [[UIApplication sharedApplication]openURL:[NSURL URLWithString:@"sms:isninea@icloud.com"]];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"反馈问题" message:@"哪个类型的问题" preferredStyle:  UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:@"App卡顿/卡死等问题" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [[UIApplication sharedApplication]openURL:[NSURL URLWithString:@"sms:isninea@icloud.com"]];
+    }]];
+    [alert addAction:[UIAlertAction actionWithTitle:@"课表/成绩等数据问题" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [Config pushViewController:@"Feedback"];
+    }]];
+    [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    }]];
+    [self presentViewController:alert animated:true completion:nil];
+    
 //     [Config pushViewController:@"Feedback"];
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -231,7 +241,7 @@
     //创建网页内容对象
     UMShareWebpageObject *shareObject = [UMShareWebpageObject shareObjectWithTitle:@"工大助手" descr:@"工大助手APP是由湖南工业大学计算机学院实验室移动组和网络组，为工大学生开发的产品，志于帮助同学们更加便捷的体验校园生活。" thumImage:[UIImage imageNamed:@"ico"]];
     //设置网页地址
-    shareObject.webpageUrl =[NSString stringWithFormat:@"%@/res/index",Config.apiIndex];
+    shareObject.webpageUrl = @"https://itunes.apple.com/cn/app/gong-da-zhu-shou-hu-nan-gong/id1164848835";
     //分享消息对象设置分享内容对象
     messageObject.shareObject = shareObject;
     //调用分享接口
