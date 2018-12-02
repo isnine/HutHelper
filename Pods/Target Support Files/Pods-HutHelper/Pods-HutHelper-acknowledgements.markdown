@@ -604,7 +604,7 @@ SOFTWARE.
 
 ## UMengUShare
 
-Copyright 2011 - 2017 UMeng.com. All rights reserved.
+Copyright 2011 - 2018 UMeng.com. All rights reserved.
 
 
 ## YCXMenu

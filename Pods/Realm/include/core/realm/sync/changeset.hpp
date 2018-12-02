@@ -23,21 +23,23 @@
 
 #include <realm/sync/instructions.hpp>
 #include <realm/util/optional.hpp>
+#include <realm/util/allocation_metrics.hpp>
+#include <realm/util/metered/vector.hpp>
 
 #include <type_traits>
 
 namespace realm {
 namespace sync {
 
-using InternStrings = std::unordered_map<uint32_t, StringBufferRange>;
+using InternStrings = util::metered::vector<StringBufferRange>;
 
-struct BadChangesetError : std::exception {
-    const char* message;
-    BadChangesetError() : BadChangesetError("Bad bad changeset") {}
-    BadChangesetError(const char* msg) : message(msg) {}
-    const char* what() const noexcept override
+struct BadChangesetError : ExceptionWithBacktrace<std::exception> {
+    const char* m_message;
+    BadChangesetError() : BadChangesetError("Bad changeset") {}
+    BadChangesetError(const char* msg) : m_message(msg) {}
+    const char* message() const noexcept override
     {
-        return message;
+        return m_message;
     }
 };
 
@@ -46,6 +48,7 @@ struct Changeset {
     using timestamp_type = uint_fast64_t;
     using file_ident_type = uint_fast64_t;
     using version_type = uint_fast64_t; // FIXME: Get from `History`.
+    using StringBuffer = util::BasicStringBuffer<AllocationMetric>;
 
     Changeset();
     struct share_buffers_tag {};
@@ -58,8 +61,8 @@ struct Changeset {
     InternString intern_string(StringData); // Slow!
     StringData string_data() const noexcept;
 
-    util::StringBuffer& string_buffer() noexcept;
-    const util::StringBuffer& string_buffer() const noexcept;
+    StringBuffer& string_buffer() noexcept;
+    const StringBuffer& string_buffer() const noexcept;
     const InternStrings& interned_strings() const noexcept;
     InternStrings& interned_strings() noexcept;
 
@@ -69,6 +72,13 @@ struct Changeset {
     StringData get_string(StringBufferRange) const noexcept;
     StringData get_string(InternString) const noexcept;
     StringBufferRange append_string(StringData);
+
+    /// Mark the changeset as "dirty" (i.e. modified by the merge algorithm).
+    void set_dirty(bool dirty = true) noexcept;
+
+    /// Whether or not the changeset is "dirty" (i.e. has been modified by the
+    /// merge algorithm).
+    bool is_dirty() const noexcept;
 
     // Interface to imitate std::vector:
     template <bool is_const> struct IteratorImpl;
@@ -92,16 +102,16 @@ struct Changeset {
 
     //@{
     /// Insert instructions, invalidating all iterators.
-    iterator insert(iterator pos, Instruction);
+    iterator insert(const_iterator pos, Instruction);
     template <class InputIt>
-    iterator insert(iterator pos, InputIt begin, InputIt end);
+    iterator insert(const_iterator pos, InputIt begin, InputIt end);
     //@}
 
     /// Erase an instruction, invalidating all iterators.
-    iterator erase(iterator);
+    iterator erase(const_iterator);
 
     /// Insert an instruction at the end, invalidating all iterators.
-    void push_back(Instruction);
+    void push_back(const Instruction&);
 
     //@{
     /// Insert instructions at \a position without invalidating other
@@ -120,9 +130,9 @@ struct Changeset {
     /// For the purpose of supporting `ChangesetIndex`, and the OT merge
     /// algorithm, these semantics are acceptable, since prepended instructions
     /// can never create new object or table references.
-    iterator insert_stable(iterator position, Instruction);
+    iterator insert_stable(const_iterator position, Instruction);
     template <class InputIt>
-    iterator insert_stable(iterator position, InputIt begin, InputIt end);
+    iterator insert_stable(const_iterator position, InputIt begin, InputIt end);
     //@}
 
     /// Erase instruction at \a position without invalidating other iterators.
@@ -136,7 +146,7 @@ struct Changeset {
     /// \a position exist in the program, they will either point to the
     /// subsequent element if that element was previously inserted with
     /// `insert_stable()`, or otherwise it will be turned into a tombstone.
-    iterator erase_stable(iterator position);
+    iterator erase_stable(const_iterator position);
 
 #if REALM_DEBUG
     struct Reflector;
@@ -156,16 +166,19 @@ struct Changeset {
     /// the last integrated client version.
     version_type last_integrated_remote_version = 0;
 
-    /// Timestamp at origin when producting this changeset.
+    /// Timestamp at origin when the original untransformed changeset was
+    /// produced.
     timestamp_type origin_timestamp = 0;
 
-    /// Client file identifier that produced this changeset.
-    file_ident_type origin_client_file_ident = 0;
+    /// The identifier of the file in the context of which the original
+    /// untransformed changeset was produced.
+    file_ident_type origin_file_ident = 0;
 
 private:
     struct MultiInstruction {
-        std::vector<Instruction> instructions;
+        util::metered::vector<Instruction> instructions;
     };
+    static_assert(sizeof(MultiInstruction) <= Instruction::max_instruction_size, "Instruction::max_instruction_size too low");
 
     // In order to achieve iterator semi-stability (just enough to be able to
     // run the merge algorithm while maintaining a ChangesetIndex), a Changeset
@@ -193,11 +206,11 @@ private:
     // `util::Optional`.
     struct InstructionContainer : Instruction {
         InstructionContainer();
-        InstructionContainer(Instruction instr);
-        InstructionContainer(InstructionContainer&&);
+        InstructionContainer(const Instruction& instr);
+        InstructionContainer(InstructionContainer&&) noexcept;
         InstructionContainer(const InstructionContainer&);
         ~InstructionContainer();
-        InstructionContainer& operator=(InstructionContainer&&);
+        InstructionContainer& operator=(InstructionContainer&&) noexcept;
         InstructionContainer& operator=(const InstructionContainer&);
 
         bool is_multi() const noexcept;
@@ -213,9 +226,12 @@ private:
         const MultiInstruction& get_multi() const noexcept;
     };
 
-    std::vector<InstructionContainer> m_instructions;
-    std::shared_ptr<util::StringBuffer> m_string_buffer;
+    util::metered::vector<InstructionContainer> m_instructions;
+    std::shared_ptr<StringBuffer> m_string_buffer;
     std::shared_ptr<InternStrings> m_strings;
+    bool m_is_dirty = false;
+
+    iterator const_iterator_to_iterator(const_iterator);
 };
 
 /// An iterator type that hides the implementation details of the support for
@@ -227,7 +243,7 @@ private:
 /// empty, and the position is zero, the iterator is pointing to a tombstone.
 template <bool is_const>
 struct Changeset::IteratorImpl {
-    using list_type = std::vector<InstructionContainer>;
+    using list_type = util::metered::vector<InstructionContainer>;
     using inner_iterator_type = std::conditional_t<is_const, list_type::const_iterator, list_type::iterator>;
 
     // reference_type is a pointer because we have no way to create a reference
@@ -243,9 +259,9 @@ struct Changeset::IteratorImpl {
     template <bool is_const_ = is_const>
     IteratorImpl(const IteratorImpl<false>& other, std::enable_if_t<is_const_>* = nullptr)
         : m_inner(other.m_inner), m_pos(other.m_pos) {}
-    IteratorImpl(inner_iterator_type inner) : m_inner(inner), m_pos(0) {}
+    IteratorImpl(inner_iterator_type inner, size_t pos = 0) : m_inner(inner), m_pos(pos) {}
 
-    IteratorImpl& operator++()
+    inline IteratorImpl& operator++()
     {
         ++m_pos;
         if (m_pos >= m_inner->size()) {
@@ -389,7 +405,9 @@ struct Changeset::Printer : Changeset::Reflector::Tracer {
 
 private:
     std::ostream& m_out;
+    bool m_first = true;
     void pad_or_ellipsis(StringData, int width) const;
+    void print_field(StringData name, std::string value);
 };
 #endif // REALM_DEBUG
 
@@ -447,10 +465,9 @@ inline void Changeset::clear() noexcept
 
 inline util::Optional<StringBufferRange> Changeset::try_get_intern_string(InternString string) const noexcept
 {
-    auto it = m_strings->find(string.value);
-    if (it == m_strings->end())
+    if (string.value >= m_strings->size())
         return util::none;
-    return it->second;
+    return (*m_strings)[string.value];
 }
 
 inline StringBufferRange Changeset::get_intern_string(InternString string) const noexcept
@@ -470,12 +487,12 @@ inline const InternStrings& Changeset::interned_strings() const noexcept
     return *m_strings;
 }
 
-inline util::StringBuffer& Changeset::string_buffer() noexcept
+inline auto Changeset::string_buffer() noexcept -> StringBuffer&
 {
     return *m_string_buffer;
 }
 
-inline const util::StringBuffer& Changeset::string_buffer() const noexcept
+inline auto Changeset::string_buffer() const noexcept -> const StringBuffer&
 {
     return *m_string_buffer;
 }
@@ -514,36 +531,47 @@ inline StringBufferRange Changeset::append_string(StringData string)
     return StringBufferRange{uint32_t(offset), uint32_t(string.size())};
 }
 
-inline Changeset::iterator Changeset::insert(iterator pos, Instruction instr)
+inline bool Changeset::is_dirty() const noexcept
+{
+    return m_is_dirty;
+}
+
+inline void Changeset::set_dirty(bool dirty) noexcept
+{
+    m_is_dirty = dirty;
+}
+
+inline Changeset::iterator Changeset::insert(const_iterator pos, Instruction instr)
 {
     Instruction* p = &instr;
     return insert(pos, p, p + 1);
 }
 
 template <class InputIt>
-inline Changeset::iterator Changeset::insert(iterator pos, InputIt begin, InputIt end)
+inline Changeset::iterator Changeset::insert(const_iterator pos, InputIt begin, InputIt end)
 {
     if (pos.m_pos == 0)
         return m_instructions.insert(pos.m_inner, begin, end);
     return insert_stable(pos, begin, end);
 }
 
-inline Changeset::iterator Changeset::erase(iterator pos)
+inline Changeset::iterator Changeset::erase(const_iterator pos)
 {
     if (pos.m_inner->size() <= 1)
         return m_instructions.erase(pos.m_inner);
     return erase_stable(pos);
 }
 
-inline Changeset::iterator Changeset::insert_stable(iterator pos, Instruction instr)
+inline Changeset::iterator Changeset::insert_stable(const_iterator pos, Instruction instr)
 {
     Instruction* p = &instr;
     return insert_stable(pos, p, p + 1);
 }
 
 template <class InputIt>
-inline Changeset::iterator Changeset::insert_stable(iterator pos, InputIt begin, InputIt end)
+inline Changeset::iterator Changeset::insert_stable(const_iterator cpos, InputIt begin, InputIt end)
 {
+    iterator pos = const_iterator_to_iterator(cpos);
     size_t i = 0;
     for (auto it = begin; it != end; ++it, ++i) {
         pos.m_inner->insert(pos.m_pos + i, *it);
@@ -551,16 +579,32 @@ inline Changeset::iterator Changeset::insert_stable(iterator pos, InputIt begin,
     return pos;
 }
 
-inline Changeset::iterator Changeset::erase_stable(iterator pos)
+inline Changeset::iterator Changeset::erase_stable(const_iterator cpos)
 {
+    auto pos = const_iterator_to_iterator(cpos);
+    auto begin = m_instructions.begin();
+    auto end = m_instructions.end();
+    REALM_ASSERT(pos.m_inner >= begin);
+    REALM_ASSERT(pos.m_inner < end);
     pos.m_inner->erase(pos.m_pos);
-    ++pos;
+    if (pos.m_pos >= pos.m_inner->size()) {
+        do {
+            ++pos.m_inner;
+        } while (pos.m_inner != end && pos.m_inner->size() == 0);
+        pos.m_pos = 0;
+    }
     return pos;
 }
 
-inline void Changeset::push_back(Instruction instr)
+inline void Changeset::push_back(const Instruction& instr)
 {
-    m_instructions.push_back(std::move(instr));
+    m_instructions.emplace_back(instr);
+}
+
+inline auto Changeset::const_iterator_to_iterator(const_iterator cpos) -> iterator
+{
+    size_t offset = cpos.m_inner - m_instructions.cbegin();
+    return iterator{m_instructions.begin() + offset, cpos.m_pos};
 }
 
 inline Changeset::InstructionContainer::~InstructionContainer()

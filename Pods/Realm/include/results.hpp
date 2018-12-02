@@ -20,9 +20,12 @@
 #define REALM_RESULTS_HPP
 
 #include "collection_notifications.hpp"
-#include "descriptor_ordering.hpp"
 #include "impl/collection_notifier.hpp"
+#include "list.hpp"
+#include "object.hpp"
+#include "object_schema.hpp"
 #include "property.hpp"
+#include "shared_realm.hpp"
 
 #include <realm/table_view.hpp>
 #include <realm/util/optional.hpp>
@@ -121,6 +124,12 @@ public:
     Results distinct(DistinctDescriptor&& uniqueness) const;
     Results distinct(std::vector<std::string> const& keypaths) const;
 
+    // Create a new Results with only the first `max_count` entries
+    Results limit(size_t max_count) const;
+
+    // Create a new Results by adding sort and distinct combinations
+    Results apply_ordering(DescriptorOrdering&& ordering);
+
     // Return a snapshot of this Results that never updates to reflect changes in the underlying data.
     Results snapshot() const &;
     Results snapshot() &&;
@@ -184,6 +193,18 @@ public:
         UnsupportedColumnTypeException(size_t column, const Table* table, const char* operation);
     };
 
+    // The property request does not exist in the schema
+    struct InvalidPropertyException : public std::logic_error {
+        InvalidPropertyException(const std::string& object_type, const std::string& property_name);
+        const std::string object_type;
+        const std::string property_name;
+	};
+
+    // The requested operation is valid, but has not yet been implemented
+    struct UnimplementedOperationException : public std::logic_error {
+        UnimplementedOperationException(const char *message);
+    };
+
     // Create an async query from this Results
     // The query will be run on a background thread and delivered to the callback,
     // and then rerun after each commit (if needed) and redelivered if it changed
@@ -209,6 +230,17 @@ public:
     template<typename Context, typename T>
     size_t index_of(Context&, T value);
 
+    // Batch updates all items in this collection with the provided value
+    // Must be called inside a transaction
+    // Throws an exception if the value does not match the type for given prop_name
+    template<typename ValueType, typename ContextType>
+    void set_property_value(ContextType& ctx, StringData prop_name, ValueType value);
+
+    // Execute the query immediately if needed. When the relevant query is slow, size()
+    // may cost similar time compared with creating the tableview. Use this function to
+    // avoid running the query twice for size() and other accessors.
+    void evaluate_query_if_needed(bool wants_notifications = true);
+
 private:
     enum class UpdatePolicy {
         Auto,  // Update automatically to reflect changes in the underlying data.
@@ -230,13 +262,13 @@ private:
     bool m_has_used_table_view = false;
     bool m_wants_background_updates = true;
 
-    void update_tableview(bool wants_notifications = true);
     bool update_linkview();
 
     void validate_read() const;
     void validate_write() const;
 
-    void prepare_async();
+    using ForCallback = util::TaggedBool<class ForCallback>;
+    void prepare_async(ForCallback);
 
     template<typename T>
     util::Optional<T> try_get(size_t);
@@ -298,6 +330,29 @@ size_t Results::index_of(Context& ctx, T value)
 {
     return dispatch([&](auto t) { return this->index_of(ctx.template unbox<std::decay_t<decltype(*t)>>(value)); });
 }
+
+template <typename ValueType, typename ContextType>
+void Results::set_property_value(ContextType& ctx, StringData prop_name, ValueType value)
+{
+    // Check invariants for calling this method
+    validate_write();
+    const ObjectSchema& object_schema = get_object_schema();
+    const Property* prop = object_schema.property_for_name(prop_name);
+    if (!prop) {
+        throw InvalidPropertyException(object_schema.name, prop_name);
+    }
+    if (prop->is_primary && !m_realm->is_in_migration()) {
+        throw ModifyPrimaryKeyException(m_object_schema->name, prop->name);
+    }
+
+    // Update all objects in this ResultSets
+    size_t size = this->size();
+    for (size_t i = 0; i < size; ++i) {
+        Object obj(m_realm, *m_object_schema, get(i));
+        obj.set_property_value_impl(ctx, *prop, value, true, false, false);
+    }
+}
+
 } // namespace realm
 
 #endif // REALM_RESULTS_HPP

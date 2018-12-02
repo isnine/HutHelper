@@ -29,6 +29,10 @@
 #import "sync/sync_manager.hpp"
 #import "sync/sync_session.hpp"
 
+#if !defined(REALM_COCOA_VERSION)
+#import "RLMVersion.h"
+#endif
+
 using namespace realm;
 using Level = realm::util::Logger::Level;
 
@@ -87,11 +91,16 @@ struct CocoaSyncLoggerFactory : public realm::SyncLoggerFactory {
 @implementation RLMSyncManager
 
 static RLMSyncManager *s_sharedManager = nil;
-static dispatch_once_t s_onceToken;
 
 + (instancetype)sharedManager {
-    dispatch_once(&s_onceToken, ^{
-        s_sharedManager = [[RLMSyncManager alloc] initWithCustomRootDirectory:nil];
+    static std::once_flag flag;
+    std::call_once(flag, [] {
+        try {
+            s_sharedManager = [[RLMSyncManager alloc] initWithCustomRootDirectory:nil];
+        }
+        catch (std::exception const& e) {
+            @throw RLMException(e);
+        }
     });
     return s_sharedManager;
 }
@@ -105,7 +114,13 @@ static dispatch_once_t s_onceToken;
         bool should_encrypt = !getenv("REALM_DISABLE_METADATA_ENCRYPTION") && !RLMIsRunningInPlayground();
         auto mode = should_encrypt ? SyncManager::MetadataMode::Encryption : SyncManager::MetadataMode::NoEncryption;
         rootDirectory = rootDirectory ?: [NSURL fileURLWithPath:RLMDefaultDirectoryForBundleIdentifier(nil)];
-        SyncManager::shared().configure_file_system(rootDirectory.path.UTF8String, mode, none, true);
+        @autoreleasepool {
+            bool isSwift = !!NSClassFromString(@"RealmSwiftObjectUtil");
+            auto userAgent = [[NSMutableString alloc] initWithFormat:@"Realm%@/%@",
+                              isSwift ? @"Swift" : @"ObjectiveC", REALM_COCOA_VERSION];
+            SyncManager::shared().configure(rootDirectory.path.UTF8String, mode, RLMStringDataWithNSString(userAgent), none, true);
+            SyncManager::shared().set_user_agent(RLMStringDataWithNSString(self.appID));
+        }
         return self;
     }
     return nil;
@@ -116,6 +131,11 @@ static dispatch_once_t s_onceToken;
         _appID = [[NSBundle mainBundle] bundleIdentifier] ?: @"(none)";
     }
     return _appID;
+}
+
+- (void)setUserAgent:(NSString *)userAgent {
+    SyncManager::shared().set_user_agent(RLMStringDataWithNSString(userAgent));
+    _userAgent = userAgent;
 }
 
 #pragma mark - Passthrough properties
@@ -195,6 +215,14 @@ static dispatch_once_t s_onceToken;
 
 + (void)resetForTesting {
     SyncManager::shared().reset_for_testing();
+}
+
+- (RLMNetworkRequestOptions *)networkRequestOptions {
+    RLMNetworkRequestOptions *options = [[RLMNetworkRequestOptions alloc] init];
+    options.authorizationHeaderName = self.authorizationHeaderName;
+    options.customHeaders = self.customRequestHeaders;
+    options.pinnedCertificatePaths = self.pinnedCertificatePaths;
+    return options;
 }
 
 @end

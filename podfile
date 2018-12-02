@@ -7,7 +7,7 @@ target "HutHelper" do
     pod 'UMengUShare/Social/ReducedWeChat'
     pod 'UMengUShare/Social/ReducedQQ'
     pod 'UMengUShare/UI'
-    pod 'AFNetworking', '~> 3.0'
+    pod 'AFNetworking', '~> 3.1.0'
     pod 'MJRefresh'
     pod 'SDWebImage', '~>3.8'
     pod 'LGPlusButtonsView', '~> 1.1.0'
