@@ -41,6 +41,7 @@ PODS:
   - Realm (3.12.0):
     - Realm/Headers (= 3.12.0)
   - Realm/Headers (3.12.0)
+  - Reveal-SDK (19)
   - SDWebImage (3.8.2):
     - SDWebImage/Core (= 3.8.2)
   - SDWebImage/Core (3.8.2)
@@ -72,6 +73,7 @@ DEPENDENCIES:
   - MBProgressHUD (~> 1.0.0)
   - MJRefresh
   - Realm
+  - Reveal-SDK (~> 19)
   - SDWebImage (~> 3.8)
   - TZImagePickerController
   - "UITableView+FDTemplateLayoutCell"
@@ -95,6 +97,7 @@ SPEC REPOS:
     - MJRefresh
     - Reachability
     - Realm
+    - Reveal-SDK
     - SDWebImage
     - SVProgressHUD
     - TZImagePickerController
@@ -115,6 +118,7 @@ SPEC CHECKSUMS:
   MJRefresh: 697f8ec75ebdbe9207767bb682cf0f51b0d8a41f
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   Realm: cdaef23c4ddb36ab1ddffed23f5a7f3332fc5585
+  Reveal-SDK: 9f0d2c6c12eb7507921e5454ac165b7aa21140a4
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   TZImagePickerController: 6cc6e9c1a73bb8e62cfef98fd40af2d90634dcf5
@@ -122,6 +126,6 @@ SPEC CHECKSUMS:
   UMengUShare: 370d180101e13ee0227ae657ab119ba97243d2b3
   YCXMenu: 6003bcd20d8ac72e3eb3c442c97ed21948c6dc1f
 
-PODFILE CHECKSUM: c44d7709f4f15288573cb62a7d952b29968507a3
+PODFILE CHECKSUM: 62715341d5dff94b34c801fe2487dba103502066
 
 COCOAPODS: 1.5.3

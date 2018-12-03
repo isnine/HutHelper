@@ -109,6 +109,7 @@
 		3A8BACF91DDDBD71001C78B8 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A8BACF81DDDBD71001C78B8 /* libsqlite3.tbd */; };
 		3A8BACFD1DDDBDDB001C78B8 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A8BACFC1DDDBDDB001C78B8 /* ImageIO.framework */; };
 		3A96DEE51E94B384006C2CC8 /* VedioPlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A96DEE41E94B384006C2CC8 /* VedioPlayViewController.m */; };
+		3A97676721B587F300FBF0B7 /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A97676621B587F300FBF0B7 /* MoreViewController.swift */; };
 		3A98CB5D1E7CF7AA00CABD0D /* CommentsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A98CB4F1E7CF7A900CABD0D /* CommentsModel.m */; };
 		3A98CB5E1E7CF7AA00CABD0D /* LikesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A98CB511E7CF7A900CABD0D /* LikesModel.m */; };
 		3A98CB5F1E7CF7AA00CABD0D /* MomentsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A98CB531E7CF7A900CABD0D /* MomentsModel.m */; };
@@ -422,6 +423,8 @@
 		3A8BACFC1DDDBDDB001C78B8 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		3A96DEE31E94B384006C2CC8 /* VedioPlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VedioPlayViewController.h; sourceTree = "<group>"; };
 		3A96DEE41E94B384006C2CC8 /* VedioPlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VedioPlayViewController.m; sourceTree = "<group>"; };
+		3A97676621B587F300FBF0B7 /* MoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
+		3A97676E21B58B1300FBF0B7 /* HutHelper-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HutHelper-Bridging-Header.h"; sourceTree = "<group>"; };
 		3A98CB4E1E7CF7A900CABD0D /* CommentsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentsModel.h; sourceTree = "<group>"; };
 		3A98CB4F1E7CF7A900CABD0D /* CommentsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentsModel.m; sourceTree = "<group>"; };
 		3A98CB501E7CF7A900CABD0D /* LikesModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LikesModel.h; sourceTree = "<group>"; };
@@ -954,6 +957,7 @@
 		3A796B9E1E534C1B00794043 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				3A97676521B587BF00FBF0B7 /* More */,
 				3AA3D1EC1F891B0600990358 /* Moments */,
 				3A7C99F61F5D920300DCAC06 /* Day */,
 				3A3775661F35EB37005A5170 /* Lost */,
@@ -1162,6 +1166,14 @@
 				3AFA4F701EC04C0E00CB7DA2 /* Supporting Files */,
 			);
 			path = HutHelper;
+			sourceTree = "<group>";
+		};
+		3A97676521B587BF00FBF0B7 /* More */ = {
+			isa = PBXGroup;
+			children = (
+				3A97676621B587F300FBF0B7 /* MoreViewController.swift */,
+			);
+			path = More;
 			sourceTree = "<group>";
 		};
 		3A98CB441E7CF7A900CABD0D /* Models */ = {
@@ -1495,6 +1507,7 @@
 				3AFA4F741EC04C0E00CB7DA2 /* main.m */,
 				3AFA4F751EC04C0E00CB7DA2 /* language.strings */,
 				3AA270401F6E646D00F5E6F3 /* touristData.plist */,
+				3A97676E21B58B1300FBF0B7 /* HutHelper-Bridging-Header.h */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -1600,6 +1613,7 @@
 				3A7D3CB71DB0A7ED00355E7A /* Embed App Extensions */,
 				59C2F2075DA79D116FBB9EAC /* [CP] Copy Pods Resources */,
 				3A4BDF391F63CF39007E375F /* Embed Watch Content */,
+				B8BB1A14BC717562544563B9 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1799,6 +1813,28 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HutHelper/Pods-HutHelper-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		B8BB1A14BC717562544563B9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-HutHelper/Pods-HutHelper-frameworks.sh",
+				"${PODS_ROOT}/Reveal-SDK/RevealServer-19/iOS/RevealServer.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RevealServer.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HutHelper/Pods-HutHelper-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		C0F366FF131B7D647531FC04 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1900,6 +1936,7 @@
 				3A532CDD1E9121C5003CD5A8 /* VedioTableViewController.m in Sources */,
 				3AA158B31FADF79D00298AAD /* UserHeaderCell.m in Sources */,
 				3A98CC081E7CFA9C00CABD0D /* UserInfoCell.m in Sources */,
+				3A97676721B587F300FBF0B7 /* MoreViewController.swift in Sources */,
 				3A98CBFE1E7CFA9C00CABD0D /* FORGesture.m in Sources */,
 				3A98CC0B1E7CFA9C00CABD0D /* UIView_extra.m in Sources */,
 				3AFA4F781EC04C0E00CB7DA2 /* main.m in Sources */,
@@ -2057,6 +2094,7 @@
 		3A6397EF1EC9C12300EE4BEA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				DEVELOPMENT_TEAM = JW2LR94V6G;
 				INFOPLIST_FILE = HutHelperUITests/Info.plist;
@@ -2071,6 +2109,7 @@
 		3A6397F01EC9C12300EE4BEA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				DEVELOPMENT_TEAM = JW2LR94V6G;
 				INFOPLIST_FILE = HutHelperUITests/Info.plist;
@@ -2228,7 +2267,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "HutHelper-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/HutHelper/Supporting Files/HutHelper-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -2286,7 +2325,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "HutHelper-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/HutHelper/Supporting Files/HutHelper-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = " ${SRCROOT}/**";

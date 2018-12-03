@@ -19,4 +19,5 @@ target "HutHelper" do
     pod 'Realm'
     pod 'Masonry'
     pod 'HUPhotoBrowser'
+    pod 'Reveal-SDK', '~> 19', :configurations => ['Debug']
 end

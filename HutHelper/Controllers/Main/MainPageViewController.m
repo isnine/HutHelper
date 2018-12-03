@@ -35,6 +35,8 @@
 #import "UIBarButtonItem+Badge.h"
 #import "CalendarHomeViewController.h"
 #import "LineUIView.h"
+
+#import "HutHelper-Swift.h"
 #define vBackBarButtonItemName  @"backArrow.png"    //导航条返回默认图片名
 #define ERROR_MSG_INVALID @"登录过期,请重新登录"
 @interface MainPageViewController ()
@@ -520,8 +522,8 @@ int class_error_;
     UIView *rightButtonView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 50)];
     UIButton *mainAndSearchBtn = [[UIButton alloc] initWithFrame:CGRectMake(70, 0, 50, 50)];
     [rightButtonView addSubview:mainAndSearchBtn];
-    [mainAndSearchBtn setImage:[UIImage imageNamed:@"ico_menu_notice"] forState:UIControlStateNormal];
-    [mainAndSearchBtn addTarget:self action:@selector(notice) forControlEvents:UIControlEventTouchUpInside];
+    [mainAndSearchBtn setImage:[UIImage imageNamed:@"ico_menu_more"] forState:UIControlStateNormal];
+    [mainAndSearchBtn addTarget:self action:@selector(more) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *rightCunstomButtonView = [[UIBarButtonItem alloc] initWithCustomView:rightButtonView];
     self.navigationItem.rightBarButtonItem = rightCunstomButtonView;
     //轮番图和手势更换图片
@@ -581,21 +583,21 @@ int class_error_;
     return nil;
 }
 
--(void)notice{
+-(void)more{
    // if ([Config isTourist]) {
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"私信功能暂时关闭" message:@"待重新开发" preferredStyle:  UIAlertControllerStyleAlert];
-        [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            
-        }]];
-        [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            
-        }]];
-        [self presentViewController:alert animated:true completion:nil];
+//        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"私信功能暂时关闭" message:@"待重新开发" preferredStyle:  UIAlertControllerStyleAlert];
+//        [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+//
+//        }]];
+//        [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+//
+//        }]];
+//        [self presentViewController:alert animated:true completion:nil];
 //    }
     
-//    AppDelegate *tempAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-//   // ChatListViewController *chatList = [[ChatListViewController alloc] init];
-//    [tempAppDelegate.mainNavigationController pushViewController:chatList animated:YES];
+    AppDelegate *tempAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    MoreViewController *moreVC = [[MoreViewController alloc]init];
+    [tempAppDelegate.mainNavigationController pushViewController:moreVC animated:YES];
 }
 
 
