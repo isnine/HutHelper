@@ -95,23 +95,23 @@
                                       }
                               }];
         return userCell;
+//    }else if (indexPath.row == 2) {
+//        itemCell.Text.text                = @"私信";
+//        itemCell.Img.image=[UIImage imageNamed:@"ico_left_im"];
+//        return itemCell;
     }else if (indexPath.row == 2) {
-        itemCell.Text.text                = @"私信";
-        itemCell.Img.image=[UIImage imageNamed:@"ico_left_im"];
-        return itemCell;
-    }else if (indexPath.row == 3) {
         itemCell.Text.text              = @"分享应用";
         itemCell.Img.image=[UIImage imageNamed:@"ico_left_shares"];
         return itemCell;
-    } else if (indexPath.row == 4) {
+    } else if (indexPath.row == 3) {
         itemCell.Text.text                = @"切换用户";
         itemCell.Img.image=[UIImage imageNamed:@"ico_left_sign-out"];
         return itemCell;
-    } else if (indexPath.row == 5) {
+    } else if (indexPath.row == 4) {
         itemCell.Text.text                = @"关于";
         itemCell.Img.image=[UIImage imageNamed:@"ico_left_about"];
         return itemCell;
-    } else if (indexPath.row == 6) {
+    } else if (indexPath.row == 5) {
         itemCell.Text.text                = @"反馈";
         itemCell.Img.image=[UIImage imageNamed:@"ico_left_feedback"];
         return itemCell;
@@ -144,30 +144,30 @@
         [self.tableview reloadData];
         [Config pushViewController:@"User"];
     }
-    if (indexPath.row == 2) {  //私信
-        if ([Config isTourist]) {
-            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"游客请登录" message:@"需要学校账号才可使用私信" preferredStyle:  UIAlertControllerStyleAlert];
-            [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                
-            }]];
-            [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-
-            }]];
-            [self presentViewController:alert animated:true completion:nil];
-        }
-        
-        ChatChoiceTableViewController *chatChoiceTableViewController=[[ChatChoiceTableViewController alloc]init];
-        AppDelegate *tempAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-        [tempAppDelegate.mainNavigationController pushViewController:chatChoiceTableViewController animated:YES];
-    }
-    if (indexPath.row == 3) {  //分享
+//    if (indexPath.row == 2) {  //私信
+//        if ([Config isTourist]) {
+//            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"游客请登录" message:@"需要学校账号才可使用私信" preferredStyle:  UIAlertControllerStyleAlert];
+//            [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+//
+//            }]];
+//            [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+//
+//            }]];
+//            [self presentViewController:alert animated:true completion:nil];
+//        }
+//
+//        ChatChoiceTableViewController *chatChoiceTableViewController=[[ChatChoiceTableViewController alloc]init];
+//        AppDelegate *tempAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+//        [tempAppDelegate.mainNavigationController pushViewController:chatChoiceTableViewController animated:YES];
+//    }
+    if (indexPath.row == 2) {  //分享
         [UMSocialUIManager setPreDefinePlatforms:@[@(UMSocialPlatformType_WechatSession),@(UMSocialPlatformType_QQ),@(UMSocialPlatformType_Qzone),@(UMSocialPlatformType_Sina)]];
         [UMSocialUIManager showShareMenuViewInWindowWithPlatformSelectionBlock:^(UMSocialPlatformType platformType, NSDictionary *userInfo) {
             [self shareWebPageToPlatformType:platformType];
         }];
     }
     
-    if (indexPath.row == 4) {  //切换用户
+    if (indexPath.row == 3) {  //切换用户
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"切换用户" message:@"是否要退出当前账号" preferredStyle:  UIAlertControllerStyleAlert];
         [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             
@@ -182,10 +182,10 @@
         [self presentViewController:alert animated:true completion:nil];
        
     }
-    if (indexPath.row == 5) {  //关于
+    if (indexPath.row == 4) {  //关于
         [Config pushViewController:@"About"];
     }
-    if (indexPath.row == 6) {  //反馈
+    if (indexPath.row == 5) {  //反馈
         [self feedBack];
     }
     

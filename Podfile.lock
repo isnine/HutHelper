@@ -14,6 +14,7 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
+  - Alamofire (4.8.0)
   - ASIHTTPRequest (1.8.2):
     - ASIHTTPRequest/ASIWebPageRequest (= 1.8.2)
     - ASIHTTPRequest/CloudFiles (= 1.8.2)
@@ -27,10 +28,14 @@ PODS:
     - Reachability
   - ASIHTTPRequest/S3 (1.8.2):
     - ASIHTTPRequest/Core
+  - CollectionKit (2.2.0):
+    - CollectionKit/Core (= 2.2.0)
+  - CollectionKit/Core (2.2.0)
   - DJRefresh (1.0.5)
   - DTKDropdownMenu (0.0.4):
     - Masonry (~> 0.6)
   - DZNEmptyDataSet (1.8.1)
+  - HandyJSON (4.2.1)
   - HUPhotoBrowser (1.4.5):
     - SVProgressHUD
   - LGPlusButtonsView (1.1.1)
@@ -38,14 +43,13 @@ PODS:
   - MBProgressHUD (1.0.0)
   - MJRefresh (3.1.15.7)
   - Reachability (3.2)
-  - Realm (3.12.0):
-    - Realm/Headers (= 3.12.0)
-  - Realm/Headers (3.12.0)
   - Reveal-SDK (19)
   - SDWebImage (3.8.2):
     - SDWebImage/Core (= 3.8.2)
   - SDWebImage/Core (3.8.2)
+  - SnapKit (4.0.1)
   - SVProgressHUD (2.2.5)
+  - SwiftyJSON (4.2.0)
   - TZImagePickerController (3.1.5)
   - "UITableView+FDTemplateLayoutCell (1.6)"
   - UMengUShare/Core (6.4.8.2):
@@ -63,18 +67,22 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (~> 3.1.0)
+  - Alamofire
   - ASIHTTPRequest
+  - CollectionKit
   - DJRefresh (~> 1.0.5)
   - DTKDropdownMenu (~> 0.0.4)
   - DZNEmptyDataSet
+  - HandyJSON
   - HUPhotoBrowser
   - LGPlusButtonsView (~> 1.1.0)
   - Masonry
   - MBProgressHUD (~> 1.0.0)
   - MJRefresh
-  - Realm
   - Reveal-SDK (~> 19)
   - SDWebImage (~> 3.8)
+  - SnapKit (~> 4.0.0)
+  - SwiftyJSON
   - TZImagePickerController
   - "UITableView+FDTemplateLayoutCell"
   - UMengUShare/Social/ReducedQQ
@@ -86,20 +94,24 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - AFNetworking
+    - Alamofire
     - ASIHTTPRequest
+    - CollectionKit
     - DJRefresh
     - DTKDropdownMenu
     - DZNEmptyDataSet
+    - HandyJSON
     - HUPhotoBrowser
     - LGPlusButtonsView
     - Masonry
     - MBProgressHUD
     - MJRefresh
     - Reachability
-    - Realm
     - Reveal-SDK
     - SDWebImage
+    - SnapKit
     - SVProgressHUD
+    - SwiftyJSON
     - TZImagePickerController
     - "UITableView+FDTemplateLayoutCell"
     - UMengUShare
@@ -107,25 +119,29 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  Alamofire: 3ec537f71edc9804815215393ae2b1a8ea33a844
   ASIHTTPRequest: ec013992946676b7978dcbde6396d57312d21db4
+  CollectionKit: 5caa5341860d4c9b748ebfeaab97530b2d02c7c0
   DJRefresh: 32b3776546004faddddc28035442ba15e07c5f1b
   DTKDropdownMenu: 3a3d8afc4f70fab50a5a8131aadc8b383ef54891
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
+  HandyJSON: d0c5fc80204f29056d59d3e5c4587fa0b16b60a8
   HUPhotoBrowser: 87a8333c111a4e71ebf5400bf66d0eeb522c0098
   LGPlusButtonsView: 57878cd3d461d0ee2042f5b7b25d1c017e22a084
   Masonry: 281802d04d787ea2973179ee8bcb50500579ede2
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   MJRefresh: 697f8ec75ebdbe9207767bb682cf0f51b0d8a41f
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
-  Realm: cdaef23c4ddb36ab1ddffed23f5a7f3332fc5585
   Reveal-SDK: 9f0d2c6c12eb7507921e5454ac165b7aa21140a4
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
+  SnapKit: 0de968a9fec17499afa29683b05d0c775b6d1c29
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
+  SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
   TZImagePickerController: 6cc6e9c1a73bb8e62cfef98fd40af2d90634dcf5
   "UITableView+FDTemplateLayoutCell": 5c949b4a5059c404b442926c0e80f81d10a2d66f
   UMengUShare: 370d180101e13ee0227ae657ab119ba97243d2b3
   YCXMenu: 6003bcd20d8ac72e3eb3c442c97ed21948c6dc1f
 
-PODFILE CHECKSUM: 62715341d5dff94b34c801fe2487dba103502066
+PODFILE CHECKSUM: 4b42fe1d7e1ed629b9876f34c3be02a2b9708344
 
 COCOAPODS: 1.5.3

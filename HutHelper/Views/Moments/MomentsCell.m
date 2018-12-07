@@ -25,7 +25,7 @@
 #import "MomentsViewController.h"
 
 #import "UserShowViewController.h"
-#import <HUPhotoBrowser.h>
+#import "HUPhotoBrowser.h"
 @interface MomentsCell ()
 @end
 
