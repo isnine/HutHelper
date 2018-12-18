@@ -38,6 +38,7 @@ PODS:
   - HandyJSON (4.2.1)
   - HUPhotoBrowser (1.4.5):
     - SVProgressHUD
+  - Kingfisher (4.10.1)
   - LGPlusButtonsView (1.1.1)
   - Masonry (0.6.4)
   - MBProgressHUD (1.0.0)
@@ -75,6 +76,7 @@ DEPENDENCIES:
   - DZNEmptyDataSet
   - HandyJSON
   - HUPhotoBrowser
+  - Kingfisher
   - LGPlusButtonsView (~> 1.1.0)
   - Masonry
   - MBProgressHUD (~> 1.0.0)
@@ -102,6 +104,7 @@ SPEC REPOS:
     - DZNEmptyDataSet
     - HandyJSON
     - HUPhotoBrowser
+    - Kingfisher
     - LGPlusButtonsView
     - Masonry
     - MBProgressHUD
@@ -127,6 +130,7 @@ SPEC CHECKSUMS:
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   HandyJSON: d0c5fc80204f29056d59d3e5c4587fa0b16b60a8
   HUPhotoBrowser: 87a8333c111a4e71ebf5400bf66d0eeb522c0098
+  Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
   LGPlusButtonsView: 57878cd3d461d0ee2042f5b7b25d1c017e22a084
   Masonry: 281802d04d787ea2973179ee8bcb50500579ede2
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
@@ -142,6 +146,6 @@ SPEC CHECKSUMS:
   UMengUShare: 370d180101e13ee0227ae657ab119ba97243d2b3
   YCXMenu: 6003bcd20d8ac72e3eb3c442c97ed21948c6dc1f
 
-PODFILE CHECKSUM: 4b42fe1d7e1ed629b9876f34c3be02a2b9708344
+PODFILE CHECKSUM: 8306d2eca6991c659356cd5daf27c343b864e896
 
 COCOAPODS: 1.5.3

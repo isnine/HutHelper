@@ -65,11 +65,11 @@ int class_error_;
     //注册
     [Config saveUmeng];
     
-#ifdef DEBUG
-    AppDelegate *tempAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    MoreViewController *moreVC = [[MoreViewController alloc]init];
-    [self.navigationController pushViewController:moreVC animated:YES];
-#endif
+//#ifdef DEBUG
+//    AppDelegate *tempAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+//    MoreViewController *moreVC = [[MoreViewController alloc]init];
+//    [self.navigationController pushViewController:moreVC animated:YES];
+//#endif
 }
 
 - (void)viewWillDisappear:(BOOL)animated{

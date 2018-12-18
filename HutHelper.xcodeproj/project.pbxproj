@@ -88,6 +88,8 @@
 		3A532CD21E910C13003CD5A8 /* ZFPlayerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A532CC21E910C13003CD5A8 /* ZFPlayerModel.m */; };
 		3A532CD31E910C13003CD5A8 /* ZFPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A532CC41E910C13003CD5A8 /* ZFPlayerView.m */; };
 		3A532CDD1E9121C5003CD5A8 /* VedioTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A532CDC1E9121C5003CD5A8 /* VedioTableViewController.m */; };
+		3A53875621C8987D00538CA7 /* More.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A53875521C8987D00538CA7 /* More.swift */; };
+		3A53875821C8988600538CA7 /* MoreApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A53875721C8988600538CA7 /* MoreApp.swift */; };
 		3A6397EB1EC9C12300EE4BEA /* HutHelperUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A6397EA1EC9C12300EE4BEA /* HutHelperUITests.m */; };
 		3A796C1F1E534C1B00794043 /* CourseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A796BA41E534C1B00794043 /* CourseViewController.m */; };
 		3A796C251E534C1B00794043 /* FeedbackResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A796BB21E534C1B00794043 /* FeedbackResultViewController.m */; };
@@ -157,7 +159,6 @@
 		3AD047B61F316CCA00B61A02 /* HandTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ABDCDD41F316BEC00B95D6C /* HandTableViewController.m */; };
 		3AD443EB1E97CF5600720F42 /* VedioTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD443EA1E97CF5600720F42 /* VedioTableViewCell.m */; };
 		3ADBB2FC21B6760900670412 /* MoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADBB2FB21B6760900670412 /* MoreCell.swift */; };
-		3ADBB2FE21B6783500670412 /* PageTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADBB2FD21B6783400670412 /* PageTitleView.swift */; };
 		3ADBB30121B678B300670412 /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADBB30021B678B200670412 /* UIColor+Ext.swift */; };
 		3AE01BA81EB0D23700D5B7EF /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A8BACF61DDDBD5D001C78B8 /* SystemConfiguration.framework */; };
 		3AE01BAA1EB0D23F00D5B7EF /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AE01BA91EB0D23F00D5B7EF /* CoreFoundation.framework */; };
@@ -378,6 +379,8 @@
 		3A532CC41E910C13003CD5A8 /* ZFPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFPlayerView.m; sourceTree = "<group>"; };
 		3A532CDB1E9121C5003CD5A8 /* VedioTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VedioTableViewController.h; sourceTree = "<group>"; };
 		3A532CDC1E9121C5003CD5A8 /* VedioTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VedioTableViewController.m; sourceTree = "<group>"; };
+		3A53875521C8987D00538CA7 /* More.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = More.swift; sourceTree = "<group>"; };
+		3A53875721C8988600538CA7 /* MoreApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreApp.swift; sourceTree = "<group>"; };
 		3A6397E81EC9C12300EE4BEA /* HutHelperUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HutHelperUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A6397EA1EC9C12300EE4BEA /* HutHelperUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HutHelperUITests.m; sourceTree = "<group>"; };
 		3A6397EC1EC9C12300EE4BEA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -515,7 +518,6 @@
 		3AD443E91E97CF5600720F42 /* VedioTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VedioTableViewCell.h; sourceTree = "<group>"; };
 		3AD443EA1E97CF5600720F42 /* VedioTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VedioTableViewCell.m; sourceTree = "<group>"; };
 		3ADBB2FB21B6760900670412 /* MoreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreCell.swift; sourceTree = "<group>"; };
-		3ADBB2FD21B6783400670412 /* PageTitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageTitleView.swift; sourceTree = "<group>"; };
 		3ADBB30021B678B200670412 /* UIColor+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
 		3AE01BA91EB0D23F00D5B7EF /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		3AE01BAB1EB0D24900D5B7EF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -951,6 +953,15 @@
 			path = Vedio;
 			sourceTree = "<group>";
 		};
+		3A53875421C8986A00538CA7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3A53875521C8987D00538CA7 /* More.swift */,
+				3A53875721C8988600538CA7 /* MoreApp.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		3A6397E91EC9C12300EE4BEA /* HutHelperUITests */ = {
 			isa = PBXGroup;
 			children = (
@@ -1178,7 +1189,7 @@
 		3A97676521B587BF00FBF0B7 /* More */ = {
 			isa = PBXGroup;
 			children = (
-				3ADBB2FD21B6783400670412 /* PageTitleView.swift */,
+				3A53875421C8986A00538CA7 /* Model */,
 				3A97676621B587F300FBF0B7 /* MoreViewController.swift */,
 				3ADBB2FB21B6760900670412 /* MoreCell.swift */,
 			);
@@ -1918,7 +1929,6 @@
 				3A3775791F35EB51005A5170 /* LostViewController.m in Sources */,
 				3A3775561F35EA50005A5170 /* LostCell.m in Sources */,
 				3A7F639A1F35805D00991DAC /* Score.m in Sources */,
-				3ADBB2FE21B6783500670412 /* PageTitleView.swift in Sources */,
 				3AD047B01F316CCA00B61A02 /* HandAddViewController.m in Sources */,
 				3AD047B21F316CCA00B61A02 /* HandShowViewController.m in Sources */,
 				3AD047B41F316CCA00B61A02 /* HandTableViewCell.m in Sources */,
@@ -1984,6 +1994,7 @@
 				3A796C3A1E534C1B00794043 /* MainPageViewController.m in Sources */,
 				3AFA4F631EC0485400CB7DA2 /* NSData+CRC32.m in Sources */,
 				3AFA4F6C1EC049F600CB7DA2 /* Math.m in Sources */,
+				3A53875621C8987D00538CA7 /* More.swift in Sources */,
 				3AAECDBA1F4344C7004A6156 /* UIBarButtonItem+Badge.m in Sources */,
 				3A796C4E1E534C1B00794043 /* ScoreDataViewController.m in Sources */,
 				3AC12C2F1F3B3C6D007C3B7E /* ChatUser.m in Sources */,
@@ -2005,6 +2016,7 @@
 				3A532CC81E910C13003CD5A8 /* UIImageView+ZFCache.m in Sources */,
 				3A42B7561F42E953005D45D6 /* ChatChoiceTableViewCell.m in Sources */,
 				3A532CCC1E910C13003CD5A8 /* UIViewController+ZFPlayerRotation.m in Sources */,
+				3A53875821C8988600538CA7 /* MoreApp.swift in Sources */,
 				3A4049091E6A6C730038F207 /* MomentsCell.m in Sources */,
 				3A98CB721E7CF82F00CABD0D /* MBProgressHUD+MJ.m in Sources */,
 				3AE8005D1F34A6FA00D1BAC0 /* Lost.m in Sources */,
@@ -2261,7 +2273,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREFIX_HEADER = "HutHelper/Supporting Files/HutHelper-Prefix.pch";
 				INFOPLIST_FILE = "HutHelper/Supporting Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2319,7 +2331,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREFIX_HEADER = "HutHelper/Supporting Files/HutHelper-Prefix.pch";
 				INFOPLIST_FILE = "HutHelper/Supporting Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
