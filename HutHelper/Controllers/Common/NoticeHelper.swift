@@ -9,9 +9,9 @@ import Foundation
 import SwiftMessages
 
 public class NoticeHelper {
-//    static func showError(_ text: String) {
-//        showNotice(text, theme: .error)
-//    }
+    static func showError(_ text: String) {
+        showNotice(text, "请稍后再试", theme: .error)
+    }
 //    static func showSuccess(_ text: String) {
 //        showNotice(text, theme: .success)
 //    }
@@ -30,7 +30,12 @@ public class NoticeHelper {
         view.button?.isHidden = true
         // Set message title, body, and icon. Here, we're overriding the default warning
         // image with an emoji character.
-        let iconText = "😁"
+        var iconText = ""
+        if theme == .success {
+            iconText = "😁"
+        } else if theme == .error {
+            iconText = "☹️"
+        }
         view.configureContent(title: title, body: body, iconText: iconText)
         
         // Increase the external margin around the card. In general, the effect of this setting
