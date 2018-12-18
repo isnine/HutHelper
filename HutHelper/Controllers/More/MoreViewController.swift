@@ -33,7 +33,8 @@ extension MoreViewController {
             guard responds.result.isSuccess else { return }
             if let value = responds.result.value {
                 let json = JSON(value)
-                
+                let version = json["version"]
+                RedDotManager.saveVersion(version.intValue)
                 let links = json["links"]
                 for link in links{
                     if let mainmodel = More.deserialize(from: link.1.rawString()) {

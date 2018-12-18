@@ -93,6 +93,7 @@
 		3A53875D21C8C2F600538CA7 /* StoreHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A53875C21C8C2F600538CA7 /* StoreHelper.swift */; };
 		3A53875F21C8C98700538CA7 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A53875E21C8C98700538CA7 /* StoreKit.framework */; };
 		3A53876121C8DBC700538CA7 /* NoticeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A53876021C8DBC700538CA7 /* NoticeHelper.swift */; };
+		3A53876521C8E9CF00538CA7 /* RedDotManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A53876421C8E9CF00538CA7 /* RedDotManager.swift */; };
 		3A6397EB1EC9C12300EE4BEA /* HutHelperUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A6397EA1EC9C12300EE4BEA /* HutHelperUITests.m */; };
 		3A796C1F1E534C1B00794043 /* CourseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A796BA41E534C1B00794043 /* CourseViewController.m */; };
 		3A796C251E534C1B00794043 /* FeedbackResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A796BB21E534C1B00794043 /* FeedbackResultViewController.m */; };
@@ -387,6 +388,7 @@
 		3A53875C21C8C2F600538CA7 /* StoreHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreHelper.swift; sourceTree = "<group>"; };
 		3A53875E21C8C98700538CA7 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		3A53876021C8DBC700538CA7 /* NoticeHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoticeHelper.swift; sourceTree = "<group>"; };
+		3A53876421C8E9CF00538CA7 /* RedDotManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedDotManager.swift; sourceTree = "<group>"; };
 		3A6397E81EC9C12300EE4BEA /* HutHelperUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HutHelperUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A6397EA1EC9C12300EE4BEA /* HutHelperUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HutHelperUITests.m; sourceTree = "<group>"; };
 		3A6397EC1EC9C12300EE4BEA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -1507,6 +1509,7 @@
 				3A53876021C8DBC700538CA7 /* NoticeHelper.swift */,
 				3A53875B21C8C2E100538CA7 /* Store */,
 				3ADBB30021B678B200670412 /* UIColor+Ext.swift */,
+				3A53876421C8E9CF00538CA7 /* RedDotManager.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -2035,6 +2038,7 @@
 				3AA158B01FADAF3800298AAD /* UserCell.m in Sources */,
 				3AC12C241F3B381E007C3B7E /* ChatChoiceTableViewController.m in Sources */,
 				3AA3D1F51F8934A700990358 /* UINavigationItem+CustomBackButton.m in Sources */,
+				3A53876521C8E9CF00538CA7 /* RedDotManager.swift in Sources */,
 				3A532CC51E910C13003CD5A8 /* ASValuePopUpView.m in Sources */,
 				3A98CC011E7CFA9C00CABD0D /* GWPCourseListView.m in Sources */,
 				3AFA4F661EC0488200CB7DA2 /* UILabel+LXAdd.m in Sources */,

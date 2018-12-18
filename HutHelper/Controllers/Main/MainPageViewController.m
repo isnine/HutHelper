@@ -90,8 +90,14 @@ int class_error_;
 //    RCIMClient *test=[RCIMClient sharedRCIMClient];
 //    [test addObserver:self forKeyPath:@"totalUnreadCount" options:NSKeyValueObservingOptionNew context:nil];
 //    if ([[RCIMClient sharedRCIMClient] getTotalUnreadCount]>0) {
-//        self.navigationItem.rightBarButtonItem.badgeValue = @" ";
-//        [self.navigationItem.rightBarButtonItem setBadgeOriginY:SYReal(13)];
+    [RedDotManager getHash: ^(BOOL equal) {
+        if (!equal) {
+            self.navigationItem.rightBarButtonItem.badgeValue = @" ";
+            [self.navigationItem.rightBarButtonItem setBadgeOriginY:SYReal(13)];
+        } else {
+            self.navigationItem.rightBarButtonItem.badgeValue = @"";
+        }
+    }];
 //    }else if([[RCIMClient sharedRCIMClient] getTotalUnreadCount]==0){
 //        self.navigationItem.rightBarButtonItem.badgeValue = @"";
 //    }
@@ -589,17 +595,6 @@ int class_error_;
 }
 
 -(void)more{
-   // if ([Config isTourist]) {
-//        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"私信功能暂时关闭" message:@"待重新开发" preferredStyle:  UIAlertControllerStyleAlert];
-//        [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-//
-//        }]];
-//        [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-//
-//        }]];
-//        [self presentViewController:alert animated:true completion:nil];
-//    }
-    
     AppDelegate *tempAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     MoreViewController *moreVC = [[MoreViewController alloc]init];
     [tempAppDelegate.mainNavigationController pushViewController:moreVC animated:YES];
