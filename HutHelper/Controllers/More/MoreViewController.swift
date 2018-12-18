@@ -66,7 +66,7 @@ extension MoreViewController {
             var cellHeight = CGFloat(self.getTextHeigh(textStr: data.describe, font: UIFont.boldSystemFont(ofSize: 18), width: 300))
             cellHeight += 55
             if data.image != "" {
-                cellHeight += 120
+                cellHeight += 150
             }
             if data.app != nil {
                 cellHeight += 40

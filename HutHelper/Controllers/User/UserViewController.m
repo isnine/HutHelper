@@ -81,6 +81,7 @@ UIImage* img ;
 {
     [MBProgressHUD showMessage:@"上传中" toView:self.view];
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/html", nil];
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
     manager.requestSerializer.timeoutInterval = 5.f;
     [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];

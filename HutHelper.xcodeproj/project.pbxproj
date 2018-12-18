@@ -92,6 +92,7 @@
 		3A53875821C8988600538CA7 /* MoreApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A53875721C8988600538CA7 /* MoreApp.swift */; };
 		3A53875D21C8C2F600538CA7 /* StoreHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A53875C21C8C2F600538CA7 /* StoreHelper.swift */; };
 		3A53875F21C8C98700538CA7 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A53875E21C8C98700538CA7 /* StoreKit.framework */; };
+		3A53876121C8DBC700538CA7 /* NoticeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A53876021C8DBC700538CA7 /* NoticeHelper.swift */; };
 		3A6397EB1EC9C12300EE4BEA /* HutHelperUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A6397EA1EC9C12300EE4BEA /* HutHelperUITests.m */; };
 		3A796C1F1E534C1B00794043 /* CourseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A796BA41E534C1B00794043 /* CourseViewController.m */; };
 		3A796C251E534C1B00794043 /* FeedbackResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A796BB21E534C1B00794043 /* FeedbackResultViewController.m */; };
@@ -385,6 +386,7 @@
 		3A53875721C8988600538CA7 /* MoreApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreApp.swift; sourceTree = "<group>"; };
 		3A53875C21C8C2F600538CA7 /* StoreHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreHelper.swift; sourceTree = "<group>"; };
 		3A53875E21C8C98700538CA7 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		3A53876021C8DBC700538CA7 /* NoticeHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoticeHelper.swift; sourceTree = "<group>"; };
 		3A6397E81EC9C12300EE4BEA /* HutHelperUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HutHelperUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A6397EA1EC9C12300EE4BEA /* HutHelperUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HutHelperUITests.m; sourceTree = "<group>"; };
 		3A6397EC1EC9C12300EE4BEA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -1502,6 +1504,7 @@
 		3ADBB2FF21B678A700670412 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				3A53876021C8DBC700538CA7 /* NoticeHelper.swift */,
 				3A53875B21C8C2E100538CA7 /* Store */,
 				3ADBB30021B678B200670412 /* UIColor+Ext.swift */,
 			);
@@ -1840,6 +1843,7 @@
 				"${PODS_ROOT}/DTKDropdownMenu/DTKDropdownMenuView/DTKDropdownMenuView.bundle",
 				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
 				"${PODS_ROOT}/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/SwiftMessages/SwiftMessages.bundle",
 				"${PODS_ROOT}/TZImagePickerController/TZImagePickerController/TZImagePickerController/TZImagePickerController.bundle",
 				"${PODS_ROOT}/UMengUShare/UShareSDK/UMSocialSDK/UMSocialSDKPromptResources.bundle",
 				"${PODS_ROOT}/UMengUShare/UShareSDK/UMSocialUI/UMSocialSDKResources.bundle",
@@ -1850,6 +1854,7 @@
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/DTKDropdownMenuView.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MJRefresh.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SVProgressHUD.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SwiftMessages.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TZImagePickerController.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/UMSocialSDKPromptResources.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/UMSocialSDKResources.bundle",
@@ -2006,6 +2011,7 @@
 				3A796C541E534C1B00794043 /* UserViewController.m in Sources */,
 				3AAB90991EA393A000C35137 /* ScoreRank.m in Sources */,
 				3ACF3D081EA731E800FBEC57 /* CourseXpTableViewController.m in Sources */,
+				3A53876121C8DBC700538CA7 /* NoticeHelper.swift in Sources */,
 				3A1CEC331E93D71A002D8583 /* Vedio.m in Sources */,
 				3A31FE9C1F3A093700104A03 /* XWInteractiveTransition.m in Sources */,
 				3A98CC031E7CFA9C00CABD0D /* iVersion.m in Sources */,

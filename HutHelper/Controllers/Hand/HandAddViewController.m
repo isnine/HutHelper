@@ -210,6 +210,7 @@
         _responstring=@"";
         _getphoto=0;
         AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+        manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/html", nil];
         [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
         manager.requestSerializer.timeoutInterval = 5.f;
         [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
@@ -232,6 +233,7 @@
                         _getphoto++;
                         while (_getphoto==_selectedPhotos.count) {
                             AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+                            manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/html", nil];
                             [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
                             manager.requestSerializer.timeoutInterval = 5.f;
                             [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];

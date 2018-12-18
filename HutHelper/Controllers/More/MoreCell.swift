@@ -86,7 +86,7 @@ class MoreCell: UICollectionViewCell {
         describe.text = data.describe
         
         titleImageView.snp.updateConstraints { (make) in
-            make.height.equalTo(data.image == "" ? 0 :120)
+            make.height.equalTo(data.image == "" ? 0 :150)
         }
         let isHadApp = (data.app != nil)
         icoImageView.isHidden = !isHadApp
@@ -103,7 +103,7 @@ class MoreCell: UICollectionViewCell {
         addSubview(icoDescribe)
         titleImageView.snp.makeConstraints{(make)in
             make.top.left.right.equalTo(self)
-            make.height.equalTo(120)
+            make.height.equalTo(0)
         }
         title.snp.makeConstraints { (make) in
             make.top.equalTo(titleImageView.snp.bottom).offset(5)

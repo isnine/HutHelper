@@ -8,6 +8,7 @@ def swiftUI
     pod 'SnapKit', '~> 4.0.0'
     pod "CollectionKit"
     pod 'SwiftyStoreKit'
+    pod 'SwiftMessages'
 end
 
 def debug

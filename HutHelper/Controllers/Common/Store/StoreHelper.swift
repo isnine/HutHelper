@@ -11,10 +11,13 @@ import SwiftyStoreKit
 
 public class StoreHelper {
     static func buy(productId: String) {
+//        NoticeHelper.showThanks("感谢您")
         SwiftyStoreKit.purchaseProduct("name.wxz.huthelper.support", quantity: 1, atomically: true) { result in
             switch result {
             case .success(let purchase):
-                print("Purchase Success: \(purchase.productId)")
+                DispatchQueue.main.async {
+                    NoticeHelper.showThanks("感谢您\(purchase.product.localizedTitle)")
+                }
             case .error(let error):
                 switch error.code {
                 case .unknown: print("Unknown error. Please contact support")
@@ -31,16 +34,6 @@ public class StoreHelper {
             }
         }
         
-//        SwiftyStoreKit.retrieveProductsInfo(["name.wxz.huthelper.support"]) { result in
-//            if let product = result.retrievedProducts.first {
-//                let priceString = product.localizedPrice!
-//                print("Product: \(product.localizedDescription), price: \(priceString)")
-//            } else if let invalidProductId = result.invalidProductIDs.first {
-//                print("Invalid product identifier: \(invalidProductId)")
-//            } else {
-//                print("Error: \(result.error)")
-//            }
-//        }
     }
 }
 

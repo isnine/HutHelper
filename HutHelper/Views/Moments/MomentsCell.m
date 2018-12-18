@@ -374,6 +374,7 @@
         // NSLog(@"%@",contentStr);
         // 1.创建AFN管理者
         AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+        manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/html", nil];
         [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
         manager.requestSerializer.timeoutInterval = 4.f;
         [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
@@ -443,6 +444,7 @@
         CommentsModel *commentsModel=_data.commentsModelArray[comments_i];
         NSString *Url_String=[NSString stringWithFormat:@"%@/%@/%@/%@",Config.getApiMomentsCommentDelete,Config.getStudentKH,Config.getRememberCodeApp,commentsModel.comment_id];
         AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+        manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/html", nil];
         [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
         manager.requestSerializer.timeoutInterval = 3.f;
         [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];

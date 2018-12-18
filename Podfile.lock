@@ -50,6 +50,9 @@ PODS:
   - SDWebImage/Core (3.8.2)
   - SnapKit (4.0.1)
   - SVProgressHUD (2.2.5)
+  - SwiftMessages (6.0.1):
+    - SwiftMessages/App (= 6.0.1)
+  - SwiftMessages/App (6.0.1)
   - SwiftyJSON (4.2.0)
   - SwiftyStoreKit (0.14.1)
   - TZImagePickerController (3.1.5)
@@ -85,6 +88,7 @@ DEPENDENCIES:
   - Reveal-SDK (~> 19)
   - SDWebImage (~> 3.8)
   - SnapKit (~> 4.0.0)
+  - SwiftMessages
   - SwiftyJSON
   - SwiftyStoreKit
   - TZImagePickerController
@@ -116,6 +120,7 @@ SPEC REPOS:
     - SDWebImage
     - SnapKit
     - SVProgressHUD
+    - SwiftMessages
     - SwiftyJSON
     - SwiftyStoreKit
     - TZImagePickerController
@@ -143,6 +148,7 @@ SPEC CHECKSUMS:
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
   SnapKit: 0de968a9fec17499afa29683b05d0c775b6d1c29
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
+  SwiftMessages: 42ed7b6e1f2f1ead9ee667dc61a0ae87e4f49570
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
   SwiftyStoreKit: a5cdece4327f3943eb72fa81aebe3aa6684b5eab
   TZImagePickerController: 6cc6e9c1a73bb8e62cfef98fd40af2d90634dcf5
@@ -150,6 +156,6 @@ SPEC CHECKSUMS:
   UMengUShare: 370d180101e13ee0227ae657ab119ba97243d2b3
   YCXMenu: 6003bcd20d8ac72e3eb3c442c97ed21948c6dc1f
 
-PODFILE CHECKSUM: a85dcc4ae5e9b05a1a54c94a396cb6f02eeded2d
+PODFILE CHECKSUM: f3f8c1e3b2f9d3919c01163618667f980a405c25
 
 COCOAPODS: 1.5.3
