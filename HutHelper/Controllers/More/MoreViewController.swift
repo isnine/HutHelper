@@ -64,7 +64,7 @@ extension MoreViewController {
         
         let sizeSource = { (index: Int, data: More, collectionSize: CGSize) -> CGSize in
             var cellHeight = CGFloat(self.getTextHeigh(textStr: data.describe, font: UIFont.boldSystemFont(ofSize: 18), width: 300))
-            cellHeight += 50
+            cellHeight += 55
             if data.image != "" {
                 cellHeight += 120
             }
@@ -80,7 +80,10 @@ extension MoreViewController {
         )
         provider.layout = FlowLayout(spacing: 30)
         provider.tapHandler = { context -> Void in
-            if context.data.url != "", let u = URL.init(string: context.data.url) {
+            guard context.data.url != "" else { return }
+            if context.data.url.hasPrefix("huthelperBuy://") {
+                StoreHelper.buy(productId: context.data.url.replacingOccurrences(of: "huthelperBuy://", with: ""))
+            } else if let u = URL.init(string: context.data.url) {
                 UIApplication.shared.open(u, options: [:], completionHandler: nil)
             }
         }

@@ -19,6 +19,8 @@
 #import "MTAConfig.h"
 //信鸽推送
 #import "XGPush.h"
+
+#import "HutHelper-Swift.h"
 @interface AppDelegate (){
     
 }
@@ -69,6 +71,7 @@
     [[UMSocialManager defaultManager] openLog:NO]; //打开调试日志
     [[UMSocialManager defaultManager] setUmSocialAppkey:APPKEY_UMESSAGE];//设置友盟appkey
     [self configUSharePlatforms];
+    [StoreOCHelper storeLanuch];
     //热更新
 //        [JSPatch startWithAppKey:APPKEY_JSPATCH];
 //  //      [JSPatch setupDevelopment];

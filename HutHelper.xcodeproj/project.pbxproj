@@ -90,6 +90,8 @@
 		3A532CDD1E9121C5003CD5A8 /* VedioTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A532CDC1E9121C5003CD5A8 /* VedioTableViewController.m */; };
 		3A53875621C8987D00538CA7 /* More.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A53875521C8987D00538CA7 /* More.swift */; };
 		3A53875821C8988600538CA7 /* MoreApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A53875721C8988600538CA7 /* MoreApp.swift */; };
+		3A53875D21C8C2F600538CA7 /* StoreHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A53875C21C8C2F600538CA7 /* StoreHelper.swift */; };
+		3A53875F21C8C98700538CA7 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A53875E21C8C98700538CA7 /* StoreKit.framework */; };
 		3A6397EB1EC9C12300EE4BEA /* HutHelperUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A6397EA1EC9C12300EE4BEA /* HutHelperUITests.m */; };
 		3A796C1F1E534C1B00794043 /* CourseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A796BA41E534C1B00794043 /* CourseViewController.m */; };
 		3A796C251E534C1B00794043 /* FeedbackResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A796BB21E534C1B00794043 /* FeedbackResultViewController.m */; };
@@ -381,6 +383,8 @@
 		3A532CDC1E9121C5003CD5A8 /* VedioTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VedioTableViewController.m; sourceTree = "<group>"; };
 		3A53875521C8987D00538CA7 /* More.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = More.swift; sourceTree = "<group>"; };
 		3A53875721C8988600538CA7 /* MoreApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreApp.swift; sourceTree = "<group>"; };
+		3A53875C21C8C2F600538CA7 /* StoreHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreHelper.swift; sourceTree = "<group>"; };
+		3A53875E21C8C98700538CA7 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		3A6397E81EC9C12300EE4BEA /* HutHelperUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HutHelperUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A6397EA1EC9C12300EE4BEA /* HutHelperUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HutHelperUITests.m; sourceTree = "<group>"; };
 		3A6397EC1EC9C12300EE4BEA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -599,6 +603,7 @@
 				3A1D42071FD121AC00180803 /* UserNotifications.framework in Frameworks */,
 				3A1D41F91FD0598A00180803 /* libinstalltracker.a in Frameworks */,
 				3A8BACF91DDDBD71001C78B8 /* libsqlite3.tbd in Frameworks */,
+				3A53875F21C8C98700538CA7 /* StoreKit.framework in Frameworks */,
 				3AE01BAC1EB0D24900D5B7EF /* Foundation.framework in Frameworks */,
 				3AE01BAA1EB0D23F00D5B7EF /* CoreFoundation.framework in Frameworks */,
 				3A1D41FD1FD0598A00180803 /* libmtasdk.a in Frameworks */,
@@ -962,6 +967,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		3A53875B21C8C2E100538CA7 /* Store */ = {
+			isa = PBXGroup;
+			children = (
+				3A53875C21C8C2F600538CA7 /* StoreHelper.swift */,
+			);
+			path = Store;
+			sourceTree = "<group>";
+		};
 		3A6397E91EC9C12300EE4BEA /* HutHelperUITests */ = {
 			isa = PBXGroup;
 			children = (
@@ -1117,6 +1130,7 @@
 		3A7D3CA81DB0A6CB00355E7A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3A53875E21C8C98700538CA7 /* StoreKit.framework */,
 				3AE01BAB1EB0D24900D5B7EF /* Foundation.framework */,
 				3AE01BA91EB0D23F00D5B7EF /* CoreFoundation.framework */,
 				3AF72C991E9A23F000093A39 /* JavaScriptCore.framework */,
@@ -1488,6 +1502,7 @@
 		3ADBB2FF21B678A700670412 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				3A53875B21C8C2E100538CA7 /* Store */,
 				3ADBB30021B678B200670412 /* UIColor+Ext.swift */,
 			);
 			path = Common;
@@ -1709,6 +1724,9 @@
 								enabled = 1;
 							};
 							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.InAppPurchase = {
 								enabled = 1;
 							};
 							com.apple.Push = {
@@ -1980,6 +1998,7 @@
 				3A532CC91E910C13003CD5A8 /* UINavigationController+ZFPlayerRotation.m in Sources */,
 				3A532CD31E910C13003CD5A8 /* ZFPlayerView.m in Sources */,
 				3AFA4F5A1EC0440F00CB7DA2 /* Config+Set.m in Sources */,
+				3A53875D21C8C2F600538CA7 /* StoreHelper.swift in Sources */,
 				3AFA4F691EC0489900CB7DA2 /* NSString+Common.m in Sources */,
 				3A796C2F1E534C1B00794043 /* LoginViewController.m in Sources */,
 				3A4D30151E8D297200901E3B /* LeftUserTableViewCell.m in Sources */,

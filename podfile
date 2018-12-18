@@ -7,6 +7,7 @@ def swiftUI
     pod 'Kingfisher'
     pod 'SnapKit', '~> 4.0.0'
     pod "CollectionKit"
+    pod 'SwiftyStoreKit'
 end
 
 def debug

@@ -112,21 +112,22 @@ class MoreCell: UICollectionViewCell {
             make.height.equalTo(20)
         }
         describe.snp.makeConstraints { (make) in
-            make.top.equalTo(title.snp.bottom).offset(5)
+            make.top.equalTo(title.snp.bottom).offset(10)
             make.left.equalTo(self).inset(20)
             make.width.equalTo(300)
         }
         icoImageView.snp.makeConstraints { (make) in
             make.width.height.equalTo(45)
-            make.bottom.left.equalTo(self).inset(10)
+            make.left.equalTo(self).offset(20)
+            make.bottom.equalTo(self).inset(5)
         }
         icoTitle.snp.makeConstraints { (make) in
             make.left.equalTo(icoImageView).inset(60)
-            make.bottom.equalTo(self).inset(35)
+            make.bottom.equalTo(self).inset(30)
         }
         icoDescribe.snp.makeConstraints{(make) in
             make.left.equalTo(icoImageView).offset(60)
-            make.bottom.equalTo(self).inset(10)
+            make.bottom.equalTo(self).inset(8)
         }
     }
     

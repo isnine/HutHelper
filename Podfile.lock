@@ -51,6 +51,7 @@ PODS:
   - SnapKit (4.0.1)
   - SVProgressHUD (2.2.5)
   - SwiftyJSON (4.2.0)
+  - SwiftyStoreKit (0.14.1)
   - TZImagePickerController (3.1.5)
   - "UITableView+FDTemplateLayoutCell (1.6)"
   - UMengUShare/Core (6.4.8.2):
@@ -85,6 +86,7 @@ DEPENDENCIES:
   - SDWebImage (~> 3.8)
   - SnapKit (~> 4.0.0)
   - SwiftyJSON
+  - SwiftyStoreKit
   - TZImagePickerController
   - "UITableView+FDTemplateLayoutCell"
   - UMengUShare/Social/ReducedQQ
@@ -115,6 +117,7 @@ SPEC REPOS:
     - SnapKit
     - SVProgressHUD
     - SwiftyJSON
+    - SwiftyStoreKit
     - TZImagePickerController
     - "UITableView+FDTemplateLayoutCell"
     - UMengUShare
@@ -141,11 +144,12 @@ SPEC CHECKSUMS:
   SnapKit: 0de968a9fec17499afa29683b05d0c775b6d1c29
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
+  SwiftyStoreKit: a5cdece4327f3943eb72fa81aebe3aa6684b5eab
   TZImagePickerController: 6cc6e9c1a73bb8e62cfef98fd40af2d90634dcf5
   "UITableView+FDTemplateLayoutCell": 5c949b4a5059c404b442926c0e80f81d10a2d66f
   UMengUShare: 370d180101e13ee0227ae657ab119ba97243d2b3
   YCXMenu: 6003bcd20d8ac72e3eb3c442c97ed21948c6dc1f
 
-PODFILE CHECKSUM: 8306d2eca6991c659356cd5daf27c343b864e896
+PODFILE CHECKSUM: a85dcc4ae5e9b05a1a54c94a396cb6f02eeded2d
 
 COCOAPODS: 1.5.3
