@@ -12,7 +12,7 @@ import SwiftyStoreKit
 public class StoreHelper {
     static func buy(productId: String) {
 //        NoticeHelper.showThanks("感谢您")
-        SwiftyStoreKit.purchaseProduct("name.wxz.huthelper.support", quantity: 1, atomically: true) { result in
+        SwiftyStoreKit.purchaseProduct(productId, quantity: 1, atomically: true) { result in
             switch result {
             case .success(let purchase):
                 DispatchQueue.main.async {
