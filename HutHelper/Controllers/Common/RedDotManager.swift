@@ -16,6 +16,7 @@ public class RedDotManager: NSObject {
 //        print("保存\(Version)")
         UserDefaults.standard.set(Version, forKey: hashKey)
     }
+    @objc
     static public func getHash(_ handle: ((Bool)->Void)?) {
         Alamofire.request("https://img.wxz.name/api/more.json").responseJSON{(responds) in
             guard responds.result.isSuccess else { return }

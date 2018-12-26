@@ -49,7 +49,7 @@ extension MoreViewController {
     fileprivate func configUI() {
         view.backgroundColor = .white
         navigationItem.title = "更多"
-        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.black]
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
         navigationController?.navigationBar.tintColor = UIColor(red: 29 / 255.0, green: 203 / 255.0, blue: 219 / 255.0, alpha: 1)
         
         view.addSubview(collectionView)
@@ -97,8 +97,8 @@ extension MoreViewController {
     fileprivate func getTextHeigh(textStr:String,font:UIFont,width:CGFloat) -> CGFloat {
         let normalText: NSString = textStr as NSString
         let size = CGSize(width: width, height: 1000)
-        let dic = NSDictionary(object: font, forKey: NSFontAttributeName as NSCopying)
-        let stringSize = normalText.boundingRect(with: size,options: .usesLineFragmentOrigin, attributes: dic as? [String : AnyObject], context:nil).size
+        let dic = NSDictionary(object: font, forKey: NSAttributedString.Key.font as NSCopying)
+        let stringSize = normalText.boundingRect(with: size,options: .usesLineFragmentOrigin, attributes: dic as! [NSAttributedString.Key : Any] , context:nil).size
         return stringSize.height
     }
 }

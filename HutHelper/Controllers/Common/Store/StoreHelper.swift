@@ -38,7 +38,8 @@ public class StoreHelper {
 }
 
 public class StoreOCHelper: NSObject {
-    static func storeLanuch() {
+    @objc
+    static public func storeLanuch() {
         
         SwiftyStoreKit.completeTransactions(atomically: true) { purchases in
             
