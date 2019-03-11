@@ -57,7 +57,7 @@ class MoreCell: UICollectionViewCell {
         let btn = UIButton()
         btn.backgroundColor = UIColor.lightGray
         btn.titleLabel?.font = UIFont(name: "Arial", size: 18)
-        btn.setTitleColor(UIColor.blue, for: UIControlState())
+        btn.setTitleColor(UIColor.blue, for: UIControl.State())
         btn.layer.cornerRadius = 14
         return btn
     }()

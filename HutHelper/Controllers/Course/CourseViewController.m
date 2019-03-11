@@ -225,14 +225,14 @@ NSString *show_xp;
         for (int i= 0; i<=(array.count-1); i++) {
             NSDictionary *dict1       = array[i];
             NSString *ClassName       = [dict1 objectForKey:@"name"];//课名
-            NSString *dsz             = [dict1 objectForKey:@"dsz"];//单双周
-            int dsz_num        = [dsz intValue];
-            if ([dsz isEqualToString: @"单"])
-                dsz_num                   = 1;
-            else if([dsz isEqualToString: @"双"])
-                dsz_num                   = 2;
-            else
-                dsz_num                   = 0;
+//            NSString *dsz             = [dict1 objectForKey:@"dsz"];//单双周
+            int dsz_num        = [[dict1 objectForKey:@"dsz"] intValue];
+//            if ([[dict1 objectForKey:@"dsz"] isEqual: @1])
+//                dsz_num                   = 1;
+//            else if([[dict1 objectForKey:@"dsz"] isEqual: @2])
+//                dsz_num                   = 2;
+//            else
+//                dsz_num                   = 0;
             NSString *StartClass      = [dict1 objectForKey:@"djj"];//第几节
             int StartClass_num = [StartClass intValue];
             NSString *EndWeek         = [dict1 objectForKey:@"jsz"];//结束周
@@ -447,17 +447,16 @@ NSString *show_xp;
     [APIRequest GET:Config.getApiClass parameters:nil success:^(id responseObject) {
         HideAllHUD
         NSDictionary *Class_All = [NSDictionary dictionaryWithDictionary:responseObject];
-        NSString *Msg=[Class_All objectForKey:@"msg"];
-        if ([Msg isEqualToString:@"ok"]) {
+        NSString *Msg=[Class_All objectForKey:@"code"];
+        if ([Msg isEqual:@200]) {
             NSArray *arrayCourse               = [Class_All objectForKey:@"data"];
             [Config saveWidgetCourse:arrayCourse];
             [Config saveCourse:arrayCourse];
             [self addCourse];
             [MBProgressHUD showSuccess:@"刷新成功" toView:self.view];
-        }else if([Msg isEqualToString:@"令牌错误"]){
-            [MBProgressHUD showError:@"登录过期,请重新登录" toView:self.view];
         }else{
-            [MBProgressHUD showError:@"查询失败" toView:self.view];
+            NSString* errorStr=responseObject[@"msg"];
+            [MBProgressHUD showError:errorStr toView:self.view];
         }
     }failure:^(NSError *error) {
         HideAllHUD

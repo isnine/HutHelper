@@ -160,17 +160,13 @@ int class_error_;
         dispatch_group_async(group, q, ^{
             dispatch_group_enter(group);
             [APIRequest GET:urlString parameters:nil success:^(id responseObject) {
-                NSString *msg=responseObject[@"msg"];
-                if ([msg isEqualToString:@"ok"]) {
+                if ([responseObject[@"code"] isEqual: @200]) {
                     NSArray *arrayCourse = responseObject[@"data"];
                     [Config saveCourse:arrayCourse];
                     [Config saveWidgetCourse:arrayCourse];
-                }else if([msg isEqualToString:@"令牌错误"]){
-                    status=status+2;
-                    errorStr=ERROR_MSG_INVALID;
                 }else{
                     status=status+2;
-                    errorStr=msg;
+                    errorStr=responseObject[@"msg"];
                 }
                 dispatch_group_leave(group);
             } failure:^(NSError *error) {

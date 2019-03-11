@@ -59,7 +59,9 @@
        // [Config removeUserDefaults];
         
         [Config addNotice];
+        
         [defaults setObject:currentVersion forKey:@"last_run_version_key"];
+        [defaults removeObjectForKey:@"kCourse"];
         NSLog(@"记录不匹配");
     }
 //    else{

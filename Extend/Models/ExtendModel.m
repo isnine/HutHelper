@@ -9,9 +9,9 @@
 #import "ExtendModel.h"
   
 @implementation ExtendModel
-int startyear                       = 2018;
-int startmonth                      = 9;
-int startday                        = 10;
+int startyear                       = 2019;
+int startmonth                      = 2;
+int startday                        = 25;
 +(NSString*)setDay{
     NSDate *now                               = [NSDate date];
     NSCalendar *calendar                      = [NSCalendar currentCalendar];
