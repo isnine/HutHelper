@@ -1,0 +1,8 @@
+app_identifier("name.wxz.HutHelper") # The bundle identifier of your app
+apple_id("cao5531546@qq.com") # Your Apple email address
+
+itc_team_id("118406741") # App Store Connect Team ID
+team_id("JW2LR94V6G") # Developer Portal Team ID
+
+# For more information about the Appfile, see:
+#     https://docs.fastlane.tools/advanced/#appfile

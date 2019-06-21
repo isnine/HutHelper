@@ -1,0 +1,16 @@
+language: swift
+xcode_workspace: HutHelper.xcworkspace
+xcode_scheme: HutHelper
+osx_image: xcode10.2
+podfile: path/to/Podfile
+branches:
+  only:
+  - master
+  - /release*/
+cache:
+  - cocoapods
+before_install:
+- bundle install
+- pod install || pod install --repo-update
+script:
+- fastlane ci
