@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1020"
+   LastUpgradeVersion = "1100"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "C2CF9D8F138044577986F9D741653AFC"
+               BlueprintIdentifier = "689F83C054628736EE3F9F67DAE2F9A7"
                BuildableName = "libPods-HutHelper.a"
                BlueprintName = "Pods-HutHelper"
                ReferencedContainer = "container:Pods.xcodeproj">

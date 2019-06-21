@@ -1,14 +1,11 @@
 # HutHelper - 工大助手
-[![Support](https://img.shields.io/badge/support-iOS%208%2B%20-blue.svg?style=flat)](https://www.apple.com/nl/ios/)
+[![Build Status](https://travis-ci.com/isnine/HutHelper.svg?branch=master)](https://travis-ci.com/isnine/HutHelper)
 ![](https://img.shields.io/badge/lanuage-Objective--C-brightgreen.svg)
-![](https://img.shields.io/badge/pod-1.1.1-red.svg)
 ![](https://img.shields.io/badge/license-apache-green.svg)
-
-![海报](https://img.wxz.name/海报.jpg?imageView2/2/w/302/h/540/interlace/0/q/41)
 # Description
 - 工大助手是湖南工业大学计算机学院实验室为工大学子开发的一款校园App。
 - 目前iOS端用户量4000人左右，Android端用户9000人左右。Web端日浏览量在3W左右。
-- 本仓库为工大助手iOS端，除接口文件不同，其余与线上版本一致。
+- 本仓库为工大助手iOS端源码仓库，任何人都可以发起PR，CI会自动编译发布到TestFlight
 - iOS端下载: [AppStore](https://itunes.apple.com/cn/app/gong-da-zhu-shou-hu-nan-gong/id1164848835)
 - Android端下载: [工大助手](https://huthelper.cn/res/index)
 - Win10端下载: [工大助手](https://huthelper.cn/res/index)
@@ -19,7 +16,8 @@
 ```
 git clone https://github.com/isnine/HutHelper-Open.git --depth=1
 ```
-接口与线上版本不同，登录界面输入任意账号和密码，即可登录，因工程较大，建议只克隆第一层
+master为线上代码，安全原因暂不提供测试账号。
+建议切换到PublicDemo分支，有本地的假数据可以浏览
 # Frame
 ```
 .

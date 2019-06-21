@@ -42,7 +42,6 @@ PODS:
   - LGPlusButtonsView (1.1.1)
   - Masonry (0.6.4)
   - MBProgressHUD (1.0.0)
-  - MJRefresh (3.2.0)
   - Reachability (3.2)
   - Reveal-SDK (19)
   - SDWebImage (3.8.3):
@@ -55,7 +54,6 @@ PODS:
   - SwiftMessages/App (7.0.0)
   - SwiftyJSON (5.0.0)
   - SwiftyStoreKit (0.15.0)
-  - TZImagePickerController (3.2.1)
   - "UITableView+FDTemplateLayoutCell (1.6)"
   - UMengUShare/Core (6.4.8.2):
     - UMengUShare/Network
@@ -84,14 +82,12 @@ DEPENDENCIES:
   - LGPlusButtonsView (~> 1.1.0)
   - Masonry
   - MBProgressHUD (~> 1.0.0)
-  - MJRefresh
   - Reveal-SDK (~> 19)
   - SDWebImage (~> 3.8)
   - SnapKit (~> 4.0.0)
   - SwiftMessages
   - SwiftyJSON
   - SwiftyStoreKit
-  - TZImagePickerController
   - "UITableView+FDTemplateLayoutCell"
   - UMengUShare/Social/ReducedQQ
   - UMengUShare/Social/ReducedSina
@@ -114,7 +110,6 @@ SPEC REPOS:
     - LGPlusButtonsView
     - Masonry
     - MBProgressHUD
-    - MJRefresh
     - Reachability
     - Reveal-SDK
     - SDWebImage
@@ -123,7 +118,6 @@ SPEC REPOS:
     - SwiftMessages
     - SwiftyJSON
     - SwiftyStoreKit
-    - TZImagePickerController
     - "UITableView+FDTemplateLayoutCell"
     - UMengUShare
     - YCXMenu
@@ -142,7 +136,6 @@ SPEC CHECKSUMS:
   LGPlusButtonsView: 57878cd3d461d0ee2042f5b7b25d1c017e22a084
   Masonry: 281802d04d787ea2973179ee8bcb50500579ede2
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
-  MJRefresh: ed450d6eb9d3346a2cb033ab7eb6de090aeef437
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   Reveal-SDK: 9f0d2c6c12eb7507921e5454ac165b7aa21140a4
   SDWebImage: a72e880a8fe0f7fc31efe15aaed443c074d2a80c
@@ -151,11 +144,10 @@ SPEC CHECKSUMS:
   SwiftMessages: a952f7a9103d9aeab93730a2861d2d8fcdd8758f
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
   SwiftyStoreKit: 033d06b6f87955405d3f844a18a7687c2438592a
-  TZImagePickerController: bf4c57b98d8707fce41ea6be872414a71c7a8c9d
   "UITableView+FDTemplateLayoutCell": 5c949b4a5059c404b442926c0e80f81d10a2d66f
   UMengUShare: 370d180101e13ee0227ae657ab119ba97243d2b3
   YCXMenu: 6003bcd20d8ac72e3eb3c442c97ed21948c6dc1f
 
-PODFILE CHECKSUM: e3b62a0b2515d9de8f22111d3432a5ef10a62d63
+PODFILE CHECKSUM: 19c763f5c6f939cd4a1fed203392bdd9a0cc5964
 
 COCOAPODS: 1.6.1

@@ -259,10 +259,6 @@
 
 
 - (void)viewWillAppear:(BOOL)animated {
-#ifdef DEBUG
-    _UserName.text=@"15414400111";
-    _Password.text=@"04722x";
-#endif
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     self.navigationController.navigationBarHidden = YES;
 }
