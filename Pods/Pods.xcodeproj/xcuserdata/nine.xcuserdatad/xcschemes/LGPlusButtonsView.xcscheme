@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0930"
+   LastUpgradeVersion = "1020"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "75E35E9C4E1EE1F0621D2A4A0564EB8C"
+               BlueprintIdentifier = "8842DC17DCBCD8A0762B5494C354DAC0"
+               BuildableName = "libLGPlusButtonsView.a"
                BlueprintName = "LGPlusButtonsView"
-               ReferencedContainer = "container:Pods.xcodeproj"
-               BuildableName = "libLGPlusButtonsView.a">
+               ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

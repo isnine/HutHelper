@@ -14,7 +14,7 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
-  - Alamofire (4.8.0)
+  - Alamofire (4.8.2)
   - ASIHTTPRequest (1.8.2):
     - ASIHTTPRequest/ASIWebPageRequest (= 1.8.2)
     - ASIHTTPRequest/CloudFiles (= 1.8.2)
@@ -28,34 +28,34 @@ PODS:
     - Reachability
   - ASIHTTPRequest/S3 (1.8.2):
     - ASIHTTPRequest/Core
-  - CollectionKit (2.2.0):
-    - CollectionKit/Core (= 2.2.0)
-  - CollectionKit/Core (2.2.0)
+  - CollectionKit (2.4.0):
+    - CollectionKit/Core (= 2.4.0)
+  - CollectionKit/Core (2.4.0)
   - DJRefresh (1.0.5)
   - DTKDropdownMenu (0.0.4):
     - Masonry (~> 0.6)
   - DZNEmptyDataSet (1.8.1)
-  - HandyJSON (4.2.1)
+  - HandyJSON (5.0.0)
   - HUPhotoBrowser (1.4.5):
     - SVProgressHUD
-  - Kingfisher (4.10.1)
+  - Kingfisher (5.6.0)
   - LGPlusButtonsView (1.1.1)
   - Masonry (0.6.4)
   - MBProgressHUD (1.0.0)
-  - MJRefresh (3.1.15.7)
+  - MJRefresh (3.2.0)
   - Reachability (3.2)
   - Reveal-SDK (19)
-  - SDWebImage (3.8.2):
-    - SDWebImage/Core (= 3.8.2)
-  - SDWebImage/Core (3.8.2)
+  - SDWebImage (3.8.3):
+    - SDWebImage/Core (= 3.8.3)
+  - SDWebImage/Core (3.8.3)
   - SnapKit (4.0.1)
   - SVProgressHUD (2.2.5)
-  - SwiftMessages (6.0.1):
-    - SwiftMessages/App (= 6.0.1)
-  - SwiftMessages/App (6.0.1)
-  - SwiftyJSON (4.2.0)
-  - SwiftyStoreKit (0.14.1)
-  - TZImagePickerController (3.1.5)
+  - SwiftMessages (7.0.0):
+    - SwiftMessages/App (= 7.0.0)
+  - SwiftMessages/App (7.0.0)
+  - SwiftyJSON (5.0.0)
+  - SwiftyStoreKit (0.15.0)
+  - TZImagePickerController (3.2.1)
   - "UITableView+FDTemplateLayoutCell (1.6)"
   - UMengUShare/Core (6.4.8.2):
     - UMengUShare/Network
@@ -130,32 +130,32 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
-  Alamofire: 3ec537f71edc9804815215393ae2b1a8ea33a844
+  Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
   ASIHTTPRequest: ec013992946676b7978dcbde6396d57312d21db4
-  CollectionKit: 5caa5341860d4c9b748ebfeaab97530b2d02c7c0
+  CollectionKit: 8f01e7629185bb81072c4aa734d105df5c2d1c8b
   DJRefresh: 32b3776546004faddddc28035442ba15e07c5f1b
   DTKDropdownMenu: 3a3d8afc4f70fab50a5a8131aadc8b383ef54891
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
-  HandyJSON: d0c5fc80204f29056d59d3e5c4587fa0b16b60a8
+  HandyJSON: 992f2d661716d6a91de82d0056927bc7813b5770
   HUPhotoBrowser: 87a8333c111a4e71ebf5400bf66d0eeb522c0098
-  Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
+  Kingfisher: 1a50df6880a60bae26f3e21a0df3d17b892f5e0b
   LGPlusButtonsView: 57878cd3d461d0ee2042f5b7b25d1c017e22a084
   Masonry: 281802d04d787ea2973179ee8bcb50500579ede2
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
-  MJRefresh: 697f8ec75ebdbe9207767bb682cf0f51b0d8a41f
+  MJRefresh: ed450d6eb9d3346a2cb033ab7eb6de090aeef437
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   Reveal-SDK: 9f0d2c6c12eb7507921e5454ac165b7aa21140a4
-  SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
+  SDWebImage: a72e880a8fe0f7fc31efe15aaed443c074d2a80c
   SnapKit: 0de968a9fec17499afa29683b05d0c775b6d1c29
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
-  SwiftMessages: 42ed7b6e1f2f1ead9ee667dc61a0ae87e4f49570
-  SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
-  SwiftyStoreKit: a5cdece4327f3943eb72fa81aebe3aa6684b5eab
-  TZImagePickerController: 6cc6e9c1a73bb8e62cfef98fd40af2d90634dcf5
+  SwiftMessages: a952f7a9103d9aeab93730a2861d2d8fcdd8758f
+  SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
+  SwiftyStoreKit: 033d06b6f87955405d3f844a18a7687c2438592a
+  TZImagePickerController: bf4c57b98d8707fce41ea6be872414a71c7a8c9d
   "UITableView+FDTemplateLayoutCell": 5c949b4a5059c404b442926c0e80f81d10a2d66f
   UMengUShare: 370d180101e13ee0227ae657ab119ba97243d2b3
   YCXMenu: 6003bcd20d8ac72e3eb3c442c97ed21948c6dc1f
 
-PODFILE CHECKSUM: d86a3ccad7caf0788f72e14cbe41493770387b52
+PODFILE CHECKSUM: e3b62a0b2515d9de8f22111d3432a5ef10a62d63
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.6.1

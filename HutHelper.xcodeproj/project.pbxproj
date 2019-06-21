@@ -1841,7 +1841,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-HutHelper/Pods-HutHelper-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-HutHelper/Pods-HutHelper-resources.sh",
 				"${PODS_ROOT}/DJRefresh/DJRefresh/DJRefresh.bundle",
 				"${PODS_ROOT}/DTKDropdownMenu/DTKDropdownMenuView/DTKDropdownMenuView.bundle",
 				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
@@ -1864,7 +1864,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HutHelper/Pods-HutHelper-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HutHelper/Pods-HutHelper-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		B8BB1A14BC717562544563B9 /* [CP] Embed Pods Frameworks */ = {
@@ -1875,7 +1875,7 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-HutHelper/Pods-HutHelper-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-HutHelper/Pods-HutHelper-frameworks.sh",
 				"${PODS_ROOT}/Reveal-SDK/RevealServer-19/iOS/RevealServer.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -1886,7 +1886,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HutHelper/Pods-HutHelper-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HutHelper/Pods-HutHelper-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		C0F366FF131B7D647531FC04 /* [CP] Check Pods Manifest.lock */ = {

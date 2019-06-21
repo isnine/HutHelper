@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0930"
+   LastUpgradeVersion = "1020"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E8835AA97CAA867CFCB9A6755C4C297F"
+               BlueprintIdentifier = "343218B720E331494456C877B7CB2C58"
+               BuildableName = "libDJRefresh.a"
                BlueprintName = "DJRefresh"
-               ReferencedContainer = "container:Pods.xcodeproj"
-               BuildableName = "libDJRefresh.a">
+               ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
