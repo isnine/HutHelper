@@ -18,6 +18,16 @@ git clone https://github.com/isnine/HutHelper-Open.git --depth=1
 ```
 master为线上代码，安全原因暂不提供测试账号。
 建议切换到PublicDemo分支，有本地的假数据可以浏览
+
+# 开发流程
+## 团队内成员
+1. 从master拉出新分支feature/xxxx开发，开发完毕后提交上来git push origin feature/xxxx
+2. 在页面发起合并至master，ci会自动打包出Test Flight版本内测
+3. 从master拉出release/{版本号},ci会自动打包发布至App Store。
+# 团队外成员
+1. fork仓库，在自己仓库开发，然后发起pull request合并至master
+2. 后面步骤和之前一样
+	
 # Frame
 ```
 .
