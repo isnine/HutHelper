@@ -87,8 +87,7 @@ platform :ios do
          export_compliance_available_on_french_store: false
       },
       release_notes: {'default' => File.read("Changelog.txt"),
-                      'zh-Hans' => File.read("Changelog.txt"),
-                      'en-US' => File.read("Changelog.txt")}
+                      'zh-Hans' => File.read("Changelog.txt")}
       )
       # 更新版本tag
       add_git_tag
