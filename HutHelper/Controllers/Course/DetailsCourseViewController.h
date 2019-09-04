@@ -2,7 +2,7 @@
 //  DetailsCourseViewController.h
 //  HutHelper
 //
-//  Created by 张驰 on 2019/3/13.
+//  Created by 张驰 on 2019/9/4.
 //  Copyright © 2019 nine. All rights reserved.
 //
 
@@ -16,7 +16,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,copy)NSString *room;
 @property(nonatomic,copy)NSString *teacher;
 @property(nonatomic,copy)NSString *Week;
-
 @end
 
 NS_ASSUME_NONNULL_END
