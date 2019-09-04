@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		255A55BF231FC40E001A7C13 /* DetailsCourseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 255A55BD231FC40E001A7C13 /* DetailsCourseViewController.m */; };
+		255A55C0231FC40E001A7C13 /* DetailsCourseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 255A55BE231FC40E001A7C13 /* DetailsCourseViewController.xib */; };
 		306ED4D66B74BB7E6D350B7E /* libPods-HutHelper.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F483A3F1FC79A9B85B68036B /* libPods-HutHelper.a */; };
 		3A0056121EC97CB70047E8F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A0056111EC97CB70047E8F2 /* Assets.xcassets */; };
 		3A06D9B51E8CEDE400066DD1 /* ExamCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A06D9B31E8CEDE400066DD1 /* ExamCell.m */; };
@@ -326,6 +328,9 @@
 
 /* Begin PBXFileReference section */
 		0BEA75F30B57DEF614969189 /* Pods-HutHelper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HutHelper.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HutHelper/Pods-HutHelper.debug.xcconfig"; sourceTree = "<group>"; };
+		255A55BC231FC40E001A7C13 /* DetailsCourseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailsCourseViewController.h; sourceTree = "<group>"; };
+		255A55BD231FC40E001A7C13 /* DetailsCourseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailsCourseViewController.m; sourceTree = "<group>"; };
+		255A55BE231FC40E001A7C13 /* DetailsCourseViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailsCourseViewController.xib; sourceTree = "<group>"; };
 		3A0056111EC97CB70047E8F2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = HutHelper/Assets.xcassets; sourceTree = "<group>"; };
 		3A06D9B21E8CEDE400066DD1 /* ExamCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExamCell.h; sourceTree = "<group>"; };
 		3A06D9B31E8CEDE400066DD1 /* ExamCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExamCell.m; sourceTree = "<group>"; };
@@ -1181,6 +1186,9 @@
 				3A796BA41E534C1B00794043 /* CourseViewController.m */,
 				3A4D2FFB1E8D251500901E3B /* CourseSetViewController.h */,
 				3A4D2FFC1E8D251500901E3B /* CourseSetViewController.m */,
+				255A55BC231FC40E001A7C13 /* DetailsCourseViewController.h */,
+				255A55BD231FC40E001A7C13 /* DetailsCourseViewController.m */,
+				255A55BE231FC40E001A7C13 /* DetailsCourseViewController.xib */,
 			);
 			path = Course;
 			sourceTree = "<group>";
@@ -2088,6 +2096,7 @@
 			files = (
 				3A4D2FFF1E8D273600901E3B /* LoginViewController.xib in Resources */,
 				3A796C6C1E534DAE00794043 /* Launch Screen.storyboard in Resources */,
+				255A55C0231FC40E001A7C13 /* DetailsCourseViewController.xib in Resources */,
 				3A98CC041E7CFA9C00CABD0D /* header@2x.jpg in Resources */,
 				3A8DFDA622BDD40E004A69B8 /* TZImagePickerController.bundle in Resources */,
 				3AA270411F6E646D00F5E6F3 /* touristData.plist in Resources */,
@@ -2327,6 +2336,7 @@
 				3A796C261E534C1B00794043 /* FeedbackViewController.m in Sources */,
 				3A8DFDAA22BDD40E004A69B8 /* TZPhotoPreviewCell.m in Sources */,
 				3AFA4F7F1EC04C6100CB7DA2 /* CourseModel.m in Sources */,
+				255A55BF231FC40E001A7C13 /* DetailsCourseViewController.m in Sources */,
 				3A796C3C1E534C1B00794043 /* NoticeShowViewController.m in Sources */,
 				3A98CC001E7CFA9C00CABD0D /* UUInputAccessoryView.m in Sources */,
 				3A8DFDAC22BDD40E004A69B8 /* TZLocationManager.m in Sources */,

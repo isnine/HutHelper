@@ -11,6 +11,12 @@
 @class GWPCourseListView;
 
 @protocol Course <NSObject>
+/** 上课周数 */
+@property(nonatomic,copy)     NSArray    *courseWeek;
+/** 教室 */
+@property (nonatomic, copy)   NSString   *courseTeacher;
+/** 上课地点 */
+@property (nonatomic, copy)   NSString   *courseRoom;
 /** 课程名 */
 @property (nonatomic, copy)   NSString   *courseName;
 /** 课程显示时的文字属性，用来控制颜色、大小等 */
