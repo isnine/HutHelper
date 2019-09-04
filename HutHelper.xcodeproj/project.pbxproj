@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		25A83915231D01BE0094434B /* DetailsCourseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 25A83912231D01BE0094434B /* DetailsCourseViewController.m */; };
-		25A83916231D01BE0094434B /* DetailsCourseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25A83913231D01BE0094434B /* DetailsCourseViewController.xib */; };
 		306ED4D66B74BB7E6D350B7E /* libPods-HutHelper.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F483A3F1FC79A9B85B68036B /* libPods-HutHelper.a */; };
 		3A0056121EC97CB70047E8F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A0056111EC97CB70047E8F2 /* Assets.xcassets */; };
 		3A06D9B51E8CEDE400066DD1 /* ExamCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A06D9B31E8CEDE400066DD1 /* ExamCell.m */; };
@@ -328,9 +326,6 @@
 
 /* Begin PBXFileReference section */
 		0BEA75F30B57DEF614969189 /* Pods-HutHelper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HutHelper.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HutHelper/Pods-HutHelper.debug.xcconfig"; sourceTree = "<group>"; };
-		25A83912231D01BE0094434B /* DetailsCourseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailsCourseViewController.m; sourceTree = "<group>"; };
-		25A83913231D01BE0094434B /* DetailsCourseViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailsCourseViewController.xib; sourceTree = "<group>"; };
-		25A83914231D01BE0094434B /* DetailsCourseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailsCourseViewController.h; sourceTree = "<group>"; };
 		3A0056111EC97CB70047E8F2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = HutHelper/Assets.xcassets; sourceTree = "<group>"; };
 		3A06D9B21E8CEDE400066DD1 /* ExamCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExamCell.h; sourceTree = "<group>"; };
 		3A06D9B31E8CEDE400066DD1 /* ExamCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExamCell.m; sourceTree = "<group>"; };
@@ -1182,9 +1177,6 @@
 		3A796BA21E534C1B00794043 /* Course */ = {
 			isa = PBXGroup;
 			children = (
-				25A83914231D01BE0094434B /* DetailsCourseViewController.h */,
-				25A83912231D01BE0094434B /* DetailsCourseViewController.m */,
-				25A83913231D01BE0094434B /* DetailsCourseViewController.xib */,
 				3A796BA31E534C1B00794043 /* CourseViewController.h */,
 				3A796BA41E534C1B00794043 /* CourseViewController.m */,
 				3A4D2FFB1E8D251500901E3B /* CourseSetViewController.h */,
@@ -2096,7 +2088,6 @@
 			files = (
 				3A4D2FFF1E8D273600901E3B /* LoginViewController.xib in Resources */,
 				3A796C6C1E534DAE00794043 /* Launch Screen.storyboard in Resources */,
-				25A83916231D01BE0094434B /* DetailsCourseViewController.xib in Resources */,
 				3A98CC041E7CFA9C00CABD0D /* header@2x.jpg in Resources */,
 				3A8DFDA622BDD40E004A69B8 /* TZImagePickerController.bundle in Resources */,
 				3AA270411F6E646D00F5E6F3 /* touristData.plist in Resources */,
@@ -2171,11 +2162,15 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
+			inputFileListPaths = (
+			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-HutHelper/Pods-HutHelper-frameworks.sh",
 				"${PODS_ROOT}/Reveal-SDK/RevealServer-19/iOS/RevealServer.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RevealServer.framework",
 			);
@@ -2332,7 +2327,6 @@
 				3A796C261E534C1B00794043 /* FeedbackViewController.m in Sources */,
 				3A8DFDAA22BDD40E004A69B8 /* TZPhotoPreviewCell.m in Sources */,
 				3AFA4F7F1EC04C6100CB7DA2 /* CourseModel.m in Sources */,
-				25A83915231D01BE0094434B /* DetailsCourseViewController.m in Sources */,
 				3A796C3C1E534C1B00794043 /* NoticeShowViewController.m in Sources */,
 				3A98CC001E7CFA9C00CABD0D /* UUInputAccessoryView.m in Sources */,
 				3A8DFDAC22BDD40E004A69B8 /* TZLocationManager.m in Sources */,
@@ -2499,7 +2493,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = name.wxz.HutHelper.Extend;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = name.wxz.HutHelper.Extend;
+				PROVISIONING_PROFILE_SPECIFIER = "Dev name.wxz.HutHelper.Extend";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -2510,7 +2504,7 @@
 			buildSettings = {
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CODE_SIGN_ENTITLEMENTS = Extend/Extend.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = JW2LR94V6G;
@@ -2521,7 +2515,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = name.wxz.HutHelper.Extend;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = name.wxz.HutHelper.Extend;
+				PROVISIONING_PROFILE_SPECIFIER = "AppStore name.wxz.HutHelper.Extend";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -2659,7 +2653,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "HutHelper/Supporting Files/HutHelper.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = JW2LR94V6G;
@@ -2702,7 +2696,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = name.wxz.HutHelper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = HutHelper;
+				PROVISIONING_PROFILE_SPECIFIER = "Dev name.wxz.HutHelper";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/HutHelper/Supporting Files/HutHelper-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
@@ -2717,7 +2711,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "HutHelper/Supporting Files/HutHelper.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = JW2LR94V6G;
@@ -2760,7 +2754,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = name.wxz.HutHelper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = HutHelper;
+				PROVISIONING_PROFILE_SPECIFIER = "AppStore name.wxz.HutHelper";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/HutHelper/Supporting Files/HutHelper-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -2795,7 +2789,7 @@
 			buildSettings = {
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CODE_SIGN_ENTITLEMENTS = ExamTime/ExamTime.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = JW2LR94V6G;
@@ -2806,7 +2800,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = name.wxz.HutHelper.ExamTime;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = name.wxz.HutHelper.ExamTime;
+				PROVISIONING_PROFILE_SPECIFIER = "AppStore name.wxz.HutHelper.ExamTime";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
