@@ -175,7 +175,7 @@
 
 #pragma mark - 全局
 +(NSString*)getApiImg{
-    return @"http://images.tutuweb.cn:8888";
+    return @"http://images.huthelper.cn:8888";
 }//images.tutuweb.cn
 
 +(NSString*)apiIndex{

@@ -47,7 +47,24 @@
     [self.navigationController pushViewController:webViewController animated:YES];
 }
 - (IBAction)contactMe:(id)sender {
-    [[UIApplication sharedApplication]openURL:[NSURL URLWithString:@"sms:isninea@icloud.com"]];
+    if([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"mqq://"]])
+    {
+        NSString *QQ = @"1525163730";
+        NSString *url = [NSString stringWithFormat:@"mqq://im/chat?chat_type=wpa&uin=%@&version=1&src_type=web",QQ];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
+    }
+    else {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"未安装QQ" message:@"请安装QQ后联系程序员" preferredStyle:  UIAlertControllerStyleAlert];
+        [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            
+        }]];
+        [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            
+        }]];
+        [self presentViewController:alert animated:true completion:nil];
+    }
+    
+   // [[UIApplication sharedApplication]openURL:[NSURL URLWithString:@"sms:isninea@icloud.com"]];
   //  if ([Config isTourist]) {
 //        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"暂时聊不了天啦" message:@"请去反馈里面留下你的联系方式，我来找你吧" preferredStyle:  UIAlertControllerStyleAlert];
 //        [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {

@@ -1,0 +1,46 @@
+//
+//  DetailsCourseViewController.m
+//  HutHelper
+//
+//  Created by 张驰 on 2019/3/13.
+//  Copyright © 2019 nine. All rights reserved.
+//
+
+#import "DetailsCourseViewController.h"
+
+@interface DetailsCourseViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *courseName;
+@property (weak, nonatomic) IBOutlet UILabel *courseTime;
+@property (weak, nonatomic) IBOutlet UILabel *courseRoom;
+@property (weak, nonatomic) IBOutlet UILabel *courseTeacher;
+@property (weak, nonatomic) IBOutlet UILabel *courseWeek;
+
+
+@end
+
+@implementation DetailsCourseViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.navigationItem.title = @"课程详情";
+        [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor]}];
+    _courseName.text = _name;
+    _courseName.numberOfLines = 0;
+    _courseRoom.text = _room;
+    _courseTime.text = _time;
+    _courseTeacher.text = _teacher;
+    _courseWeek.text = _Week;
+    
+}
+
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
+
+@end

@@ -15,6 +15,12 @@
 
 
 @interface CourseModel : NSObject<Course>
+/** 上课周数 */
+@property(nonatomic,copy)     NSArray    *courseWeek;
+/** 教室 */
+@property (nonatomic, copy)   NSString   *courseTeacher;
+/** 上课地点 */
+@property (nonatomic, copy)   NSString   *courseRoom;
 /** 课程名 */
 @property (nonatomic, copy)   NSString   *courseName;
 /** 课程显示时的文字属性，用来控制颜色、大小等 */
@@ -29,14 +35,18 @@
 @property (nonatomic, assign) NSUInteger sortIndex;
 
 
-+ (instancetype)courseWithName:(NSString *)name
-                      dayIndex:(NSUInteger)dayIndex
-              startCourseIndex:(NSUInteger)startCourseIndex
-                endCourseIndex:(NSUInteger)endCourseIndex;
++ (instancetype)courseTeacher:(NSString *)teacher
+                   courseRoom:(NSString *)room
+               courseWithName:(NSString *)name
+                     dayIndex:(NSUInteger)dayIndex
+             startCourseIndex:(NSUInteger)startCourseIndex
+               endCourseIndex:(NSUInteger)endCourseIndex
+                   courseWeek:(NSArray *)courseWeek;
 
 + (instancetype)courseWithName:(NSString *)name
                  nameAttribute:(NSDictionary*)nameAttribute
                       dayIndex:(NSUInteger)dayIndex
               startCourseIndex:(NSUInteger)startCourseIndex
-                endCourseIndex:(NSUInteger)endCourseIndex;
+                endCourseIndex:(NSUInteger)endCourseIndex
+                    courseWeek:(NSArray *)courseWeek;
 @end

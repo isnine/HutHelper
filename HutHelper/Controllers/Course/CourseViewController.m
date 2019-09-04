@@ -11,7 +11,8 @@
 #import "CourseModel.h"
 #import "LGPlusButtonsView.h"
 #import "AppDelegate.h"
- 
+#import "DetailsCourseViewController.h"
+
 #import "JSONKit.h"
 #import "MBProgressHUD.h"
 #import "User.h"
@@ -51,6 +52,9 @@ NSString *show_xp;
 }
 
 - (void)viewDidLoad {
+    
+
+    
     [super viewDidLoad];
     //标题//
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
@@ -79,7 +83,11 @@ NSString *show_xp;
     selectss=1;
     /**选择周次*/
     [self addTitleMenu];
+    [self addSome];
+    
 }
+
+
 - (void)addTitleMenu
 {
     DTKDropdownItem *item1,*item2,*item3,*item4,*item5,*item6,*item7,*item8,*item9,*item10,*item11,*item12,*item13,*item14,*item15,*item16,*item17,*item18,*item19,*item20;
@@ -182,41 +190,42 @@ NSString *show_xp;
 }
 - (void)addCourse{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    CourseModel *a1  = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
-    CourseModel *a2  = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
-    CourseModel *a3  = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
-    CourseModel *a4  = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
-    CourseModel *a5  = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
-    CourseModel *a6  = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
-    CourseModel *a7  = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
-    CourseModel *a8  = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
-    CourseModel *a9  = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
-    CourseModel *a10 = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
-    CourseModel *a11 = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
-    CourseModel *a12 = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
-    CourseModel *a13 = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
-    CourseModel *a14 = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
-    CourseModel *a15 = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
-    CourseModel *a16 = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
-    CourseModel *a17 = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
-    CourseModel *a18 = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
-    CourseModel *a19 = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
-    CourseModel *a20 = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
-    CourseModel *a21 = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
-    CourseModel *a22 = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
-    CourseModel *a23 = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
-    CourseModel *a24 = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
-    CourseModel *a25 = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
-    CourseModel *a26 = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
-    CourseModel *a27 = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
-    CourseModel *a28 = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
-    CourseModel *a29 = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
-    CourseModel *a30 = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
-    CourseModel *a31 = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
-    CourseModel *a32 = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
-    CourseModel *a33 = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
-    CourseModel *a34 = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
-    CourseModel *a35 = [CourseModel courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3];
+        NSArray *array = [[NSArray alloc] init];
+    CourseModel *a1 = [CourseModel courseTeacher:@"NULL" courseRoom:@"NULL" courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3 courseWeek:array];
+    CourseModel *a2 = [CourseModel courseTeacher:@"NULL" courseRoom:@"NULL" courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3 courseWeek:array];
+    CourseModel *a3 = [CourseModel courseTeacher:@"NULL" courseRoom:@"NULL" courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3 courseWeek:array];
+    CourseModel *a4 = [CourseModel courseTeacher:@"NULL" courseRoom:@"NULL" courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3 courseWeek:array];
+    CourseModel *a5 = [CourseModel courseTeacher:@"NULL" courseRoom:@"NULL" courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3 courseWeek:array];
+    CourseModel *a6 = [CourseModel courseTeacher:@"NULL" courseRoom:@"NULL" courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3 courseWeek:array];
+    CourseModel *a7 = [CourseModel courseTeacher:@"NULL" courseRoom:@"NULL" courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3 courseWeek:array];
+    CourseModel *a8 = [CourseModel courseTeacher:@"NULL" courseRoom:@"NULL" courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3 courseWeek:array];
+    CourseModel *a9 = [CourseModel courseTeacher:@"NULL" courseRoom:@"NULL" courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3 courseWeek:array];
+    CourseModel *a10 = [CourseModel courseTeacher:@"NULL" courseRoom:@"NULL" courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3 courseWeek:array];
+    CourseModel *a11 = [CourseModel courseTeacher:@"NULL" courseRoom:@"NULL" courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3 courseWeek:array];
+    CourseModel *a12 = [CourseModel courseTeacher:@"NULL" courseRoom:@"NULL" courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3 courseWeek:array];
+    CourseModel *a13 = [CourseModel courseTeacher:@"NULL" courseRoom:@"NULL" courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3 courseWeek:array];
+    CourseModel *a14 = [CourseModel courseTeacher:@"NULL" courseRoom:@"NULL" courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3 courseWeek:array];
+    CourseModel *a15 = [CourseModel courseTeacher:@"NULL" courseRoom:@"NULL" courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3 courseWeek:array];
+    CourseModel *a16 = [CourseModel courseTeacher:@"NULL" courseRoom:@"NULL" courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3 courseWeek:array];
+    CourseModel *a17 = [CourseModel courseTeacher:@"NULL" courseRoom:@"NULL" courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3 courseWeek:array];
+    CourseModel *a18 = [CourseModel courseTeacher:@"NULL" courseRoom:@"NULL" courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3 courseWeek:array];
+    CourseModel *a19 = [CourseModel courseTeacher:@"NULL" courseRoom:@"NULL" courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3 courseWeek:array];
+    CourseModel *a20 = [CourseModel courseTeacher:@"NULL" courseRoom:@"NULL" courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3 courseWeek:array];
+    CourseModel *a21 = [CourseModel courseTeacher:@"NULL" courseRoom:@"NULL" courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3 courseWeek:array];
+    CourseModel *a22 = [CourseModel courseTeacher:@"NULL" courseRoom:@"NULL" courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3 courseWeek:array];
+    CourseModel *a23 = [CourseModel courseTeacher:@"NULL" courseRoom:@"NULL" courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3 courseWeek:array];
+    CourseModel *a24 = [CourseModel courseTeacher:@"NULL" courseRoom:@"NULL" courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3 courseWeek:array];
+    CourseModel *a25 = [CourseModel courseTeacher:@"NULL" courseRoom:@"NULL" courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3 courseWeek:array];
+    CourseModel *a26 = [CourseModel courseTeacher:@"NULL" courseRoom:@"NULL" courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3 courseWeek:array];
+    CourseModel *a27 = [CourseModel courseTeacher:@"NULL" courseRoom:@"NULL" courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3 courseWeek:array];
+    CourseModel *a28 = [CourseModel courseTeacher:@"NULL" courseRoom:@"NULL" courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3 courseWeek:array];
+    CourseModel *a29 = [CourseModel courseTeacher:@"NULL" courseRoom:@"NULL" courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3 courseWeek:array];
+    CourseModel *a30 = [CourseModel courseTeacher:@"NULL" courseRoom:@"NULL" courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3 courseWeek:array];
+    CourseModel *a31 = [CourseModel courseTeacher:@"NULL" courseRoom:@"NULL" courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3 courseWeek:array];
+    CourseModel *a32 = [CourseModel courseTeacher:@"NULL" courseRoom:@"NULL" courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3 courseWeek:array];
+    CourseModel *a33 = [CourseModel courseTeacher:@"NULL" courseRoom:@"NULL" courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3 courseWeek:array];
+    CourseModel *a34 = [CourseModel courseTeacher:@"NULL" courseRoom:@"NULL" courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3 courseWeek:array];
+    CourseModel *a35 = [CourseModel courseTeacher:@"NULL" courseRoom:@"NULL" courseWithName:@"NULL" dayIndex:0 startCourseIndex:3 endCourseIndex:3 courseWeek:array];
     
     if ([defaults objectForKey:@"kCourse"]!=NULL) {
         NSArray *array                               = [defaults objectForKey:@"kCourse"];
@@ -224,15 +233,19 @@ NSString *show_xp;
         
         for (int i= 0; i<=(array.count-1); i++) {
             NSDictionary *dict1       = array[i];
+            
+            NSString *className       = [dict1 objectForKey:@"name"];
+            // 判断体育课
+            NSArray *CourseWeek = [dict1 objectForKey:@"zs"];
             NSString *ClassName       = [dict1 objectForKey:@"name"];//课名
-//            NSString *dsz             = [dict1 objectForKey:@"dsz"];//单双周
+            //            NSString *dsz             = [dict1 objectForKey:@"dsz"];//单双周
             int dsz_num        = [[dict1 objectForKey:@"dsz"] intValue];
-//            if ([[dict1 objectForKey:@"dsz"] isEqual: @1])
-//                dsz_num                   = 1;
-//            else if([[dict1 objectForKey:@"dsz"] isEqual: @2])
-//                dsz_num                   = 2;
-//            else
-//                dsz_num                   = 0;
+            //            if ([[dict1 objectForKey:@"dsz"] isEqual: @1])
+            //                dsz_num                   = 1;
+            //            else if([[dict1 objectForKey:@"dsz"] isEqual: @2])
+            //                dsz_num                   = 2;
+            //            else
+            //                dsz_num                   = 0;
             NSString *StartClass      = [dict1 objectForKey:@"djj"];//第几节
             int StartClass_num = [StartClass intValue];
             NSString *EndWeek         = [dict1 objectForKey:@"jsz"];//结束周
@@ -248,181 +261,222 @@ NSString *show_xp;
             int EndClass       = (short)StartClass_num + 1;
             ClassName=[ClassName stringByAppendingString:@"\n@"];
             ClassName=[ClassName stringByAppendingString:Room];
-            if([Math IfWeeks:now_week dsz:dsz_num qsz:StartWeek_num jsz:EndWeek_num]){
-                if(StartClass_num==1){
-                    switch (day1) {
-                        case 1:
-                            a1  = [CourseModel courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass];
-                            day1++;
-                            break;
-                        case 2:
-                            a2  = [CourseModel courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass];
-                            day1++;
-                            break;
-                        case 3:
-                            a3  = [CourseModel courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass];
-                            day1++;
-                            break;
-                        case 4:
-                            a4  = [CourseModel courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass];
-                            day1++;
-                            break;
-                        case 5:
-                            a5  = [CourseModel courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass];
-                            day1++;
-                            break;
-                        case 6:
-                            a26  = [CourseModel courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass];
-                            day1++;
-                            break;
-                        case 7:
-                            a27  = [CourseModel courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass];
-                            day1++;
-                            break;
-                        default:
-                            break;
+            NSString *PE =[className substringToIndex:2];
+            if([PE isEqualToString:@"体育"]){
+                NSLog(@"%s","体育课处理");
+            }else {
+                
+                if([Math IfWeeks:now_week dsz:dsz_num qsz:StartWeek_num jsz:EndWeek_num]){
+                    if(StartClass_num==1){
+                        switch (day1) {
+                            case 1:
+                                a1 = [CourseModel courseTeacher:Teacher courseRoom:Room courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass courseWeek:CourseWeek];
+                                //a1  = [CourseModel courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass];
+                                day1++;
+                                break;
+                            case 2:
+                                a2 = [CourseModel courseTeacher:Teacher courseRoom:Room courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass courseWeek:CourseWeek];
+                                //a2  = [CourseModel courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass];
+                                day1++;
+                                break;
+                            case 3:
+                                a3 = [CourseModel courseTeacher:Teacher courseRoom:Room courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass courseWeek:CourseWeek];
+                                // a3  = [CourseModel courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass];
+                                day1++;
+                                break;
+                            case 4:
+                                a4 = [CourseModel courseTeacher:Teacher courseRoom:Room courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass courseWeek:CourseWeek];
+                                //a4  = [CourseModel courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass];
+                                day1++;
+                                break;
+                            case 5:
+                                a5 = [CourseModel courseTeacher:Teacher courseRoom:Room courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass courseWeek:CourseWeek];
+                                // a5  = [CourseModel courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass];
+                                day1++;
+                                break;
+                            case 6:
+                                a26 = [CourseModel courseTeacher:Teacher courseRoom:Room courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass courseWeek:CourseWeek];
+                                //a26  = [CourseModel courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass];
+                                day1++;
+                                break;
+                            case 7:
+                                a27 = [CourseModel courseTeacher:Teacher courseRoom:Room courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass courseWeek:CourseWeek];
+                                //a27  = [CourseModel courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass];
+                                day1++;
+                                break;
+                            default:
+                                break;
+                        }
+                        
                     }
-                    
-                }
-                if(StartClass_num==3){
-                    switch (day2) {
-                        case 1:
-                            a6  = [CourseModel courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass];
-                            day2++;
-                            break;
-                        case 2:
-                            a7  = [CourseModel courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass];
-                            day2++;
-                            break;
-                        case 3:
-                            a8  = [CourseModel courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass];
-                            day2++;
-                            break;
-                        case 4:
-                            a9  = [CourseModel courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass];
-                            day2++;
-                            break;
-                        case 5:
-                            a10 = [CourseModel courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass];
-                            day2++;
-                            break;
-                        case 6:
-                            a28  = [CourseModel courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass];
-                            day2++;
-                            break;
-                        case 7:
-                            a29 = [CourseModel courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass];
-                            day2++;
-                            break;
-                        default:
-                            break;
+                    if(StartClass_num==3){
+                        switch (day2) {
+                            case 1:
+                                a6 = [CourseModel courseTeacher:Teacher courseRoom:Room courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass courseWeek:CourseWeek];
+                                //a6  = [CourseModel courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass];
+                                day2++;
+                                break;
+                            case 2:
+                                a7 = [CourseModel courseTeacher:Teacher courseRoom:Room courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass courseWeek:CourseWeek];
+                                //a7  = [CourseModel courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass];
+                                day2++;
+                                break;
+                            case 3:
+                                a8 = [CourseModel courseTeacher:Teacher courseRoom:Room courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass courseWeek:CourseWeek];
+                                //a8  = [CourseModel courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass];
+                                day2++;
+                                break;
+                            case 4:
+                                a9 = [CourseModel courseTeacher:Teacher courseRoom:Room courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass courseWeek:CourseWeek];
+                                //a9  = [CourseModel courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass];
+                                day2++;
+                                break;
+                            case 5:
+                                a10 = [CourseModel courseTeacher:Teacher courseRoom:Room courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass courseWeek:CourseWeek];
+                                //a10 = [CourseModel courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass];
+                                day2++;
+                                break;
+                            case 6:
+                                a28 = [CourseModel courseTeacher:Teacher courseRoom:Room courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass courseWeek:CourseWeek];
+                                //a28  = [CourseModel courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass];
+                                day2++;
+                                break;
+                            case 7:
+                                a29 = [CourseModel courseTeacher:Teacher courseRoom:Room courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass courseWeek:CourseWeek];
+                                //a29 = [CourseModel courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass];
+                                day2++;
+                                break;
+                            default:
+                                break;
+                        }
+                        
                     }
-                    
-                }
-                if(StartClass_num==5){
-                    switch (day3) {
-                        case 1:
-                            a11 = [CourseModel courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass];
-                            day3++;
-                            break;
-                        case 2:
-                            a12 = [CourseModel courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass];
-                            day3++;
-                            break;
-                        case 3:
-                            a13 = [CourseModel courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass];
-                            day3++;
-                            break;
-                        case 4:
-                            a14 = [CourseModel courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass];
-                            day3++;
-                            break;
-                        case 5:
-                            a15 = [CourseModel courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass];
-                            day3++;
-                            break;
-                        case 6:
-                            a30 = [CourseModel courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass];
-                            day3++;
-                            break;
-                        case 7:
-                            a31 = [CourseModel courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass];
-                            day3++;
-                            break;
-                        default:
-                            break;
+                    if(StartClass_num==5){
+                        switch (day3) {
+                            case 1:
+                                a11 = [CourseModel courseTeacher:Teacher courseRoom:Room courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass courseWeek:CourseWeek];
+                                // a11 = [CourseModel courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass];
+                                day3++;
+                                break;
+                            case 2:
+                                a12 = [CourseModel courseTeacher:Teacher courseRoom:Room courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass courseWeek:CourseWeek];
+                                //a12 = [CourseModel courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass];
+                                day3++;
+                                break;
+                            case 3:
+                                a13 = [CourseModel courseTeacher:Teacher courseRoom:Room courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass courseWeek:CourseWeek];
+                                //a13 = [CourseModel courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass];
+                                day3++;
+                                break;
+                            case 4:
+                                a14 = [CourseModel courseTeacher:Teacher courseRoom:Room courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass courseWeek:CourseWeek];
+                                //a14 = [CourseModel courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass];
+                                day3++;
+                                break;
+                            case 5:
+                                a15 = [CourseModel courseTeacher:Teacher courseRoom:Room courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass courseWeek:CourseWeek];
+                                //a15 = [CourseModel courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass];
+                                day3++;
+                                break;
+                            case 6:
+                                a30 = [CourseModel courseTeacher:Teacher courseRoom:Room courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass courseWeek:CourseWeek];
+                                //a30 = [CourseModel courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass];
+                                day3++;
+                                break;
+                            case 7:
+                                a31 = [CourseModel courseTeacher:Teacher courseRoom:Room courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass courseWeek:CourseWeek];
+                                //a31 = [CourseModel courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass];
+                                day3++;
+                                break;
+                            default:
+                                break;
+                        }
+                        
                     }
-                    
-                }
-                if(StartClass_num==7){
-                    switch (day4) {
-                        case 1:
-                            a16 = [CourseModel courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass];
-                            day4++;
-                            break;
-                        case 2:
-                            a17 = [CourseModel courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass];
-                            day4++;
-                            break;
-                        case 3:
-                            a18 = [CourseModel courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass];
-                            day4++;
-                            break;
-                        case 4:
-                            a19 = [CourseModel courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass];
-                            day4++;
-                            break;
-                        case 5:
-                            a20 = [CourseModel courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass];
-                            day4++;
-                            break;
-                        case 6:
-                            a32 = [CourseModel courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass];
-                            day4++;
-                            break;
-                        case 7:
-                            a33 = [CourseModel courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass];
-                            day4++;
-                            break;
-                        default:
-                            break;
+                    if(StartClass_num==7){
+                        switch (day4) {
+                            case 1:
+                                a16 = [CourseModel courseTeacher:Teacher courseRoom:Room courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass courseWeek:CourseWeek];
+                                //a16 = [CourseModel courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass];
+                                day4++;
+                                break;
+                            case 2:
+                                a17 = [CourseModel courseTeacher:Teacher courseRoom:Room courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass courseWeek:CourseWeek];
+                                //a17 = [CourseModel courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass];
+                                day4++;
+                                break;
+                            case 3:
+                                a18 = [CourseModel courseTeacher:Teacher courseRoom:Room courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass courseWeek:CourseWeek];
+                                //a18 = [CourseModel courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass];
+                                day4++;
+                                break;
+                            case 4:
+                                a19 =  [CourseModel courseTeacher:Teacher courseRoom:Room courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass courseWeek:CourseWeek];
+                                //a19 = [CourseModel courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass];
+                                day4++;
+                                break;
+                            case 5:
+                                a20 = [CourseModel courseTeacher:Teacher courseRoom:Room courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass courseWeek:CourseWeek];
+                                //a20 = [CourseModel courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass];
+                                day4++;
+                                break;
+                            case 6:
+                                a32 = [CourseModel courseTeacher:Teacher courseRoom:Room courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass courseWeek:CourseWeek];
+                                //a32 = [CourseModel courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass];
+                                day4++;
+                                break;
+                            case 7:
+                                a33 = [CourseModel courseTeacher:Teacher courseRoom:Room courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass courseWeek:CourseWeek];
+                                //a33 = [CourseModel courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass];
+                                day4++;
+                                break;
+                            default:
+                                break;
+                        }
+                        
                     }
-                    
-                }
-                if(StartClass_num==9){
-                    switch (day5) {
-                        case 1:
-                            a21 = [CourseModel courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass];
-                            day5++;
-                            break;
-                        case 2:
-                            a22 = [CourseModel courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass];
-                            day5++;
-                            break;
-                        case 3:
-                            a23 = [CourseModel courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass];
-                            day5++;
-                            break;
-                        case 4:
-                            a24 = [CourseModel courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass];
-                            day5++;
-                            break;
-                        case 5:
-                            a25 = [CourseModel courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass];
-                            day5++;
-                            break;
-                        case 6:
-                            a34 = [CourseModel courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass];
-                            day5++;
-                            break;
-                        case 7:
-                            a35 = [CourseModel courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass];
-                            day5++;
-                            break;
-                        default:
-                            break;
-                    } }
-            }//swifth结束
+                    if(StartClass_num==9){
+                        switch (day5) {
+                            case 1:
+                                a21 = [CourseModel courseTeacher:Teacher courseRoom:Room courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass courseWeek:CourseWeek];
+                                //a21 = [CourseModel courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass];
+                                day5++;
+                                break;
+                            case 2:
+                                a22 = [CourseModel courseTeacher:Teacher courseRoom:Room courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass courseWeek:CourseWeek];
+                                //a22 = [CourseModel courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass];
+                                day5++;
+                                break;
+                            case 3:
+                                a23 = [CourseModel courseTeacher:Teacher courseRoom:Room courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass courseWeek:CourseWeek];
+                                //a23 = [CourseModel courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass];
+                                day5++;
+                                break;
+                            case 4:
+                                a24 = [CourseModel courseTeacher:Teacher courseRoom:Room courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass courseWeek:CourseWeek];
+                                //a24 = [CourseModel courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass];
+                                day5++;
+                                break;
+                            case 5:
+                                a25 = [CourseModel courseTeacher:Teacher courseRoom:Room courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass courseWeek:CourseWeek];
+                                // a25 = [CourseModel courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass];
+                                day5++;
+                                break;
+                            case 6:
+                                a34 = [CourseModel courseTeacher:Teacher courseRoom:Room courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass courseWeek:CourseWeek];
+                                //a34 = [CourseModel courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass];
+                                day5++;
+                                break;
+                            case 7:
+                                a35 = [CourseModel courseTeacher:Teacher courseRoom:Room courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass courseWeek:CourseWeek];
+                                //a35 = [CourseModel courseWithName:ClassName dayIndex:(short)WeekDay_num startCourseIndex:(short)StartClass_num endCourseIndex:(short)EndClass];
+                                day5++;
+                                break;
+                            default:
+                                break;
+                        } }
+                }//swifth结束
+            }
         }
     }
     _courseArr = [NSMutableArray arrayWithArray:@[a1,a2,a3,a4,a5,a26,a27,a6,a7,a8,a9,a10,a28,a29,a11,a12,a13,a14,a15,a30,a31,a16,a17,a18,a19,a20,a32,a33,a21,a22,a23,a24,a25,a34,a35]];
@@ -436,8 +490,23 @@ NSString *show_xp;
     [self.courseListView reloadData];
 }
 
-
-
+// 小心思
+- (void) addSome {
+    if ([[Config getStudentKH] isEqualToString:@"17408002037"] &&[[Config getTrueName ] isEqualToString:@"张驰"])
+    {
+        UIImageView *img = [[UIImageView alloc] initWithFrame:CGRectMake(UIScreen.mainScreen.bounds.size.width/2-150, UIScreen.mainScreen.bounds.size.height/2-150, SYReal(300), SYReal(300))];
+        img.image = [UIImage imageNamed:@"lovass"];
+        [img setAlpha:0.4];
+        [self.view addSubview:img];
+    }
+    if ([[Config getStudentKH] isEqualToString:@"17403001035"] && [[Config getTrueName] isEqualToString:@"游子欣"])
+    {
+        UIImageView *img = [[UIImageView alloc] initWithFrame:CGRectMake(UIScreen.mainScreen.bounds.size.width/2-150, UIScreen.mainScreen.bounds.size.height/2-150, SYReal(300), SYReal(300))];
+        img.image = [UIImage imageNamed:@"lovass"];
+        [img setAlpha:0.4];
+        [self.view addSubview:img];
+    }
+}
 
 
 - (void)reloadcourse {
@@ -522,6 +591,27 @@ NSString *show_xp;
 #pragma mark - GWPCourseListViewDelegate
 /** 选中(点击)某一个课程单元之后的回调 */
 - (void)courseListView:(GWPCourseListView *)courseListView didSelectedCourse:(id<Course>)course{
+    
+    if(course!=nil){
+        DetailsCourseViewController *Dcv = [[DetailsCourseViewController alloc]init];
+        //分割courseName
+        NSArray *arr = [course.courseName componentsSeparatedByString:@"\n"];
+        Dcv.name = arr[0];
+        /** 上课时间拼接 */
+        NSString *time0 = [NSString stringWithFormat: @"%lu", (unsigned long)course.dayIndex];
+        NSString *time1 = [NSString stringWithFormat: @"%lu", (unsigned long)course.startCourseIndex];
+        NSString *time2 = [NSString stringWithFormat: @"%lu", (unsigned long)(course.startCourseIndex+1)];
+        
+        
+        Dcv.time = [NSString stringWithFormat:@"星期%@ 第%@、%@节",time0,time1,time2];
+        Dcv.room = course.courseRoom;
+        Dcv.room = course.courseRoom;
+        Dcv.teacher = course.courseTeacher;
+        NSString *courseWeek = [[course.courseWeek
+                                 valueForKey:@"description"] componentsJoinedByString:@" "];
+        Dcv.Week = courseWeek;
+        [self.navigationController pushViewController:Dcv animated:YES];
+    }
     
 }
 /////////////按钮////////////

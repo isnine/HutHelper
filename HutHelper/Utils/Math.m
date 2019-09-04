@@ -10,8 +10,8 @@
 #import <CommonCrypto/CommonDigest.h>
 @implementation Math
 int startyear                       = 2019;
-int startmonth                      = 2;
-int startday                        = 25;
+int startmonth                      = 9;
+int startday                        = 2;
 #pragma mark - 日期
 /** 返回本年第几天*/
 +(int) CountDays:(int)year m:(int)month d:(int)day{
@@ -65,7 +65,7 @@ int startday                        = 25;
 /** 得到当前为几号 */
 +(NSString*) getDayOfWeek:(int)week d:(int)day {
     NSString *dStr,*wStr;
-    day=[self CountDays:2019 m:2 d:25]+(week-1)*7+day;
+    day=[self CountDays:2019 m:9 d:2]+(week-1)*7+day;
     int year=startyear;
     int d=0,m,leap,i;
     int Month[12]={31,28,31,30,31,30,31,31,30,31,30,31};
