@@ -7,9 +7,6 @@
 - 目前iOS端用户量4000人左右，Android端用户9000人左右。Web端日浏览量在3W左右。
 - 本仓库为工大助手iOS端源码仓库，任何人都可以发起PR，CI会自动编译发布到TestFlight
 - iOS端下载: [AppStore](https://itunes.apple.com/cn/app/gong-da-zhu-shou-hu-nan-gong/id1164848835)
-- Android端下载: [工大助手](https://huthelper.cn/res/index)
-- Win10端下载: [工大助手](https://huthelper.cn/res/index)
-- 微信小程序: [工大助手](https://huthelper.cn/res/index)
 - 开发者博客:[Nine's Blog](https://www.wxz.name)
 
 # Get Started
