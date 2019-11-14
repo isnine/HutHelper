@@ -19,6 +19,9 @@
 @end
 
 @implementation AboutViewController
+- (IBAction)back:(UIButton *)sender {
+    [self dismissViewControllerAnimated:true completion:nil];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];

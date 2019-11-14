@@ -71,6 +71,9 @@
 +(NSString*)getApiImUserInfo:(NSString*)User_id;
 +(NSString*)getApiImStudent;
 
++(NSString*)getImHttpsWeb:(NSString*)toUserId;
++(NSString*)getMyNoticeWeb;
+
 +(NSString*)getApiVersioniOS;
 +(NSString*)getApiWeather;
 +(NSString*)getApiCalendar;

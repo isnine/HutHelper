@@ -43,6 +43,7 @@
     }
     Hand *hand=_handArray[(short)(((UITableViewCell*)[[sender superview]superview]).tag)*2];
     NSString *Url_String=[NSString stringWithFormat:@"%@/%@/%@/%@",Config.getApiGoodsShow,Config.getStudentKH,Config.getRememberCodeApp,hand.good_id];
+    NSLog(@"%@",Url_String);
     [APIRequest GET:Url_String parameters:nil success:^(id responseObject) {
              NSDictionary *Hand_All = [NSDictionary dictionaryWithDictionary:responseObject];
              NSString *Msg=[Hand_All objectForKey:@"msg"];
@@ -76,6 +77,8 @@
     }
     Hand *hand=_handArray[(short)(((UITableViewCell*)[[sender superview]superview]).tag)*2+1];
     NSString *Url_String=[NSString stringWithFormat:@"%@/%@/%@/%@",Config.getApiGoodsShow,Config.getStudentKH,Config.getRememberCodeApp,hand.good_id];
+    
+    //NSLog(@"%@",Url_String);
     [APIRequest GET:Url_String parameters:nil success:^(id responseObject) {
              NSDictionary *Hand_All = [NSDictionary dictionaryWithDictionary:responseObject];
              NSString *Msg=[Hand_All objectForKey:@"msg"];
