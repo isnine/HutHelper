@@ -151,10 +151,10 @@
         [MBProgressHUD showError:@"游客请登录后再联系Ta" toView:self.view];
         return;
     }
-    ChatViewController *conversationVC = [[ChatViewController alloc]init];
-//    conversationVC.conversationType = ConversationType_PRIVATE;
-//    conversationVC.targetId = _user_id;
-    conversationVC.title = _name;
+//    ChatViewController *conversationVC = [[ChatViewController alloc]init];
+////    conversationVC.conversationType = ConversationType_PRIVATE;
+////    conversationVC.targetId = _user_id;
+//    conversationVC.title = _name;
     
     BaseWebViewController *chatVC = [[BaseWebViewController alloc]init];
     chatVC.url = [Config getImHttpsWeb:_user_id];
