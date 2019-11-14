@@ -1975,6 +1975,7 @@
 				3A7D3CB71DB0A7ED00355E7A /* Embed App Extensions */,
 				59C2F2075DA79D116FBB9EAC /* [CP] Copy Pods Resources */,
 				3A4BDF391F63CF39007E375F /* Embed Watch Content */,
+				1F5CFD9FD1534C013180903C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -2154,6 +2155,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		1F5CFD9FD1534C013180903C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HutHelper/Pods-HutHelper-frameworks.sh",
+				"${PODS_ROOT}/Reveal-SDK/RevealServer-19/iOS/RevealServer.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RevealServer.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HutHelper/Pods-HutHelper-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		59C2F2075DA79D116FBB9EAC /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;

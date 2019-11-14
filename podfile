@@ -14,7 +14,7 @@ def swiftUI
 end
 
 def debug
-    #pod 'Reveal-SDK', '~> 19', :configurations => ['Debug']
+    pod 'Reveal-SDK', '~> 19', :configurations => ['Debug']
 end
 
 def ocpod
