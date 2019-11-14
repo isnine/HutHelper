@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		255A55BF231FC40E001A7C13 /* DetailsCourseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 255A55BD231FC40E001A7C13 /* DetailsCourseViewController.m */; };
 		255A55C0231FC40E001A7C13 /* DetailsCourseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 255A55BE231FC40E001A7C13 /* DetailsCourseViewController.xib */; };
+		25C5A9DC237D46E1004F0A5F /* BaseWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 25C5A9DA237D46E1004F0A5F /* BaseWebViewController.m */; };
+		25C5A9DD237D46E1004F0A5F /* BaseWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25C5A9DB237D46E1004F0A5F /* BaseWebViewController.xib */; };
 		306ED4D66B74BB7E6D350B7E /* libPods-HutHelper.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F483A3F1FC79A9B85B68036B /* libPods-HutHelper.a */; };
 		3A0056121EC97CB70047E8F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A0056111EC97CB70047E8F2 /* Assets.xcassets */; };
 		3A06D9B51E8CEDE400066DD1 /* ExamCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A06D9B31E8CEDE400066DD1 /* ExamCell.m */; };
@@ -331,6 +333,9 @@
 		255A55BC231FC40E001A7C13 /* DetailsCourseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailsCourseViewController.h; sourceTree = "<group>"; };
 		255A55BD231FC40E001A7C13 /* DetailsCourseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailsCourseViewController.m; sourceTree = "<group>"; };
 		255A55BE231FC40E001A7C13 /* DetailsCourseViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailsCourseViewController.xib; sourceTree = "<group>"; };
+		25C5A9D9237D46E1004F0A5F /* BaseWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseWebViewController.h; sourceTree = "<group>"; };
+		25C5A9DA237D46E1004F0A5F /* BaseWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseWebViewController.m; sourceTree = "<group>"; };
+		25C5A9DB237D46E1004F0A5F /* BaseWebViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BaseWebViewController.xib; sourceTree = "<group>"; };
 		3A0056111EC97CB70047E8F2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = HutHelper/Assets.xcassets; sourceTree = "<group>"; };
 		3A06D9B21E8CEDE400066DD1 /* ExamCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExamCell.h; sourceTree = "<group>"; };
 		3A06D9B31E8CEDE400066DD1 /* ExamCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExamCell.m; sourceTree = "<group>"; };
@@ -800,6 +805,16 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		25C5A9D8237D46C3004F0A5F /* NewWeb */ = {
+			isa = PBXGroup;
+			children = (
+				25C5A9D9237D46E1004F0A5F /* BaseWebViewController.h */,
+				25C5A9DA237D46E1004F0A5F /* BaseWebViewController.m */,
+				25C5A9DB237D46E1004F0A5F /* BaseWebViewController.xib */,
+			);
+			path = NewWeb;
+			sourceTree = "<group>";
+		};
 		3A06D9B11E8CEDE400066DD1 /* Exam */ = {
 			isa = PBXGroup;
 			children = (
@@ -1148,6 +1163,7 @@
 		3A796B9E1E534C1B00794043 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				25C5A9D8237D46C3004F0A5F /* NewWeb */,
 				3ADBB2FF21B678A700670412 /* Common */,
 				3A97676521B587BF00FBF0B7 /* More */,
 				3AA3D1EC1F891B0600990358 /* Moments */,
@@ -1959,7 +1975,7 @@
 				3A7D3CB71DB0A7ED00355E7A /* Embed App Extensions */,
 				59C2F2075DA79D116FBB9EAC /* [CP] Copy Pods Resources */,
 				3A4BDF391F63CF39007E375F /* Embed Watch Content */,
-				B8BB1A14BC717562544563B9 /* [CP] Embed Pods Frameworks */,
+				1F5CFD9FD1534C013180903C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -2104,6 +2120,7 @@
 				3A532CD01E910C13003CD5A8 /* ZFPlayer.bundle in Resources */,
 				3A4D30171E8D297200901E3B /* MainViewController.xib in Resources */,
 				3A42B7571F42E953005D45D6 /* ChatChoiceTableViewCell.xib in Resources */,
+				25C5A9DD237D46E1004F0A5F /* BaseWebViewController.xib in Resources */,
 				3A4D30161E8D297200901E3B /* LeftUserTableViewCell.xib in Resources */,
 				3AFA4F771EC04C0E00CB7DA2 /* Info.plist in Resources */,
 				3A4D2FFA1E8D24E200901E3B /* ScoreTableViewCell.xib in Resources */,
@@ -2138,6 +2155,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		1F5CFD9FD1534C013180903C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HutHelper/Pods-HutHelper-frameworks.sh",
+				"${PODS_ROOT}/Reveal-SDK/RevealServer-19/iOS/RevealServer.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RevealServer.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HutHelper/Pods-HutHelper-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		59C2F2075DA79D116FBB9EAC /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -2164,28 +2199,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HutHelper/Pods-HutHelper-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B8BB1A14BC717562544563B9 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-HutHelper/Pods-HutHelper-frameworks.sh",
-				"${PODS_ROOT}/Reveal-SDK/RevealServer-19/iOS/RevealServer.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RevealServer.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HutHelper/Pods-HutHelper-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		C0F366FF131B7D647531FC04 /* [CP] Check Pods Manifest.lock */ = {
@@ -2346,6 +2359,7 @@
 				3A06D9B51E8CEDE400066DD1 /* ExamCell.m in Sources */,
 				3A532CC91E910C13003CD5A8 /* UINavigationController+ZFPlayerRotation.m in Sources */,
 				3A8DFD0222BDCA45004A69B8 /* UIView+MJExtension.m in Sources */,
+				25C5A9DC237D46E1004F0A5F /* BaseWebViewController.m in Sources */,
 				3A532CD31E910C13003CD5A8 /* ZFPlayerView.m in Sources */,
 				3A8DFD0B22BDCA45004A69B8 /* MJRefreshBackNormalFooter.m in Sources */,
 				3AFA4F5A1EC0440F00CB7DA2 /* Config+Set.m in Sources */,
@@ -2495,11 +2509,13 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 19111401;
 				DEVELOPMENT_TEAM = JW2LR94V6G;
 				GCC_PREFIX_HEADER = "HutHelper/Supporting Files/HutHelper-Prefix.pch";
 				INFOPLIST_FILE = Extend/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MARKETING_VERSION = 4.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = name.wxz.HutHelper.Extend;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -2517,11 +2533,13 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 19111401;
 				DEVELOPMENT_TEAM = JW2LR94V6G;
 				GCC_PREFIX_HEADER = "HutHelper/Supporting Files/HutHelper-Prefix.pch";
 				INFOPLIST_FILE = Extend/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MARKETING_VERSION = 4.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = name.wxz.HutHelper.Extend;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -2666,6 +2684,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 19111401;
 				DEVELOPMENT_TEAM = JW2LR94V6G;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2702,6 +2721,7 @@
 					"$(PROJECT_DIR)/HutHelper/Vendor/XgPush",
 					"$(PROJECT_DIR)/HutHelper/Vendor/XgPush/idfa",
 				);
+				MARKETING_VERSION = 4.2.0;
 				NEW_SETTING = "";
 				PRODUCT_BUNDLE_IDENTIFIER = name.wxz.HutHelper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2724,6 +2744,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 19111401;
 				DEVELOPMENT_TEAM = JW2LR94V6G;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2760,6 +2781,7 @@
 					"$(PROJECT_DIR)/HutHelper/Vendor/XgPush",
 					"$(PROJECT_DIR)/HutHelper/Vendor/XgPush/idfa",
 				);
+				MARKETING_VERSION = 4.2.0;
 				NEW_SETTING = "";
 				PRODUCT_BUNDLE_IDENTIFIER = name.wxz.HutHelper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2780,11 +2802,13 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 19111401;
 				DEVELOPMENT_TEAM = JW2LR94V6G;
 				GCC_PREFIX_HEADER = "HutHelper/Supporting Files/HutHelper-Prefix.pch";
 				INFOPLIST_FILE = ExamTime/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MARKETING_VERSION = 4.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = name.wxz.HutHelper.ExamTime;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -2802,11 +2826,13 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 19111401;
 				DEVELOPMENT_TEAM = JW2LR94V6G;
 				GCC_PREFIX_HEADER = "HutHelper/Supporting Files/HutHelper-Prefix.pch";
 				INFOPLIST_FILE = ExamTime/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MARKETING_VERSION = 4.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = name.wxz.HutHelper.ExamTime;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

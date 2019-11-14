@@ -67,9 +67,9 @@ typedef NS_ENUM(NSUInteger, PowerSelectBtn) {
 - (void)viewDidLoad {
     [super viewDidLoad];
     _Building.placeholder=@"宿舍楼栋";
-    [_Building setValue:[UIColor whiteColor] forKeyPath:@"_placeholderLabel.textColor"];
+    //[_Building setValue:[UIColor whiteColor] forKeyPath:@"_placeholderLabel.textColor"];
     _Room.placeholder=@"寝室号";
-    [_Room setValue:[UIColor whiteColor] forKeyPath:@"_placeholderLabel.textColor"];
+    //[_Room setValue:[UIColor whiteColor] forKeyPath:@"_placeholderLabel.textColor"];
     self.title=@"电费查询";
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
     [self getRoom];

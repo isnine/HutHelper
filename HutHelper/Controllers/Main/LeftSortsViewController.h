@@ -10,4 +10,5 @@
 
 @interface LeftSortsViewController : UIViewController
 @property (nonatomic,strong) UITableView *tableview;
+@property (strong, nonatomic) UINavigationController *navigationController;
 @end
