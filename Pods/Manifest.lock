@@ -43,7 +43,6 @@ PODS:
   - Masonry (0.6.4)
   - MBProgressHUD (1.0.0)
   - Reachability (3.2)
-  - Reveal-SDK (19)
   - SDWebImage (3.8.3):
     - SDWebImage/Core (= 3.8.3)
   - SDWebImage/Core (3.8.3)
@@ -82,7 +81,6 @@ DEPENDENCIES:
   - LGPlusButtonsView (~> 1.1.0)
   - Masonry
   - MBProgressHUD (~> 1.0.0)
-  - Reveal-SDK (~> 19)
   - SDWebImage (~> 3.8)
   - SnapKit (~> 4.0.0)
   - SwiftMessages
@@ -96,7 +94,7 @@ DEPENDENCIES:
   - YCXMenu (~> 0.0.11)
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - AFNetworking
     - Alamofire
     - ASIHTTPRequest
@@ -111,7 +109,6 @@ SPEC REPOS:
     - Masonry
     - MBProgressHUD
     - Reachability
-    - Reveal-SDK
     - SDWebImage
     - SnapKit
     - SVProgressHUD
@@ -137,7 +134,6 @@ SPEC CHECKSUMS:
   Masonry: 281802d04d787ea2973179ee8bcb50500579ede2
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
-  Reveal-SDK: 9f0d2c6c12eb7507921e5454ac165b7aa21140a4
   SDWebImage: a72e880a8fe0f7fc31efe15aaed443c074d2a80c
   SnapKit: 0de968a9fec17499afa29683b05d0c775b6d1c29
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
@@ -148,6 +144,6 @@ SPEC CHECKSUMS:
   UMengUShare: 370d180101e13ee0227ae657ab119ba97243d2b3
   YCXMenu: 6003bcd20d8ac72e3eb3c442c97ed21948c6dc1f
 
-PODFILE CHECKSUM: 19c763f5c6f939cd4a1fed203392bdd9a0cc5964
+PODFILE CHECKSUM: cdef9b9379050a2f45fb7d633816b4a16b33c231
 
-COCOAPODS: 1.7.4
+COCOAPODS: 1.8.4

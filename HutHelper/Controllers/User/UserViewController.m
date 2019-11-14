@@ -31,6 +31,11 @@ static NSString *const kUserInfoCellHeadID = @"kUserInfoCellHeadID";
 
 @implementation UserViewController
 UIImage* img ;
+
+- (IBAction)back:(UIButton *)sender {
+    [self dismissViewControllerAnimated:true completion:nil];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title=@"个人信息";
@@ -196,10 +201,11 @@ UIImage* img ;
             [self getImageFromIpc];
             break;
         case 1:
-            [self.navigationController pushViewController:secondViewController animated:YES];
+            [self presentViewController:secondViewController animated:true completion:nil];
+           // [self.navigationController pushViewController:secondViewController animated:YES];
             break;
         case 2:
-            [self.navigationController pushViewController:webViewController animated:YES];
+            [self presentViewController:webViewController animated:true completion:nil];
             break;
         default:
             break;

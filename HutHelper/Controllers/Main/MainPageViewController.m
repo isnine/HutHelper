@@ -16,7 +16,7 @@
 #import "NoticeViewController.h"
 #import "DayViewController.h"
   
- 
+#import "BaseWebViewController.h"
 #import "LoginViewController.h"
 #import<CommonCrypto/CommonDigest.h>
 #import "MBProgressHUD.h"
@@ -218,7 +218,11 @@ int class_error_;
          [MBProgressHUD showError:@"游客请登录" toView:self.view];
          return;
      }
-    [Config pushViewController:@"ClassXp"];
+    BaseWebViewController *scoreVC = [[BaseWebViewController alloc]init];
+    scoreVC.url = @"http://m.huthelper.cn/im/#/qz/empty-room";
+    scoreVC.centerTitle = @"空教室";
+    [self.navigationController pushViewController:scoreVC animated:YES];
+    
 } //实验课表
 - (IBAction)HomeWork:(id)sender {
     if ([Config isTourist]) {
@@ -242,105 +246,120 @@ int class_error_;
     AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [tempAppDelegate.mainNavigationController pushViewController:hand animated:YES];
 } //二手市场
+
 - (IBAction)Score:(id)sender {
     if ([Config isTourist]) {
         [MBProgressHUD showError:@"游客请登录" toView:self.view];
         return;
     }
-    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    //如果没有缓存数据
-    if((![defaults objectForKey:@"Score"])||(![defaults objectForKey:@"ScoreRank"])){
-        dispatch_group_t group = dispatch_group_create();
-        dispatch_queue_t q = dispatch_get_global_queue(0, 0);
-        __block ScoreStatus scoreStatus=ScoreOK;
-        __block NSString *errorStr;
-        //分数队列请求
-        [MBProgressHUD showMessage:@"加载中" toView:self.view];
-        dispatch_group_async(group, q, ^{
-            dispatch_group_enter(group);
-            [APIRequest GET:Config.getApiScores parameters:nil timeout:8.0 success:^(id responseObject){
-                NSData *scoreData =    [NSJSONSerialization dataWithJSONObject:responseObject options:NSJSONWritingPrettyPrinted error:nil];
-                NSString *msg=responseObject[@"msg"];
-                if([responseObject[@"code"] isEqual: @200]){
-                    [Config saveScore:scoreData];
-                }else if([msg isEqualToString:@"令牌错误"]){
-                    errorStr=ERROR_MSG_INVALID;
-                    scoreStatus=scoreStatus+1;
-                }else{
-                    errorStr=msg;
-                    scoreStatus=scoreStatus+1;
-                }
-                HideAllHUD
-                dispatch_group_leave(group);
-                
-            }failure:^(NSError *error){
-                HideAllHUD
-                errorStr=@"网络超时";
-                scoreStatus=scoreStatus+1;
-                dispatch_group_leave(group);
-            }];
-        });
-        
-        //排名队列请求
-        dispatch_group_async(group, q, ^{
-            dispatch_group_enter(group);
-            [APIRequest GET:Config.getApiRank parameters:nil timeout:8.0 success:^(id responseObject) {
-                if ([responseObject[@"code"] isEqual: @200]) {
-                    [Config saveScoreRank:responseObject];
-                }else if([responseObject[@"msg"] isEqualToString:@"令牌错误"]){
-                    errorStr=ERROR_MSG_INVALID;
-                    scoreStatus=scoreStatus+2;
-                }else{
-                    scoreStatus=scoreStatus+2;
-                    errorStr=@"排名查询错误";
-                }
-                HideAllHUD
-                dispatch_group_leave(group);
-            } failure:^(NSError *error) {
-                HideAllHUD
-                scoreStatus=scoreStatus+2;
-                errorStr=@"网络超时";
-                dispatch_group_leave(group);
-            }];
-        });
-        
-        //两个队列请求完毕
-        dispatch_group_notify(group, dispatch_get_main_queue(), ^{
-            HideAllHUD
-            switch (scoreStatus) {
-                case ScoreOK:
-                    [Config pushViewController:@"ScoreShow"];
-                    break;
-//                case ScoreRankError:
-//                    [MBProgressHUD showError:@"排名查询错误" toView:self.view];
-//                    break;
-//                case ScoreError:
-//                    [MBProgressHUD showError:@"分数查询错误" toView:self.view];
-//                    break;
-//                case ScoreAndScoreRankError:
-//                    [MBProgressHUD showError:@"排名和分数查询错误" toView:self.view];
-//                    break;
-                default:
-                     [MBProgressHUD showError:errorStr toView:self.view];
-                    break;
-            }
+    
 
-            
-        });
-    }else{
-        [Config pushViewController:@"ScoreShow"];
-        
-    }
+    BaseWebViewController *scoreVC = [[BaseWebViewController alloc]init];
+    scoreVC.url = @"http://m.huthelper.cn/im/#/qz/score";
+    scoreVC.centerTitle = @"考试计划";
+    [self.navigationController pushViewController:scoreVC animated:YES];
+    
+//
+//    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+//    //如果没有缓存数据
+//    if((![defaults objectForKey:@"Score"])||(![defaults objectForKey:@"ScoreRank"])){
+//        dispatch_group_t group = dispatch_group_create();
+//        dispatch_queue_t q = dispatch_get_global_queue(0, 0);
+//        __block ScoreStatus scoreStatus=ScoreOK;
+//        __block NSString *errorStr;
+//        //分数队列请求
+//        [MBProgressHUD showMessage:@"加载中" toView:self.view];
+//        dispatch_group_async(group, q, ^{
+//            dispatch_group_enter(group);
+//            [APIRequest GET:Config.getApiScores parameters:nil timeout:8.0 success:^(id responseObject){
+//                NSData *scoreData =    [NSJSONSerialization dataWithJSONObject:responseObject options:NSJSONWritingPrettyPrinted error:nil];
+//                NSString *msg=responseObject[@"msg"];
+//                if([responseObject[@"code"] isEqual: @200]){
+//                    [Config saveScore:scoreData];
+//                }else if([msg isEqualToString:@"令牌错误"]){
+//                    errorStr=ERROR_MSG_INVALID;
+//                    scoreStatus=scoreStatus+1;
+//                }else{
+//                    errorStr=msg;
+//                    scoreStatus=scoreStatus+1;
+//                }
+//                HideAllHUD
+//                dispatch_group_leave(group);
+//
+//            }failure:^(NSError *error){
+//                HideAllHUD
+//                errorStr=@"网络超时";
+//                scoreStatus=scoreStatus+1;
+//                dispatch_group_leave(group);
+//            }];
+//        });
+//
+//        //排名队列请求
+//        dispatch_group_async(group, q, ^{
+//            dispatch_group_enter(group);
+//            [APIRequest GET:Config.getApiRank parameters:nil timeout:8.0 success:^(id responseObject) {
+//                if ([responseObject[@"code"] isEqual: @200]) {
+//                    [Config saveScoreRank:responseObject];
+//                }else if([responseObject[@"msg"] isEqualToString:@"令牌错误"]){
+//                    errorStr=ERROR_MSG_INVALID;
+//                    scoreStatus=scoreStatus+2;
+//                }else{
+//                    scoreStatus=scoreStatus+2;
+//                    errorStr=@"排名查询错误";
+//                }
+//                HideAllHUD
+//                dispatch_group_leave(group);
+//            } failure:^(NSError *error) {
+//                HideAllHUD
+//                scoreStatus=scoreStatus+2;
+//                errorStr=@"网络超时";
+//                dispatch_group_leave(group);
+//            }];
+//        });
+//
+//        //两个队列请求完毕
+//        dispatch_group_notify(group, dispatch_get_main_queue(), ^{
+//            HideAllHUD
+//            switch (scoreStatus) {
+//                case ScoreOK:
+//                    [Config pushViewController:@"ScoreShow"];
+//                    break;
+////                case ScoreRankError:
+////                    [MBProgressHUD showError:@"排名查询错误" toView:self.view];
+////                    break;
+////                case ScoreError:
+////                    [MBProgressHUD showError:@"分数查询错误" toView:self.view];
+////                    break;
+////                case ScoreAndScoreRankError:
+////                    [MBProgressHUD showError:@"排名和分数查询错误" toView:self.view];
+////                    break;
+//                default:
+//                     [MBProgressHUD showError:errorStr toView:self.view];
+//                    break;
+//            }
+//
+//
+//        });
+//    }else{
+//        [Config pushViewController:@"ScoreShow"];
+//
+//    }
 } //成绩查询
+
 - (IBAction)Library:(id)sender {
     [Config pushViewController:@"Library"];
+    
 } //图书馆
 - (IBAction)Exam:(id)sender {
     if ([Config isTourist]) {
         [MBProgressHUD showError:@"游客请登录" toView:self.view];
         return;
     }
-    [Config pushViewController:@"Exam"];
+    
+    BaseWebViewController *scoreVC = [[BaseWebViewController alloc]init];
+    scoreVC.url = @"http://m.huthelper.cn/im/#/qz/exam-plan";
+    scoreVC.centerTitle = @"成绩查询";
+    [self.navigationController pushViewController:scoreVC animated:YES];
 } //考试计划
 - (IBAction)Day:(id)sender {
     DayViewController *chvc = [[DayViewController alloc]init];
@@ -497,15 +516,15 @@ int class_error_;
         LoginViewController *firstlogin                = [[LoginViewController alloc] init];
         [tempAppDelegate.mainNavigationController pushViewController:firstlogin animated:YES];
     }
-    NSArray *array                            = [defaults objectForKey:@"kCourse"];
-    NSString *autoclass=[defaults objectForKey:@"autoclass"];
-    /**  是否自动打开课程表  */
-    if(array!=NULL&&[autoclass isEqualToString:@"打开"]){
-        UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        CourseViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Class"];
-        AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-        [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:NO];
-    }
+//    NSArray *array                            = [defaults objectForKey:@"kCourse"];
+//    NSString *autoclass=[defaults objectForKey:@"autoclass"];
+//    /**  是否自动打开课程表  */
+//    if(array!=NULL&&[autoclass isEqualToString:@"打开"]){
+//        UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//        CourseViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Class"];
+//        AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+//        [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:NO];
+//    }
 }
 
 //设置标题栏
@@ -591,9 +610,17 @@ int class_error_;
 }
 
 -(void)more{
-    AppDelegate *tempAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    MoreViewController *moreVC = [[MoreViewController alloc]init];
-    [tempAppDelegate.mainNavigationController pushViewController:moreVC animated:YES];
+//    AppDelegate *tempAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+//    MoreViewController *moreVC = [[MoreViewController alloc]init];
+//    [tempAppDelegate.mainNavigationController pushViewController:moreVC animated:YES];
+    
+        BaseWebViewController *chatVC = [[BaseWebViewController alloc]init];
+        chatVC.url = [Config getMyNoticeWeb];
+        NSLog(@"%@", chatVC.url);
+        chatVC.centerTitle = @"私信消息";
+    //    "http://m.huthelper.cn/#/im?user_id=10118696&key=67360eb0a1f79a85a1931c11afbb9a20eef4f09c&to_user_id=38488"
+    //    "http://m.huthelper.cn/im/#/im?user_id=13147&key=we&to_user_id=13149"
+        [self.navigationController pushViewController:chatVC animated:YES];
 }
 
 

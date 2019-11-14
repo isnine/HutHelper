@@ -1,6 +1,6 @@
 platform:ios,'10.0'
 inhibit_all_warnings!
-
+source 'https://github.com/CocoaPods/Specs.git'
 def swiftUI
     pod 'Alamofire'
     pod 'SwiftyJSON'
@@ -14,7 +14,7 @@ def swiftUI
 end
 
 def debug
-    pod 'Reveal-SDK', '~> 19', :configurations => ['Debug']
+    #pod 'Reveal-SDK', '~> 19', :configurations => ['Debug']
 end
 
 def ocpod
