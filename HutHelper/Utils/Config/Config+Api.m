@@ -81,7 +81,7 @@
     return [NSString stringWithFormat:@"%@/api/v1/stuff/upload",Config.getApiImg];
 }
 +(NSString*)getApiGoodsShow{
-    return [NSString stringWithFormat:@"%@/api/v1/stuff/detail",Config.apiIndex];
+    return [NSString stringWithFormat:@"%@/api/v3/trade/details",Config.apiIndex];
 }
 +(NSString*)getApiGoodsDelect:(NSString*)goodID{
     return [NSString stringWithFormat:@"%@/api/v1/stuff/delete/%@/%@/%@",Config.apiIndex,Config.getStudentKH,Config.getRememberCodeApp,goodID];
@@ -172,7 +172,12 @@
 +(NSString*)getApiImStudent{
     return [NSString stringWithFormat:@"%@/api/v2/Im/get_students",Config.apiIndex];
 }
-
++(NSString*)getImHttpsWeb:(NSString*)toUserId{
+    return [NSString stringWithFormat:@"%@/im/#/im?user_id=%@&key=%@&to_user_id=%@",Config.apiIndexHttps,Config.getUserId,Config.getRememberCodeApp,toUserId];
+}
++(NSString*)getMyNoticeWeb {
+    return [NSString stringWithFormat:@"%@/im/#/list-popup?user_id=%@&key=%@",Config.apiIndexHttps,Config.getUserId,Config.getRememberCodeApp];
+}
 #pragma mark - 全局
 +(NSString*)getApiImg{
     return @"http://images.huthelper.cn:8888";
@@ -184,6 +189,6 @@
 }//api.tutuweb.cn
 
 +(NSString*)apiIndexHttps{
-    return @"https://hut.wxz.name";
+    return @"http://m.huthelper.cn";
 }
 @end

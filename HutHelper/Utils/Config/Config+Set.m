@@ -28,7 +28,9 @@
 +(void)pushViewController:(NSString*)controller{
     UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UIViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:controller];
+    
     AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+   // [tempAppDelegate.LeftSlideVC closeLeftView];
     [tempAppDelegate.mainNavigationController pushViewController:secondViewController animated:YES];
 }
 + (void)isAppFirstRun{

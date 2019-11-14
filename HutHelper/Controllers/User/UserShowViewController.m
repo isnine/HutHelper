@@ -13,6 +13,9 @@
 #import "MomentsViewController.h"
 #import "HandTableViewController.h"
 #import "LostViewController.h"
+#import "HutHelper-Swift.h"
+#import "BaseWebViewController.h"
+
 @interface UserShowViewController ()
 
 @end
@@ -143,15 +146,24 @@
 }
 #pragma  mark - 方法
 -(void)im{
-    [MBProgressHUD showError:@"私信功能暂时关闭，待重新开发" toView:self.view];
-//    if ([Config isTourist]) {
-//        [MBProgressHUD showError:@"游客请登录后再联系Ta" toView:self.view];
-//        return;
-//    }
+   // [MBProgressHUD showError:@"私信功能暂时关闭，待重新开发" toView:self.view];
+    if ([Config isTourist]) {
+        [MBProgressHUD showError:@"游客请登录后再联系Ta" toView:self.view];
+        return;
+    }
 //    ChatViewController *conversationVC = [[ChatViewController alloc]init];
-//    conversationVC.conversationType = ConversationType_PRIVATE;
-//    conversationVC.targetId = _user_id;
+////    conversationVC.conversationType = ConversationType_PRIVATE;
+////    conversationVC.targetId = _user_id;
 //    conversationVC.title = _name;
+    
+    BaseWebViewController *chatVC = [[BaseWebViewController alloc]init];
+    chatVC.url = [Config getImHttpsWeb:_user_id];
+    NSLog(@"%@", chatVC.url);
+    chatVC.centerTitle = @"私信";
+//    "http://m.huthelper.cn/#/im?user_id=10118696&key=67360eb0a1f79a85a1931c11afbb9a20eef4f09c&to_user_id=38488"
+//    "http://m.huthelper.cn/im/#/im?user_id=13147&key=we&to_user_id=13149"
+    [self.navigationController pushViewController:chatVC animated:YES];
+    
 //    [self.navigationController pushViewController:conversationVC animated:YES];
 }
 -(void)hand{

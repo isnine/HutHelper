@@ -96,7 +96,7 @@ DEPENDENCIES:
   - YCXMenu (~> 0.0.11)
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - AFNetworking
     - Alamofire
     - ASIHTTPRequest
@@ -148,6 +148,6 @@ SPEC CHECKSUMS:
   UMengUShare: 370d180101e13ee0227ae657ab119ba97243d2b3
   YCXMenu: 6003bcd20d8ac72e3eb3c442c97ed21948c6dc1f
 
-PODFILE CHECKSUM: 19c763f5c6f939cd4a1fed203392bdd9a0cc5964
+PODFILE CHECKSUM: 388764159bdd4bf29813a8df73df4e3416dd8269
 
-COCOAPODS: 1.7.4
+COCOAPODS: 1.8.4

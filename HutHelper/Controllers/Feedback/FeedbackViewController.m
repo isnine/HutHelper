@@ -34,13 +34,13 @@
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor]}];
     _Content.text = @"请输入15个字以上的问题描述以便我们提供更好的帮助";
     _Content.textColor = [UIColor lightGrayColor];
-    [_Mail setValue:[UIColor lightGrayColor] forKeyPath:@"_placeholderLabel.textColor"];
+   // [_Mail setValue:[UIColor lightGrayColor] forKeyPath:@"_placeholderLabel.textColor"];
     _Content.delegate=self;
     _Mail.delegate=self;
 }
 
 - (IBAction)contactMe:(id)sender {
-    [[UIApplication sharedApplication]openURL:[NSURL URLWithString:@"sms:isninea@icloud.com"]];
+    [[UIApplication sharedApplication]openURL:[NSURL URLWithString:@"mqq://im/chat?chat_type=wpa&uin=\(1525163730)&version=1&src_type=web"]];
 }
 
 -(BOOL)textViewShouldBeginEditing:(UITextView *)textView

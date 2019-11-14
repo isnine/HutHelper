@@ -142,7 +142,16 @@
     }
     if (indexPath.row == 0) { //个人界面
         [self.tableview reloadData];
-        [Config pushViewController:@"User"];
+       // [Config pushViewController:@"User"];
+                UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                UIViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"User"];
+        //        [self.navigationController pushViewController:secondViewController animated:true];
+//                   self.navigationController    = [[UINavigationController alloc] initWithRootViewController:mainVC];
+        
+        secondViewController.modalPresentationStyle = 0;
+        [self presentViewController:secondViewController animated:true completion:nil];
+        
+        
     }
 //    if (indexPath.row == 2) {  //私信
 //        if ([Config isTourist]) {
@@ -183,7 +192,13 @@
        
     }
     if (indexPath.row == 4) {  //关于
-        [Config pushViewController:@"About"];
+     //   [Config pushViewController:@"About"];
+        UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        UIViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"About"];
+//        [self.navigationController pushViewController:secondViewController animated:true];
+        secondViewController.modalPresentationStyle = 0;
+        [self presentViewController:secondViewController animated:true completion:nil];
+        
     }
     if (indexPath.row == 5) {  //反馈
         [self feedBack];
@@ -194,7 +209,7 @@
 - (void)feedBack {
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"反馈问题" message:@"哪个类型的问题" preferredStyle:  UIAlertControllerStyleAlert];
     [alert addAction:[UIAlertAction actionWithTitle:@"App卡顿/卡死等问题" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [[UIApplication sharedApplication]openURL:[NSURL URLWithString:@"sms:isninea@icloud.com"]];
+        [[UIApplication sharedApplication]openURL:[NSURL URLWithString:@"mqq://im/chat?chat_type=wpa&uin=\(1525163730)&version=1&src_type=web"]];
     }]];
     [alert addAction:[UIAlertAction actionWithTitle:@"课表/成绩等数据问题" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [Config pushViewController:@"Feedback"];
