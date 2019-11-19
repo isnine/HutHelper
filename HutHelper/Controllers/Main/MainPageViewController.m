@@ -64,7 +64,7 @@ int class_error_;
     [self SetTimeLabel] ;
     //注册
     [Config saveUmeng];
-    
+    [Config addNotice];
 //#ifdef DEBUG
 //    AppDelegate *tempAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
 //    MoreViewController *moreVC = [[MoreViewController alloc]init];
@@ -237,6 +237,7 @@ int class_error_;
 - (IBAction)SchoolSay:(id)sender {
     [Config setIs:0];
     MomentsViewController *Say      = [[MomentsViewController alloc] init];
+    Say.keyWord = @"";
     AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [tempAppDelegate.mainNavigationController pushViewController:Say animated:YES];
 } //校园说说
@@ -256,7 +257,7 @@ int class_error_;
 
     BaseWebViewController *scoreVC = [[BaseWebViewController alloc]init];
     scoreVC.url = @"http://m.huthelper.cn/im/#/qz/score";
-    scoreVC.centerTitle = @"考试计划";
+    scoreVC.centerTitle = @"成绩查询";
     [self.navigationController pushViewController:scoreVC animated:YES];
     
 //
@@ -358,7 +359,7 @@ int class_error_;
     
     BaseWebViewController *scoreVC = [[BaseWebViewController alloc]init];
     scoreVC.url = @"http://m.huthelper.cn/im/#/qz/exam-plan";
-    scoreVC.centerTitle = @"成绩查询";
+    scoreVC.centerTitle = @"考试计划";
     [self.navigationController pushViewController:scoreVC animated:YES];
 } //考试计划
 - (IBAction)Day:(id)sender {

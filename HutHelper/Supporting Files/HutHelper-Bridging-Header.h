@@ -11,3 +11,5 @@
 
 
 #endif /* HutHelper_Bridging_Header_h */
+
+#import "MomentsViewController.h"

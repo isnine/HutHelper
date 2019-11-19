@@ -12,6 +12,7 @@
 int startyear                       = 2019;
 int startmonth                      = 9;
 int startday                        = 2;
+
 +(NSString*)setDay{
     NSDate *now                               = [NSDate date];
     NSCalendar *calendar                      = [NSCalendar currentCalendar];
@@ -47,11 +48,11 @@ int startday                        = 2;
  */
 +(int) CountWeeks:(int)nowyear m:(int)nowmonth d:(int)nowday {
     int ans                                   = 0;
-    if (nowyear == 2018) {
+    if (nowyear == 2019) {
         ans     = [self CountDays:nowyear m:nowmonth d:nowday] - [self CountDays:startyear m:startmonth d:startday] + 1;
     } else {
         ans         = [self CountDays:nowyear m:nowmonth d:nowday] - [self CountDays:nowyear m:1 d:1] + 1;
-        ans        += [self CountDays:2018 m:9 d:10] - [self CountDays:startyear m:startmonth d:startday]+1;
+        ans        += [self CountDays:2019 m:9 d:2] - [self CountDays:startyear m:startmonth d:startday]+1;
     }
     if ((ans + 6) / 7<=0) {
         return 1;

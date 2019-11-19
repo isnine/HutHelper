@@ -48,7 +48,7 @@
              NSDictionary *Hand_All = [NSDictionary dictionaryWithDictionary:responseObject];
              NSString *Msg=[Hand_All objectForKey:@"msg"];
         NSLog(@"%@",Msg);
-             if ([Msg isEqualToString:@"ok"]) {
+             if (true) {
                  NSDictionary *array               = [Hand_All objectForKey:@"data"];
                  //进入商品界面
                  HandShowViewController *handShow=[[HandShowViewController alloc]init];
@@ -82,7 +82,7 @@
     [APIRequest GET:Url_String parameters:nil success:^(id responseObject) {
              NSDictionary *Hand_All = [NSDictionary dictionaryWithDictionary:responseObject];
              NSString *Msg=[Hand_All objectForKey:@"msg"];
-             if ([Msg isEqualToString:@"ok"]) {
+             if (true) {
                  NSDictionary *array               = [Hand_All objectForKey:@"data"];
                  //进入商品界面
                  HandShowViewController *handShow=[[HandShowViewController alloc]init];

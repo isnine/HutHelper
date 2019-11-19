@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2537EDC623838DE400D9DAD0 /* TagsTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2537EDC523838DE400D9DAD0 /* TagsTable.swift */; };
+		2537EDC92383A41500D9DAD0 /* Extension + Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2537EDC82383A41500D9DAD0 /* Extension + Const.swift */; };
+		25387F262382B804002459D6 /* MomentsSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25387F242382B804002459D6 /* MomentsSearchViewController.swift */; };
+		25387F272382B804002459D6 /* MomentsSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25387F252382B804002459D6 /* MomentsSearchViewController.xib */; };
+		25387F2A2382E61B002459D6 /* DataBase-Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25387F292382E61B002459D6 /* DataBase-Swift.swift */; };
 		255A55BF231FC40E001A7C13 /* DetailsCourseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 255A55BD231FC40E001A7C13 /* DetailsCourseViewController.m */; };
 		255A55C0231FC40E001A7C13 /* DetailsCourseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 255A55BE231FC40E001A7C13 /* DetailsCourseViewController.xib */; };
 		25C5A9DC237D46E1004F0A5F /* BaseWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 25C5A9DA237D46E1004F0A5F /* BaseWebViewController.m */; };
@@ -330,6 +335,11 @@
 
 /* Begin PBXFileReference section */
 		0BEA75F30B57DEF614969189 /* Pods-HutHelper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HutHelper.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HutHelper/Pods-HutHelper.debug.xcconfig"; sourceTree = "<group>"; };
+		2537EDC523838DE400D9DAD0 /* TagsTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagsTable.swift; sourceTree = "<group>"; };
+		2537EDC82383A41500D9DAD0 /* Extension + Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + Const.swift"; sourceTree = "<group>"; };
+		25387F242382B804002459D6 /* MomentsSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MomentsSearchViewController.swift; sourceTree = "<group>"; };
+		25387F252382B804002459D6 /* MomentsSearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MomentsSearchViewController.xib; sourceTree = "<group>"; };
+		25387F292382E61B002459D6 /* DataBase-Swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataBase-Swift.swift"; sourceTree = "<group>"; };
 		255A55BC231FC40E001A7C13 /* DetailsCourseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailsCourseViewController.h; sourceTree = "<group>"; };
 		255A55BD231FC40E001A7C13 /* DetailsCourseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailsCourseViewController.m; sourceTree = "<group>"; };
 		255A55BE231FC40E001A7C13 /* DetailsCourseViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailsCourseViewController.xib; sourceTree = "<group>"; };
@@ -803,6 +813,31 @@
 				A8DF4B266A6C75237AD1C11E /* Pods-HutHelper.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		2537EDC423838DD500D9DAD0 /* Tables */ = {
+			isa = PBXGroup;
+			children = (
+				2537EDC523838DE400D9DAD0 /* TagsTable.swift */,
+			);
+			path = Tables;
+			sourceTree = "<group>";
+		};
+		2537EDC72383A3F500D9DAD0 /* SwiftExtension */ = {
+			isa = PBXGroup;
+			children = (
+				2537EDC82383A41500D9DAD0 /* Extension + Const.swift */,
+			);
+			path = SwiftExtension;
+			sourceTree = "<group>";
+		};
+		25387F282382E5F4002459D6 /* SwiftUtils */ = {
+			isa = PBXGroup;
+			children = (
+				2537EDC423838DD500D9DAD0 /* Tables */,
+				25387F292382E61B002459D6 /* DataBase-Swift.swift */,
+			);
+			path = SwiftUtils;
 			sourceTree = "<group>";
 		};
 		25C5A9D8237D46C3004F0A5F /* NewWeb */ = {
@@ -1368,8 +1403,10 @@
 		3A85677D1DA908AA00EBD44A /* HutHelper */ = {
 			isa = PBXGroup;
 			children = (
+				2537EDC72383A3F500D9DAD0 /* SwiftExtension */,
 				3AFA4F811EC0504500CB7DA2 /* AppDelegate.h */,
 				3AFA4F821EC0504500CB7DA2 /* AppDelegate.m */,
+				25387F282382E5F4002459D6 /* SwiftUtils */,
 				3A796B9E1E534C1B00794043 /* Controllers */,
 				3A796C661E534DAE00794043 /* Views */,
 				3A98CB441E7CF7A900CABD0D /* Models */,
@@ -1769,6 +1806,8 @@
 				3AA3D1EE1F891B0600990358 /* MomentsAddViewController.m */,
 				3AA3D1EF1F891B0600990358 /* MomentsViewController.h */,
 				3AA3D1F01F891B0600990358 /* MomentsViewController.m */,
+				25387F242382B804002459D6 /* MomentsSearchViewController.swift */,
+				25387F252382B804002459D6 /* MomentsSearchViewController.xib */,
 			);
 			path = Moments;
 			sourceTree = "<group>";
@@ -2110,6 +2149,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				25387F272382B804002459D6 /* MomentsSearchViewController.xib in Resources */,
 				3A4D2FFF1E8D273600901E3B /* LoginViewController.xib in Resources */,
 				3A796C6C1E534DAE00794043 /* Launch Screen.storyboard in Resources */,
 				255A55C0231FC40E001A7C13 /* DetailsCourseViewController.xib in Resources */,
@@ -2279,6 +2319,7 @@
 				3A8DFDAE22BDD40E004A69B8 /* TZImageRequestOperation.m in Sources */,
 				3A20AFF81F43E2B800712A1E /* CalendarMonthCollectionViewLayout.m in Sources */,
 				3AA3D1F81F89375300990358 /* UINavigationController+pop.m in Sources */,
+				2537EDC92383A41500D9DAD0 /* Extension + Const.swift in Sources */,
 				3A8DFD0522BDCA45004A69B8 /* MJRefreshBackGifFooter.m in Sources */,
 				3A8DFCF622BDCA45004A69B8 /* MJRefreshConfig.m in Sources */,
 				3A20AFFA1F43E2B800712A1E /* CalendarMonthHeaderView.m in Sources */,
@@ -2394,6 +2435,7 @@
 				3A796C1F1E534C1B00794043 /* CourseViewController.m in Sources */,
 				3A532CCD1E910C13003CD5A8 /* UIWindow+CurrentViewController.m in Sources */,
 				3A796C301E534C1B00794043 /* WebViewController.m in Sources */,
+				25387F262382B804002459D6 /* MomentsSearchViewController.swift in Sources */,
 				3A8DFD2022BDCA45004A69B8 /* MJRefreshFooter.m in Sources */,
 				3A532CCB1E910C13003CD5A8 /* UIView+CustomControlView.m in Sources */,
 				3A96DEE51E94B384006C2CC8 /* VedioPlayViewController.m in Sources */,
@@ -2420,11 +2462,13 @@
 				3A3775621F35EAD7005A5170 /* DayViewController.m in Sources */,
 				3A9C28F71F15FD9F00B91876 /* LineUIView.m in Sources */,
 				3A532CCE1E910C13003CD5A8 /* MMMaterialDesignSpinner.m in Sources */,
+				25387F2A2382E61B002459D6 /* DataBase-Swift.swift in Sources */,
 				3A4D30031E8D27F800901E3B /* ExamViewController.m in Sources */,
 				3A532CC71E910C13003CD5A8 /* UIAlertController+ZFPlayerRotation.m in Sources */,
 				3A98CC0E1E7CFA9C00CABD0D /* YYFPSLabel.m in Sources */,
 				3A98CC0F1E7CFA9C00CABD0D /* YYWeakProxy.m in Sources */,
 				3A8DFDA022BDD40E004A69B8 /* TZAssetCell.m in Sources */,
+				2537EDC623838DE400D9DAD0 /* TagsTable.swift in Sources */,
 				3A3775611F35EAD7005A5170 /* HomeWorkViewController.m in Sources */,
 				3AF73BF11E7D12610086417E /* APIRequest.m in Sources */,
 				3A8DFD1D22BDCA45004A69B8 /* MJRefreshGifHeader.m in Sources */,
@@ -2509,13 +2553,13 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 19111401;
+				CURRENT_PROJECT_VERSION = 19111901;
 				DEVELOPMENT_TEAM = JW2LR94V6G;
 				GCC_PREFIX_HEADER = "HutHelper/Supporting Files/HutHelper-Prefix.pch";
 				INFOPLIST_FILE = Extend/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 4.2.0;
+				MARKETING_VERSION = 4.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = name.wxz.HutHelper.Extend;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -2533,13 +2577,13 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 19111401;
+				CURRENT_PROJECT_VERSION = 19111901;
 				DEVELOPMENT_TEAM = JW2LR94V6G;
 				GCC_PREFIX_HEADER = "HutHelper/Supporting Files/HutHelper-Prefix.pch";
 				INFOPLIST_FILE = Extend/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 4.2.0;
+				MARKETING_VERSION = 4.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = name.wxz.HutHelper.Extend;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -2684,7 +2728,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 19111401;
+				CURRENT_PROJECT_VERSION = 19111901;
 				DEVELOPMENT_TEAM = JW2LR94V6G;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2721,7 +2765,7 @@
 					"$(PROJECT_DIR)/HutHelper/Vendor/XgPush",
 					"$(PROJECT_DIR)/HutHelper/Vendor/XgPush/idfa",
 				);
-				MARKETING_VERSION = 4.2.0;
+				MARKETING_VERSION = 4.2.1;
 				NEW_SETTING = "";
 				PRODUCT_BUNDLE_IDENTIFIER = name.wxz.HutHelper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2744,7 +2788,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 19111401;
+				CURRENT_PROJECT_VERSION = 19111901;
 				DEVELOPMENT_TEAM = JW2LR94V6G;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2781,7 +2825,7 @@
 					"$(PROJECT_DIR)/HutHelper/Vendor/XgPush",
 					"$(PROJECT_DIR)/HutHelper/Vendor/XgPush/idfa",
 				);
-				MARKETING_VERSION = 4.2.0;
+				MARKETING_VERSION = 4.2.1;
 				NEW_SETTING = "";
 				PRODUCT_BUNDLE_IDENTIFIER = name.wxz.HutHelper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2802,13 +2846,13 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 19111401;
+				CURRENT_PROJECT_VERSION = 19111901;
 				DEVELOPMENT_TEAM = JW2LR94V6G;
 				GCC_PREFIX_HEADER = "HutHelper/Supporting Files/HutHelper-Prefix.pch";
 				INFOPLIST_FILE = ExamTime/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 4.2.0;
+				MARKETING_VERSION = 4.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = name.wxz.HutHelper.ExamTime;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -2826,13 +2870,13 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 19111401;
+				CURRENT_PROJECT_VERSION = 19111901;
 				DEVELOPMENT_TEAM = JW2LR94V6G;
 				GCC_PREFIX_HEADER = "HutHelper/Supporting Files/HutHelper-Prefix.pch";
 				INFOPLIST_FILE = ExamTime/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 4.2.0;
+				MARKETING_VERSION = 4.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = name.wxz.HutHelper.ExamTime;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

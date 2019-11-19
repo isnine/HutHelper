@@ -10,6 +10,9 @@ def swiftUI
     pod "CollectionKit"
     pod 'SwiftyStoreKit'
     pod 'SwiftMessages'
+    pod 'TagListView'
+    pod 'SQLite.swift'
+    #pod 'ProgressHUD'
 #    pod "SkeletonView"
 end
 
