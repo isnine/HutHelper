@@ -53,6 +53,9 @@
 +(NSString*)getApiLostDelect:(NSString*)lostID;
 
 +(NSString*)getApiMoments:(int)num;
++(NSString*)getApiMomentsSearch:(int)num key:(NSString*)keyWord;
++(NSString*)getApiMyTalk:(int)num;
++(NSString*)getApiHotTalk:(int)num;
 +(NSString*)getApiMomentsUser;
 +(NSString*)getApiMomentsCreate;
 +(NSString*)getApiMomentsImgUpload;

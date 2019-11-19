@@ -112,6 +112,16 @@
 +(NSString*)getApiMoments:(int)num{
     return [NSString stringWithFormat:@"%@/api/v1/moments/posts/%d",Config.apiIndex,num];
 }
+
++ (NSString *)getApiMomentsSearch:(int)num key:(NSString *)keyWord{
+        return [NSString stringWithFormat:@"%@/api/v3/statement/search/%@/%@/%@/%d",Config.apiIndex,Config.getStudentKH,Config.getRememberCodeApp,keyWord,num];
+}
++(NSString*)getApiMyTalk:(int)num{
+    return [NSString stringWithFormat:@"%@/api/v3/statement/interactive/%@/%@/%d",Config.apiIndex,Config.getStudentKH,Config.getRememberCodeApp,num];
+}
++(NSString*)getApiHotTalk:(int)num{
+        return [NSString stringWithFormat:@"%@/api/v3/statement/fire/%@/7/%d",Config.apiIndex,Config.getStudentKH,num];
+}
 +(NSString*)getApiMomentsUser{
     return [NSString stringWithFormat:@"%@/api/v1/moments/posts/page",Config.apiIndex];
 }

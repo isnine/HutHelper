@@ -18,7 +18,7 @@
 #import "TFHpple.h"
 #import "MBProgressHUD+MJ.h"
 #import "User.h"
-
+#import "BaseWebViewController.h"
 #import "zySheetPickerView.h"
 @interface LoginViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *choiceBtn;
@@ -39,6 +39,14 @@
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dic options:NSJSONWritingPrettyPrinted error:&parseError];
     return [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
 }
+
+- (IBAction)register:(id)sender {
+    BaseWebViewController *scoreVC = [[BaseWebViewController alloc]init];
+    scoreVC.url = @"https://api.huthelper.cn/auth/register";
+    scoreVC.centerTitle = @"账号注册";
+    [self.navigationController pushViewController:scoreVC animated:YES];
+}
+
 
 - (IBAction)Login:(id)sender {
     if (_isEducation) {
