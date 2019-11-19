@@ -114,7 +114,8 @@
 }
 
 + (NSString *)getApiMomentsSearch:(int)num key:(NSString *)keyWord{
-        return [NSString stringWithFormat:@"%@/api/v3/statement/search/%@/%@/%@/%d",Config.apiIndex,Config.getStudentKH,Config.getRememberCodeApp,keyWord,num];
+    NSString *word = [keyWord stringByAddingPercentEncodingWithAllowedCharacters: keyWord];
+        return [NSString stringWithFormat:@"%@/api/v3/statement/search/%@/%@/%@/%d",Config.apiIndex,Config.getStudentKH,Config.getRememberCodeApp,word,num];
 }
 +(NSString*)getApiMyTalk:(int)num{
     return [NSString stringWithFormat:@"%@/api/v3/statement/interactive/%@/%@/%d",Config.apiIndex,Config.getStudentKH,Config.getRememberCodeApp,num];

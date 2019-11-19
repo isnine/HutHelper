@@ -118,13 +118,9 @@ extension MomentsSearchViewController:TagListViewDelegate {
     func tagRemoveButtonPressed(_ title: String, tagView: TagView, sender: TagListView) {
         
         //print("1111Tag Remove pressed: \(title), \(sender)")
-        //sender.removeTagView(tagView)
-        
-        if let tag = sender.removeTagReturnInt(tagView) {
-            print("tag:",tag)
-            if DataBase.shared.deleteNotesById(id: title) {
+        sender.removeTagView(tagView)
+        if DataBase.shared.deleteNotesById(id: title) {
                 print("删除成功")
-            }
         }
     }
 }
