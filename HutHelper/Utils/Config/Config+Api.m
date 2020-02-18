@@ -46,6 +46,9 @@
 +(NSString*)getApiProfileAvatar{
     return [NSString stringWithFormat:@"%@/api/v1/set/avatar/%@/%@",Config.getApiImg,Config.getStudentKH,Config.getRememberCodeApp];
 }
++(NSString*)getApiAllClass{
+    return [NSString stringWithFormat:@"%@/api/v3/get/classes/1/1",Config.apiIndex];
+}
 #pragma mark - 网上作业
 +(NSString*)getApiHomeWork{
     //return [NSString stringWithFormat:@"%@/api/v1/get/myhomework/%@/%@",Config.apiIndex,Config.getStudentKH,Config.getRememberCodeApp];
@@ -165,6 +168,9 @@
 }
 +(NSString*)getApiVersioniOS{
     return [NSString stringWithFormat:@"%@/api/v1/get/versionIos/%@/%@",Config.apiIndex,Config.getStudentKH,[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]];
+}
++(NSString*)getApiVersionv3{
+    return [NSString stringWithFormat:@"%@/api/v3/get/version/%@/%@/2",Config.apiIndex,Config.getStudentKH,Config.getRememberCodeApp];
 }
 #pragma mark - 视频专栏
 +(NSString*)getApiVedioShow{

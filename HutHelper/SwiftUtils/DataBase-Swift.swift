@@ -9,14 +9,14 @@
 import Foundation
 import UIKit
 import SQLite
-fileprivate let defaults = UserDefaults.standard
+fileprivate let defaultss = UserDefaults.standard
 
 func saveMomentSearch(bookname:[String]) {
-    defaults.set(bookname,forKey: "moment_search")
-    defaults.synchronize()
+    defaultss.set(bookname,forKey: "moment_search")
+    defaultss.synchronize()
 }
 func getMomentSearch() -> [String]? {
-    let content = defaults.object(forKey: "moment_search") as? [String]
+    let content = defaultss.object(forKey: "moment_search") as? [String]
     return content
 }
 

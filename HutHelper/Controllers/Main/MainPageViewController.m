@@ -17,7 +17,6 @@
 #import "DayViewController.h"
   
 #import "BaseWebViewController.h"
-#import "LoginViewController.h"
 #import<CommonCrypto/CommonDigest.h>
 #import "MBProgressHUD.h"
 #import "UINavigationBar+Awesome.h"
@@ -37,6 +36,9 @@
 #import "LineUIView.h"
 
 #import "HutHelper-Swift.h"
+
+@import EachNavigationBar_Objc;
+
 #define vBackBarButtonItemName  @"backArrow.png"    //导航条返回默认图片名
 #define ERROR_MSG_INVALID @"登录过期,请重新登录"
 @interface MainPageViewController ()
@@ -65,6 +67,8 @@ int class_error_;
     //注册
     [Config saveUmeng];
     [Config addNotice];
+//    // 加载所有班级
+//    [self getAllClasses];
 //#ifdef DEBUG
 //    AppDelegate *tempAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
 //    MoreViewController *moreVC = [[MoreViewController alloc]init];
@@ -72,6 +76,7 @@ int class_error_;
 //#endif
 }
 
+     
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     //侧栏关闭
@@ -236,8 +241,9 @@ int class_error_;
 } //电费查询
 - (IBAction)SchoolSay:(id)sender {
     [Config setIs:0];
-    MomentsViewController *Say      = [[MomentsViewController alloc] init];
-    Say.keyWord = @"";
+    //MomentViewController *say = [[MomentViewController alloc] init];
+    MomentViewController *Say      = [[MomentViewController alloc] init];
+    //Say.keyWord = @"";
     AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [tempAppDelegate.mainNavigationController pushViewController:Say animated:YES];
 } //校园说说
@@ -403,6 +409,13 @@ int class_error_;
             } failure:^(NSError *error) {
                 NSLog(@"版本接口调用失败");
             }];
+    [APIRequest GET:[Config getApiVersionv3] parameters:nil
+            success:^(id responseObject) {
+        NSLog(@"%@",responseObject);
+        NSLog(@"%@",[Config getApiVersionv3]);
+            } failure:^(NSError *error) {
+                NSLog(@"版本接口调用失败");
+            }];
     [APIRequest GET:[Config getApiWeather] parameters:nil
             success:^(id responseObject) {
                 NSDictionary *result=[NSDictionary dictionaryWithDictionary:responseObject];
@@ -544,7 +557,6 @@ int class_error_;
     menuBtn.frame                             = CGRectMake(0, 0, 20, 18);
     [menuBtn setBackgroundImage:[UIImage imageNamed:@"menu"] forState:UIControlStateNormal];
     [menuBtn addTarget:self action:@selector(openOrCloseLeftList) forControlEvents:UIControlEventTouchUpInside];
-    self.navigationItem.leftBarButtonItem     = [[UIBarButtonItem alloc] initWithCustomView:menuBtn];
     //按钮
     UIView *rightButtonView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 50)];
     UIButton *mainAndSearchBtn = [[UIButton alloc] initWithFrame:CGRectMake(70, 0, 50, 50)];
@@ -552,7 +564,10 @@ int class_error_;
     [mainAndSearchBtn setImage:[UIImage imageNamed:@"ico_menu_more"] forState:UIControlStateNormal];
     [mainAndSearchBtn addTarget:self action:@selector(more) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *rightCunstomButtonView = [[UIBarButtonItem alloc] initWithCustomView:rightButtonView];
-    self.navigationItem.rightBarButtonItem = rightCunstomButtonView;
+    self.navigation_item.leftBarButtonItem  = [[UIBarButtonItem alloc] initWithCustomView:menuBtn];
+    self.navigation_item.rightBarButtonItem = rightCunstomButtonView;
+    self.navigation_bar.isShadowHidden = true;
+    self.navigation_bar.alpha = 0;
     //轮番图和手势更换图片
   if ([Config getBanner]) {
         UIImage *Img=[UIImage imageWithData:[Config getBanner]];
@@ -615,14 +630,22 @@ int class_error_;
 //    MoreViewController *moreVC = [[MoreViewController alloc]init];
 //    [tempAppDelegate.mainNavigationController pushViewController:moreVC animated:YES];
     
-        BaseWebViewController *chatVC = [[BaseWebViewController alloc]init];
-        chatVC.url = [Config getMyNoticeWeb];
-        NSLog(@"%@", chatVC.url);
-        chatVC.centerTitle = @"私信消息";
-    //    "http://m.huthelper.cn/#/im?user_id=10118696&key=67360eb0a1f79a85a1931c11afbb9a20eef4f09c&to_user_id=38488"
-    //    "http://m.huthelper.cn/im/#/im?user_id=13147&key=we&to_user_id=13149"
-        [self.navigationController pushViewController:chatVC animated:YES];
+
+    
 }
 
+- (void)getAllClasses{
+//    [APIRequest GET:[Config getAllClasses] parameters:nil
+//            success:^(id responseObject) {
+//        NSLog(@"%@",[Config getAllClasses]);
+//                HideAllHUD
+//        NSDictionary *all = [NSDictionary dictionaryWithDictionary:responseObject];
+//        NSString *code=all[@"code"];
+//        if ([code isEqualToString:@200]) {
+//            NSLog(@"class200");
+//        }
+//    }];
 
+    
+}
 @end

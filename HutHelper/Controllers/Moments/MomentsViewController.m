@@ -357,6 +357,9 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
     return 0.00001;
 }
+// 40 + 10.fitW + 5.fitW + (20) + 5.fitW +(contentHeight) + 5.fitW + (imgHeight) + 5.fitW + 20 + 5.fit + 1 + 5.fit + (commentHeihgt)
+
+// 65 + 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *cellIndentifier = @"MomentsCell";
     MomentsCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIndentifier];

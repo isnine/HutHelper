@@ -21,6 +21,7 @@
 #define APPSTORE_ID 1164848835
 //#define RSA_JSPATCH @"-----BEGIN PUBLIC KEY-----\nMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCi/XcpS7/lnAf0YEta273pubUy\niZGGy+xNOL2cV4XLpV0OmhCWunAdBuFSV7nn2HWcZWsTuRMt1gFUbO5gtFw6m2JH\niGvfK2YlQvRo91lGsbczad3SCe738lq6MiYNjyaoiCAW9U9+WxvX8DVUxzNhrlba\nwH1UzhSy5A8zWi8bMwIDAQAB\n-----END PUBLIC KEY-----"
 
++(NSString*)getApiAllClass;
 +(NSString*)getApiVedioShow;
 +(NSString*)getApiClass;
 +(NSString*)getApiClassXP;
@@ -77,6 +78,7 @@
 +(NSString*)getImHttpsWeb:(NSString*)toUserId;
 +(NSString*)getMyNoticeWeb;
 
++(NSString*)getApiVersionv3;
 +(NSString*)getApiVersioniOS;
 +(NSString*)getApiWeather;
 +(NSString*)getApiCalendar;

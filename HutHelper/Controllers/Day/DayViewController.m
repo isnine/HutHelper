@@ -8,7 +8,9 @@
 
 #import "DayViewController.h"
  
+
 #import "DayCalendarViewController.h"
+@import EachNavigationBar_Objc;
 @interface DayViewController ()
 
 @end
@@ -38,9 +40,28 @@
     [mainAndSearchBtn setImage:[UIImage imageNamed:@"ico_day_day"] forState:UIControlStateNormal];
     [mainAndSearchBtn addTarget:self action:@selector(day) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *rightCunstomButtonView = [[UIBarButtonItem alloc] initWithCustomView:rightButtonView];
-    self.navigationItem.rightBarButtonItem = rightCunstomButtonView;
+    self.navigation_item.rightBarButtonItem = rightCunstomButtonView;
     // Do any additional setup after loading the view from its nib.
-}
+        [self setTitle];
+            
+    }
+
+    - (void) setTitle{
+            /**按钮*/
+            UIButton *mainAndSearchBtn = [[UIButton alloc] initWithFrame:CGRectMake(SYReal(5), 0, SYReal(25), SYReal(25))];
+            UIView *rightButtonView1 = [[UIView alloc] initWithFrame:CGRectMake(-20,0, 40, 40)];
+            
+            mainAndSearchBtn = [[UIButton alloc] initWithFrame:CGRectMake(-20,0, 40, 40)];
+            [rightButtonView1 addSubview:mainAndSearchBtn];
+            [mainAndSearchBtn setImage:[UIImage imageNamed:@"ico_menu_back"] forState:UIControlStateNormal];
+            [mainAndSearchBtn addTarget:self action:@selector(backBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
+            UIBarButtonItem *rightCunstomButtonView1 = [[UIBarButtonItem alloc] initWithCustomView:rightButtonView1];
+            self.navigation_item.leftBarButtonItem  = rightCunstomButtonView1;
+        }
+    // 返回按钮按下
+    - (void)backBtnClicked:(UIButton *)sender{
+            [self.navigationController popViewControllerAnimated:YES];
+    }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

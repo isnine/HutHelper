@@ -19,6 +19,7 @@
 #import "YCXMenu.h"
 #import "UIScrollView+EmptyDataSet.h"
 
+@import EachNavigationBar_Objc;
 
 @interface HandTableViewController () <DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 @property (nonatomic, copy) NSArray *handAllArray;
@@ -45,12 +46,12 @@
     if (_myHandArray) {
         [self reloadData:_myHandArray];
         self.isSelfGoods = YES;
-        self.navigationItem.title = @"我的发布";
+        self.navigation_item.title = @"我的发布";
     } else if (_otherHandArray) {
         _myHandArray = _otherHandArray;
         [self reloadData:_myHandArray];
         self.isSelfGoods = YES;
-        self.navigationItem.title = [NSString stringWithFormat:@"%@的发布", self.otherName];
+        self.navigation_item.title = [NSString stringWithFormat:@"%@的发布", self.otherName];
     } else {
         [self reloadData:[Config getHand]];
         //         _Hand_content=[Config getHand];
@@ -61,13 +62,15 @@
         [mainAndSearchBtn setImage:[UIImage imageNamed:@"ico_menu_menu"] forState:UIControlStateNormal];
         [mainAndSearchBtn addTarget:self action:@selector(menu) forControlEvents:UIControlEventTouchUpInside];
         UIBarButtonItem *rightCunstomButtonView = [[UIBarButtonItem alloc] initWithCustomView:rightButtonView];
-        self.navigationItem.rightBarButtonItem = rightCunstomButtonView;
+        self.navigation_item.rightBarButtonItem = rightCunstomButtonView;
+        self.navigation_bar.isShadowHidden = YES;
+        //self.navigation_bar.alpha = 0;
         //空白状态
         self.tableView.emptyDataSetSource = self;
         self.tableView.emptyDataSetDelegate = self;
         self.tableView.tableFooterView = [UIView new];
         //下拉刷新
-        self.navigationItem.title = @"二手市场";
+        self.navigation_item.title = @"二手市场";
         MJRefreshNormalHeader *header =
             [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector((reload))];
         self.tableView.mj_header = header;
@@ -98,6 +101,25 @@
     self.navigationItem.backBarButtonItem = item;
     [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:94 / 255.0 green:199 / 255.0 blue:217 / 255.0 alpha:1]];
     _num = 1;
+    [self setTitle];
+        
+}
+
+- (void) setTitle{
+        /**按钮*/
+        UIButton *mainAndSearchBtn = [[UIButton alloc] initWithFrame:CGRectMake(SYReal(5), 0, SYReal(25), SYReal(25))];
+        UIView *rightButtonView1 = [[UIView alloc] initWithFrame:CGRectMake(-20,0, 40, 40)];
+        
+        mainAndSearchBtn = [[UIButton alloc] initWithFrame:CGRectMake(-20,0, 40, 40)];
+        [rightButtonView1 addSubview:mainAndSearchBtn];
+        [mainAndSearchBtn setImage:[UIImage imageNamed:@"ico_menu_back"] forState:UIControlStateNormal];
+        [mainAndSearchBtn addTarget:self action:@selector(backBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
+        UIBarButtonItem *rightCunstomButtonView1 = [[UIBarButtonItem alloc] initWithCustomView:rightButtonView1];
+        self.navigation_item.leftBarButtonItem  = rightCunstomButtonView1;
+    }
+// 返回按钮按下
+- (void)backBtnClicked:(UIButton *)sender{
+        [self.navigationController popViewControllerAnimated:YES];
 }
 - (void)publishBtn
 {

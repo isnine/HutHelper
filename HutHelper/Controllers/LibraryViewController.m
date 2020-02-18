@@ -10,7 +10,8 @@
  
 #import "MBProgressHUD.h"
 #import "MBProgressHUD+MJ.h"
- 
+@import EachNavigationBar_Objc;
+
 @interface LibraryViewController ()
 @property (weak, nonatomic) IBOutlet UIWebView *views;
 
@@ -22,7 +23,7 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.title = @"图书馆(必须连入学校Wifi)";
+    self.navigation_item.title = @"图书馆(必须连入学校Wifi)";
     NSURL *url                = [[NSURL alloc]initWithString:Config.getApiLibrary];
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor]}];
     [self customBackButton];
@@ -40,7 +41,9 @@
     [mainAndSearchBtn setImage:[UIImage imageNamed:@"ico_menu_back"] forState:UIControlStateNormal];
     [mainAndSearchBtn addTarget:self action:@selector(backBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *rightCunstomButtonView = [[UIBarButtonItem alloc] initWithCustomView:rightButtonView];
-    self.navigationItem.leftBarButtonItem = rightCunstomButtonView;
+    self.navigation_item.leftBarButtonItem  = rightCunstomButtonView;
+    self.navigation_bar.isShadowHidden = true;
+    //self.navigation_bar.alpha = 0;
 }
 // 返回按钮按下
 - (void)backBtnClicked:(UIButton *)sender{

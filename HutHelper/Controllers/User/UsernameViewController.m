@@ -34,11 +34,14 @@
     NSDictionary *dict = @{@"username":username_text};
     [APIRequest POST:Config.getApiProfileUser parameters:dict success:^(id responseObject) {
         HideAllHUD
+        NSLog(@"%@",Config.getApiProfileUser);
         NSDictionary *responseDic = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
          NSString *Msg=[responseDic objectForKey:@"msg"];
         if ([Msg isEqualToString:@"ok"]) {
             [defaults setObject:username_text forKey:@"username"];
             [MBProgressHUD showSuccess:@"修改成功" toView:self.view];
+            NSLog(@"%@",[Config getUserName]);
+            
         }
         else if ([Msg isEqualToString:@"令牌错误"]){
             [MBProgressHUD showError:@"登录过期，请重新登录" toView:self.view];

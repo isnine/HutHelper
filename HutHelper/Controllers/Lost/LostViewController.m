@@ -19,6 +19,8 @@
 #import "LostShowViewController.h"
 #import "LostAddViewController.h"
 
+@import EachNavigationBar_Objc;
+
 @interface LostViewController ()<UICollectionViewDataSource, JRWaterFallLayoutDelegate,DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 @property (nonatomic,copy) NSMutableArray      *lostData;
 @property (nonatomic, copy) NSMutableArray      *lostArray;
@@ -38,7 +40,7 @@
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor]}];
     UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     self.navigationItem.backBarButtonItem = item;
-    self.navigationItem.title=@"失物招领";
+    self.navigation_item.title=@"失物招领";
     //当前页
     self.currentPage = 1;
     // 创建瀑布流layout
@@ -55,12 +57,12 @@
     //如果是我的失物界面
     if (self.myLostArray) {
         [self reloadData:self.myLostArray];
-        self.navigationItem.title=@"我的失物";
+        self.navigation_item.title=@"我的失物";
         [self.collectionView reloadData];
     }else if (self.otherLostArray) {//如果是其他人的发布
         self.myLostArray=self.otherLostArray;
         [self reloadData:self.myLostArray];
-        self.navigationItem.title=[NSString stringWithFormat:@"%@的失物列表",self.otherName];
+        self.navigation_item.title=[NSString stringWithFormat:@"%@的失物列表",self.otherName];
         [self.collectionView reloadData];
     }else{
         // 隐藏时间的下拉刷新
@@ -78,7 +80,7 @@
         [mainAndSearchBtn setImage:[UIImage imageNamed:@"ico_menu_menu"] forState:UIControlStateNormal];
         [mainAndSearchBtn addTarget:self action:@selector(menu) forControlEvents:UIControlEventTouchUpInside];
         UIBarButtonItem *rightCunstomButtonView = [[UIBarButtonItem alloc] initWithCustomView:rightButtonView];
-        self.navigationItem.rightBarButtonItem = rightCunstomButtonView;
+        self.navigation_item.rightBarButtonItem = rightCunstomButtonView;
     }
     //空白数据代理
     self.collectionView.emptyDataSetSource = self;
@@ -87,6 +89,28 @@
     self.blindView=[[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
     self.blindView.backgroundColor = [UIColor blackColor];
     self.blindView.alpha=0;
+    [self setTitle];
+        
+    }
+
+- (void) setTitle{
+        self.navigation_bar.isShadowHidden = true;
+        
+        /**按钮*/
+        UIButton *mainAndSearchBtn = [[UIButton alloc] initWithFrame:CGRectMake(SYReal(5), 0, SYReal(25), SYReal(25))];
+        UIView *rightButtonView1 = [[UIView alloc] initWithFrame:CGRectMake(-20,0, 40, 40)];
+        
+        mainAndSearchBtn = [[UIButton alloc] initWithFrame:CGRectMake(-20,0, 40, 40)];
+        [rightButtonView1 addSubview:mainAndSearchBtn];
+        [mainAndSearchBtn setImage:[UIImage imageNamed:@"ico_menu_back"] forState:UIControlStateNormal];
+        [mainAndSearchBtn addTarget:self action:@selector(backBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
+        UIBarButtonItem *rightCunstomButtonView1 = [[UIBarButtonItem alloc] initWithCustomView:rightButtonView1];
+        self.navigation_item.leftBarButtonItem  = rightCunstomButtonView1;
+}
+
+// 返回按钮按下
+- (void)backBtnClicked:(UIButton *)sender{
+        [self.navigationController popViewControllerAnimated:YES];
 }
 #pragma mark - 加载数据
 -(void)reload{

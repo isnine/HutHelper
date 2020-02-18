@@ -31,6 +31,7 @@ static int Is ;
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     NSDictionary *userData=[defaults objectForKey:@"kUser"];
     User *user=[[User alloc ]initWithDic:userData];
+    NSLog(@"%@",user.class_name);
     return user;
 }
 +(NSString*)getStudentKH{
@@ -63,11 +64,11 @@ static int Is ;
 }
 +(NSString*)getLastLogin{
     User *user=self.getUser;
-    return user.last_login;
+    return user.last_use;
 }
 +(NSString*)getSex{
     User *user=self.getUser;
-    return user.sex;
+    return user.active;
 }
 +(NSString*)getUserId{
     User *user=self.getUser;
@@ -80,9 +81,16 @@ static int Is ;
 }
 +(NSString*)getRememberCodeApp{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    NSLog(@"%@",[defaults objectForKey:@"remember_code_app"]);
     return [defaults objectForKey:@"remember_code_app"];
 }
 #pragma mark - 持续化存储
+
++(void)saveAllClasses:(NSDictionary*)allClasses{
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    [defaults setObject:allClasses forKey:@"allClasses"];
+    [defaults synchronize];
+}
 +(void)saveUser:(NSDictionary*)userData{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     [defaults setObject:userData forKey:@"kUser"];
@@ -199,6 +207,10 @@ static int Is ;
     [defaults synchronize];
 }
 #pragma mark - 获得存储数据
++ (NSDictionary*)getAllClasses{
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    return [defaults objectForKey:@"allClasses"];
+}
 +(NSArray*)getCourse{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     return [defaults objectForKey:@"kCourse"];

@@ -15,6 +15,7 @@
 + (int )getIs;
 +(void)addNotice;
 #pragma mark - 可持续存储
++(void)saveAllClasses:(NSDictionary*)allClasses;
 +(void)saveUser:(NSDictionary*)userData;
 +(void)saveRememberCodeApp:(NSString*)rememberCodeApp;
 +(void)saveCurrentVersion:(NSString*)currentVersion;
@@ -40,6 +41,7 @@
 +(void)saveBannerImg:(NSData*)imgData;
 +(void)saveCacheImg:(NSData*)data;
 #pragma mark - 获得存储数据
++(NSDictionary*)getAllClasses;
 +(NSArray*)getCourse;
 +(NSArray*)getCourseXp;
 +(NSDictionary*)getVedio;

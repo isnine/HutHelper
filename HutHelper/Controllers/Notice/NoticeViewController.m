@@ -11,6 +11,8 @@
 #import "NoticeShowViewController.h"
  
 #import "AppDelegate.h"
+
+@import EachNavigationBar_Objc;
 @interface NoticeViewController ()
 @property (nonatomic,copy) NSArray      *noticeData;
 @end
@@ -21,6 +23,27 @@
     [super viewDidLoad];
     [self getNoticeData];
     [self setTitle];
+    [self setTitle1];
+        
+}
+
+- (void) setTitle1{
+        //self.navigation_bar.isShadowHidden = true;
+        //self.navigation_bar.alpha = 0;
+        /**按钮*/
+        UIButton *mainAndSearchBtn = [[UIButton alloc] initWithFrame:CGRectMake(SYReal(5), 0, SYReal(25), SYReal(25))];
+        UIView *rightButtonView1 = [[UIView alloc] initWithFrame:CGRectMake(-20,0, 40, 40)];
+        
+        mainAndSearchBtn = [[UIButton alloc] initWithFrame:CGRectMake(-20,0, 40, 40)];
+        [rightButtonView1 addSubview:mainAndSearchBtn];
+        [mainAndSearchBtn setImage:[UIImage imageNamed:@"ico_menu_back"] forState:UIControlStateNormal];
+        [mainAndSearchBtn addTarget:self action:@selector(backBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
+        UIBarButtonItem *rightCunstomButtonView1 = [[UIBarButtonItem alloc] initWithCustomView:rightButtonView1];
+        self.navigation_item.leftBarButtonItem  = rightCunstomButtonView1;
+    }
+// 返回按钮按下
+- (void)backBtnClicked:(UIButton *)sender{
+        [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -29,7 +52,7 @@
 }
 
 -(void)setTitle{
-    self.navigationItem.title = @"通知";
+    self.navigation_item.title = @"通知";
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor]}];
     /** 标题栏样式 */
     UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];

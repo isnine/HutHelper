@@ -8,6 +8,7 @@
 
 #import "NoticeShowViewController.h"
 #import "UINavigationBar+Awesome.h"
+@import EachNavigationBar_Objc;
 @interface NoticeShowViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *show;
 @property (nonatomic,copy) NSDictionary      *noticeShowData;
@@ -22,6 +23,27 @@
     [self setBody];
     [self setTitle];
     [self showOther];
+    [self setTitle1];
+        
+}
+
+- (void) setTitle1{
+        self.navigation_bar.isShadowHidden = true;
+        self.navigation_bar.alpha = 0;
+        /**按钮*/
+        UIButton *mainAndSearchBtn = [[UIButton alloc] initWithFrame:CGRectMake(SYReal(5), 0, SYReal(25), SYReal(25))];
+        UIView *rightButtonView1 = [[UIView alloc] initWithFrame:CGRectMake(-20,0, 40, 40)];
+        
+        mainAndSearchBtn = [[UIButton alloc] initWithFrame:CGRectMake(-20,0, 40, 40)];
+        [rightButtonView1 addSubview:mainAndSearchBtn];
+        [mainAndSearchBtn setImage:[UIImage imageNamed:@"ico_menu_back"] forState:UIControlStateNormal];
+        [mainAndSearchBtn addTarget:self action:@selector(backBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
+        UIBarButtonItem *rightCunstomButtonView1 = [[UIBarButtonItem alloc] initWithCustomView:rightButtonView1];
+        self.navigation_item.leftBarButtonItem  = rightCunstomButtonView1;
+    }
+// 返回按钮按下
+- (void)backBtnClicked:(UIButton *)sender{
+        [self.navigationController popViewControllerAnimated:YES];
 }
 - (void)viewWillAppear:(BOOL)animated
 {

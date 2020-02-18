@@ -12,6 +12,11 @@ def swiftUI
     pod 'SwiftMessages'
     pod 'TagListView'
     pod 'SQLite.swift'
+    pod 'RxCocoa'
+    pod 'Moya'
+    #pod 'MJRefresh'
+    pod 'JXPhotoBrowser'
+    pod 'EachNavigationBar_Objc'
     #pod 'ProgressHUD'
 #    pod "SkeletonView"
 end

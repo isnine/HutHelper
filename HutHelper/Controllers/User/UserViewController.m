@@ -24,7 +24,9 @@
 static NSString *const kUserInfoCellId = @"kUserInfoCellId";
 static NSString *const kUserInfoCellHeadID = @"kUserInfoCellHeadID";
 
-@interface UserViewController () <UITableViewDelegate, UITableViewDataSource,UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface UserViewController () <UITableViewDelegate, UITableViewDataSource,UIImagePickerControllerDelegate, UINavigationControllerDelegate>{
+        NSMutableArray *datas;
+}
 @property (nonatomic, copy)NSString *m_auth;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @end
@@ -48,7 +50,47 @@ UIImage* img ;
     UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     self.navigationItem.backBarButtonItem = item;
     [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:94/255.0 green:199/255.0 blue:217/255.0 alpha:1]];
+    [self getAllClasses];
 }
+
+
+- (void)getAllClasses{
+    [APIRequest GET:[Config getApiAllClass] parameters:nil
+            success:^(id responseObject) {
+         HideAllHUD
+        NSDictionary *all = [NSDictionary dictionaryWithDictionary:responseObject];
+            NSLog(@"class200");
+        //NSLog(@"%@",[all  objectForKey:@"data"]);
+        NSDictionary *data = [all  objectForKey:@"data"];
+        [Config saveAllClasses:data];
+        [self reLoadData:data];
+       // NSLog(@"%@",[Config getAllClasses]);
+//        if ([all[@"code"] isEqualToString:@200]) {
+//            NSLog(@"class200");
+//        }
+     } failure:^(NSError *error) {
+         HideAllHUD
+         [MBProgressHUD showError:@"网络错误" toView:self.view];
+     }];
+}
+-(void)reLoadData:(NSDictionary*)JSONDic{
+//    datas = [[NSMutableArray alloc]init];
+//    for (NSDictionary *eachDic in JSONDic) {
+////        MomentsModel *momentsModel=[[MomentsModel alloc]initWithDic:eachDic];
+//        //[datas addObject:eachDic];
+//        NSLog(@"%@",eachDic);
+//        NSLog(@"%@",JSONDic);
+//          NSMutableDictionary *provinceDic = [NSMutableDictionary dictionary];
+//        //provinceName：城市名   cityArray：城市字典
+//          [provinceDic setObject:[eachDic allKeys] forKey:@"depName"];
+//          NSMutableArray *cityArray = [NSMutableArray array];
+//          [provinceDic setObject:[eachDic allValues] forKey:@"depClass"];
+//        [datas addObject:provinceDic];
+//        
+//    }
+//    NSLog(@"%@",datas);
+}
+
 - (void)getImageFromIpc
 {
     if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary]) return;
@@ -113,7 +155,7 @@ UIImage* img ;
 
 #pragma mark - tableView protocal methods
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 8;
+    return 10;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return 1;
@@ -126,8 +168,8 @@ UIImage* img ;
     return SYReal(45.f);
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    if (section==3) {
-        return 15;
+    if (section==0||section==1||section==7) {
+        return 10;
     }
     return 1;
 }
@@ -152,37 +194,58 @@ UIImage* img ;
     }else if(indexPath.section == 2){
         UserCell *cell = [tableView dequeueReusableCellWithIdentifier:kUserInfoCellId];
         if (!cell) {
+            cell = [[UserCell alloc] initWithName:@"签名" withInfo:@"" reuseIdentifier:kUserInfoCellId];
+        }
+        return cell;
+        
+
+    }else if(indexPath.section == 3){
+
+        UserCell *cell = [tableView dequeueReusableCellWithIdentifier:kUserInfoCellId];
+        if (!cell) {
             cell = [[UserCell alloc] initWithName:@"密码" withInfo:@"点击修改" reuseIdentifier:kUserInfoCellId];
         }
         return cell;
-    }else if(indexPath.section == 3){
-        UserCell *cell = [tableView dequeueReusableCellWithIdentifier:kUserInfoCellId];
-        if (!cell) {
-            cell = [[UserCell alloc] initWithName:@"学号" withInfo:Config.getStudentKH reuseIdentifier:kUserInfoCellId];
-        }
-        return cell;
+        
+
     }else if(indexPath.section == 4){
-        UserCell *cell = [tableView dequeueReusableCellWithIdentifier:kUserInfoCellId];
-        if (!cell) {
-            cell = [[UserCell alloc] initWithName:@"姓名" withInfo:Config.getTrueName reuseIdentifier:kUserInfoCellId];
-        }
-        return cell;
-    }else if(indexPath.section == 5){
-        UserCell *cell = [tableView dequeueReusableCellWithIdentifier:kUserInfoCellId];
-        if (!cell) {
-            cell = [[UserCell alloc] initWithName:@"性别" withInfo:Config.getSex reuseIdentifier:kUserInfoCellId];
-        }
-        return cell;
-    }else if(indexPath.section == 6){
         UserCell *cell = [tableView dequeueReusableCellWithIdentifier:kUserInfoCellId];
         if (!cell) {
             cell = [[UserCell alloc] initWithName:@"学院" withInfo:Config.getDepName reuseIdentifier:kUserInfoCellId];
         }
         return cell;
-    }else if(indexPath.section == 7){
+        
+
+    }else if(indexPath.section == 5){
         UserCell *cell = [tableView dequeueReusableCellWithIdentifier:kUserInfoCellId];
         if (!cell) {
             cell = [[UserCell alloc] initWithName:@"班级" withInfo:Config.getClassName reuseIdentifier:kUserInfoCellId];
+        }
+        return cell;
+        
+
+    }else if(indexPath.section == 6){
+        UserCell *cell = [tableView dequeueReusableCellWithIdentifier:kUserInfoCellId];
+        if (!cell) {
+            cell = [[UserCell alloc] initWithName:@"QQ" withInfo:@"" reuseIdentifier:kUserInfoCellId];
+        }
+        return cell;
+    }else if(indexPath.section == 7){
+        UserCell *cell = [tableView dequeueReusableCellWithIdentifier:kUserInfoCellId];
+        if (!cell) {
+            cell = [[UserCell alloc] initWithName:@"姓名" withInfo:Config.getTrueName reuseIdentifier:kUserInfoCellId];
+        }
+        return cell;
+    }else if(indexPath.section == 8){
+        UserCell *cell = [tableView dequeueReusableCellWithIdentifier:kUserInfoCellId];
+        if (!cell) {
+            cell = [[UserCell alloc] initWithName:@"性别" withInfo:Config.getSex reuseIdentifier:kUserInfoCellId];
+        }
+        return cell;
+    }else if(indexPath.section == 9){
+        UserCell *cell = [tableView dequeueReusableCellWithIdentifier:kUserInfoCellId];
+        if (!cell) {
+            cell = [[UserCell alloc] initWithName:@"学号" withInfo:Config.getStudentKH reuseIdentifier:kUserInfoCellId];
         }
         return cell;
     }
@@ -199,14 +262,26 @@ UIImage* img ;
     switch ((short)indexPath.section) {
         case 0:
             [self getImageFromIpc];
-            break;
+            break; //改头像
         case 1:
-            [self presentViewController:secondViewController animated:true completion:nil];
-           // [self.navigationController pushViewController:secondViewController animated:YES];
-            break;
+            //[self presentViewController:secondViewController animated:true completion:nil];
+            [self.navigationController pushViewController:secondViewController animated:YES];
+            break; //改昵称
         case 2:
             [self presentViewController:webViewController animated:true completion:nil];
-            break;
+            break; //改签名
+        case 3:
+            [self presentViewController:webViewController animated:true completion:nil];
+                break; //改密码
+        case 4:
+            [self presentViewController:webViewController animated:true completion:nil];
+            break; //改学院
+        case 5:
+            [self presentViewController:webViewController animated:true completion:nil];
+            break; //改班级
+        case 6:
+            [self presentViewController:webViewController animated:true completion:nil];
+            break; //改QQ
         default:
             break;
     }

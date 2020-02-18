@@ -13,6 +13,8 @@
 #import "MBProgressHUD+MJ.h"
 
 #import "UINavigationBar+Awesome.h"
+
+@import EachNavigationBar_Objc;
 @interface HandAddViewController ()<TZImagePickerControllerDelegate,UICollectionViewDataSource,UICollectionViewDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,UIAlertViewDelegate,UINavigationControllerDelegate> {
     NSMutableArray *_selectedPhotos;
     NSMutableArray *_selectedAssets;
@@ -34,9 +36,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     if (self.isNeed) {
-        self.navigationItem.title=@"求购商品";
+        self.navigation_item.title=@"求购商品";
     }else{
-        self.navigationItem.title=@"出售商品";
+        self.navigation_item.title=@"出售商品";
     }
     
     self.view.backgroundColor=[UIColor whiteColor];
@@ -47,7 +49,7 @@
     [mainAndSearchBtn setImage:[UIImage imageNamed:@"ico_hand_ok"] forState:UIControlStateNormal];
     [mainAndSearchBtn addTarget:self action:@selector(PostHand) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *rightCunstomButtonView = [[UIBarButtonItem alloc] initWithCustomView:rightButtonView];
-    self.navigationItem.rightBarButtonItem = rightCunstomButtonView;
+    self.navigation_item.rightBarButtonItem = rightCunstomButtonView;
     //空白收起键盘
     self.view.userInteractionEnabled = YES;
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(fingerTapped:)];
@@ -56,8 +58,28 @@
     [self setHeadImg];
     [self setText];
     [self setFoot];
+    [self setTitle];
+        
 }
-- (void)viewWillAppear:(BOOL)animated
+
+- (void) setTitle{
+        self.navigation_bar.isShadowHidden = true;
+        self.navigation_bar.alpha = 0;
+        /**按钮*/
+        UIButton *mainAndSearchBtn = [[UIButton alloc] initWithFrame:CGRectMake(SYReal(5), 0, SYReal(25), SYReal(25))];
+        UIView *rightButtonView1 = [[UIView alloc] initWithFrame:CGRectMake(-20,0, 40, 40)];
+        
+        mainAndSearchBtn = [[UIButton alloc] initWithFrame:CGRectMake(-20,0, 40, 40)];
+        [rightButtonView1 addSubview:mainAndSearchBtn];
+        [mainAndSearchBtn setImage:[UIImage imageNamed:@"ico_menu_back"] forState:UIControlStateNormal];
+        [mainAndSearchBtn addTarget:self action:@selector(backBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
+        UIBarButtonItem *rightCunstomButtonView1 = [[UIBarButtonItem alloc] initWithCustomView:rightButtonView1];
+        self.navigation_item.leftBarButtonItem  = rightCunstomButtonView1;
+    }
+// 返回按钮按下
+- (void)backBtnClicked:(UIButton *)sender{
+    [self.navigationController popViewControllerAnimated:YES];
+}- (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     //标题透明
@@ -112,7 +134,7 @@
     _titleField.textColor=[UIColor whiteColor];
     _titleField.placeholder=@"请输入商品名称...";
     _titleField.font=[UIFont systemFontOfSize:SYReal(15)];
-    [_titleField setValue:[UIColor whiteColor] forKeyPath:@"_placeholderLabel.textColor"];
+    //[_titleField setValue:[UIColor whiteColor] forKeyPath:@"_placeholderLabel.textColor"];
     [self.view addSubview:_titleField];
     //商品描述
     _describeText=[[UITextView alloc]initWithFrame:CGRectMake(SYReal(23), SYReal(270), SYReal(375), SYReal(100))];
@@ -148,7 +170,7 @@
         _goodsField.tag=100+i;
         _goodsField.font=[UIFont systemFontOfSize:SYReal(15)];
         _goodsField.delegate=self;
-        [_goodsField setValue:RGB(202, 202, 202, 1) forKeyPath:@"_placeholderLabel.textColor"];
+        //[_goodsField setValue:RGB(202, 202, 202, 1) forKeyPath:@"_placeholderLabel.textColor"];
         [self.view addSubview:_goodsField];
     }
 }

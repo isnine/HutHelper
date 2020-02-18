@@ -12,6 +12,9 @@
 #import "UserShowViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "XWScanImage.h"
+
+@import EachNavigationBar_Objc;
+
 @interface HandShowViewController ()
 
 @end
@@ -28,7 +31,7 @@
                                       target:nil
                                       action:nil];
   self.navigationItem.backBarButtonItem = item;
-  self.title = @"商品详情";
+  self.navigation_item.title = @"商品详情";
   self.view.backgroundColor = [UIColor whiteColor];
   [self setHeadImg];
   [self setText];
@@ -47,7 +50,7 @@
                forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *rightCunstomButtonView =
         [[UIBarButtonItem alloc] initWithCustomView:rightButtonView];
-    self.navigationItem.rightBarButtonItem = rightCunstomButtonView;
+    self.navigation_item.rightBarButtonItem = rightCunstomButtonView;
   } else {
     //按钮
     UIView *rightButtonView =
@@ -62,8 +65,28 @@
                forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *rightCunstomButtonView =
         [[UIBarButtonItem alloc] initWithCustomView:rightButtonView];
-    self.navigationItem.rightBarButtonItem = rightCunstomButtonView;
+    self.navigation_item.rightBarButtonItem = rightCunstomButtonView;
   }
+    self.navigation_bar.isShadowHidden = YES;
+    [self setTitle];
+            
+}
+
+- (void) setTitle{
+            /**按钮*/
+            UIButton *mainAndSearchBtn = [[UIButton alloc] initWithFrame:CGRectMake(SYReal(5), 0, SYReal(25), SYReal(25))];
+            UIView *rightButtonView1 = [[UIView alloc] initWithFrame:CGRectMake(-20,0, 40, 40)];
+            
+            mainAndSearchBtn = [[UIButton alloc] initWithFrame:CGRectMake(-20,0, 40, 40)];
+            [rightButtonView1 addSubview:mainAndSearchBtn];
+            [mainAndSearchBtn setImage:[UIImage imageNamed:@"ico_menu_back"] forState:UIControlStateNormal];
+            [mainAndSearchBtn addTarget:self action:@selector(backBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
+            UIBarButtonItem *rightCunstomButtonView1 = [[UIBarButtonItem alloc] initWithCustomView:rightButtonView1];
+            self.navigation_item.leftBarButtonItem  = rightCunstomButtonView1;
+    }
+// 返回按钮按下
+- (void)backBtnClicked:(UIButton *)sender{
+        [self.navigationController popViewControllerAnimated:YES];
 }
 - (void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
@@ -234,8 +257,8 @@
   //绘制底部文字
   int LabX[5] = {26, 280};
   NSMutableArray *footTitle = [[NSMutableArray alloc] init];
-  [footTitle addObject:_handDic[@"user"][@"username"]];
-  [footTitle addObject:[_handDic objectForKey:@"created_on"]];
+  //[footTitle addObject:_handDic[@"user"][@"username"]];
+ // [footTitle addObject:[_handDic objectForKey:@"created_on"]];
   int i = 0;
   //如果是我的商品，则跳过学号
   if (self.isSelfGoods) {
@@ -246,7 +269,7 @@
         initWithFrame:CGRectMake(SYReal(LabX[i]), SYReal(685) + iphoneX_Y(113),
                                  SYReal(130), SYReal(20))];
     foodLab.textColor = [UIColor lightGrayColor];
-    foodLab.text = footTitle[i];
+    //foodLab.text = footTitle[i];
     foodLab.font = [UIFont systemFontOfSize:SYReal(12)];
     [self.view addSubview:foodLab];
   }
