@@ -15,9 +15,10 @@
 		254C389123FD38B200F87954 /* UseHeadCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254C388E23FD38B100F87954 /* UseHeadCell.swift */; };
 		254C389223FD38B200F87954 /* UseInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254C388F23FD38B100F87954 /* UseInfoCell.swift */; };
 		254C389323FD38B200F87954 /* UseInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 254C389023FD38B100F87954 /* UseInfoCell.xib */; };
-		254C389523FD38B700F87954 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254C389423FD38B600F87954 /* UserViewController.swift */; };
-		254C389823FD38BC00F87954 /* UseInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254C389623FD38BC00F87954 /* UseInfoViewModel.swift */; };
 		254C389923FD38BC00F87954 /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254C389723FD38BC00F87954 /* Users.swift */; };
+		254C389F23FD4E6E00F87954 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254C389E23FD4E6E00F87954 /* UserController.swift */; };
+		254C38A123FD4E9B00F87954 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254C38A023FD4E9A00F87954 /* UserViewController.swift */; };
+		254C38A323FD4EA700F87954 /* UseInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254C38A223FD4EA700F87954 /* UseInfoViewModel.swift */; };
 		2551F09523FB841800ACF046 /* BaseNarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2551F09423FB841800ACF046 /* BaseNarViewController.swift */; };
 		255A55BF231FC40E001A7C13 /* DetailsCourseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 255A55BD231FC40E001A7C13 /* DetailsCourseViewController.m */; };
 		255A55C0231FC40E001A7C13 /* DetailsCourseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 255A55BE231FC40E001A7C13 /* DetailsCourseViewController.xib */; };
@@ -409,9 +410,10 @@
 		254C388E23FD38B100F87954 /* UseHeadCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UseHeadCell.swift; sourceTree = "<group>"; };
 		254C388F23FD38B100F87954 /* UseInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UseInfoCell.swift; sourceTree = "<group>"; };
 		254C389023FD38B100F87954 /* UseInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UseInfoCell.xib; sourceTree = "<group>"; };
-		254C389423FD38B600F87954 /* UserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserViewController.swift; path = ../../../../HutHelperSwift/HutHelperSwift/App/User/UserViewController.swift; sourceTree = "<group>"; };
-		254C389623FD38BC00F87954 /* UseInfoViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UseInfoViewModel.swift; path = ../../../../HutHelperSwift/HutHelperSwift/App/User/UseInfoViewModel.swift; sourceTree = "<group>"; };
 		254C389723FD38BC00F87954 /* Users.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
+		254C389E23FD4E6E00F87954 /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
+		254C38A023FD4E9A00F87954 /* UserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
+		254C38A223FD4EA700F87954 /* UseInfoViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UseInfoViewModel.swift; sourceTree = "<group>"; };
 		2551F09423FB841800ACF046 /* BaseNarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNarViewController.swift; sourceTree = "<group>"; };
 		255A55BC231FC40E001A7C13 /* DetailsCourseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailsCourseViewController.h; sourceTree = "<group>"; };
 		255A55BD231FC40E001A7C13 /* DetailsCourseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailsCourseViewController.m; sourceTree = "<group>"; };
@@ -974,12 +976,13 @@
 		253DE6E323C3758C006DED22 /* User */ = {
 			isa = PBXGroup;
 			children = (
-				254C389623FD38BC00F87954 /* UseInfoViewModel.swift */,
+				254C38A223FD4EA700F87954 /* UseInfoViewModel.swift */,
+				254C38A023FD4E9A00F87954 /* UserViewController.swift */,
 				254C389723FD38BC00F87954 /* Users.swift */,
-				254C389423FD38B600F87954 /* UserViewController.swift */,
 				254C388E23FD38B100F87954 /* UseHeadCell.swift */,
 				254C388F23FD38B100F87954 /* UseInfoCell.swift */,
 				254C389023FD38B100F87954 /* UseInfoCell.xib */,
+				254C389E23FD4E6E00F87954 /* UserController.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -2737,9 +2740,7 @@
 				3A8DFDA522BDD40E004A69B8 /* TZPhotoPreviewController.m in Sources */,
 				3AA3D1FD1F893A9D00990358 /* UIViewController+BackButtonHandler.m in Sources */,
 				3A3775751F35EB51005A5170 /* LostShowViewController.m in Sources */,
-				254C389523FD38B700F87954 /* UserViewController.swift in Sources */,
 				258F999723F9632500CCC014 /* UserDefualt.swift in Sources */,
-				254C389823FD38BC00F87954 /* UseInfoViewModel.swift in Sources */,
 				258F99E923F9788200CCC014 /* FWPopupWindow.swift in Sources */,
 				3A3775791F35EB51005A5170 /* LostViewController.m in Sources */,
 				3A8DFD1A22BDCA45004A69B8 /* MJRefreshStateHeader.m in Sources */,
@@ -2763,6 +2764,7 @@
 				3A98CB5E1E7CF7AA00CABD0D /* LikesModel.m in Sources */,
 				3AD443EB1E97CF5600720F42 /* VedioTableViewCell.m in Sources */,
 				3AFA4F5D1EC0442C00CB7DA2 /* Config.m in Sources */,
+				254C38A323FD4EA700F87954 /* UseInfoViewModel.swift in Sources */,
 				3A532CCA1E910C13003CD5A8 /* UITabBarController+ZFPlayerRotation.m in Sources */,
 				3A98CC071E7CFA9C00CABD0D /* JSHeaderView.m in Sources */,
 				3ADBB30121B678B300670412 /* UIColor+Ext.swift in Sources */,
@@ -2869,6 +2871,7 @@
 				3A796C1F1E534C1B00794043 /* CourseViewController.m in Sources */,
 				3A532CCD1E910C13003CD5A8 /* UIWindow+CurrentViewController.m in Sources */,
 				25720DD023FCDDC90054E392 /* UINavigationController+EachNavigationBar.swift in Sources */,
+				254C389F23FD4E6E00F87954 /* UserController.swift in Sources */,
 				3A796C301E534C1B00794043 /* WebViewController.m in Sources */,
 				25387F262382B804002459D6 /* MomentsSearchViewController.swift in Sources */,
 				3A8DFD2022BDCA45004A69B8 /* MJRefreshFooter.m in Sources */,
@@ -2914,6 +2917,7 @@
 				2537EDC623838DE400D9DAD0 /* TagsTable.swift in Sources */,
 				25720DD423FCDDC90054E392 /* UINavigationBar+Sugar.swift in Sources */,
 				3A3775611F35EAD7005A5170 /* HomeWorkViewController.m in Sources */,
+				254C38A123FD4E9B00F87954 /* UserViewController.swift in Sources */,
 				258F99BA23F9742300CCC014 /* MomentAddViewController.swift in Sources */,
 				3AF73BF11E7D12610086417E /* APIRequest.m in Sources */,
 				3A8DFD1D22BDCA45004A69B8 /* MJRefreshGifHeader.m in Sources */,
@@ -3174,7 +3178,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 20021901;
+				CURRENT_PROJECT_VERSION = 20021902;
 				DEVELOPMENT_TEAM = JW2LR94V6G;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3234,7 +3238,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 20021901;
+				CURRENT_PROJECT_VERSION = 20021902;
 				DEVELOPMENT_TEAM = JW2LR94V6G;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
