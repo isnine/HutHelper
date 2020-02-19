@@ -182,7 +182,7 @@ class UserController: UIViewController {
 
 extension UserController:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        1
+        return 1
     }
     func numberOfSections(in tableView: UITableView) -> Int {
         return 10
