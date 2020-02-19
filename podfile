@@ -1,11 +1,13 @@
-platform:ios,'10.0'
+platform:ios,'9.0'
 inhibit_all_warnings!
 source 'https://github.com/CocoaPods/Specs.git'
 def swiftUI
     pod 'Alamofire'
     pod 'SwiftyJSON'
     pod 'HandyJSON'
-    pod 'Kingfisher'
+
+    #pod 'Kingfisher'
+
     pod 'SnapKit', '~> 4.0.0'
     pod "CollectionKit"
     pod 'SwiftyStoreKit'

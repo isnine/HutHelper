@@ -44,7 +44,7 @@ PODS:
   - JXPhotoBrowser/Kingfisher (2.1.5):
     - JXPhotoBrowser/Core
     - Kingfisher
-  - Kingfisher (5.6.0)
+  - Kingfisher (4.10.1)
   - LGPlusButtonsView (1.1.1)
   - Masonry (0.6.4)
   - MBProgressHUD (1.0.0)
@@ -101,7 +101,6 @@ DEPENDENCIES:
   - HandyJSON
   - HUPhotoBrowser
   - JXPhotoBrowser
-  - Kingfisher
   - LGPlusButtonsView (~> 1.1.0)
   - Masonry
   - MBProgressHUD (~> 1.0.0)
@@ -168,7 +167,7 @@ SPEC CHECKSUMS:
   HandyJSON: 992f2d661716d6a91de82d0056927bc7813b5770
   HUPhotoBrowser: 87a8333c111a4e71ebf5400bf66d0eeb522c0098
   JXPhotoBrowser: 0178c485d1dbad1ef1dcbb24e4f463d80c30369d
-  Kingfisher: 1a50df6880a60bae26f3e21a0df3d17b892f5e0b
+  Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
   LGPlusButtonsView: 57878cd3d461d0ee2042f5b7b25d1c017e22a084
   Masonry: 281802d04d787ea2973179ee8bcb50500579ede2
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
@@ -191,6 +190,6 @@ SPEC CHECKSUMS:
   UMengUShare: 370d180101e13ee0227ae657ab119ba97243d2b3
   YCXMenu: 6003bcd20d8ac72e3eb3c442c97ed21948c6dc1f
 
-PODFILE CHECKSUM: 463b8fb4425750e3eba8f6617d265311b6b50fc9
+PODFILE CHECKSUM: 049a1cdc22dbb22c6c2975976ae3470839007569
 
 COCOAPODS: 1.8.4
