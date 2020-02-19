@@ -22,7 +22,7 @@
 #import "XGPush.h"
 
 #import "HutHelper-Swift.h"
-@import EachNavigationBar_Objc;
+
 @interface AppDelegate (){
     
 }

@@ -11,7 +11,7 @@
 #import "UINavigationBar+Awesome.h"
 #import "MBProgressHUD+MJ.h"
 
-@import EachNavigationBar_Objc;
+#import "HutHelper-Swift.h"
 
 @interface PowerViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *Building;

@@ -35,7 +35,6 @@ PODS:
   - DTKDropdownMenu (0.0.4):
     - Masonry (~> 0.6)
   - DZNEmptyDataSet (1.8.1)
-  - EachNavigationBar_Objc (1.11.3)
   - HandyJSON (5.0.0)
   - HUPhotoBrowser (1.4.5):
     - SVProgressHUD
@@ -99,7 +98,6 @@ DEPENDENCIES:
   - DJRefresh (~> 1.0.5)
   - DTKDropdownMenu (~> 0.0.4)
   - DZNEmptyDataSet
-  - EachNavigationBar_Objc
   - HandyJSON
   - HUPhotoBrowser
   - JXPhotoBrowser
@@ -133,7 +131,6 @@ SPEC REPOS:
     - DJRefresh
     - DTKDropdownMenu
     - DZNEmptyDataSet
-    - EachNavigationBar_Objc
     - HandyJSON
     - HUPhotoBrowser
     - JXPhotoBrowser
@@ -168,7 +165,6 @@ SPEC CHECKSUMS:
   DJRefresh: 32b3776546004faddddc28035442ba15e07c5f1b
   DTKDropdownMenu: 3a3d8afc4f70fab50a5a8131aadc8b383ef54891
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
-  EachNavigationBar_Objc: d533da6154254243b0c210cffd77db788983b175
   HandyJSON: 992f2d661716d6a91de82d0056927bc7813b5770
   HUPhotoBrowser: 87a8333c111a4e71ebf5400bf66d0eeb522c0098
   JXPhotoBrowser: 0178c485d1dbad1ef1dcbb24e4f463d80c30369d
@@ -195,6 +191,6 @@ SPEC CHECKSUMS:
   UMengUShare: 370d180101e13ee0227ae657ab119ba97243d2b3
   YCXMenu: 6003bcd20d8ac72e3eb3c442c97ed21948c6dc1f
 
-PODFILE CHECKSUM: 3c5d0d519630cc2a9a17d594d9e0df4391d4073d
+PODFILE CHECKSUM: 463b8fb4425750e3eba8f6617d265311b6b50fc9
 
 COCOAPODS: 1.8.4

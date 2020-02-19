@@ -16,7 +16,7 @@
 #import "HutHelper-Swift.h"
 #import "BaseWebViewController.h"
 
-@import EachNavigationBar_Objc;
+#import "HutHelper-Swift.h"
 
 @interface UserShowViewController ()
 

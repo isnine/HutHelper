@@ -15,8 +15,8 @@
 #import "XWInteractiveTransition.h"
 #import "XWNaviTransition.h"
 #import "MBProgressHUD+MJ.h"
+#import "HutHelper-Swift.h"
 
-@import EachNavigationBar_Objc;
 @interface LostShowViewController ()
 @property (nonatomic, strong) XWInteractiveTransition *interactiveTransition;
 @end

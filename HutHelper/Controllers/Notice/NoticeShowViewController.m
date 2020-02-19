@@ -8,7 +8,7 @@
 
 #import "NoticeShowViewController.h"
 #import "UINavigationBar+Awesome.h"
-@import EachNavigationBar_Objc;
+#import "HutHelper-Swift.h"
 @interface NoticeShowViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *show;
 @property (nonatomic,copy) NSDictionary      *noticeShowData;

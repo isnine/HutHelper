@@ -15,9 +15,30 @@
 		2551F09523FB841800ACF046 /* BaseNarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2551F09423FB841800ACF046 /* BaseNarViewController.swift */; };
 		255A55BF231FC40E001A7C13 /* DetailsCourseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 255A55BD231FC40E001A7C13 /* DetailsCourseViewController.m */; };
 		255A55C0231FC40E001A7C13 /* DetailsCourseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 255A55BE231FC40E001A7C13 /* DetailsCourseViewController.xib */; };
-		2569B44A23F1837E00B84E8A /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2569B44723F1837E00B84E8A /* Const.swift */; };
+		2569B44A23F1837E00B84E8A /* Consts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2569B44723F1837E00B84E8A /* Consts.swift */; };
 		2569B44B23F1837E00B84E8A /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2569B44823F1837E00B84E8A /* Extension.swift */; };
 		2569B44C23F1837E00B84E8A /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2569B44923F1837E00B84E8A /* Config.swift */; };
+		25720DC423FCDDC90054E392 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 25720DAC23FCDDC80054E392 /* LICENSE */; };
+		25720DC523FCDDC90054E392 /* EachNavigationBar+Override.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25720DAF23FCDDC80054E392 /* EachNavigationBar+Override.swift */; };
+		25720DC623FCDDC90054E392 /* UIViewController+EachNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25720DB023FCDDC80054E392 /* UIViewController+EachNavigationBar.swift */; };
+		25720DC723FCDDC90054E392 /* UIViewController+Associated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25720DB123FCDDC80054E392 /* UIViewController+Associated.swift */; };
+		25720DC823FCDDC90054E392 /* UIViewController+Load.m in Sources */ = {isa = PBXBuildFile; fileRef = 25720DB223FCDDC80054E392 /* UIViewController+Load.m */; };
+		25720DC923FCDDC90054E392 /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25720DB323FCDDC80054E392 /* Navigation.swift */; };
+		25720DCA23FCDDC90054E392 /* EachNavigationBar+ObjC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25720DB423FCDDC80054E392 /* EachNavigationBar+ObjC.swift */; };
+		25720DCB23FCDDC90054E392 /* UIViewController+Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25720DB523FCDDC80054E392 /* UIViewController+Navigation.swift */; };
+		25720DCC23FCDDC90054E392 /* Shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25720DB623FCDDC80054E392 /* Shadow.swift */; };
+		25720DCD23FCDDC90054E392 /* Duplicatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25720DB723FCDDC80054E392 /* Duplicatable.swift */; };
+		25720DCE23FCDDC90054E392 /* UITableViewController+EachNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25720DB823FCDDC80054E392 /* UITableViewController+EachNavigationBar.swift */; };
+		25720DCF23FCDDC90054E392 /* BackBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25720DB923FCDDC80054E392 /* BackBarButtonItem.swift */; };
+		25720DD023FCDDC90054E392 /* UINavigationController+EachNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25720DBA23FCDDC80054E392 /* UINavigationController+EachNavigationBar.swift */; };
+		25720DD123FCDDC90054E392 /* EachNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25720DBB23FCDDC80054E392 /* EachNavigationBar.swift */; };
+		25720DD223FCDDC90054E392 /* AssociatedKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25720DBC23FCDDC80054E392 /* AssociatedKeys.swift */; };
+		25720DD323FCDDC90054E392 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25720DBD23FCDDC80054E392 /* Const.swift */; };
+		25720DD423FCDDC90054E392 /* UINavigationBar+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25720DBE23FCDDC80054E392 /* UINavigationBar+Sugar.swift */; };
+		25720DD523FCDDC90054E392 /* UIViewController+Swizzling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25720DBF23FCDDC80054E392 /* UIViewController+Swizzling.swift */; };
+		25720DD623FCDDC90054E392 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25720DC023FCDDC80054E392 /* Configuration.swift */; };
+		25720DD723FCDDC90054E392 /* EachNavigationBar.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 25720DC223FCDDC80054E392 /* EachNavigationBar.xcassets */; };
+		25720DD823FCDDC90054E392 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 25720DC323FCDDC80054E392 /* README.md */; };
 		258F997C23F95CEC00CCC014 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 258F997B23F95CEC00CCC014 /* API.swift */; };
 		258F999223F9626800CCC014 /* BaseWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 258F999123F9626800CCC014 /* BaseWebViewController.swift */; };
 		258F999423F962F100CCC014 /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = 258F999323F962F100CCC014 /* Users.swift */; };
@@ -389,9 +410,30 @@
 		255A55BC231FC40E001A7C13 /* DetailsCourseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailsCourseViewController.h; sourceTree = "<group>"; };
 		255A55BD231FC40E001A7C13 /* DetailsCourseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailsCourseViewController.m; sourceTree = "<group>"; };
 		255A55BE231FC40E001A7C13 /* DetailsCourseViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailsCourseViewController.xib; sourceTree = "<group>"; };
-		2569B44723F1837E00B84E8A /* Const.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
+		2569B44723F1837E00B84E8A /* Consts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Consts.swift; sourceTree = "<group>"; };
 		2569B44823F1837E00B84E8A /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		2569B44923F1837E00B84E8A /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		25720DAC23FCDDC80054E392 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		25720DAF23FCDDC80054E392 /* EachNavigationBar+Override.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EachNavigationBar+Override.swift"; sourceTree = "<group>"; };
+		25720DB023FCDDC80054E392 /* UIViewController+EachNavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+EachNavigationBar.swift"; sourceTree = "<group>"; };
+		25720DB123FCDDC80054E392 /* UIViewController+Associated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Associated.swift"; sourceTree = "<group>"; };
+		25720DB223FCDDC80054E392 /* UIViewController+Load.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Load.m"; sourceTree = "<group>"; };
+		25720DB323FCDDC80054E392 /* Navigation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Navigation.swift; sourceTree = "<group>"; };
+		25720DB423FCDDC80054E392 /* EachNavigationBar+ObjC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EachNavigationBar+ObjC.swift"; sourceTree = "<group>"; };
+		25720DB523FCDDC80054E392 /* UIViewController+Navigation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Navigation.swift"; sourceTree = "<group>"; };
+		25720DB623FCDDC80054E392 /* Shadow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shadow.swift; sourceTree = "<group>"; };
+		25720DB723FCDDC80054E392 /* Duplicatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Duplicatable.swift; sourceTree = "<group>"; };
+		25720DB823FCDDC80054E392 /* UITableViewController+EachNavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableViewController+EachNavigationBar.swift"; sourceTree = "<group>"; };
+		25720DB923FCDDC80054E392 /* BackBarButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackBarButtonItem.swift; sourceTree = "<group>"; };
+		25720DBA23FCDDC80054E392 /* UINavigationController+EachNavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationController+EachNavigationBar.swift"; sourceTree = "<group>"; };
+		25720DBB23FCDDC80054E392 /* EachNavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EachNavigationBar.swift; sourceTree = "<group>"; };
+		25720DBC23FCDDC80054E392 /* AssociatedKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssociatedKeys.swift; sourceTree = "<group>"; };
+		25720DBD23FCDDC80054E392 /* Const.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
+		25720DBE23FCDDC80054E392 /* UINavigationBar+Sugar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationBar+Sugar.swift"; sourceTree = "<group>"; };
+		25720DBF23FCDDC80054E392 /* UIViewController+Swizzling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Swizzling.swift"; sourceTree = "<group>"; };
+		25720DC023FCDDC80054E392 /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
+		25720DC223FCDDC80054E392 /* EachNavigationBar.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = EachNavigationBar.xcassets; sourceTree = "<group>"; };
+		25720DC323FCDDC80054E392 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		258F997B23F95CEC00CCC014 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		258F999123F9626800CCC014 /* BaseWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseWebViewController.swift; sourceTree = "<group>"; };
 		258F999323F962F100CCC014 /* Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
@@ -944,10 +986,62 @@
 			isa = PBXGroup;
 			children = (
 				2569B44923F1837E00B84E8A /* Config.swift */,
-				2569B44723F1837E00B84E8A /* Const.swift */,
+				2569B44723F1837E00B84E8A /* Consts.swift */,
 				2569B44823F1837E00B84E8A /* Extension.swift */,
 			);
 			path = "Extension + Const";
+			sourceTree = "<group>";
+		};
+		25720DAB23FCDDC80054E392 /* EachNavigationBar_Objc */ = {
+			isa = PBXGroup;
+			children = (
+				25720DAC23FCDDC80054E392 /* LICENSE */,
+				25720DAD23FCDDC80054E392 /* EachNavigationBar */,
+				25720DC323FCDDC80054E392 /* README.md */,
+			);
+			path = EachNavigationBar_Objc;
+			sourceTree = "<group>";
+		};
+		25720DAD23FCDDC80054E392 /* EachNavigationBar */ = {
+			isa = PBXGroup;
+			children = (
+				25720DAE23FCDDC80054E392 /* Classes */,
+				25720DC123FCDDC80054E392 /* Assets */,
+			);
+			path = EachNavigationBar;
+			sourceTree = "<group>";
+		};
+		25720DAE23FCDDC80054E392 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				25720DAF23FCDDC80054E392 /* EachNavigationBar+Override.swift */,
+				25720DB023FCDDC80054E392 /* UIViewController+EachNavigationBar.swift */,
+				25720DB123FCDDC80054E392 /* UIViewController+Associated.swift */,
+				25720DB223FCDDC80054E392 /* UIViewController+Load.m */,
+				25720DB323FCDDC80054E392 /* Navigation.swift */,
+				25720DB423FCDDC80054E392 /* EachNavigationBar+ObjC.swift */,
+				25720DB523FCDDC80054E392 /* UIViewController+Navigation.swift */,
+				25720DB623FCDDC80054E392 /* Shadow.swift */,
+				25720DB723FCDDC80054E392 /* Duplicatable.swift */,
+				25720DB823FCDDC80054E392 /* UITableViewController+EachNavigationBar.swift */,
+				25720DB923FCDDC80054E392 /* BackBarButtonItem.swift */,
+				25720DBA23FCDDC80054E392 /* UINavigationController+EachNavigationBar.swift */,
+				25720DBB23FCDDC80054E392 /* EachNavigationBar.swift */,
+				25720DBC23FCDDC80054E392 /* AssociatedKeys.swift */,
+				25720DBD23FCDDC80054E392 /* Const.swift */,
+				25720DBE23FCDDC80054E392 /* UINavigationBar+Sugar.swift */,
+				25720DBF23FCDDC80054E392 /* UIViewController+Swizzling.swift */,
+				25720DC023FCDDC80054E392 /* Configuration.swift */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		25720DC123FCDDC80054E392 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				25720DC223FCDDC80054E392 /* EachNavigationBar.xcassets */,
+			);
+			path = Assets;
 			sourceTree = "<group>";
 		};
 		258F997A23F95CE100CCC014 /* API */ = {
@@ -1932,6 +2026,7 @@
 		3A98CBCB1E7CFA9C00CABD0D /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				25720DAB23FCDDC80054E392 /* EachNavigationBar_Objc */,
 				3A8DFD7F22BDD40E004A69B8 /* TZImagePickerController */,
 				3A8DFCBF22BDCA44004A69B8 /* MJRefresh */,
 				3A1D41FE1FD1206C00180803 /* XgPush */,
@@ -2449,6 +2544,7 @@
 				3A98CC041E7CFA9C00CABD0D /* header@2x.jpg in Resources */,
 				258F99B923F9742300CCC014 /* MomentAddViewController.xib in Resources */,
 				3A8DFDA622BDD40E004A69B8 /* TZImagePickerController.bundle in Resources */,
+				25720DC423FCDDC90054E392 /* LICENSE in Resources */,
 				3AA270411F6E646D00F5E6F3 /* touristData.plist in Resources */,
 				3A4D2FBD1E8D20E900901E3B /* HandTableViewCell.xib in Resources */,
 				258F99C923F977F900CCC014 /* HGImage.storyboard in Resources */,
@@ -2474,10 +2570,12 @@
 				3A0056121EC97CB70047E8F2 /* Assets.xcassets in Resources */,
 				3A8DFCF922BDCA45004A69B8 /* MJRefresh.bundle in Resources */,
 				3A1D41FC1FD0598A00180803 /* 混合统计使用说明.pdf in Resources */,
+				25720DD823FCDDC90054E392 /* README.md in Resources */,
 				3A1D41F61FD0598A00180803 /* 可视化埋点使用说明.pdf in Resources */,
 				3A1D42041FD1206C00180803 /* ReleaseNotes.txt in Resources */,
 				3A06D9B61E8CEDE400066DD1 /* ExamCell.xib in Resources */,
 				3A1D41FA1FD0598A00180803 /* MTA安装来源追踪使用文档.pdf in Resources */,
+				25720DD723FCDDC90054E392 /* EachNavigationBar.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2612,8 +2710,10 @@
 				3AA2704E1F6E76DF00F5E6F3 /* XPathQuery.m in Sources */,
 				3AA2704F1F6E76DF00F5E6F3 /* zySheetPickerView.m in Sources */,
 				3A8DFDA222BDD40E004A69B8 /* TZAssetModel.m in Sources */,
+				25720DC523FCDDC90054E392 /* EachNavigationBar+Override.swift in Sources */,
 				3A20AFF01F43E2B800712A1E /* CalendarDayCell.m in Sources */,
 				258F999F23F9723F00CCC014 /* UseInfoViewModel.swift in Sources */,
+				25720DD323FCDDC90054E392 /* Const.swift in Sources */,
 				3A20AFF21F43E2B800712A1E /* CalendarDayModel.m in Sources */,
 				3A20AFF41F43E2B800712A1E /* CalendarHomeViewController.m in Sources */,
 				3A20AFF61F43E2B800712A1E /* CalendarLogic.m in Sources */,
@@ -2626,6 +2726,7 @@
 				3A8DFCF622BDCA45004A69B8 /* MJRefreshConfig.m in Sources */,
 				25A623B72386BD7B005016F9 /* SwiftMomentViewController.swift in Sources */,
 				3A20AFFA1F43E2B800712A1E /* CalendarMonthHeaderView.m in Sources */,
+				25720DC923FCDDC90054E392 /* Navigation.swift in Sources */,
 				258F99BF23F9773F00CCC014 /* CEAlertView.swift in Sources */,
 				258F99BC23F9742300CCC014 /* MomentModel.swift in Sources */,
 				3A20AFFC1F43E2B800712A1E /* CalendarViewController.m in Sources */,
@@ -2654,13 +2755,16 @@
 				3AD047B01F316CCA00B61A02 /* HandAddViewController.m in Sources */,
 				3AD047B21F316CCA00B61A02 /* HandShowViewController.m in Sources */,
 				3AD047B41F316CCA00B61A02 /* HandTableViewCell.m in Sources */,
+				25720DCC23FCDDC90054E392 /* Shadow.swift in Sources */,
 				3AD047B61F316CCA00B61A02 /* HandTableViewController.m in Sources */,
 				258F99A523F9725A00CCC014 /* UserViewController.swift in Sources */,
 				3A8DFDAB22BDD40E004A69B8 /* TZImagePickerController.m in Sources */,
 				258F99E023F9788200CCC014 /* FWPopupView.swift in Sources */,
+				25720DD623FCDDC90054E392 /* Configuration.swift in Sources */,
 				3A796C391E534C1B00794043 /* LeftSortsViewController.m in Sources */,
 				3A8DFD2322BDCA45004A69B8 /* MJRefreshHeader.m in Sources */,
 				3A3775601F35EAD7005A5170 /* PowerViewController.m in Sources */,
+				25720DC723FCDDC90054E392 /* UIViewController+Associated.swift in Sources */,
 				258F99E423F9788200CCC014 /* FWCustomSheetView.swift in Sources */,
 				3A3775651F35EAEE005A5170 /* AboutViewController.m in Sources */,
 				3A8DFD9F22BDD40E004A69B8 /* TZImageCropManager.m in Sources */,
@@ -2683,6 +2787,7 @@
 				258F999D23F96A8400CCC014 /* LoginViewController.swift in Sources */,
 				3AFA4F831EC0504500CB7DA2 /* AppDelegate.m in Sources */,
 				3A796C531E534C1B00794043 /* UsernameViewController.m in Sources */,
+				25720DCB23FCDDC90054E392 /* UIViewController+Navigation.swift in Sources */,
 				258F99E123F9788200CCC014 /* FWRadioButton.swift in Sources */,
 				3A532CD21E910C13003CD5A8 /* ZFPlayerModel.m in Sources */,
 				3A37755F1F35EAD7005A5170 /* LibraryViewController.m in Sources */,
@@ -2714,15 +2819,19 @@
 				3A796C3C1E534C1B00794043 /* NoticeShowViewController.m in Sources */,
 				258F99E823F9788200CCC014 /* FWDateView.swift in Sources */,
 				3A98CC001E7CFA9C00CABD0D /* UUInputAccessoryView.m in Sources */,
+				25720DC623FCDDC90054E392 /* UIViewController+EachNavigationBar.swift in Sources */,
 				3A8DFDAC22BDD40E004A69B8 /* TZLocationManager.m in Sources */,
 				258F99CD23F977F900CCC014 /* HGImagePickerCell.swift in Sources */,
 				3A532CCF1E910C13003CD5A8 /* ZFBrightnessView.m in Sources */,
 				3A4D30131E8D297200901E3B /* LeftItemTableViewCell.m in Sources */,
+				25720DD123FCDDC90054E392 /* EachNavigationBar.swift in Sources */,
 				3A7F63991F357F6500991DAC /* Hand.m in Sources */,
 				3A06D9B51E8CEDE400066DD1 /* ExamCell.m in Sources */,
 				3A532CC91E910C13003CD5A8 /* UINavigationController+ZFPlayerRotation.m in Sources */,
 				258F99E323F9788200CCC014 /* FWPopupCategory.swift in Sources */,
 				3A8DFD0222BDCA45004A69B8 /* UIView+MJExtension.m in Sources */,
+				25720DC823FCDDC90054E392 /* UIViewController+Load.m in Sources */,
+				25720DD523FCDDC90054E392 /* UIViewController+Swizzling.swift in Sources */,
 				25C5A9DC237D46E1004F0A5F /* BaseWebViewController.m in Sources */,
 				3A532CD31E910C13003CD5A8 /* ZFPlayerView.m in Sources */,
 				3A8DFD0B22BDCA45004A69B8 /* MJRefreshBackNormalFooter.m in Sources */,
@@ -2733,7 +2842,7 @@
 				25A623B02386AA07005016F9 /* HomeViewController.swift in Sources */,
 				3AFA4F801EC04C6100CB7DA2 /* CourseXp.m in Sources */,
 				3A796C541E534C1B00794043 /* UserViewController.m in Sources */,
-				2569B44A23F1837E00B84E8A /* Const.swift in Sources */,
+				2569B44A23F1837E00B84E8A /* Consts.swift in Sources */,
 				258F99CB23F977F900CCC014 /* HGImageCollectionViewCell.swift in Sources */,
 				2551F09523FB841800ACF046 /* BaseNarViewController.swift in Sources */,
 				3AAB90991EA393A000C35137 /* ScoreRank.m in Sources */,
@@ -2743,11 +2852,13 @@
 				3A53876121C8DBC700538CA7 /* NoticeHelper.swift in Sources */,
 				3A1CEC331E93D71A002D8583 /* Vedio.m in Sources */,
 				3A31FE9C1F3A093700104A03 /* XWInteractiveTransition.m in Sources */,
+				25720DD223FCDDC90054E392 /* AssociatedKeys.swift in Sources */,
 				3A98CC031E7CFA9C00CABD0D /* iVersion.m in Sources */,
 				3A8DFDA122BDD40E004A69B8 /* TZVideoPlayerController.m in Sources */,
 				3A8DFD1722BDCA45004A69B8 /* MJRefreshNormalHeader.m in Sources */,
 				3A8DFDA822BDD40E004A69B8 /* TZImageManager.m in Sources */,
 				3A4D2FFD1E8D251500901E3B /* CourseSetViewController.m in Sources */,
+				25720DCD23FCDDC90054E392 /* Duplicatable.swift in Sources */,
 				3A796C3A1E534C1B00794043 /* MainPageViewController.m in Sources */,
 				3AFA4F631EC0485400CB7DA2 /* NSData+CRC32.m in Sources */,
 				258F99DF23F9788200CCC014 /* FWPopupRootViewController.swift in Sources */,
@@ -2764,6 +2875,7 @@
 				3A98CB5D1E7CF7AA00CABD0D /* CommentsModel.m in Sources */,
 				3A796C1F1E534C1B00794043 /* CourseViewController.m in Sources */,
 				3A532CCD1E910C13003CD5A8 /* UIWindow+CurrentViewController.m in Sources */,
+				25720DD023FCDDC90054E392 /* UINavigationController+EachNavigationBar.swift in Sources */,
 				3A796C301E534C1B00794043 /* WebViewController.m in Sources */,
 				25387F262382B804002459D6 /* MomentsSearchViewController.swift in Sources */,
 				3A8DFD2022BDCA45004A69B8 /* MJRefreshFooter.m in Sources */,
@@ -2773,6 +2885,7 @@
 				3A8DFCF322BDCA45004A69B8 /* MJRefreshConst.m in Sources */,
 				3A532CD11E910C13003CD5A8 /* ZFPlayerControlView.m in Sources */,
 				258F99A623F9725A00CCC014 /* UseHeadCell.swift in Sources */,
+				25720DCA23FCDDC90054E392 /* EachNavigationBar+ObjC.swift in Sources */,
 				3AA158B01FADAF3800298AAD /* UserCell.m in Sources */,
 				3A8DFDA322BDD40E004A69B8 /* NSBundle+TZImagePicker.m in Sources */,
 				3AC12C241F3B381E007C3B7E /* ChatChoiceTableViewController.m in Sources */,
@@ -2796,6 +2909,7 @@
 				3AE8005D1F34A6FA00D1BAC0 /* Lost.m in Sources */,
 				3A796C4F1E534C1B00794043 /* ScoreShowViewController.m in Sources */,
 				3A3775621F35EAD7005A5170 /* DayViewController.m in Sources */,
+				25720DCF23FCDDC90054E392 /* BackBarButtonItem.swift in Sources */,
 				3A9C28F71F15FD9F00B91876 /* LineUIView.m in Sources */,
 				3A532CCE1E910C13003CD5A8 /* MMMaterialDesignSpinner.m in Sources */,
 				25387F2A2382E61B002459D6 /* DataBase-Swift.swift in Sources */,
@@ -2805,7 +2919,9 @@
 				2569B44C23F1837E00B84E8A /* Config.swift in Sources */,
 				3A98CC0F1E7CFA9C00CABD0D /* YYWeakProxy.m in Sources */,
 				3A8DFDA022BDD40E004A69B8 /* TZAssetCell.m in Sources */,
+				25720DCE23FCDDC90054E392 /* UITableViewController+EachNavigationBar.swift in Sources */,
 				2537EDC623838DE400D9DAD0 /* TagsTable.swift in Sources */,
+				25720DD423FCDDC90054E392 /* UINavigationBar+Sugar.swift in Sources */,
 				3A3775611F35EAD7005A5170 /* HomeWorkViewController.m in Sources */,
 				258F99BA23F9742300CCC014 /* MomentAddViewController.swift in Sources */,
 				3AF73BF11E7D12610086417E /* APIRequest.m in Sources */,
@@ -3067,7 +3183,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 20021801;
+				CURRENT_PROJECT_VERSION = 20021802;
 				DEVELOPMENT_TEAM = JW2LR94V6G;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3127,7 +3243,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 20021801;
+				CURRENT_PROJECT_VERSION = 20021802;
 				DEVELOPMENT_TEAM = JW2LR94V6G;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

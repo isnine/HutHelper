@@ -13,7 +13,7 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "XWScanImage.h"
 
-@import EachNavigationBar_Objc;
+#import "HutHelper-Swift.h"
 
 @interface HandShowViewController ()
 

@@ -13,8 +13,8 @@
 #import "MBProgressHUD+MJ.h"
 
 #import "UINavigationBar+Awesome.h"
+#import "HutHelper-Swift.h"
 
-@import EachNavigationBar_Objc;
 @interface LostAddViewController ()<TZImagePickerControllerDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,UIAlertViewDelegate,UINavigationControllerDelegate> {
     NSMutableArray *_selectedPhotos;
     NSMutableArray *_selectedAssets;

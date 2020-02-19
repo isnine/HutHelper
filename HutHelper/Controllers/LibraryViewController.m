@@ -10,7 +10,7 @@
  
 #import "MBProgressHUD.h"
 #import "MBProgressHUD+MJ.h"
-@import EachNavigationBar_Objc;
+#import "HutHelper-Swift.h"
 
 @interface LibraryViewController ()
 @property (weak, nonatomic) IBOutlet UIWebView *views;

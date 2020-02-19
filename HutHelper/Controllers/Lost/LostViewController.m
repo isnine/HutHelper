@@ -18,8 +18,7 @@
 #import "YCXMenu.h"
 #import "LostShowViewController.h"
 #import "LostAddViewController.h"
-
-@import EachNavigationBar_Objc;
+#import "HutHelper-Swift.h"
 
 @interface LostViewController ()<UICollectionViewDataSource, JRWaterFallLayoutDelegate,DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 @property (nonatomic,copy) NSMutableArray      *lostData;

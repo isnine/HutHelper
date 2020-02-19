@@ -22,7 +22,7 @@
 #import "YCXMenu.h"
 #import "NSData+CRC32.h"
 #import "Config.h"
-@import EachNavigationBar_Objc;
+#import "HutHelper-Swift.h"
 
 @interface CourseViewController ()<GWPCourseListViewDataSource, GWPCourseListViewDelegate>
 @property (weak, nonatomic) IBOutlet GWPCourseListView *courseListView;

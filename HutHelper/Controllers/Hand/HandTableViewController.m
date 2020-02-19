@@ -19,7 +19,7 @@
 #import "YCXMenu.h"
 #import "UIScrollView+EmptyDataSet.h"
 
-@import EachNavigationBar_Objc;
+#import "HutHelper-Swift.h"
 
 @interface HandTableViewController () <DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 @property (nonatomic, copy) NSArray *handAllArray;

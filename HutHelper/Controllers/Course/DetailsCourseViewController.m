@@ -8,7 +8,7 @@
 
 #import "DetailsCourseViewController.h"
 
-@import EachNavigationBar_Objc;
+#import "HutHelper-Swift.h"
 
 @interface DetailsCourseViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *courseName;

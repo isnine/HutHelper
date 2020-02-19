@@ -10,7 +10,7 @@
  
 
 #import "DayCalendarViewController.h"
-@import EachNavigationBar_Objc;
+#import "HutHelper-Swift.h"
 @interface DayViewController ()
 
 @end

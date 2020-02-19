@@ -16,7 +16,7 @@ def swiftUI
     pod 'Moya'
     #pod 'MJRefresh'
     pod 'JXPhotoBrowser'
-    pod 'EachNavigationBar_Objc'
+    #pod 'EachNavigationBar_Objc'
     #pod 'ProgressHUD'
 #    pod "SkeletonView"
 end

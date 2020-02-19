@@ -37,7 +37,6 @@
 
 #import "HutHelper-Swift.h"
 
-@import EachNavigationBar_Objc;
 
 #define vBackBarButtonItemName  @"backArrow.png"    //导航条返回默认图片名
 #define ERROR_MSG_INVALID @"登录过期,请重新登录"

@@ -14,7 +14,7 @@
 
 #import "UINavigationBar+Awesome.h"
 
-@import EachNavigationBar_Objc;
+#import "HutHelper-Swift.h"
 @interface HandAddViewController ()<TZImagePickerControllerDelegate,UICollectionViewDataSource,UICollectionViewDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,UIAlertViewDelegate,UINavigationControllerDelegate> {
     NSMutableArray *_selectedPhotos;
     NSMutableArray *_selectedAssets;
