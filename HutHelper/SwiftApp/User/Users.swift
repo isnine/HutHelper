@@ -57,7 +57,6 @@ class Users: NSObject {
         
     }
 }
-
 struct ClassModel {
     var depName = ""
     var classes = [""]

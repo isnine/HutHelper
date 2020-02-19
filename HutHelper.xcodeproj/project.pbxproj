@@ -12,6 +12,12 @@
 		25387F262382B804002459D6 /* MomentsSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25387F242382B804002459D6 /* MomentsSearchViewController.swift */; };
 		25387F272382B804002459D6 /* MomentsSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25387F252382B804002459D6 /* MomentsSearchViewController.xib */; };
 		25387F2A2382E61B002459D6 /* DataBase-Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25387F292382E61B002459D6 /* DataBase-Swift.swift */; };
+		254C389123FD38B200F87954 /* UseHeadCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254C388E23FD38B100F87954 /* UseHeadCell.swift */; };
+		254C389223FD38B200F87954 /* UseInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254C388F23FD38B100F87954 /* UseInfoCell.swift */; };
+		254C389323FD38B200F87954 /* UseInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 254C389023FD38B100F87954 /* UseInfoCell.xib */; };
+		254C389523FD38B700F87954 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254C389423FD38B600F87954 /* UserViewController.swift */; };
+		254C389823FD38BC00F87954 /* UseInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254C389623FD38BC00F87954 /* UseInfoViewModel.swift */; };
+		254C389923FD38BC00F87954 /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254C389723FD38BC00F87954 /* Users.swift */; };
 		2551F09523FB841800ACF046 /* BaseNarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2551F09423FB841800ACF046 /* BaseNarViewController.swift */; };
 		255A55BF231FC40E001A7C13 /* DetailsCourseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 255A55BD231FC40E001A7C13 /* DetailsCourseViewController.m */; };
 		255A55C0231FC40E001A7C13 /* DetailsCourseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 255A55BE231FC40E001A7C13 /* DetailsCourseViewController.xib */; };
@@ -41,16 +47,10 @@
 		25720DD823FCDDC90054E392 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 25720DC323FCDDC80054E392 /* README.md */; };
 		258F997C23F95CEC00CCC014 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 258F997B23F95CEC00CCC014 /* API.swift */; };
 		258F999223F9626800CCC014 /* BaseWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 258F999123F9626800CCC014 /* BaseWebViewController.swift */; };
-		258F999423F962F100CCC014 /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = 258F999323F962F100CCC014 /* Users.swift */; };
 		258F999723F9632500CCC014 /* UserDefualt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 258F999623F9632500CCC014 /* UserDefualt.swift */; };
 		258F999B23F96A8400CCC014 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 258F999823F96A8300CCC014 /* LoginViewController.xib */; };
 		258F999C23F96A8400CCC014 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 258F999923F96A8400CCC014 /* LoginViewModel.swift */; };
 		258F999D23F96A8400CCC014 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 258F999A23F96A8400CCC014 /* LoginViewController.swift */; };
-		258F999F23F9723F00CCC014 /* UseInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 258F999E23F9723E00CCC014 /* UseInfoViewModel.swift */; };
-		258F99A523F9725A00CCC014 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 258F99A023F9725A00CCC014 /* UserViewController.swift */; };
-		258F99A623F9725A00CCC014 /* UseHeadCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 258F99A223F9725A00CCC014 /* UseHeadCell.swift */; };
-		258F99A723F9725A00CCC014 /* UseInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 258F99A323F9725A00CCC014 /* UseInfoCell.xib */; };
-		258F99A823F9725A00CCC014 /* UseInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 258F99A423F9725A00CCC014 /* UseInfoCell.swift */; };
 		258F99B523F9742300CCC014 /* MomentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 258F99A923F9742100CCC014 /* MomentViewModel.swift */; };
 		258F99B623F9742300CCC014 /* MomentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 258F99AB23F9742200CCC014 /* MomentCell.swift */; };
 		258F99B723F9742300CCC014 /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 258F99AC23F9742200CCC014 /* CommentCell.swift */; };
@@ -406,6 +406,12 @@
 		25387F242382B804002459D6 /* MomentsSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MomentsSearchViewController.swift; sourceTree = "<group>"; };
 		25387F252382B804002459D6 /* MomentsSearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MomentsSearchViewController.xib; sourceTree = "<group>"; };
 		25387F292382E61B002459D6 /* DataBase-Swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataBase-Swift.swift"; sourceTree = "<group>"; };
+		254C388E23FD38B100F87954 /* UseHeadCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UseHeadCell.swift; sourceTree = "<group>"; };
+		254C388F23FD38B100F87954 /* UseInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UseInfoCell.swift; sourceTree = "<group>"; };
+		254C389023FD38B100F87954 /* UseInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UseInfoCell.xib; sourceTree = "<group>"; };
+		254C389423FD38B600F87954 /* UserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserViewController.swift; path = ../../../../HutHelperSwift/HutHelperSwift/App/User/UserViewController.swift; sourceTree = "<group>"; };
+		254C389623FD38BC00F87954 /* UseInfoViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UseInfoViewModel.swift; path = ../../../../HutHelperSwift/HutHelperSwift/App/User/UseInfoViewModel.swift; sourceTree = "<group>"; };
+		254C389723FD38BC00F87954 /* Users.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
 		2551F09423FB841800ACF046 /* BaseNarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNarViewController.swift; sourceTree = "<group>"; };
 		255A55BC231FC40E001A7C13 /* DetailsCourseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailsCourseViewController.h; sourceTree = "<group>"; };
 		255A55BD231FC40E001A7C13 /* DetailsCourseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailsCourseViewController.m; sourceTree = "<group>"; };
@@ -436,16 +442,10 @@
 		25720DC323FCDDC80054E392 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		258F997B23F95CEC00CCC014 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		258F999123F9626800CCC014 /* BaseWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseWebViewController.swift; sourceTree = "<group>"; };
-		258F999323F962F100CCC014 /* Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
 		258F999623F9632500CCC014 /* UserDefualt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefualt.swift; sourceTree = "<group>"; };
 		258F999823F96A8300CCC014 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		258F999923F96A8400CCC014 /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		258F999A23F96A8400CCC014 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		258F999E23F9723E00CCC014 /* UseInfoViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UseInfoViewModel.swift; sourceTree = "<group>"; };
-		258F99A023F9725A00CCC014 /* UserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
-		258F99A223F9725A00CCC014 /* UseHeadCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UseHeadCell.swift; sourceTree = "<group>"; };
-		258F99A323F9725A00CCC014 /* UseInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UseInfoCell.xib; sourceTree = "<group>"; };
-		258F99A423F9725A00CCC014 /* UseInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UseInfoCell.swift; sourceTree = "<group>"; };
 		258F99A923F9742100CCC014 /* MomentViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomentViewModel.swift; sourceTree = "<group>"; };
 		258F99AB23F9742200CCC014 /* MomentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomentCell.swift; sourceTree = "<group>"; };
 		258F99AC23F9742200CCC014 /* CommentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
@@ -974,10 +974,12 @@
 		253DE6E323C3758C006DED22 /* User */ = {
 			isa = PBXGroup;
 			children = (
-				258F99A023F9725A00CCC014 /* UserViewController.swift */,
-				258F99A123F9725A00CCC014 /* View */,
-				258F999E23F9723E00CCC014 /* UseInfoViewModel.swift */,
-				258F999323F962F100CCC014 /* Users.swift */,
+				254C389623FD38BC00F87954 /* UseInfoViewModel.swift */,
+				254C389723FD38BC00F87954 /* Users.swift */,
+				254C389423FD38B600F87954 /* UserViewController.swift */,
+				254C388E23FD38B100F87954 /* UseHeadCell.swift */,
+				254C388F23FD38B100F87954 /* UseInfoCell.swift */,
+				254C389023FD38B100F87954 /* UseInfoCell.xib */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -1068,17 +1070,6 @@
 				258F999623F9632500CCC014 /* UserDefualt.swift */,
 			);
 			path = UsersDefualt;
-			sourceTree = "<group>";
-		};
-		258F99A123F9725A00CCC014 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				258F99A223F9725A00CCC014 /* UseHeadCell.swift */,
-				258F99A323F9725A00CCC014 /* UseInfoCell.xib */,
-				258F99A423F9725A00CCC014 /* UseInfoCell.swift */,
-			);
-			name = View;
-			path = ../../../../HutHelperSwift/HutHelperSwift/App/User/View;
 			sourceTree = "<group>";
 		};
 		258F99AA23F9742200CCC014 /* View */ = {
@@ -2565,8 +2556,8 @@
 				258F99CC23F977F900CCC014 /* HGImage.xcassets in Resources */,
 				258F999B23F96A8400CCC014 /* LoginViewController.xib in Resources */,
 				3A98CB731E7CF82F00CABD0D /* MBProgressHUD.bundle in Resources */,
+				254C389323FD38B200F87954 /* UseInfoCell.xib in Resources */,
 				3A4D2FF41E8D24C100901E3B /* NoticeTableViewCell.xib in Resources */,
-				258F99A723F9725A00CCC014 /* UseInfoCell.xib in Resources */,
 				3A0056121EC97CB70047E8F2 /* Assets.xcassets in Resources */,
 				3A8DFCF922BDCA45004A69B8 /* MJRefresh.bundle in Resources */,
 				3A1D41FC1FD0598A00180803 /* 混合统计使用说明.pdf in Resources */,
@@ -2712,7 +2703,6 @@
 				3A8DFDA222BDD40E004A69B8 /* TZAssetModel.m in Sources */,
 				25720DC523FCDDC90054E392 /* EachNavigationBar+Override.swift in Sources */,
 				3A20AFF01F43E2B800712A1E /* CalendarDayCell.m in Sources */,
-				258F999F23F9723F00CCC014 /* UseInfoViewModel.swift in Sources */,
 				25720DD323FCDDC90054E392 /* Const.swift in Sources */,
 				3A20AFF21F43E2B800712A1E /* CalendarDayModel.m in Sources */,
 				3A20AFF41F43E2B800712A1E /* CalendarHomeViewController.m in Sources */,
@@ -2738,6 +2728,7 @@
 				3A8DFD2622BDCA45004A69B8 /* MJRefreshBackFooter.m in Sources */,
 				3A8DFD0822BDCA45004A69B8 /* MJRefreshBackStateFooter.m in Sources */,
 				258F99D023F9783600CCC014 /* ImgsViewCell.swift in Sources */,
+				254C389223FD38B200F87954 /* UseInfoCell.swift in Sources */,
 				3A8DFD2922BDCA45004A69B8 /* MJRefreshAutoFooter.m in Sources */,
 				3A8DFD1122BDCA45004A69B8 /* MJRefreshAutoGifFooter.m in Sources */,
 				3A8DFDAD22BDD40E004A69B8 /* TZGifPhotoPreviewController.m in Sources */,
@@ -2746,7 +2737,9 @@
 				3A8DFDA522BDD40E004A69B8 /* TZPhotoPreviewController.m in Sources */,
 				3AA3D1FD1F893A9D00990358 /* UIViewController+BackButtonHandler.m in Sources */,
 				3A3775751F35EB51005A5170 /* LostShowViewController.m in Sources */,
+				254C389523FD38B700F87954 /* UserViewController.swift in Sources */,
 				258F999723F9632500CCC014 /* UserDefualt.swift in Sources */,
+				254C389823FD38BC00F87954 /* UseInfoViewModel.swift in Sources */,
 				258F99E923F9788200CCC014 /* FWPopupWindow.swift in Sources */,
 				3A3775791F35EB51005A5170 /* LostViewController.m in Sources */,
 				3A8DFD1A22BDCA45004A69B8 /* MJRefreshStateHeader.m in Sources */,
@@ -2757,7 +2750,6 @@
 				3AD047B41F316CCA00B61A02 /* HandTableViewCell.m in Sources */,
 				25720DCC23FCDDC90054E392 /* Shadow.swift in Sources */,
 				3AD047B61F316CCA00B61A02 /* HandTableViewController.m in Sources */,
-				258F99A523F9725A00CCC014 /* UserViewController.swift in Sources */,
 				3A8DFDAB22BDD40E004A69B8 /* TZImagePickerController.m in Sources */,
 				258F99E023F9788200CCC014 /* FWPopupView.swift in Sources */,
 				25720DD623FCDDC90054E392 /* Configuration.swift in Sources */,
@@ -2768,7 +2760,6 @@
 				258F99E423F9788200CCC014 /* FWCustomSheetView.swift in Sources */,
 				3A3775651F35EAEE005A5170 /* AboutViewController.m in Sources */,
 				3A8DFD9F22BDD40E004A69B8 /* TZImageCropManager.m in Sources */,
-				258F99A823F9725A00CCC014 /* UseInfoCell.swift in Sources */,
 				3A98CB5E1E7CF7AA00CABD0D /* LikesModel.m in Sources */,
 				3AD443EB1E97CF5600720F42 /* VedioTableViewCell.m in Sources */,
 				3AFA4F5D1EC0442C00CB7DA2 /* Config.m in Sources */,
@@ -2822,6 +2813,7 @@
 				25720DC623FCDDC90054E392 /* UIViewController+EachNavigationBar.swift in Sources */,
 				3A8DFDAC22BDD40E004A69B8 /* TZLocationManager.m in Sources */,
 				258F99CD23F977F900CCC014 /* HGImagePickerCell.swift in Sources */,
+				254C389923FD38BC00F87954 /* Users.swift in Sources */,
 				3A532CCF1E910C13003CD5A8 /* ZFBrightnessView.m in Sources */,
 				3A4D30131E8D297200901E3B /* LeftItemTableViewCell.m in Sources */,
 				25720DD123FCDDC90054E392 /* EachNavigationBar.swift in Sources */,
@@ -2863,6 +2855,7 @@
 				3AFA4F631EC0485400CB7DA2 /* NSData+CRC32.m in Sources */,
 				258F99DF23F9788200CCC014 /* FWPopupRootViewController.swift in Sources */,
 				3AFA4F6C1EC049F600CB7DA2 /* Math.m in Sources */,
+				254C389123FD38B200F87954 /* UseHeadCell.swift in Sources */,
 				3A53875621C8987D00538CA7 /* More.swift in Sources */,
 				3AAECDBA1F4344C7004A6156 /* UIBarButtonItem+Badge.m in Sources */,
 				3A796C4E1E534C1B00794043 /* ScoreDataViewController.m in Sources */,
@@ -2884,7 +2877,6 @@
 				3A8DFDA722BDD40E004A69B8 /* TZProgressView.m in Sources */,
 				3A8DFCF322BDCA45004A69B8 /* MJRefreshConst.m in Sources */,
 				3A532CD11E910C13003CD5A8 /* ZFPlayerControlView.m in Sources */,
-				258F99A623F9725A00CCC014 /* UseHeadCell.swift in Sources */,
 				25720DCA23FCDDC90054E392 /* EachNavigationBar+ObjC.swift in Sources */,
 				3AA158B01FADAF3800298AAD /* UserCell.m in Sources */,
 				3A8DFDA322BDD40E004A69B8 /* NSBundle+TZImagePicker.m in Sources */,
@@ -2905,7 +2897,6 @@
 				258F99B523F9742300CCC014 /* MomentViewModel.swift in Sources */,
 				3A4049091E6A6C730038F207 /* MomentsCell.m in Sources */,
 				3A98CB721E7CF82F00CABD0D /* MBProgressHUD+MJ.m in Sources */,
-				258F999423F962F100CCC014 /* Users.swift in Sources */,
 				3AE8005D1F34A6FA00D1BAC0 /* Lost.m in Sources */,
 				3A796C4F1E534C1B00794043 /* ScoreShowViewController.m in Sources */,
 				3A3775621F35EAD7005A5170 /* DayViewController.m in Sources */,
@@ -3183,7 +3174,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 20021803;
+				CURRENT_PROJECT_VERSION = 20021901;
 				DEVELOPMENT_TEAM = JW2LR94V6G;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3243,7 +3234,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 20021803;
+				CURRENT_PROJECT_VERSION = 20021901;
 				DEVELOPMENT_TEAM = JW2LR94V6G;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
