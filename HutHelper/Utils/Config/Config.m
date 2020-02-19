@@ -31,6 +31,7 @@ static int Is ;
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     NSDictionary *userData=[defaults objectForKey:@"kUser"];
     User *user=[[User alloc ]initWithDic:userData];
+    NSLog(@"%@",user.class_name);
     return user;
 }
 +(NSString*)getStudentKH{
@@ -63,11 +64,11 @@ static int Is ;
 }
 +(NSString*)getLastLogin{
     User *user=self.getUser;
-    return user.last_login;
+    return user.last_use;
 }
 +(NSString*)getSex{
     User *user=self.getUser;
-    return user.sex;
+    return user.active;
 }
 +(NSString*)getUserId{
     User *user=self.getUser;
@@ -80,9 +81,16 @@ static int Is ;
 }
 +(NSString*)getRememberCodeApp{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    NSLog(@"%@",[defaults objectForKey:@"remember_code_app"]);
     return [defaults objectForKey:@"remember_code_app"];
 }
 #pragma mark - 持续化存储
+
++(void)saveAllClasses:(NSDictionary*)allClasses{
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    [defaults setObject:allClasses forKey:@"allClasses"];
+    [defaults synchronize];
+}
 +(void)saveUser:(NSDictionary*)userData{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     [defaults setObject:userData forKey:@"kUser"];
@@ -199,6 +207,10 @@ static int Is ;
     [defaults synchronize];
 }
 #pragma mark - 获得存储数据
++ (NSDictionary*)getAllClasses{
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    return [defaults objectForKey:@"allClasses"];
+}
 +(NSArray*)getCourse{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     return [defaults objectForKey:@"kCourse"];
@@ -284,14 +296,18 @@ static int Is ;
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     NSDictionary *noticeDictionary=@{@"time":@"2017-10-20 08:00",
                                      @"title":@"工大助手",
-                                     @"body":@"暂无通知 "
+                                     @"body":@"助手更新啦~"
                                      };
     
     NSDictionary *noticeDictionary1=@{@"time":@"2017-08-14 08:00",
                                       @"title":@"私信功能的使用",
                                       @"body":@"您可以点击侧栏-私信-右上角搜索按钮。\n输入你想要聊天的对象姓名。即可开始聊天。"
                                       };
-    NSArray *array = @[noticeDictionary,noticeDictionary1];
+    NSDictionary *noticeDictionary2=@{@"time":@"2019-11-19 08:00",
+                                      @"title":@"iOS端助手更新",
+                                      @"body":@"开发者正在努力开发维护助手。\n正在修复一系列bug，更改班级功能也努力开发中~。\n目前考试查询，成绩查询，私信功能，热门说说、个人互动说说等陆续修复完成。\n点击首页右上角可查看私信哦~"
+                                      };
+    NSArray *array = @[noticeDictionary,noticeDictionary2];
     [defaults setObject:array forKey:@"Notice"];//通知列表
     [defaults synchronize];
 }

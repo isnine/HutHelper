@@ -48,7 +48,7 @@
              NSDictionary *Hand_All = [NSDictionary dictionaryWithDictionary:responseObject];
              NSString *Msg=[Hand_All objectForKey:@"msg"];
         NSLog(@"%@",Msg);
-             if ([Msg isEqualToString:@"ok"]) {
+             if (true) {
                  NSDictionary *array               = [Hand_All objectForKey:@"data"];
                  //进入商品界面
                  HandShowViewController *handShow=[[HandShowViewController alloc]init];
@@ -77,25 +77,30 @@
     }
     Hand *hand=_handArray[(short)(((UITableViewCell*)[[sender superview]superview]).tag)*2+1];
     NSString *Url_String=[NSString stringWithFormat:@"%@/%@/%@/%@",Config.getApiGoodsShow,Config.getStudentKH,Config.getRememberCodeApp,hand.good_id];
+    HandShowViewController *handShow=[[HandShowViewController alloc]init];
+//    handShow.handDic=nil;
+//    handShow.isSelfGoods=self.isSelfGoods;
+    AppDelegate *tempAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [tempAppDelegate.mainNavigationController pushViewController:handShow animated:YES];
     
-    //NSLog(@"%@",Url_String);
-    [APIRequest GET:Url_String parameters:nil success:^(id responseObject) {
-             NSDictionary *Hand_All = [NSDictionary dictionaryWithDictionary:responseObject];
-             NSString *Msg=[Hand_All objectForKey:@"msg"];
-             if ([Msg isEqualToString:@"ok"]) {
-                 NSDictionary *array               = [Hand_All objectForKey:@"data"];
-                 //进入商品界面
-                 HandShowViewController *handShow=[[HandShowViewController alloc]init];
-                 handShow.handDic=array;
-                 handShow.isSelfGoods=self.isSelfGoods;
-                 AppDelegate *tempAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-                 [tempAppDelegate.mainNavigationController pushViewController:handShow animated:YES];
-             }else{
-                 [MBProgressHUD showError:Msg toView:self];
-             }
-         }failure:^(NSError *error) {
-             [MBProgressHUD showError:@"网络错误"toView:self];
-         }];
+//    //NSLog(@"%@",Url_String);
+//    [APIRequest GET:Url_String parameters:nil success:^(id responseObject) {
+//             NSDictionary *Hand_All = [NSDictionary dictionaryWithDictionary:responseObject];
+//             NSString *Msg=[Hand_All objectForKey:@"msg"];
+//             if (true) {
+//                 NSDictionary *array               = [Hand_All objectForKey:@"data"];
+//                 //进入商品界面
+//                 HandShowViewController *handShow=[[HandShowViewController alloc]init];
+//                 handShow.handDic=array;
+//                 handShow.isSelfGoods=self.isSelfGoods;
+//                 AppDelegate *tempAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+//                 [tempAppDelegate.mainNavigationController pushViewController:handShow animated:YES];
+//             }else{
+//                 [MBProgressHUD showError:Msg toView:self];
+//             }
+//         }failure:^(NSError *error) {
+//             [MBProgressHUD showError:@"网络错误"toView:self];
+//         }];
 }
 
 - (NSIndexPath *)getIndexPath

@@ -7,7 +7,6 @@
 //
 
 #import "CourseSetViewController.h"
-#import "LoginViewController.h"
 #import "AppDelegate.h"
 @interface CourseSetViewController ()
 @property (weak, nonatomic) IBOutlet UISwitch *OpenClass;

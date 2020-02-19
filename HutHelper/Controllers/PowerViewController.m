@@ -10,6 +10,9 @@
 #import "JSONKit.h"
 #import "UINavigationBar+Awesome.h"
 #import "MBProgressHUD+MJ.h"
+
+#import "HutHelper-Swift.h"
+
 @interface PowerViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *Building;
 @property (weak, nonatomic) IBOutlet UITextField *Room;
@@ -136,6 +139,27 @@ typedef NS_ENUM(NSUInteger, PowerSelectBtn) {
     } failure:^(NSError *error) {
         NSLog(@"网络错误");
     }];
+    [self setTitle];
+            
+}
+
+- (void) setTitle{
+    self.navigation_bar.isShadowHidden = YES;
+    self.navigation_bar.alpha = 0;
+            /**按钮*/
+            UIButton *mainAndSearchBtn = [[UIButton alloc] initWithFrame:CGRectMake(SYReal(5), 0, SYReal(25), SYReal(25))];
+            UIView *rightButtonView1 = [[UIView alloc] initWithFrame:CGRectMake(-20,0, 40, 40)];
+            
+            mainAndSearchBtn = [[UIButton alloc] initWithFrame:CGRectMake(-20,0, 40, 40)];
+            [rightButtonView1 addSubview:mainAndSearchBtn];
+            [mainAndSearchBtn setImage:[UIImage imageNamed:@"ico_menu_back"] forState:UIControlStateNormal];
+            [mainAndSearchBtn addTarget:self action:@selector(backBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
+            UIBarButtonItem *rightCunstomButtonView1 = [[UIBarButtonItem alloc] initWithCustomView:rightButtonView1];
+            self.navigation_item.leftBarButtonItem  = rightCunstomButtonView1;
+    }
+// 返回按钮按下
+- (void)backBtnClicked:(UIButton *)sender{
+        [self.navigationController popViewControllerAnimated:YES];
 }
 -(void)getRoom{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];

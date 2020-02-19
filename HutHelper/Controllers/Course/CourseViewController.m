@@ -22,6 +22,8 @@
 #import "YCXMenu.h"
 #import "NSData+CRC32.h"
 #import "Config.h"
+#import "HutHelper-Swift.h"
+
 @interface CourseViewController ()<GWPCourseListViewDataSource, GWPCourseListViewDelegate>
 @property (weak, nonatomic) IBOutlet GWPCourseListView *courseListView;
 @property (nonatomic, strong) NSMutableArray<CourseModel*> *courseArr;
@@ -68,7 +70,7 @@ NSString *show_xp;
     UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     self.navigationItem.backBarButtonItem = item;
     //标题结束//
-    self.navigationItem.title                    = nowweek_string;
+    self.navigation_item.title                    = nowweek_string;
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor]}];
     /**按钮*/
     UIView *rightButtonView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SYReal(25), SYReal(25))];
@@ -77,7 +79,22 @@ NSString *show_xp;
     [mainAndSearchBtn setImage:[UIImage imageNamed:@"refresh"] forState:UIControlStateNormal];
     [mainAndSearchBtn addTarget:self action:@selector(reloadcourse) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *rightCunstomButtonView = [[UIBarButtonItem alloc] initWithCustomView:rightButtonView];
-    self.navigationItem.rightBarButtonItem = rightCunstomButtonView;
+    self.navigation_item.rightBarButtonItem = rightCunstomButtonView;
+    self.navigation_bar.isShadowHidden = true;
+    self.navigation_bar.alpha = 0;
+    /**按钮*/
+    UIView *rightButtonView1 = [[UIView alloc] initWithFrame:CGRectMake(-20,0, 40, 40)];
+    
+    mainAndSearchBtn = [[UIButton alloc] initWithFrame:CGRectMake(-20,0, 40, 40)];
+    [rightButtonView1 addSubview:mainAndSearchBtn];
+    [mainAndSearchBtn setImage:[UIImage imageNamed:@"ico_menu_back"] forState:UIControlStateNormal];
+    [mainAndSearchBtn addTarget:self action:@selector(backBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *rightCunstomButtonView1 = [[UIBarButtonItem alloc] initWithCustomView:rightButtonView1];
+    self.navigation_item.leftBarButtonItem  = rightCunstomButtonView1;
+    
+    //self.navigation_bar.alpha = 0;
+
+    //self.navigationItem.rightBarButtonItem = rightCunstomButtonView;
     /**刷新课程表*/
     [self addCourse];
     selectss=1;
@@ -86,7 +103,10 @@ NSString *show_xp;
     [self addSome];
     
 }
-
+// 返回按钮按下
+- (void)backBtnClicked:(UIButton *)sender{
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 - (void)addTitleMenu
 {
@@ -186,7 +206,7 @@ NSString *show_xp;
     _menuView.cellSeparatorColor = [UIColor whiteColor];
     _menuView.titleColor=[UIColor blackColor];//标题颜色
     [_menuView setArrow];
-    self.navigationItem.titleView = _menuView;
+    self.navigation_item.titleView = _menuView;
 }
 - (void)addCourse{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
@@ -490,7 +510,7 @@ NSString *show_xp;
     [self.courseListView reloadData];
 }
 
-// 小心思
+// some 
 - (void) addSome {
     if ([[Config getStudentKH] isEqualToString:@"17408002037"] &&[[Config getTrueName ] isEqualToString:@"张驰"])
     {
@@ -500,6 +520,13 @@ NSString *show_xp;
         [self.view addSubview:img];
     }
     if ([[Config getStudentKH] isEqualToString:@"17403001035"] && [[Config getTrueName] isEqualToString:@"游子欣"])
+    {
+        UIImageView *img = [[UIImageView alloc] initWithFrame:CGRectMake(UIScreen.mainScreen.bounds.size.width/2-150, UIScreen.mainScreen.bounds.size.height/2-150, SYReal(300), SYReal(300))];
+        img.image = [UIImage imageNamed:@"lovass"];
+        [img setAlpha:0.4];
+        [self.view addSubview:img];
+    }
+    if ([[Config getStudentKH] isEqualToString:@"17407900222"] && [[Config getTrueName] isEqualToString:@"李佳琪"])
     {
         UIImageView *img = [[UIImageView alloc] initWithFrame:CGRectMake(UIScreen.mainScreen.bounds.size.width/2-150, UIScreen.mainScreen.bounds.size.height/2-150, SYReal(300), SYReal(300))];
         img.image = [UIImage imageNamed:@"lovass"];
@@ -519,6 +546,7 @@ NSString *show_xp;
         NSString *Msg=[Class_All objectForKey:@"code"];
         if ([Msg isEqual:@200]) {
             NSArray *arrayCourse               = [Class_All objectForKey:@"data"];
+            NSLog(@"%@",[Config getApiClass]);
             [Config saveWidgetCourse:arrayCourse];
             [Config saveCourse:arrayCourse];
             [self addCourse];
