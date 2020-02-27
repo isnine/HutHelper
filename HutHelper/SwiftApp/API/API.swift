@@ -316,8 +316,8 @@ extension MomentAPI:TargetType {
                        ]
         case .comment(let comment, let moment_id):
             parmeters = [
-                         "comment":comment,
-                         "moment_id":moment_id
+                         "comment": comment,
+                         "moment_id": moment_id
                        ]
         default:
             break;

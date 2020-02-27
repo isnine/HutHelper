@@ -408,6 +408,9 @@ int class_error_;
             } failure:^(NSError *error) {
                 NSLog(@"版本接口调用失败");
             }];
+    
+    // 这里可判断是否有消息
+    
     [APIRequest GET:[Config getApiVersionv3] parameters:nil
             success:^(id responseObject) {
         NSLog(@"%@",responseObject);
@@ -415,6 +418,7 @@ int class_error_;
             } failure:^(NSError *error) {
                 NSLog(@"版本接口调用失败");
             }];
+    
     [APIRequest GET:[Config getApiWeather] parameters:nil
             success:^(id responseObject) {
                 NSDictionary *result=[NSDictionary dictionaryWithDictionary:responseObject];
@@ -545,12 +549,12 @@ int class_error_;
     /**标题文字*/
     UIColor *greyColor                        = [UIColor colorWithRed:239/255.0 green:239/255.0 blue:239/255.0 alpha:1];
     self.view.backgroundColor                 = greyColor;
-    [self.navigationController.navigationBar setTitleTextAttributes:
-     @{NSFontAttributeName:[UIFont systemFontOfSize:19],
-       NSForegroundColorAttributeName:[UIColor whiteColor]}];   //标题字体颜色
-    /** 标题栏样式 */
-    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
-    self.navigationItem.backBarButtonItem = item;
+//    [self.navigationController.navigationBar setTitleTextAttributes:
+//     @{NSFontAttributeName:[UIFont systemFontOfSize:19],
+//       NSForegroundColorAttributeName:[UIColor whiteColor]}];   //标题字体颜色
+//    /** 标题栏样式 */
+//    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+//    self.navigationItem.backBarButtonItem = item;
     /**按钮*/
     UIButton *menuBtn                         = [UIButton buttonWithType:UIButtonTypeCustom];
     menuBtn.frame                             = CGRectMake(0, 0, 20, 18);
@@ -576,6 +580,7 @@ int class_error_;
     tapBanner.numberOfTapsRequired =1;
     [_bannerImgView addGestureRecognizer:tapBanner];
 }
+
 #pragma mark -- <UIImagePickerControllerDelegate>--
 - (void)touchBanner
 {

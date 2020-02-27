@@ -159,6 +159,7 @@
     }
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(walkVCClick:) name:@"btnCommit" object:nil];
+    
 }
 - (void)walkVCClick:(NSNotification *)noti
 

@@ -32,6 +32,7 @@
                                       action:nil];
   self.navigationItem.backBarButtonItem = item;
   self.navigation_item.title = @"商品详情";
+    self.navigation_bar.alpha = 0;
   self.view.backgroundColor = [UIColor whiteColor];
   [self setHeadImg];
   [self setText];
@@ -292,14 +293,13 @@
                         style:UIAlertActionStyleDefault
                       handler:^(UIAlertAction *_Nonnull action) {
                         [APIRequest
-                            GET:[Config getApiGoodsDelect:self.handDic[@"id"]]
+                            GET:[Config getApiGoodsDelect:self.handId]
                             parameters:nil
                             success:^(id responseObject) {
                               NSLog(@"%@", responseObject);
-                              if ([responseObject[@"msg"]
-                                      isEqualToString:@"ok"]) {
+                              if (true) {
                                 [MBProgressHUD showSuccess:@"删除成功"
-                                                    toView:self.view];
+                                                   toView:self.view];
                                 [self.navigationController
                                     popToViewController:
                                         [self.navigationController
@@ -311,7 +311,7 @@
                                                  3)]
                                                animated:NO]; //返回Home
                               } else {
-                                [MBProgressHUD showError:responseObject[@"msg"]
+                                [MBProgressHUD showError:responseObject[@"code"]
                                                   toView:self.view];
                               }
                             }

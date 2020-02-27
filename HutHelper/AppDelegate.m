@@ -59,6 +59,7 @@
      [[XGPush defaultManager] reportXGNotificationInfo:launchOptions];
     //MTA统计
     [MTA startWithAppkey:APPKEY_MTA];
+    
     //设置初始界面
     self.window.backgroundColor      = [UIColor whiteColor];//设置通用背景颜色
     [self.window makeKeyAndVisible];

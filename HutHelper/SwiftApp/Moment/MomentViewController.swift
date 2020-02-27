@@ -390,15 +390,22 @@ extension MomentViewController:UITableViewDelegate,UITableViewDataSource {
     }
 }
 
+
+
 extension MomentViewController:AlterSginDelegate{
     
     func commentCallback(content: String, indexPath: IndexPath) {
         let data = self.viewModel.momentDatas[indexPath.section]
         viewModel.getCommentSayRequst(comment: content, momentId: data.id) {
-            let commentdata = CommentModel(id: "1", moment_id: data.id, comment: content, user_id: "\(user.user_id)", created_on: "11", username: user.username)
-        self.viewModel.momentDatas[indexPath.section].comments.append(commentdata)
-            let indexSet = NSIndexSet(index: indexPath.section)
-            self.tableView.reloadSections(indexSet as IndexSet, with: .automatic)
+            self.viewModel.getAllMomentRequst(page: 1) {
+                print("json 成功")
+                self.tableView.reloadData()
+                self.tableView.mj_footer.endRefreshing()
+            }
+//            let commentdata = CommentModel(id: "1", moment_id: data.id, comment: content, user_id: "\(user.user_id)", created_on: "11", username: user.username)
+//        self.viewModel.momentDatas[indexPath.section].comments.append(commentdata)
+//            let indexSet = NSIndexSet(index: indexPath.section)
+//            self.tableView.reloadSections(indexSet as IndexSet, with: .automatic)
         }
     }
     

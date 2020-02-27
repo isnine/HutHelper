@@ -87,7 +87,7 @@
     return [NSString stringWithFormat:@"%@/api/v3/trade/details",Config.apiIndex];
 }
 +(NSString*)getApiGoodsDelect:(NSString*)goodID{
-    return [NSString stringWithFormat:@"%@/api/v1/stuff/delete/%@/%@/%@",Config.apiIndex,Config.getStudentKH,Config.getRememberCodeApp,goodID];
+    return [NSString stringWithFormat:@"%@/api/v3/trade/delete/%@/%@/%@",Config.apiIndex,Config.getStudentKH,Config.getRememberCodeApp,goodID];
 }
 +(NSString*)getApiUserIsTrue{
     return [NSString stringWithFormat:@"%@/api/v2/Im/is_true/%@/%@",Config.apiIndex,Config.getStudentKH,Config.getRememberCodeApp];

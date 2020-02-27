@@ -12,6 +12,8 @@
 #import "LeftSortsViewController.h"
 #import "WebViewController.h"
 #import <StoreKit/StoreKit.h>
+#import "HutHelper-Swift.h"
+
 @interface AboutViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *version;
 @property (weak, nonatomic) IBOutlet UITextView *aboutText;
