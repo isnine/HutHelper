@@ -74,8 +74,7 @@ class LoginViewController: UIViewController {
                     saveUserInfo(value["data"].dictionaryObject)
                     saveRememberCodeApp(token: value["data"].dictionaryObject!["remember_code_app"] as! String)
                      MBProgressHUD.hideAllHUDs(for: self!.view, animated: true)
-                    Config.addNotice()
-                    Config.saveUmeng()
+
                 Config.saveUser(value["data"].dictionaryObject)
                     Config.saveRememberCodeApp((value["data"].dictionaryObject!["remember_code_app"] as! String))
                     Config.saveCurrentVersion((Bundle.main.infoDictionary?["CFBundleShortVersionString"] as! String))
@@ -91,7 +90,7 @@ class LoginViewController: UIViewController {
         self.registerBtn.rx.tap.subscribe(onNext:{[weak self] in
             let registerVC = BaseWebController(webURL: registerAPI, navTitle: "注册账号")
             self?.navigationController?.pushViewController(registerVC, animated: true)
-        })
+            }).disposed(by: disposeBag)
     }
 
 }

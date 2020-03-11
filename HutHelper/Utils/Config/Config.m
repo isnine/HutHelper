@@ -303,9 +303,9 @@ static int Is ;
                                       @"title":@"私信功能的使用",
                                       @"body":@"您可以点击侧栏-私信-右上角搜索按钮。\n输入你想要聊天的对象姓名。即可开始聊天。"
                                       };
-    NSDictionary *noticeDictionary2=@{@"time":@"2019-11-19 08:00",
-                                      @"title":@"iOS端助手更新",
-                                      @"body":@"开发者正在努力开发维护助手。\n正在修复一系列bug，更改班级功能也努力开发中~。\n目前考试查询，成绩查询，私信功能，热门说说、个人互动说说等陆续修复完成。\n点击首页右上角可查看私信哦~"
+    NSDictionary *noticeDictionary2=@{@"time":@"2020-3-11 08:00",
+                                      @"title":@"私信红点提示",
+                                      @"body":@"左上角私信红点提示,点击打开侧边栏私信查看"
                                       };
     NSArray *array = @[noticeDictionary,noticeDictionary2];
     [defaults setObject:array forKey:@"Notice"];//通知列表
@@ -365,6 +365,41 @@ static int Is ;
 +(NSString*)getSchool{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     return [defaults objectForKey:@"kSchool"];
+}
++(void) getClass {
+    NSString *urlString=Config.getApiClass;
+    NSString *urlXpString=Config.getApiClassXP;
+    __block ClassStatus1 status=ClassOK1;
+    __block NSString *errorStr;
+    dispatch_group_t group = dispatch_group_create();
+    dispatch_queue_t q = dispatch_get_global_queue(0, 0);
+    //平时课表队列请求
+    dispatch_group_async(group, q, ^{
+        dispatch_group_enter(group);
+        [APIRequest GET:urlString parameters:nil success:^(id responseObject) {
+            if ([responseObject[@"code"] isEqual: @200]) {
+                NSArray *arrayCourse = responseObject[@"data"];
+                [Config saveCourse:arrayCourse];
+                [Config saveWidgetCourse:arrayCourse];
+            }else{
+                status=status+2;
+                errorStr=responseObject[@"msg"];
+            }
+            dispatch_group_leave(group);
+        } failure:^(NSError *error) {
+            status=status+2;
+            dispatch_group_leave(group);
+            errorStr=@"网络超时，平时课表查询失败";
+        }];
+    });
+    //两个队列都完成后
+    dispatch_group_notify(group, dispatch_get_main_queue(), ^{
+        
+        if (status==ClassOK1||status==ClassXpError1) {
+            [Config setIs:0];
+            [Config pushViewController:@"Class"];
+        }
+    });
 }
 @end
 

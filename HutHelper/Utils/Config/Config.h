@@ -11,6 +11,14 @@
 @class User;
 @interface Config : NSObject
 
+typedef enum ClassStatus1 {
+    ClassOK1  = 0,
+    ClassXpError1,
+    ClassError1,
+    ClassAndClassXpError1
+} ClassStatus1;
++(void)getClass;
+
 + (void)setIs:(int )Is;
 + (int )getIs;
 +(void)addNotice;

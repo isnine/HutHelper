@@ -29,11 +29,11 @@
 #import "MomentsViewController.h"
 #import "APIRequest.h"
 #import "VedioPlayViewController.h"
-#import "PointView.h"
+//#import "PointView.h"
 #import "LostViewController.h"
 #import "UIBarButtonItem+Badge.h"
 #import "CalendarHomeViewController.h"
-#import "LineUIView.h"
+//#import "LineUIView.h"
 
 #import "HutHelper-Swift.h"
 

@@ -28,7 +28,7 @@ class MomentAddViewController: UIViewController {
     
     var controlBtn = 0
     
-    var typeDatas = ["生活","运动","问答","游戏","情感"]
+    var typeDatas = getVersioniOS().moment_types //["生活","运动","问答","游戏","情感"]
     
     // 图片数据
     var photoDatas = [UIImage]()
@@ -72,7 +72,7 @@ class MomentAddViewController: UIViewController {
                          hud.hide(animated: true,afterDelay: 0.5)
                     self?.navigationController?.popToRootViewController(animated: true)
                      }else {
-                         hud.label.text = "发布失败,请检查是否符合条件"
+                        hud.label.text = value["msg"].stringValue
                          hud.hide(animated: true,afterDelay: 1)
                      }
                 })

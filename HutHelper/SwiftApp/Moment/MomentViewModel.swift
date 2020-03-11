@@ -17,22 +17,15 @@ class MomentViewModel{
 }
 // Mark:- 请求数据
 extension MomentViewModel {
-    func getAllMomentRequst(page:Int,callback:@escaping () -> ()) {
+    func getAllMomentRequst(page:Int,callback:@escaping ([MomentModel]) -> ()) {
         MomentProvider.request(.all(page)) { (result) in
             if case let .success(response) = result {
                 let value = try? response.mapJSON()
                 if let data = value{
                     let json = JSON(data)
                     if let datas = JSONDeserializer<MomentModel>.deserializeModelArrayFrom(json:json["statement"].description) {
-                        if page == 1 {
-                            self.momentDatas = datas as! [MomentModel]
-                        }else {
-                            for num in datas {
-                                self.momentDatas.append(num!)
-                            }
-                        }
-                        print(json)
-                        callback()
+                        
+                        callback(datas as! [MomentModel])
                     }
                 }
             }
@@ -99,7 +92,7 @@ extension MomentViewModel {
         }
     }
     
-    func getHotMomentRequst(page:Int,day:Int,callback:@escaping () -> ()) {
+    func getHotMomentRequst(page:Int,day:Int,callback:@escaping ([MomentModel]) -> ()) {
 
         MomentProvider.request(.hot(page,day)) { (result) in
             if case let .success(response) = result {
@@ -107,43 +100,27 @@ extension MomentViewModel {
                 if let data = value{
                     let json = JSON(data)
                     if let datas = JSONDeserializer<MomentModel>.deserializeModelArrayFrom(json:json["statement"].description) {
-                        if page == 1 {
-                            self.momentDatas = datas as! [MomentModel]
-                        }else {
-                            for num in datas {
-                                self.momentDatas.append(num!)
-                            }
-                        }
-                        callback()
+                        callback(datas as! [MomentModel])
                     }
                 }
             }
         }
     }
-    func getOwnMomentRequst(page:Int,userId:String,callback:@escaping () -> ()) {
+    func getOwnMomentRequst(page:Int,userId:String,callback:@escaping ([MomentModel]) -> ()) {
 
         MomentProvider.request(.own(page,userId)) { (result) in
             if case let .success(response) = result {
                 let value = try? response.mapJSON()
                 if let data = value{
                     let json = JSON(data)
-                    print(json)
                     if let datas = JSONDeserializer<MomentModel>.deserializeModelArrayFrom(json:json["statement"].description) {
-                        if page == 1 {
-                            self.momentDatas = datas as! [MomentModel]
-                        }else {
-                            for num in datas {
-                                self.momentDatas.append(num!)
-                            }
-                        }
-                        print(json)
-                        callback()
+                        callback(datas as! [MomentModel])
                     }
                 }
             }
         }
     }
-    func getInteractiveMomentRequst(page:Int,callback:@escaping () -> ()) {
+    func getInteractiveMomentRequst(page:Int,callback:@escaping ([MomentModel]) -> ()) {
 
         MomentProvider.request(.interactive(page)) { (result) in
             if case let .success(response) = result {
@@ -151,20 +128,13 @@ extension MomentViewModel {
                 if let data = value{
                     let json = JSON(data)
                     if let datas = JSONDeserializer<MomentModel>.deserializeModelArrayFrom(json:json["statement"].description) {
-                        if page == 1 {
-                            self.momentDatas = datas as! [MomentModel]
-                        }else {
-                            for num in datas {
-                                self.momentDatas.append(num!)
-                            }
-                        }
-                        callback()
+                        callback(datas as! [MomentModel])
                     }
                 }
             }
         }
     }
-    func getSearchMomentRequst(content:String,page:Int,callback:@escaping (Bool) -> ()) {
+    func getSearchMomentRequst(content:String,page:Int,callback:@escaping ([MomentModel]) -> ()) {
 
         MomentProvider.request(.search(content, page)) { (result) in
             if case let .success(response) = result {
@@ -172,19 +142,7 @@ extension MomentViewModel {
                 if let data = value{
                     let json = JSON(data)
                     if let datas = JSONDeserializer<MomentModel>.deserializeModelArrayFrom(json:json["statement"].description) {
-                        if page == 1 {
-                            self.momentDatas = datas as! [MomentModel]
-                        }else {
-                            for num in datas {
-                                self.momentDatas.append(num!)
-                            }
-                        }
-                        if self.momentDatas.count == 0  {
-                             callback(true)
-                        }else{
-                            callback(false)
-                        }
-
+                        callback(datas as! [MomentModel])
                     }
                 }
             }

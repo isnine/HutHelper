@@ -22,7 +22,7 @@ let kStatusBarHeight: CGFloat = UIApplication.shared.statusBarFrame.size.height
 // 导航栏高度
 let kNavBarHeight: CGFloat = 44.0
 
-let isIphoneX = screenHeight > 812 ? true : false
+let isIphoneX = screenHeight >= 812 ? true : false
 // 设备宽度
 let screenWidth = UIScreen.main.bounds.width
 // 设备高度
@@ -45,6 +45,9 @@ func AdaptW(_ value : CGFloat) -> CGFloat {
 // 自适应高度
 func AdaptH(_ value : CGFloat) -> CGFloat {
     return ceil(value) * kHeightRatio
+}
+func AdaptX(_ value: CGFloat) -> CGFloat {
+    return isIphoneX ? (value.fit + 48.fit):(value.fit)
 }
 // 常规字体
 func FontSize(_ size : CGFloat) -> UIFont {

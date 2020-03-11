@@ -93,25 +93,25 @@ class AlterSginView: UIView {
         self.bgView  = UIView.tk_createView(bgClor: UIColor.white
                 , supView: self, closure: { (make) in
                 make.centerX.equalTo(self.snp.centerX)
-                make.centerY.equalTo(self.snp.centerY).offset(Adapt(-100))
-                make.width.equalTo(screenWidth - Adapt(40))
-                make.height.equalTo(screenHeight - Adapt(500))
+                    make.centerY.equalTo(self.snp.centerY).offset(-100.fit)
+                    make.width.equalTo(screenWidth - 40.fit)
+                    make.height.equalTo(screenHeight - 500.fit)
         })
         self.bgView.layer.cornerRadius = 15
         
         self.titleLab = UILabel.tk_createLabel(text: "评论", textColor:  kBlack, font: BoldFontSize(24), supView: self.bgView, closure: { (make) in
             //make.left.equalTo(Adapt(30))
-            make.top.equalTo(Adapt(50))
+            make.top.equalTo(50.fit)
             make.centerX.equalTo(self.bgView.snp.centerX)
-            make.height.equalTo(Adapt(32))
+            make.height.equalTo(32.fit)
         })
         
         self.bgView.addSubview(textField)
         self.textField.snp.makeConstraints { (make) in
             make.centerX.equalTo(titleLab.snp.centerX)
-            make.height.equalTo(Adapt(40))
-            make.width.equalTo(Adapt(250))
-            make.top.equalTo(titleLab.snp.bottom).offset(30)
+            make.height.equalTo(40.fit)
+            make.width.equalTo(250.fit)
+            make.top.equalTo(titleLab.snp.bottom).offset(30.fit)
         }
                 self.endEditing(true)
         self.closeBtn = UIButton.tk_createButton(title: "", titleStatu: .normal, imageName: "ico_right_back", imageStatu: .normal, supView: self.bgView, closure: { (make) in
@@ -125,10 +125,10 @@ class AlterSginView: UIView {
         
         self.startTrackBtn = UIButton.tk_createButton(title: "确定", titleStatu: .normal, imageName: "", imageStatu: .normal, supView: self.bgView, closure: {
             (make) in
-            make.bottom.equalTo(bgView.snp.bottom).offset(Adapt(-40))
+            make.bottom.equalTo(bgView.snp.bottom).offset(-40.fit)
             make.centerX.equalTo(bgView.snp.centerX)
-            make.height.equalTo(Adapt(50))
-            make.width.equalTo(Adapt(250))
+            make.height.equalTo(50.fit)
+            make.width.equalTo(250.fit)
         })
         self.startTrackBtn.backgroundColor = UIColor.init(r: 55, g: 194, b: 207)
         self.startTrackBtn.layer.cornerRadius = 5

@@ -16,7 +16,6 @@
 #import "HutHelper-Swift.h"
 #import "BaseWebViewController.h"
 
-#import "HutHelper-Swift.h"
 
 @interface UserShowViewController ()
 
@@ -215,34 +214,12 @@
     }];
 }
 -(void)say{
-    NSString *Url_String=[NSString stringWithFormat:@"%@/%@",Config.getApiMomentsUser,_user_id];
-    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    [MBProgressHUD showMessage:@"加载中" toView:self.view];
-    [APIRequest GET:Url_String parameters:nil success:^(id responseObject) {
-        HideAllHUD
-        NSDictionary *Say_All = [NSDictionary dictionaryWithDictionary:responseObject];
-        if ([[Say_All objectForKey:@"msg"]isEqualToString:@"ok"]) {
-            NSDictionary *Say_Data=[Say_All objectForKey:@"data"];
-            NSArray *Say_content=[Say_Data objectForKey:@"posts"];//加载该页数据
-            if (Say_content.count!=0) {
-                [defaults setObject:Say_content forKey:@"otherSay"];
-                [defaults synchronize];
-                [Config setIs:1];
-                MomentsViewController *Say      = [[MomentsViewController alloc] init];
-                [self.navigationController pushViewController:Say animated:YES];
-            }else{
-                [MBProgressHUD showError:@"对方没有发布的说说" toView:self.view];
-            }
-        }
-        else{
-            [MBProgressHUD showError:@"网络错误" toView:self.view];
-        }
-        
-    }failure:^(NSError *error) {
-        HideAllHUD
-        [MBProgressHUD showError:@"网络错误" toView:self.view];
-        
-    }];
+    
+    MomentViewController *vc =  [[MomentViewController alloc] init];
+    
+    vc.userName = self.name;
+    vc.uid = self.user_id;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 -(void)lost{
     [MBProgressHUD showMessage:@"加载中" toView:self.view];

@@ -43,3 +43,13 @@ func saveUserInfo(_ userData: [AnyHashable : Any]?) {
     print("User信息存储成功")
 }
 
+// MARK: versionIOS 存取
+func saveVersioniOS(_ data:[AnyHashable:Any]?) {
+    defaults.set(data, forKey: "version")
+    defaults.synchronize()
+}
+func getVersioniOS() -> VersionModel {
+    let versionData = defaults.object(forKey: "version") as? [AnyHashable : Any]
+    let result = VersionModel(dic: versionData)
+    return result
+}

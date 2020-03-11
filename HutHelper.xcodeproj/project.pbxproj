@@ -22,6 +22,9 @@
 		2551F09523FB841800ACF046 /* BaseNarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2551F09423FB841800ACF046 /* BaseNarViewController.swift */; };
 		255A55BF231FC40E001A7C13 /* DetailsCourseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 255A55BD231FC40E001A7C13 /* DetailsCourseViewController.m */; };
 		255A55C0231FC40E001A7C13 /* DetailsCourseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 255A55BE231FC40E001A7C13 /* DetailsCourseViewController.xib */; };
+		2560FCDD2417CC1400D76744 /* CommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2560FCDC2417CC1400D76744 /* CommentView.swift */; };
+		2560FCE12417D44400D76744 /* PersonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2560FCDF2417D44400D76744 /* PersonModel.swift */; };
+		2560FCE22417D44400D76744 /* PersonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2560FCE02417D44400D76744 /* PersonViewController.swift */; };
 		2569B44A23F1837E00B84E8A /* Consts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2569B44723F1837E00B84E8A /* Consts.swift */; };
 		2569B44B23F1837E00B84E8A /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2569B44823F1837E00B84E8A /* Extension.swift */; };
 		2569B44C23F1837E00B84E8A /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2569B44923F1837E00B84E8A /* Config.swift */; };
@@ -83,6 +86,20 @@
 		258F99EA23F9788200CCC014 /* FWMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 258F99DE23F9788200CCC014 /* FWMenuView.swift */; };
 		25A623B02386AA07005016F9 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A623AF2386AA07005016F9 /* HomeViewController.swift */; };
 		25A623B72386BD7B005016F9 /* SwiftMomentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A623B62386BD7B005016F9 /* SwiftMomentViewController.swift */; };
+		25BCFBED2407AF280030CA34 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25BCFBEC2407AF280030CA34 /* MainViewController.xib */; };
+		25BCFBF32407AF2E0030CA34 /* LeftHeadTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25BCFBEF2407AF2E0030CA34 /* LeftHeadTableViewCell.swift */; };
+		25BCFBF42407AF2E0030CA34 /* LeftBodyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25BCFBF02407AF2E0030CA34 /* LeftBodyTableViewCell.xib */; };
+		25BCFBF52407AF2E0030CA34 /* LeftHeadTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25BCFBF12407AF2E0030CA34 /* LeftHeadTableViewCell.xib */; };
+		25BCFBF62407AF2E0030CA34 /* LeftBodyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25BCFBF22407AF2E0030CA34 /* LeftBodyTableViewCell.swift */; };
+		25BCFBF92407AF460030CA34 /* PointView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25BCFBF72407AF460030CA34 /* PointView.swift */; };
+		25BCFBFA2407AF460030CA34 /* LineUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25BCFBF82407AF460030CA34 /* LineUIView.swift */; };
+		25BCFBFF2407AF4E0030CA34 /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25BCFBFB2407AF4E0030CA34 /* HomeModel.swift */; };
+		25BCFC002407AF4E0030CA34 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25BCFBFC2407AF4E0030CA34 /* MainViewController.swift */; };
+		25BCFC012407AF4E0030CA34 /* LeftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25BCFBFD2407AF4E0030CA34 /* LeftViewController.swift */; };
+		25BCFC022407AF4E0030CA34 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25BCFBFE2407AF4E0030CA34 /* MainViewModel.swift */; };
+		25BCFC042407AFA60030CA34 /* Util + Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25BCFC032407AFA60030CA34 /* Util + Math.swift */; };
+		25BCFC072407B4A70030CA34 /* PointView.m in Sources */ = {isa = PBXBuildFile; fileRef = 25BCFC052407B4A70030CA34 /* PointView.m */; };
+		25BCFC0A2407B4AF0030CA34 /* LineUIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 25BCFC092407B4AE0030CA34 /* LineUIView.m */; };
 		25C5A9DC237D46E1004F0A5F /* BaseWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 25C5A9DA237D46E1004F0A5F /* BaseWebViewController.m */; };
 		25C5A9DD237D46E1004F0A5F /* BaseWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25C5A9DB237D46E1004F0A5F /* BaseWebViewController.xib */; };
 		306ED4D66B74BB7E6D350B7E /* libPods-HutHelper.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F483A3F1FC79A9B85B68036B /* libPods-HutHelper.a */; };
@@ -118,7 +135,6 @@
 		3A2FF4F51E50179700B07EB6 /* Extend.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 3A2FF4E81E50179700B07EB6 /* Extend.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		3A2FF4FC1E50202000B07EB6 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A2FF4FB1E50202000B07EB6 /* Media.xcassets */; };
 		3A31FE9C1F3A093700104A03 /* XWInteractiveTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A31FE9B1F3A093700104A03 /* XWInteractiveTransition.m */; };
-		3A3545D91F1B53A2009B1A84 /* PointView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A3545D81F1B53A2009B1A84 /* PointView.m */; };
 		3A3775561F35EA50005A5170 /* LostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A3775551F35EA25005A5170 /* LostCell.m */; };
 		3A37755F1F35EAD7005A5170 /* LibraryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A37755B1F35EAD7005A5170 /* LibraryViewController.m */; };
 		3A3775601F35EAD7005A5170 /* PowerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A37755A1F35EAD7005A5170 /* PowerViewController.m */; };
@@ -144,7 +160,6 @@
 		3A4D30141E8D297200901E3B /* LeftItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A4D300E1E8D297200901E3B /* LeftItemTableViewCell.xib */; };
 		3A4D30151E8D297200901E3B /* LeftUserTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A4D30101E8D297200901E3B /* LeftUserTableViewCell.m */; };
 		3A4D30161E8D297200901E3B /* LeftUserTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A4D30111E8D297200901E3B /* LeftUserTableViewCell.xib */; };
-		3A4D30171E8D297200901E3B /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A4D30121E8D297200901E3B /* MainViewController.xib */; };
 		3A4D30191E8D2E4600901E3B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A4D30181E8D2E4600901E3B /* CoreGraphics.framework */; };
 		3A4D30231E8D305300901E3B /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A4D301D1E8D305300901E3B /* TodayViewController.m */; };
 		3A4D30241E8D305300901E3B /* ExtendModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A4D30201E8D305300901E3B /* ExtendModel.m */; };
@@ -293,7 +308,6 @@
 		3A98CC0D1E7CFA9C00CABD0D /* XWScanImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A98CBF31E7CFA9C00CABD0D /* XWScanImage.m */; };
 		3A98CC0E1E7CFA9C00CABD0D /* YYFPSLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A98CBF61E7CFA9C00CABD0D /* YYFPSLabel.m */; };
 		3A98CC0F1E7CFA9C00CABD0D /* YYWeakProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A98CBF81E7CFA9C00CABD0D /* YYWeakProxy.m */; };
-		3A9C28F71F15FD9F00B91876 /* LineUIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A9C28F61F15FD9F00B91876 /* LineUIView.m */; };
 		3AA158B01FADAF3800298AAD /* UserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA158AF1FADAF3800298AAD /* UserCell.m */; };
 		3AA158B31FADF79D00298AAD /* UserHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA158B21FADF79D00298AAD /* UserHeaderCell.m */; };
 		3AA270411F6E646D00F5E6F3 /* touristData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3AA270401F6E646D00F5E6F3 /* touristData.plist */; };
@@ -418,6 +432,9 @@
 		255A55BC231FC40E001A7C13 /* DetailsCourseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailsCourseViewController.h; sourceTree = "<group>"; };
 		255A55BD231FC40E001A7C13 /* DetailsCourseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailsCourseViewController.m; sourceTree = "<group>"; };
 		255A55BE231FC40E001A7C13 /* DetailsCourseViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailsCourseViewController.xib; sourceTree = "<group>"; };
+		2560FCDC2417CC1400D76744 /* CommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentView.swift; sourceTree = "<group>"; };
+		2560FCDF2417D44400D76744 /* PersonModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonModel.swift; sourceTree = "<group>"; };
+		2560FCE02417D44400D76744 /* PersonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonViewController.swift; sourceTree = "<group>"; };
 		2569B44723F1837E00B84E8A /* Consts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Consts.swift; sourceTree = "<group>"; };
 		2569B44823F1837E00B84E8A /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		2569B44923F1837E00B84E8A /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
@@ -479,6 +496,22 @@
 		258F99DE23F9788200CCC014 /* FWMenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FWMenuView.swift; sourceTree = "<group>"; };
 		25A623AF2386AA07005016F9 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		25A623B62386BD7B005016F9 /* SwiftMomentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftMomentViewController.swift; sourceTree = "<group>"; };
+		25BCFBEC2407AF280030CA34 /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
+		25BCFBEF2407AF2E0030CA34 /* LeftHeadTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftHeadTableViewCell.swift; sourceTree = "<group>"; };
+		25BCFBF02407AF2E0030CA34 /* LeftBodyTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LeftBodyTableViewCell.xib; sourceTree = "<group>"; };
+		25BCFBF12407AF2E0030CA34 /* LeftHeadTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LeftHeadTableViewCell.xib; sourceTree = "<group>"; };
+		25BCFBF22407AF2E0030CA34 /* LeftBodyTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftBodyTableViewCell.swift; sourceTree = "<group>"; };
+		25BCFBF72407AF460030CA34 /* PointView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointView.swift; sourceTree = "<group>"; };
+		25BCFBF82407AF460030CA34 /* LineUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineUIView.swift; sourceTree = "<group>"; };
+		25BCFBFB2407AF4E0030CA34 /* HomeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
+		25BCFBFC2407AF4E0030CA34 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		25BCFBFD2407AF4E0030CA34 /* LeftViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftViewController.swift; sourceTree = "<group>"; };
+		25BCFBFE2407AF4E0030CA34 /* MainViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		25BCFC032407AFA60030CA34 /* Util + Math.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Util + Math.swift"; sourceTree = "<group>"; };
+		25BCFC052407B4A70030CA34 /* PointView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PointView.m; sourceTree = "<group>"; };
+		25BCFC062407B4A70030CA34 /* PointView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PointView.h; sourceTree = "<group>"; };
+		25BCFC082407B4AE0030CA34 /* LineUIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineUIView.h; sourceTree = "<group>"; };
+		25BCFC092407B4AE0030CA34 /* LineUIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineUIView.m; sourceTree = "<group>"; };
 		25C5A9D9237D46E1004F0A5F /* BaseWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseWebViewController.h; sourceTree = "<group>"; };
 		25C5A9DA237D46E1004F0A5F /* BaseWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseWebViewController.m; sourceTree = "<group>"; };
 		25C5A9DB237D46E1004F0A5F /* BaseWebViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BaseWebViewController.xib; sourceTree = "<group>"; };
@@ -532,8 +565,6 @@
 		3A2FF5001E50742E00B07EB6 /* Extend.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Extend.entitlements; sourceTree = "<group>"; };
 		3A31FE9A1F3A093700104A03 /* XWInteractiveTransition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XWInteractiveTransition.h; sourceTree = "<group>"; };
 		3A31FE9B1F3A093700104A03 /* XWInteractiveTransition.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XWInteractiveTransition.m; sourceTree = "<group>"; };
-		3A3545D71F1B53A2009B1A84 /* PointView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PointView.h; sourceTree = "<group>"; };
-		3A3545D81F1B53A2009B1A84 /* PointView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PointView.m; sourceTree = "<group>"; };
 		3A3775541F35EA25005A5170 /* LostCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LostCell.h; sourceTree = "<group>"; };
 		3A3775551F35EA25005A5170 /* LostCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LostCell.m; sourceTree = "<group>"; };
 		3A3775571F35EAD7005A5170 /* DayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DayViewController.h; sourceTree = "<group>"; };
@@ -577,7 +608,6 @@
 		3A4D300F1E8D297200901E3B /* LeftUserTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftUserTableViewCell.h; sourceTree = "<group>"; };
 		3A4D30101E8D297200901E3B /* LeftUserTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftUserTableViewCell.m; sourceTree = "<group>"; };
 		3A4D30111E8D297200901E3B /* LeftUserTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LeftUserTableViewCell.xib; sourceTree = "<group>"; };
-		3A4D30121E8D297200901E3B /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
 		3A4D30181E8D2E4600901E3B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		3A4D301C1E8D305300901E3B /* TodayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TodayViewController.h; sourceTree = "<group>"; };
 		3A4D301D1E8D305300901E3B /* TodayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TodayViewController.m; sourceTree = "<group>"; };
@@ -783,8 +813,6 @@
 		3A98CBF61E7CFA9C00CABD0D /* YYFPSLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYFPSLabel.m; sourceTree = "<group>"; };
 		3A98CBF71E7CFA9C00CABD0D /* YYWeakProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYWeakProxy.h; sourceTree = "<group>"; };
 		3A98CBF81E7CFA9C00CABD0D /* YYWeakProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYWeakProxy.m; sourceTree = "<group>"; };
-		3A9C28F51F15FD9F00B91876 /* LineUIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineUIView.h; sourceTree = "<group>"; };
-		3A9C28F61F15FD9F00B91876 /* LineUIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineUIView.m; sourceTree = "<group>"; };
 		3AA158AE1FADAF3800298AAD /* UserCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserCell.h; sourceTree = "<group>"; };
 		3AA158AF1FADAF3800298AAD /* UserCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserCell.m; sourceTree = "<group>"; };
 		3AA158B11FADF79D00298AAD /* UserHeaderCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserHeaderCell.h; sourceTree = "<group>"; };
@@ -976,6 +1004,7 @@
 		253DE6E323C3758C006DED22 /* User */ = {
 			isa = PBXGroup;
 			children = (
+				2560FCDE2417D44400D76744 /* Person */,
 				254C38A223FD4EA700F87954 /* UseInfoViewModel.swift */,
 				254C38A023FD4E9A00F87954 /* UserViewController.swift */,
 				254C389723FD38BC00F87954 /* Users.swift */,
@@ -987,9 +1016,27 @@
 			path = User;
 			sourceTree = "<group>";
 		};
+		2560FCDB2417CBC800D76744 /* CommentView */ = {
+			isa = PBXGroup;
+			children = (
+				2560FCDC2417CC1400D76744 /* CommentView.swift */,
+			);
+			path = CommentView;
+			sourceTree = "<group>";
+		};
+		2560FCDE2417D44400D76744 /* Person */ = {
+			isa = PBXGroup;
+			children = (
+				2560FCDF2417D44400D76744 /* PersonModel.swift */,
+				2560FCE02417D44400D76744 /* PersonViewController.swift */,
+			);
+			path = Person;
+			sourceTree = "<group>";
+		};
 		2569B44623F1834E00B84E8A /* Extension + Const */ = {
 			isa = PBXGroup;
 			children = (
+				25BCFC032407AFA60030CA34 /* Util + Math.swift */,
 				2569B44923F1837E00B84E8A /* Config.swift */,
 				2569B44723F1837E00B84E8A /* Consts.swift */,
 				2569B44823F1837E00B84E8A /* Extension.swift */,
@@ -1215,6 +1262,7 @@
 		25A623B52386AACB005016F9 /* Moment */ = {
 			isa = PBXGroup;
 			children = (
+				2560FCDB2417CBC800D76744 /* CommentView */,
 				258F99CF23F9783600CCC014 /* ImgsViewCell.swift */,
 				258F99B423F9742300CCC014 /* MomentModel.swift */,
 				258F99AE23F9742200CCC014 /* MomentTwoPage */,
@@ -1229,8 +1277,27 @@
 		25BCFBEB2407AE7C0030CA34 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				25BCFBFB2407AF4E0030CA34 /* HomeModel.swift */,
+				25BCFBFD2407AF4E0030CA34 /* LeftViewController.swift */,
+				25BCFBFC2407AF4E0030CA34 /* MainViewController.swift */,
+				25BCFBFE2407AF4E0030CA34 /* MainViewModel.swift */,
+				25BCFBEE2407AF2E0030CA34 /* LeftView */,
+				25BCFBEC2407AF280030CA34 /* MainViewController.xib */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		25BCFBEE2407AF2E0030CA34 /* LeftView */ = {
+			isa = PBXGroup;
+			children = (
+				25BCFBF82407AF460030CA34 /* LineUIView.swift */,
+				25BCFBF72407AF460030CA34 /* PointView.swift */,
+				25BCFBEF2407AF2E0030CA34 /* LeftHeadTableViewCell.swift */,
+				25BCFBF02407AF2E0030CA34 /* LeftBodyTableViewCell.xib */,
+				25BCFBF12407AF2E0030CA34 /* LeftHeadTableViewCell.xib */,
+				25BCFBF22407AF2E0030CA34 /* LeftBodyTableViewCell.swift */,
+			);
+			path = LeftView;
 			sourceTree = "<group>";
 		};
 		25C5A9D8237D46C3004F0A5F /* NewWeb */ = {
@@ -1465,17 +1532,16 @@
 		3A4D300B1E8D297200901E3B /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				25BCFC082407B4AE0030CA34 /* LineUIView.h */,
+				25BCFC092407B4AE0030CA34 /* LineUIView.m */,
+				25BCFC062407B4A70030CA34 /* PointView.h */,
+				25BCFC052407B4A70030CA34 /* PointView.m */,
 				3A4D300C1E8D297200901E3B /* LeftItemTableViewCell.h */,
 				3A4D300D1E8D297200901E3B /* LeftItemTableViewCell.m */,
 				3A4D300E1E8D297200901E3B /* LeftItemTableViewCell.xib */,
 				3A4D300F1E8D297200901E3B /* LeftUserTableViewCell.h */,
 				3A4D30101E8D297200901E3B /* LeftUserTableViewCell.m */,
 				3A4D30111E8D297200901E3B /* LeftUserTableViewCell.xib */,
-				3A4D30121E8D297200901E3B /* MainViewController.xib */,
-				3A9C28F51F15FD9F00B91876 /* LineUIView.h */,
-				3A9C28F61F15FD9F00B91876 /* LineUIView.m */,
-				3A3545D71F1B53A2009B1A84 /* PointView.h */,
-				3A3545D81F1B53A2009B1A84 /* PointView.m */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -2545,13 +2611,14 @@
 				255A55C0231FC40E001A7C13 /* DetailsCourseViewController.xib in Resources */,
 				3A98CC041E7CFA9C00CABD0D /* header@2x.jpg in Resources */,
 				258F99B923F9742300CCC014 /* MomentAddViewController.xib in Resources */,
+				25BCFBED2407AF280030CA34 /* MainViewController.xib in Resources */,
 				3A8DFDA622BDD40E004A69B8 /* TZImagePickerController.bundle in Resources */,
 				25720DC423FCDDC90054E392 /* LICENSE in Resources */,
 				3AA270411F6E646D00F5E6F3 /* touristData.plist in Resources */,
+				25BCFBF42407AF2E0030CA34 /* LeftBodyTableViewCell.xib in Resources */,
 				3A4D2FBD1E8D20E900901E3B /* HandTableViewCell.xib in Resources */,
 				258F99C923F977F900CCC014 /* HGImage.storyboard in Resources */,
 				3A532CD01E910C13003CD5A8 /* ZFPlayer.bundle in Resources */,
-				3A4D30171E8D297200901E3B /* MainViewController.xib in Resources */,
 				3A42B7571F42E953005D45D6 /* ChatChoiceTableViewCell.xib in Resources */,
 				25C5A9DD237D46E1004F0A5F /* BaseWebViewController.xib in Resources */,
 				3A4D30161E8D297200901E3B /* LeftUserTableViewCell.xib in Resources */,
@@ -2565,6 +2632,7 @@
 				3A98CC021E7CFA9C00CABD0D /* iVersion.bundle in Resources */,
 				3A4D2FBE1E8D20E900901E3B /* HandTableViewController.xib in Resources */,
 				258F99CC23F977F900CCC014 /* HGImage.xcassets in Resources */,
+				25BCFBF52407AF2E0030CA34 /* LeftHeadTableViewCell.xib in Resources */,
 				258F999B23F96A8400CCC014 /* LoginViewController.xib in Resources */,
 				3A98CB731E7CF82F00CABD0D /* MBProgressHUD.bundle in Resources */,
 				254C389323FD38B200F87954 /* UseInfoCell.xib in Resources */,
@@ -2702,7 +2770,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				25BCFBF62407AF2E0030CA34 /* LeftBodyTableViewCell.swift in Sources */,
 				3A8DFD2C22BDCA45004A69B8 /* MJRefreshComponent.m in Sources */,
+				25BCFC0A2407B4AF0030CA34 /* LineUIView.m in Sources */,
 				3AA3D1F11F891B1A00990358 /* MomentsAddViewController.m in Sources */,
 				3A8DFCFF22BDCA45004A69B8 /* NSBundle+MJRefresh.m in Sources */,
 				258F99E223F9788200CCC014 /* FWSheetView.swift in Sources */,
@@ -2712,6 +2782,7 @@
 				3AA2704E1F6E76DF00F5E6F3 /* XPathQuery.m in Sources */,
 				3AA2704F1F6E76DF00F5E6F3 /* zySheetPickerView.m in Sources */,
 				3A8DFDA222BDD40E004A69B8 /* TZAssetModel.m in Sources */,
+				25BCFC072407B4A70030CA34 /* PointView.m in Sources */,
 				25720DC523FCDDC90054E392 /* EachNavigationBar+Override.swift in Sources */,
 				3A20AFF01F43E2B800712A1E /* CalendarDayCell.m in Sources */,
 				25720DD323FCDDC90054E392 /* Const.swift in Sources */,
@@ -2736,7 +2807,9 @@
 				258F99CE23F977F900CCC014 /* HGImagePickerController.swift in Sources */,
 				3AEED7101F39B30C00D17693 /* XWNaviTransition.m in Sources */,
 				258F99C823F977F900CCC014 /* HGImageCompleteButton.swift in Sources */,
+				25BCFC022407AF4E0030CA34 /* MainViewModel.swift in Sources */,
 				3A8DFD2622BDCA45004A69B8 /* MJRefreshBackFooter.m in Sources */,
+				25BCFBFA2407AF460030CA34 /* LineUIView.swift in Sources */,
 				3A8DFD0822BDCA45004A69B8 /* MJRefreshBackStateFooter.m in Sources */,
 				258F99D023F9783600CCC014 /* ImgsViewCell.swift in Sources */,
 				254C389223FD38B200F87954 /* UseInfoCell.swift in Sources */,
@@ -2748,8 +2821,10 @@
 				3A8DFDA522BDD40E004A69B8 /* TZPhotoPreviewController.m in Sources */,
 				3AA3D1FD1F893A9D00990358 /* UIViewController+BackButtonHandler.m in Sources */,
 				3A3775751F35EB51005A5170 /* LostShowViewController.m in Sources */,
+				25BCFC012407AF4E0030CA34 /* LeftViewController.swift in Sources */,
 				258F999723F9632500CCC014 /* UserDefualt.swift in Sources */,
 				258F99E923F9788200CCC014 /* FWPopupWindow.swift in Sources */,
+				25BCFBFF2407AF4E0030CA34 /* HomeModel.swift in Sources */,
 				3A3775791F35EB51005A5170 /* LostViewController.m in Sources */,
 				3A8DFD1A22BDCA45004A69B8 /* MJRefreshStateHeader.m in Sources */,
 				3A3775561F35EA50005A5170 /* LostCell.m in Sources */,
@@ -2780,11 +2855,13 @@
 				3A98CB611E7CF7AA00CABD0D /* User.m in Sources */,
 				258F999223F9626800CCC014 /* BaseWebViewController.swift in Sources */,
 				3ACA5EFB1F5C549F00E3934E /* UserShowViewController.m in Sources */,
+				25BCFC042407AFA60030CA34 /* Util + Math.swift in Sources */,
 				3A4D2FF91E8D24E200901E3B /* ScoreTableViewCell.m in Sources */,
 				3A796C251E534C1B00794043 /* FeedbackResultViewController.m in Sources */,
 				3A98CC0D1E7CFA9C00CABD0D /* XWScanImage.m in Sources */,
 				3A98CB5F1E7CF7AA00CABD0D /* MomentsModel.m in Sources */,
 				3AFA4F591EC0440F00CB7DA2 /* Config+Api.m in Sources */,
+				25BCFBF92407AF460030CA34 /* PointView.swift in Sources */,
 				258F999D23F96A8400CCC014 /* LoginViewController.swift in Sources */,
 				3AFA4F831EC0504500CB7DA2 /* AppDelegate.m in Sources */,
 				3A796C531E534C1B00794043 /* UsernameViewController.m in Sources */,
@@ -2802,9 +2879,10 @@
 				3AFA4F6F1EC04A4B00CB7DA2 /* UINavigationBar+Awesome.m in Sources */,
 				3A98CC091E7CFA9C00CABD0D /* JSONKit.m in Sources */,
 				3A8DFD1422BDCA45004A69B8 /* MJRefreshAutoNormalFooter.m in Sources */,
-				3A3545D91F1B53A2009B1A84 /* PointView.m in Sources */,
+				25BCFC002407AF4E0030CA34 /* MainViewController.swift in Sources */,
 				3A532CDD1E9121C5003CD5A8 /* VedioTableViewController.m in Sources */,
 				3AA158B31FADF79D00298AAD /* UserHeaderCell.m in Sources */,
+				25BCFBF32407AF2E0030CA34 /* LeftHeadTableViewCell.swift in Sources */,
 				3A98CC081E7CFA9C00CABD0D /* UserInfoCell.m in Sources */,
 				3A97676721B587F300FBF0B7 /* MoreViewController.swift in Sources */,
 				258F99B723F9742300CCC014 /* CommentCell.swift in Sources */,
@@ -2813,6 +2891,7 @@
 				3A98CBFE1E7CFA9C00CABD0D /* FORGesture.m in Sources */,
 				3A98CC0B1E7CFA9C00CABD0D /* UIView_extra.m in Sources */,
 				3AFA4F781EC04C0E00CB7DA2 /* main.m in Sources */,
+				2560FCE12417D44400D76744 /* PersonModel.swift in Sources */,
 				3A796C261E534C1B00794043 /* FeedbackViewController.m in Sources */,
 				3A8DFDAA22BDD40E004A69B8 /* TZPhotoPreviewCell.m in Sources */,
 				3AFA4F7F1EC04C6100CB7DA2 /* CourseModel.m in Sources */,
@@ -2912,9 +2991,9 @@
 				3A796C4F1E534C1B00794043 /* ScoreShowViewController.m in Sources */,
 				3A3775621F35EAD7005A5170 /* DayViewController.m in Sources */,
 				25720DCF23FCDDC90054E392 /* BackBarButtonItem.swift in Sources */,
-				3A9C28F71F15FD9F00B91876 /* LineUIView.m in Sources */,
 				3A532CCE1E910C13003CD5A8 /* MMMaterialDesignSpinner.m in Sources */,
 				25387F2A2382E61B002459D6 /* DataBase-Swift.swift in Sources */,
+				2560FCDD2417CC1400D76744 /* CommentView.swift in Sources */,
 				3A4D30031E8D27F800901E3B /* ExamViewController.m in Sources */,
 				3A532CC71E910C13003CD5A8 /* UIAlertController+ZFPlayerRotation.m in Sources */,
 				3A98CC0E1E7CFA9C00CABD0D /* YYFPSLabel.m in Sources */,
@@ -2926,6 +3005,7 @@
 				25720DD423FCDDC90054E392 /* UINavigationBar+Sugar.swift in Sources */,
 				3A3775611F35EAD7005A5170 /* HomeWorkViewController.m in Sources */,
 				254C38A123FD4E9B00F87954 /* UserViewController.swift in Sources */,
+				2560FCE22417D44400D76744 /* PersonViewController.swift in Sources */,
 				258F99BA23F9742300CCC014 /* MomentAddViewController.swift in Sources */,
 				3AF73BF11E7D12610086417E /* APIRequest.m in Sources */,
 				3A8DFD1D22BDCA45004A69B8 /* MJRefreshGifHeader.m in Sources */,
@@ -3011,13 +3091,13 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 19111902;
+				CURRENT_PROJECT_VERSION = 20031101;
 				DEVELOPMENT_TEAM = JW2LR94V6G;
 				GCC_PREFIX_HEADER = "HutHelper/Supporting Files/HutHelper-Prefix.pch";
 				INFOPLIST_FILE = Extend/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 4.2.1;
+				MARKETING_VERSION = 4.3.1;
 				PRODUCT_BUNDLE_IDENTIFIER = name.wxz.HutHelper.Extend;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -3035,13 +3115,13 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 19111902;
+				CURRENT_PROJECT_VERSION = 20031101;
 				DEVELOPMENT_TEAM = JW2LR94V6G;
 				GCC_PREFIX_HEADER = "HutHelper/Supporting Files/HutHelper-Prefix.pch";
 				INFOPLIST_FILE = Extend/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 4.2.1;
+				MARKETING_VERSION = 4.3.1;
 				PRODUCT_BUNDLE_IDENTIFIER = name.wxz.HutHelper.Extend;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -3186,7 +3266,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 20021905;
+				CURRENT_PROJECT_VERSION = 20031101;
 				DEVELOPMENT_TEAM = JW2LR94V6G;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3223,7 +3303,7 @@
 					"$(PROJECT_DIR)/HutHelper/Vendor/XgPush",
 					"$(PROJECT_DIR)/HutHelper/Vendor/XgPush/idfa",
 				);
-				MARKETING_VERSION = 4.3.0;
+				MARKETING_VERSION = 4.3.1;
 				NEW_SETTING = "";
 				PRODUCT_BUNDLE_IDENTIFIER = name.wxz.HutHelper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -3246,7 +3326,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 20021905;
+				CURRENT_PROJECT_VERSION = 20031101;
 				DEVELOPMENT_TEAM = JW2LR94V6G;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3283,7 +3363,7 @@
 					"$(PROJECT_DIR)/HutHelper/Vendor/XgPush",
 					"$(PROJECT_DIR)/HutHelper/Vendor/XgPush/idfa",
 				);
-				MARKETING_VERSION = 4.3.0;
+				MARKETING_VERSION = 4.3.1;
 				NEW_SETTING = "";
 				PRODUCT_BUNDLE_IDENTIFIER = name.wxz.HutHelper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -3304,13 +3384,13 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 19111902;
+				CURRENT_PROJECT_VERSION = 20031101;
 				DEVELOPMENT_TEAM = JW2LR94V6G;
 				GCC_PREFIX_HEADER = "HutHelper/Supporting Files/HutHelper-Prefix.pch";
 				INFOPLIST_FILE = ExamTime/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 4.2.1;
+				MARKETING_VERSION = 4.3.1;
 				PRODUCT_BUNDLE_IDENTIFIER = name.wxz.HutHelper.ExamTime;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -3328,13 +3408,13 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 19111902;
+				CURRENT_PROJECT_VERSION = 20031101;
 				DEVELOPMENT_TEAM = JW2LR94V6G;
 				GCC_PREFIX_HEADER = "HutHelper/Supporting Files/HutHelper-Prefix.pch";
 				INFOPLIST_FILE = ExamTime/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 4.2.1;
+				MARKETING_VERSION = 4.3.1;
 				PRODUCT_BUNDLE_IDENTIFIER = name.wxz.HutHelper.ExamTime;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

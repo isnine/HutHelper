@@ -66,28 +66,20 @@ class MomentViewController: BaseNarViewController {
                 self!.page += 1
                 switch self!.type {
                 case .all:
-                    self!.viewModel.getAllMomentRequst(page: self!.page) {
-                        print("json 成功")
-                        self!.tableView.reloadData()
-                        tableview.mj_footer.endRefreshing()
+                    self!.viewModel.getAllMomentRequst(page: self!.page) { (datas) in
+                        self!.callDataHandler(datas: datas)
                     }
                 case .hot:
-                   self!.viewModel.getHotMomentRequst(page: self!.page,day: 30) {
-                       print("json 成功")
-                       self!.tableView.reloadData()
-                       tableview.mj_footer.endRefreshing()
+                   self!.viewModel.getHotMomentRequst(page: self!.page,day: 30) { (datas) in
+                       self!.callDataHandler(datas: datas)
                    }
                 case .own(let userName):
-                    self!.viewModel.getOwnMomentRequst(page: self!.page, userId: self!.userId) {
-                        print("json 成功")
-                        self!.tableView.reloadData()
-                        tableview.mj_footer.endRefreshing()
+                    self!.viewModel.getOwnMomentRequst(page: self!.page, userId: self!.userId) {(datas) in
+                        self!.callDataHandler(datas: datas)
                     }
                 case .interactive:
-                    self!.viewModel.getInteractiveMomentRequst(page: self!.page) {
-                        print("json 成功")
-                        self!.tableView.reloadData()
-                        tableview.mj_footer.endRefreshing()
+                    self!.viewModel.getInteractiveMomentRequst(page: self!.page) { (datas) in
+                        self!.callDataHandler(datas: datas)
                     }
                 case .custom(let content):
                     self!.viewModel.getSearchMomentRequst(content: content, page: self!.page) { _ in
@@ -103,37 +95,29 @@ class MomentViewController: BaseNarViewController {
                 switch self!.type {
                 case .all:
                     self!.viewModel.getAllMomentRequst(page: 1) {
-                        print("json 成功")
-                        self!.tableView.reloadData()
-                        tableview.mj_header.endRefreshing()
+                        (datas) in
+                        self!.callDataHandler(datas: datas,type: "header")
                     }
                     
                 case .hot:
-                   self!.viewModel.getHotMomentRequst(page: 1,day: 30) {
-                       print("json 成功")
-                       self!.tableView.reloadData()
-                        tableview.mj_header.endRefreshing()
+                   self!.viewModel.getHotMomentRequst(page: 1,day: 30) {(datas) in
+                       self!.callDataHandler(datas: datas,type: "header")
                    }
                 case .own(let userName,let userId):
-                    self!.viewModel.getOwnMomentRequst(page: 1, userId: userId) {
-                        print("json 成功")
-                        tableview.reloadData()
-                        tableview.mj_header.endRefreshing()
+                    self!.viewModel.getOwnMomentRequst(page: 1, userId: userId) {(datas) in
+                        self!.callDataHandler(datas: datas,type: "header")
                     }
                 case .interactive:
-                    self!.viewModel.getInteractiveMomentRequst(page: 1) {
-                        print("json 成功")
-                        self!.tableView.reloadData()
-                        tableview.mj_header.endRefreshing()
+                    self!.viewModel.getInteractiveMomentRequst(page: 1) {(datas) in
+                        self!.callDataHandler(datas: datas,type: "header")
                     }
                 case .custom(let content):
-                    self!.viewModel.getSearchMomentRequst(content: content, page: 1) { isNULL in
-                        if isNULL {
+                    self!.viewModel.getSearchMomentRequst(content: content, page: 1) { (datas) in
+                        if datas.count == 0 {
                             self!.navigation.item.title = "没有关于“\(content)”的说说"
+                        }else {
+                            self!.callDataHandler(datas: datas)
                         }
-                        print("json 成功")
-                        tableview.reloadData()
-                        tableview.mj_footer.endRefreshing()
                     }
                 }
             }
@@ -149,6 +133,10 @@ class MomentViewController: BaseNarViewController {
     
     var type:MomentType = .all
     var userId = ""
+    // oc 调
+    @objc var uid = ""
+    @objc var userName = ""
+    
     convenience init(type:MomentType = .all) {
         self.init()
         self.type = type
@@ -157,6 +145,9 @@ class MomentViewController: BaseNarViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if uid != "" && userName != "" {
+            self.type = .own(userName, uid);
+        }
         
         configInit()
         configData()
@@ -164,7 +155,23 @@ class MomentViewController: BaseNarViewController {
         UIApplication.shared.windows[0].addSubview(commentView)
     }
     
-
+    func callDataHandler(datas:[MomentModel],type:String = "footer"){
+        if self.page == 1 {
+            viewModel.momentDatas = datas
+        }else {
+            for num in datas {
+                viewModel.momentDatas.append(num)
+            }
+        }
+            tableView.reloadData()
+        if(type=="footer") {
+            tableView.mj_footer.endRefreshing()
+        }else {
+            tableView.mj_header.endRefreshing()
+        }
+    }
+        
+    
     func configInit(){
         switch type {
         case .all:
@@ -194,36 +201,28 @@ class MomentViewController: BaseNarViewController {
         switch self.type {
         case .all:
             self.viewModel.getAllMomentRequst(page: 1) {
-                print("json 成功")
-                self.tableView.reloadData()
-                self.tableView.mj_footer.endRefreshing()
+                (datas) in
+                self.callDataHandler(datas: datas)
             }
         case .hot:
-           self.viewModel.getHotMomentRequst(page: 1,day: 30) {
-               print("json 成功")
-               self.tableView.reloadData()
-            self.tableView.mj_footer.endRefreshing()
+           self.viewModel.getHotMomentRequst(page: 1,day: 30) {(datas) in
+               self.callDataHandler(datas: datas)
            }
         case .own(let userName,let userId):
-            self.viewModel.getOwnMomentRequst(page: 1, userId: userId) {
-                print("json 成功")
-                self.tableView.reloadData()
-                self.tableView.mj_footer.endRefreshing()
+            self.viewModel.getOwnMomentRequst(page: 1, userId: userId) {(datas) in
+                self.callDataHandler(datas: datas)
             }
         case .interactive:
-            self.viewModel.getInteractiveMomentRequst(page: 1) {
-                print("json 成功")
-                self.tableView.reloadData()
-                self.tableView.mj_footer.endRefreshing()
+            self.viewModel.getInteractiveMomentRequst(page: 1) {(datas) in
+                self.callDataHandler(datas: datas)
             }
         case .custom(let content):
-            self.viewModel.getSearchMomentRequst(content: content, page: 1) { isNULL in
-                if isNULL {
+            self.viewModel.getSearchMomentRequst(content: content, page: 1) { (datas) in
+                if datas.count == 0 {
                     self.navigation.item.title = "没有关于“\(content)”的说说"
+                }else {
+                    self.callDataHandler(datas: datas)
                 }
-                print("json 成功")
-                self.tableView.reloadData()
-                self.tableView.mj_footer.endRefreshing()
             }
         }
     }
@@ -390,7 +389,10 @@ extension MomentViewController:UITableViewDelegate,UITableViewDataSource {
     }
 }
 
-
+// MARK: 空白页处理
+extension MomentViewController {
+    
+}
 
 extension MomentViewController:AlterSginDelegate{
     
@@ -398,9 +400,8 @@ extension MomentViewController:AlterSginDelegate{
         let data = self.viewModel.momentDatas[indexPath.section]
         viewModel.getCommentSayRequst(comment: content, momentId: data.id) {
             self.viewModel.getAllMomentRequst(page: 1) {
-                print("json 成功")
-                self.tableView.reloadData()
-                self.tableView.mj_footer.endRefreshing()
+                (datas) in
+                self.callDataHandler(datas: datas)
             }
 //            let commentdata = CommentModel(id: "1", moment_id: data.id, comment: content, user_id: "\(user.user_id)", created_on: "11", username: user.username)
 //        self.viewModel.momentDatas[indexPath.section].comments.append(commentdata)

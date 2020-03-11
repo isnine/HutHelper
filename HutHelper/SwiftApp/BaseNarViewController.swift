@@ -38,6 +38,7 @@ class BaseNarViewController: UIViewController {
     }()
     
     lazy var menuView = FWMenuView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()

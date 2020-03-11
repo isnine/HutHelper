@@ -60,7 +60,7 @@ NSString *show_xp;
     [super viewDidLoad];
     //标题//
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    now_week=(short)[defaults integerForKey:@"TrueWeek"];
+    now_week=(short)[defaults integerForKey:@"NowWeek"];
     show_xp=[defaults objectForKey:@"show_xp"];
     NSString *nowweek_string=@"第";
     NSString *now2=[NSString stringWithFormat:@"%d",now_week];

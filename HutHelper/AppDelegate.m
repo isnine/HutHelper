@@ -64,12 +64,13 @@
     self.window.backgroundColor      = [UIColor whiteColor];//设置通用背景颜色
     [self.window makeKeyAndVisible];
     
-    MainPageViewController *mainVC   = [[MainPageViewController alloc] initWithNibName:@"MainViewController" bundle:nil];
+    MainViewController *mainVC   = [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:nil];
     self.mainNavigationController    = [[UINavigationController alloc] initWithRootViewController:mainVC];
     LeftSortsViewController *leftVC  = [[LeftSortsViewController alloc] init];
     self.LeftSlideVC                 = [[LeftSlideViewController alloc] initWithLeftView:leftVC andMainView:self.mainNavigationController];
-    mainVC.leftSortsViewController=leftVC;
+    //mainVC.leftSortsViewController=leftVC;
     self.window.rootViewController   = self.LeftSlideVC;
+    
     self.mainNavigationController.navigation_configuration.isEnabled = YES;
     leftVC.navigationController.navigation_configuration.isEnabled = YES;
     //标题栏颜色

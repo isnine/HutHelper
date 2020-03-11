@@ -129,7 +129,7 @@ enum HomePageAPI {
     case calendar
     case weather
     case versioniOS
-    
+    case course
 }
 extension HomePageAPI:TargetType{
     var baseURL: URL {
@@ -147,7 +147,9 @@ extension HomePageAPI:TargetType{
         case .calendar:
             return "/api/v1/get/calendar"
         case .versioniOS:
-            return "/api/v1/get/versionIos/"
+            return "/api/v3/get/version/\(user.studentKH)/\(user.remember_code_app)/2"
+        case .course:
+            return "/api/v3/get/schedule/\(user.studentKH)/\(user.remember_code_app)"
         }
     }
     var method: Moya.Method { return .get }
@@ -165,6 +167,14 @@ extension HomePageAPI:TargetType{
 /**图书馆*/
 let getLibraryAPI = "http://172.16.64.7:8080/opac/m/index"
 
+/**空教室*/
+let getEmptyRoomAPI = "http://m.huthelper.cn/im/#/qz/empty-room"
+
+/**成绩查询*/
+let getScoreAPI = "http://m.huthelper.cn/im/#/qz/score"
+
+/**考试计划*/
+let getExamAPI = "http://m.huthelper.cn/im/#/qz/exam-plan"
 /**电费*/
 //func getPowerAPI(part:String,locate:String,room:String) -> String {
 //    let powerAPI = basicUrl + "/api/v3/get/power_e/" + part + "/" + locate + "/" + room + "/" + user.studentKH + "/" + user.remember_code_app + "/"
