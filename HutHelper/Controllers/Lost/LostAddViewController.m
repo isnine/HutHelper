@@ -13,6 +13,8 @@
 #import "MBProgressHUD+MJ.h"
 
 #import "UINavigationBar+Awesome.h"
+#import "HutHelper-Swift.h"
+
 @interface LostAddViewController ()<TZImagePickerControllerDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,UIAlertViewDelegate,UINavigationControllerDelegate> {
     NSMutableArray *_selectedPhotos;
     NSMutableArray *_selectedAssets;
@@ -32,7 +34,7 @@
 #pragma mark - 生命周期
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.title=@"添加失物";
+    self.navigation_item.title=@"添加失物";
     self.view.backgroundColor=RGB(239, 239, 239, 1);
     /**按钮*/
     UIView *rightButtonView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 50)];
@@ -41,11 +43,31 @@
     [mainAndSearchBtn setImage:[UIImage imageNamed:@"ico_hand_ok"] forState:UIControlStateNormal];
     [mainAndSearchBtn addTarget:self action:@selector(post) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *rightCunstomButtonView = [[UIBarButtonItem alloc] initWithCustomView:rightButtonView];
-    self.navigationItem.rightBarButtonItem = rightCunstomButtonView;
+    self.navigation_item.rightBarButtonItem = rightCunstomButtonView;
     
     [self setHeadImg];
     [self setText];
-    
+    [self setTitle];
+        
+}
+
+- (void) setTitle{
+        self.navigation_bar.isShadowHidden = true;
+        self.navigation_bar.alpha = 0;
+        /**按钮*/
+        UIButton *mainAndSearchBtn = [[UIButton alloc] initWithFrame:CGRectMake(SYReal(5), 0, SYReal(25), SYReal(25))];
+        UIView *rightButtonView1 = [[UIView alloc] initWithFrame:CGRectMake(-20,0, 40, 40)];
+        
+        mainAndSearchBtn = [[UIButton alloc] initWithFrame:CGRectMake(-20,0, 40, 40)];
+        [rightButtonView1 addSubview:mainAndSearchBtn];
+        [mainAndSearchBtn setImage:[UIImage imageNamed:@"ico_menu_back"] forState:UIControlStateNormal];
+        [mainAndSearchBtn addTarget:self action:@selector(backBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
+        UIBarButtonItem *rightCunstomButtonView1 = [[UIBarButtonItem alloc] initWithCustomView:rightButtonView1];
+        self.navigation_item.leftBarButtonItem  = rightCunstomButtonView1;
+    }
+// 返回按钮按下
+- (void)backBtnClicked:(UIButton *)sender{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -129,7 +151,7 @@
         _lostsField.tag=100+i;
         _lostsField.font=[UIFont systemFontOfSize:SYReal(15)];
         _lostsField.delegate=self;
-        [_lostsField setValue:RGB(202, 202, 202, 1) forKeyPath:@"_placeholderLabel.textColor"];
+        //[_lostsField setValue:RGB(202, 202, 202, 1) forKeyPath:@"_placeholderLabel.textColor"];
         [self.view addSubview:_lostsField];
         
         LabY+=75;

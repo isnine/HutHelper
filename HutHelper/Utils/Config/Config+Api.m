@@ -46,6 +46,9 @@
 +(NSString*)getApiProfileAvatar{
     return [NSString stringWithFormat:@"%@/api/v1/set/avatar/%@/%@",Config.getApiImg,Config.getStudentKH,Config.getRememberCodeApp];
 }
++(NSString*)getApiAllClass{
+    return [NSString stringWithFormat:@"%@/api/v3/get/classes/1/1",Config.apiIndex];
+}
 #pragma mark - 网上作业
 +(NSString*)getApiHomeWork{
     //return [NSString stringWithFormat:@"%@/api/v1/get/myhomework/%@/%@",Config.apiIndex,Config.getStudentKH,Config.getRememberCodeApp];
@@ -84,7 +87,7 @@
     return [NSString stringWithFormat:@"%@/api/v3/trade/details",Config.apiIndex];
 }
 +(NSString*)getApiGoodsDelect:(NSString*)goodID{
-    return [NSString stringWithFormat:@"%@/api/v1/stuff/delete/%@/%@/%@",Config.apiIndex,Config.getStudentKH,Config.getRememberCodeApp,goodID];
+    return [NSString stringWithFormat:@"%@/api/v3/trade/delete/%@/%@/%@",Config.apiIndex,Config.getStudentKH,Config.getRememberCodeApp,goodID];
 }
 +(NSString*)getApiUserIsTrue{
     return [NSString stringWithFormat:@"%@/api/v2/Im/is_true/%@/%@",Config.apiIndex,Config.getStudentKH,Config.getRememberCodeApp];
@@ -111,6 +114,17 @@
 #pragma mark - 校园说说
 +(NSString*)getApiMoments:(int)num{
     return [NSString stringWithFormat:@"%@/api/v1/moments/posts/%d",Config.apiIndex,num];
+}
+
++ (NSString *)getApiMomentsSearch:(int)num key:(NSString *)keyWord{
+    NSString *word = [keyWord stringByAddingPercentEncodingWithAllowedCharacters: keyWord];
+        return [NSString stringWithFormat:@"%@/api/v3/statement/search/%@/%@/%@/%d",Config.apiIndex,Config.getStudentKH,Config.getRememberCodeApp,word,num];
+}
++(NSString*)getApiMyTalk:(int)num{
+    return [NSString stringWithFormat:@"%@/api/v3/statement/interactive/%@/%@/%d",Config.apiIndex,Config.getStudentKH,Config.getRememberCodeApp,num];
+}
++(NSString*)getApiHotTalk:(int)num{
+        return [NSString stringWithFormat:@"%@/api/v3/statement/fire/%@/7/%d",Config.apiIndex,Config.getStudentKH,num];
 }
 +(NSString*)getApiMomentsUser{
     return [NSString stringWithFormat:@"%@/api/v1/moments/posts/page",Config.apiIndex];
@@ -154,6 +168,9 @@
 }
 +(NSString*)getApiVersioniOS{
     return [NSString stringWithFormat:@"%@/api/v1/get/versionIos/%@/%@",Config.apiIndex,Config.getStudentKH,[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]];
+}
++(NSString*)getApiVersionv3{
+    return [NSString stringWithFormat:@"%@/api/v3/get/version/%@/%@/2",Config.apiIndex,Config.getStudentKH,Config.getRememberCodeApp];
 }
 #pragma mark - 视频专栏
 +(NSString*)getApiVedioShow{

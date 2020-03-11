@@ -48,12 +48,13 @@
              NSDictionary *Hand_All = [NSDictionary dictionaryWithDictionary:responseObject];
              NSString *Msg=[Hand_All objectForKey:@"msg"];
         NSLog(@"%@",Msg);
-             if ([Msg isEqualToString:@"ok"]) {
+             if (true) {
                  NSDictionary *array               = [Hand_All objectForKey:@"data"];
                  //进入商品界面
                  HandShowViewController *handShow=[[HandShowViewController alloc]init];
                  handShow.isSelfGoods=self.isSelfGoods;
                  handShow.handDic=array;
+                handShow.handId = hand.good_id;
                  AppDelegate *tempAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
                  [tempAppDelegate.mainNavigationController pushViewController:handShow animated:YES];
              }else {
@@ -78,16 +79,18 @@
     Hand *hand=_handArray[(short)(((UITableViewCell*)[[sender superview]superview]).tag)*2+1];
     NSString *Url_String=[NSString stringWithFormat:@"%@/%@/%@/%@",Config.getApiGoodsShow,Config.getStudentKH,Config.getRememberCodeApp,hand.good_id];
     
-    //NSLog(@"%@",Url_String);
+//    //NSLog(@"%@",Url_String);
     [APIRequest GET:Url_String parameters:nil success:^(id responseObject) {
              NSDictionary *Hand_All = [NSDictionary dictionaryWithDictionary:responseObject];
              NSString *Msg=[Hand_All objectForKey:@"msg"];
-             if ([Msg isEqualToString:@"ok"]) {
+             if (true) {
                  NSDictionary *array               = [Hand_All objectForKey:@"data"];
+                 NSLog(@"%@",array);
                  //进入商品界面
                  HandShowViewController *handShow=[[HandShowViewController alloc]init];
                  handShow.handDic=array;
                  handShow.isSelfGoods=self.isSelfGoods;
+                 handShow.handId = hand.good_id;
                  AppDelegate *tempAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
                  [tempAppDelegate.mainNavigationController pushViewController:handShow animated:YES];
              }else{

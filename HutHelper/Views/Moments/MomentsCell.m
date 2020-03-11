@@ -322,6 +322,7 @@
     userShowViewController.user_id=_data.user_id;
     userShowViewController.dep_name=_data.dep_name;
     userShowViewController.head_pic=_data.head_pic_thumb;
+    //NSLog(@"%@,%@,%@",_data.class,_data.dep_name);
     AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [tempAppDelegate.mainNavigationController pushViewController:userShowViewController animated:YES];
     /**
