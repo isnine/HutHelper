@@ -5,7 +5,7 @@ def swiftUI
     pod 'Alamofire'
     pod 'SwiftyJSON'
     pod 'HandyJSON'
-
+    pod 'SwiftLint'
     #pod 'Kingfisher'
 
     pod 'SnapKit', '~> 4.0.0'

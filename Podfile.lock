@@ -70,6 +70,7 @@ PODS:
     - SQLite.swift/standard (= 0.12.2)
   - SQLite.swift/standard (0.12.2)
   - SVProgressHUD (2.2.5)
+  - SwiftLint (0.36.0)
   - SwiftMessages (7.0.0):
     - SwiftMessages/App (= 7.0.0)
   - SwiftMessages/App (7.0.0)
@@ -110,6 +111,7 @@ DEPENDENCIES:
   - SDWebImage (~> 3.8)
   - SnapKit (~> 4.0.0)
   - SQLite.swift
+  - SwiftLint
   - SwiftMessages
   - SwiftyJSON
   - SwiftyStoreKit
@@ -148,6 +150,7 @@ SPEC REPOS:
     - SnapKit
     - SQLite.swift
     - SVProgressHUD
+    - SwiftLint
     - SwiftMessages
     - SwiftyJSON
     - SwiftyStoreKit
@@ -182,6 +185,7 @@ SPEC CHECKSUMS:
   SnapKit: 0de968a9fec17499afa29683b05d0c775b6d1c29
   SQLite.swift: d2b4642190917051ce6bd1d49aab565fe794eea3
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
+  SwiftLint: fc9859e4e1752340664851f667bb1898b9c90114
   SwiftMessages: a952f7a9103d9aeab93730a2861d2d8fcdd8758f
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
   SwiftyStoreKit: 033d06b6f87955405d3f844a18a7687c2438592a
@@ -190,6 +194,6 @@ SPEC CHECKSUMS:
   UMengUShare: 370d180101e13ee0227ae657ab119ba97243d2b3
   YCXMenu: 6003bcd20d8ac72e3eb3c442c97ed21948c6dc1f
 
-PODFILE CHECKSUM: 049a1cdc22dbb22c6c2975976ae3470839007569
+PODFILE CHECKSUM: a2d960913744bc5e6db2260b904c1da4f6241792
 
 COCOAPODS: 1.8.4

@@ -20,13 +20,6 @@ let imageUrl = "http://images.huthelper.cn:8888"
 // 注册
 let registerAPI = basicUrl + "/auth/register"
 
-func a() {
-    Alamofire.download("https://httpbin.org/image/png").responseData { response in
-        if let data = response.result.value {
-            let image = UIImage(data: data)
-        }
-    }
-}
 // MARK: 登录
 let LoginProvider = MoyaProvider<LoginAPI>()
 
