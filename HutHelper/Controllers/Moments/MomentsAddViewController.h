@@ -1,13 +1,13 @@
+////
+////  MomentsAddViewController.h
+////  HutHelper
+////
+////  Created by nine on 2017/1/15.
+////  Copyright © 2017年 nine. All rights reserved.
+////
 //
-//  MomentsAddViewController.h
-//  HutHelper
+//#import <UIKit/UIKit.h>
 //
-//  Created by nine on 2017/1/15.
-//  Copyright © 2017年 nine. All rights reserved.
+//@interface MomentsAddViewController : UIViewController
 //
-
-#import <UIKit/UIKit.h>
-
-@interface MomentsAddViewController : UIViewController
-
-@end
+//@end

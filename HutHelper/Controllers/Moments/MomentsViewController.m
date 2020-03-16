@@ -301,11 +301,11 @@
     }];
 }
 -(void)addSay{
-    if ([Config isTourist]) {
-        [MBProgressHUD showError:@"游客请登录" toView:self.view];
-        return;
-    }
-    [Config pushViewController:@"AddSay"];
+//    if ([Config isTourist]) {
+//        [MBProgressHUD showError:@"游客请登录" toView:self.view];
+//        return;
+//    }
+//    [Config pushViewController:@"AddSay"];
 }
 - (id) init{
     self = [super init];
