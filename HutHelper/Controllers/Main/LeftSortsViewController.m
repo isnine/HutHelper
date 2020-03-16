@@ -16,11 +16,15 @@
 #import "ChatChoiceTableViewController.h"
 #import <UShareUI/UShareUI.h>
 #import <UMSocialCore/UMSocialCore.h>
-#import "LoginViewController.h"
+
 #import "LeftUserTableViewCell.h"
 #import "LeftItemTableViewCell.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "UserShowViewController.h"
+#import "BaseWebViewController.h"
+
+
+#import "HutHelper-Swift.h"
 @interface LeftSortsViewController () <UITableViewDelegate,UITableViewDataSource>
 
 @end
@@ -31,6 +35,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    self.tableview.backgroundColor = [UIColor cyanColor];
     UIImageView *imageview           = [[UIImageView alloc] initWithFrame:self.view.bounds];
     imageview.image                  = [UIImage imageNamed:@"leftbackiamge"];
     [self.view addSubview:imageview];
@@ -95,10 +100,10 @@
                                       }
                               }];
         return userCell;
-//    }else if (indexPath.row == 2) {
-//        itemCell.Text.text                = @"私信";
-//        itemCell.Img.image=[UIImage imageNamed:@"ico_left_im"];
-//        return itemCell;
+    }else if (indexPath.row == 1) {
+        itemCell.Text.text                = @"私信";
+        itemCell.Img.image=[UIImage imageNamed:@"ico_left_im"];
+        return itemCell;
     }else if (indexPath.row == 2) {
         itemCell.Text.text              = @"分享应用";
         itemCell.Img.image=[UIImage imageNamed:@"ico_left_shares"];
@@ -142,16 +147,21 @@
     }
     if (indexPath.row == 0) { //个人界面
         [self.tableview reloadData];
-       // [Config pushViewController:@"User"];
-                UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-                UIViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"User"];
-        //        [self.navigationController pushViewController:secondViewController animated:true];
-//                   self.navigationController    = [[UINavigationController alloc] initWithRootViewController:mainVC];
+        UserController *userVC = [[UserController alloc]init];
+         AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        // [tempAppDelegate.LeftSlideVC closeLeftView];
+         [tempAppDelegate.mainNavigationController pushViewController:userVC animated:YES];
+    
+    }
+    if (indexPath.row == 1) { //私信
+        BaseWebViewController *chatVC = [[BaseWebViewController alloc]init];
+        chatVC.url = [Config getMyNoticeWeb];
+        chatVC.centerTitle = @"私信消息";
+         AppDelegate *tempAppDelegate              = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+         [tempAppDelegate.mainNavigationController pushViewController:chatVC animated:YES];
         
-        secondViewController.modalPresentationStyle = 0;
-        [self presentViewController:secondViewController animated:true completion:nil];
-        
-        
+//        [self.navigationController pushViewController:chatVC animated:YES];
+    
     }
 //    if (indexPath.row == 2) {  //私信
 //        if ([Config isTourist]) {
@@ -184,6 +194,7 @@
         [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             [Config removeUmeng];
             [Config removeUserDefaults];
+            //[Config removeUserDefaults:@"kBannerImg"];
             AppDelegate *tempAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
             LoginViewController *firstlogin                = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
             [tempAppDelegate.mainNavigationController pushViewController:firstlogin animated:YES];
@@ -192,16 +203,17 @@
        
     }
     if (indexPath.row == 4) {  //关于
-     //   [Config pushViewController:@"About"];
-        UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        UIViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"About"];
+        [Config pushViewController:@"About"];
+//        UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//        UIViewController *secondViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"About"];
 //        [self.navigationController pushViewController:secondViewController animated:true];
-        secondViewController.modalPresentationStyle = 0;
-        [self presentViewController:secondViewController animated:true completion:nil];
+        //secondViewController.modalPresentationStyle = 0;
+       // [self presentViewController:secondViewController animated:true completion:nil];
         
     }
     if (indexPath.row == 5) {  //反馈
-        [self feedBack];
+        [Config pushViewController:@"Feedback"];
+        //[self feedBack];
     }
     
     

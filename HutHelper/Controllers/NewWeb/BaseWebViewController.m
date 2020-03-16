@@ -10,7 +10,7 @@
  
 #import "MBProgressHUD.h"
 #import "MBProgressHUD+MJ.h"
-
+#import "HutHelper-Swift.h"
 @interface BaseWebViewController ()
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 
@@ -22,7 +22,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
-    self.navigationItem.title = _centerTitle;
+    self.navigation_item.title = _centerTitle;
     NSURL *url                = [[NSURL alloc]initWithString:_url];
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor]}];
     [self customBackButton];
@@ -40,7 +40,7 @@
     [mainAndSearchBtn setImage:[UIImage imageNamed:@"ico_menu_back"] forState:UIControlStateNormal];
     [mainAndSearchBtn addTarget:self action:@selector(backBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *rightCunstomButtonView = [[UIBarButtonItem alloc] initWithCustomView:rightButtonView];
-    self.navigationItem.leftBarButtonItem = rightCunstomButtonView;
+    self.navigation_item.leftBarButtonItem = rightCunstomButtonView;
 }
 // 返回按钮按下
 - (void)backBtnClicked:(UIButton *)sender{

@@ -42,7 +42,7 @@ public class NoticeHelper {
         // depends on how the given layout is constrained to the layout margins.
         view.layoutMarginAdditions = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
         // Reduce the corner radius (applicable to layouts featuring rounded corners).
-        (view.backgroundView as? CornerRoundingView)?.cornerRadius = 10
+      //  (view.backgroundView as? CornerRoundingView)?.cornerRadius = 10
 //        var config = SwiftMessages.Config()
 //        config.duration = duration
 //        SwiftMessages.show(config: config,view: view)

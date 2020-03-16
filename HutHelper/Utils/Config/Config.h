@@ -11,10 +11,19 @@
 @class User;
 @interface Config : NSObject
 
+typedef enum ClassStatus1 {
+    ClassOK1  = 0,
+    ClassXpError1,
+    ClassError1,
+    ClassAndClassXpError1
+} ClassStatus1;
++(void)getClass;
+
 + (void)setIs:(int )Is;
 + (int )getIs;
 +(void)addNotice;
 #pragma mark - 可持续存储
++(void)saveAllClasses:(NSDictionary*)allClasses;
 +(void)saveUser:(NSDictionary*)userData;
 +(void)saveRememberCodeApp:(NSString*)rememberCodeApp;
 +(void)saveCurrentVersion:(NSString*)currentVersion;
@@ -40,6 +49,7 @@
 +(void)saveBannerImg:(NSData*)imgData;
 +(void)saveCacheImg:(NSData*)data;
 #pragma mark - 获得存储数据
++(NSDictionary*)getAllClasses;
 +(NSArray*)getCourse;
 +(NSArray*)getCourseXp;
 +(NSDictionary*)getVedio;

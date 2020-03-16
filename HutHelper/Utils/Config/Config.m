@@ -31,6 +31,7 @@ static int Is ;
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     NSDictionary *userData=[defaults objectForKey:@"kUser"];
     User *user=[[User alloc ]initWithDic:userData];
+    NSLog(@"%@",user.class_name);
     return user;
 }
 +(NSString*)getStudentKH{
@@ -63,11 +64,11 @@ static int Is ;
 }
 +(NSString*)getLastLogin{
     User *user=self.getUser;
-    return user.last_login;
+    return user.last_use;
 }
 +(NSString*)getSex{
     User *user=self.getUser;
-    return user.sex;
+    return user.active;
 }
 +(NSString*)getUserId{
     User *user=self.getUser;
@@ -80,9 +81,16 @@ static int Is ;
 }
 +(NSString*)getRememberCodeApp{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    NSLog(@"%@",[defaults objectForKey:@"remember_code_app"]);
     return [defaults objectForKey:@"remember_code_app"];
 }
 #pragma mark - 持续化存储
+
++(void)saveAllClasses:(NSDictionary*)allClasses{
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    [defaults setObject:allClasses forKey:@"allClasses"];
+    [defaults synchronize];
+}
 +(void)saveUser:(NSDictionary*)userData{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     [defaults setObject:userData forKey:@"kUser"];
@@ -199,6 +207,10 @@ static int Is ;
     [defaults synchronize];
 }
 #pragma mark - 获得存储数据
++ (NSDictionary*)getAllClasses{
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    return [defaults objectForKey:@"allClasses"];
+}
 +(NSArray*)getCourse{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     return [defaults objectForKey:@"kCourse"];
@@ -284,14 +296,18 @@ static int Is ;
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     NSDictionary *noticeDictionary=@{@"time":@"2017-10-20 08:00",
                                      @"title":@"工大助手",
-                                     @"body":@"暂无通知 "
+                                     @"body":@"助手更新啦~"
                                      };
     
     NSDictionary *noticeDictionary1=@{@"time":@"2017-08-14 08:00",
                                       @"title":@"私信功能的使用",
                                       @"body":@"您可以点击侧栏-私信-右上角搜索按钮。\n输入你想要聊天的对象姓名。即可开始聊天。"
                                       };
-    NSArray *array = @[noticeDictionary,noticeDictionary1];
+    NSDictionary *noticeDictionary2=@{@"time":@"2020-3-11 08:00",
+                                      @"title":@"私信红点提示",
+                                      @"body":@"左上角私信红点提示,点击打开侧边栏私信查看"
+                                      };
+    NSArray *array = @[noticeDictionary,noticeDictionary2];
     [defaults setObject:array forKey:@"Notice"];//通知列表
     [defaults synchronize];
 }
@@ -349,6 +365,41 @@ static int Is ;
 +(NSString*)getSchool{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     return [defaults objectForKey:@"kSchool"];
+}
++(void) getClass {
+    NSString *urlString=Config.getApiClass;
+    NSString *urlXpString=Config.getApiClassXP;
+    __block ClassStatus1 status=ClassOK1;
+    __block NSString *errorStr;
+    dispatch_group_t group = dispatch_group_create();
+    dispatch_queue_t q = dispatch_get_global_queue(0, 0);
+    //平时课表队列请求
+    dispatch_group_async(group, q, ^{
+        dispatch_group_enter(group);
+        [APIRequest GET:urlString parameters:nil success:^(id responseObject) {
+            if ([responseObject[@"code"] isEqual: @200]) {
+                NSArray *arrayCourse = responseObject[@"data"];
+                [Config saveCourse:arrayCourse];
+                [Config saveWidgetCourse:arrayCourse];
+            }else{
+                status=status+2;
+                errorStr=responseObject[@"msg"];
+            }
+            dispatch_group_leave(group);
+        } failure:^(NSError *error) {
+            status=status+2;
+            dispatch_group_leave(group);
+            errorStr=@"网络超时，平时课表查询失败";
+        }];
+    });
+    //两个队列都完成后
+    dispatch_group_notify(group, dispatch_get_main_queue(), ^{
+        
+        if (status==ClassOK1||status==ClassXpError1) {
+            [Config setIs:0];
+            [Config pushViewController:@"Class"];
+        }
+    });
 }
 @end
 
