@@ -11,5 +11,6 @@
 @interface MomentsViewController : UITableViewController
 @property(nonatomic,copy)NSDictionary *JSONDic;
 @property(nonatomic,copy)NSDictionary *LikesDic;
+@property(nonatomic,copy)NSString *keyWord;
 -(void)reload;
 @end

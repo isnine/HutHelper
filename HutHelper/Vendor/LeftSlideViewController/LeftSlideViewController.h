@@ -10,7 +10,7 @@
 #define kScreenHeight         [[UIScreen mainScreen] bounds].size.height
 
 #define kMainPageDistance   100   //打开左侧窗时，中视图(右视图)露出的宽度
-#define kMainPageScale   0.8  //打开左侧窗时，中视图(右视图）缩放比例
+#define kMainPageScale   1  //打开左侧窗时，中视图(右视图）缩放比例
 #define kMainPageCenter  CGPointMake(kScreenWidth + kScreenWidth * kMainPageScale / 2.0 - kMainPageDistance, kScreenHeight / 2)  //打开左侧窗时，中视图中心点
 
 #define vCouldChangeDeckStateDistance  (kScreenWidth - kMainPageDistance) / 3.0 - 50 //滑动距离大于此数时，状态改变（关--》开，或者开--》关）

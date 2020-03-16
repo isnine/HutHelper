@@ -16,6 +16,7 @@
 #import "HutHelper-Swift.h"
 #import "BaseWebViewController.h"
 
+
 @interface UserShowViewController ()
 
 @end
@@ -28,9 +29,30 @@
     //返回箭头
     UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     self.navigationItem.backBarButtonItem = item;
-    
+    self.navigation_item.title = @"个人信息";
     [self draw];
-    // Do any additional setup after loading the view.
+    [self setTitle];
+        
+}
+
+- (void) setTitle{
+        self.navigation_bar.isShadowHidden = true;
+        self.navigation_bar.alpha = 0;
+        /**按钮*/
+        UIButton *mainAndSearchBtn = [[UIButton alloc] initWithFrame:CGRectMake(SYReal(5), 0, SYReal(25), SYReal(25))];
+        UIView *rightButtonView1 = [[UIView alloc] initWithFrame:CGRectMake(-20,0, 40, 40)];
+        
+        mainAndSearchBtn = [[UIButton alloc] initWithFrame:CGRectMake(-20,0, 40, 40)];
+        [rightButtonView1 addSubview:mainAndSearchBtn];
+        [mainAndSearchBtn setImage:[UIImage imageNamed:@"ico_menu_back"] forState:UIControlStateNormal];
+        [mainAndSearchBtn addTarget:self action:@selector(backBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
+        UIBarButtonItem *rightCunstomButtonView1 = [[UIBarButtonItem alloc] initWithCustomView:rightButtonView1];
+        self.navigation_item.leftBarButtonItem  = rightCunstomButtonView1;
+    }
+
+// 返回按钮按下
+- (void)backBtnClicked:(UIButton *)sender{
+        [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -192,34 +214,12 @@
     }];
 }
 -(void)say{
-    NSString *Url_String=[NSString stringWithFormat:@"%@/%@",Config.getApiMomentsUser,_user_id];
-    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    [MBProgressHUD showMessage:@"加载中" toView:self.view];
-    [APIRequest GET:Url_String parameters:nil success:^(id responseObject) {
-        HideAllHUD
-        NSDictionary *Say_All = [NSDictionary dictionaryWithDictionary:responseObject];
-        if ([[Say_All objectForKey:@"msg"]isEqualToString:@"ok"]) {
-            NSDictionary *Say_Data=[Say_All objectForKey:@"data"];
-            NSArray *Say_content=[Say_Data objectForKey:@"posts"];//加载该页数据
-            if (Say_content.count!=0) {
-                [defaults setObject:Say_content forKey:@"otherSay"];
-                [defaults synchronize];
-                [Config setIs:1];
-                MomentsViewController *Say      = [[MomentsViewController alloc] init];
-                [self.navigationController pushViewController:Say animated:YES];
-            }else{
-                [MBProgressHUD showError:@"对方没有发布的说说" toView:self.view];
-            }
-        }
-        else{
-            [MBProgressHUD showError:@"网络错误" toView:self.view];
-        }
-        
-    }failure:^(NSError *error) {
-        HideAllHUD
-        [MBProgressHUD showError:@"网络错误" toView:self.view];
-        
-    }];
+    
+    MomentViewController *vc =  [[MomentViewController alloc] init];
+    
+    vc.userName = self.name;
+    vc.uid = self.user_id;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 -(void)lost{
     [MBProgressHUD showMessage:@"加载中" toView:self.view];

@@ -14,5 +14,6 @@
 +(void)setNoSharedCache;
 + (void)isAppFirstRun;
 +(void)pushViewController:(NSString*)controller;
+
 +(NSString*)getCurrentVersion;
 @end

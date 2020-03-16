@@ -6,7 +6,7 @@
 //  Copyright © 2017年 nine. All rights reserved.
 //
 #import "Config+Set.h"
-  
+#import "MBProgressHUD.h"
  
 #import "AppDelegate.h"
 @implementation Config (Set)
@@ -75,5 +75,7 @@
    return  [[[NSBundle mainBundle] infoDictionary]
                                 objectForKey:@"CFBundleShortVersionString"];
 }
+
+
 
 @end
