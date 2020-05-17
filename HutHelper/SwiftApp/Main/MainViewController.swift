@@ -81,15 +81,15 @@ class MainViewController: UIViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        let leftVC = UIApplication.shared.windows[0].rootViewController as! LeftSlideViewController
-        leftVC.closeLeftView()
-        leftVC.setPanEnabled(false)
+//        let leftVC = UIApplication.shared.windows[0].rootViewController as! LeftSlideViewController
+//        leftVC.closeLeftView()
+//        leftVC.setPanEnabled(false)
         UIApplication.shared.statusBarStyle = .default
         
     }
     override func viewWillAppear(_ animated: Bool) {
-        let leftVC = UIApplication.shared.windows[0].rootViewController as! LeftSlideViewController
-        leftVC.setPanEnabled(true)
+//        let leftVC = UIApplication.shared.windows[0].rootViewController as! LeftSlideViewController
+//        leftVC.setPanEnabled(true)
         UIApplication.shared.statusBarStyle = .lightContent
     }
 
@@ -150,15 +150,16 @@ class MainViewController: UIViewController {
             if let old = Int(data.im_msg_count),
                 let new = Int(value["im_msg_count"].string!) {
                 print(old,new)
-                if old < new {
+                if old <= new {
                     self.navigation.item.leftBarButtonItem?.badgeValue = " "
                     self.navigation.item.leftBarButtonItem?.badgeOriginY = 0.fit
+
                 }else{
                     self.navigation.item.leftBarButtonItem?.badgeValue = ""
+
                 }
             }
             saveVersioniOS(value.dictionaryObject)
-            
         }
     }
 

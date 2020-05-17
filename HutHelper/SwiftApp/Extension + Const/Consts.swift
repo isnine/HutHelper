@@ -21,6 +21,9 @@ let kBlue        = UIColor.blue
 let kStatusBarHeight: CGFloat = UIApplication.shared.statusBarFrame.size.height
 // 导航栏高度
 let kNavBarHeight: CGFloat = 44.0
+// 顶部高度 （状态栏+导航栏）
+let topBarHeight:CGFloat = kStatusBarHeight+kNavBarHeight
+
 
 let isIphoneX = screenHeight >= 812 ? true : false
 // 设备宽度

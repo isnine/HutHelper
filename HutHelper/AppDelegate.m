@@ -23,6 +23,7 @@
 
 #import "HutHelper-Swift.h"
 
+
 @interface AppDelegate (){
     
 }
@@ -37,22 +38,6 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
 
-    //友盟推送
-//    [UMessage startWithAppkey:APPKEY_UMESSAGE launchOptions:launchOptions];
-//    [UMessage registerForRemoteNotifications];
-//    UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
-//    center.delegate                  = self;
-//    UNAuthorizationOptions types10   = UNAuthorizationOptionBadge|UNAuthorizationOptionAlert|UNAuthorizationOptionSound;
-//    [center requestAuthorizationWithOptions:types10 completionHandler:^(BOOL granted, NSError * _Nullable error) {
-//        if (granted) {
-//            //点击允许
-//            //这里可以添加一些自己的逻辑
-//        } else {
-//            
-//        }
-//    }];
-//    [UMessage setLogEnabled:YES];//打开日志，方便调试
-    //xg推送
     
     [[XGPush defaultManager] setEnableDebug:YES];
     [[XGPush defaultManager] startXGWithAppID:2200272046 appKey:@"I6Z4HP4EA65L" delegate:nil];
@@ -62,21 +47,27 @@
     
     //设置初始界面
     self.window.backgroundColor      = [UIColor whiteColor];//设置通用背景颜色
-    [self.window makeKeyAndVisible];
     
-    MainViewController *mainVC   = [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:nil];
-    self.mainNavigationController    = [[UINavigationController alloc] initWithRootViewController:mainVC];
-    LeftSortsViewController *leftVC  = [[LeftSortsViewController alloc] init];
-    self.LeftSlideVC                 = [[LeftSlideViewController alloc] initWithLeftView:leftVC andMainView:self.mainNavigationController];
+    
+   //MainViewController *mainVC   = [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:nil];
+
+    //LeftSortsViewController *leftVC  = [[LeftSortsViewController alloc] init];
+   // self.LeftSlideVC                 = [[LeftSlideViewController alloc] initWithLeftView:leftVC andMainView:self.mainNavigationController];
     //mainVC.leftSortsViewController=leftVC;
-    self.window.rootViewController   = self.LeftSlideVC;
     
-    self.mainNavigationController.navigation_configuration.isEnabled = YES;
-    leftVC.navigationController.navigation_configuration.isEnabled = YES;
-    //标题栏颜色
-    self.mainNavigationController.navigationBar.barTintColor = [UIColor whiteColor];
-    //返回箭头颜色
-    [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:94/255.0 green:199/255.0 blue:217/255.0 alpha:1]];
+    MyTabViewController *tab = [[MyTabViewController alloc] init];
+//    self.mainNavigationController    = [[UINavigationController alloc] initWithRootViewController:tab];
+//    self.mainNavigationController.navigation_configuration.isEnabled = YES;
+    //self.mainNavigationController.navigation_configuration.alpha = 1;
+     tab.selectedIndex  = 0;
+    self.window.rootViewController   = tab; //mainTabBar;//self.mainNavigationController;//self.LeftSlideVC;
+   // [self setMain];
+    [self.window makeKeyAndVisible];
+//    leftVC.navigationController.navigation_configuration.isEnabled = YES;
+//    //标题栏颜色
+//    self.mainNavigationController.navigationBar.barTintColor = [UIColor whiteColor];
+//    //返回箭头颜色
+//    [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:94/255.0 green:199/255.0 blue:217/255.0 alpha:1]];
     //友盟分享
     [[UMSocialManager defaultManager] openLog:NO]; //打开调试日志
     [[UMSocialManager defaultManager] setUmSocialAppkey:APPKEY_UMESSAGE];//设置友盟appkey
@@ -128,10 +119,10 @@
     //设置返回按钮
     
     
-    UINavigationBar * navigationBar = [UINavigationBar appearance];
-    UIImage *image = [UIImage imageNamed:@"ico_menu_back"];
-    navigationBar.backIndicatorImage = image;
-    navigationBar.backIndicatorTransitionMaskImage = image;
+//    UINavigationBar * navigationBar = [UINavigationBar appearance];
+//    UIImage *image = [UIImage imageNamed:@"ico_menu_back"];
+//    navigationBar.backIndicatorImage = image;
+//    navigationBar.backIndicatorTransitionMaskImage = image;
 #ifdef DEBUG//因为这个是私有的api，一定要保证上线时的包中不包含这段代码！
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
@@ -340,73 +331,49 @@
 
 
 -(void) setMain {
-        //微信
-        MainPageViewController *homeVC   = [[MainPageViewController alloc] initWithNibName:@"MainViewController" bundle:nil];
+    
+    // 首页
+    HomeViewController *homeVC   = [[MainViewController alloc] init];
+
+    homeVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"首页" image: [UIImage imageNamed: @"home"] selectedImage:[UIImage imageNamed:@"home_1"]];
+    
+    UINavigationController *homeNav = [[UINavigationController alloc] initWithRootViewController:homeVC];
+    homeNav.navigation_configuration.isEnabled=YES;
+    
+    // 说说
+    HomeViewController *momentVC   = [[HomeViewController alloc] init];
+    momentVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"说说" image: [UIImage imageNamed: @"home"] selectedImage:[UIImage imageNamed:@"home_1"]];
+    
+    UINavigationController *momentNav = [[UINavigationController alloc] initWithRootViewController:momentVC];
+    momentNav.navigation_configuration.isEnabled=YES;
+    // 课表
+    HomeViewController *courseVC   = [[HomeViewController alloc] init];
+    courseVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"课表" image: [UIImage imageNamed: @"home"] selectedImage:[UIImage imageNamed:@"home_1"]];
+    
+    // 私信
+    HomeViewController *messegeVC   = [[HomeViewController alloc] init];
+    messegeVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"消息" image: [UIImage imageNamed: @"home"] selectedImage:[UIImage imageNamed:@"home_1"]];
         
-        //UIViewController *homeVC = [[UIViewController alloc] init];
-        homeVC.title = @"微信";
-        UINavigationController *homeNaviVC = [[UINavigationController alloc] initWithRootViewController:homeVC];
-        UITabBarItem *item0 = [[UITabBarItem alloc] initWithTitle:homeVC.title image:[UIImage imageNamed:@"tabbar_mainframe"] selectedImage:[UIImage imageNamed:@"tabbar_mainframeHL"]];
-        homeNaviVC.tabBarItem = item0;
-        
-        //通讯录
-        BaseWebViewController *contactVC = [[BaseWebViewController alloc]init];
-        contactVC.url = [Config getMyNoticeWeb];
-        //NSLog(@"%@", chatVC.url);
-        contactVC.centerTitle = @"私信";
-        
-        //UIViewController *contactVC = [[UIViewController alloc] init];
-        contactVC.title = @"私信";
-        UINavigationController *contactNaviVC = [[UINavigationController alloc] initWithRootViewController:contactVC];
-        UITabBarItem *item1 = [[UITabBarItem alloc] initWithTitle:contactVC.title image:[UIImage imageNamed:@"tabbar_contacts"] selectedImage:[UIImage imageNamed:@"tabbar_contactsHL"]];
-        contactNaviVC.tabBarItem = item1;
-        
-        //发现
-        UIStoryboard *mainStoryBoard              = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        UIViewController *discoverVC = [mainStoryBoard instantiateViewControllerWithIdentifier:@"Class"];
-        
-        //UIViewController *discoverVC = [[UIViewController alloc] init];
-        discoverVC.title = @"课表";
-        UINavigationController *discoverNaviVC = [[UINavigationController alloc] initWithRootViewController:discoverVC];
-        UITabBarItem *item2 = [[UITabBarItem alloc] initWithTitle:discoverVC.title image:[UIImage imageNamed:@"tabbar_discover"] selectedImage:[UIImage imageNamed:@"tabbar_discoverHL"]];
-        discoverNaviVC.tabBarItem = item2;
-        
-        //我
-        LeftSortsViewController *myVC  = [[LeftSortsViewController alloc] init];
-        
-        //UIViewController *myVC = [[UIViewController alloc] init];
-        myVC.title = @"我";
-        UINavigationController *myNaviVC = [[UINavigationController alloc] initWithRootViewController:myVC];
-        UITabBarItem *item3 = [[UITabBarItem alloc] initWithTitle:myVC.title image:[UIImage imageNamed:@"tabbar_me"] selectedImage:[UIImage imageNamed:@"tabbar_meHL"]];
-        myNaviVC.tabBarItem = item3;
-        
-        [Config setIs:0];
-        MomentsViewController *momentVC      = [[MomentsViewController alloc] init];
-        momentVC.keyWord = @"";
-        
-    //    UIViewController *momentVC = [[UIViewController alloc] init];
-        momentVC.title = @"说说";
-        UINavigationController *momentNaviVC = [[UINavigationController alloc] initWithRootViewController:momentVC];
-        UITabBarItem *item4 = [[UITabBarItem alloc] initWithTitle:momentVC.title image:[UIImage imageNamed:@"tabbar_me"] selectedImage:[UIImage imageNamed:@"tabbar_meHL"]];
-        momentNaviVC.tabBarItem = item4;
-        
-        UITabBarController *tabBarVC = [[UITabBarController alloc] init];
-        tabBarVC.viewControllers = @[homeNaviVC,momentNaviVC, discoverNaviVC,contactNaviVC,myNaviVC];
-        tabBarVC.selectedViewController = homeNaviVC;
-        
-        tabBarVC.tabBar.backgroundImage = [UIImage imageNamed:@"tabbarBkg"];
-        //设置选中时文字颜色
-        tabBarVC.tabBar.tintColor = [UIColor colorWithRed:31/255.0 green:185/255.0 blue:34/255.0 alpha:1.0];
-        
-        //选中时使用原图片
-        for (UITabBarItem *item in tabBarVC.tabBar.items) {
-            UIImage *image = item.selectedImage;
-            UIImage *correctImage =[image imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-            item.selectedImage = correctImage;
-        }
-        
-        self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-        self.window.rootViewController = tabBarVC;
+    // 我的
+    HomeViewController *mineVC   = [[HomeViewController alloc] init];
+    mineVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"我的" image: [UIImage imageNamed: @"home"] selectedImage:[UIImage imageNamed:@"home_1"]];
+    
+    UITabBarController *tab = [[UITabBarController alloc] init];
+    tab.viewControllers = @[homeNav,momentNav, courseVC,messegeVC,mineVC];
+    
+//        tabBarVC.tabBar.backgroundImage = [UIImage imageNamed:@"tabbarBkg"];
+//        //设置选中时文字颜色
+//        tabBarVC.tabBar.tintColor = [UIColor colorWithRed:31/255.0 green:185/255.0 blue:34/255.0 alpha:1.0];
+//
+//        //选中时使用原图片
+//        for (UITabBarItem *item in tabBarVC.tabBar.items) {
+//            UIImage *image = item.selectedImage;
+//            UIImage *correctImage =[image imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+//            item.selectedImage = correctImage;
+//        }
+    //self.mainNavigationController = [[UINavigationController alloc] initWithRootViewController:tab];
+    //self.mainNavigationController.navigation_configuration.isEnabled = YES;
+    self.window.rootViewController = tab;
         [self.window makeKeyAndVisible];
 }
 

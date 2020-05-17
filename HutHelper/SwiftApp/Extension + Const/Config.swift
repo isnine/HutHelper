@@ -12,7 +12,7 @@ import Foundation
 // 根据文字 获取 content 高度
  func getTextHeight(textStr:String,font:UIFont,width:CGFloat) -> CGFloat {
     let normalText: NSString = textStr as NSString
-    let size = CGSize(width: width, height: 1000)
+    let size = CGSize(width: width, height: 3000)
     let dic = NSDictionary(object: font, forKey: NSAttributedString.Key.font as NSCopying)
     let stringSize = normalText.boundingRect(with: size,options: .usesLineFragmentOrigin, attributes: (dic as! [NSAttributedString.Key : Any]) , context:nil).size
     return stringSize.height

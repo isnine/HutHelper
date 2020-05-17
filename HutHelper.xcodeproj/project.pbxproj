@@ -7,6 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		25111DF4242C885D00207004 /* HomeHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25111DF3242C885D00207004 /* HomeHeaderCell.swift */; };
+		25111DF6242CA00A00207004 /* HomeFuncsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25111DF5242CA00A00207004 /* HomeFuncsCell.swift */; };
+		25111DF8242CA11500207004 /* FuncCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25111DF7242CA11500207004 /* FuncCell.swift */; };
+		25111DFA242CB1F900207004 /* HomeHotMomentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25111DF9242CB1F900207004 /* HomeHotMomentCell.swift */; };
+		25111DFC242CB23F00207004 /* HomeSchoolNewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25111DFB242CB23F00207004 /* HomeSchoolNewsCell.swift */; };
+		252E15392434C8B6000E8DDD /* MomentViewController+Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 252E15382434C8B6000E8DDD /* MomentViewController+Action.swift */; };
+		2533C8C3242DA1AF007C332F /* NewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2533C8C2242DA1AF007C332F /* NewCell.swift */; };
+		2533C8C5242DA821007C332F /* HomeHeaderReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2533C8C4242DA821007C332F /* HomeHeaderReusableView.swift */; };
+		2533C8C8242DAC79007C332F /* HomeFuncsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2533C8C7242DAC79007C332F /* HomeFuncsModel.swift */; };
+		2533C8CA242DAE8D007C332F /* HomeViewController+Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2533C8C9242DAE8D007C332F /* HomeViewController+Action.swift */; };
+		2533C8CC242DB3C2007C332F /* HomeSchoolNewsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2533C8CB242DB3C2007C332F /* HomeSchoolNewsModel.swift */; };
+		2535EF3A24223EE6002E3160 /* MyTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2535EF3924223EE6002E3160 /* MyTabViewController.swift */; };
+		2535EF3D242244D8002E3160 /* HUTBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2535EF3C242244D8002E3160 /* HUTBaseViewController.swift */; };
 		2537EDC623838DE400D9DAD0 /* TagsTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2537EDC523838DE400D9DAD0 /* TagsTable.swift */; };
 		2537EDC92383A41500D9DAD0 /* Extension + Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2537EDC82383A41500D9DAD0 /* Extension + Const.swift */; };
 		25387F262382B804002459D6 /* MomentsSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25387F242382B804002459D6 /* MomentsSearchViewController.swift */; };
@@ -86,6 +99,7 @@
 		258F99EA23F9788200CCC014 /* FWMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 258F99DE23F9788200CCC014 /* FWMenuView.swift */; };
 		25A623B02386AA07005016F9 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A623AF2386AA07005016F9 /* HomeViewController.swift */; };
 		25A623B72386BD7B005016F9 /* SwiftMomentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A623B62386BD7B005016F9 /* SwiftMomentViewController.swift */; };
+		25ADF3E724370A09000A7271 /* MomentSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25ADF3E624370A09000A7271 /* MomentSectionHeaderView.swift */; };
 		25BCFBED2407AF280030CA34 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25BCFBEC2407AF280030CA34 /* MainViewController.xib */; };
 		25BCFBF32407AF2E0030CA34 /* LeftHeadTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25BCFBEF2407AF2E0030CA34 /* LeftHeadTableViewCell.swift */; };
 		25BCFBF42407AF2E0030CA34 /* LeftBodyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25BCFBF02407AF2E0030CA34 /* LeftBodyTableViewCell.xib */; };
@@ -102,6 +116,8 @@
 		25BCFC0A2407B4AF0030CA34 /* LineUIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 25BCFC092407B4AE0030CA34 /* LineUIView.m */; };
 		25C5A9DC237D46E1004F0A5F /* BaseWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 25C5A9DA237D46E1004F0A5F /* BaseWebViewController.m */; };
 		25C5A9DD237D46E1004F0A5F /* BaseWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25C5A9DB237D46E1004F0A5F /* BaseWebViewController.xib */; };
+		25DCFD8B243766130075B155 /* MomentTipsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25DCFD8A243766130075B155 /* MomentTipsView.swift */; };
+		25DE540D243608FA001F7D4F /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25DE540C243608FA001F7D4F /* TestViewController.swift */; };
 		306ED4D66B74BB7E6D350B7E /* libPods-HutHelper.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F483A3F1FC79A9B85B68036B /* libPods-HutHelper.a */; };
 		3A0056121EC97CB70047E8F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A0056111EC97CB70047E8F2 /* Assets.xcassets */; };
 		3A06D9B51E8CEDE400066DD1 /* ExamCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A06D9B31E8CEDE400066DD1 /* ExamCell.m */; };
@@ -416,6 +432,19 @@
 
 /* Begin PBXFileReference section */
 		0BEA75F30B57DEF614969189 /* Pods-HutHelper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HutHelper.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HutHelper/Pods-HutHelper.debug.xcconfig"; sourceTree = "<group>"; };
+		25111DF3242C885D00207004 /* HomeHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeaderCell.swift; sourceTree = "<group>"; };
+		25111DF5242CA00A00207004 /* HomeFuncsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFuncsCell.swift; sourceTree = "<group>"; };
+		25111DF7242CA11500207004 /* FuncCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuncCell.swift; sourceTree = "<group>"; };
+		25111DF9242CB1F900207004 /* HomeHotMomentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHotMomentCell.swift; sourceTree = "<group>"; };
+		25111DFB242CB23F00207004 /* HomeSchoolNewsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSchoolNewsCell.swift; sourceTree = "<group>"; };
+		252E15382434C8B6000E8DDD /* MomentViewController+Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MomentViewController+Action.swift"; sourceTree = "<group>"; };
+		2533C8C2242DA1AF007C332F /* NewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCell.swift; sourceTree = "<group>"; };
+		2533C8C4242DA821007C332F /* HomeHeaderReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeaderReusableView.swift; sourceTree = "<group>"; };
+		2533C8C7242DAC79007C332F /* HomeFuncsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFuncsModel.swift; sourceTree = "<group>"; };
+		2533C8C9242DAE8D007C332F /* HomeViewController+Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController+Action.swift"; sourceTree = "<group>"; };
+		2533C8CB242DB3C2007C332F /* HomeSchoolNewsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSchoolNewsModel.swift; sourceTree = "<group>"; };
+		2535EF3924223EE6002E3160 /* MyTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTabViewController.swift; sourceTree = "<group>"; };
+		2535EF3C242244D8002E3160 /* HUTBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HUTBaseViewController.swift; sourceTree = "<group>"; };
 		2537EDC523838DE400D9DAD0 /* TagsTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagsTable.swift; sourceTree = "<group>"; };
 		2537EDC82383A41500D9DAD0 /* Extension + Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + Const.swift"; sourceTree = "<group>"; };
 		25387F242382B804002459D6 /* MomentsSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MomentsSearchViewController.swift; sourceTree = "<group>"; };
@@ -496,6 +525,7 @@
 		258F99DE23F9788200CCC014 /* FWMenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FWMenuView.swift; sourceTree = "<group>"; };
 		25A623AF2386AA07005016F9 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		25A623B62386BD7B005016F9 /* SwiftMomentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftMomentViewController.swift; sourceTree = "<group>"; };
+		25ADF3E624370A09000A7271 /* MomentSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MomentSectionHeaderView.swift; sourceTree = "<group>"; };
 		25BCFBEC2407AF280030CA34 /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
 		25BCFBEF2407AF2E0030CA34 /* LeftHeadTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftHeadTableViewCell.swift; sourceTree = "<group>"; };
 		25BCFBF02407AF2E0030CA34 /* LeftBodyTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LeftBodyTableViewCell.xib; sourceTree = "<group>"; };
@@ -515,6 +545,8 @@
 		25C5A9D9237D46E1004F0A5F /* BaseWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseWebViewController.h; sourceTree = "<group>"; };
 		25C5A9DA237D46E1004F0A5F /* BaseWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseWebViewController.m; sourceTree = "<group>"; };
 		25C5A9DB237D46E1004F0A5F /* BaseWebViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BaseWebViewController.xib; sourceTree = "<group>"; };
+		25DCFD8A243766130075B155 /* MomentTipsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MomentTipsView.swift; sourceTree = "<group>"; };
+		25DE540C243608FA001F7D4F /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		3A0056111EC97CB70047E8F2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = HutHelper/Assets.xcassets; sourceTree = "<group>"; };
 		3A06D9B21E8CEDE400066DD1 /* ExamCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExamCell.h; sourceTree = "<group>"; };
 		3A06D9B31E8CEDE400066DD1 /* ExamCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExamCell.m; sourceTree = "<group>"; };
@@ -976,6 +1008,45 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		25111DF2242C883D00207004 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				25111DF3242C885D00207004 /* HomeHeaderCell.swift */,
+				25111DF5242CA00A00207004 /* HomeFuncsCell.swift */,
+				25111DF7242CA11500207004 /* FuncCell.swift */,
+				25111DF9242CB1F900207004 /* HomeHotMomentCell.swift */,
+				2533C8C2242DA1AF007C332F /* NewCell.swift */,
+				25111DFB242CB23F00207004 /* HomeSchoolNewsCell.swift */,
+				2533C8C4242DA821007C332F /* HomeHeaderReusableView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2533C8C6242DAC61007C332F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2533C8C7242DAC79007C332F /* HomeFuncsModel.swift */,
+				2533C8CB242DB3C2007C332F /* HomeSchoolNewsModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2535EF3824223EC3002E3160 /* Tabbar */ = {
+			isa = PBXGroup;
+			children = (
+				2535EF3924223EE6002E3160 /* MyTabViewController.swift */,
+			);
+			path = Tabbar;
+			sourceTree = "<group>";
+		};
+		2535EF3B2422449A002E3160 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				2535EF3C242244D8002E3160 /* HUTBaseViewController.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
 		2537EDC423838DD500D9DAD0 /* Tables */ = {
 			isa = PBXGroup;
 			children = (
@@ -1020,6 +1091,7 @@
 			isa = PBXGroup;
 			children = (
 				2560FCDC2417CC1400D76744 /* CommentView.swift */,
+				25DCFD8A243766130075B155 /* MomentTipsView.swift */,
 			);
 			path = CommentView;
 			sourceTree = "<group>";
@@ -1127,6 +1199,7 @@
 			children = (
 				258F99AB23F9742200CCC014 /* MomentCell.swift */,
 				258F99AC23F9742200CCC014 /* CommentCell.swift */,
+				25ADF3E624370A09000A7271 /* MomentSectionHeaderView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1213,6 +1286,8 @@
 		25A623AE2386A97E005016F9 /* SwiftApp */ = {
 			isa = PBXGroup;
 			children = (
+				2535EF3B2422449A002E3160 /* Base */,
+				2535EF3824223EC3002E3160 /* Tabbar */,
 				25BCFBEB2407AE7C0030CA34 /* Main */,
 				2551F09423FB841800ACF046 /* BaseNarViewController.swift */,
 				258F99BD23F9772A00CCC014 /* Third */,
@@ -1226,6 +1301,7 @@
 				25A623B32386AA87005016F9 /* Course */,
 				25A623B22386AA7E005016F9 /* Mine */,
 				25A623B12386AA0B005016F9 /* Home */,
+				25DE540C243608FA001F7D4F /* TestViewController.swift */,
 			);
 			path = SwiftApp;
 			sourceTree = "<group>";
@@ -1234,6 +1310,9 @@
 			isa = PBXGroup;
 			children = (
 				25A623AF2386AA07005016F9 /* HomeViewController.swift */,
+				2533C8C9242DAE8D007C332F /* HomeViewController+Action.swift */,
+				2533C8C6242DAC61007C332F /* Model */,
+				25111DF2242C883D00207004 /* View */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -1267,6 +1346,7 @@
 				258F99B423F9742300CCC014 /* MomentModel.swift */,
 				258F99AE23F9742200CCC014 /* MomentTwoPage */,
 				258F99AD23F9742200CCC014 /* MomentViewController.swift */,
+				252E15382434C8B6000E8DDD /* MomentViewController+Action.swift */,
 				258F99A923F9742100CCC014 /* MomentViewModel.swift */,
 				258F99AA23F9742200CCC014 /* View */,
 				25A623B62386BD7B005016F9 /* SwiftMomentViewController.swift */,
@@ -2689,6 +2769,7 @@
 				"${PODS_ROOT}/Target Support Files/Pods-HutHelper/Pods-HutHelper-resources.sh",
 				"${PODS_ROOT}/DJRefresh/DJRefresh/DJRefresh.bundle",
 				"${PODS_ROOT}/DTKDropdownMenu/DTKDropdownMenuView/DTKDropdownMenuView.bundle",
+				"${PODS_ROOT}/ESTabBarController-swift/Sources/en.lproj",
 				"${PODS_ROOT}/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/SwiftMessages/SwiftMessages.bundle",
 				"${PODS_ROOT}/UMengUShare/UShareSDK/UMSocialSDK/UMSocialSDKPromptResources.bundle",
@@ -2698,6 +2779,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/DJRefresh.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/DTKDropdownMenuView.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/en.lproj",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SVProgressHUD.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SwiftMessages.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/UMSocialSDKPromptResources.bundle",
@@ -2777,13 +2859,16 @@
 				3A8DFCFF22BDCA45004A69B8 /* NSBundle+MJRefresh.m in Sources */,
 				258F99E223F9788200CCC014 /* FWSheetView.swift in Sources */,
 				3AA3D1F21F891B1A00990358 /* MomentsViewController.m in Sources */,
+				2535EF3D242244D8002E3160 /* HUTBaseViewController.swift in Sources */,
 				3AA2704C1F6E76DF00F5E6F3 /* TFHpple.m in Sources */,
+				25111DFC242CB23F00207004 /* HomeSchoolNewsCell.swift in Sources */,
 				3AA2704D1F6E76DF00F5E6F3 /* TFHppleElement.m in Sources */,
 				3AA2704E1F6E76DF00F5E6F3 /* XPathQuery.m in Sources */,
 				3AA2704F1F6E76DF00F5E6F3 /* zySheetPickerView.m in Sources */,
 				3A8DFDA222BDD40E004A69B8 /* TZAssetModel.m in Sources */,
 				25BCFC072407B4A70030CA34 /* PointView.m in Sources */,
 				25720DC523FCDDC90054E392 /* EachNavigationBar+Override.swift in Sources */,
+				2533C8C8242DAC79007C332F /* HomeFuncsModel.swift in Sources */,
 				3A20AFF01F43E2B800712A1E /* CalendarDayCell.m in Sources */,
 				25720DD323FCDDC90054E392 /* Const.swift in Sources */,
 				3A20AFF21F43E2B800712A1E /* CalendarDayModel.m in Sources */,
@@ -2793,7 +2878,9 @@
 				2569B44B23F1837E00B84E8A /* Extension.swift in Sources */,
 				3A20AFF81F43E2B800712A1E /* CalendarMonthCollectionViewLayout.m in Sources */,
 				3AA3D1F81F89375300990358 /* UINavigationController+pop.m in Sources */,
+				25DCFD8B243766130075B155 /* MomentTipsView.swift in Sources */,
 				2537EDC92383A41500D9DAD0 /* Extension + Const.swift in Sources */,
+				25111DF4242C885D00207004 /* HomeHeaderCell.swift in Sources */,
 				3A8DFD0522BDCA45004A69B8 /* MJRefreshBackGifFooter.m in Sources */,
 				3A8DFCF622BDCA45004A69B8 /* MJRefreshConfig.m in Sources */,
 				25A623B72386BD7B005016F9 /* SwiftMomentViewController.swift in Sources */,
@@ -2812,8 +2899,10 @@
 				25BCFBFA2407AF460030CA34 /* LineUIView.swift in Sources */,
 				3A8DFD0822BDCA45004A69B8 /* MJRefreshBackStateFooter.m in Sources */,
 				258F99D023F9783600CCC014 /* ImgsViewCell.swift in Sources */,
+				25111DFA242CB1F900207004 /* HomeHotMomentCell.swift in Sources */,
 				254C389223FD38B200F87954 /* UseInfoCell.swift in Sources */,
 				3A8DFD2922BDCA45004A69B8 /* MJRefreshAutoFooter.m in Sources */,
+				25111DF8242CA11500207004 /* FuncCell.swift in Sources */,
 				3A8DFD1122BDCA45004A69B8 /* MJRefreshAutoGifFooter.m in Sources */,
 				3A8DFDAD22BDD40E004A69B8 /* TZGifPhotoPreviewController.m in Sources */,
 				3A37757C1F35EB76005A5170 /* JRWaterFallLayout.m in Sources */,
@@ -2855,12 +2944,14 @@
 				3A98CB611E7CF7AA00CABD0D /* User.m in Sources */,
 				258F999223F9626800CCC014 /* BaseWebViewController.swift in Sources */,
 				3ACA5EFB1F5C549F00E3934E /* UserShowViewController.m in Sources */,
+				2533C8C3242DA1AF007C332F /* NewCell.swift in Sources */,
 				25BCFC042407AFA60030CA34 /* Util + Math.swift in Sources */,
 				3A4D2FF91E8D24E200901E3B /* ScoreTableViewCell.m in Sources */,
 				3A796C251E534C1B00794043 /* FeedbackResultViewController.m in Sources */,
 				3A98CC0D1E7CFA9C00CABD0D /* XWScanImage.m in Sources */,
 				3A98CB5F1E7CF7AA00CABD0D /* MomentsModel.m in Sources */,
 				3AFA4F591EC0440F00CB7DA2 /* Config+Api.m in Sources */,
+				25ADF3E724370A09000A7271 /* MomentSectionHeaderView.swift in Sources */,
 				25BCFBF92407AF460030CA34 /* PointView.swift in Sources */,
 				258F999D23F96A8400CCC014 /* LoginViewController.swift in Sources */,
 				3AFA4F831EC0504500CB7DA2 /* AppDelegate.m in Sources */,
@@ -2883,8 +2974,11 @@
 				3A532CDD1E9121C5003CD5A8 /* VedioTableViewController.m in Sources */,
 				3AA158B31FADF79D00298AAD /* UserHeaderCell.m in Sources */,
 				25BCFBF32407AF2E0030CA34 /* LeftHeadTableViewCell.swift in Sources */,
+				25DE540D243608FA001F7D4F /* TestViewController.swift in Sources */,
 				3A98CC081E7CFA9C00CABD0D /* UserInfoCell.m in Sources */,
 				3A97676721B587F300FBF0B7 /* MoreViewController.swift in Sources */,
+				2535EF3A24223EE6002E3160 /* MyTabViewController.swift in Sources */,
+				25111DF6242CA00A00207004 /* HomeFuncsCell.swift in Sources */,
 				258F99B723F9742300CCC014 /* CommentCell.swift in Sources */,
 				3A8DFDA422BDD40E004A69B8 /* UIView+Layout.m in Sources */,
 				258F99E723F9788200CCC014 /* FWAlertView.swift in Sources */,
@@ -2897,8 +2991,10 @@
 				3AFA4F7F1EC04C6100CB7DA2 /* CourseModel.m in Sources */,
 				255A55BF231FC40E001A7C13 /* DetailsCourseViewController.m in Sources */,
 				3A796C3C1E534C1B00794043 /* NoticeShowViewController.m in Sources */,
+				2533C8C5242DA821007C332F /* HomeHeaderReusableView.swift in Sources */,
 				258F99E823F9788200CCC014 /* FWDateView.swift in Sources */,
 				3A98CC001E7CFA9C00CABD0D /* UUInputAccessoryView.m in Sources */,
+				2533C8CC242DB3C2007C332F /* HomeSchoolNewsModel.swift in Sources */,
 				25720DC623FCDDC90054E392 /* UIViewController+EachNavigationBar.swift in Sources */,
 				3A8DFDAC22BDD40E004A69B8 /* TZLocationManager.m in Sources */,
 				258F99CD23F977F900CCC014 /* HGImagePickerCell.swift in Sources */,
@@ -2990,6 +3086,7 @@
 				3AE8005D1F34A6FA00D1BAC0 /* Lost.m in Sources */,
 				3A796C4F1E534C1B00794043 /* ScoreShowViewController.m in Sources */,
 				3A3775621F35EAD7005A5170 /* DayViewController.m in Sources */,
+				2533C8CA242DAE8D007C332F /* HomeViewController+Action.swift in Sources */,
 				25720DCF23FCDDC90054E392 /* BackBarButtonItem.swift in Sources */,
 				3A532CCE1E910C13003CD5A8 /* MMMaterialDesignSpinner.m in Sources */,
 				25387F2A2382E61B002459D6 /* DataBase-Swift.swift in Sources */,
@@ -2997,6 +3094,7 @@
 				3A4D30031E8D27F800901E3B /* ExamViewController.m in Sources */,
 				3A532CC71E910C13003CD5A8 /* UIAlertController+ZFPlayerRotation.m in Sources */,
 				3A98CC0E1E7CFA9C00CABD0D /* YYFPSLabel.m in Sources */,
+				252E15392434C8B6000E8DDD /* MomentViewController+Action.swift in Sources */,
 				2569B44C23F1837E00B84E8A /* Config.swift in Sources */,
 				3A98CC0F1E7CFA9C00CABD0D /* YYWeakProxy.m in Sources */,
 				3A8DFDA022BDD40E004A69B8 /* TZAssetCell.m in Sources */,

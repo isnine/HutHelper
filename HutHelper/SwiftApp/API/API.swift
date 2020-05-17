@@ -13,6 +13,9 @@ import Moya
 import HandyJSON
 import Alamofire
 
+let getImWebUrl = basicHttpUrl + "/im/#/list-popup?user_id=\(user.user_id)&key=\(user.remember_code_app)"
+// http
+let basicHttpUrl = "http://m.huthelper.cn"
 // 服务器地址
 let basicUrl = "https://api.huthelper.cn"
 // 图床地址

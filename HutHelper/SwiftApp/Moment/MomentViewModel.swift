@@ -9,6 +9,7 @@
 import Foundation
 import HandyJSON
 import SwiftyJSON
+import Alamofire
 
 class MomentViewModel{
     var momentDatas = [MomentModel]() 
@@ -145,6 +146,19 @@ extension MomentViewModel {
                         callback(datas as! [MomentModel])
                     }
                 }
+            }
+        }
+    }
+    
+    func getUserInfo(id:String,callback:@escaping (PeopleModel) -> ()) {
+        Alamofire.request(getPersonInfo(userId: id)).responseJSON { (response) in
+            guard response.result.isSuccess else {
+                return
+            }
+            let value = response.value
+            let json = JSON(value!)
+            if let data = JSONDeserializer<PeopleModel>.deserializeFrom(json: json["data"].description) {
+               callback(data)
             }
         }
     }

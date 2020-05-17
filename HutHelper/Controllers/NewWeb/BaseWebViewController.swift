@@ -61,6 +61,9 @@ class BaseWebController: UIViewController{
         self.navigation.item.title = navTitle
         self.navigation.item.leftBarButtonItem = UIBarButtonItem.init(customView: leftBarButton)
         self.navigation.bar.isShadowHidden = true
+        if navTitle == "消息" {
+            self.navigation.bar.isHidden = true
+        }
     }
 
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {

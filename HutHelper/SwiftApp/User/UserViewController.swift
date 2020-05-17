@@ -122,6 +122,7 @@ class UserController: UIViewController {
         self.navigation.item.title = "个人信息"
         self.navigation.item.leftBarButtonItem = UIBarButtonItem.init(customView: leftBarButton)
         self.navigation.bar.isShadowHidden = true
+        self.navigation.bar.alpha = 1
         self.view.addSubview(tableView)
         self.view.addSubview(self.backView)
         self.view.addSubview(self.pickerView)

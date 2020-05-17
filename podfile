@@ -20,6 +20,14 @@ def swiftUI
     pod 'JXPhotoBrowser'
     #pod 'EachNavigationBar_Objc'
     #pod 'ProgressHUD'
+
+    pod 'FSPagerView'
+    # 扩展
+    pod 'SwifterSwift'
+    
+    #tabbar样式
+    pod 'ESTabBarController-swift'
+
 #    pod "SkeletonView"
 end
 

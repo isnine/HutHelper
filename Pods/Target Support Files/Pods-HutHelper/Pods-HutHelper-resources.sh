@@ -99,6 +99,7 @@ EOM
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_resource "${PODS_ROOT}/DJRefresh/DJRefresh/DJRefresh.bundle"
   install_resource "${PODS_ROOT}/DTKDropdownMenu/DTKDropdownMenuView/DTKDropdownMenuView.bundle"
+  install_resource "${PODS_ROOT}/ESTabBarController-swift/Sources/en.lproj"
   install_resource "${PODS_ROOT}/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle"
   install_resource "${PODS_CONFIGURATION_BUILD_DIR}/SwiftMessages/SwiftMessages.bundle"
   install_resource "${PODS_ROOT}/UMengUShare/UShareSDK/UMSocialSDK/UMSocialSDKPromptResources.bundle"
@@ -107,6 +108,7 @@ fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_resource "${PODS_ROOT}/DJRefresh/DJRefresh/DJRefresh.bundle"
   install_resource "${PODS_ROOT}/DTKDropdownMenu/DTKDropdownMenuView/DTKDropdownMenuView.bundle"
+  install_resource "${PODS_ROOT}/ESTabBarController-swift/Sources/en.lproj"
   install_resource "${PODS_ROOT}/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle"
   install_resource "${PODS_CONFIGURATION_BUILD_DIR}/SwiftMessages/SwiftMessages.bundle"
   install_resource "${PODS_ROOT}/UMengUShare/UShareSDK/UMSocialSDK/UMSocialSDKPromptResources.bundle"
