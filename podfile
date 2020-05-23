@@ -40,7 +40,7 @@ def ocpod
     pod 'SDWebImage', '~>3.8'
     pod 'LGPlusButtonsView', '~> 1.1.0'
 #    pod 'TZImagePickerController'
-    pod 'DTKDropdownMenu', '~> 0.0.4'
+#    pod 'DTKDropdownMenu', '~> 0.0.4'
     pod 'YCXMenu', '~> 0.0.11'
     pod  'UITableView+FDTemplateLayoutCell'
     pod 'DZNEmptyDataSet'

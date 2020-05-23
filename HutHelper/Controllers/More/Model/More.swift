@@ -9,7 +9,7 @@
 import Foundation
 import HandyJSON
 
-class More : HandyJSON {
+class More {
     var image: String = ""
     var title: String = ""
     var describe: String = ""

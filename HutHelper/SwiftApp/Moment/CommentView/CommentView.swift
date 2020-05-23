@@ -11,16 +11,16 @@ import RxCocoa
 import RxSwift
 
 class CommentView: UIView {
-    
+
     // 回调闭包
-    typealias Block = (_ content:String) -> Void
-    var callback:Block?
-    
+    typealias Block = (_ content: String) -> Void
+    var callback: Block?
+
     public var indexPath = IndexPath()
-    
+
     // 背景视图
     private lazy var bgView = UIView()
-    lazy var textField : UITextField = {
+    lazy var textField: UITextField = {
        let tf = UITextField()
         tf.placeholder = "在这里写下评论~"
 //        tf.delegate = self

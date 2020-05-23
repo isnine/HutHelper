@@ -9,18 +9,16 @@
 import Foundation
 import UIKit
 import SQLite
-fileprivate let defaultss = UserDefaults.standard
+private let defaultss = UserDefaults.standard
 
-func saveMomentSearch(bookname:[String]) {
-    defaultss.set(bookname,forKey: "moment_search")
+func saveMomentSearch(bookname: [String]) {
+    defaultss.set(bookname, forKey: "moment_search")
     defaultss.synchronize()
 }
 func getMomentSearch() -> [String]? {
     let content = defaultss.object(forKey: "moment_search") as? [String]
     return content
 }
-
-
 
 struct DataCenterConstant {
     static let dbName = "db.sqlite"
@@ -38,34 +36,34 @@ class DataBase {
         }
         return nil
     }()
-    
+
     var tagsTable = TagsTable()
     init() {
-        
+
         tagsTable.setupTable()
-        
+
     }
 }
 
 extension DataBase {
     // 增
-    func insertNotes(with data:String) -> Int64? {
+    func insertNotes(with data: String) -> Int64? {
 
         do {
             let insertNotes = tagsTable.table.insert(
                 tagsTable.content <- data)
             return try DataBase.db?.run(insertNotes)
-        }catch {
+        } catch {
             assertionFailure()
         }
         return nil
     }
     // 删
-    func deleteNotesById(id:String) -> Bool {
+    func deleteNotesById(id: String) -> Bool {
         do {
             try DataBase.db?.run(tagsTable.table.filter(tagsTable.content == id).delete())
             return true
-        }catch{
+        } catch {
             assertionFailure()
         }
         return false

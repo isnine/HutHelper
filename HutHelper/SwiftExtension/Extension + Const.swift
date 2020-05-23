@@ -9,7 +9,7 @@
 import Foundation
 
 public extension Array {
-    
+
     /**
      Returns a random element from the array. Can be used to create a playful
      message that cycles randomly through a set of emoji icons, for example.
@@ -20,7 +20,7 @@ public extension Array {
     }
 }
 
-extension UIView{
+extension UIView {
     @IBInspectable
     var cornerRadius: CGFloat {
         get {
@@ -40,24 +40,24 @@ extension UIView{
         }
     }
     @IBInspectable
-    var shadowOpacity:Float{
-        get{
+    var shadowOpacity: Float {
+        get {
             return layer.shadowOpacity
         }
-        set{
+        set {
             layer.shadowOpacity = newValue
         }
     }
     @IBInspectable
-    var shadowColor:UIColor{
-        get{
+    var shadowColor: UIColor {
+        get {
             return (layer.shadowColor != nil ? UIColor(cgColor: layer.shadowColor!) :nil)!
         }
-        set{
+        set {
             layer.shadowColor = newValue.cgColor
         }
     }
-    
+
     @IBInspectable
     var shadowOffset: CGSize {
         get {
@@ -67,7 +67,7 @@ extension UIView{
             layer.shadowOffset = newValue
         }
     }
-    
+
     @IBInspectable
     var borderWidth: CGFloat {
         get {
@@ -86,5 +86,5 @@ extension UIView{
             layer.borderColor = newValue.cgColor
         }
     }
-    
+
 }

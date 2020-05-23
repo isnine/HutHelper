@@ -10,32 +10,32 @@ import Foundation
 import HandyJSON
 import SwiftyJSON
 
-class MomentViewModel{
-    var momentDatas = [MomentModel]() 
+class MomentViewModel {
+    var momentDatas = [MomentModel]()
     var page = 1
-    
+
 }
-// Mark:- 请求数据
+// MARK:- 请求数据
 extension MomentViewModel {
-    func getAllMomentRequst(page:Int,callback:@escaping ([MomentModel]) -> ()) {
+    func getAllMomentRequst(page: Int, callback:@escaping ([MomentModel]) -> Void) {
         MomentProvider.request(.all(page)) { (result) in
             if case let .success(response) = result {
                 let value = try? response.mapJSON()
-                if let data = value{
+                if let data = value {
                     let json = JSON(data)
-                    if let datas = JSONDeserializer<MomentModel>.deserializeModelArrayFrom(json:json["statement"].description) {
-                        
+                    if let datas = JSONDeserializer<MomentModel>.deserializeModelArrayFrom(json: json["statement"].description) {
+
                         callback(datas as! [MomentModel])
                     }
                 }
             }
         }
     }
-    func getLikeMomentRequst(momentId:String,callback:@escaping () -> ()) {
+    func getLikeMomentRequst(momentId: String, callback:@escaping () -> Void) {
         MomentProvider.request(.like(momentId)) { (result) in
             if case let .success(response) = result {
                 let value = try? response.mapJSON()
-                if let data = value{
+                if let data = value {
                     let json = JSON(data)
                     print(json)
                     callback()
@@ -43,11 +43,11 @@ extension MomentViewModel {
             }
         }
     }
-    func getUnLikeMomentRequst(momentId:String,callback:@escaping () -> ()) {
+    func getUnLikeMomentRequst(momentId: String, callback:@escaping () -> Void) {
         MomentProvider.request(.unlike(momentId)) { (result) in
             if case let .success(response) = result {
                 let value = try? response.mapJSON()
-                if let data = value{
+                if let data = value {
                     let json = JSON(data)
                     print(json)
                     callback()
@@ -55,11 +55,11 @@ extension MomentViewModel {
             }
         }
     }
-    func getDeleteMomentRequst(momentId:String,callback:@escaping () -> ()) {
+    func getDeleteMomentRequst(momentId: String, callback:@escaping () -> Void) {
         MomentProvider.request(.delete(momentId)) { (result) in
             if case let .success(response) = result {
                 let value = try? response.mapJSON()
-                if let data = value{
+                if let data = value {
                     let json = JSON(data)
                     print(json)
                     callback()
@@ -67,11 +67,11 @@ extension MomentViewModel {
             }
         }
     }
-    func getDeleteCMomentRequst(commentId:String,callback:@escaping () -> ()) {
+    func getDeleteCMomentRequst(commentId: String, callback:@escaping () -> Void) {
         MomentProvider.request(.deleteC(commentId)) { (result) in
             if case let .success(response) = result {
                 let value = try? response.mapJSON()
-                if let data = value{
+                if let data = value {
                     let json = JSON(data)
                     print(json)
                     callback()
@@ -79,11 +79,11 @@ extension MomentViewModel {
             }
         }
     }
-    func getCommentSayRequst(comment:String,momentId:String, callback:@escaping () -> ()) {
+    func getCommentSayRequst(comment: String, momentId: String, callback:@escaping () -> Void) {
         MomentProvider.request(.comment(comment, momentId)) { (result) in
             if case let .success(response) = result {
                 let value = try? response.mapJSON()
-                if let data = value{
+                if let data = value {
                     let json = JSON(data)
                     print(json)
                     callback()
@@ -91,57 +91,57 @@ extension MomentViewModel {
             }
         }
     }
-    
-    func getHotMomentRequst(page:Int,day:Int,callback:@escaping ([MomentModel]) -> ()) {
 
-        MomentProvider.request(.hot(page,day)) { (result) in
+    func getHotMomentRequst(page: Int, day: Int, callback:@escaping ([MomentModel]) -> Void) {
+
+        MomentProvider.request(.hot(page, day)) { (result) in
             if case let .success(response) = result {
                 let value = try? response.mapJSON()
-                if let data = value{
+                if let data = value {
                     let json = JSON(data)
-                    if let datas = JSONDeserializer<MomentModel>.deserializeModelArrayFrom(json:json["statement"].description) {
+                    if let datas = JSONDeserializer<MomentModel>.deserializeModelArrayFrom(json: json["statement"].description) {
                         callback(datas as! [MomentModel])
                     }
                 }
             }
         }
     }
-    func getOwnMomentRequst(page:Int,userId:String,callback:@escaping ([MomentModel]) -> ()) {
+    func getOwnMomentRequst(page: Int, userId: String, callback:@escaping ([MomentModel]) -> Void) {
 
-        MomentProvider.request(.own(page,userId)) { (result) in
+        MomentProvider.request(.own(page, userId)) { (result) in
             if case let .success(response) = result {
                 let value = try? response.mapJSON()
-                if let data = value{
+                if let data = value {
                     let json = JSON(data)
-                    if let datas = JSONDeserializer<MomentModel>.deserializeModelArrayFrom(json:json["statement"].description) {
+                    if let datas = JSONDeserializer<MomentModel>.deserializeModelArrayFrom(json: json["statement"].description) {
                         callback(datas as! [MomentModel])
                     }
                 }
             }
         }
     }
-    func getInteractiveMomentRequst(page:Int,callback:@escaping ([MomentModel]) -> ()) {
+    func getInteractiveMomentRequst(page: Int, callback:@escaping ([MomentModel]) -> Void) {
 
         MomentProvider.request(.interactive(page)) { (result) in
             if case let .success(response) = result {
                 let value = try? response.mapJSON()
-                if let data = value{
+                if let data = value {
                     let json = JSON(data)
-                    if let datas = JSONDeserializer<MomentModel>.deserializeModelArrayFrom(json:json["statement"].description) {
+                    if let datas = JSONDeserializer<MomentModel>.deserializeModelArrayFrom(json: json["statement"].description) {
                         callback(datas as! [MomentModel])
                     }
                 }
             }
         }
     }
-    func getSearchMomentRequst(content:String,page:Int,callback:@escaping ([MomentModel]) -> ()) {
+    func getSearchMomentRequst(content: String, page: Int, callback:@escaping ([MomentModel]) -> Void) {
 
         MomentProvider.request(.search(content, page)) { (result) in
             if case let .success(response) = result {
                 let value = try? response.mapJSON()
-                if let data = value{
+                if let data = value {
                     let json = JSON(data)
-                    if let datas = JSONDeserializer<MomentModel>.deserializeModelArrayFrom(json:json["statement"].description) {
+                    if let datas = JSONDeserializer<MomentModel>.deserializeModelArrayFrom(json: json["statement"].description) {
                         callback(datas as! [MomentModel])
                     }
                 }

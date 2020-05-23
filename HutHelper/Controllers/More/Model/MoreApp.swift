@@ -15,4 +15,3 @@ class MoreApp: HandyJSON {
     var title: String?
     required init() {}
 }
-

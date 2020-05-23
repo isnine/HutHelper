@@ -17,39 +17,39 @@ protocol BaseNarProtpcol {
 class BaseNarViewController: UIViewController {
     let disposeBag = DisposeBag()
     // 左边返回
-    lazy var leftBarButton:UIButton = {
+    lazy var leftBarButton: UIButton = {
         let btn = UIButton.init(type: .custom)
-            btn.frame = CGRect(x:-5, y:0, width:20, height: 30)
+            btn.frame = CGRect(x: -5, y: 0, width: 20, height: 30)
             btn.setImage(UIImage(named: "ico_menu_back"), for: .normal)
-            btn.rx.tap.subscribe(onNext:{[weak self] in
+            btn.rx.tap.subscribe(onNext: {[weak self] in
                 self?.navigationController?.popViewController(animated: true)
                 }).disposed(by: disposeBag)
         return btn
     }()
     // 右边功能按钮
-    lazy var rightBarButton:UIButton = {
+    lazy var rightBarButton: UIButton = {
         let btn = UIButton.init(type: .custom)
-            btn.frame = CGRect(x:-5, y:0, width:30, height: 30)
+            btn.frame = CGRect(x: -5, y: 0, width: 30, height: 30)
             btn.setImage(UIImage(named: "ico_menu_menu"), for: .normal)
-            btn.rx.tap.subscribe(onNext:{[weak self] in
+            btn.rx.tap.subscribe(onNext: {[weak self] in
                 self?.menuView.show()
             }).disposed(by: disposeBag)
         return btn
     }()
-    
+
     lazy var menuView = FWMenuView()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
     }
-    
-    func setUI(){
+
+    func setUI() {
         self.navigation.item.leftBarButtonItem =  UIBarButtonItem.init(customView: leftBarButton)
         self.navigation.bar.isShadowHidden = true
     }
-    
-    func configRightMenu(itemTitles:[String],itemIcons:[UIImage],nextController:[UIViewController]) {
+
+    func configRightMenu(itemTitles: [String], itemIcons: [UIImage], nextController: [UIViewController]) {
         let vProperty = FWMenuViewProperty()
         vProperty.popupCustomAlignment = .topRight
         vProperty.popupAnimationType = .scale
@@ -66,8 +66,8 @@ class BaseNarViewController: UIViewController {
         vProperty.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.backgroundColor: UIColor.clear, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15.0)]
         vProperty.textAlignment = .left
         vProperty.separatorInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
-        menuView = FWMenuView.menu(itemTitles: itemTitles, itemImageNames: itemIcons, itemBlock: { (popupView, index, title) in
-            var addVC:UIViewController?
+        menuView = FWMenuView.menu(itemTitles: itemTitles, itemImageNames: itemIcons, itemBlock: { (_, index, _) in
+            var addVC: UIViewController?
             addVC = nextController[index]
             switch index {
                 case 0:
@@ -81,9 +81,9 @@ class BaseNarViewController: UIViewController {
                 case 4:
                     addVC = nextController[4]
                 default:
-                    break;
+                    break
             }
-            
+
             self.navigationController?.pushViewController(addVC!, animated: true)
         }, property: vProperty)
     }

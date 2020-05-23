@@ -19,13 +19,13 @@ class MainViewModel {
 // MARK: 网络请求
 
 extension MainViewModel {
-    func getCalender(callback: @escaping () -> ()){
+    func getCalender(callback: @escaping () -> Void) {
         HomePageProvider.request(.calendar) { (result) in
             if case let .success(response) = result {
                 let value = try? response.mapJSON()
                 if let data = value {
                     let json = JSON(data)
-                    if let datas = JSONDeserializer<CalendarModel>.deserializeModelArrayFrom(json:json.description) {
+                    if let datas = JSONDeserializer<CalendarModel>.deserializeModelArrayFrom(json: json.description) {
                         self.calendarData = datas as! [CalendarModel]
                         callback()
                     }
@@ -34,7 +34,7 @@ extension MainViewModel {
         }
     }
     // 版本请求
-    func getVersionIOS(callback: @escaping (JSON) -> ()) {
+    func getVersionIOS(callback: @escaping (JSON) -> Void) {
         HomePageProvider.request(.versioniOS) { (result) in
             if case let .success(response) = result {
                 let value = try? response.mapJSON()
@@ -49,7 +49,7 @@ extension MainViewModel {
         }
     }
     // 暂时弃用
-    func getClass(callback: @escaping () -> ()) {
+    func getClass(callback: @escaping () -> Void) {
         HomePageProvider.request(.course) { (result) in
             if case let .success(response) = result {
                 let value = try? response.mapJSON()

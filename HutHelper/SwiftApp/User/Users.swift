@@ -38,8 +38,7 @@ class Users: NSObject {
     //*token
     var remember_code_app = ""
 
-    
-    init(dic Dic: [AnyHashable : Any]?) {
+    init(dic Dic: [AnyHashable: Any]?) {
         super.init()
         TrueName = Dic?["TrueName"] as? String ?? ""
         address = Dic?["address"] as? String ?? ""
@@ -54,7 +53,7 @@ class Users: NSObject {
         active = Dic?["active"] as? String ?? ""
         remember_code_app = Dic?["remember_code_app"] as? String ?? ""
         bio = Dic?["bio"] as? String ?? ""
-        
+
     }
 }
 struct ClassModel {

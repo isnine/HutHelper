@@ -10,10 +10,10 @@ import UIKit
 
 @objcMembers
 open class EachNavigationBar: UINavigationBar {
-    
+
     /// automatically adjusts position when view layout
     open var automaticallyAdjustsPosition: Bool = true
-    
+
     /// Additional height for the navigation bar.
     open var additionalHeight: CGFloat = 0 {
         didSet {
@@ -21,7 +21,7 @@ open class EachNavigationBar: UINavigationBar {
             viewController?.adjustsSafeAreaInsetsAfterIOS11()
         }
     }
-    
+
     /// Hides shadow image
     open var isShadowHidden: Bool = false {
         didSet {
@@ -29,18 +29,18 @@ open class EachNavigationBar: UINavigationBar {
             background.clipsToBounds = isShadowHidden
         }
     }
-    
+
     open var statusBarStyle: UIStatusBarStyle = .default {
         didSet {
             superNavigationBar?.barStyle = _barStyle
         }
     }
-    
+
     /// Bar button item to use for the back button in the child navigation item.
     open var backBarButtonItem: BackBarButtonItem = .none {
         didSet {
             backBarButtonItem.navigationController = viewController?.navigationController
-            
+
             let item = backBarButtonItem.makeBarButtonItem()
             viewController?._navigationItem.leftBarButtonItem = item
         }
@@ -51,18 +51,18 @@ open class EachNavigationBar: UINavigationBar {
     public lazy var layoutPaddings: UIEdgeInsets = {
         Const.NavigationBar.layoutPaddings
     }()
-    
+
     open var additionalView: UIView? {
         didSet {
             guard let additionalView = additionalView else {
                 oldValue?.removeFromSuperview()
                 return
             }
-            
+
             setupAdditionalView(additionalView)
         }
     }
-    
+
     open var shadow: Shadow = .none {
         didSet {
             layer.shadowColor = shadow.color
@@ -72,39 +72,39 @@ open class EachNavigationBar: UINavigationBar {
             layer.shadowPath = shadow.path
         }
     }
-    
+
     private var _contentView: UIView?
-    
+
     var _alpha: CGFloat = 1
-    
+
     weak var viewController: UIViewController?
-    
+
     public convenience init(viewController: UIViewController) {
         self.init()
         self.viewController = viewController
         setItems([viewController._navigationItem], animated: false)
     }
-    
+
     open override func layoutSubviews() {
         super.layoutSubviews()
-        
+
         _layoutSubviews()
     }
 }
 
 extension EachNavigationBar {
-    
+
     var _barStyle: UIBarStyle {
         return statusBarStyle == .default ? .default : .black
     }
-    
+
     var _additionalHeight: CGFloat {
         if #available(iOS 11.0, *) {
             if prefersLargeTitles { return 0 }
         }
         return additionalHeight
     }
-    
+
     private var barHeight: CGFloat {
         if let bar = superNavigationBar {
             return bar.frame.height
@@ -115,15 +115,15 @@ extension EachNavigationBar {
 }
 
 extension EachNavigationBar {
-    
+
     private var superNavigationBar: UINavigationBar? {
         return viewController?.navigationController?.navigationBar
     }
-    
+
     @available(iOS 11.0, *)
     private var contentView: UIView? {
         if let contentView = _contentView { return contentView }
-        
+
 //        _contentView = subviews
 //            .filter {
 //                String(describing: $0.classForCoder) == "_UINavigationBarContentView"
@@ -135,10 +135,10 @@ extension EachNavigationBar {
             className = "_UINavigationBarContentView"
         }
         _contentView = subviews.filter { String(describing: $0.classForCoder) == className }.first
-        
+
         return _contentView
     }
-    
+
     private func setupAdditionalView(_ additionalView: UIView) {
         addSubview(additionalView)
         additionalView.translatesAutoresizingMaskIntoConstraints = false
@@ -151,10 +151,10 @@ extension EachNavigationBar {
 }
 
 extension EachNavigationBar {
-    
+
     func adjustsLayout() {
         guard let navigationBar = viewController?.navigationController?.navigationBar else { return }
-        
+
         if automaticallyAdjustsPosition {
             frame = navigationBar.frame
             if #available(iOS 11.0, *) {
@@ -165,10 +165,10 @@ extension EachNavigationBar {
         } else {
             frame.size = navigationBar.frame.size
         }
-        
+
         frame.size.height = navigationBar.frame.height + _additionalHeight
     }
-    
+
     private func _layoutSubviews() {
         guard let background = subviews.first else { return }
         background.alpha = _alpha
@@ -178,13 +178,13 @@ extension EachNavigationBar {
             y: -Const.StatusBar.maxY,
             width: bounds.width,
             height: bounds.height + Const.StatusBar.maxY)
-        
+
         adjustsLayoutMarginsAfterIOS11()
     }
-    
+
     private func adjustsLayoutMarginsAfterIOS11() {
         guard #available(iOS 11.0, *) else { return }
-        
+
         layoutMargins = Const.NavigationBar.layoutMargins
         contentView?.frame.origin.y = prefersLargeTitles ? 0 : additionalHeight
         contentView?.layoutMargins = layoutPaddings

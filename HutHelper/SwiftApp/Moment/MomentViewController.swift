@@ -20,17 +20,15 @@ import SnapKit
 enum MomentType {
     case all
     case hot
-    case own(String,String)
+    case own(String, String)
     case interactive
     case custom(String)
 }
 
-
-
 class MomentViewController: BaseNarViewController {
-    
+
     // 评论View
-    lazy var commentView :AlterSginView = {
+    lazy var commentView: AlterSginView = {
         let commentView = AlterSginView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight))
             commentView.delegate = self
         return commentView
@@ -38,22 +36,20 @@ class MomentViewController: BaseNarViewController {
     var page = 1 // 页数
     // 图片数据
     var photoDatas = [UIImage]()
-   
 
     // 右边搜索
-    private lazy var rightBarButton1:UIButton = {
+    private lazy var rightBarButton1: UIButton = {
         let btn = UIButton.init(type: .custom)
-            btn.frame = CGRect(x:-5, y:0, width:30, height: 30)
+            btn.frame = CGRect(x: -5, y: 0, width: 30, height: 30)
             btn.setImage(UIImage(named: "ico_im_find"), for: .normal)
         btn.backgroundColor = .red
-            btn.rx.tap.subscribe(onNext:{[weak self] in
+            btn.rx.tap.subscribe(onNext: {[weak self] in
                 self?.menuView.show()
             }).disposed(by: disposeBag)
         return btn
     }()
 
-    
-    lazy var tableView:UITableView = {
+    lazy var tableView: UITableView = {
         let tableview = UITableView()
             tableview.tag = 2001
             tableview.separatorStyle = .none
@@ -70,7 +66,7 @@ class MomentViewController: BaseNarViewController {
                         self!.callDataHandler(datas: datas)
                     }
                 case .hot:
-                   self!.viewModel.getHotMomentRequst(page: self!.page,day: 30) { (datas) in
+                   self!.viewModel.getHotMomentRequst(page: self!.page, day: 30) { (datas) in
                        self!.callDataHandler(datas: datas)
                    }
                 case .own(let userName):
@@ -88,7 +84,7 @@ class MomentViewController: BaseNarViewController {
                         tableview.mj_footer.endRefreshing()
                     }
                 }
-                
+
             }
             tableview.mj_header = MJRefreshNormalHeader {[weak self] in
                 self!.page = 1
@@ -96,26 +92,26 @@ class MomentViewController: BaseNarViewController {
                 case .all:
                     self!.viewModel.getAllMomentRequst(page: 1) {
                         (datas) in
-                        self!.callDataHandler(datas: datas,type: "header")
+                        self!.callDataHandler(datas: datas, type: "header")
                     }
-                    
+
                 case .hot:
-                   self!.viewModel.getHotMomentRequst(page: 1,day: 30) {(datas) in
-                       self!.callDataHandler(datas: datas,type: "header")
+                   self!.viewModel.getHotMomentRequst(page: 1, day: 30) {(datas) in
+                       self!.callDataHandler(datas: datas, type: "header")
                    }
-                case .own(let userName,let userId):
+                case .own(let userName, let userId):
                     self!.viewModel.getOwnMomentRequst(page: 1, userId: userId) {(datas) in
-                        self!.callDataHandler(datas: datas,type: "header")
+                        self!.callDataHandler(datas: datas, type: "header")
                     }
                 case .interactive:
                     self!.viewModel.getInteractiveMomentRequst(page: 1) {(datas) in
-                        self!.callDataHandler(datas: datas,type: "header")
+                        self!.callDataHandler(datas: datas, type: "header")
                     }
                 case .custom(let content):
                     self!.viewModel.getSearchMomentRequst(content: content, page: 1) { (datas) in
                         if datas.count == 0 {
                             self!.navigation.item.title = "没有关于“\(content)”的说说"
-                        }else {
+                        } else {
                             self!.callDataHandler(datas: datas)
                         }
                     }
@@ -123,66 +119,62 @@ class MomentViewController: BaseNarViewController {
             }
         return tableview
     }()
-    
 
-    
     // viewModel
-    lazy var viewModel:MomentViewModel = {
+    lazy var viewModel: MomentViewModel = {
        return MomentViewModel()
     }()
-    
-    var type:MomentType = .all
+
+    var type: MomentType = .all
     var userId = ""
     // oc 调
     @objc var uid = ""
     @objc var userName = ""
-    
-    convenience init(type:MomentType = .all) {
+
+    convenience init(type: MomentType = .all) {
         self.init()
         self.type = type
     }
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         if uid != "" && userName != "" {
-            self.type = .own(userName, uid);
+            self.type = .own(userName, uid)
         }
-        
+
         configInit()
         configData()
-       configRightMenu(itemTitles: ["发布说说","我的发布","我的互动","热门说说","搜索说说"], itemIcons: [UIImage(named: "adds")!,UIImage(named: "mine")!,UIImage(named: "menu_talk")!,UIImage(named: "set_new")!,UIImage(named: "ico_im_find")!], nextController: [MomentAddViewController(),MomentViewController(type:.own(user.username, "\(user.user_id)")),MomentViewController(type:.interactive),MomentViewController(type:.hot),MomentsSearchViewController()])
+       configRightMenu(itemTitles: ["发布说说", "我的发布", "我的互动", "热门说说", "搜索说说"], itemIcons: [UIImage(named: "adds")!, UIImage(named: "mine")!, UIImage(named: "menu_talk")!, UIImage(named: "set_new")!, UIImage(named: "ico_im_find")!], nextController: [MomentAddViewController(), MomentViewController(type: .own(user.username, "\(user.user_id)")), MomentViewController(type: .interactive), MomentViewController(type: .hot), MomentsSearchViewController()])
         UIApplication.shared.windows[0].addSubview(commentView)
     }
-    
-    func callDataHandler(datas:[MomentModel],type:String = "footer"){
+
+    func callDataHandler(datas: [MomentModel], type: String = "footer") {
         if self.page == 1 {
             viewModel.momentDatas = datas
-        }else {
+        } else {
             for num in datas {
                 viewModel.momentDatas.append(num)
             }
         }
             tableView.reloadData()
-        if(type=="footer") {
+        if type=="footer" {
             tableView.mj_footer.endRefreshing()
-        }else {
+        } else {
             tableView.mj_header.endRefreshing()
         }
     }
-        
-    
-    func configInit(){
+
+    func configInit() {
         switch type {
         case .all:
             self.navigation.item.rightBarButtonItem = UIBarButtonItem.init(customView: rightBarButton)
             self.navigation.item.title = "校园说说"
         case .hot:
             self.navigation.item.title = "热门说说"
-        case .own(let userName,let _):
+        case .own(let userName, _):
             if userName == user.username {
                 self.navigation.item.title = "我的说说"
-            }else {
+            } else {
                 self.navigation.item.title = userName + "的说说"
             }
         case .interactive:
@@ -195,9 +187,9 @@ class MomentViewController: BaseNarViewController {
             make.left.top.right.equalTo(view)
             make.height.equalTo(screenHeight)
         }
-        
+
     }
-    func configData(){
+    func configData() {
         switch self.type {
         case .all:
             self.viewModel.getAllMomentRequst(page: 1) {
@@ -205,10 +197,10 @@ class MomentViewController: BaseNarViewController {
                 self.callDataHandler(datas: datas)
             }
         case .hot:
-           self.viewModel.getHotMomentRequst(page: 1,day: 30) {(datas) in
+           self.viewModel.getHotMomentRequst(page: 1, day: 30) {(datas) in
                self.callDataHandler(datas: datas)
            }
-        case .own(let userName,let userId):
+        case .own(let userName, let userId):
             self.viewModel.getOwnMomentRequst(page: 1, userId: userId) {(datas) in
                 self.callDataHandler(datas: datas)
             }
@@ -220,7 +212,7 @@ class MomentViewController: BaseNarViewController {
             self.viewModel.getSearchMomentRequst(content: content, page: 1) { (datas) in
                 if datas.count == 0 {
                     self.navigation.item.title = "没有关于“\(content)”的说说"
-                }else {
+                } else {
                     self.callDataHandler(datas: datas)
                 }
             }
@@ -229,21 +221,21 @@ class MomentViewController: BaseNarViewController {
 }
 
 // MARK: 代理 数据源
-extension MomentViewController:UITableViewDelegate,UITableViewDataSource {
+extension MomentViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
     func numberOfSections(in tableView: UITableView) -> Int {
         return viewModel.momentDatas.count
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let now = Date()
         let timeForMatter = DateFormatter()
         timeForMatter.dateFormat = "yyyy年MM月dd:HH点mm分:EE"
         let id = timeForMatter.string(from: now)
         let identifier = "\(id)MomentCell\(indexPath.section)\(indexPath.row)"
-        
+
         self.tableView.register(MomentCell.self, forCellReuseIdentifier: identifier)
         let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! MomentCell
         cell.updateUI(with: viewModel.momentDatas[indexPath.section])
@@ -252,18 +244,18 @@ extension MomentViewController:UITableViewDelegate,UITableViewDataSource {
         cell.imgBtn.addTarget(self, action: #selector(imgBtn(_:event:)), for: .touchUpInside)
         cell.deleteBtn.addTarget(self, action: #selector(deleteBtn(_:event:)), for: .touchUpInside)
         cell.nameCallback = {[weak self] (data) in
-            print("callback 昵称",data)
+            print("callback 昵称", data)
 //            let vc = PersonViewController(userid: data.user_id)
 //            self?.navigationController?.pushViewController(vc, animated: true)
             print(self?.type as Any)
         }
         cell.commentCallback = {[weak self] (data) in
-            print("callback 内容",data)
+            print("callback 内容", data)
             self!.commentView.indexPath = indexPath
             self!.commentView.textField.text = "@\(data.username)"
             self!.commentView.showAddView()
         }
-        cell.deleteCallback = {[weak self] (index,momentId) in
+        cell.deleteCallback = {[weak self] (index, momentId) in
             self!.viewModel.getDeleteCMomentRequst(commentId: momentId) {
                 cell.commentDatas.remove(at: index)
                 let indexSet = NSIndexSet(index: index)
@@ -281,22 +273,22 @@ extension MomentViewController:UITableViewDelegate,UITableViewDataSource {
         }
         return cell
     }
-    
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let data = viewModel.momentDatas[indexPath.section]
         var height = 0.0 + 92.fitW
         let contentHeight = getTextHeight(textStr: data.content, font: UIFont.systemFont(ofSize: 15), width: screenWidth-40.fitW)
 
-        var imgHeight:CGFloat = 0.0
+        var imgHeight: CGFloat = 0.0
         switch data.pics.count {
-        case 1,2,3:
+        case 1, 2, 3:
             imgHeight = 120.fitW
-        case 4,5,6:
+        case 4, 5, 6:
             imgHeight = 247.fitW
-        case 7,8,9:
+        case 7, 8, 9:
             imgHeight = 374.fitW
         default:
-            break;
+            break
         }
         for comment in data.comments {
             let commentTextHeight = getTextHeight(textStr: comment.comment, font: UIFont.init(name: "HelveticaNeue-Light", size: 13)!, width: screenWidth-40.fitW)
@@ -329,7 +321,7 @@ extension MomentViewController:UITableViewDelegate,UITableViewDataSource {
             vc.user_id = data.user_id
             vc.head_pic = data.head_pic_thumb
         self.navigationController?.pushViewController(vc, animated: true)
-        print("头像btn",data)
+        print("头像btn", data)
         }
     }
     @objc func deleteBtn(_ sender: UIButton?, event: UIEvent?) {
@@ -343,7 +335,7 @@ extension MomentViewController:UITableViewDelegate,UITableViewDataSource {
                 self.viewModel.momentDatas.remove(at: indexPath.section)
                 let indexSet = NSIndexSet(index: indexPath.section)
                 self.tableView.deleteSections(indexSet as IndexSet, with: .right)
-                
+
                 self.tableView.reloadData()
 //                let cell = self.tableView.cellForRow(at: indexPath) as! MomentCell
 //                cell.deleteBtn .isHidden = true
@@ -351,7 +343,7 @@ extension MomentViewController:UITableViewDelegate,UITableViewDataSource {
             }
         }
     }
-    
+
     @objc func commentBtn(_ sender: UIButton?, event: UIEvent?) {
         let touches = event?.allTouches
         let touch = touches?.first
@@ -375,12 +367,12 @@ extension MomentViewController:UITableViewDelegate,UITableViewDataSource {
                 self.viewModel.momentDatas[indexPath.section].is_like = !self.viewModel.momentDatas[indexPath.section].is_like
                 if data.is_like {
                     cell.likeBtn.setImage(UIImage(named: "tweet_btn_like"), for: .normal)
-                    cell.likeBtn.setTitle("\(Int(data.likes)!-1)", for:.normal)
+                    cell.likeBtn.setTitle("\(Int(data.likes)!-1)", for: .normal)
                     self.viewModel.momentDatas[indexPath.section].likes = "\(Int(data.likes)!-1)"
-                    
-                }else {
+
+                } else {
                     cell.likeBtn.setImage(UIImage(named: "tweet_btn_liked"), for: .normal)
-                    cell.likeBtn.setTitle("\(Int(data.likes)!+1)", for:.normal)
+                    cell.likeBtn.setTitle("\(Int(data.likes)!+1)", for: .normal)
                         self.viewModel.momentDatas[indexPath.section].likes = "\(Int(data.likes)!+1)"
                 }
             }
@@ -391,11 +383,11 @@ extension MomentViewController:UITableViewDelegate,UITableViewDataSource {
 
 // MARK: 空白页处理
 extension MomentViewController {
-    
+
 }
 
-extension MomentViewController:AlterSginDelegate{
-    
+extension MomentViewController: AlterSginDelegate {
+
     func commentCallback(content: String, indexPath: IndexPath) {
         let data = self.viewModel.momentDatas[indexPath.section]
         viewModel.getCommentSayRequst(comment: content, momentId: data.id) {
@@ -409,5 +401,5 @@ extension MomentViewController:AlterSginDelegate{
 //            self.tableView.reloadSections(indexSet as IndexSet, with: .automatic)
         }
     }
-    
+
 }

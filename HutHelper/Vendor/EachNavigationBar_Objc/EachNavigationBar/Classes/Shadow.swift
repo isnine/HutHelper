@@ -12,9 +12,9 @@ public class Shadow: NSObject {
     let offset: CGSize
     let radius: CGFloat
     let path: CGPath?
-    
+
     @objc public static let none: Shadow = .init()
-    
+
     @objc public init(
         color: CGColor? = nil,
         opacity: Float = 0,

@@ -33,20 +33,20 @@ public class StoreHelper {
                 }
             }
         }
-        
+
     }
 }
 
 public class StoreOCHelper: NSObject {
     @objc
     static public func storeLanuch() {
-        
+
         SwiftyStoreKit.completeTransactions(atomically: true) { purchases in
-            
+
             for purchase in purchases {
-                
+
                 if purchase.transaction.transactionState == .purchased || purchase.transaction.transactionState == .restored {
-                    
+
                     if purchase.needsFinishTransaction {
                         // Deliver content from server, then:
                         SwiftyStoreKit.finishTransaction(purchase.transaction)

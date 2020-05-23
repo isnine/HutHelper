@@ -1,4 +1,3 @@
-
 //
 //  PersonModel.swift
 //  HutHelperSwift
@@ -18,7 +17,7 @@ struct PersonModel {
     var userId = ""
 }
 
-struct PeopleModel:HandyJSON {
+struct PeopleModel: HandyJSON {
     var studentKH = ""
     var dep_name = ""
     var class_name = ""

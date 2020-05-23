@@ -61,14 +61,14 @@ class MomentAddViewModel {
 //
 //    }
 }
-// Mark:- 网络请求
+// MARK:- 网络请求
 extension MomentAddViewModel {
-    func PostHandRequst(content:String,hidden:String,type:String,callback: @escaping (_ result:JSON) -> ()) {
+    func PostHandRequst(content: String, hidden: String, type: String, callback: @escaping (_ result: JSON) -> Void) {
         //print(tit,content,price,attr,phone,adderss,type,hidden)
         MomentProvider.request(.add(content, hidden, type)) { (result) in
             if case let .success(response) = result {
                 let value = try? response.mapJSON()
-                if let data = value{
+                if let data = value {
                     let json = JSON(data)
                     print(json)
                     callback(json)
@@ -76,28 +76,28 @@ extension MomentAddViewModel {
             }
         }
     }
-    func UploadImgs(images:[UIImage],callback: @escaping (_ result:String?) -> ()){
+    func UploadImgs(images: [UIImage], callback: @escaping (_ result: String?) -> Void) {
         guard images.count != 0 else {
             callback("")
             return
         }
-        
+
         var value = ""
         var item = 0
-        for (index,image) in images.enumerated() {
-            print(image,1)
+        for (index, image) in images.enumerated() {
+            print(image, 1)
             let imageData = UIImage.jpegData(image)(compressionQuality: 0.5)
         Alamofire.upload(multipartFormData: { (multipartFormData) in
             let now = Date()
             let timeForMatter = DateFormatter()
             timeForMatter.dateFormat = "yyyyMMddHHmmss"
             let id = timeForMatter.string(from: now)
-            multipartFormData.append(imageData!, withName: "file", fileName: "\(id).jpg",mimeType: "image/jpeg")
+            multipartFormData.append(imageData!, withName: "file", fileName: "\(id).jpg", mimeType: "image/jpeg")
         }, to: getUploadImages(type: 0)) { (encodingResult) in
             print("个人图片上传地址：\(getUploadImages(type: 0))")
             switch encodingResult {
-            case .success(let upload,_,_):
-                upload.responseString{ response in
+            case .success(let upload, _, _):
+                upload.responseString { response in
                     if let data = response.data {
                         let json = JSON(data)
                         print(json)
@@ -111,7 +111,7 @@ extension MomentAddViewModel {
                         }
                     }
                 }
-            case .failure(_):
+            case .failure:
                  print("上传失败")
             }
         }

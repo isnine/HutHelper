@@ -6,8 +6,6 @@
 //  Copyright © 2020 张驰. All rights reserved.
 //
 
-
-
 import Foundation
 import Moya
 import HandyJSON
@@ -23,38 +21,36 @@ let registerAPI = basicUrl + "/auth/register"
 // MARK: 登录
 let LoginProvider = MoyaProvider<LoginAPI>()
 
-enum LoginAPI{
-    case login(String,String)
+enum LoginAPI {
+    case login(String, String)
 }
-extension LoginAPI:TargetType{
+extension LoginAPI: TargetType {
     var baseURL: URL { return URL(string: basicUrl)! }
     var path: String { return "/api/v3/get/login/2" }
     var method: Moya.Method { return .post }
     var task: Task {
-        var parmeters:[String:Any] = [:]
+        var parmeters: [String: Any] = [:]
         switch self {
         case .login(let username, let password):
-            parmeters = ["studentkh":username,
-                         "passwd":password
+            parmeters = ["studentkh": username,
+                         "passwd": password
                         ]
         }
         return .requestParameters(parameters: parmeters, encoding: URLEncoding.default)
     }
-    var headers: [String : String]? { return nil }
+    var headers: [String: String]? { return nil }
     // 用于单元测试
     var sampleData: Data {
         return "".data(using: String.Encoding.utf8)!
     }
 }
 
-
-
 // 获取所有班级
 let getAllclassesAPI = basicUrl + "/api/v3/get/classes/1/1"
 
 //let getAlterUseImg =  "\(imageUrl)/api/v3/Upload/images/\(user.studentKH)/\(user.remember_code_app)/" + env() + "/3"
 // 上传图片全局方法
-func getUploadImages(type:Int) -> String {
+func getUploadImages(type: Int) -> String {
     let now = Date()
     let timeForMatter = DateFormatter()
     timeForMatter.dateFormat = "yyyy-MM"
@@ -65,55 +61,53 @@ func getUploadImages(type:Int) -> String {
     return  url
 }
 
-func getPersonInfo(userId:String) -> String {
+func getPersonInfo(userId: String) -> String {
     let env = "\(user.studentKH)\(user.remember_code_app)\(userId)2020-01".sha1
     let url = "/api/v3/Set/user_info/\(user.studentKH)/\(user.remember_code_app)/\(userId)/\(env())"
     print(basicUrl+url)
     return basicUrl + url
 }
 
-
 // MARK: 用户
 let UserInfoProvider = MoyaProvider<UserInfoAPI>()
- 
-enum UserInfoAPI{
+
+enum UserInfoAPI {
     case bio(String)
     case username(String)
     case classes(String)
-    
+
 }
 
-extension UserInfoAPI:TargetType{
+extension UserInfoAPI: TargetType {
     var baseURL: URL { return URL(string: basicUrl)! }
     var path: String { return "/api/v3/set/profile/\(user.studentKH)/\(user.remember_code_app)" }
     var method: Moya.Method { return .post }
     var task: Task {
-        var parmeters:[String:Any] = [:]
+        var parmeters: [String: Any] = [:]
         switch self {
-        
+
         case .bio(let value):
             parmeters = [
-                         "bio":value
+                         "bio": value
                        ]
-            
+
         case .username(let value):
             parmeters = [
-                         "username":value
+                         "username": value
                        ]
         case .classes(let value):
             parmeters = [
-                         "class_name":value
+                         "class_name": value
                        ]
         }
         return .requestParameters(parameters: parmeters, encoding: URLEncoding.default)
     }
-    var headers: [String : String]? { return nil }
+    var headers: [String: String]? { return nil }
     // 用于单元测试
     var sampleData: Data {
         return "".data(using: String.Encoding.utf8)!
     }
 }
-
 
 // MARK: 首页
 let HomePageProvider = MoyaProvider<HomePageAPI>()
@@ -124,7 +118,7 @@ enum HomePageAPI {
     case versioniOS
     case course
 }
-extension HomePageAPI:TargetType{
+extension HomePageAPI: TargetType {
     var baseURL: URL {
         switch self {
         case .weather:
@@ -147,10 +141,10 @@ extension HomePageAPI:TargetType{
     }
     var method: Moya.Method { return .get }
     var task: Task {
-        let parmeters:[String:Any] = [:]
+        let parmeters: [String: Any] = [:]
         return .requestParameters(parameters: parmeters, encoding: URLEncoding.default)
     }
-    var headers: [String : String]? { return nil }
+    var headers: [String: String]? { return nil }
     // 用于单元测试
     var sampleData: Data {
         return "".data(using: String.Encoding.utf8)!
@@ -183,107 +177,106 @@ let getExamAPI = "http://m.huthelper.cn/im/#/qz/exam-plan"
 let HandProvider = MoyaProvider<HandAPI>()
 
 enum HandAPI {
-    case all(Int,Int)
+    case all(Int, Int)
     case details(String)
-    case add(String,String,Int,Int,String,String,Int,String)
-    case own(Int,String)
+    case add(String, String, Int, Int, String, String, Int, String)
+    case own(Int, String)
     case delete(String)
 }
-extension HandAPI:TargetType {
+extension HandAPI: TargetType {
     var baseURL: URL {
         return URL(string: basicUrl)!
     }
-    
+
     var path: String {
         switch self {
         case  .all(let page, let type):
             return "/api/v3/trade/goods/\(page)/\(type)"
         case .details(let id):
             return "/api/v3/trade/details/\(user.studentKH)/\(user.remember_code_app)/\(id)"
-        case .add(_, _, _, _, _, _, _, _):
+        case .add:
             return "/api/v3/trade/create/\(user.studentKH)/\(user.remember_code_app)"
-        case .own(let page,let userId):
+        case .own(let page, let userId):
             return "/api/v3/trade/own/\(user.studentKH)/\(user.remember_code_app)/\(page)/\(userId)"
         case .delete(let goodId):
             return "/api/v3/trade/delete/\(user.studentKH)/\(user.remember_code_app)/\(goodId)"
         }
-        
+
     }
-    
+
     var method: Moya.Method {
         switch self {
-        case .add(_, _, _, _, _, _, _, _):
+        case .add:
             return .post
         default:
             return .get
         }
     }
     var task: Task {
-        var parmeters:[String:Any] = [:]
+        var parmeters: [String: Any] = [:]
         switch self {
         case .add(let tit, let content, let price, let attr, let phone, let address, let type, let hidden):
             parmeters = [
-                         "tit":tit,
-                         "content":content,
-                         "prize":price,
-                         "attr":attr,
-                         "phone":phone,
-                         "address":address,
-                         "type":type,
-                         "hidden":hidden
+                         "tit": tit,
+                         "content": content,
+                         "prize": price,
+                         "attr": attr,
+                         "phone": phone,
+                         "address": address,
+                         "type": type,
+                         "hidden": hidden
                        ]
-            
+
         default:
-            break;
+            break
         }
         return .requestParameters(parameters: parmeters, encoding: URLEncoding.default)
     }
-    var headers: [String : String]? { return nil }
+    var headers: [String: String]? { return nil }
     // 用于单元测试
     var sampleData: Data {
         return "".data(using: String.Encoding.utf8)!
     }
-    
-    
+
 }
 
 // MARK: 校园说说
 let MomentProvider = MoyaProvider<MomentAPI>()
 
 enum MomentAPI {
-    case add(String,String,String)
-    case comment(String,String)
+    case add(String, String, String)
+    case comment(String, String)
     case all(Int)
-    case hot(Int,Int)
-    case own(Int,String)
+    case hot(Int, Int)
+    case own(Int, String)
     case interactive(Int)
-    case search(String,Int)
+    case search(String, Int)
     case like(String)
     case delete(String)
     case unlike(String)
     case deleteC(String)
 }
-extension MomentAPI:TargetType {
+extension MomentAPI: TargetType {
     var baseURL: URL {
         return URL(string: basicUrl)!
     }
-    
+
     var path: String {
         switch self {
-        case .add(_, _, _):
+        case .add:
             return "/api/v3/statement/create/\(user.studentKH)/\(user.remember_code_app)"
-        case .comment(_, _):
+        case .comment:
             return "/api/v3/statement/comment/\(user.studentKH)/\(user.remember_code_app)"
         case .all(let page):
             return "/api/v3/statement/statement/\(user.studentKH)/\(page)"
-        case .hot(let page,let day):
+        case .hot(let page, let day):
             return "/api/v3/statement/fire/\(user.studentKH)/\(day)/\(page)"
         case .own(let page, let userId):
             return "/api/v3/statement/own/\(user.studentKH)/\(user.remember_code_app)/\(page)/\(userId)"
         case .interactive(let page):
         print("/api/v3/statement/interactive/\(user.studentKH)/\(user.remember_code_app)/\(page)")
             return "/api/v3/statement/interactive/\(user.studentKH)/\(user.remember_code_app)/\(page)"
-        case .search(let content,let page):
+        case .search(let content, let page):
            return "/api/v3/statement/search/\(user.studentKH)/\(user.remember_code_app)/\(content)/\(page)"
 
         case .like(let mid):
@@ -296,26 +289,26 @@ extension MomentAPI:TargetType {
             return "/api/v3/statement/deleteC/\(user.studentKH)/\(user.remember_code_app)/\(commentId)"
         }
     }
-    
+
     var method: Moya.Method {
         switch self {
-        case .add(_, _, _):
+        case .add:
             return .post
-        case .comment(_, _):
+        case .comment:
             return .post
         default:
             return .get
         }
     }
-    
+
     var task: Task {
-        var parmeters:[String:Any] = [:]
+        var parmeters: [String: Any] = [:]
         switch self {
         case .add(let content, let hidden, let type):
             parmeters = [
-                         "content" : content,
-                         "hidden" : hidden,
-                         "type" : type
+                         "content": content,
+                         "hidden": hidden,
+                         "type": type
                        ]
         case .comment(let comment, let moment_id):
             parmeters = [
@@ -323,39 +316,37 @@ extension MomentAPI:TargetType {
                          "moment_id": moment_id
                        ]
         default:
-            break;
+            break
         }
         return .requestParameters(parameters: parmeters, encoding: URLEncoding.default)
 
     }
-    var headers: [String : String]? { return nil }
+    var headers: [String: String]? { return nil }
     // 用于单元测试
     var sampleData: Data {
         return "".data(using: String.Encoding.utf8)!
     }
-    
-}
 
+}
 
 // MARK: 失误招领
 let LostProvider = MoyaProvider<LostAPI>()
 
-
 enum LostAPI {
-    case create(String,String,String,String,String,String,Int)
+    case create(String, String, String, String, String, String, Int)
     case all(Int)
-    case own(Int,String)
-    case search(Int,String)
+    case own(Int, String)
+    case search(Int, String)
     case delete(String)
 }
-extension LostAPI:TargetType {
+extension LostAPI: TargetType {
     var baseURL: URL {
         return URL(string: basicUrl)!
     }
-    
+
     var path: String {
         switch self {
-        case .create(_, _, _, _, _, _, _):
+        case .create:
             return "api/v3/loses/create/\(user.studentKH)/\(user.remember_code_app)"
         case .all(let page):
             return "api/v3/loses/goods/\(page)/0"
@@ -369,47 +360,45 @@ extension LostAPI:TargetType {
             break
         }
     }
-    
+
     var method: Moya.Method {
         switch self {
-        case .create(_, _, _, _, _, _, _):
+        case .create:
             return .post
-        case .search(_, _):
+        case .search:
             return .post
         default:
             return .get
         }
     }
-    
-    
+
     var task: Task {
-        var parmeters:[String:Any] = [:]
+        var parmeters: [String: Any] = [:]
         switch self {
         case .create(let tit, let locate, let time, let content, let hidden, let phone, let type):
             parmeters = [
-                         "tit" : tit,
-                         "locate" : locate,
-                         "time" : time,
-                         "content" : content,
-                         "hidden" : hidden,
-                         "phone" : phone,
-                         "type" : type
+                         "tit": tit,
+                         "locate": locate,
+                         "time": time,
+                         "content": content,
+                         "hidden": hidden,
+                         "phone": phone,
+                         "type": type
                        ]
         case .search(_, let like):
             parmeters = [
-                         "like":like
+                         "like": like
                        ]
         default:
-            break;
+            break
         }
         return .requestParameters(parameters: parmeters, encoding: URLEncoding.default)
     }
 
-    var headers: [String : String]? { return nil }
+    var headers: [String: String]? { return nil }
     // 用于单元测试
     var sampleData: Data {
         return "".data(using: String.Encoding.utf8)!
     }
-    
-    
+
 }

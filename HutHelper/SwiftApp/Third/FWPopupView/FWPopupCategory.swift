@@ -14,7 +14,6 @@
  ***************************************************
  */
 
-
 import Foundation
 import UIKit
 import SnapKit
@@ -29,9 +28,8 @@ let fwAnimationDurationKey: UnsafeRawPointer! = UnsafeRawPointer.init(bitPattern
 /// 遮罩层的默认背景色
 let kDefaultMaskViewColor = UIColor(white: 0, alpha: 0.5)
 
-
 extension UIView {
-    
+
     var fwBackgroundAnimating: Bool {
         get {
             let isAnimating = objc_getAssociatedObject(self, fwBackgroundAnimatingKey) as? Bool
@@ -44,7 +42,7 @@ extension UIView {
             objc_setAssociatedObject(self, fwBackgroundAnimatingKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
     }
-    
+
     var fwAnimationDuration: TimeInterval {
         get {
             let duration = objc_getAssociatedObject(self, fwAnimationDurationKey) as? TimeInterval
@@ -57,7 +55,7 @@ extension UIView {
             objc_setAssociatedObject(self, fwAnimationDurationKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
     }
-    
+
     var fwReferenceCount: Int {
         get {
             let count = objc_getAssociatedObject(self, fwReferenceCountKey) as? Int
@@ -70,7 +68,7 @@ extension UIView {
             objc_setAssociatedObject(self, fwReferenceCountKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
     }
-    
+
     /// 遮罩层颜色
     var fwMaskViewColor: UIColor {
         get {
@@ -84,7 +82,7 @@ extension UIView {
             objc_setAssociatedObject(self, fwBackgroundViewColorKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
     }
-    
+
     /// 遮罩层
     var fwMaskView: UIView {
         var tmpView = objc_getAssociatedObject(self, fwBackgroundViewKey) as? UIView
@@ -94,7 +92,7 @@ extension UIView {
             tmpView?.snp.makeConstraints({ (make) in
                 make.top.left.bottom.right.equalTo(self)
             })
-            
+
             tmpView?.alpha = 0.0
             tmpView?.layer.zPosition = CGFloat(MAXFLOAT)
         }
@@ -102,17 +100,17 @@ extension UIView {
         objc_setAssociatedObject(self, fwBackgroundViewKey, tmpView, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         return tmpView!
     }
-    
+
     /// 显示遮罩层
     func showFwBackground() {
-        
+
         self.fwReferenceCount += 1
         if self.fwReferenceCount > 1 {
             self.fwReferenceCount -= 1
             return
         }
         self.fwMaskView.isHidden = false
-        
+
         if self == FWPopupWindow.sharedInstance.attachView() {
             FWPopupWindow.sharedInstance.isHidden = false
             FWPopupWindow.sharedInstance.makeKeyAndVisible()
@@ -123,35 +121,35 @@ extension UIView {
         } else {
             self.bringSubviewToFront(self.fwMaskView)
         }
-        
+
         UIView.animate(withDuration: self.fwAnimationDuration, delay: 0, options: [.curveEaseOut, .beginFromCurrentState], animations: {
-            
+
             self.fwMaskView.alpha = 1.0
-            
-        }) { (finished) in
-            
+
+        }) { (_) in
+
         }
     }
-    
+
     /// 隐藏遮罩层
     func hideFwBackground() {
-        
+
         if self.fwReferenceCount > 1 {
             return
         }
-        
+
         UIView.animate(withDuration: self.fwAnimationDuration, delay: 0, options: [.curveEaseIn, .beginFromCurrentState], animations: {
-            
+
             self.fwMaskView.alpha = 0.0
-            
-        }) { (finished) in
-            
+
+        }) { (_) in
+
             if self == FWPopupWindow.sharedInstance.attachView() {
                 FWPopupWindow.sharedInstance.isHidden = true
             } else if self.isKind(of: UIWindow.self) {
                 self.isHidden = true
             }
-            
+
             self.fwReferenceCount -= 1
         }
     }

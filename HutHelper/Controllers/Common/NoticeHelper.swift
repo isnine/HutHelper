@@ -18,13 +18,13 @@ public class NoticeHelper {
     static func showThanks(_ title: String) {
         showNotice(title, "app会因您变得更好", theme: .success, duration: .seconds(seconds: 3))
     }
-    static func showNotice(_ title: String,_ body: String, theme: Theme, duration: SwiftMessages.Duration = .seconds(seconds: 0.1)) {
+    static func showNotice(_ title: String, _ body: String, theme: Theme, duration: SwiftMessages.Duration = .seconds(seconds: 0.1)) {
 //        DispatchQueue.main.async {
         let view = MessageView.viewFromNib(layout: .cardView)
-        
+
         // Theme message elements with the warning style.
         view.configureTheme(theme)
-        
+
         // Add a drop shadow.
         view.configureDropShadow()
         view.button?.isHidden = true
@@ -37,7 +37,7 @@ public class NoticeHelper {
             iconText = "☹️"
         }
         view.configureContent(title: title, body: body, iconText: iconText)
-        
+
         // Increase the external margin around the card. In general, the effect of this setting
         // depends on how the given layout is constrained to the layout margins.
         view.layoutMarginAdditions = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)

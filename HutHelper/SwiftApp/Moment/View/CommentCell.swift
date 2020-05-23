@@ -10,33 +10,33 @@ import UIKit
 import SnapKit
 
 class CommentCell: UITableViewCell {
-    
-    lazy var nameBtn:UIButton = {
+
+    lazy var nameBtn: UIButton = {
        let btn = UIButton()
 //        btn.setTitleColor(UIColor.init(r: 29, g: 203, b: 219), for: .normal)
 //        btn.titleLabel?.font = UIFont.init(name: "HelveticaNeue-Light", size: 13)
 //        btn.backgroundColor = .red
         return btn
     }()
-    lazy var nameLab:UILabel = {
+    lazy var nameLab: UILabel = {
        let label = UILabel()
         label.font = UIFont.init(name: "HelveticaNeue-Light", size: 13)
         label.textColor = UIColor.init(r: 29, g: 203, b: 219)
         //label.backgroundColor = .red
         return label
     }()
-    lazy var contentLab:UILabel = {
+    lazy var contentLab: UILabel = {
        let label = UILabel()
         label.font = UIFont.init(name: "HelveticaNeue-Light", size: 13)
         //label.backgroundColor = .cyan
         label.numberOfLines = 0
         return label
     }()
-    lazy var contentBtn:UIButton = {
+    lazy var contentBtn: UIButton = {
         let btn = UIButton()
          return btn
     }()
-    lazy var deleteBtn:UIButton = {
+    lazy var deleteBtn: UIButton = {
         let btn = UIButton()
         btn.setTitleColor(UIColor.red, for: .normal)
         btn.titleLabel?.font = UIFont.init(name: "HelveticaNeue-Light", size: 9)
@@ -44,22 +44,22 @@ class CommentCell: UITableViewCell {
         btn.setTitle("删除", for: .normal)
         return btn
     }()
-    lazy var timeLab:UILabel = {
+    lazy var timeLab: UILabel = {
         let label = UILabel()
         label.font = UIFont.init(name: "HelveticaNeue-Light", size: 9)
         label.textColor = UIColor.init(r: 161, g: 161, b: 161)
          return label
     }()
-    
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setUI()
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -70,8 +70,8 @@ class CommentCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
-    func updateUI(with data:CommentModel){
+
+    func updateUI(with data: CommentModel) {
         let nameBtnSize = textSize(text: data.username, font: UIFont.systemFont(ofSize: 13), maxSize: CGSize(width: 414, height: 20))
         let nameWidth = nameBtnSize.width + 5
         nameLab.snp.remakeConstraints { (make) in
@@ -104,7 +104,7 @@ class CommentCell: UITableViewCell {
                 make.right.equalTo(self)
                 make.width.equalTo(30.fitW)
             }
-        }else {
+        } else {
             contentLab.snp.remakeConstraints { (make) in
                 make.top.right.equalTo(self)
                 make.height.equalTo(commentHeight + 4)
@@ -121,8 +121,8 @@ class CommentCell: UITableViewCell {
         contentLab.text = data.comment
         //timeLab.text = data.created_on
     }
-    
-    func setUI(){
+
+    func setUI() {
         addSubview(nameLab)
         addSubview(contentLab)
         addSubview(nameBtn)
@@ -133,7 +133,7 @@ class CommentCell: UITableViewCell {
 //             make.height.equalTo(20.fitW)
 //             make.width.equalTo(100)
 //         }
-        
+
     }
 
 }

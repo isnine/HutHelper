@@ -22,10 +22,10 @@ class UseInfoCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
-    func updateUI(headlab:String,infolab:String) {
+
+    func updateUI(headlab: String, infolab: String) {
         headLab.text = headlab
         infoLab.text = infolab
     }
-    
+
 }

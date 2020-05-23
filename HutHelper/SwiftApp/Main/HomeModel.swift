@@ -9,7 +9,7 @@
 import Foundation
 import HandyJSON
 
-struct CalendarModel: HandyJSON{
+struct CalendarModel: HandyJSON {
     var days = 0
     var date = ""
     var name = ""
@@ -22,8 +22,8 @@ class VersionModel: NSObject {
     var map_url = ""
     var school_opens = ""
     var im_msg_count = ""
-    
-    init(dic Dic:[AnyHashable:Any]?) {
+
+    init(dic Dic: [AnyHashable: Any]?) {
         super.init()
         calendar_url = Dic?["calendar_url"] as? String ?? ""
         moment_types = Dic?["moment_types"] as? [String] ?? []

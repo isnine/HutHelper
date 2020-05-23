@@ -7,12 +7,12 @@
 //
 
 extension UINavigationController {
-    
+
     @available(swift, obsoleted: 4.2, message: "Only for Objective-C call.")
     @objc public var navigation_configuration: Configuration {
         return _configuration
     }
-    
+
     @available(swift, obsoleted: 4.2, message: "Only for Objective-C call.")
     @available(iOS 11.0, *)
     @objc public func navigation_prefersLargeTitles() {
@@ -21,19 +21,19 @@ extension UINavigationController {
 }
 
 extension UIViewController {
-    
+
     @available(swift, obsoleted: 4.2, message: "Only for Objective-C call.")
     @objc public static func navigation_methodSwizzling() {
         methodSwizzling
     }
-    
+
     @available(swift, obsoleted: 4.2, message: "Only for Objective-C call.")
     @objc public var navigation_bar: EachNavigationBar {
         assert(!(self is UINavigationController),
                "UINavigationController can't use this property, please use configuration.")
         return _navigationBar
     }
-    
+
     @available(swift, obsoleted: 4.2, message: "Only for Objective-C call.")
     @objc public var navigation_item: UINavigationItem {
         assert(!(self is UINavigationController),
@@ -43,32 +43,32 @@ extension UIViewController {
 }
 
 public extension BackBarButtonItem {
-    
+
     @available(swift, obsoleted: 4.2, message: "Only for Objective-C call.")
     @objc convenience init(title: String?) {
         self.init(style: .title(title), tintColor: nil)
     }
-    
+
     @available(swift, obsoleted: 4.2, message: "Only for Objective-C call.")
     @objc convenience init(title: String?, tintColor: UIColor?) {
         self.init(style: .title(title), tintColor: tintColor)
     }
-    
+
     @available(swift, obsoleted: 4.2, message: "Only for Objective-C call.")
     @objc convenience init(image: UIImage?) {
         self.init(style: .image(image), tintColor: nil)
     }
-    
+
     @available(swift, obsoleted: 4.2, message: "Only for Objective-C call.")
     @objc convenience init(image: UIImage?, tintColor: UIColor?) {
         self.init(style: .image(image), tintColor: tintColor)
     }
-    
+
     @available(swift, obsoleted: 4.2, message: "Only for Objective-C call.")
     @objc convenience init(customView: UIButton) {
         self.init(style: .custom(customView), tintColor: nil)
     }
-    
+
     @available(swift, obsoleted: 4.2, message: "Only for Objective-C call.")
     @objc convenience init(customView: UIButton, tintColor: UIColor?) {
         self.init(style: .custom(customView), tintColor: tintColor)

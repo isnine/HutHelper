@@ -561,14 +561,14 @@ int class_error_;
     [menuBtn setBackgroundImage:[UIImage imageNamed:@"menu"] forState:UIControlStateNormal];
     [menuBtn addTarget:self action:@selector(openOrCloseLeftList) forControlEvents:UIControlEventTouchUpInside];
     //按钮
-    UIView *rightButtonView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 50)];
-    UIButton *mainAndSearchBtn = [[UIButton alloc] initWithFrame:CGRectMake(70, 0, 50, 50)];
-    [rightButtonView addSubview:mainAndSearchBtn];
-    [mainAndSearchBtn setImage:[UIImage imageNamed:@"ico_menu_more"] forState:UIControlStateNormal];
-    [mainAndSearchBtn addTarget:self action:@selector(more) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *rightCunstomButtonView = [[UIBarButtonItem alloc] initWithCustomView:rightButtonView];
-    self.navigation_item.leftBarButtonItem  = [[UIBarButtonItem alloc] initWithCustomView:menuBtn];
-    self.navigation_item.rightBarButtonItem = rightCunstomButtonView;
+//    UIView *rightButtonView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 50)];
+//    UIButton *mainAndSearchBtn = [[UIButton alloc] initWithFrame:CGRectMake(70, 0, 50, 50)];
+//    [mainAndSearchBtn setImage:[UIImage imageNamed:@"ico_menu_more"] forState:UIControlStateNormal];
+//    [mainAndSearchBtn addTarget:self action:@selector(more) forControlEvents:UIControlEventTouchUpInside];
+//    [rightButtonView addSubview:mainAndSearchBtn];
+//    UIBarButtonItem *rightCunstomButtonView = [[UIBarButtonItem alloc] initWithCustomView:mainAndSearchBtn];
+//    self.navigation_item.leftBarButtonItem  = [[UIBarButtonItem alloc] initWithCustomView:menuBtn];
+//    self.navigation_item.rightBarButtonItem = rightCunstomButtonView;
     self.navigation_bar.isShadowHidden = true;
     self.navigation_bar.alpha = 0;
     //轮番图和手势更换图片
@@ -629,13 +629,10 @@ int class_error_;
     return nil;
 }
 
--(void)more{
-//    AppDelegate *tempAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-//    MoreViewController *moreVC = [[MoreViewController alloc]init];
-//    [tempAppDelegate.mainNavigationController pushViewController:moreVC animated:YES];
-    
-
-    
+- (void)more{
+    AppDelegate *tempAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    MoreViewController *moreVC = [[MoreViewController alloc]init];
+    [tempAppDelegate.mainNavigationController pushViewController:moreVC animated:YES];
 }
 
 - (void)getAllClasses{

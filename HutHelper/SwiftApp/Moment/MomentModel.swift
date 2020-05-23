@@ -9,7 +9,7 @@
 import Foundation
 import HandyJSON
 
-struct MomentModel:HandyJSON {
+struct MomentModel: HandyJSON {
     var id = ""
     var user_id = ""
     var content = ""
@@ -30,7 +30,7 @@ struct MomentModel:HandyJSON {
     var comments = [CommentModel]()
 }
 
-struct CommentModel:HandyJSON {
+struct CommentModel: HandyJSON {
     var id = ""
     var moment_id = ""
     var comment = ""

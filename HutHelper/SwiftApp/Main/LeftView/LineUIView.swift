@@ -8,12 +8,11 @@
 
 import UIKit
 
-
 @IBDesignable class LineUIView: UIView {
 
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
-    
+
     override func draw(_ rect: CGRect) {
         let context = UIGraphicsGetCurrentContext()
         // 设置线条的样式
@@ -29,7 +28,7 @@ import UIKit
         // 设置虚线绘制起点
         context?.move(to: CGPoint(x: 0, y: 15.0))
         // lengths的值｛10,10｝表示先绘制10个点，再跳过10个点，如此反复
-        let lengths:[CGFloat] = [2.0, 3.0]
+        let lengths: [CGFloat] = [2.0, 3.0]
         // 虚线的起始点
         context?.setLineDash(phase: 0, lengths: lengths)
         // 绘制虚线的终点
@@ -38,6 +37,5 @@ import UIKit
         context?.strokePath()
         // Drawing code
     }
-    
 
 }

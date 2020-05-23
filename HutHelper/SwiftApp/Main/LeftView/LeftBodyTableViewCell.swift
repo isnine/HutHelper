@@ -12,7 +12,7 @@ class LeftBodyTableViewCell: UITableViewCell {
 
     @IBOutlet weak var bodyImg: UIImageView!
     @IBOutlet weak var bodyLab: UILabel!
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -23,7 +23,7 @@ class LeftBodyTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    func updateUI(icon:String,label:String) {
+    func updateUI(icon: String, label: String) {
         self.backgroundColor = .clear
         self.bodyImg.image = UIImage(named: icon)
         self.bodyLab.text = label

@@ -363,6 +363,7 @@
 		3AFA4FA81EC1B82100CB7DA2 /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AFA4FA11EC1B82100CB7DA2 /* TodayViewController.m */; };
 		3AFA4FA91EC1B82100CB7DA2 /* Exam.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AFA4FA41EC1B82100CB7DA2 /* Exam.m */; };
 		3AFA4FAA1EC1B82100CB7DA2 /* Rectangle.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AFA4FA71EC1B82100CB7DA2 /* Rectangle.m */; };
+		CE967E322478FA9600F39AA0 /* DTKDropdownMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE967E302478FA9500F39AA0 /* DTKDropdownMenuView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -910,6 +911,8 @@
 		3AFA4FA61EC1B82100CB7DA2 /* Rectangle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Rectangle.h; sourceTree = "<group>"; };
 		3AFA4FA71EC1B82100CB7DA2 /* Rectangle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Rectangle.m; sourceTree = "<group>"; };
 		A8DF4B266A6C75237AD1C11E /* Pods-HutHelper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HutHelper.release.xcconfig"; path = "Pods/Target Support Files/Pods-HutHelper/Pods-HutHelper.release.xcconfig"; sourceTree = "<group>"; };
+		CE967E302478FA9500F39AA0 /* DTKDropdownMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTKDropdownMenuView.m; sourceTree = "<group>"; };
+		CE967E312478FA9600F39AA0 /* DTKDropdownMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTKDropdownMenuView.h; sourceTree = "<group>"; };
 		F483A3F1FC79A9B85B68036B /* libPods-HutHelper.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HutHelper.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -1844,7 +1847,9 @@
 				3A7D3CA81DB0A6CB00355E7A /* Frameworks */,
 				12486D9D0B1F337F5979987B /* Pods */,
 			);
+			indentWidth = 4;
 			sourceTree = "<group>";
+			tabWidth = 4;
 		};
 		3A85677C1DA908AA00EBD44A /* Products */ = {
 			isa = PBXGroup;
@@ -2094,6 +2099,7 @@
 		3A98CBCB1E7CFA9C00CABD0D /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				CE967E2F2478FA8F00F39AA0 /* DTKDropdownMenu */,
 				25720DAB23FCDDC80054E392 /* EachNavigationBar_Objc */,
 				3A8DFD7F22BDD40E004A69B8 /* TZImagePickerController */,
 				3A8DFCBF22BDCA44004A69B8 /* MJRefresh */,
@@ -2422,6 +2428,15 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		CE967E2F2478FA8F00F39AA0 /* DTKDropdownMenu */ = {
+			isa = PBXGroup;
+			children = (
+				CE967E312478FA9600F39AA0 /* DTKDropdownMenuView.h */,
+				CE967E302478FA9500F39AA0 /* DTKDropdownMenuView.m */,
+			);
+			path = DTKDropdownMenu;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -2688,7 +2703,6 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-HutHelper/Pods-HutHelper-resources.sh",
 				"${PODS_ROOT}/DJRefresh/DJRefresh/DJRefresh.bundle",
-				"${PODS_ROOT}/DTKDropdownMenu/DTKDropdownMenuView/DTKDropdownMenuView.bundle",
 				"${PODS_ROOT}/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/SwiftMessages/SwiftMessages.bundle",
 				"${PODS_ROOT}/UMengUShare/UShareSDK/UMSocialSDK/UMSocialSDKPromptResources.bundle",
@@ -2697,7 +2711,6 @@
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/DJRefresh.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/DTKDropdownMenuView.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SVProgressHUD.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SwiftMessages.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/UMSocialSDKPromptResources.bundle",
@@ -2879,6 +2892,7 @@
 				3AFA4F6F1EC04A4B00CB7DA2 /* UINavigationBar+Awesome.m in Sources */,
 				3A98CC091E7CFA9C00CABD0D /* JSONKit.m in Sources */,
 				3A8DFD1422BDCA45004A69B8 /* MJRefreshAutoNormalFooter.m in Sources */,
+				CE967E322478FA9600F39AA0 /* DTKDropdownMenuView.m in Sources */,
 				25BCFC002407AF4E0030CA34 /* MainViewController.swift in Sources */,
 				3A532CDD1E9121C5003CD5A8 /* VedioTableViewController.m in Sources */,
 				3AA158B31FADF79D00298AAD /* UserHeaderCell.m in Sources */,

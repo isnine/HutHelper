@@ -32,8 +32,6 @@ PODS:
     - CollectionKit/Core (= 2.4.0)
   - CollectionKit/Core (2.4.0)
   - DJRefresh (1.0.5)
-  - DTKDropdownMenu (0.0.4):
-    - Masonry (~> 0.6)
   - DZNEmptyDataSet (1.8.1)
   - HandyJSON (5.0.0)
   - HUPhotoBrowser (1.4.5):
@@ -96,7 +94,6 @@ DEPENDENCIES:
   - ASIHTTPRequest
   - CollectionKit
   - DJRefresh (~> 1.0.5)
-  - DTKDropdownMenu (~> 0.0.4)
   - DZNEmptyDataSet
   - HandyJSON
   - HUPhotoBrowser
@@ -128,7 +125,6 @@ SPEC REPOS:
     - ASIHTTPRequest
     - CollectionKit
     - DJRefresh
-    - DTKDropdownMenu
     - DZNEmptyDataSet
     - HandyJSON
     - HUPhotoBrowser
@@ -162,7 +158,6 @@ SPEC CHECKSUMS:
   ASIHTTPRequest: ec013992946676b7978dcbde6396d57312d21db4
   CollectionKit: 8f01e7629185bb81072c4aa734d105df5c2d1c8b
   DJRefresh: 32b3776546004faddddc28035442ba15e07c5f1b
-  DTKDropdownMenu: 3a3d8afc4f70fab50a5a8131aadc8b383ef54891
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   HandyJSON: 992f2d661716d6a91de82d0056927bc7813b5770
   HUPhotoBrowser: 87a8333c111a4e71ebf5400bf66d0eeb522c0098
@@ -190,6 +185,6 @@ SPEC CHECKSUMS:
   UMengUShare: 370d180101e13ee0227ae657ab119ba97243d2b3
   YCXMenu: 6003bcd20d8ac72e3eb3c442c97ed21948c6dc1f
 
-PODFILE CHECKSUM: 7f7f461391c9f7dd89b77ef05803f1911fbf5c8c
+PODFILE CHECKSUM: 72e24ab47bff51115be109d442d5084fb20f136d
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.9.1

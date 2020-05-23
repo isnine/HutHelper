@@ -11,28 +11,28 @@ import SnapKit
 import JXPhotoBrowser
 
 protocol MomentCellDelegate {
-    
+
 }
 
 class MomentCell: UITableViewCell {
     // 回调闭包
-    typealias Block = (_ data:CommentModel) -> Void
-    var nameCallback:Block?
-    var commentCallback:Block?
-    var deleteCallback:((_ index:Int,_ id:String) -> Void)?
+    typealias Block = (_ data: CommentModel) -> Void
+    var nameCallback: Block?
+    var commentCallback: Block?
+    var deleteCallback:((_ index: Int, _ id: String) -> Void)?
     // 数据
     var photoDatas = [String]()
     // 评论数据
     var commentDatas = [CommentModel]()
     // 用户名
-    lazy var nameLab:UILabel = {
+    lazy var nameLab: UILabel = {
        let label = UILabel()
         label.textColor = UIColor.init(r: 29, g: 203, b: 219)
        // label.backgroundColor = .red
         return label
     }()
     // 头像
-    lazy var userImg:UIImageView = {
+    lazy var userImg: UIImageView = {
        let img = UIImageView()
         img.clipsToBounds = true
         img.layer.cornerRadius = 20.fitW
@@ -45,7 +45,7 @@ class MomentCell: UITableViewCell {
         return btn
     }()
     // 时间
-    lazy var timeLab:UILabel = {
+    lazy var timeLab: UILabel = {
        let label = UILabel()
         label.font = UIFont.init(name: "HelveticaNeue-Light", size: 9)
         label.textColor = UIColor.init(r: 161, g: 161, b: 161)
@@ -53,12 +53,12 @@ class MomentCell: UITableViewCell {
         return label
     }()
     // 右边拉下菜单
-    lazy var menuBtn:UIButton = {
+    lazy var menuBtn: UIButton = {
        let btn = UIButton()
         return btn
     }()
     // 话题按钮1
-    lazy var topicBtn1:UIButton = {
+    lazy var topicBtn1: UIButton = {
        let btn = UIButton()
         btn.setTitle("#求助", for: .normal)
         btn.setTitleColor(UIColor.init(r: 29, g: 203, b: 219), for: .normal)
@@ -66,21 +66,21 @@ class MomentCell: UITableViewCell {
         return btn
     }()
     // 话题按钮2
-    lazy var topicBtn2:UIButton = {
+    lazy var topicBtn2: UIButton = {
        let btn = UIButton()
         btn.setTitleColor(UIColor.init(r: 29, g: 203, b: 219), for: .normal)
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 15)
         return btn
     }()
     // 话题按钮3
-    lazy var topicBtn3:UIButton = {
+    lazy var topicBtn3: UIButton = {
        let btn = UIButton()
         btn.setTitleColor(UIColor.init(r: 29, g: 203, b: 219), for: .normal)
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 15)
         return btn
     }()
     // 文字内容
-    lazy var contentLab:UILabel = {
+    lazy var contentLab: UILabel = {
        let label = UILabel()
         label.numberOfLines = 0
         label.font = UIFont.systemFont(ofSize: 15)
@@ -90,7 +90,7 @@ class MomentCell: UITableViewCell {
         return label
     }()
     // 图片内容
-    lazy var imgCollectionView:UICollectionView = {
+    lazy var imgCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout.init()
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         layout.minimumInteritemSpacing = 0
@@ -107,7 +107,7 @@ class MomentCell: UITableViewCell {
         return collection
     }()
     // 学院
-    lazy var depNameLab:UILabel = {
+    lazy var depNameLab: UILabel = {
        let label = UILabel()
         label.font = UIFont.init(name: "HelveticaNeue-Light", size: 12)
         label.textColor = UIColor.init(r: 153, g: 153, b: 153)
@@ -115,7 +115,7 @@ class MomentCell: UITableViewCell {
         return label
     }()
     // 评论按钮
-    lazy var commentBtn:UIButton = {
+    lazy var commentBtn: UIButton = {
        let btn = UIButton()
         btn.setImage(UIImage(named: "comment"), for: .normal)
         btn.setTitle("0", for: .normal)
@@ -124,11 +124,11 @@ class MomentCell: UITableViewCell {
         btn.titleEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         //btn.backgroundColor = .cyan
         btn.setTitleColor(UIColor.black, for: .normal)
-        
+
         return btn
     }()
     // 点赞
-    lazy var likeBtn:UIButton = {
+    lazy var likeBtn: UIButton = {
        let btn = UIButton()
         btn.setImage(UIImage(named: "tweet_btn_like"), for: .normal)
         btn.setTitle("0", for: .normal)
@@ -140,7 +140,7 @@ class MomentCell: UITableViewCell {
         return btn
     }()
     // 删除
-    lazy var deleteBtn:UIButton = {
+    lazy var deleteBtn: UIButton = {
        let btn = UIButton()
         btn.setTitle("", for: .normal)
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 12)
@@ -149,13 +149,13 @@ class MomentCell: UITableViewCell {
         return btn
     }()
     // 分割线
-    lazy var line:UIView = {
+    lazy var line: UIView = {
        let vi = UIView()
         vi.backgroundColor = UIColor.init(r: 223, g: 223, b: 223)
         return vi
     }()
     // 评论区
-    lazy var tableView:UITableView = {
+    lazy var tableView: UITableView = {
        let tableview = UITableView()
         //tableview.backgroundColor = .green
         tableview.tag = 2001
@@ -164,16 +164,16 @@ class MomentCell: UITableViewCell {
         tableview.dataSource = self
         return tableview
     }()
-    
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setUI()
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -184,8 +184,8 @@ class MomentCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
-    func updateUI(with data:MomentModel){
+
+    func updateUI(with data: MomentModel) {
         let blank = isIphoneX ? 5.fitW : 5.fitW
         var sumHeight = 50.fitW + blank
         if data.type != "" {
@@ -193,10 +193,10 @@ class MomentCell: UITableViewCell {
             setTopicBtn(with: types, height: sumHeight)
             sumHeight += (20.fitW + blank)
         }
-        
+
         // 内容布局
         var contentHeight = getTextHeight(textStr: data.content, font: UIFont.systemFont(ofSize: 15), width: screenWidth-40.fitW)
-        print("contentHeight",contentHeight)
+        print("contentHeight", contentHeight)
         contentLab.snp.remakeConstraints { (make) in
            make.top.equalTo(self).offset(sumHeight)
             make.height.equalTo(contentHeight+4)
@@ -205,16 +205,16 @@ class MomentCell: UITableViewCell {
         }
         sumHeight += (Int(contentHeight+10).fitW + blank)
         // 图片布局
-        var imgHeight:Int = 0
+        var imgHeight: Int = 0
         switch data.pics.count {
-        case 1,2,3:
+        case 1, 2, 3:
             imgHeight = 120.fitW
-        case 4,5,6:
+        case 4, 5, 6:
             imgHeight = 247.fitW
-        case 7,8,9:
+        case 7, 8, 9:
             imgHeight = 374.fitW
         default:
-            break;
+            break
         }
         imgCollectionView.snp.remakeConstraints { (make) in
             make.top.equalTo(contentLab.snp.bottom).offset(1.fitW)
@@ -250,7 +250,7 @@ class MomentCell: UITableViewCell {
                 make.height.equalTo(20.fitW)
                 make.top.equalTo(imgCollectionView.snp.bottom).offset(blank)
             }
-        }else {
+        } else {
             deleteBtn.setTitle("", for: .normal)
             deleteBtn.isUserInteractionEnabled = false
         }
@@ -266,7 +266,7 @@ class MomentCell: UITableViewCell {
             }
             sumHeight += (1.fitW + blank)
             self.commentDatas = data.comments
-            var commetHeight:CGFloat = 0.0
+            var commetHeight: CGFloat = 0.0
             for comment in data.comments {
                 let commentTextHeight = getTextHeight(textStr: comment.comment, font: UIFont.init(name: "HelveticaNeue-Light", size: 13)!, width: screenWidth-40.fitW)
                 commetHeight += commentTextHeight
@@ -278,17 +278,14 @@ class MomentCell: UITableViewCell {
                 make.top.equalTo(line.snp.bottom).offset(blank)
                 make.height.equalTo(Double(commetHeight))
             }
-            
-        }
-        
 
-        
-        
+        }
+
         let imgUrl = URL(string: imageUrl + data.head_pic_thumb)
         self.userImg.kf.setImage(with: imgUrl)
         nameLab.text = data.username
         timeLab.text = data.created_on
-        
+
         contentLab.text = data.content
         depNameLab.text = data.dep_name
         commentBtn.setTitle("\(data.comments.count)", for: .normal)
@@ -297,14 +294,13 @@ class MomentCell: UITableViewCell {
         if data.is_like {
             likeBtn.setImage(UIImage(named: "tweet_btn_liked"), for: .normal)
         }
-        
+
         self.photoDatas = data.pics
         self.imgCollectionView.reloadData()
         self.tableView.reloadData()
 
-
     }
-    func setUI(){
+    func setUI() {
         addSubview(userImg)
         addSubview(nameLab)
         addSubview(timeLab)
@@ -326,7 +322,7 @@ class MomentCell: UITableViewCell {
         topicBtn2.isHidden = true
         topicBtn3.isHidden = true
         tableView.isHidden = true
-        
+
         userImg.snp.makeConstraints { (make) in
             make.left.equalTo(self).offset(20.fitW)
             make.top.equalTo(self).offset(10.fitW)
@@ -337,7 +333,7 @@ class MomentCell: UITableViewCell {
             make.top.equalTo(self).offset(10.fitW)
             make.width.height.equalTo(40.fitW)
         }
-        
+
         nameLab.snp.makeConstraints { (make) in
             make.left.equalTo(self).offset(65.fitW)
             make.top.equalTo(self).offset(10.fitW)
@@ -383,13 +379,13 @@ class MomentCell: UITableViewCell {
             make.left.equalTo(self).offset(20.fitW)
         }
     }
-    func setTopicBtn(with data:[String],height:Int) {
+    func setTopicBtn(with data: [String], height: Int) {
         var datas = [String]()
         for da in data {
             let das = "#" + da
             datas.append(das)
         }
-        
+
         let nameBtnSize1 = textSize(text: datas[0], font: UIFont.systemFont(ofSize: 15), maxSize: CGSize(width: 414, height: 20))
         let nameWidth1 = nameBtnSize1.width + 5
         topicBtn1.isHidden = false
@@ -400,7 +396,7 @@ class MomentCell: UITableViewCell {
             make.width.equalTo(nameWidth1.fitW)
             make.height.equalTo(20.fitW)
         }
-        
+
         if data.count == 2 {
             let nameBtnSize2 = textSize(text: datas[1], font: UIFont.systemFont(ofSize: 15), maxSize: CGSize(width: 414, height: 20))
             let nameWidth2 = nameBtnSize2.width + 5
@@ -441,18 +437,18 @@ class MomentCell: UITableViewCell {
 
 }
 
-extension MomentCell:UICollectionViewDelegateFlowLayout, UICollectionViewDataSource,UICollectionViewDelegate{
+extension MomentCell: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return photoDatas.count
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImgsViewCell", for: indexPath) as! ImgsViewCell
         let imgUrl = URL(string: imageUrl + photoDatas[indexPath.row])
         cell.imageView.kf.setImage(with: imgUrl)
         return cell
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
         print("11")
@@ -466,13 +462,13 @@ extension MomentCell:UICollectionViewDelegateFlowLayout, UICollectionViewDataSou
             return cell?.imageView.image
         }) { index -> String? in
             // 去掉_thumb 获取高清图url
-            let url = self.photoDatas[index].replacingOccurrences(of:"_thumb", with: "")
+            let url = self.photoDatas[index].replacingOccurrences(of: "_thumb", with: "")
             return  imageUrl + url
         }
         // 视图代理，实现了光点型页码指示器
         let delegate = JXDefaultPageControlDelegate()
         // 转场动画
-        let trans = JXPhotoBrowserZoomTransitioning { (browser, index, view) -> UIView? in
+        let trans = JXPhotoBrowserZoomTransitioning { (_, index, _) -> UIView? in
             let indexPath = IndexPath(item: index, section: 0)
             let cell = self.imgCollectionView.cellForItem(at: indexPath) as? ImgsViewCell
             return cell?.imageView
@@ -484,21 +480,21 @@ extension MomentCell:UICollectionViewDelegateFlowLayout, UICollectionViewDataSou
 }
 
 // MARK: 代理 数据源
-extension MomentCell:UITableViewDelegate,UITableViewDataSource {
+extension MomentCell: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
     func numberOfSections(in tableView: UITableView) -> Int {
         return self.commentDatas.count
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let now = Date()
         let timeForMatter = DateFormatter()
         timeForMatter.dateFormat = "yyyy年MM月dd:HH点mm分:EE"
         let id = timeForMatter.string(from: now)
         let identifier = "\(id)Comment\(indexPath.section)\(indexPath.row)"
-        
+
         self.tableView.register(CommentCell.self, forCellReuseIdentifier: identifier)
         let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! CommentCell
         cell.updateUI(with: commentDatas[indexPath.section])
@@ -524,7 +520,7 @@ extension MomentCell:UITableViewDelegate,UITableViewDataSource {
         let indexPath = tableView.indexPathForRow(at: currentTouchPosition ?? CGPoint.zero)
         if let indexPath = indexPath {
             self.nameCallback!(self.commentDatas[indexPath.section])
-            print("姓名btn",indexPath)
+            print("姓名btn", indexPath)
         }
     }
     @objc func cellButton(_ sender: UIButton?, event: UIEvent?) {
@@ -534,7 +530,7 @@ extension MomentCell:UITableViewDelegate,UITableViewDataSource {
         let indexPath = tableView.indexPathForRow(at: currentTouchPosition ?? CGPoint.zero)
         if let indexPath = indexPath {
             self.commentCallback!(self.commentDatas[indexPath.section])
-            print("cellBtn",indexPath)
+            print("cellBtn", indexPath)
         }
     }
     @objc func deleteButton(_ sender: UIButton?, event: UIEvent?) {
@@ -544,7 +540,7 @@ extension MomentCell:UITableViewDelegate,UITableViewDataSource {
         let indexPath = tableView.indexPathForRow(at: currentTouchPosition ?? CGPoint.zero)
         if let indexPath = indexPath {
             self.deleteCallback!(indexPath.section, commentDatas[indexPath.section].id)
-            print("deleteBtn",indexPath)
+            print("deleteBtn", indexPath)
         }
     }
 }

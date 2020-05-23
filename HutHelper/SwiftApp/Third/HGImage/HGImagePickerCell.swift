@@ -11,10 +11,10 @@ import UIKit
 //相簿列表单元格
 class HGImagePickerCell: UITableViewCell {
     //相簿名称标签
-    @IBOutlet weak var titleLabel:UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
     //照片数量标签
-    @IBOutlet weak var countLabel:UILabel!
-    
+    @IBOutlet weak var countLabel: UILabel!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         self.layoutMargins = UIEdgeInsets.zero

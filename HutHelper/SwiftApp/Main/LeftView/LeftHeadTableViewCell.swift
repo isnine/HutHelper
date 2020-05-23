@@ -9,11 +9,10 @@
 import UIKit
 
 class LeftHeadTableViewCell: UITableViewCell {
-    
+
     @IBOutlet weak var headImg: UIImageView!
     @IBOutlet weak var headName: UILabel!
-    
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -24,5 +23,5 @@ class LeftHeadTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
+
 }

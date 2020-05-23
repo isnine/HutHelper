@@ -11,22 +11,22 @@ import WebKit
 import RxCocoa
 import RxSwift
 
-class BaseWebController: UIViewController{
+class BaseWebController: UIViewController {
     var webURL = ""
     var navTitle = ""
-    
+
     // 左边返回
-    private lazy var leftBarButton:UIButton = {
+    private lazy var leftBarButton: UIButton = {
         let btn = UIButton.init(type: .custom)
-            btn.frame = CGRect(x:-5, y:0, width:20, height: 30)
+            btn.frame = CGRect(x: -5, y: 0, width: 20, height: 30)
             btn.setImage(UIImage(named: "ico_menu_back"), for: .normal)
-            btn.rx.tap.subscribe(onNext:{[weak self] in
+            btn.rx.tap.subscribe(onNext: {[weak self] in
             self?.navigationController?.popViewController(animated: true)
         })
         return btn
     }()
-    
-    convenience init(webURL:String,navTitle:String){
+
+    convenience init(webURL: String, navTitle: String) {
         self.init()
         self.webURL = webURL
         self.navTitle = navTitle
@@ -45,29 +45,29 @@ class BaseWebController: UIViewController{
         self.progressView.trackTintColor = UIColor.white // 进度条背景色
         return self.progressView
     }()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         configUI()
         configWeb()
     }
-    func configWeb(){
+    func configWeb() {
         webview.addObserver(self, forKeyPath: "estimatedProgress", options: .new, context: nil)
         webview.load(URLRequest.init(url: URL.init(string: webURL)!))
     }
-    func configUI(){
+    func configUI() {
         view.addSubview(webview)
         self.navigation.item.title = navTitle
         self.navigation.item.leftBarButtonItem = UIBarButtonItem.init(customView: leftBarButton)
         self.navigation.bar.isShadowHidden = true
     }
 
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-            
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
+
             if keyPath == "estimatedProgress"{
                 progressView.alpha = 1.0
-                
+
                 DispatchQueue.main.async {
                     print(self.webview.estimatedProgress)
                     self.progressView.setProgress(Float(self.webview.estimatedProgress), animated: true)
@@ -77,7 +77,7 @@ class BaseWebController: UIViewController{
                 if webview.estimatedProgress >= 1.0 {
                     UIView.animate(withDuration: 0.3, delay: 0.1, options: .curveEaseOut, animations: {
                         self.progressView.alpha = 0
-                    }, completion: { (finish) in
+                    }, completion: { (_) in
                         self.progressView.setProgress(0.0, animated: false)
                     })
                 }
@@ -91,26 +91,26 @@ class BaseWebController: UIViewController{
 
 }
 
-extension BaseWebController:WKUIDelegate,WKNavigationDelegate  {
-    
+extension BaseWebController: WKUIDelegate, WKNavigationDelegate {
+
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
             let hud = MBProgressHUD.showAdded(to: self.view, animated: true)
             hud.label.text = "加载中"
     }
-        
+
     func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
             print("开始获取网页内容")
     }
-        
+
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
             MBProgressHUD.hideAllHUDs(for: self.view, animated: true)
     }
-        
+
     func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
             print("加载失败")
     }
-        
+
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
-            decisionHandler(.allow);
+            decisionHandler(.allow)
     }
 }

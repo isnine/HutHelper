@@ -11,22 +11,22 @@ import UIKit
 //图片缩略图集合页单元格
 open class HGImageCollectionViewCell: UICollectionViewCell {
     //显示缩略图
-    @IBOutlet weak var imageView:UIImageView!
-    
+    @IBOutlet weak var imageView: UIImageView!
+
     //显示选中状态的图标
-    @IBOutlet weak var selectedIcon:UIImageView!
-    
+    @IBOutlet weak var selectedIcon: UIImageView!
+
     //设置是否选中
     open override var isSelected: Bool {
-        didSet{
+        didSet {
             if isSelected {
                 selectedIcon.image = UIImage(named: "hg_image_selected")
-            }else{
+            } else {
                 selectedIcon.image = UIImage(named: "hg_image_not_selected")
             }
         }
     }
-    
+
     //播放动画，是否选中的图标改变时使用
     func playAnimate() {
         //图标先缩小，再放大
@@ -42,7 +42,7 @@ open class HGImageCollectionViewCell: UICollectionViewCell {
             })
             }, completion: nil)
     }
-    
+
     open override func awakeFromNib() {
         super.awakeFromNib()
         imageView.contentMode = .scaleAspectFill

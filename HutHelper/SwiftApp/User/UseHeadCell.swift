@@ -12,28 +12,28 @@ import Kingfisher
 
 class UseHeadCell: UITableViewCell {
 
-    lazy var lab:UILabel = {
+    lazy var lab: UILabel = {
        let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 18)
         label.text = "头像"
         label.textColor = .black
         return label
     }()
-    
-    lazy var headImg:UIImageView = {
+
+    lazy var headImg: UIImageView = {
        let iamge = UIImageView()
         return iamge
     }()
-    
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.setUI()
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -43,12 +43,12 @@ class UseHeadCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
     }
-    func updateUI(imageUrl:String){
+    func updateUI(imageUrl: String) {
         let imgUrl = URL(string: imageUrl)
         self.headImg.kf.setImage(with: imgUrl)
     }
-    
-    func setUI(){
+
+    func setUI() {
         addSubview(lab)
         addSubview(headImg)
         headImg.clipsToBounds = true

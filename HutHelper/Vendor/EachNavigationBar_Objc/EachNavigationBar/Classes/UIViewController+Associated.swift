@@ -9,7 +9,7 @@
 import ObjectiveC
 
 extension UINavigationController {
-    
+
     var _configuration: Configuration {
         if let configuration = objc_getAssociatedObject(
             self,
@@ -28,7 +28,7 @@ extension UINavigationController {
 }
 
 extension UIViewController {
-    
+
     var _navigationBar: EachNavigationBar {
         if let bar = objc_getAssociatedObject(
             self,
@@ -44,7 +44,7 @@ extension UIViewController {
             .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         return bar
     }
-    
+
     var _navigationItem: UINavigationItem {
         if let item = objc_getAssociatedObject(
             self,
@@ -52,7 +52,7 @@ extension UIViewController {
             as? UINavigationItem {
             return item
         }
-        
+
         #if swift(<5)
         let item: UINavigationItem
         if let navigationItem = try? navigationItem.duplicate() {
@@ -63,7 +63,7 @@ extension UIViewController {
         #else
         let item = (try? navigationItem.duplicate()) ?? UINavigationItem()
         #endif
-        
+
         item.copyTargetActions(from: navigationItem)
         objc_setAssociatedObject(
             self,
@@ -75,7 +75,7 @@ extension UIViewController {
 }
 
 private extension UINavigationItem {
-    
+
     func copyTargetActions(from navigationItem: UINavigationItem) {
         if let leftBarButtonItems = navigationItem.leftBarButtonItems,
             let leftItems = self.leftBarButtonItems,
@@ -85,7 +85,7 @@ private extension UINavigationItem {
                 $0.element.action = leftBarButtonItems[$0.offset].action
             }
         }
-        
+
         if let rightBarButtonItems = navigationItem.rightBarButtonItems,
             let rightItems = self.rightBarButtonItems,
             rightBarButtonItems.count == rightItems.count {

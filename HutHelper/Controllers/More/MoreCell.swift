@@ -22,7 +22,7 @@ class MoreCell: UICollectionViewCell {
         label.font = UIFont.systemFont(ofSize: 13)
         return label
     }()
-    
+
     lazy var describe: UILabel = {
         let label = UILabel()
         label.textColor = .black
@@ -31,14 +31,14 @@ class MoreCell: UICollectionViewCell {
         label.adjustsFontSizeToFitWidth = true
         return label
     }()
-    
+
     lazy var icoImageView: UIImageView = {
         let iv = UIImageView()
         iv.layer.cornerRadius = 5
         iv.layer.masksToBounds = true
         return iv
     }()
-    
+
     lazy var icoTitle: UILabel = {
         let label = UILabel()
         label.textColor = .black
@@ -46,7 +46,7 @@ class MoreCell: UICollectionViewCell {
         label.font = UIFont.boldSystemFont(ofSize: 14)
         return label
     }()
-    
+
     lazy var icoDescribe: UILabel = {
         let label = UILabel()
         label.textColor = .gray
@@ -66,17 +66,17 @@ class MoreCell: UICollectionViewCell {
         configShadow()
         configUI()
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     func updataUI(with data: More) {
         if data.image != "" {
             let urlTitleImage = URL(string: data.image)
             titleImageView.kf.setImage(with: urlTitleImage)
         }
-        if let icoImagUrl = data.app?.ico{
+        if let icoImagUrl = data.app?.ico {
             let urlIcoImage = URL(string: icoImagUrl)
             icoImageView.kf.setImage(with: urlIcoImage)
         }
@@ -84,7 +84,7 @@ class MoreCell: UICollectionViewCell {
         icoDescribe.text = data.app?.describe
         title.text = data.title
         describe.text = data.describe
-        
+
         titleImageView.snp.updateConstraints { (make) in
             make.height.equalTo(data.image == "" ? 0 :150)
         }
@@ -93,7 +93,7 @@ class MoreCell: UICollectionViewCell {
         icoTitle.isHidden = !isHadApp
         icoDescribe.isHidden = !isHadApp
     }
-    
+
     func configUI() {
         addSubview(titleImageView)
         addSubview(title)
@@ -101,7 +101,7 @@ class MoreCell: UICollectionViewCell {
         addSubview(icoImageView)
         addSubview(icoTitle)
         addSubview(icoDescribe)
-        titleImageView.snp.makeConstraints{(make)in
+        titleImageView.snp.makeConstraints {(make)in
             make.top.left.right.equalTo(self)
             make.height.equalTo(0)
         }
@@ -125,12 +125,12 @@ class MoreCell: UICollectionViewCell {
             make.left.equalTo(icoImageView).inset(60)
             make.bottom.equalTo(self).inset(30)
         }
-        icoDescribe.snp.makeConstraints{(make) in
+        icoDescribe.snp.makeConstraints {(make) in
             make.left.equalTo(icoImageView).offset(60)
             make.bottom.equalTo(self).inset(8)
         }
     }
-    
+
     func configShadow() {
         self.backgroundColor = .white
         self.layer.cornerRadius = 10
@@ -143,5 +143,5 @@ class MoreCell: UICollectionViewCell {
         self.layer.shadowOpacity = 0.6
         self.layer.masksToBounds = false
     }
-    
+
 }

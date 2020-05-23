@@ -15,18 +15,18 @@ class ImgsViewCell: UICollectionViewCell {
         iv.clipsToBounds = true
         return iv
     }()
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         contentView.addSubview(imageView)
         //self.backgroundColor = .red
     }
-    
+
     override func layoutSubviews() {
         super.layoutSubviews()
         imageView.frame = contentView.bounds
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

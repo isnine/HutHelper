@@ -17,9 +17,9 @@ class LoginViewModel {
     let usernameValid: Observable<Bool>
     let passwordValid: Observable<Bool>
     let everythingValid: Observable<Bool>
-    
+
     // 输入 -> 输出
-    init(username: Observable<String>,password: Observable<String>) {
+    init(username: Observable<String>, password: Observable<String>) {
 
         usernameValid = username
             .map { $0.count >= 1 }
@@ -34,9 +34,9 @@ class LoginViewModel {
 
     }
 }
-// Mark:- 请求数据
+// MARK:- 请求数据
 extension LoginViewModel {
-    func loginRequest(username:String,password:String,callback: @escaping(_ result:JSON) -> ()){
+    func loginRequest(username: String, password: String, callback: @escaping(_ result: JSON) -> Void) {
         LoginProvider.request(.login(username, password)) { (result) in
             if case let .success(response) = result {
                 let data = try? response.mapJSON()

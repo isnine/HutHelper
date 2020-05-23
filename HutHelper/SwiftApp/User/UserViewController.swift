@@ -12,30 +12,30 @@ import RxCocoa
 import RxSwift
 
 class UserController: UIViewController {
-    var classesData: [String:Any]?
+    var classesData: [String: Any]?
     var classesDatas = [ClassModel]()
     let disposeBag = DisposeBag()
-    var imgPricker:UIImagePickerController!
-    
+    var imgPricker: UIImagePickerController!
+
     var classSelect = ClassModel()
-    
+
     // viewModel层
-    lazy var viewModel:UseInfoViewModel = {
+    lazy var viewModel: UseInfoViewModel = {
         let viewmodel = UseInfoViewModel()
         return viewmodel
     }()
     // 左边返回
-    private lazy var leftBarButton:UIButton = {
+    private lazy var leftBarButton: UIButton = {
         let btn = UIButton.init(type: .custom)
-            btn.frame = CGRect(x:-5, y:0, width:20, height: 30)
+            btn.frame = CGRect(x: -5, y: 0, width: 20, height: 30)
             btn.setImage(UIImage(named: "ico_menu_back"), for: .normal)
-            btn.rx.tap.subscribe(onNext:{[weak self] in
+            btn.rx.tap.subscribe(onNext: {[weak self] in
             self?.navigationController?.popViewController(animated: true)
                 }).disposed(by: disposeBag)
         return btn
     }()
     // 主体tableView
-    lazy var tableView:UITableView = {
+    lazy var tableView: UITableView = {
         let tableview = UITableView(frame: self.view.bounds)
         tableview.tag = 2001
         tableview.separatorStyle = .none
@@ -47,7 +47,7 @@ class UserController: UIViewController {
         return tableview
     }()
     // 班级选择picker
-    lazy var pickerView:UIPickerView = {
+    lazy var pickerView: UIPickerView = {
        let picker = UIPickerView(frame: CGRect(x: 0, y: screenHeight+50, width: screenWidth, height: screenHeight/3))
         picker.delegate = self
         picker.dataSource = self
@@ -57,7 +57,7 @@ class UserController: UIViewController {
         return picker
     }()
     // picker阴影背景
-    lazy var backView:UIView = {
+    lazy var backView: UIView = {
         let vi = UIView(frame: self.view.bounds)
         vi.backgroundColor = UIColor.init(r: 33, g: 33, b: 33)
         vi.alpha = 0.5
@@ -68,12 +68,12 @@ class UserController: UIViewController {
         return vi
     }()
     //班级选择按钮
-    lazy var selectBtn:UIButton = {
+    lazy var selectBtn: UIButton = {
         let btn = UIButton(frame: CGRect(x: 0, y: screenHeight, width: screenWidth, height: 50))
         btn.backgroundColor = UIColor.init(r: 238, g: 238, b: 238)
         btn.setTitleColor(.cyan, for: .normal)
-        btn.setTitle("确认班级选择",for:.normal)
-        btn.rx.tap.subscribe(onNext:{[weak self] in
+        btn.setTitle("确认班级选择", for: .normal)
+        btn.rx.tap.subscribe(onNext: {[weak self] in
             let component = self!.pickerView.selectedRow(inComponent: 0)
             let row = self!.pickerView.selectedRow(inComponent: 1)
             let className = self!.viewModel.classesDatas[component].classes[row]
@@ -88,17 +88,17 @@ class UserController: UIViewController {
             }).disposed(by: disposeBag)
         return btn
     }()
-    @objc func hiddenPicker(){
+    @objc func hiddenPicker() {
         UIView.animate(withDuration: 0.25, animations: {
             self.backView.alpha = 0.5
             //self.backView.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
             self.pickerView.frame = CGRect(x: 0, y: screenHeight+50, width: screenWidth, height: screenHeight/3)
             self.selectBtn.frame = CGRect(x: 0, y: screenHeight, width: screenWidth, height: 50)
-        }) { (isSuccess) in
+        }) { (_) in
             self.backView.isHidden = true
         }
     }
-    func showPicker(){
+    func showPicker() {
         self.backView.isHidden = false
         //self.backView.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
         UIView.animate(withDuration: 0.25, animations: {
@@ -106,18 +106,17 @@ class UserController: UIViewController {
             //self.backView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
             self.pickerView.frame = CGRect(x: 0, y: 2*screenHeight/3, width: screenWidth, height: screenHeight/3)
             self.selectBtn.frame = CGRect(x: 0, y: 2*screenHeight/3-50, width: screenWidth, height: 50)
-        }) { (isSuccess) in
+        }) { (_) in
         }
         self.pickerView.reloadAllComponents()
     }
     override func viewDidLoad() {
         super.viewDidLoad()
         configUI()
-            
-    }
-    
 
-    func configUI(){
+    }
+
+    func configUI() {
         self.view.backgroundColor = .white
         self.navigation.item.title = "个人信息"
         self.navigation.item.leftBarButtonItem = UIBarButtonItem.init(customView: leftBarButton)
@@ -127,67 +126,66 @@ class UserController: UIViewController {
         self.view.addSubview(self.pickerView)
         self.view.addSubview(selectBtn)
     }
-    
-        
-    func getUseHeadImg(){
+
+    func getUseHeadImg() {
         print("头像更换")
          let actionSheet = UIAlertController(title: "更改头像", message: "请选择图像来源", preferredStyle: .actionSheet)
-         let alterUserImg = UIAlertAction(title: "相册选择", style: .default, handler: {(alters:UIAlertAction) -> Void in
+         let alterUserImg = UIAlertAction(title: "相册选择", style: .default, handler: {(_: UIAlertAction) -> Void in
              print("拍照继续更改头像中..")
-             
+
              self.imgPricker = UIImagePickerController()
              self.imgPricker.delegate = self
              self.imgPricker.allowsEditing = true
              self.imgPricker.sourceType = .photoLibrary
-             
+
              self.imgPricker.navigationBar.barTintColor = UIColor.gray
-             self.imgPricker.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
-             
+             self.imgPricker.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+
              self.imgPricker.navigationBar.tintColor = UIColor.white
-             
+
              self.present(self.imgPricker, animated: true, completion: nil)
-             
+
          })
-         
-         let alterUserImgTake = UIAlertAction(title: "拍照选择", style: .default, handler: {(alters:UIAlertAction) -> Void in
+
+         let alterUserImgTake = UIAlertAction(title: "拍照选择", style: .default, handler: {(_: UIAlertAction) -> Void in
              print("继续更改头像中..")
-             if(UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.camera)){
+             if UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.camera) {
                  self.imgPricker = UIImagePickerController()
                  self.imgPricker.delegate = self
                  self.imgPricker.allowsEditing = true
                  self.imgPricker.sourceType = .camera
                  self.imgPricker.cameraDevice = UIImagePickerController.CameraDevice.rear
                  self.imgPricker.showsCameraControls = true
-                 
+
                  self.imgPricker.navigationBar.barTintColor = UIColor.gray
-                 self.imgPricker.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
-                 
+                 self.imgPricker.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+
                  self.imgPricker.navigationBar.tintColor = UIColor.white
-                 
+
                  self.present(self.imgPricker, animated: true, completion: nil)
              }
          })
-         let cancel = UIAlertAction(title: "取消", style: .cancel, handler: {(alters:UIAlertAction) -> Void in print("取消更改头像")})
-         
+         let cancel = UIAlertAction(title: "取消", style: .cancel, handler: {(_: UIAlertAction) -> Void in print("取消更改头像")})
+
          actionSheet.addAction(cancel)
          actionSheet.addAction(alterUserImg)
          actionSheet.addAction(alterUserImgTake)
-         
-         self.present(actionSheet,animated: true){
+
+         self.present(actionSheet, animated: true) {
              print("正在更改")
          }
     }
 
 }
 
-extension UserController:UITableViewDelegate,UITableViewDataSource{
+extension UserController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
     func numberOfSections(in tableView: UITableView) -> Int {
         return 10
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let cellHead = tableView.dequeueReusableCell(withIdentifier: "UseHeadCell", for: indexPath) as! UseHeadCell
@@ -215,23 +213,22 @@ extension UserController:UITableViewDelegate,UITableViewDataSource{
         case 9:
             cell.updateUI(headlab: "学号", infolab: user.studentKH)
         default:
-            break;
+            break
         }
         return cell
     }
-    
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {
             return 65.fit
         }
         return 45.fit
     }
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
 //        let appDelegate = UIApplication.shared.delegate as? AppDelegate
         // [tempAppDelegate.LeftSlideVC closeLeftView];
-        
 
 //        let leftVC = UIApplication.shared.windows[0].rootViewController as! LeftSlideViewController
 //        leftVC.closeLeftView()
@@ -270,16 +267,16 @@ extension UserController:UITableViewDelegate,UITableViewDataSource{
         case 6:
             print("qq还不能")
         default:
-            break;
+            break
         }
-        
+
     }
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let vi = UIView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: 1))
         vi.backgroundColor = UIColor.init(r: 223, g: 223, b: 223)
         return vi
     }
-    
+
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 0 || section == 1 || section == 7 {
             return 10
@@ -289,28 +286,28 @@ extension UserController:UITableViewDelegate,UITableViewDataSource{
 
 }
 
-extension UserController{
-    
-    func alterMethod(name:String,  callback: @escaping(_ result:String) -> ()){
+extension UserController {
+
+    func alterMethod(name: String, callback: @escaping(_ result: String) -> Void) {
         let alert = UIAlertController.init(title: name, message: "请输入", preferredStyle: .alert)
-            
-                let yesAction = UIAlertAction.init(title: "确定", style: .default) { (yes) in
+
+                let yesAction = UIAlertAction.init(title: "确定", style: .default) { (_) in
                     callback((alert.textFields?.first?.text!)!)
                 }
                 let noAction = UIAlertAction.init(title: "取消", style: .default) { (no) in
-                    print("取消",no.style)
+                    print("取消", no.style)
                 }
                 alert.addAction(noAction)
                 alert.addAction(yesAction)
 
-                alert.addTextField { (text) in
+                alert.addTextField { (_) in
                 }
-            
+
                 self.present(alert, animated: true, completion: nil)
     }
 }
 
-extension UserController:UIPickerViewDelegate,UIPickerViewDataSource{
+extension UserController: UIPickerViewDelegate, UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 2
     }
@@ -318,7 +315,7 @@ extension UserController:UIPickerViewDelegate,UIPickerViewDataSource{
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if viewModel.classesDatas.isEmpty {
             return 0
-        }else {
+        } else {
             if component == 0 {
                 return viewModel.classesDatas.count
             }
@@ -335,7 +332,7 @@ extension UserController:UIPickerViewDelegate,UIPickerViewDataSource{
             return viewModel.classesDatas[row].depName
         }
         let pRow = pickerView.selectedRow(inComponent: 0)
-        
+
         return viewModel.classesDatas[pRow].classes[row]
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int,
@@ -354,15 +351,15 @@ extension UserController:UIPickerViewDelegate,UIPickerViewDataSource{
         }
         if component == 0 {
             pickerLabel?.text = viewModel.classesDatas[row].depName
-        }else {
+        } else {
             pickerLabel?.text = classSelect.classes[row]
         }
         return pickerLabel!
     }
 }
-extension UserController :UIImagePickerControllerDelegate,UINavigationControllerDelegate{
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+extension UserController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         let img = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
         let HelperHUD = MBProgressHUD.showAdded(to: self.view, animated: true)
          HelperHUD.label.text = "上传中"
@@ -373,9 +370,9 @@ extension UserController :UIImagePickerControllerDelegate,UINavigationController
             HelperHUD.hide(animated: true)
         }
         self.dismiss(animated: true, completion: nil)
-    
+
     }
-    
+
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         self.dismiss(animated: true, completion: nil)
     }

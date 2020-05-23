@@ -23,29 +23,28 @@ import UIKit
 /// 确定回调
 public typealias FWRadioButtonClickedBlock = (_ isSelected: Bool) -> Void
 
+open class FWRadioButton: UIView {
 
-open class FWRadioButton : UIView {
-    
     /// 可设置参数
-    @objc public var vProperty : FWRadioButtonProperty!
+    @objc public var vProperty: FWRadioButtonProperty!
     /// true：选中 false：未选中
-    @objc public var isSelected : Bool = false {
+    @objc public var isSelected: Bool = false {
         willSet {
             self.changeSelection(selected: newValue)
         }
     }
-    
+
     lazy var borderLayer: CAShapeLayer = {
-        
+
         let borderLayer = CAShapeLayer()
         self.layer.addSublayer(borderLayer)
         borderLayer.lineWidth = self.vProperty.lineWidth
         borderLayer.fillColor = UIColor.clear.cgColor
         return borderLayer
     }()
-    
+
     lazy var insideLayer: CAShapeLayer = {
-        
+
         let insideLayer = CAShapeLayer()
         self.layer.addSublayer(insideLayer)
         insideLayer.lineWidth = 0
@@ -53,22 +52,22 @@ open class FWRadioButton : UIView {
         insideLayer.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         return insideLayer
     }()
-    
+
     lazy var radioImageView: UIImageView = {
-        
+
         let imageView = UIImageView()
         self.addSubview(imageView)
         return imageView
     }()
-    
+
     lazy var titleLabel: UILabel = {
-        
+
         let titleLabel = UILabel()
         self.addSubview(titleLabel)
         return titleLabel
     }()
-    
-    private var isAnimating : Bool = false {
+
+    private var isAnimating: Bool = false {
         willSet {
             if newValue == true {
                 self.isUserInteractionEnabled = false
@@ -77,11 +76,10 @@ open class FWRadioButton : UIView {
             }
         }
     }
-    
+
     private var currentButtonType: FWRadioButtonType = .circular
     private var clickedBlock: FWRadioButtonClickedBlock?
-    
-    
+
     /// 初始化方法1：不显示标题
     ///
     /// - Parameters:
@@ -90,13 +88,13 @@ open class FWRadioButton : UIView {
     ///   - property: 单选按钮的相关配置属性
     ///   - clickedBlock: 单击回调
     /// - Returns: self
-    @objc open class func radio(frame: CGRect, buttonType : FWRadioButtonType, property : FWRadioButtonProperty?, clickedBlock: FWRadioButtonClickedBlock? = nil) -> FWRadioButton {
-        
+    @objc open class func radio(frame: CGRect, buttonType: FWRadioButtonType, property: FWRadioButtonProperty?, clickedBlock: FWRadioButtonClickedBlock? = nil) -> FWRadioButton {
+
         let radio = FWRadioButton()
-        radio.setupUI(frame: frame, buttonType : buttonType, title: nil, selectedImage: nil, unSelectedImage: nil, property: property, clickedBlock: clickedBlock)
+        radio.setupUI(frame: frame, buttonType: buttonType, title: nil, selectedImage: nil, unSelectedImage: nil, property: property, clickedBlock: clickedBlock)
         return radio
     }
-    
+
     /// 初始化方法2：可设置标题，可传入图片
     ///
     /// - Parameters:
@@ -108,42 +106,42 @@ open class FWRadioButton : UIView {
     ///   - property: 单选按钮的相关配置属性
     ///   - clickedBlock: 单击回调
     /// - Returns: self
-    @objc open class func radio(frame: CGRect, buttonType : FWRadioButtonType, title: String?, selectedImage: UIImage?, unSelectedImage: UIImage?, property : FWRadioButtonProperty?, clickedBlock: FWRadioButtonClickedBlock? = nil) -> FWRadioButton {
-        
+    @objc open class func radio(frame: CGRect, buttonType: FWRadioButtonType, title: String?, selectedImage: UIImage?, unSelectedImage: UIImage?, property: FWRadioButtonProperty?, clickedBlock: FWRadioButtonClickedBlock? = nil) -> FWRadioButton {
+
         let radio = FWRadioButton()
-        radio.setupUI(frame: frame, buttonType : buttonType, title: title, selectedImage: selectedImage, unSelectedImage: unSelectedImage, property: property, clickedBlock: clickedBlock)
+        radio.setupUI(frame: frame, buttonType: buttonType, title: title, selectedImage: selectedImage, unSelectedImage: unSelectedImage, property: property, clickedBlock: clickedBlock)
         return radio
     }
 }
 
 extension FWRadioButton {
-    
-    private func setupUI(frame: CGRect, buttonType : FWRadioButtonType, title: String?, selectedImage: UIImage?, unSelectedImage: UIImage?, property: FWRadioButtonProperty?, clickedBlock: FWRadioButtonClickedBlock? = nil) {
-        
+
+    private func setupUI(frame: CGRect, buttonType: FWRadioButtonType, title: String?, selectedImage: UIImage?, unSelectedImage: UIImage?, property: FWRadioButtonProperty?, clickedBlock: FWRadioButtonClickedBlock? = nil) {
+
         self.frame = frame
-        
+
         self.backgroundColor = UIColor.clear
         self.isUserInteractionEnabled = true
-        
+
         self.currentButtonType = buttonType
         self.clickedBlock = clickedBlock
-        
+
         if property != nil {
             self.vProperty = property
         } else {
             self.vProperty = FWRadioButtonProperty()
         }
-        
+
         if selectedImage != nil {
             self.vProperty.selectedImage = selectedImage
         }
-        if unSelectedImage != nil  {
+        if unSelectedImage != nil {
             self.vProperty.unSelectedImage = unSelectedImage
         }
-        
+
         let tapGest = UITapGestureRecognizer(target: self, action: #selector(tapGesClick(tap:)))
         self.addGestureRecognizer(tapGest)
-        
+
         var radioWidthHieght: CGFloat = 0.0
         if title != nil && !title!.isEmpty {
             let tmpWidth = self.frame.height-self.vProperty.radioViewEdgeInsets.left-self.vProperty.radioViewEdgeInsets.right
@@ -167,7 +165,7 @@ extension FWRadioButton {
             }
         }
         let radioFrame = CGRect(x: self.vProperty.radioViewEdgeInsets.left, y: (frame.height - radioWidthHieght)/2, width: radioWidthHieght, height: radioWidthHieght)
-        
+
         if self.currentButtonType == .image {
             self.radioImageView.frame = radioFrame
             self.isSelected = self.vProperty.isSelected
@@ -178,7 +176,7 @@ extension FWRadioButton {
                 self.isSelected = self.vProperty.isSelected
             }
         }
-        
+
         if title != nil && !title!.isEmpty {
             self.titleLabel.font = self.vProperty.titleFont
             self.titleLabel.textColor = self.vProperty.titleColor
@@ -189,12 +187,12 @@ extension FWRadioButton {
             }
         }
     }
-    
+
     /// 点击手势
     ///
     /// - Parameter tap: 手势
     @objc private func tapGesClick(tap: UITapGestureRecognizer) {
-        
+
         if self.isAnimating == false {
             self.isSelected = !self.isSelected
         }
@@ -202,12 +200,12 @@ extension FWRadioButton {
             self.clickedBlock!(self.isSelected)
         }
     }
-    
+
     /// 切换
     ///
     /// - Parameter selected: true：选中
     private func changeSelection(selected: Bool) {
-        
+
         if self.currentButtonType == .image {
             if self.vProperty.selectedImage != nil && self.vProperty.unSelectedImage != nil {
                 self.radioImageView.image = selected ? self.vProperty.selectedImage : self.vProperty.unSelectedImage
@@ -225,7 +223,7 @@ extension FWRadioButton {
             if self.vProperty.isBorderColorNeedChanged {
                 self.borderLayer.strokeColor = selected ? self.vProperty.selectedStateColor.cgColor : self.vProperty.normalStateColor.cgColor
             }
-            
+
             if self.vProperty.isAnimated && self.vProperty.animationDuration > 0 {
                 let scaleValue = NSNumber(value: ((self.isSelected == true) ? 0 : 1))
                 let fromValue = NSNumber(value: ((self.isSelected == true) ? 1 : 0))
@@ -249,15 +247,15 @@ extension FWRadioButton {
             }
         }
     }
-    
+
     /// 绘制非图片类型的边框
     ///
     /// - Parameter rect: frame
     private func drawBorder(_ rect: CGRect) {
-        
+
         // 边框
-        var borderPath : UIBezierPath!
-        
+        var borderPath: UIBezierPath!
+
         switch self.currentButtonType {
         case .circular:
             let center = CGPoint(x: rect.width/2, y: rect.height/2)
@@ -266,21 +264,21 @@ extension FWRadioButton {
         case .rectangle:
             borderPath = UIBezierPath(rect: CGRect(x: 0, y: 0, width: rect.width, height: rect.height))
             break
-            
+
         default: break
-            
+
         }
-        
+
         self.borderLayer.frame = CGRect(x: rect.origin.x, y: rect.origin.y, width: rect.width, height: rect.height)
         self.borderLayer.strokeColor = self.vProperty.normalStateColor.cgColor
         self.borderLayer.path = borderPath.cgPath
     }
-    
+
     /// 绘制非图片类型的内部选中状态
     ///
     /// - Parameter rect: frame
     private func drawInside(_ rect: CGRect) {
-        
+
         // 选中
         var insideLayerWidthAndHeight: CGFloat = 0.0
         if self.currentButtonType == .circular {
@@ -289,9 +287,9 @@ extension FWRadioButton {
             insideLayerWidthAndHeight = ((rect.height - self.vProperty.lineWidth) * self.vProperty.insideMarginRate)
         }
         let insidePathFrame = CGRect(x: 0, y: 0, width: insideLayerWidthAndHeight, height: insideLayerWidthAndHeight)
-        
-        var insidePath : UIBezierPath!
-        
+
+        var insidePath: UIBezierPath!
+
         switch self.currentButtonType {
         case .circular:
             insidePath = UIBezierPath(ovalIn: insidePathFrame)
@@ -299,14 +297,14 @@ extension FWRadioButton {
         case .rectangle:
             insidePath = UIBezierPath(rect: insidePathFrame)
             break
-            
+
         default: break
-            
+
         }
 
         self.insideLayer.frame = CGRect(x: rect.origin.x + (rect.width-insideLayerWidthAndHeight)/2, y: rect.origin.y + (rect.height-insideLayerWidthAndHeight)/2, width: insideLayerWidthAndHeight, height: insideLayerWidthAndHeight)
         self.insideLayer.path = insidePath.cgPath
-        
+
         if !isSelected {
             if self.vProperty.isAnimated && self.vProperty.animationDuration > 0 {
                 let animation = CABasicAnimation(keyPath: "transform.scale")
@@ -323,54 +321,49 @@ extension FWRadioButton {
     }
 }
 
-
-
 // MARK: - 单选按钮的相关配置属性
 open class FWRadioButtonProperty: NSObject {
-    
+
     /// 是否默认选中
-    @objc public var isSelected : Bool = false
+    @objc public var isSelected: Bool = false
     /// 是否需要动画
-    @objc public var isAnimated : Bool = true
+    @objc public var isAnimated: Bool = true
     /// 动画所需的时间
     @objc open var animationDuration: TimeInterval = 0.2
     /// 偏移量。当视图比较小时会出现不好点击的问题，此时可以把视图frame值设置大一些，同时配合该属性，既可以达到想要的效果，也可以增大点击的接触面积
     @objc open var radioViewEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-    
+
     /// 标题字体大小
     @objc open var titleFont: UIFont = UIFont.systemFont(ofSize: 15.0)
     /// 标题文字颜色
     @objc open var titleColor: UIColor = kPV_RGBA(r: 51, g: 51, b: 51, a: 1)
-    
-    
+
     // ------------ 以下属性为：buttonType == .circular | .rectangle 时有效 ------------
     /// 未选中时的颜色
     @objc open var normalStateColor: UIColor = kPV_RGBA(r: 51, g: 51, b: 51, a: 1)
     /// 选中时的颜色
     @objc open var selectedStateColor: UIColor = kPV_RGBA(r: 51, g: 51, b: 51, a: 1)
     /// 边框颜色是否需要跟随选中颜色
-    @objc public var isBorderColorNeedChanged : Bool = true
+    @objc public var isBorderColorNeedChanged: Bool = true
     /// 边的宽度
     @objc public var lineWidth: CGFloat = 2
     /// 内部选中状态的宽度与内边框的比例
     @objc public var insideMarginRate: CGFloat = 0.6
-    
-    
+
     // ------------ 以下属性为：buttonType == .image 时有效 ------------
     /// 选中图片
     @objc public var selectedImage: UIImage?
     /// 未选中图片
     @objc public var unSelectedImage: UIImage?
-    
-    
+
     public override init() {
         super.init()
-        
+
         self.reSetParams()
     }
-    
+
     /// 如果发现部分属性设置后没有生效，可执行该方法
     @objc public func reSetParams() {
-        
+
     }
 }

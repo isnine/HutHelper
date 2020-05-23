@@ -1,1 +1,0 @@
-../../../HUPhotoBrowser/HUPhotoBrowser/UIView+frame.h

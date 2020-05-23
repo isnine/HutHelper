@@ -8,21 +8,21 @@
 
 @objcMembers
 open class BackBarButtonItem: NSObject {
-    
+
     public static let none: BackBarButtonItem = .init(style: .none)
-    
+
     public var shouldBack: (BackBarButtonItem) -> Bool = { _ in true }
-    
+
     public var willBack: () -> Void = {}
-    
+
     public var didBack: () -> Void = {}
-    
+
     weak var navigationController: UINavigationController?
-    
+
     var style: Style = .none
-    
+
     var tintColor: UIColor?
-    
+
     public init(style: Style, tintColor: UIColor? = nil) {
         self.style = style
         self.tintColor = tintColor
@@ -30,7 +30,7 @@ open class BackBarButtonItem: NSObject {
 }
 
 extension BackBarButtonItem {
-    
+
     public enum Style {
         case none
         case title(String?)
@@ -40,14 +40,14 @@ extension BackBarButtonItem {
 }
 
 extension BackBarButtonItem {
-    
+
     @objc public func goBack() {
         navigationController?.popViewController(animated: true)
     }
- 
+
     func makeBarButtonItem() -> UIBarButtonItem? {
         let action = #selector(backBarButtonItemAction)
-        
+
         switch style {
         case .none:
             return nil
@@ -58,7 +58,7 @@ extension BackBarButtonItem {
                 target: self,
                 action: action)
             backBarButtonItem.tintColor = tintColor
-            
+
             return backBarButtonItem
         case .image(let image):
             let backBarButtonItem = UIBarButtonItem(
@@ -67,19 +67,19 @@ extension BackBarButtonItem {
                 target: self,
                 action: action)
             backBarButtonItem.tintColor = tintColor
-            
+
             return backBarButtonItem
         case .custom(let button):
             button.addTarget(self, action: action, for: .touchUpInside)
             button.tintColor = tintColor
-            
+
             return UIBarButtonItem(customView: button)
         }
     }
-    
+
     @objc private func backBarButtonItemAction() {
         guard shouldBack(self) else { return }
-        
+
         willBack()
         goBack()
         didBack()

@@ -7,23 +7,23 @@
 //
 
 public struct Navigation<Base> {
-    
+
     let base: Base
-    
+
     init(_ base: Base) {
         self.base = base
     }
 }
 
 public protocol NavigationCompatible {
-    
+
     associatedtype CompatibleType
-    
+
     var navigation: CompatibleType { get }
 }
 
 public extension NavigationCompatible {
-    
+
     var navigation: Navigation<Self> {
         return Navigation(self)
     }

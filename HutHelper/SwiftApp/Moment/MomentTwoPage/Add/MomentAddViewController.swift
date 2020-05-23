@@ -16,79 +16,78 @@ import SwiftyJSON
 //import ProgressHUD
 
 class MomentAddViewController: UIViewController {
-    
-    
+
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var imgCollectionView: UICollectionView!
     @IBOutlet weak var addPhotoBtn: UIButton!
-    
+
     @IBOutlet weak var tagBtn1: UIButton!
     @IBOutlet weak var tagBtn2: UIButton!
     @IBOutlet weak var tagBtn3: UIButton!
-    
+
     var controlBtn = 0
-    
+
     var typeDatas = getVersioniOS().moment_types //["生活","运动","问答","游戏","情感"]
-    
+
     // 图片数据
     var photoDatas = [UIImage]()
     var tags = [String]()
     // rx销毁
     let disposeBag = DisposeBag()
     // 左边返回
-    private lazy var leftBarButton:UIButton = {
+    private lazy var leftBarButton: UIButton = {
         let btn = UIButton.init(type: .custom)
-            btn.frame = CGRect(x:-5, y:0, width:20, height: 30)
+            btn.frame = CGRect(x: -5, y: 0, width: 20, height: 30)
             btn.setImage(UIImage(named: "ico_menu_back"), for: .normal)
-            btn.rx.tap.subscribe(onNext:{[weak self] in
+            btn.rx.tap.subscribe(onNext: {[weak self] in
             self?.navigationController?.popViewController(animated: true)
                 }).disposed(by: disposeBag)
         return btn
     }()
-    
+
     // 右边菜单
-    private lazy var rightBarButton:UIButton = {
+    private lazy var rightBarButton: UIButton = {
         let btn = UIButton.init(type: .custom)
-            btn.frame = CGRect(x:5, y:0, width:20, height: 30)
+            btn.frame = CGRect(x: 5, y: 0, width: 20, height: 30)
             btn.setImage(UIImage(named: "ok"), for: .normal)
-        btn.rx.tap.subscribe(onNext:{[weak self] in
+        btn.rx.tap.subscribe(onNext: {[weak self] in
             let content = self!.textView.text
             // 处理标签
 //            self!.tags = ["生活","问答"]//["问答","生活","学习","游戏","运动"];
-            
+
             var type = ""
             if self!.tags.count == 0 {
                 type = ""
-            }else  {
+            } else {
                 type = self!.tags[0]
             }
             let hud = MBProgressHUD.showAdded(to: self!.view, animated: true)
             hud.label.text = "发布中..."
             self!.viewModel.UploadImgs(images: self!.photoDatas) { (hidden) in
-                print("hidden:",hidden!)
+                print("hidden:", hidden!)
                 self?.viewModel.PostHandRequst(content: content!, hidden: hidden!, type: type, callback: { (value) in
                     if value["code"] == 200 {
                          hud.label.text = "发布成功"
-                         hud.hide(animated: true,afterDelay: 0.5)
+                         hud.hide(animated: true, afterDelay: 0.5)
                     self?.navigationController?.popToRootViewController(animated: true)
-                     }else {
+                     } else {
                         hud.label.text = value["msg"].stringValue
-                         hud.hide(animated: true,afterDelay: 1)
+                         hud.hide(animated: true, afterDelay: 1)
                      }
                 })
             }
             }).disposed(by: disposeBag)
         return btn
     }()
-    
+
     lazy var viewModel: MomentAddViewModel = {
        let viewmodel = MomentAddViewModel()
         return viewmodel
     }()
-    
+
     let tap = UITapGestureRecognizer()
     // 班级选择picker
-    lazy var pickerView:UIPickerView = {
+    lazy var pickerView: UIPickerView = {
        let picker = UIPickerView(frame: CGRect(x: 0, y: screenHeight+50, width: screenWidth, height: screenHeight/3))
         picker.delegate = self
         picker.dataSource = self
@@ -98,7 +97,7 @@ class MomentAddViewController: UIViewController {
         return picker
     }()
     // picker阴影背景
-    lazy var backView:UIView = {
+    lazy var backView: UIView = {
         let vi = UIView(frame: self.view.bounds)
         vi.backgroundColor = UIColor.init(r: 33, g: 33, b: 33)
         vi.alpha = 0.5
@@ -109,12 +108,12 @@ class MomentAddViewController: UIViewController {
         return vi
     }()
     // 标签选择按钮
-    lazy var selectBtn:UIButton = {
+    lazy var selectBtn: UIButton = {
         let btn = UIButton(frame: CGRect(x: screenWidth/2, y: screenHeight, width: screenWidth/2, height: 50))
         btn.backgroundColor = UIColor.init(r: 238, g: 238, b: 238)
         btn.setTitleColor(.cyan, for: .normal)
-        btn.setTitle("确认",for:.normal)
-        btn.rx.tap.subscribe(onNext:{[weak self] in
+        btn.setTitle("确认", for: .normal)
+        btn.rx.tap.subscribe(onNext: {[weak self] in
             let row = self!.pickerView.selectedRow(inComponent: 0)
             let tag = self!.typeDatas[row]
             self!.tags.append(tag)
@@ -125,7 +124,7 @@ class MomentAddViewController: UIViewController {
 //                //ProgressHUD.showError("标签存在,请重选")
 //                return
 //            }
-            
+
 //            if self!.controlBtn == 1{
 //                if self!.tags.count == 0 {
 //                    self!.tags.append(tag)
@@ -155,12 +154,12 @@ class MomentAddViewController: UIViewController {
         return btn
     }()
     // 标签取消按钮
-    lazy var typeCancelBtn:UIButton = {
+    lazy var typeCancelBtn: UIButton = {
         let btn = UIButton(frame: CGRect(x: 0, y: screenHeight, width: screenWidth/2, height: 50))
         btn.backgroundColor = UIColor.init(r: 238, g: 238, b: 238)
         btn.setTitleColor(.red, for: .normal)
-        btn.setTitle("删除",for:.normal)
-        btn.rx.tap.subscribe(onNext:{[weak self] in
+        btn.setTitle("删除", for: .normal)
+        btn.rx.tap.subscribe(onNext: {[weak self] in
             let row = self!.pickerView.selectedRow(inComponent: 0)
             let tag =  self!.typeDatas[row]
             self!.tags.removeAll()
@@ -208,7 +207,7 @@ class MomentAddViewController: UIViewController {
             }).disposed(by: disposeBag)
         return btn
     }()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         configUI()
@@ -216,7 +215,7 @@ class MomentAddViewController: UIViewController {
         rxMethod()
     }
 
-    func configUI(){
+    func configUI() {
         //self.view.backgroundColor = UIColor.init(r: 234, g: 235, b: 236)
         self.navigation.item.title = "发布说说"
         self.navigation.bar.isShadowHidden = true
@@ -232,22 +231,22 @@ class MomentAddViewController: UIViewController {
         self.view.addSubview(typeCancelBtn)
         self.tagBtn2.isHidden = true
         self.tagBtn3.isHidden = true
-        
+
     }
-    
-    @objc func hiddenPicker(){
+
+    @objc func hiddenPicker() {
         UIView.animate(withDuration: 0.25, animations: {
             self.backView.alpha = 0.5
             //self.backView.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
             self.pickerView.frame = CGRect(x: 0, y: screenHeight+50, width: screenWidth, height: screenHeight/3)
             self.selectBtn.frame = CGRect(x: 0, y: screenHeight, width: screenWidth, height: 50)
             self.typeCancelBtn.frame = CGRect(x: 0, y: screenHeight, width: screenWidth/2, height: 50)
-        }) { (isSuccess) in
+        }) { (_) in
             self.backView.isHidden = true
         }
     }
-    
-    func showPicker(){
+
+    func showPicker() {
         self.backView.isHidden = false
         //self.backView.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
         UIView.animate(withDuration: 0.25, animations: {
@@ -256,14 +255,14 @@ class MomentAddViewController: UIViewController {
             self.pickerView.frame = CGRect(x: 0, y: 2*screenHeight/3, width: screenWidth, height: screenHeight/3)
             self.selectBtn.frame = CGRect(x: screenWidth/2, y: 2*screenHeight/3-50, width: screenWidth/2, height: 50)
             self.typeCancelBtn.frame = CGRect(x: 0, y: 2*screenHeight/3-50, width: screenWidth/2, height: 50)
-        }) { (isSuccess) in
+        }) { (_) in
         }
         self.pickerView.reloadAllComponents()
     }
-    
+
     func rxMethod() {
-        addPhotoBtn.rx.tap.subscribe(onNext:{[weak self] in
-            
+        addPhotoBtn.rx.tap.subscribe(onNext: {[weak self] in
+
             _ = self!.presentHGImagePicker(maxSelected: 9 - self!.photoDatas.count, completeHandler: { (assets) in
                 for asset in assets {
                     let img = SKPHAssetToImageTool.PHAssetToImage(asset: asset)
@@ -271,59 +270,58 @@ class MomentAddViewController: UIViewController {
                 }
                 self!.imgCollectionView.reloadData()
             })
-            
+
             }).disposed(by: disposeBag)
-        
+
         //键盘收起
-        tap.rx.event.subscribe { (event) in
+        tap.rx.event.subscribe { (_) in
             print("点击了view并收起键盘")
             self.view.endEditing(true)
         }.disposed(by: disposeBag)
-        
-        tagBtn1.rx.tap.subscribe(onNext:{[weak self] in
+
+        tagBtn1.rx.tap.subscribe(onNext: {[weak self] in
             self!.controlBtn = 1
             self!.showPicker()
-            
+
             }).disposed(by: disposeBag)
-        tagBtn2.rx.tap.subscribe(onNext:{[weak self] in
+        tagBtn2.rx.tap.subscribe(onNext: {[weak self] in
             self!.showPicker()
             self!.controlBtn = 2
             }).disposed(by: disposeBag)
-        tagBtn3.rx.tap.subscribe(onNext:{[weak self] in
+        tagBtn3.rx.tap.subscribe(onNext: {[weak self] in
             self!.showPicker()
             self!.controlBtn = 3
             }).disposed(by: disposeBag)
     }
 
 }
-extension MomentAddViewController: UITextViewDelegate,UIGestureRecognizerDelegate {
+extension MomentAddViewController: UITextViewDelegate, UIGestureRecognizerDelegate {
     func textViewShouldBeginEditing(_ content: UITextView) -> Bool {
-        if (content.text == "请输入要发表的内容~") {
+        if content.text == "请输入要发表的内容~" {
             content.text = ""
         }
         return true
     }
-    
+
     // 手势冲突
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
-        if (touch.view?.isDescendant(of: self.imgCollectionView))!{
+        if (touch.view?.isDescendant(of: self.imgCollectionView))! {
             return false
         }
         return true
     }
 
-
 }
 
-extension MomentAddViewController{
-    func configImgCollection(){
+extension MomentAddViewController {
+    func configImgCollection() {
         let layout = UICollectionViewFlowLayout.init()
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         layout.minimumInteritemSpacing = 0
         layout.minimumLineSpacing = 7.fit
-        layout.itemSize = CGSize(width: 120.fit, height:120.fit)
+        layout.itemSize = CGSize(width: 120.fit, height: 120.fit)
         layout.scrollDirection = .vertical
-        
+
         self.imgCollectionView.collectionViewLayout = layout
         imgCollectionView.register(ImgsViewCell.self, forCellWithReuseIdentifier: "ImgsViewCell")
         imgCollectionView.delegate = self
@@ -333,43 +331,43 @@ extension MomentAddViewController{
     }
 }
 
-extension MomentAddViewController:UICollectionViewDelegateFlowLayout, UICollectionViewDataSource,UICollectionViewDelegate{
+extension MomentAddViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return photoDatas.count
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImgsViewCell", for: indexPath) as! ImgsViewCell
         cell.imageView.image = photoDatas[indexPath.row]
         return cell
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
             self.removePhoto(at: indexPath.row)
 
     }
-    func removePhoto(at index:Int) {
+    func removePhoto(at index: Int) {
         let alert = UIAlertController.init(title: "确定要移除这张图片吗？", message: "请选择", preferredStyle: .alert)
-        let yesAction = UIAlertAction.init(title: "确定", style: .default) { (yes) in
+        let yesAction = UIAlertAction.init(title: "确定", style: .default) { (_) in
                 self.photoDatas.remove(at: index)
                 self.imgCollectionView.reloadData()
         }
-        let noAction = UIAlertAction.init(title: "取消", style: .default) { (no) in }
+        let noAction = UIAlertAction.init(title: "取消", style: .default) { (_) in }
         alert.addAction(noAction)
         alert.addAction(yesAction)
         self.present(alert, animated: true, completion: nil)
     }
-    func showMessge(messge:String) {
+    func showMessge(messge: String) {
         let alert = UIAlertController.init(title: "警告！", message: messge, preferredStyle: .alert)
-        let yesAction = UIAlertAction.init(title: "确定", style: .default) { (yes) in
+        let yesAction = UIAlertAction.init(title: "确定", style: .default) { (_) in
         }
         alert.addAction(yesAction)
         self.present(alert, animated: true, completion: nil)
     }
 }
 
-extension MomentAddViewController:UIPickerViewDelegate,UIPickerViewDataSource{
+extension MomentAddViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -382,8 +380,8 @@ extension MomentAddViewController:UIPickerViewDelegate,UIPickerViewDataSource{
                     forComponent component: Int) -> String? {
         return ""
     }
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int,inComponent component: Int) {
-        
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+
     }
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int,
                     forComponent component: Int, reusing view: UIView?) -> UIView {
