@@ -3317,7 +3317,7 @@
 					"$(PROJECT_DIR)/HutHelper/Vendor/XgPush",
 					"$(PROJECT_DIR)/HutHelper/Vendor/XgPush/idfa",
 				);
-				MARKETING_VERSION = 4.3.2;
+				MARKETING_VERSION = 4.3.3;
 				NEW_SETTING = "";
 				PRODUCT_BUNDLE_IDENTIFIER = name.wxz.HutHelper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -3377,7 +3377,7 @@
 					"$(PROJECT_DIR)/HutHelper/Vendor/XgPush",
 					"$(PROJECT_DIR)/HutHelper/Vendor/XgPush/idfa",
 				);
-				MARKETING_VERSION = 4.3.2;
+				MARKETING_VERSION = 4.3.3;
 				NEW_SETTING = "";
 				PRODUCT_BUNDLE_IDENTIFIER = name.wxz.HutHelper;
 				PRODUCT_NAME = "$(TARGET_NAME)";

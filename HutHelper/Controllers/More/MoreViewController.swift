@@ -14,7 +14,7 @@ import SwiftyJSON
 import HandyJSON
 
 class MoreViewController: UIViewController {
-//    fileprivate let url = "https://img.wxz.name/api/more.json"
+    fileprivate let url = "https://img.wxz.name/api/more.json"
     fileprivate var dataSource = ArrayDataSource(data: [More]())
     fileprivate lazy var collectionView = CollectionView()
 
@@ -29,34 +29,28 @@ class MoreViewController: UIViewController {
 // MARK: - Config
 extension MoreViewController {
     fileprivate func configData() {
-//        Alamofire.request(url).responseJSON {(responds) in
-//            guard responds.result.isSuccess else { return }
-//            if let value = responds.result.value {
-//                let json = JSON(value)
-//                let version = json["version"]
-//                RedDotManager.saveVersion(version.intValue)
-//                let links = json["links"]
-//                for link in links {
-//                    if let mainmodel = More.deserialize(from: link.1.rawString()) {
-//                        self.dataSource.data.append(mainmodel)
-//                    }
-//                }
-//                self.collectionView.reloadData()
-//            }
-//        }
-        let buyHuthelper: More = {
-            let item = More()
-            item.url = "huthelperBuy://"
-            item.title = "支持开发者"
-            return item
-        }()
-        dataSource.data.append(buyHuthelper)
+        Alamofire.request(url).responseJSON {(responds) in
+            guard responds.result.isSuccess else { return }
+            if let value = responds.result.value {
+                let json = JSON(value)
+                let version = json["version"]
+                RedDotManager.saveVersion(version.intValue)
+                let links = json["links"]
+                for link in links {
+                    if let mainmodel = More.deserialize(from: link.1.rawString()) {
+                        self.dataSource.data.append(mainmodel)
+                    }
+                }
+                self.collectionView.reloadData()
+            }
+        }
         self.collectionView.reloadData()
     }
 
     fileprivate func configUI() {
         view.backgroundColor = .white
         navigationItem.title = "更多"
+        title = "更多"
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
         navigationController?.navigationBar.tintColor = UIColor(red: 29 / 255.0, green: 203 / 255.0, blue: 219 / 255.0, alpha: 1)
 
