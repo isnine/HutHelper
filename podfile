@@ -6,7 +6,7 @@ def swiftUI
     pod 'SwiftyJSON'
     pod 'HandyJSON'
     #pod 'SwiftLint'
-    #pod 'Kingfisher'
+    pod 'Kingfisher'
 
     pod 'SnapKit', '~> 4.0.0'
     pod "CollectionKit"
@@ -17,7 +17,7 @@ def swiftUI
     pod 'RxCocoa'
     pod 'Moya'
     #pod 'MJRefresh'
-    pod 'JXPhotoBrowser'
+    pod 'JXPhotoBrowser', '2.1.5'
     #pod 'EachNavigationBar_Objc'
     #pod 'ProgressHUD'
 #    pod "SkeletonView"

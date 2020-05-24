@@ -14,7 +14,7 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
-  - Alamofire (4.8.2)
+  - Alamofire (4.9.1)
   - ASIHTTPRequest (1.8.2):
     - ASIHTTPRequest/ASIWebPageRequest (= 1.8.2)
     - ASIHTTPRequest/CloudFiles (= 1.8.2)
@@ -33,7 +33,7 @@ PODS:
   - CollectionKit/Core (2.4.0)
   - DJRefresh (1.0.5)
   - DZNEmptyDataSet (1.8.1)
-  - HandyJSON (5.0.0)
+  - HandyJSON (5.0.1)
   - HUPhotoBrowser (1.4.5):
     - SVProgressHUD
   - JXPhotoBrowser (2.1.5):
@@ -44,7 +44,7 @@ PODS:
     - Kingfisher
   - Kingfisher (4.10.1)
   - LGPlusButtonsView (1.1.1)
-  - Masonry (0.6.4)
+  - Masonry (1.1.0)
   - MBProgressHUD (1.0.0)
   - Moya (13.0.1):
     - Moya/Core (= 13.0.1)
@@ -54,12 +54,12 @@ PODS:
   - Reachability (3.2)
   - Result (4.1.0)
   - Reveal-SDK (19)
-  - RxCocoa (5.0.1):
+  - RxCocoa (5.1.1):
     - RxRelay (~> 5)
     - RxSwift (~> 5)
-  - RxRelay (5.0.1):
+  - RxRelay (5.1.1):
     - RxSwift (~> 5)
-  - RxSwift (5.0.1)
+  - RxSwift (5.1.1)
   - SDWebImage (3.8.3):
     - SDWebImage/Core (= 3.8.3)
   - SDWebImage/Core (3.8.3)
@@ -68,9 +68,9 @@ PODS:
     - SQLite.swift/standard (= 0.12.2)
   - SQLite.swift/standard (0.12.2)
   - SVProgressHUD (2.2.5)
-  - SwiftMessages (7.0.0):
-    - SwiftMessages/App (= 7.0.0)
-  - SwiftMessages/App (7.0.0)
+  - SwiftMessages (7.0.1):
+    - SwiftMessages/App (= 7.0.1)
+  - SwiftMessages/App (7.0.1)
   - SwiftyJSON (5.0.0)
   - SwiftyStoreKit (0.15.0)
   - TagListView (1.4.0)
@@ -97,7 +97,8 @@ DEPENDENCIES:
   - DZNEmptyDataSet
   - HandyJSON
   - HUPhotoBrowser
-  - JXPhotoBrowser
+  - JXPhotoBrowser (= 2.1.5)
+  - Kingfisher
   - LGPlusButtonsView (~> 1.1.0)
   - Masonry
   - MBProgressHUD (~> 1.0.0)
@@ -154,30 +155,30 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
-  Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
+  Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   ASIHTTPRequest: ec013992946676b7978dcbde6396d57312d21db4
   CollectionKit: 8f01e7629185bb81072c4aa734d105df5c2d1c8b
   DJRefresh: 32b3776546004faddddc28035442ba15e07c5f1b
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
-  HandyJSON: 992f2d661716d6a91de82d0056927bc7813b5770
+  HandyJSON: d45b8415c501e3affc59ca9762c1197ff0feb646
   HUPhotoBrowser: 87a8333c111a4e71ebf5400bf66d0eeb522c0098
   JXPhotoBrowser: 0178c485d1dbad1ef1dcbb24e4f463d80c30369d
   Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
   LGPlusButtonsView: 57878cd3d461d0ee2042f5b7b25d1c017e22a084
-  Masonry: 281802d04d787ea2973179ee8bcb50500579ede2
+  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   Moya: f4a4b80ff2f8a4ffc208dfb31cd91636622fee6e
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
   Reveal-SDK: 9f0d2c6c12eb7507921e5454ac165b7aa21140a4
-  RxCocoa: e741b9749968e8a143e2b787f1dfbff2b63d0a5c
-  RxRelay: 89d54507f4fd4d969e6ec1d4bd7f3673640b4640
-  RxSwift: e2dc62b366a3adf6a0be44ba9f405efd4c94e0c4
+  RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
+  RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
+  RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
   SDWebImage: a72e880a8fe0f7fc31efe15aaed443c074d2a80c
   SnapKit: 0de968a9fec17499afa29683b05d0c775b6d1c29
   SQLite.swift: d2b4642190917051ce6bd1d49aab565fe794eea3
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
-  SwiftMessages: a952f7a9103d9aeab93730a2861d2d8fcdd8758f
+  SwiftMessages: b577dc7043be8b299857ab35bb663dbff6483bd0
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
   SwiftyStoreKit: 033d06b6f87955405d3f844a18a7687c2438592a
   TagListView: 987b0bdbb16cd9d9e7c0e2ec32aff37ecba8b173
@@ -185,6 +186,6 @@ SPEC CHECKSUMS:
   UMengUShare: 370d180101e13ee0227ae657ab119ba97243d2b3
   YCXMenu: 6003bcd20d8ac72e3eb3c442c97ed21948c6dc1f
 
-PODFILE CHECKSUM: 72e24ab47bff51115be109d442d5084fb20f136d
+PODFILE CHECKSUM: d659c4a535acb11bc800eb35178c56e827a3b1d7
 
 COCOAPODS: 1.9.1
