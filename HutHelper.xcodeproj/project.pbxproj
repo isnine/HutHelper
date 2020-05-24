@@ -363,6 +363,7 @@
 		3AFA4FA81EC1B82100CB7DA2 /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AFA4FA11EC1B82100CB7DA2 /* TodayViewController.m */; };
 		3AFA4FA91EC1B82100CB7DA2 /* Exam.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AFA4FA41EC1B82100CB7DA2 /* Exam.m */; };
 		3AFA4FAA1EC1B82100CB7DA2 /* Rectangle.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AFA4FA71EC1B82100CB7DA2 /* Rectangle.m */; };
+		CE18206C247A538B002E284B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE18206B247A538B002E284B /* GoogleService-Info.plist */; };
 		CE967E322478FA9600F39AA0 /* DTKDropdownMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE967E302478FA9500F39AA0 /* DTKDropdownMenuView.m */; };
 /* End PBXBuildFile section */
 
@@ -911,6 +912,7 @@
 		3AFA4FA61EC1B82100CB7DA2 /* Rectangle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Rectangle.h; sourceTree = "<group>"; };
 		3AFA4FA71EC1B82100CB7DA2 /* Rectangle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Rectangle.m; sourceTree = "<group>"; };
 		A8DF4B266A6C75237AD1C11E /* Pods-HutHelper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HutHelper.release.xcconfig"; path = "Pods/Target Support Files/Pods-HutHelper/Pods-HutHelper.release.xcconfig"; sourceTree = "<group>"; };
+		CE18206B247A538B002E284B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CE967E302478FA9500F39AA0 /* DTKDropdownMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTKDropdownMenuView.m; sourceTree = "<group>"; };
 		CE967E312478FA9600F39AA0 /* DTKDropdownMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTKDropdownMenuView.h; sourceTree = "<group>"; };
 		F483A3F1FC79A9B85B68036B /* libPods-HutHelper.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HutHelper.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2365,6 +2367,7 @@
 		3AFA4F701EC04C0E00CB7DA2 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				CE18206B247A538B002E284B /* GoogleService-Info.plist */,
 				3AFA4F711EC04C0E00CB7DA2 /* HutHelper-Prefix.pch */,
 				3AFA4F721EC04C0E00CB7DA2 /* HutHelper.entitlements */,
 				3AFA4F731EC04C0E00CB7DA2 /* Info.plist */,
@@ -2487,6 +2490,7 @@
 				59C2F2075DA79D116FBB9EAC /* [CP] Copy Pods Resources */,
 				3A4BDF391F63CF39007E375F /* Embed Watch Content */,
 				1F5CFD9FD1534C013180903C /* [CP] Embed Pods Frameworks */,
+				CE18206D247A5738002E284B /* Fabric */,
 			);
 			buildRules = (
 			);
@@ -2639,6 +2643,7 @@
 				3A4D30161E8D297200901E3B /* LeftUserTableViewCell.xib in Resources */,
 				3AFA4F771EC04C0E00CB7DA2 /* Info.plist in Resources */,
 				3A4D2FFA1E8D24E200901E3B /* ScoreTableViewCell.xib in Resources */,
+				CE18206C247A538B002E284B /* GoogleService-Info.plist in Resources */,
 				3AFA4F791EC04C0E00CB7DA2 /* language.strings in Resources */,
 				3A796C6D1E534DAE00794043 /* Main.storyboard in Resources */,
 				3A1D41F71FD0598A00180803 /* IDFA使用说明.pdf in Resources */,
@@ -2738,6 +2743,25 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
+		};
+		CE18206D247A5738002E284B /* Fabric */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			name = Fabric;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

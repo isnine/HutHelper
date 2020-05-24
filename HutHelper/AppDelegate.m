@@ -20,8 +20,8 @@
 #import "MTAConfig.h"
 //信鸽推送
 #import "XGPush.h"
-
 #import "HutHelper-Swift.h"
+@import Firebase;
 
 @interface AppDelegate (){
     
@@ -124,10 +124,9 @@
 //                                                categories:nil];
 //        [application registerUserNotificationSettings:settings];
 //    }
-
+    //监控
+    [FIRApp configure];
     //设置返回按钮
-    
-    
     UINavigationBar * navigationBar = [UINavigationBar appearance];
     UIImage *image = [UIImage imageNamed:@"ico_menu_back"];
     navigationBar.backIndicatorImage = image;
