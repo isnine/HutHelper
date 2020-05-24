@@ -1,31 +1,13 @@
 {
     "code": 200,
-    "version": 19010600,
+    "version": 2005261,
     "links": [
         {
-            "image": "https://img.wxz.name/easy_banner.png",
-            "title": "这是开发者大四的毕业设计，希望能够支持😀",
-            "describe": "通过「EASY」选择时间、地点、类型，即可整理一个相册保存在手机里",
-            "app": {
-                "ico": "https://img.wxz.name/easy_logo.png",
-                "title": "EASY",
-                "describe": "iOS·工具·相册"
-            },
-            "url": "https://itunes.apple.com/cn/app/id1390326774"
-        },
-        {
             "image": "https://img.wxz.name/support.jpg",
-            "title": "支持开发者 - 您的支持会让app变得更好",
-            "describe": "请开发者喝一杯奶茶",
+            "title": "捐赠费用用于工大助手AppStore的上架费用",
+            "describe": "捐赠12元",
             "app": "",
             "url":"huthelperBuy://name.wxz.huthelper.support"
-        },
-        {
-            "image": "",
-            "title": "问卷调查 - 要不要和开发者一起开发下一款app！",
-            "describe": "你最想生活中还有个什么样的app",
-            "app": "",
-            "url":"https://wj.qq.com/s2/3031013/6764/"
         }
     ]
 }
