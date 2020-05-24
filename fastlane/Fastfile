@@ -62,7 +62,7 @@ platform :ios do
          first_name: 'W',
          last_name: 'XZ',
          phone_number: '+86 17600000000',
-         email_address: 'wxz@wxz.name',
+         email_address: 'i@zanderwang.com',
          demo_user: '',
          demo_password: '',
          notes: ''
@@ -108,12 +108,12 @@ platform :ios do
       buildApp
       # 上传
       upload_to_testflight(
-      beta_app_feedback_email: "wxz@wxz.name",
+      beta_app_feedback_email: "i@zanderwang.com",
       beta_app_description: "",
       notify_external_testers: false,
-      distribute_external: true,
-      changelog: File.read("Changelog.txt"),
+      distribute_external: false,
       groups: ["External Testers"],
+      skip_waiting_for_build_processing: true,
       )
       # 更新版本tag
       add_git_tag
@@ -140,30 +140,10 @@ end
 
 # 更新版本号
 def updateProjectBuildNumber
-   currentTime = Time.new.strftime("%y%m%d")
-   version = get_version_number(
-      target: "HutHelper"
-   )
-   build = latest_testflight_build_number(version: version)
-   puts("*************| Tag: #{build} |*************")
-   buildStr = build.to_s
-   if buildStr.include?"#{currentTime}"
-      # => 为当天版本 计算迭代版本号
-      lastStr = buildStr[buildStr.length-2..buildStr.length-1]
-      lastNum = lastStr.to_i
-      lastNum = lastNum + 1
-      lastStr = lastNum.to_s
-      if lastNum < 10
-         lastStr = lastStr.insert(0,"0")
-      end
-      build = "#{currentTime}#{lastStr}"
-   else
-      # => 非当天版本 build 号重置
-      build = "#{currentTime}01"
-   end
-   puts("*************| 更新build #{build} |*************")
+   currentTime = Time.new.strftime("%y%m%d%H%M")
+   puts("*************| 更新build #{currentTime} |*************")
    # => 更改项目 build 号
    increment_build_number(
-   build_number: "#{build}"
+   build_number: "#{currentTime}"
    )
 end
