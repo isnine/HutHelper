@@ -14,6 +14,7 @@
 
 #import "MomentsViewController.h"
 #import "Config.h"
+#import "Config+Set.h"
 #import "MBProgressHUD.h"
 #import "MJRefresh.h"
 #import "UserShowViewController.h"

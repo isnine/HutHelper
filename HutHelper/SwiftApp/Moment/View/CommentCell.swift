@@ -8,58 +8,43 @@
 
 import UIKit
 import SnapKit
+enum CommentCallBackType{
+    case username
+    case delete
+}
+protocol CommentCellDelegate:NSObjectProtocol {
+    func cellClickCallBack(with data:CommentModel,type:CommentCallBackType,indexPath:IndexPath)
+}
 
 class CommentCell: UITableViewCell {
-
-    lazy var nameBtn: UIButton = {
-       let btn = UIButton()
-//        btn.setTitleColor(UIColor.init(r: 29, g: 203, b: 219), for: .normal)
-//        btn.titleLabel?.font = UIFont.init(name: "HelveticaNeue-Light", size: 13)
-//        btn.backgroundColor = .red
-        return btn
-    }()
-    lazy var nameLab: UILabel = {
-       let label = UILabel()
-        label.font = UIFont.init(name: "HelveticaNeue-Light", size: 13)
-        label.textColor = UIColor.init(r: 29, g: 203, b: 219)
-        //label.backgroundColor = .red
-        return label
-    }()
-    lazy var contentLab: UILabel = {
-       let label = UILabel()
-        label.font = UIFont.init(name: "HelveticaNeue-Light", size: 13)
-        //label.backgroundColor = .cyan
-        label.numberOfLines = 0
-        return label
-    }()
-    lazy var contentBtn: UIButton = {
-        let btn = UIButton()
-         return btn
-    }()
-    lazy var deleteBtn: UIButton = {
-        let btn = UIButton()
-        btn.setTitleColor(UIColor.red, for: .normal)
-        btn.titleLabel?.font = UIFont.init(name: "HelveticaNeue-Light", size: 9)
-        btn.backgroundColor = .white
-        btn.setTitle("删除", for: .normal)
-        return btn
-    }()
-    lazy var timeLab: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.init(name: "HelveticaNeue-Light", size: 9)
-        label.textColor = UIColor.init(r: 161, g: 161, b: 161)
-         return label
+    weak var delegate:CommentCellDelegate?
+    var indexPath = IndexPath()
+    var cellData = CommentModel()
+    // 评论信息及内容
+    lazy var commentView:ZCTextView = {
+       let textView = ZCTextView()
+        textView.font = UIFont.init(name: "HelveticaNeue-Light", size: 13.fitW)
+        textView.textColor = UIColor.init(r: 34, g: 34, b: 34)
+        textView.isEditable = false
+        textView.dataDetectorTypes = .link
+        textView.linkTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.red]
+        
+        // 解决向下偏移问题
+        textView.textContainerInset = UIEdgeInsets.zero
+        textView.textContainer.lineFragmentPadding = 0;
+        textView.delegate = self
+        return textView
     }()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        setUI()
+       configUI()
     }
-
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -70,70 +55,72 @@ class CommentCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    func configUI(){
+        addSubview(commentView)
+        commentView.snp.makeConstraints { (make) in
+            make.left.equalTo(self).offset(20.fitW)
+            make.right.equalTo(self).offset(-20.fitW)
+            make.top.bottom.equalTo(self)
+        }
+    }
+    
+    func update(with data:CommentModel) {
+        self.cellData = data
+        let attrStr1 = commentView.appendLinkString(string: data.username + "：", withURLString: "user:comment")
+        let attrStr2 = commentView.appendLinkString(string: data.comment)
+        var attrStr3 = NSMutableAttributedString()
 
-    func updateUI(with data: CommentModel) {
-        let nameBtnSize = textSize(text: data.username, font: UIFont.systemFont(ofSize: 13), maxSize: CGSize(width: 414, height: 20))
-        let nameWidth = nameBtnSize.width + 5
-        nameLab.snp.remakeConstraints { (make) in
-            make.left.top.equalTo(self)
-            make.height.equalTo(20.fitW)
-            make.width.equalTo(nameWidth)
-        }
-        nameBtn.snp.remakeConstraints { (make) in
-            make.left.top.equalTo(self)
-            make.height.equalTo(20.fitW)
-            make.width.equalTo(nameWidth)
-        }
-        let commentHeight = getTextHeight(textStr: data.comment, font: UIFont.init(name: "HelveticaNeue-Light", size: 13)!, width: screenWidth - 40.fitW - nameWidth)
         if data.user_id == "\(user.user_id)" {
+            attrStr3 = commentView.appendLinkString(string: " 删除", withURLString: "delete:comment")
+        }
+        let attrString = NSMutableAttributedString()
+        attrString.append(attrStr1)
+        attrString.append(attrStr2)
+        attrString.append(attrStr3)
+        commentView.attributedText = attrString
+    }
+    
+    
 
-            contentLab.snp.remakeConstraints { (make) in
-                make.top.equalTo(self)
-                make.right.equalTo(self).offset(-30.fitW)
-                make.height.equalTo(commentHeight + 4)
-                make.left.equalTo(nameLab.snp.right)
-            }
-            contentBtn.snp.remakeConstraints { (make) in
-                make.top.equalTo(self)
-                make.right.equalTo(self).offset(-30.fitW)
-                make.height.equalTo(commentHeight + 4)
-                make.left.equalTo(nameLab.snp.right)
-            }
-            deleteBtn.snp.remakeConstraints { (make) in
-                make.centerY.equalTo(nameBtn.snp.centerY)
-                make.right.equalTo(self)
-                make.width.equalTo(30.fitW)
-            }
-        } else {
-            contentLab.snp.remakeConstraints { (make) in
-                make.top.right.equalTo(self)
-                make.height.equalTo(commentHeight + 4)
-                make.left.equalTo(nameLab.snp.right)
-            }
-            contentBtn.snp.remakeConstraints { (make) in
-                make.top.right.equalTo(self)
-                make.height.equalTo(commentHeight + 4)
-                make.left.equalTo(nameLab.snp.right)
+}
+
+extension CommentCell:UITextViewDelegate {
+    //链接点击响应方法
+     func textView(_ textView: UITextView, shouldInteractWith URL: URL,
+                   in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
+         if let scheme = URL.scheme {
+             switch scheme {
+             case "user" :
+                self.delegate?.cellClickCallBack(with: cellData, type: .username, indexPath: indexPath)
+             case "delete" :
+                self.delegate?.cellClickCallBack(with: cellData, type: .delete, indexPath: indexPath)
+             default:
+                 print("这个是普通的url")
+             }
+         }
+          
+         return true
+     }
+}
+
+class ZCTextView:UITextView {
+    override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
+        
+        var location = point
+        location.x -= self.textContainerInset.left
+        location.y -= self.textContainerInset.top
+        
+        // find the character that's been tapped
+        let characterIndex = self.layoutManager.characterIndex(for: location, in: self.textContainer, fractionOfDistanceBetweenInsertionPoints: nil)
+        if characterIndex < self.textStorage.length {
+            // if the character is a link, handle the tap as UITextView normally would
+            if (self.textStorage.attribute(NSAttributedString.Key.link, at: characterIndex, effectiveRange: nil) != nil) {
+                return self
             }
         }
-        //nameBtn.setTitle(data.username + ":", for: .normal)
-        nameLab.text = data.username + ":"
-        contentLab.text = data.comment
-        //timeLab.text = data.created_on
+        
+        // otherwise return nil so the tap goes on to the next receiver
+        return nil
     }
-
-    func setUI() {
-        addSubview(nameLab)
-        addSubview(contentLab)
-        addSubview(nameBtn)
-        addSubview(contentBtn)
-        addSubview(deleteBtn)
-//        timeLab.snp.makeConstraints { (make) in
-//             make.left.bottom.equalTo(self)
-//             make.height.equalTo(20.fitW)
-//             make.width.equalTo(100)
-//         }
-
-    }
-
 }

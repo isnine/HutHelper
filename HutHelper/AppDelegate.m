@@ -83,6 +83,15 @@
     [self configUSharePlatforms];
     [StoreOCHelper storeLanuch];
      
+    
+    if (@available(iOS 11.0, *)) {
+
+    UITableView.appearance.estimatedRowHeight = 0;
+    UITableView.appearance.estimatedSectionFooterHeight = 0;
+    UITableView.appearance.estimatedSectionHeaderHeight = 0;
+        
+    }
+    
     //热更新
 //        [JSPatch startWithAppKey:APPKEY_JSPATCH];
 //  //      [JSPatch setupDevelopment];
