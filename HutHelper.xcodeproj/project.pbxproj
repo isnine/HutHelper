@@ -2537,8 +2537,7 @@
 				TargetAttributes = {
 					3A2FF4E71E50179700B07EB6 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = A4TWU4S2JA;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -2556,9 +2555,8 @@
 					};
 					3A85677A1DA908AA00EBD44A = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = A4TWU4S2JA;
 						LastSwiftMigration = 0800;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -2576,8 +2574,7 @@
 					};
 					3AFA4F871EC0675700CB7DA2 = {
 						CreatedOnToolsVersion = 8.3;
-						DevelopmentTeam = A4TWU4S2JA;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -3136,15 +3133,15 @@
 				CODE_SIGN_ENTITLEMENTS = Extend/Extend.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 2005241242;
-				DEVELOPMENT_TEAM = A4TWU4S2JA;
+				DEVELOPMENT_TEAM = "";
 				GCC_PREFIX_HEADER = "HutHelper/Supporting Files/HutHelper-Prefix.pch";
 				INFOPLIST_FILE = Extend/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				MARKETING_VERSION = 4.3.2;
-				PRODUCT_BUNDLE_IDENTIFIER = name.wxz.HutHelper3.Extend;
+				PRODUCT_BUNDLE_IDENTIFIER = name.wxz.HutHelper.Extend;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3311,9 +3308,9 @@
 				CODE_SIGN_ENTITLEMENTS = "HutHelper/Supporting Files/HutHelper.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 2005241242;
-				DEVELOPMENT_TEAM = A4TWU4S2JA;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/HutHelper/Lib",
@@ -3351,7 +3348,7 @@
 				);
 				MARKETING_VERSION = 4.3.3;
 				NEW_SETTING = "";
-				PRODUCT_BUNDLE_IDENTIFIER = name.wxz.HutHelper3;
+				PRODUCT_BUNDLE_IDENTIFIER = name.wxz.HutHelper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3429,15 +3426,15 @@
 				CODE_SIGN_ENTITLEMENTS = ExamTime/ExamTime.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 2005241242;
-				DEVELOPMENT_TEAM = A4TWU4S2JA;
+				DEVELOPMENT_TEAM = "";
 				GCC_PREFIX_HEADER = "HutHelper/Supporting Files/HutHelper-Prefix.pch";
 				INFOPLIST_FILE = ExamTime/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				MARKETING_VERSION = 4.3.2;
-				PRODUCT_BUNDLE_IDENTIFIER = name.wxz.HutHelper3.ExamTime;
+				PRODUCT_BUNDLE_IDENTIFIER = name.wxz.HutHelper.ExamTime;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
