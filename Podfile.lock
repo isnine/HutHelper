@@ -101,10 +101,10 @@ PODS:
   - HandyJSON (5.0.1)
   - HUPhotoBrowser (1.4.5):
     - SVProgressHUD
-  - JXPhotoBrowser (2.1.5):
-    - JXPhotoBrowser/Kingfisher (= 2.1.5)
-  - JXPhotoBrowser/Core (2.1.5)
-  - JXPhotoBrowser/Kingfisher (2.1.5):
+  - JXPhotoBrowser (2.1.6):
+    - JXPhotoBrowser/Kingfisher (= 2.1.6)
+  - JXPhotoBrowser/Core (2.1.6)
+  - JXPhotoBrowser/Kingfisher (2.1.6):
     - JXPhotoBrowser/Core
     - Kingfisher
   - Kingfisher (4.10.1)
@@ -171,7 +171,7 @@ DEPENDENCIES:
   - Firebase/Analytics
   - HandyJSON
   - HUPhotoBrowser
-  - JXPhotoBrowser (= 2.1.5)
+  - JXPhotoBrowser (~> 2.1.5)
   - Kingfisher
   - LGPlusButtonsView (~> 1.1.0)
   - Masonry
@@ -203,7 +203,6 @@ SPEC REPOS:
     - DZNEmptyDataSet
     - HandyJSON
     - HUPhotoBrowser
-    - JXPhotoBrowser
     - Kingfisher
     - LGPlusButtonsView
     - Masonry
@@ -239,6 +238,7 @@ SPEC REPOS:
     - GoogleDataTransport
     - GoogleDataTransportCCTSupport
     - GoogleUtilities
+    - JXPhotoBrowser
     - nanopb
     - PromisesObjC
 
@@ -263,7 +263,7 @@ SPEC CHECKSUMS:
   GoogleUtilities: 39530bc0ad980530298e9c4af8549e991fd033b1
   HandyJSON: d45b8415c501e3affc59ca9762c1197ff0feb646
   HUPhotoBrowser: 87a8333c111a4e71ebf5400bf66d0eeb522c0098
-  JXPhotoBrowser: 0178c485d1dbad1ef1dcbb24e4f463d80c30369d
+  JXPhotoBrowser: 74afcb7a4f45760197139b80be378377de065ae3
   Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
   LGPlusButtonsView: 57878cd3d461d0ee2042f5b7b25d1c017e22a084
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
@@ -289,6 +289,6 @@ SPEC CHECKSUMS:
   UMengUShare: 370d180101e13ee0227ae657ab119ba97243d2b3
   YCXMenu: 6003bcd20d8ac72e3eb3c442c97ed21948c6dc1f
 
-PODFILE CHECKSUM: 14d17f0a94c4602b54d57d5d1e4a03c5e9013798
+PODFILE CHECKSUM: a3c07b41d44b26f54deec2a5a0dddd0cdc2773fb
 
 COCOAPODS: 1.9.1
