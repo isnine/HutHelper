@@ -389,4 +389,28 @@ extension UIView {
         return textField
     }
 
+    
+}
+extension UITextView {
+
+    func appendLinkString(string:String, withURLString:String = "") -> NSMutableAttributedString {
+        let attrs = [NSAttributedString.Key.font : self.font!]
+        let appendString = NSMutableAttributedString(string: string, attributes:attrs)
+        
+        if withURLString != "" {
+            let range:NSRange = NSMakeRange(0, appendString.length)
+            appendString.beginEditing()
+            appendString.addAttribute(NSAttributedString.Key.link, value:withURLString, range:range)
+            appendString.addAttribute(NSAttributedString.Key.strokeWidth, value:-4.0, range:range)
+            if withURLString == "user:comment" {
+                appendString.addAttribute(NSAttributedString.Key.strokeColor, value: UIColor.init(r: 29, g: 203, b: 219), range: range)
+            }else if withURLString == "delete:comment"{
+                appendString.addAttribute(NSAttributedString.Key.strokeColor, value: UIColor.red, range: range)
+            }
+
+            appendString.endEditing()
+        }
+
+        return appendString
+    }
 }

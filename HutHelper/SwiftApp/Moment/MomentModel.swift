@@ -28,6 +28,11 @@ struct MomentModel: HandyJSON {
     var dislike = ""
     var collapse = false
     var comments = [CommentModel]()
+    
+    var isFold = true // 默认折叠
+    var height:CGFloat = 0.0 //  高度
+    var contentHeight:CGFloat = 0.0 // 内容高度
+    var conntentIsFold = true
 }
 
 struct CommentModel: HandyJSON {
@@ -37,4 +42,5 @@ struct CommentModel: HandyJSON {
     var user_id = ""
     var created_on = ""
     var username = ""
+    var height:CGFloat = 0.0 //  高度
 }

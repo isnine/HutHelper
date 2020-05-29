@@ -16,6 +16,7 @@
 #import "HutHelper-Swift.h"
 #import "BaseWebViewController.h"
 
+#import "HutHelper-Swift.h"
 
 @interface UserShowViewController ()
 

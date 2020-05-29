@@ -250,11 +250,18 @@ enum MomentAPI {
     case hot(Int, Int)
     case own(Int, String)
     case interactive(Int)
+    
+    case concern(Int)
+    
     case search(String, Int)
     case like(String)
     case delete(String)
     case unlike(String)
     case deleteC(String)
+    case report(String,String)
+    
+    case unconcren(String)
+    
 }
 extension MomentAPI: TargetType {
     var baseURL: URL {
@@ -274,8 +281,10 @@ extension MomentAPI: TargetType {
         case .own(let page, let userId):
             return "/api/v3/statement/own/\(user.studentKH)/\(user.remember_code_app)/\(page)/\(userId)"
         case .interactive(let page):
-        print("/api/v3/statement/interactive/\(user.studentKH)/\(user.remember_code_app)/\(page)")
+        //print("/api/v3/statement/interactive/\(user.studentKH)/\(user.remember_code_app)/\(page)")
             return "/api/v3/statement/interactive/\(user.studentKH)/\(user.remember_code_app)/\(page)"
+        case .concern(let page):
+                return "/api/v3/statement/follows/\(user.studentKH)/\(user.remember_code_app)/\(page)"
         case .search(let content, let page):
            return "/api/v3/statement/search/\(user.studentKH)/\(user.remember_code_app)/\(content)/\(page)"
 
@@ -287,6 +296,10 @@ extension MomentAPI: TargetType {
             return "/api/v3/statement/dislike/\(user.studentKH)/\(user.remember_code_app)/\(mid)"
         case .deleteC(let commentId):
             return "/api/v3/statement/deleteC/\(user.studentKH)/\(user.remember_code_app)/\(commentId)"
+        case .report(_, _):
+            return "/home/msg/0"
+        case .unconcren(let userId):
+            return "/api/v3/statement/follow/\(user.studentKH)/\(user.remember_code_app)/\(userId)"
         }
     }
 
@@ -295,6 +308,8 @@ extension MomentAPI: TargetType {
         case .add:
             return .post
         case .comment:
+            return .post
+        case .report(_, _):
             return .post
         default:
             return .get
@@ -315,6 +330,11 @@ extension MomentAPI: TargetType {
                          "comment": comment,
                          "moment_id": moment_id
                        ]
+        case .report(let para1, let para2):
+            parmeters = [
+                        "email": para1,
+                        "content": para2
+                    ]
         default:
             break
         }
