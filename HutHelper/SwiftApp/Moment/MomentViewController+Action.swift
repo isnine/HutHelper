@@ -158,7 +158,7 @@ extension MomentViewController {
 //                hud.label.text = "举报成功"
 //                MBProgressHUD.hideAllHUDs(for: self.view, animated: true)
 //            }
-            sleep(UInt32(1))s
+            sleep(UInt32(1))
             hud.label.text = "举报成功"
             
             MBProgressHUD.hideAllHUDs(for: self.view, animated: true)
