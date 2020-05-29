@@ -2537,6 +2537,7 @@
 				TargetAttributes = {
 					3A2FF4E71E50179700B07EB6 = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = JW2LR94V6G;
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
@@ -2555,6 +2556,7 @@
 					};
 					3A85677A1DA908AA00EBD44A = {
 						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = JW2LR94V6G;
 						LastSwiftMigration = 0800;
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
@@ -2574,6 +2576,7 @@
 					};
 					3AFA4F871EC0675700CB7DA2 = {
 						CreatedOnToolsVersion = 8.3;
+						DevelopmentTeam = JW2LR94V6G;
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
@@ -3131,11 +3134,11 @@
 			buildSettings = {
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CODE_SIGN_ENTITLEMENTS = Extend/Extend.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 2005241242;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = JW2LR94V6G;
 				GCC_PREFIX_HEADER = "HutHelper/Supporting Files/HutHelper-Prefix.pch";
 				INFOPLIST_FILE = Extend/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -3144,7 +3147,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = name.wxz.HutHelper.Extend;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = "Dev name.wxz.HutHelper.Extend";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -3306,11 +3309,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "HutHelper/Supporting Files/HutHelper.entitlements";
-				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 2005241242;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = JW2LR94V6G;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/HutHelper/Lib",
@@ -3351,7 +3354,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = name.wxz.HutHelper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = "Dev name.wxz.HutHelper";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/HutHelper/Supporting Files/HutHelper-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
@@ -3424,11 +3427,11 @@
 			buildSettings = {
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CODE_SIGN_ENTITLEMENTS = ExamTime/ExamTime.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 2005241242;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = JW2LR94V6G;
 				GCC_PREFIX_HEADER = "HutHelper/Supporting Files/HutHelper-Prefix.pch";
 				INFOPLIST_FILE = ExamTime/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -3437,7 +3440,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = name.wxz.HutHelper.ExamTime;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = "Dev name.wxz.HutHelper.ExamTime";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
