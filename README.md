@@ -68,27 +68,7 @@ master为线上代码，安全原因暂不提供测试账号。
 - [ ] 老乡查找
 - [ ] 校园活动
 # Screenshot
-![start-1](https://img.wxz.name/start-1.jpg?imageView2/2/w/252/h/450/interlace/0/q/41)
-![9.7](https://img.wxz.name/9.7.jpg?imageView2/2/w/252/h/450/interlace/0/q/41)
-![首页](https://img.wxz.name/首页.jpg?imageView2/2/w/252/h/450/interlace/0/q/41)
-
-![IMG_2171](https://img.wxz.name/IMG_2171.PNG?imageView2/2/w/252/h/450/interlace/0/q/41)
-![IMG_2173](https://img.wxz.name/IMG_2173.PNG?imageView2/2/w/252/h/450/interlace/0/q/41)
-![IMG_2174](https://img.wxz.name/IMG_2174.PNG?imageView2/2/w/252/h/450/interlace/0/q/41)
-
-![成绩](http://img.wxz.name/github/20170426151539_trlelR_IMG_0900.png?imageView2/2/w/252/h/450/interlace/0/q/41)
-![成绩列表](https://img.wxz.name/成绩列表.jpg?imageView2/2/w/252/h/450/interlace/0/q/41)
-![实验课表](https://img.wxz.name/实验课表.jpg?imageView2/2/w/252/h/450/interlace/0/q/41)
-
-
-![](http://img.wxz.name/github/20170426151539_Z47HZw_IMG_0904.png?imageView2/2/w/252/h/450/interlace/0/q/41)
-![课程表](http://img.wxz.name/github/20170426151539_FSbFF5_IMG_0898.png?imageView2/2/w/252/h/450/interlace/0/q/41)
-![图书馆](http://img.wxz.name/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-11-06%2019.41.19.png?imageView2/2/w/252/h/450/interlace/0/q/41)
-
-![IMG_2170](https://img.wxz.name/IMG_2170.PNG?imageView2/2/w/252/h/450/interlace/0/q/41)
-![](http://img.wxz.name/github/20170426151539_zK1rOn_IMG_0906.png?imageView2/2/w/252/h/450/interlace/0/q/41)
-![](http://img.wxz.name/github/20170426151539_3MUsyQ_IMG_0907.png?imageView2/2/w/252/h/450/interlace/0/q/41)
-
+![image](https://user-images.githubusercontent.com/16702489/159399734-5f5a117f-b17a-41e1-8eca-d6691a3d3123.png)
 
 # License
 [LGPL](https://github.com/isnine/HutHelper-Open/blob/master/LICENSE)
